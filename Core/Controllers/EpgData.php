@@ -66,6 +66,9 @@
         $PreChannelRow['PSCN'] = $PreChannelRow['posicion'];
         unset($PreChannelRow['posicion']);
 
+        $PreChannelRow['AUDI'] = $PreChannelRow['audio'];
+        unset($PreChannelRow['audio']);
+
         $PreChannelRow['CHNL'] = $PreChannelRow['numero_canal'];
         unset($PreChannelRow['numero_canal']);
         
