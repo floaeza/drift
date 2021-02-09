@@ -1,0 +1,612 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 20, 2020, 11:34:13 AM
+    Author     : tania
+
+
+
+*/
+
+
+/***************************** [ Contenedores generales ] *****************************/
+
+div#PanelHeader {
+    width: 10%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    color: #fff;
+}
+
+div#PanelLeft {
+    width: 20%;
+    height: 100%;
+    position: fixed;
+    left: 10%;
+    bottom: 0;
+    z-index: 1;
+}
+
+div#PanelRight {
+    width: 70%;
+    height: 95%;
+    position: fixed;
+    right: 0;
+    bottom: 2%;
+    z-index: 1;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+}
+div#PanelYearFilter {
+    color: #fff;
+    font-size: 25px;
+    width: 69%;
+    height: 100%;
+    /* margin: 5px; */
+    visibility: hidden;
+    /* bottom: 10px; */
+    position: fixed;
+    background: rgb(255 255 255 / 77%);
+    z-index: 1;
+    display: flex;
+    /* margin-left: 362px; */
+    /* float: right; */
+    right: 0;
+}
+div#yearfilter {
+    width: 19%;display: inline-block;
+    height: 100%;
+    border-top-right-radius: 35px;
+    background: #15598e;
+}
+
+div#moviesFilter {
+    width: 
+    79%;
+    height: 100%;
+}
+div#GenderFilter {
+    width: 19%;
+    display: inline-block;
+    height: 100%;
+    border-top-right-radius: 35px;
+    background: #15598e;
+}
+div#moviesGenderFilter {
+    width: 79%; 
+    height: 100%;
+}
+div#PanelRecommendedMovies {
+    width: 100%;
+    display: inline-block;
+    height: 50%;
+    background-color: green;
+}
+div#PanelAllMovies {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    background-color: red;
+    scroll-behavior: smooth;
+}
+div#PanelGenderFilter {
+    color:#fff;
+    font-size: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 69%;
+    height: 100%;
+    /* margin: 5px; */
+    visibility: hidden;
+    /* bottom: 10px; */
+    position: fixed;
+    background: #fff;
+    z-index: 1;
+    display: flex;
+    /* margin-left: 362px; */
+    /* float: right; */
+    right: 0;
+}
+
+div.moviePoster img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+div.moviePoster {
+    margin: 5px;
+}
+/*@media only screen and (max-width: 900px) {*/
+/*    .wraper {*/
+/*        display: grid;*/
+/*        grid-template-columns: repeat(4, 1fr);*/
+/*        gap: 10px;*/
+/*    }*/
+/*}*/
+/*@media only screen and (max-width: 1600px) {*/
+/*    .wraper {*/
+/*        display: grid;*/
+/*        grid-template-columns: repeat(4, 1fr);*/
+/*        gap: 180px;*/
+/*        row-gap: 0px;*/
+/*        column-gap: 132px;*/
+/*        margin-left: 50px;*/
+/*        margin-right: 50px;*/
+/*    }*/
+/*}*/
+.wraper-RecommendedMovies{
+    display: grid;
+    grid-template-columns: repeat(12, 135px);
+    gap: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+}
+/*SCROLL*/
+
+div.OptionFocus {
+    box-shadow: 0px 0px 9px rgba(255, 255, 255, 0.5);
+    text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.5);
+}
+.OptionFocus {
+    text-align: center;
+}
+.yearOpts{
+    padding: 9px;
+    margin: 3px 0;
+    color: #ffffffd9;
+}
+.PrincipalMoviesTitle{
+    color: honeydew;
+    font-size: 30px;
+    text-align: center;
+    text-shadow: 0.1em 0.1em 0.2em black;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.container{
+    height: 100%;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: stretch;
+}
+.flex-movie{
+    background-color: #ccf;
+    margin: 0.1em;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 200px; /* or % could be used to ensure a specific layout */
+}
+
+div#BackgroundPanel {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-size: cover;
+    z-index: -1;
+    top: 0;
+}
+
+/***************************** [ Cabezera ] *****************************/
+
+div#MenuHour {
+    font-size: 50px;
+    width: 29%;
+    text-align: left;
+    font-family: bebas;
+    height: 7%;
+    margin: 1% 0% 0% 1%;
+    position: fixed;
+    z-index: 1;
+}
+
+div#MenuDate {
+    font-size: 20px;
+    width: 29%;
+    text-align: left;
+    font-family: poppins;
+    margin: 0% 0% 0% 1%;
+    position: fixed;
+    top: 9%;
+    z-index: 1;
+}
+
+div#MenuOptions {
+    width: 5%;
+    text-align: center;
+    height: 85%;
+    bottom: 0;
+    position: fixed;
+    left: 1%;
+    z-index: 1;
+}
+
+div.MenuOptions {
+    width: 100%;
+    float: left;
+    font-size: 35px;
+    text-align: center;
+    height: 10%;
+    border-radius: 5px;
+}
+
+.Selected {
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+div#Banner {
+    width: 69%;
+    height: 50%;
+    background-size: 100% 100%;
+    float: right;
+    margin-right: 1%;
+    display: none;
+}
+
+/***************************** [ Filtros derecha ] *****************************/
+
+
+div#Filter {
+    width: 90%;
+    text-align: left;
+    font-size: 33px;
+    line-height: normal;
+    margin: 0 5% 0 5%;
+    border-radius: 5px;
+    font-family: bebas;
+}
+
+div.OptionsFilter {
+    width: 90%;
+    text-align: center;
+    font-size: 27px;
+    line-height: normal;
+    margin: 5%;
+    height: 19%;
+    border-radius: 5px;
+}
+
+/***************************** [ Peliculas derecha ] *****************************/
+
+
+div.MoviesRow{
+    width: 98%;
+    float: right;
+    margin: 4.3% 1% 0% 1%;
+    height: 42%;
+
+}
+
+div.RowPoster {
+    width: 18%;
+    height: 89%;
+    margin: 0% 0.6% 0% 0.6%;
+    float: left;
+    text-align: center;
+    border: 3px solid transparent;
+    border-radius: 3px;
+}
+
+div.RowPoster img{
+    max-width: 100%;
+    min-height: 100%;
+}
+
+div.RowPoster h3 {
+    margin: 0;
+    color: #fff;
+}
+
+/***************************** [ Panel pelicula ] *****************************/
+
+
+div#MoviePanel {
+    font-size: 25px;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    visibility: hidden;
+    bottom: 0;
+    position: fixed;
+    background: rgba(4, 19, 53, 0.77);
+    z-index: 1;
+}
+div#MenuFilters {
+    font-size: 25px;
+    color: #fff;
+    width: 31%;
+    height: 100%;
+    margin: 0;
+    visibility: hidden;
+    bottom: 0;
+    position: fixed;
+    background-image: url("../../vod/mvs/bg/bg4.jpg");
+    z-index: 1;
+}
+div#TituloFilters {
+    font-size: 25px;
+    width: 69%;
+    height: 12%;
+    /* margin: 5px; */
+    visibility: hidden;
+    bottom: 688px;
+    position: fixed;
+    background: rgb(255 255 255 / 77%);
+    z-index: 1;
+    /* margin-left: 425px; */
+    float: right;
+    right: 0;
+    color: white; text-shadow: black 0.1em 0.1em 0.2em
+}
+
+
+div.MovieTitle {
+    font-size: 39px;
+    width: 80%;
+    font-weight: bold;
+    float: left;
+    margin-top: 2%;
+}
+
+div.YearTitle {
+    font-size: 39px;
+    width: 40%;
+    height: 10%;
+    font-weight: bold;
+    float: left;
+    margin-top: 3%;
+    text-align: center;
+    color: white;
+    text-shadow: black 0.1em 0.1em 0.2em;
+    background-image: url("../../vod/mvs/bg/bg4.jpg");
+}
+
+div.Year {
+    font-size: 39px;
+    width: 100%;
+    height: 10%;
+    font-weight: bold;
+    float: left;
+    margin-top: 3%;
+    text-align: center;
+    color: white;
+    text-shadow: black 0.1em 0.1em 0.2em;
+    background-image: url("../../vod/mvs/bg/bg4.jpg");
+}
+
+.Poster {
+    max-width: 15%;
+    min-height: 40%;
+    float: left;
+    margin: 1.5%;
+    border-radius: 15px;
+}
+
+div.MovieDuration {
+    width: 15%;
+    font-weight: bold;
+    float: left;
+    margin: 1% 0%;
+    text-align: center;
+    padding: 0.3%;
+}
+
+div.Genders {
+    width: 30%;
+    font-weight: bold;
+    float: left;
+    margin: 1% 0%;
+    text-align: left;
+    padding: 0.3%;
+}
+
+div.Year {
+    width: 12%;
+    font-weight: bold;
+    float: left;
+    margin: 1% 0%;
+    text-align: center;
+    padding: 0.3%;
+}
+
+div.Rating {
+    width: 7%;
+    font-weight: bold;
+    float: left;
+    margin: 0.5% 0%;
+    text-align: center;
+    font-size: 38px;
+    text-shadow: 2px 2px 2px #000;
+    color: #efa46d;
+}
+
+div.Score {
+    width: 3.3%;
+    font-weight: bold;
+    float: left;
+    border: 3px solid #ccad07;
+    border-radius: 60px;
+    font-size: 25px;
+    margin: 1% 0%;
+    text-align: center;
+    padding: 0.3%;
+}
+
+div.Star {
+    font-weight: bold;
+    float: left;
+    color: #e8bb0a;
+    width: 3.5%;
+    border-radius: 60px;
+    font-size: 30px;
+    margin: 1% 0%;
+    text-align: center;
+    padding: 0.3%;
+}
+
+div.MovieDescription {
+    width: 80%;
+    font-weight: bold;
+    float: left;
+}
+
+div#PlayPanel {
+    left: 5%;
+}
+
+div#ExitPanel {
+    left: 20%;
+}
+
+div.Casting {
+    width: 98%;
+    font-weight: bold;
+    float: left;
+    margin: 1% 1% 0% 1%;
+    text-align: left;
+    font-size: 23px;
+    color: #8abfe6;
+}
+
+div.Director {
+    width: 98%;
+    font-weight: bold;
+    float: left;
+    margin: 0% 1% 1% 1%;
+    text-align: left;
+    font-size: 23px;
+    color: #abd1ed;
+}
+
+div.Buttons {
+    width: 14%;
+    font-size: 30px;
+    border-radius: 39px;
+    background: rgba(255, 255, 255, 0.28);
+    text-align: center;
+    bottom: 10%;
+    position: fixed;
+    margin: 1%;
+}
+
+div.MovieOption {
+    border: 1px solid #fff;
+    background: rgba(255, 255, 255, 0.44);
+    text-shadow: 2px 2px 2px #000;
+}
+
+/***************************** [ Opciones reproduccion ] *****************************/
+
+div#PlayingPanel {
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background: rgba(0,0,0,0.3);
+}
+
+div.PlayingHeader {
+    background: -o-linear-gradient(90deg, rgba(0, 0, 0, 0), rgb(22, 38, 71));
+    background: linear-gradient(-0deg, rgba(0, 0, 0, 0), rgb(22, 38, 71));
+    width: 100%;
+    height: 30%;
+    position: fixed;
+    text-shadow: 1px 1px 1px #000;
+    color: #fff;
+}
+
+div#PlayingTitle {
+    width: 90%;
+    margin-left: 2%;
+    margin-top: 2%;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+div#PlayingSpeed,
+div#InfoPosition {
+    width: 90%;
+    margin-left: 2%;
+    font-size: 20px;
+}
+
+div#ExitPlaying {
+    width: 4%;
+    position: fixed;
+    right: 2%;
+    text-align: center;
+    font-size: 35px;
+    top: 3%;
+}
+
+div.PlayingBar {
+    width: 100%;
+    height: 1%;
+    position: fixed;
+    background: rgba(0,0,0,0.5);
+    bottom: 12%;
+}
+
+div#PlayingPosition {
+    width: 1%;
+    height: 0%;
+    position: fixed;
+    bottom: 14.5%;
+    text-align: right;
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+}
+
+div#PlayingOptions {
+    width: 100%;
+    height: 20%;
+    position: fixed;
+    bottom: 0%;
+    text-align: center;
+    background: -o-linear-gradient(-90deg, rgba(0, 0, 0, 0), rgb(22, 38, 71));
+    background: linear-gradient(-180deg, rgba(0, 0, 0, 0), rgb(22, 38, 71));
+}
+
+
+div.ButtonPlaying {
+    width: 5%;
+    display: inline-block;
+    font-size: 30px;
+    height: 32%;
+    border-radius: 7px;
+    margin: 5% 0.5% 0% 0.5%;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+}
+
+
+div.ButtonFocus {
+    background: rgba(255,255,255,0.5);
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+}
+
+
+.genderOptions {
+    font-size: initial;
+    padding: 8px 6px;
+    color: rgb(255, 255, 255);
+}
+
+/* Movie styles */
+div.moviePoster p{
+    margin: 8px 0;
+    font-size: 15px;
+    text-align: center;
+}
