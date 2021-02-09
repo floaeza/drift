@@ -24,7 +24,7 @@
  * Reproductor de canal
  * ****************************************************************************/
     
-    function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition){
+    function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPid){
         
         var CheckPort = '',
             CheckProgram = '';
@@ -34,7 +34,7 @@
             }
 
             if(ProgramIdChannnel){
-                CheckProgram = ';Progid='+ProgramIdChannnel+';audiopid=131';
+                CheckProgram = ';Progid='+ProgramIdChannnel+';audiopid='+AudioPid;
             }
 
         // Detiene el proceso de la reproduccion anterior
