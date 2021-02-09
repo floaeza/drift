@@ -241,8 +241,7 @@ break;
 
 case 7:
 // Regresa a la television
-//GoPage('menu.php', Device['MenuId'], 'Menu');
-console.log("hola");
+GoPage('menu.php', Device['MenuId'], 'Menu');
 break;
 }
 
