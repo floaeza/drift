@@ -31,7 +31,6 @@
     </head>
     <body>
         <div class='GeneralBox'>
-            
-            <div id='DebugText'></div>
+
             
             
