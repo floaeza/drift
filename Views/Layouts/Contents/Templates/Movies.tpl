@@ -1,26 +1,15 @@
 <!-- Menu Principal Izquierdo-->
+<h1>Lavalamp CSS Menu</h1>
 <nav>
-    <a href="#first"><i class="far fa-user"></i></a>
-    <a href="#second"><i class="fas fa-briefcase"></i></a>
-    <a href="#third"><i class="far fa-file"></i></a>
-    <a href="#fourth"><i class="far fa-address-card"></i></a>
-  </nav>
-   
- <div class= 'container'> 
-   <section id= 'first'>
-     <h1>First</h1>
-   </section>
-   
-   <section id= 'second'>
-     <h1>Second</h1>
-   </section>
-   
-  <section id= 'third'>
-    <h1>Third</h1>
-   </section>
-   
-  <section id= 'fourth'>
-    <h1>Fourth</h1>
-   </section>
- </div>
+	<a href="#">Home</a>
+	<a href="#">About</a>
+	<a href="#">Blog</a>
+	<a href="#">Portefolio</a>
+	<a href="#">Contact</a>
+	<div class="animation start-home"></div>
+</nav>
+
+<p>
+  By <span>Patak</span>
+</p>
  <!-- ***********************************************************************-->
