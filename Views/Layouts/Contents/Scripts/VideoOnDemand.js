@@ -2,8 +2,6 @@
  * @Fecha: Julio 2020
  * @Tipo: Funciones para controlar el layout de peliculas
  */
-Debug('---------------> INIT');
-
 /*******************************************************************************
  * Variables generales
  *******************************************************************************/
@@ -180,6 +178,7 @@ MenuFocus = 0;
 
 MenuOptionsNodes[MenuNodesArray[MenuFocus]].classList.add('OptionFocus');
 }
+
 function setFocusMenuFilter(Direction){  
 
 var listLenghtMenuFilter = document.getElementById('filterMovieCategory').children.length;   

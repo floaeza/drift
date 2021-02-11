@@ -102,10 +102,10 @@
         success: function (response){
             Device = $.parseJSON(response);
 
-            if(Device['Debug'] === '1'){
-                DivDebug.style.display = 'inline';
-                Debug = DebugOnScreen;
-            }
+              if(Device['Debug'] === '1'){
+                  DivDebug.style.display = 'inline';
+                  Debug = DebugOnScreen;
+              }
         }
     });
     

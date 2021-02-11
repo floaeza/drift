@@ -2,7 +2,6 @@
  * @Fecha: Enero 2020
  * @Tipo: Controla el menu
  */
-
     var MenuDate        = document.getElementById('MenuDate'),
         MenuHour        = document.getElementById('MenuHour'),
         MenuContainer   = document.getElementById('MenuContainer'),
@@ -109,7 +108,7 @@
     }
     
     function MenuDown(){
-        
+
     }
     
     function MenuUp(){

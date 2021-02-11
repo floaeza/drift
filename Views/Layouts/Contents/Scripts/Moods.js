@@ -11,7 +11,6 @@
 /*******************************************************************************
  * Variables generales
  *******************************************************************************/
-
     var MoodsContainer  = document.getElementById('MoodsList'),
         MoodsList       = MoodsContainer.childNodes,
         MoodsListActive = true,
