@@ -2,10 +2,11 @@
  * @Fecha: Febrero 2021
  * @Tipo: Funciones para controlar el layout de peliculas
  */
-
 /*******************************************************************************
  * Variables globales
  *******************************************************************************/
+alert("test11");
+
     //Variebles Menu principal
     var MenuHeader              = document.getElementById('MenuOptions'),
         MenuHeaderNodes         = MenuHeader.childNodes,
@@ -22,16 +23,14 @@
 /*******************************************************************************
 * Carga inicial
 *******************************************************************************/
-    setTimeout(Init,300);
-    function Init(){
-       
+    function Init(){ 
         CurrentFocus = 'MenuHeader';
         BackgroundPanel.style.backgroundImage = "url('"+FolderSource + "bg/2542.jpg')";
         SetFocusOnMenuHeader('set');
     }
 
     
-
+    setTimeout(Init,300);
 /*******************************************************************************
  * Funciones para controlar la navegacion
  *******************************************************************************/
@@ -101,6 +100,4 @@
         return position;
     }
 
- /*******************************************************************************
- * ##############################################################################
- *******************************************************************************/
+

@@ -31,5 +31,5 @@
     </head>
     <body>
         <div class='GeneralBox'>
-           ¿ <div id="DebugText"></div> 
+            <div id="DebugText"></div> 
             

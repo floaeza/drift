@@ -6,9 +6,8 @@
     <script src='[@Time]'></script>
     <script src='[@LayoutScript]'></script>
     <script src='[@LayoutRecorderScript]'></script>
-    
     <script src='[@Player]'></script>
-    <script src='[@EventsScript]'></script>
+    <script src='[@EventsScript]'></script> 
     
 </html>
 <!-- Contiene elementos del grabador y el footer de la television-->

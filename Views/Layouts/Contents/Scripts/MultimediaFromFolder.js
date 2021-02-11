@@ -5,11 +5,9 @@
  * image1 [Imagen]
  * video1 [Video]
  */
-
 /*******************************************************************************
  * Variables generales
  *******************************************************************************/
-
     var ImgSection3     = document.getElementById('image1'),
         VideoScreen     = document.getElementById('video1'),
         SliderInterval3 = '',
