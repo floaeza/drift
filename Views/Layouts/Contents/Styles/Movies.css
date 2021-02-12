@@ -55,3 +55,71 @@ div#BackgroundPanel {
     top: 0;
 }
 
+/***************************** [ Contenedores ] *****************************/
+div#PanelRight {
+    width: 70%;
+    height: 95%;
+    position: fixed;
+    right: 0;
+    bottom: 2%;
+    z-index: 1;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+}
+
+/***************************** [ Recommended Movies ] *****************************/
+div#PanelRecommendedMovies {
+    width: 100%;
+    display: inline-block;
+    height: 50%;
+    background-color: green; 
+    color: rgb;
+    color: snow;
+}
+.wraper-RecommendedMoviesList{
+    display: grid;
+    grid-template-columns: repeat(12, 135px);
+    gap: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    overflow: hidden;
+}
+/***************************** [ All Movies ] *****************************/
+div#PanelAllMovies {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    background-color: red; 
+    color: white;
+    scroll-behavior: smooth;
+}
+.wraper-AllMoviesList{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+}
+/***************************** [ Titulos ] *****************************/
+.PrincipalMoviesTitle{
+    color: honeydew;
+    font-size: 30px;
+    text-align: center;
+    text-shadow: 0.1em 0.1em 0.2em black;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+/***************************** [ Movies ] *****************************/
+div.moviePoster img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+div.moviePoster {
+    margin: 5px;
+}
+div.moviePoster p{
+    margin: 8px 0;
+    font-size: 15px;
+    text-align: center;
+}

@@ -9,7 +9,16 @@
             <div class='MenuOptions'></div>
             <div class='MenuOptions'><i class='fa fa-sign-out-alt'></i></div>
         </div>
-        <div id='Banner'></div>
+        <div id='PanelRight'>   
+            <div id='PanelRecommendedMovies'>
+                <div class="PrincipalMoviesTitle">Recommended Movies</div>
+                <div id="RecommendedMoviesList" class="container"></div>
+            </div>
+            <div id='PanelAllMovies'>
+                <div class="PrincipalMoviesTitle">All Movies</div>
+                <div id="AllMoviesList" class="container"></div>
+            </div>
+        </div>
     </div>  
 </div>
 <!-- Fondo de pantalla-->

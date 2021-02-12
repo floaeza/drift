@@ -9,5 +9,8 @@
     <script src='[@Player]'></script>
     <script src='[@EventsScript]'></script> 
     
+    <!-- <script>   
+        alert('[@LayoutScript]');  
+    </script> -->
 </html>
 <!-- Contiene elementos del grabador y el footer de la television-->
