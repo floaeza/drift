@@ -95,9 +95,7 @@
     function MenuOk(){
         if(MenuList[MenuIndex].Url !== 'menu.php'){
             //Page, ModuleId, ChangeModule
-            alert(MenuList[MenuIndex].Url+MenuList[MenuIndex].Id+MenuList[MenuIndex].Name);
             GoPage(MenuList[MenuIndex].Url, MenuList[MenuIndex].Id, MenuList[MenuIndex].Name);
-
         }
     }
 

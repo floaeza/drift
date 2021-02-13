@@ -63,9 +63,10 @@ div#PanelRight {
     right: 0;
     bottom: 2%;
     z-index: 1;
-    scroll-behavior: smooth;
     overflow-y: scroll;
+    overflow: hidden;
 }
+
 
 /***************************** [ Recommended Movies ] *****************************/
 div#PanelRecommendedMovies {
@@ -75,16 +76,34 @@ div#PanelRecommendedMovies {
     background-color: green; 
     color: rgb;
     color: snow;
-}
-.wraper-RecommendedMoviesList{
-    display: grid;
-    grid-template-columns: repeat(12, 135px);
-    gap: 10px;
-    margin-left: 50px;
-    margin-right: 50px;
-    scroll-behavior: smooth;
-    overflow-y: scroll;
+    overflow-x: scroll;
     overflow: hidden;
+}
+div.RecommendedMoviesRow{
+    width: 98%;
+    float: right;
+    margin: 4.3% 1% 0% 1%;
+    height: 42%;
+}
+
+div.RecommendedMoviesRowPoster {
+    width: 18%;
+    height: 89%;
+    margin: 0% 0.6% 0% 0.6%;
+    float: left;
+    text-align: center;
+    border: 3px solid transparent;
+    border-radius: 3px;
+}
+
+div.RecommendedMoviesRowPoster img{
+    max-width: 100%;
+    min-height: 100%;
+}
+
+div.RecommendedMoviesRowPoster h3 {
+    margin: 0;
+    color: #fff;
 }
 /***************************** [ All Movies ] *****************************/
 div#PanelAllMovies {
@@ -93,12 +112,34 @@ div#PanelAllMovies {
     overflow-y: scroll;
     background-color: red; 
     color: white;
-    scroll-behavior: smooth;
+    overflow: hidden;
 }
-.wraper-AllMoviesList{
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 10px;
+
+div.MoviesRow{
+    width: 98%;
+    float: right;
+    margin: 4.3% 1% 0% 1%;
+    height: 42%;
+}
+
+div.RowPoster {
+    width: 18%;
+    height: 89%;
+    margin: 0% 0.6% 0% 0.6%;
+    float: left;
+    text-align: center;
+    border: 3px solid transparent;
+    border-radius: 3px;
+}
+
+div.RowPoster img{
+    max-width: 100%;
+    min-height: 100%;
+}
+
+div.RowPoster h3 {
+    margin: 0;
+    color: #fff;
 }
 /***************************** [ Titulos ] *****************************/
 .PrincipalMoviesTitle{

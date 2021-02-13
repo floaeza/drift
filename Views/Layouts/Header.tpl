@@ -30,6 +30,6 @@
         <script src='[@RemoteControl]'></script>
     </head>
     <body>
-        <div class='GeneralBox'>
-            <!-- <div id="DebugText"></div> 
+        <!-- <div class='GeneralBox'>
+            <div id="DebugText"></div> 
              -->
