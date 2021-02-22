@@ -28,7 +28,7 @@
         MM_FormatEndDate      = '',
         MM_StartDateMovieMM   = '',
         MM_EndDateMovieMM     = '',
-        MM_MinSeconds         = 10000, // 30 segundos
+        MM_MinSeconds         = 600000, // 30 minutos
         MM_DifferenceInSec    = '';
 
     function GoPage(Page, ModuleId, ChangeModule){
@@ -104,6 +104,7 @@
     }
 
     function SetMoviesStatistics(){
+        debugger
         MM_FormatStartDate    = getDate(MM_StartDateMovie);
         MM_EndDateMovie       = new Date();
         MM_FormatEndDate      = getDate(MM_EndDateMovie);

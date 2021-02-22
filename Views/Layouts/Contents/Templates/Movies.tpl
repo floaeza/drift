@@ -76,17 +76,17 @@
         <div id='PlayingTitle'></div>
         <div id='InfoPosition'></div>
         <div id='PlayingSpeed'></div>
-        <div id='ExitPlaying'><i class='fa fa-times'></i></div>
+        <!-- <div id='ExitPlaying'><i class='fa fa-times'></i></div> -->
     </div>
     <div class='PlayingBar'>
         <div id='PlayingPosition'><i class='fa fa-circle'></i></div>
     </div>
     
     <div id='PlayingOptions'>
-        <div class='ButtonPlaying'><i class='fa fa-undo-alt'></i></div>
+        <div class='ButtonPlaying'><i class='fa fa-backward'></i></div>
         <div class='ButtonPlaying'><i class='fa fa-play'></i></div>
         <div class='ButtonPlaying'><i class='fa fa-pause'></i></div>
-        <div class='ButtonPlaying'><i class='fa fa-redo-alt'></i></div>
+        <div class='ButtonPlaying'><i class='fa fa-forward'></i></div>
     </div>
 </div>
 <div id="PlayingPanelHidden">
