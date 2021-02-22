@@ -6,91 +6,91 @@
  * Variables globales
  *******************************************************************************/
     //Variebles Menu principal
-    var MenuHeader                      = document.getElementById('MenuOptions'),
-        MenuHeaderNodes                 = MenuHeader.childNodes,
-        MenuHeaderChildren              = MenuHeader.children,
-        Header                          = document.getElementById('MenuHeader'),
-        ListPanel                       = document.getElementById('ListPanel');
+    var MenuHeader                        = document.getElementById('MenuOptions'),
+        MenuHeaderNodes                   = MenuHeader.childNodes,
+        MenuHeaderChildren                = MenuHeader.children,
+        Header                            = document.getElementById('MenuHeader'),
+        ListPanel                         = document.getElementById('ListPanel');
     //variables para las indicaciones de la navegacion
-    var RightIndicator                  = document.getElementById('RightIndicator');
+    var RightIndicator                    = document.getElementById('RightIndicator');
     //Variables Panel derecho
-    var PanelRight                      = document.getElementById('PanelRight'),
-        BackgroundPanel                 = document.getElementById('BackgroundPanel');
+    var PanelRight                        = document.getElementById('PanelRight'),
+        BackgroundPanel                   = document.getElementById('BackgroundPanel');
         // LeftIndicator                   = document.getElementById('LeftIndicator');
     //Variables Panel pelicula seleccionada
-    var MoviePanel                      = document.getElementById('MoviePanel'),
-        MoviePanelNodes                 = MoviePanel.childNodes,
-        MoviePanelChildren              = MoviePanel.children;
+    var MoviePanel                        = document.getElementById('MoviePanel'),
+        MoviePanelNodes                   = MoviePanel.childNodes,
+        MoviePanelChildren                = MoviePanel.children;
     //Variebles Panel filtro por año
-    var PanelYearFilter                 = document.getElementById('PanelYearFilter'),
-        YearFilter                      = document.getElementById('yearfilter'),
-        YearFilterNodes                 = YearFilter.childNodes,
-        YearFilterChildren              = YearFilter.children,
-        MoviesByYearList                = document.getElementById('MoviesByYearList'),
-        MoviesByYearListNodes           = MoviesByYearList.childNodes,
-        MoviesByYearListChildren        = MoviesByYearList.children;  
+    var PanelYearFilter                   = document.getElementById('PanelYearFilter'),
+        YearFilter                        = document.getElementById('yearfilter'),
+        YearFilterNodes                   = YearFilter.childNodes,
+        YearFilterChildren                = YearFilter.children,
+        MoviesByYearList                  = document.getElementById('MoviesByYearList'),
+        MoviesByYearListNodes             = MoviesByYearList.childNodes,
+        MoviesByYearListChildren          = MoviesByYearList.children;  
     //Variebles Panel filtro por genero
-    var PanelGenderFilter               = document.getElementById('PanelGenderFilter'),
-        GenderFilter                    = document.getElementById('GenderFilter'),
-        GenderFIlterNodes               = GenderFilter.childNodes,
-        GenderFilterChildren            = GenderFilter.children,
-        PanelMoviesGenderFilter         = document.getElementById('MoviesByGenderList'),
+    var PanelGenderFilter                 = document.getElementById('PanelGenderFilter'),
+        GenderFilter                      = document.getElementById('GenderFilter'),
+        GenderFIlterNodes                 = GenderFilter.childNodes,
+        GenderFilterChildren              = GenderFilter.children,
+        PanelMoviesGenderFilter           = document.getElementById('MoviesByGenderList'),
         PanelMoviesGenderFilterNodes      = PanelMoviesGenderFilter.childNodes,
         PanelMoviesGenderFilterChildren   = PanelMoviesGenderFilter.children;  
     //Variables Panel peliculas recomendadas
-    var RecommendedMoviesList           = document.getElementById('RecommendedMoviesList'),
-        RecommendedMoviesListNodes      = RecommendedMoviesList.childNodes,
-        RecommendedMoviesListChildren   = RecommendedMoviesList.children;
+    var RecommendedMoviesList             = document.getElementById('RecommendedMoviesList'),
+        RecommendedMoviesListNodes        = RecommendedMoviesList.childNodes,
+        RecommendedMoviesListChildren     = RecommendedMoviesList.children;
     //Variables Panel peliculas recomendadas
-    var AllMoviesList                   = document.getElementById('AllMoviesList'),
-        AllMoviesListNodes              = AllMoviesList.childNodes,
-        AllMoviesListChildren           = AllMoviesList.children;
+    var AllMoviesList                     = document.getElementById('AllMoviesList'),
+        AllMoviesListNodes                = AllMoviesList.childNodes,
+        AllMoviesListChildren             = AllMoviesList.children;
     //Variebles Lista de filtros
-    var FilterMovieCategoryList         = document.getElementById('filterMovieCategory'),
-        PanelMenuFilters                = document.getElementById('MenuFilters'),
-        FilterMovieCategoryListNodes    = FilterMovieCategoryList.childNodes,
-        FilterMovieCategoryListChildren = FilterMovieCategoryList.children;
+    var FilterMovieCategoryList           = document.getElementById('filterMovieCategory'),
+        PanelMenuFilters                  = document.getElementById('MenuFilters'),
+        FilterMovieCategoryListNodes      = FilterMovieCategoryList.childNodes,
+        FilterMovieCategoryListChildren   = FilterMovieCategoryList.children;
     //Variables Panel Reproduciendo pelicula
-    var PlayingPanel                    = document.getElementById('PlayingPanel'),
-        PlayingPanelNodes               = PlayingPanel.childNodes,
-        PlayingPanelChildren            = PlayingPanel.children,
-        PlayingOptions                  = document.getElementById('PlayingOptions'),
-        PlayingOptionsNodes             = PlayingOptions.childNodes,
-        PlayingOptionsChildren          = PlayingOptions.children,
-        OnBackward                      = document.getElementById('OnBackward'),
-        OnPlay                          = document.getElementById('OnPlay'),
-        OnPause                         = document.getElementById('OnPause'),
-        Onforward                       = document.getElementById('Onforward'),
-        BarPosition                     = document.getElementById('PlayingPosition'),
-        InfoPosition                    = document.getElementById('InfoPosition'),
-        PlayingSpeed                    = document.getElementById('PlayingSpeed'),
-        ExitPlaying                     = document.getElementById('ExitPlaying'),
-        PlayingTitle                    = document.getElementById('PlayingTitle');
+    var PlayingPanel                      = document.getElementById('PlayingPanel'),
+        PlayingPanelNodes                 = PlayingPanel.childNodes,
+        PlayingPanelChildren              = PlayingPanel.children,
+        PlayingOptions                    = document.getElementById('PlayingOptions'),
+        PlayingOptionsNodes               = PlayingOptions.childNodes,
+        PlayingOptionsChildren            = PlayingOptions.children,
+        OnBackward                        = document.getElementById('OnBackward'),
+        OnPlay                            = document.getElementById('OnPlay'),
+        OnPause                           = document.getElementById('OnPause'),
+        Onforward                         = document.getElementById('Onforward'),
+        BarPosition                       = document.getElementById('PlayingPosition'),
+        InfoPosition                      = document.getElementById('InfoPosition'),
+        PlayingSpeed                      = document.getElementById('PlayingSpeed'),
+        ExitPlaying                       = document.getElementById('ExitPlaying'),
+        PlayingTitle                      = document.getElementById('PlayingTitle');
     //Variables focus
-    var CurrentFocus                    = '';
+    var CurrentFocus                      = '';
     //Variables estilos
-    var StyleFocusMenuHeader            = 'width: 100px; left: 0px; background-color: rgba(7, 197, 245, 0.88);',
-        StyleFocusMovies                = '3px solid rgb(255, 255, 255)',
-        StyleFocusMenuFilter            = 'width: 262px; left: 0px; background-color: rgba(7, 197, 245, 0.88);',
-        StyleFocusMenuYearFilter        = 'width: 109px; left: 0px; border-top-right-radius: 35px; background-color: rgba(7, 197, 245, 0.88);',
-        StyleFocusPanelMovie            = '3px solid rgb(255, 255, 255)',
-        StyleFocusPlayingMovie          = 'width: 5%; height: 27%; background-color: rgba(7, 197, 245, 0.88);';
+    var StyleFocusMenuHeader              = 'width: 100px; left: 0px; background-color: rgba(7, 197, 245, 0.88);',
+        StyleFocusMovies                  = '3px solid rgb(255, 255, 255)',
+        StyleFocusMenuFilter              = 'width: 262px; left: 0px; background-color: rgba(7, 197, 245, 0.88);',
+        StyleFocusMenuYearFilter          = 'width: 109px; left: 0px; border-top-right-radius: 35px; background-color: rgba(7, 197, 245, 0.88);',
+        StyleFocusPanelMovie              = '3px solid rgb(255, 255, 255)',
+        StyleFocusPlayingMovie            = 'width: 5%; height: 27%; background-color: rgba(7, 197, 245, 0.88);';
     //Variables de utilidad
-    var FolderSource                    = '../../vod/mvs/', 
-        y                               = 0,
-        yInGenderList                   = 0,
-        IsMenuFilterSelected            = false,
-        IsOnPlay                        = true,
-        MovieOnPlay                     = '',
-        BarTimer                        = '',
-        BarUpdate                       = '',
-        DurationAsset                   = 0,
-        PositionAsset                   = 0,
-        PercentagePosition              = 0;
+    var FolderSource                      = '../../vod/mvs/', 
+        y                                 = 0,
+        yInGenderList                     = 0,
+        IsMenuFilterSelected              = false,
+        IsOnPlay                          = true,
+        MovieOnPlay                       = '',
+        BarTimer                          = '',
+        BarUpdate                         = '',
+        DurationAsset                     = 0,
+        PositionAsset                     = 0,
+        PercentagePosition                = 0;
     //json
-    var MoviesList                      = [],
-        FiltersByYear                   = [],
-        FiltersByGender                 = [];
+    var MoviesList                        = [],
+        FiltersByYear                     = [],
+        FiltersByGender                   = [];
 /*******************************************************************************
 * Carga inicial
 *******************************************************************************/
@@ -767,10 +767,12 @@ function SetFocusOnHiddenMode(Direction){
  * Funciones para rellenar los paneles
  *******************************************************************************/
 function setAllMovies(){
+    //Se utiliza un avez solo para rellenar los paneles de la pagina principal
     refreshMoviesPrincipalList(MoviesList, 'AllMoviesList'); 
     refreshMoviesPrincipalList(MoviesList, 'RecommendedMoviesList'); 
 }
 function setFilterMovies(){
+    //Funcion que actualiza los paneles de peliculas segun la opcion de filtro sobre la que este seleccionado el focus
     var position = getPositionFocusInMenu(StyleFocusMenuFilter, FilterMovieCategoryListChildren);
     switch (position) {
         case 0:
@@ -788,6 +790,7 @@ function setFilterMovies(){
     }
 }
 function FiltersList(){
+    //Funcion que hace la carga inicial al abror el menu de filtros
     //Ocultando y abriendo paneles necesarios
     IsMenuFilterSelected = true;
     Header.style.visibility = 'hidden';
@@ -799,6 +802,7 @@ function FiltersList(){
     LoadFilterByYearPanel();
 }
 function LoadFilterByYearPanel (){
+    //Funcion que rellena el menu de filtros segun la cantidad de años que tenga la lista sacada de la base de datos
     PanelYearFilter.style.visibility= 'visible';
     var  element     = document.getElementById('yearfilter'),
          aux         = element.children;
@@ -823,13 +827,19 @@ function LoadFilterByYearPanel (){
 
 }
 function LoadFilterByGenderPanel(){
+    //Funcion que rellena el menu de generos segun la cantidad de generos que arrojo la base de datos
     PanelGenderFilter.style.visibility= 'visible';
     var rows = Math.ceil(FiltersByGender.length/10);
     var matrix = getMatrix(rows, FiltersByGender.length, 10);
     scrollRefreshInGender(matrix[yInGenderList]);
 }
 function LoadMoviePanel(moviesContainer, movieOnPlay){
+    //Funcion que carga el panel al seleccionar una pelicula, muestra la descripcion y detalles de la pelicula
+
+    //Se le mandan dos argumento si uno de ellos es indefinido hace difrentes actualizaciones del panel de peliculas
+
     if (moviesContainer != undefined) {
+        //Carga los datos de la pelicula que estaba recientemente seleccionada al salir de la reproduccion
         if(MenuFilters.style.visibility == "visible"){
             PanelYearFilter.style.visibility= 'hidden';
             MenuFilters.style.visibility = "hidden"; 
@@ -863,6 +873,7 @@ function LoadMoviePanel(moviesContainer, movieOnPlay){
         MoviePanelNodes[21].textContent = 'Casting: '+Movie[0].CAST;
         BackgroundPanel.style.backgroundImage = "url('"+ FolderSource + Movie[0].FLDR + 'preview.png' + "')";
     } else if (movieOnPlay != undefined) {
+        //Carga normalmente los datos de la pelicula
         if(MenuFilters.style.visibility == "visible"){
             MenuFilters.style.visibility = "hidden"; 
             }
@@ -898,13 +909,16 @@ function LoadMoviePanel(moviesContainer, movieOnPlay){
   
 }
 function ExecOptionMoviePanel(){
+    //Funcion que oculta el panel de detalles de la pelicula 
     if (IsMenuFilterSelected == true) {
+        //Si la pelicula se abrio desde los menus de filtros 
         PanelYearFilter.style.visibility= 'visible';
         MenuFilters.style.visibility = "visible";
         MoviePanel.style.visibility = 'hidden'; 
         BackgroundPanel.style.backgroundImage = "url('"+FolderSource + "bg/2542.jpg')";
         CurrentFocus = 'SelectMovieByYear';
     } else {
+        //Si se abrio desde la pagina principal
         RecommendedMoviesList         = document.getElementById('RecommendedMoviesList'),
         RecommendedMoviesListChildren = RecommendedMoviesList.children;
         var position = getPositionFocusInMovies(StyleFocusMovies, RecommendedMoviesListChildren);
@@ -920,6 +934,7 @@ function ExecOptionMoviePanel(){
     }
 }
 function PlayingMovie(){
+    //Funcion que abre la reproduccion de la pelicula
         MovieOnPlay          = MoviePanelNodes[3].innerHTML;
     var movieByName          = getMovieByName(MovieOnPlay);
         PlayingPanel.style.visibility = 'visible';
@@ -951,6 +966,7 @@ function HideOnPlay (){
     OnPlay.style.visibility='hidden';
 }
 function UpdateBarStatus(){
+    //Ajusta la barra de posicion de l pelicula
     var movieByName          = getMovieByName(MovieOnPlay);
     AssetStatus(movieByName[0].MNTS);
     BarPosition.style.width = PercentagePosition +'%';
@@ -959,18 +975,20 @@ function UpdateBarStatus(){
     // PlayingSpeed.textContent = SpeedText;
 }
 function StopCloseMovie(){
- BackgroundPanel.style.visibility='visible';
- HidePlayingPanel();
- StopVideo();
- LoadMoviePanel(undefined, MovieOnPlay);
- CurrentFocus = 'MoviePanel';
- CurrentMovie = MovieOnPlay;
- SetMoviesStatistics();
+    //Cierra la pelicula cunado se esta reproduciendo y ademas manda las estadisticas a la base de datos
+    BackgroundPanel.style.visibility='visible';
+    HidePlayingPanel();
+    StopVideo();
+    LoadMoviePanel(undefined, MovieOnPlay);
+    CurrentFocus = 'MoviePanel';
+    CurrentMovie = MovieOnPlay;
+    SetMoviesStatistics();
 }
 /*******************************************************************************
  * Funciones para acceder al contenido de un menu
  *******************************************************************************/
 function SelectMenuOption(){
+    //Funcion para controllar las acciones del menu principal
     var position = getPositionFocusInMenu(StyleFocusMenuHeader, MenuHeaderChildren);
     switch (position) {
         case 0:
@@ -990,6 +1008,7 @@ function SelectMenuOption(){
     }
 }
 function SelectPlayOption(){
+    //Controla las acciones del panel de detalles de pelicula
     var position = getPositionFocusInPanelMovie(StyleFocusPanelMovie, MoviePanelChildren);
     switch (position) {
         case 11:
@@ -1004,6 +1023,7 @@ function SelectPlayOption(){
     }
 }
 function SelectPlayingOptions(){
+    //Controla las acciones del menu de opciones de reproduccion cuando se esta reproduciendo una pelicula 
     var positionFocus = getPositionFocusInMenu(StyleFocusPlayingMovie, PlayingOptionsChildren);
     switch (positionFocus) {
         case 0:
@@ -1011,16 +1031,22 @@ function SelectPlayingOptions(){
             setSpeed('backward');
             break;
         case 1:
+            //Reproducir de nuevo
+            // StopVideo();
+            // PlayingMovie();
+            break;
+        case 2:
             //Play
             setSpeed('play');
             break;
-        case 2:
+        case 3:
             //Pausa
             setSpeed('pause');
+            
             break;
-        case 3:
-            setSpeed('forward');
+        case 4:
             //Adelanto
+            setSpeed('forward');
             break;
     }
 }
@@ -1028,6 +1054,7 @@ function SelectPlayingOptions(){
  * Opciones de reproduccion
  *******************************************************************************/
 function setSpeed(Option){
+    //Hae que el amino ejecute las acciones de reproduccion
     if(Option === 'forward'){
          UpdatePosition('add');
         } else if(Option === 'backward'){
@@ -1042,6 +1069,7 @@ function setSpeed(Option){
  * Utilidades
  *******************************************************************************/
 function getPositionFocusInMovies(style, panelNodes){
+    //Esta funcion recupera la posicion de la pelicula que tiene el focus dentro de su padre
     var position = -1;
     for (var x = 0; x < panelNodes.length; x++) {
         if (panelNodes[x].style.border == style) {
@@ -1051,6 +1079,7 @@ function getPositionFocusInMovies(style, panelNodes){
     return position;
 }
 function getPositionFocusInMenu(style, panelNodes){
+     //Esta funcion recupera la posicion de un menu que tiene el focus dentro de su padre
     var position = -1;
     for (var x = 0; x < panelNodes.length; x++) {
         if (panelNodes[x].style.cssText == style) {
@@ -1060,6 +1089,7 @@ function getPositionFocusInMenu(style, panelNodes){
     return position;
 }
 function getPositionFocusInPanelMovie(style, panelNodes){
+     //Esta funcion recupera la posicion del boton en el panel de peliculas que tiene el focus dentro de su padre
     var position = -1;
     for (var x = 0; x < panelNodes.length; x++) {
         if (panelNodes[x].style.border == style) {
@@ -1069,6 +1099,7 @@ function getPositionFocusInPanelMovie(style, panelNodes){
     return position;
 }
 function refreshMoviesPrincipalList(moviesList, panel){
+    //Esta funcion refresca las listas de peliculas
             if (panel != 'RecommendedMoviesList' && panel != 'AllMoviesList') {
                     //Eliminando Peliculas del panel
                     var  element    = document.getElementById(panel);
@@ -1143,6 +1174,7 @@ function refreshMoviesPrincipalList(moviesList, panel){
                 
 }
 function scrollRefresh(row, panel, moviesList){
+    //Funcion para simular el efecto scroll dentro de una lista de peliculas 
     if (panel != 'RecommendedMoviesList' && panel != 'AllMoviesList') {
         //Eliminando peliculas del panel
         debugger
@@ -1211,6 +1243,7 @@ function scrollRefresh(row, panel, moviesList){
     } 
 }
 function scrollRefreshInGender(row){
+    //Funcion para simular scroll en  la lista de peliculas por genero 
     var  element     = document.getElementById('GenderFilter');
     aux = element.children;
     if (aux.length == 0) {
@@ -1246,9 +1279,12 @@ function scrollRefreshInGender(row){
         }
 }
 function getimageMovie(movie){
+    //Devuelve la direccion de la imagen de la pelicula
     return FolderSource + movie.FLDR + movie.PSTR;
 }    
 function getMatrix(Rows, length, col){
+    /*Crea una matriz con numeros ascendentes dependiendo de la filas y columnas, tiene un parametro lenght que es el tamaño del 
+    arreglo original*/
     var matrix = [];
     var aux= 0;
     var contador = 0;
@@ -1273,11 +1309,13 @@ function getMatrix(Rows, length, col){
     
 }
 function clearAllPanel(){
+    //Limpia paneles
     PanelRight.style.visibility = 'hidden';
     PanelYearFilter.style.visibility = 'hidden';
     PanelGenderFilter.style.visibility = 'hidden';
 }
 function getMoviesByYear(position){
+    //Regresa las peliculas segun el año, se le pasa como argumento la posicion que tiene el menu de año
     var moviesByYear = [];
     for (var x = 0; x < MoviesList.length; x++) {
         if (MoviesList[x].YEAR == FiltersByYear[position]) {
@@ -1287,6 +1325,7 @@ function getMoviesByYear(position){
     return moviesByYear;
 }
 function getMovieByName(name){
+    //Funcion que retorna una pelicula segun el nombre que le pasemos por argumento
     var movieByName = [];
     for (var x = 0; x < MoviesList.length; x++) {
         if (MoviesList[x].TTLE == name) {
@@ -1296,6 +1335,7 @@ function getMovieByName(name){
     return movieByName;
 }
 function ClearMoviePanel(){
+    //Esta funcion limpia el panel de pelicula
     MoviePanel.style.visibility = 'hidden';
     
     MoviePanelNodes[1].src = '';
@@ -1311,6 +1351,7 @@ function ClearMoviePanel(){
     
 }
 function HideLoadingGif(){
+    //Funcion que muestra un gift antes de cargar la pelicula
     BackgroundPanel.style.backgroundImage = '';
     BackgroundPanel.style.backgroundRepeat = '';
     BackgroundPanel.style.backgroundPosition = '';
@@ -1318,6 +1359,7 @@ function HideLoadingGif(){
     BackgroundPanel.style.backgroundSize = 'cover';
 }
 function HidePlayingPanel(){
+    //Oculta el panel de reproduccion
     PlayingPanel.style.visibility = 'hidden';
     clearTimeout(BarUpdate);
 }

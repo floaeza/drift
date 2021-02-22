@@ -84,6 +84,7 @@
     
     <div id='PlayingOptions'>
         <div class='ButtonPlaying'><i class='fa fa-backward'></i></div>
+        <div class='ButtonPlaying'><i class='fa fa-undo-alt'></i></div>
         <div class='ButtonPlaying'><i class='fa fa-play'></i></div>
         <div class='ButtonPlaying'><i class='fa fa-pause'></i></div>
         <div class='ButtonPlaying'><i class='fa fa-forward'></i></div>
