@@ -10,7 +10,7 @@
     <script src='[@EventsScript]'></script> 
     
     <!-- <script>   
-        alert('[@LayoutScript]');  
+        alert('[@Player]');  
     </script> -->
 </html>
 <!-- Contiene elementos del grabador y el footer de la television-->

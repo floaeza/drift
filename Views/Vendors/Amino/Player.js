@@ -203,11 +203,13 @@
 
     function AssetStatus(Duration){
         if(PlayingRecording === true || PlayingVod === true){
-            
+            alert('.......................');
             PositionAsset = AVMedia.GetPosition();
+           
             DurationAsset = parseInt(Duration,10) * 60;
             
             PercentagePosition = Math.round((PositionAsset * 100) / DurationAsset);
+
         } else if(PauseLive === true){
             
             var PltInfo = PVR.GetPltInfo();

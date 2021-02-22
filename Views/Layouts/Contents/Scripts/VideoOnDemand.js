@@ -799,7 +799,7 @@ BackgroundPanel.style.backgroundImage = "url('"+FolderSource + "bg/2542.jpg')";
 } else {
 CurrentFocus = 'Playing';
 
-CurrentMovie = MoviesList[MovieBox.id].TTLE;
+CurrentMovie = MoviesList[5].TTLE;
 
 // Actualiza la fecha inicio de la reproduccion de la pelicula */
 MM_StartDateMovie = new Date();
