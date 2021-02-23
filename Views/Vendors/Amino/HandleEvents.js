@@ -53,7 +53,7 @@
 
     function HandleEvent() {
         
-        //Debug('*************AVMedia.Event: '+AVMedia.Event);
+        Debug('*************AVMedia.Event: '+AVMedia.Event);
         NUMBER_EVENT = AVMedia.Event;
 
         if(System.HdmiConnected === true){
