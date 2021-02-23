@@ -31,6 +31,8 @@
     
     var NUMBER_EVENT                = 0;
     
+Debug('########################### HandleEvent() ');
+
         AVMedia.onEvent='HandleEvent()';
 
         NetMan.onEvent = 'processNetManEvent()';
