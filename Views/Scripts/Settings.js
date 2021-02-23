@@ -124,6 +124,7 @@
     
     
     function UpdateInfoDevice(){
+        Debug('----------------> UpdateInfoDevice');
         $.ajax({
             type: 'POST',
             url: 'Core/Controllers/Device.php',
@@ -143,6 +144,7 @@
                 if (Device['Services']['Reboot'] === true) {
                     RebootDevice();
                 } else {
+                    Debug('----------------> CurrentModule '+CurrentModule);
                     // Busca actualizacion si lleva mas de un dia funcionando el amino
                     if (CurrentModule === 'Tv') {
                         if (Device['EpgModificationTime'] !== '03' && LastUpdatedTime !== Device['EpgModificationTime']) {
@@ -170,6 +172,8 @@
                 Executing = false;
             }
         });
+
+        Debug('----------------< UpdateInfoDevice');
     }
 
 function UpdateQuickInfoDevice(){
