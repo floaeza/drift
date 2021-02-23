@@ -86,21 +86,33 @@
         } else if(NUMBER_EVENT === VIDEO_STARTED){
             //
             EventString = 'VIDEO_STARTED';
-            
-            if(ActiveDigitalChannel === true){
+
+            Debug('----> HANDLE EVENTS VIDEO STARTED');
+            Debug('----> HANDLE EVENTS ActiveDigitalChannel: '+ActiveDigitalChannel);
+            if (ActiveDigitalChannel === true) {
                 ImageDigital.src = '';
                 ImageDigital.style.display = 'none';
             }
 
+            Debug('----> HANDLE EVENTS Executing: '+Executing);
             if(Executing === false){
                 UpdateQuickInfoDevice();
             }
+
+            Debug('----> HANDLE EVENTS VIDEO STARTED <');
         } else if(NUMBER_EVENT === IGMP_STATUS_PLAYING || NUMBER_EVENT === STATUS_PLAYING){
             //
+            Debug('----> HANDLE EVENTS IGMP_STATUS_PLAYING');
             EventString = 'STATUS_PLAYING';
+<<<<<<< HEAD
+=======
+            Debug('----> HANDLE EVENTS Executing: '+Executing);
+>>>>>>> a962211022f5c1e8210ea9be28fde1770acc365e
             if(Executing === false){
                 UpdateQuickInfoDevice();
             }
+
+            Debug('----> HANDLE EVENTS IGMP_STATUS_PLAYING <');
         } else if(NUMBER_EVENT === STATUS_END_OF_STREAM){ 
             if(CurrentModule === 'Tv'){
                 SetDigitalChannel();
