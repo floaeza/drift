@@ -43,10 +43,7 @@
             if(Executing === false){
                 UpdateQuickInfoDevice();
             }
-        }
-
-
-        
+        } 
 /*******************************************************************************
  * Manejador de eventos
  *******************************************************************************/
@@ -55,7 +52,6 @@
         
         Debug('*************AVMedia.Event: '+AVMedia.Event);
         NUMBER_EVENT = AVMedia.Event;
-
         if(System.HdmiConnected === true){
             EventHdmi = 1;
         } else {
@@ -108,7 +104,10 @@
             //
             Debug('----> HANDLE EVENTS IGMP_STATUS_PLAYING');
             EventString = 'STATUS_PLAYING';
+<<<<<<< HEAD
+=======
             Debug('----> HANDLE EVENTS Executing: '+Executing);
+>>>>>>> a962211022f5c1e8210ea9be28fde1770acc365e
             if(Executing === false){
                 UpdateQuickInfoDevice();
             }
@@ -119,11 +118,9 @@
                 SetDigitalChannel();
             } else if(CurrentModule === 'Movies'){
                 //EndOfMovie();
-                
                 Debug('STATUS_END_OF_STREAM');
                 PlayVideo(Libraries['MoviesSource'] + MoviesList[MovieBox.id].FLDR + MoviesList[MovieBox.id].FILE);
                 AVMedia.SetPos(PositionAsset);
-                
                 Debug('Se detuvo y se reprodujo de nuevo');
             }
 

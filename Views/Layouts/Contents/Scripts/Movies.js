@@ -944,14 +944,15 @@ function PlayingMovie(){
         BackgroundPanel.style.backgroundPosition = 'center';
         BackgroundPanel.style.visibility = 'visible';
         setTimeout(HideLoadingGif,3200);
-        PlayVideo(Libraries['MoviesSource'] + movieByName[0].FLDR + movieByName[0].FILE);
         PlayingOptionsChildren[2].style = StyleFocusPlayingMovie;
         CurrentFocus = 'PlayingMovie';
         ClearMoviePanel();
-        UpdateBarStatus();
-        clearTimeout(BarUpdate);
-        BarUpdate = setInterval(UpdateBarStatus,1000);
-        setInterval(UpdateBarStatus, 1000);  
+        // UpdateBarStatus();
+        // clearTimeout(BarUpdate);
+        // BarUpdate = setInterval(UpdateBarStatus,1000);
+        // setInterval(UpdateBarStatus, 1000);  
+        MM_StartDateMovie = new Date();
+        PlayVideo(Libraries['MoviesSource'] + MoviesList[5].FLDR + MoviesList[5].FILE);
 }
 function HideOnforward (){
  Onforward.style.visibility='hidden';
@@ -1177,7 +1178,6 @@ function scrollRefresh(row, panel, moviesList){
     //Funcion para simular el efecto scroll dentro de una lista de peliculas 
     if (panel != 'RecommendedMoviesList' && panel != 'AllMoviesList') {
         //Eliminando peliculas del panel
-        debugger
         var  element    = document.getElementById(panel);
         var  parent      = element.parentNode;
              parent.removeChild(element);
