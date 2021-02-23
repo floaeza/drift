@@ -104,10 +104,8 @@
             //
             Debug('----> HANDLE EVENTS IGMP_STATUS_PLAYING');
             EventString = 'STATUS_PLAYING';
-<<<<<<< HEAD
-=======
+
             Debug('----> HANDLE EVENTS Executing: '+Executing);
->>>>>>> a962211022f5c1e8210ea9be28fde1770acc365e
             if(Executing === false){
                 UpdateQuickInfoDevice();
             }
