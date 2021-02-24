@@ -3,7 +3,7 @@
  * @CreadoPor: Tania Maldonado
  * @Fecha: Noviembre 2019
  *******************************************************************************/
-
+Debug('########################### Settings() ');
     var Line        = 0,
         Executing   = false,
         EventString = '',

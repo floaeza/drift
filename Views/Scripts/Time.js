@@ -3,7 +3,7 @@
  * @CreadoPor: Tania Maldonado
  * @Fecha: Noviembre 2019
  *******************************************************************************/
-
+Debug('########################### Time() ');
 /* Validacion para reinicar dispositivo y buscar actualizaciones de la epg */
     var TimeRunning       = 0,
         MaxMinutesRunning = 15;

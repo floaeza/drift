@@ -3,7 +3,7 @@
  * Tipo: Reproductor tv
  * Vendor: Amino
  */
-
+Debug('########################### Player() ');
     // Variables globales
     var PlayingChannel  = false,
         PlayingVod      = false,
