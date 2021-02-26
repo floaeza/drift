@@ -266,7 +266,7 @@ class Database {
     }
 
         // Funcion para SELECT DISTINCT la base de datos
-    public function selectd($tabla, $rows = '*', $join = null, $join2 = null, $join3 = null, $join4 = null, $where = null, $like = null, $groupby = null, $order = null, $limit = null, $offset = null){
+public function selectd($tabla, $rows = '*', $join = null, $join2 = null, $join3 = null, $join4 = null, $where = null, $like = null, $groupby = null, $order = null, $limit = null, $offset = null){
 	    $q = 'SELECT DISTINCT '.$rows.' FROM '.$tabla;
 
 	    if($join != null){
@@ -336,8 +336,46 @@ class Database {
             else{
                 return false; //No existe la tabla
             }
-    }
+}
 
+public function selectFromOtherSelect($tabla, $rows = '*', $select1, $select2, $comunID){
+    $q = 'SELECT'.$rows.' FROM '.$select1.' t1 '.' INNER JOIN '.$select2.' t2 '.' ON '.'t1.'.$comunID.' = '.'t2.'.$comunID;
+    $this->consulta = $q;
+    // Checa si existe la tabla
+    if($this->tablaExiste($tabla)){
+        $query = $this->conexion->query($q);
+    if($query){
+                    $this->numResults = $query->num_rows;
+
+                    for($i = 0; $i < $this->numResults; $i++){
+                        $r = $query->fetch_array();
+                        $key = array_keys($r);
+
+                        for($x = 0; $x < count($key); $x++){
+
+                            if(!is_int($key[$x])){
+                                if($query->num_rows >= 1){
+                                    $this->result[$i][$key[$x]] = $r[$key[$x]];
+                                }
+                                    else{
+                                        $this->result[$i][$key[$x]] = null;
+                                    }
+                            }
+                        }
+                    }
+                return true; //La consulta fue exitosa
+    }
+                else{
+                    array_push($this->result,'database error');
+                    $this->setLog('selectd');
+                    
+                    return false;
+                }
+      }
+        else{
+            return false; //No existe la tabla
+        }
+}
 
 //Funcion para insertar datos a la tabla
     public function insert($tabla,$parametro=array()){

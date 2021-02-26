@@ -8,6 +8,7 @@ and open the template in the editor.
     Author     : tania
 
 
+#15598e
 
 */
 
@@ -39,160 +40,20 @@ div#PanelRight {
     right: 0;
     bottom: 2%;
     z-index: 1;
-    scroll-behavior: smooth;
-    overflow-y: scroll;
 }
-div#PanelYearFilter {
-    color: #fff;
-    font-size: 25px;
-    width: 69%;
-    height: 100%;
-    /* margin: 5px; */
-    visibility: hidden;
-    /* bottom: 10px; */
-    position: fixed;
-    background: rgb(255 255 255 / 77%);
-    z-index: 1;
-    display: flex;
-    /* margin-left: 362px; */
-    /* float: right; */
-    right: 0;
-}
-div#yearfilter {
-    width: 19%;display: inline-block;
-    height: 100%;
-    border-top-right-radius: 35px;
-    background: #15598e;
-}
-
-div#moviesFilter {
-    width: 
-    79%;
-    height: 100%;
-}
-div#GenderFilter {
-    width: 19%;
-    display: inline-block;
-    height: 100%;
-    border-top-right-radius: 35px;
-    background: #15598e;
-}
-div#moviesGenderFilter {
-    width: 79%; 
-    height: 100%;
-}
-div#PanelRecommendedMovies {
-    width: 100%;
-    display: inline-block;
-    height: 50%;
-    background-color: green;
-}
-div#PanelAllMovies {
-    width: 100%;
-    height: 100%;
-    overflow-y: scroll;
-    background-color: red;
-    scroll-behavior: smooth;
-}
-div#PanelGenderFilter {
-    color:#fff;
-    font-size: 30px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    width: 69%;
-    height: 100%;
-    /* margin: 5px; */
-    visibility: hidden;
-    /* bottom: 10px; */
-    position: fixed;
-    background: #fff;
-    z-index: 1;
-    display: flex;
-    /* margin-left: 362px; */
-    /* float: right; */
-    right: 0;
-}
-
-div.moviePoster img{
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 12px;
-}
-
-div.moviePoster {
-    margin: 5px;
-}
-/*@media only screen and (max-width: 900px) {*/
-/*    .wraper {*/
-/*        display: grid;*/
-/*        grid-template-columns: repeat(4, 1fr);*/
-/*        gap: 10px;*/
-/*    }*/
-/*}*/
-/*@media only screen and (max-width: 1600px) {*/
-/*    .wraper {*/
-/*        display: grid;*/
-/*        grid-template-columns: repeat(4, 1fr);*/
-/*        gap: 180px;*/
-/*        row-gap: 0px;*/
-/*        column-gap: 132px;*/
-/*        margin-left: 50px;*/
-/*        margin-right: 50px;*/
-/*    }*/
-/*}*/
-.wraper-RecommendedMovies{
-    display: grid;
-    grid-template-columns: repeat(12, 135px);
-    gap: 10px;
-    margin-left: 50px;
-    margin-right: 50px;
-    scroll-behavior: smooth;
-    overflow-y: scroll;
-}
-/*SCROLL*/
 
 div.OptionFocus {
-    box-shadow: 0px 0px 9px rgba(255, 255, 255, 0.5);
-    text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 0px 11px rgba(255, 255, 255, 0.7);
+text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.7);
 }
-.OptionFocus {
-    text-align: center;
-}
-.yearOpts{
-    padding: 9px;
-    margin: 3px 0;
-    color: #ffffffd9;
-}
-.PrincipalMoviesTitle{
-    color: honeydew;
-    font-size: 30px;
-    text-align: center;
-    text-shadow: 0.1em 0.1em 0.2em black;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-.container{
-    height: 100%;
-    display:flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-content: stretch;
-    align-items: stretch;
-}
-.flex-movie{
-    background-color: #ccf;
-    margin: 0.1em;
-    flex-grow: 1;
-    flex-shrink: 0;
-    flex-basis: 200px; /* or % could be used to ensure a specific layout */
-}
+
 
 div#BackgroundPanel {
     width: 100%;
     height: 100%;
     position: fixed;
     background-size: cover;
-    z-index: -1;
+    z-index: 0;
     top: 0;
 }
 
@@ -204,7 +65,7 @@ div#MenuHour {
     text-align: left;
     font-family: bebas;
     height: 7%;
-    margin: 1% 0% 0% 1%;
+    margin: 1% 0% 0% 3%;
     position: fixed;
     z-index: 1;
 }
@@ -214,7 +75,7 @@ div#MenuDate {
     width: 29%;
     text-align: left;
     font-family: poppins;
-    margin: 0% 0% 0% 1%;
+    margin: 0% 0% 0% 3%;
     position: fixed;
     top: 9%;
     z-index: 1;
@@ -226,7 +87,7 @@ div#MenuOptions {
     height: 85%;
     bottom: 0;
     position: fixed;
-    left: 1%;
+    left: 3%;
     z-index: 1;
 }
 
@@ -269,11 +130,12 @@ div#Filter {
 div.OptionsFilter {
     width: 90%;
     text-align: center;
-    font-size: 27px;
+    font-size: 40px;
     line-height: normal;
     margin: 5%;
     height: 19%;
     border-radius: 5px;
+    font-family: bebas;
 }
 
 /***************************** [ Peliculas derecha ] *****************************/
@@ -289,7 +151,7 @@ div.MoviesRow{
 
 div.RowPoster {
     width: 18%;
-    height: 89%;
+    height: 85%;
     margin: 0% 0.6% 0% 0.6%;
     float: left;
     text-align: center;
@@ -319,78 +181,32 @@ div#MoviePanel {
     visibility: hidden;
     bottom: 0;
     position: fixed;
-    background: rgba(4, 19, 53, 0.77);
+    background: rgba(0, 0, 0, 0.7);
     z-index: 1;
-}
-div#MenuFilters {
-    font-size: 25px;
-    color: #fff;
-    width: 31%;
-    height: 100%;
-    margin: 0;
-    visibility: hidden;
-    bottom: 0;
-    position: fixed;
-    background-image: url("../../vod/mvs/bg/bg4.jpg");
-    z-index: 1;
-}
-div#TituloFilters {
-    font-size: 25px;
-    width: 69%;
-    height: 12%;
-    /* margin: 5px; */
-    visibility: hidden;
-    bottom: 688px;
-    position: fixed;
-    background: rgb(255 255 255 / 77%);
-    z-index: 1;
-    /* margin-left: 425px; */
-    float: right;
-    right: 0;
-    color: white; text-shadow: black 0.1em 0.1em 0.2em
 }
 
 
 div.MovieTitle {
-    font-size: 39px;
+/*    font-size: 39px;
     width: 80%;
     font-weight: bold;
     float: left;
-    margin-top: 2%;
-}
-
-div.YearTitle {
-    font-size: 39px;
-    width: 40%;
-    height: 10%;
-    font-weight: bold;
-    float: left;
-    margin-top: 3%;
-    text-align: center;
-    color: white;
-    text-shadow: black 0.1em 0.1em 0.2em;
-    background-image: url("../../vod/mvs/bg/bg4.jpg");
-}
-
-div.Year {
-    font-size: 39px;
-    width: 100%;
-    height: 10%;
-    font-weight: bold;
-    float: left;
-    margin-top: 3%;
-    text-align: center;
-    color: white;
-    text-shadow: black 0.1em 0.1em 0.2em;
-    background-image: url("../../vod/mvs/bg/bg4.jpg");
+    margin-top: 2%;*/
+font-size: 50px;
+width: 80%;
+font-weight: bold;
+float: left;
+margin-top: 4%;
+font-family: gloss;
+color: #ffffce;
 }
 
 .Poster {
     max-width: 15%;
-    min-height: 40%;
-    float: left;
-    margin: 1.5%;
-    border-radius: 15px;
+min-height: 40%;
+float: left;
+margin: 3% 1.5% 1% 3%;
+border-radius: 8px;
 }
 
 div.MovieDuration {
@@ -456,7 +272,7 @@ div.Star {
 }
 
 div.MovieDescription {
-    width: 80%;
+    width: 75%;
     font-weight: bold;
     float: left;
 }
@@ -470,10 +286,10 @@ div#ExitPanel {
 }
 
 div.Casting {
-    width: 98%;
+    width: 90%;
     font-weight: bold;
     float: left;
-    margin: 1% 1% 0% 1%;
+    margin: 1% 1% 0% 3%;
     text-align: left;
     font-size: 23px;
     color: #8abfe6;
@@ -483,7 +299,7 @@ div.Director {
     width: 98%;
     font-weight: bold;
     float: left;
-    margin: 0% 1% 1% 1%;
+    margin: 2% 1% 1% 3%;
     text-align: left;
     font-size: 23px;
     color: #abd1ed;
@@ -492,17 +308,18 @@ div.Director {
 div.Buttons {
     width: 14%;
     font-size: 30px;
-    border-radius: 39px;
-    background: rgba(255, 255, 255, 0.28);
+    /*border-radius: 39px;*/
+    /*background: rgba(255, 255, 255, 0.28);*/
     text-align: center;
     bottom: 10%;
     position: fixed;
     margin: 1%;
+    border: 2px solid transparent;
 }
 
 div.MovieOption {
-    border: 1px solid #fff;
-    background: rgba(255, 255, 255, 0.44);
+    border: 2px solid #fff;
+    /*background: rgba(255, 255, 255, 0.44);*/
     text-shadow: 2px 2px 2px #000;
 }
 
@@ -548,13 +365,14 @@ div#ExitPlaying {
     text-align: center;
     font-size: 35px;
     top: 3%;
+    border-radius: 10px;
 }
 
 div.PlayingBar {
     width: 100%;
     height: 1%;
     position: fixed;
-    background: rgba(0,0,0,0.5);
+    background: rgba(255, 255, 255, 0.5);
     bottom: 12%;
 }
 
@@ -595,18 +413,4 @@ div.ButtonFocus {
     background: rgba(255,255,255,0.5);
     box-shadow: 2px 2px 6px rgba(0,0,0,0.5);
     text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
-}
-
-
-.genderOptions {
-    font-size: initial;
-    padding: 8px 6px;
-    color: rgb(255, 255, 255);
-}
-
-/* Movie styles */
-div.moviePoster p{
-    margin: 8px 0;
-    font-size: 15px;
-    text-align: center;
 }

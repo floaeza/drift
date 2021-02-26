@@ -47,9 +47,15 @@ class Programs extends Database {
         $this->Function = 'getProgramsSchedule';
         
         $this->connect();
-        $this->select("pvr_programas", "*", 
-                      "", "", "", "", 
-                      "id_locacion = '".$LocationId."' AND id_operacion = '1' OR id_operacion = '3'");
+        // $this->select("pvr_programas", "*", 
+        //               "", "", "", "", 
+        //               "id_locacion = '".$LocationId."' AND id_operacion = '1' OR id_operacion = '3'");
+        $this->selectFromOtherSelect("pvr_programas", "*", 
+        "(SELECT * FROM pvr_programas WHERE pvr_programas.id_operacion = 1 OR pvr_programas.id_operacion =3)",
+        "(SELECT * FROM pvr_programas WHERE pvr_programas.id_locacion = ".$LocationId.")", "id_programa");
+
+        // SELECT * FROM (SELECT * FROM pvr_programas WHERE pvr_programas.id_operacion = 1 OR pvr_programas.id_operacion =3) t1 
+        // INNER JOIN (SELECT * FROM pvr_programas WHERE pvr_programas.id_locacion = 1) t2 ON (t1.id_programa = t2.id_programa)
         $this->ProgramsList = $this->getResult();
 
         $this->disconnect();

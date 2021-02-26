@@ -1,15 +1,3 @@
-<div id='PanelYearFilter' style="background: #202126;">
-    <div id="yearfilter">
-    </div>
-    <div id="moviesFilter" class="wraper" style="background: #202126;padding: 10px 0 0 10px;">
-    </div>
-</div>
-<div id='PanelGenderFilter'>
-    <div id="GenderFilter">
-    </div>
-    <div id="moviesGenderFilter" class="wraper">
-    </div>
-</div>
 <div id='PlayingPanel'>
     <div class='PlayingHeader'>
         <div id='PlayingTitle'></div>
@@ -23,6 +11,7 @@
     </div>
     
     <div id='PlayingOptions'>
+        
         <div class='ButtonPlaying'><i class='fa fa-undo-alt'></i></div>
         <div class='ButtonPlaying'><i class='fa fa-play'></i></div>
         <div class='ButtonPlaying'><i class='fa fa-pause'></i></div>
@@ -35,22 +24,31 @@
         <div id='MenuHour'></div>
         <div id='MenuDate'></div>
         <div id='MenuOptions'>
-            <div class='MenuOptions'><i class='fa fa-film'></i></div>
-            <div class='MenuOptions'><i class='fa fa-filter'></i></div>
-            <div class='MenuOptions'></div>
             <div class='MenuOptions'><i class='fa fa-sign-out-alt'></i></div>
+            <div class='MenuOptions'></div>
+            <div class='MenuOptions'></div>
+            <div class='MenuOptions'></div>
         </div>
         <div id='Banner'></div>
-    </div>   
-    <div id='PanelRight'>   
-        <div id='PanelRecommendedMovies'>
-            <div class="PrincipalMoviesTitle">Recommended Movies</div>
-            <div id="RecommendedMoviesList" class="container"></div>
+    </div>
+
+    <div id='PanelLeft'>
+        <div id='Filter'></div>
+        <div id='ListFilters'>
+            <div class='OptionsFilter'></div>
+            <div class='OptionsFilter'></div>
+            <div class='OptionsFilter'></div>
+            <div class='OptionsFilter'></div>
+            <div class='OptionsFilter'></div>
+            <div class='OptionsFilter'></div>
+            <div class='OptionsFilter'></div>
         </div>
-        <div id='PanelAllMovies'>
-            <div class="PrincipalMoviesTitle">All Movies</div>
-            <div id="AllMoviesList" class="container"></div>
-        </div>
+    </div>
+
+    <div id='PanelRight'>
+        <div class='MoviesRow'></div>
+        <div class='MoviesRow'></div>
+        <div class='MoviesRow'></div>
     </div>
 </div>
 
@@ -73,13 +71,6 @@
     <div class='Buttons' id='PlayPanel'><i class='fa fa-play'></i> Play</div>
     <div class='Buttons' id='ExitPanel'><i class='fa fa-times'></i> Exit</div>
 </div>
-<div id="MenuFilters">
-    <h2>List Movies</h2>
-    <div id="filterMovieCategory">
-            <div class='OptionsFilter'>By Year</div>
-            <div class='OptionsFilter'>By Gender</div>
-            <div class='OptionsFilter'>Regresar</div>
-    </div>
-</div>
+
 <div id='BackgroundPanel'></div>
 

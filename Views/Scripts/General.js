@@ -104,7 +104,6 @@
     }
 
     function SetMoviesStatistics(){
-        debugger
         MM_FormatStartDate    = getDate(MM_StartDateMovie);
         MM_EndDateMovie       = new Date();
         MM_FormatEndDate      = getDate(MM_EndDateMovie);

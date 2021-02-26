@@ -67,7 +67,8 @@
         ExitPlaying                       = document.getElementById('ExitPlaying'),
         PlayingTitle                      = document.getElementById('PlayingTitle');
     //Variables focus
-    var CurrentFocus                      = '';
+    var CurrentFocus                      = '',
+        CurrentMovie                      = '';
     //Variables estilos
     var StyleFocusMenuHeader              = 'width: 100px; left: 0px; background-color: rgba(7, 197, 245, 0.88);',
         StyleFocusMovies                  = '3px solid rgb(255, 255, 255)',
@@ -953,6 +954,7 @@ function PlayingMovie(){
         // setInterval(UpdateBarStatus, 1000);  
         MM_StartDateMovie = new Date();
         PlayVideo(Libraries['MoviesSource'] + MoviesList[5].FLDR + MoviesList[5].FILE);
+      
 }
 function HideOnforward (){
  Onforward.style.visibility='hidden';
