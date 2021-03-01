@@ -15,6 +15,5 @@ function GetMoviesList(){
 function init (){
     GetMoviesList();
     PlayVideo(Libraries['MoviesSource'] + MoviesList[5].FLDR + MoviesList[5].FILE);
-    console.log(MoviesList);
 }
 setTimeout(init, 300);

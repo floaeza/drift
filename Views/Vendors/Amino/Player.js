@@ -204,7 +204,7 @@ Debug('########################### Player() ');
 
     function AssetStatus(Duration){
         if(PlayingRecording === true || PlayingVod === true){
-            alert('.......................');
+
             PositionAsset = AVMedia.GetPosition();
            
             DurationAsset = parseInt(Duration,10) * 60;
