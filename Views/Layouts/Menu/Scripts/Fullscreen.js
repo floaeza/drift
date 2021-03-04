@@ -39,7 +39,6 @@
         MenuContainer.style.backgroundImage = 'url("'+ ImagesUrl + MenuList[MenuIndex].Image+'")';
         MenuSelected.textContent            =  MenuList[MenuIndex].Name;
         MenuDescription.textContent         = MenuList[MenuIndex].Description;
-        
         SetMenuBar();
     }
     

@@ -2,7 +2,6 @@
  * @Fecha: Noviembre 2019
  * @Tipo: Funciones para controlar la guia
  */
-
     var EpgContainer            = document.getElementById('EpgContainer'),
         EpgDay                  = document.getElementById('EpgDay'),
         EpgDate                 = document.getElementById('EpgDate'),

@@ -1,4 +1,14 @@
 <div id='PlayingPanel'>
+    <div id="MenuLanguagePanel">
+        <!-- <div class="LanguageContainer">Spanish</div>
+        <div class="LanguageContainer">Spanish</div>
+        <div class="LanguageContainer">Spanish</div>
+        <div class="LanguageContainer">Spanish</div>
+        <div class="LanguageContainer">Spanish</div>
+        <div class="LanguageContainer">Spanish</div>
+        <div class="LanguageContainer">Spanish</div>
+        <div class="LanguageContainer">Spanish</div> -->
+    </div>
     <div class='PlayingHeader'>
         <div id='PlayingTitle'></div>
         <div id='InfoPosition'></div>
@@ -9,7 +19,7 @@
         <div id='PlayingPosition'><i class='fa fa-circle'></i></div>
     </div>
     <div id='PlayingOptions'>
-        
+        <div class='ButtonPlaying'><i class='fa fa-align-justify'></i></div>
         <div class='ButtonPlaying'><i class='fa fa-backward'></i></div>
         <div class='ButtonPlaying'><i class='fa fa-play'></i></div>
         <div class='ButtonPlaying'><i class='fa fa-pause'></i></div>
@@ -30,7 +40,6 @@
         </div>
     </div>
 </div>
-
 <div id='ListPanel'>
     <div id='PanelHeader'>
         <div id='MenuHour'></div>

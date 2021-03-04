@@ -5,9 +5,11 @@
  */
 
     // Variables globales
-    var PlayingChannel  = false,
-        PlayingVod      = true,
-        PauseLive       = false;
+    var PlayingChannel      = false,
+        PlayingVod          = true,
+        PauseLive           = false,
+        PIDS                = [],
+        numberOfLanguages   = 0;
         
     var WindowMaxWidth  = 0,
         WindowMaxHeight = 0,
@@ -132,6 +134,7 @@ var Playlist = '',
                 uri: Source,
                 solution: 'auto'
             });
+            setTimeout(getPIDSInfo, 15000);
         }
 
         player.onPlayEnd = function () {
@@ -147,6 +150,13 @@ var Playlist = '',
         // Maximiza el video en caso de que no este en pantalla completa
         MaximizeTV();
 
+    }
+    function getPIDSInfo(){
+            numberOfLanguages = 2;
+            PIDS = ['esp', 'eng'];
+    }
+    function changeLanguage(positionLanguage){
+        gSTB.SetAudioPID(positionLanguage+1);
     }
 
 

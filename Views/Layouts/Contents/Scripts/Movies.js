@@ -2,7 +2,6 @@
  * @Fecha: Julio 2020
  * @Tipo: Funciones para controlar el layout de peliculas
  */
-
     //Variables Panel peliculas recomendadas
     var RecommendedMoviesList             = document.getElementById('RecommendedMoviesList'),
         RecommendedMoviesListNodes        = RecommendedMoviesList.childNodes,
@@ -10,7 +9,8 @@
     //Variables Panel peliculas recomendadas
     var AllMoviesList                     = document.getElementById('AllMoviesList'),
         AllMoviesListNodes                = AllMoviesList.childNodes,
-        AllMoviesListChildren             = AllMoviesList.children;
+        AllMoviesListChildren             = AllMoviesList.children,
+        PanelRight                        = document.getElementById('PanelRight');
         //Variables Panel pelicula seleccionada
     var MoviePanel                        = document.getElementById('MoviePanel'),
         MoviePanelNodes                   = MoviePanel.childNodes,
@@ -21,7 +21,8 @@
         StyleFocusPlayingMovie            = '3px solid rgb(255, 255, 255)',
         StyleFocusMenuHeader              = '3px solid rgb(255, 255, 255)',
         StyleFocusMenuFilter              = '3px solid rgb(255, 255, 255)',
-        StyleFocusMenuYearFilter          = '3px solid rgb(255, 255, 255)';
+        StyleFocusMenuYearFilter          = '3px solid rgb(255, 255, 255)',
+        StyleFocusMenuLanguage            = '3px solid rgb(255, 255, 255)';
     //Variebles de utilidad
     var y                                 = 0,
         CurrentMovieID                    = -1,
@@ -57,6 +58,10 @@
         PanelMoviesGenderFilter           = document.getElementById('MoviesByGenderList'),
         PanelMoviesGenderFilterNodes      = PanelMoviesGenderFilter.childNodes,
         PanelMoviesGenderFilterChildren   = PanelMoviesGenderFilter.children;
+    //Variables menu para seleccionar idioma
+    var MenuLanguagePanel                 = document.getElementById('MenuLanguagePanel'),
+        MenuLanguageNodes                 = MenuLanguagePanel.childNodes,
+        MenuLanguageChildren              = MenuLanguagePanel.children;
 /*******************************************************************************
  * Variables generales
  *******************************************************************************/
@@ -615,8 +620,6 @@ BarUpdate = setInterval(UpdateBarStatus,1000);
 
 //SetFocusPlaying('right');
 }
-
-
 function HidePlayingPanel(){
 if(PlayinPanelActive === true){
     PlayingPanel.style.visibility = 'hidden';
@@ -630,7 +633,6 @@ if(PlayinPanelActive === true){
     ExitPlaying.classList.remove('ButtonFocus');
 }
 }
-
 function SetFocusPlaying(Direction){
     PlayingOptions                  = document.getElementById('PlayingOptions'),
     PlayingOptionsNodes             = PlayingOptions.childNodes,
@@ -678,8 +680,6 @@ function SetFocusPlaying(Direction){
     
 // }
 }
-
-
 function ClearFocusPlaying(){
 var IndexC = 0;
 
@@ -692,21 +692,23 @@ function SelectPlayingOption(){
     var positionFocus = getPositionFocusInMenu(StyleFocusPlayingMovie, PlayingOptionsChildren);
     switch (positionFocus) {
         case 0:
-            //Retroceso
-            SetSpeed('backward');           
+            //Retroceso        
             break;
         case 1:
             //Reproducir de nuevo
             // StopVideo();
             // PlayingMovie();
-            SetSpeed('play');
+            SetSpeed('backward');  
             break;
         case 2:
             //Play
-            SetSpeed('pause');
+            SetSpeed('play');
             break;
         case 3:
             //Pausa
+            SetSpeed('pause');
+            break;
+        case 4:
             SetSpeed('forward');
             break;
 
@@ -834,6 +836,8 @@ function StopCloseMovie(){
     CurrentMovie = MoviesList[CurrentMovieID].TTLE;
     SetMoviesStatistics();
     PlayingVod = false;
+    var position = getPositionFocusInMenu(StyleFocusPlayingMovie, PlayingOptionsChildren);
+    PlayingOptionsChildren[position].style.border = '';
 }
 /*******************************************************************************
 * Navegacion 
@@ -863,6 +867,8 @@ if(CurrentFocus === 'Menu'){
     SetFocusOnMenuByYear('right');
 }  else if (CurrentFocus === 'SelectMovieByYear') {
     SetFocusOnMovieByYear('right');
+}   else if(CurrentFocus === 'SelectLanguage'){
+    SetFocusOnMenuLanguage('right');
 } 
 }
 function VodLeft(){
@@ -893,7 +899,9 @@ if(CurrentFocus === 'Menu'){
     SetFocusOnMovieByYear('left');
 }  else if (CurrentFocus === 'SelectYear') {
     SetFocusOnMenuByYear('left');
-}
+}  else if(CurrentFocus === 'SelectLanguage'){
+    SetFocusOnMenuLanguage('left');
+} 
 }
 function VodDown(){
 if(CurrentFocus === 'Menu'){
@@ -918,7 +926,9 @@ if(CurrentFocus === 'Menu'){
     SetFocusOnMovieByYear('down');
 }  else if(CurrentFocus === 'Playing'){
     StopCloseMovie();
-}
+}   else if(CurrentFocus === 'SelectLanguage'){
+    SetFocusOnMenuLanguage('down');
+} 
 }
 function VodUp(){
 if(CurrentFocus === 'Menu'){
@@ -938,6 +948,8 @@ if(CurrentFocus === 'Menu'){
     SetFocusOnMenuByYear('up');
 }  else if (CurrentFocus === 'SelectMovieByYear') {
     SetFocusOnMovieByYear('up');
+}  else if(CurrentFocus === 'HiddenMode'){
+    SetFocusOnMenuLanguage('set');
 } 
 }
 function VodClose(){
@@ -965,7 +977,9 @@ if(CurrentFocus === 'Menu'){
     LoadMoviePanel('AllMoviesList');
 } else if (CurrentFocus === 'SelectMovieByYear') {
     LoadMoviePanel('MoviesByYearList');
-}
+}   else if(CurrentFocus === 'SelectLanguage'){
+    SetFocusOnMenuLanguage('ok');
+} 
 }
 function VodInfo(){
 if(CurrentFocus === 'Playing' || CurrentFocus === 'StopPlaying'){
@@ -1165,6 +1179,22 @@ function getPositionFocusInMenu(style, panelNodes){
    } 
    }
    return position;
+}
+function refreshLanguages(){
+
+    // PIDS = gSTB.GetAudioPIDs();
+    // gSTB.SetAudioPID(1);
+    // alert(PIDS.length);
+    // [{pid:1, lang:["spa",""]},{pid:2, lang:["eng",""]}]
+        for (var x = 0; x < numberOfLanguages; x++) {
+            LanDiv              = document.createElement('div');
+            LanDiv.className    = 'LanguageContainer';
+            LanDiv.textContent  = PIDS[x];
+            MenuLanguagePanel.appendChild(LanDiv);
+            document.getElementById('MenuLanguagePanel').appendChild(LanDiv);
+        }
+    // var  str = AVMedia.GetProgramInfo(AVMedia.PROGRAM_INFO_SUBTITLE);
+    // alert(str);
 }
 /*******************************************************************************
  * Funciones para controlar la navegacion dentro de un panel
@@ -1549,6 +1579,47 @@ function SetFocusOnMovieByYear(Direction){
 }
     }
 }
+function SetFocusOnMenuLanguage(Direction){
+    MenuLanguagePanel                 = document.getElementById('MenuLanguagePanel'),
+    MenuLanguageNodes                 = MenuLanguagePanel.childNodes,
+    MenuLanguageChildren              = MenuLanguagePanel.children;
+    if (Direction == 'set') {
+        CurrentFocus = 'SelectLanguage';
+        MenuLanguageChildren[0].style.border = StyleFocusMenuLanguage;
+        MenuLanguagePanel.style.visibility = 'visible';
+    } else if (Direction == 'right') {
+        var positionFocus = getPositionFocusInMenu(StyleFocusMenuLanguage, MenuLanguageChildren);
+        if (positionFocus+1 >= MenuLanguageChildren.length) {
+            MenuLanguageChildren[positionFocus].style.border = '';
+            MenuLanguageChildren[0].style.border = StyleFocusMenuLanguage;
+        }else{
+            MenuLanguageChildren[positionFocus].style.border = '';
+            MenuLanguageChildren[positionFocus+1].style.border = StyleFocusMenuLanguage;
+        }
+    } else if (Direction == 'left') {
+        var positionFocus = getPositionFocusInMenu(StyleFocusMenuLanguage, MenuLanguageChildren);
+        if (positionFocus == 0) {
+            MenuLanguageChildren[positionFocus].style.border = '';
+            MenuLanguageChildren[(MenuLanguageChildren.length)-1].style.border = StyleFocusMenuLanguage;
+        }else{
+            MenuLanguageChildren[positionFocus].style.border = '';
+            MenuLanguageChildren[positionFocus-1].style.border = StyleFocusMenuLanguage;
+        } 
+    } else if (Direction == 'down'){
+        var positionFocus = getPositionFocusInMenu(StyleFocusMenuLanguage, MenuLanguageChildren);
+        MenuLanguageChildren[positionFocus].style.border = '';
+        MenuLanguagePanel.style.visibility = 'hidden';
+        CurrentFocus = 'HiddenMode';
+    } else if (Direction == 'ok'){
+        var positionFocus = getPositionFocusInMenu(StyleFocusMenuLanguage, MenuLanguageChildren);
+        
+        if (numberOfLanguages == 0) {
+            return;
+        }else{
+            changeLanguage(positionFocus);
+        }
+    }
+}
 /*******************************************************************************
  * Funciones para acceder a un menu
  *******************************************************************************/
@@ -1609,21 +1680,15 @@ function ExitMoviePanel(){
             // BackgroundPanel.style.backgroundImage = "url('"+FolderSource + "bg/2542.jpg')";
 }
 function PlayingMovie(){
-    var position = getPositionFocusInMenu(StyleFocusPlayingMovie, PlayingOptionsChildren);
     CurrentFocus = 'Playing';
     PlayVideo(Libraries['MoviesSource'] + MoviesList[CurrentMovieID].FLDR + MoviesList[CurrentMovieID].FILE);
-    
     PlayingVod = true;
-    
     ClearMoviePanel();
-    
     ShowPlayingPanel();
-    
     // SetFocusPlaying('right');
-    
     BackgroundPanel.style.visibility = 'hidden';
-    PlayingOptionsChildren[position].style.border = '';
     PlayingOptionsChildren[2].style.border = StyleFocusPlayingMovie;
+    setTimeout(refreshLanguages, 15000);
 }
 function HideOnforward (){
     Onforward.style.visibility='hidden';
@@ -1642,6 +1707,7 @@ function FiltersList(){
     //Ocultando y abriendo paneles necesarios
     IsMenuFilterSelected = true;
     ListPanel.style.visibility = 'hidden';
+    PanelRight.style.visibility= 'hidden';
     // PanelRight.style.visibility = 'hidden';
     CurrentFocus = "FilterMovies";
     MenuFilters.style.visibility = "visible";

@@ -3,11 +3,12 @@
  * Tipo: Reproductor tv
  * Vendor: Amino
  */
-Debug('########################### Player() ');
     // Variables globales
-    var PlayingChannel  = false,
-        PlayingVod      = false,
-        PauseLive       = false;
+    var PlayingChannel      = false,
+        PlayingVod          = false,
+        PauseLive           = false,
+        PIDS                = [],
+        numberOfLanguages   = 0;
         
     var WindowMaxWidth  = 0,
         WindowMaxHeight = 0,
@@ -97,10 +98,17 @@ Debug('########################### Player() ');
 
         // Reproduce el video
         AVMedia.Play('src='+ Source);
-
+        setTimeout(getPIDSInfo, 15000);
         // Maximiza el video en caso de que no este en pantalla completa
            MaximizeTV();
        
+    }
+    function getPIDSInfo(){
+        var PIDObject = AVMedia.GetAudioPIDs();
+            numberOfLanguages = PIDObject.pids;
+        for (var x = 1; x <= numberOfLanguages; x++) {
+            PIDS.push(PIDObject[x].AudioLanguage);
+        }
     }
     
     function PreviewVideo(Source){
@@ -224,4 +232,10 @@ Debug('########################### Player() ');
                 }
             }
         }
+    }
+
+    function changeLanguage(positionLanguage){
+        var PIDS = AVMedia.GetAudioPIDs();
+        var AudioPid = PIDS[positionLanguage+1].AudioPID;
+        var Status = AVMedia.SetAudioPID(AudioPid);
     }

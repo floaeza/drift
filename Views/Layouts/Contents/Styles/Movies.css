@@ -8,6 +8,28 @@ and open the template in the editor.
     Author     : tania
 */
 /*NEW#########################################################*/
+/***************************** [ Menu Idioma ] *****************************/
+div#MenuLanguagePanel {
+    width: 100%;
+    height: 10%;
+    position: fixed;
+    text-shadow: 1px 1px 1px #000;
+    color: #fff;
+    background: red;
+    margin-top: 5%;
+    visibility: hidden;
+}
+div.LanguageContainer {
+    width: 15%;
+    height: 50%;
+    background: blue;
+    display: inline-block;
+    margin-left: 5%;
+    color: white;
+    text-align: center;
+    margin-top: 1%;
+    font-size: 25px;
+}
 /***************************** [ Panel filtro por Año ] *****************************/
 div#yearfilter {
     width: 19%;
