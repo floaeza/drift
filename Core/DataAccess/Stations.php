@@ -7,6 +7,7 @@
 class Stations extends Database {
     
     private $StationsList;
+    private $ChannelsName;
     
     public function __construct($MacAddress, $CurrentModule) {
         $this->ClassFile = 'Stations';
@@ -46,6 +47,14 @@ class Stations extends Database {
         $this->disconnect();
 
         return $this->StationsList;
+    }
+    function getChannelsName(){
+        $this->Function = 'getChannelsName';
+        $this->connect();
+        $this->NormalJoin('estaciones', 'canales', 'nombre_canal', 'id_estacion');
+        $this->ChannelsName = $this->getResult();
+        $this->disconnect();
+        return $this->ChannelsName;
     }
 
 }

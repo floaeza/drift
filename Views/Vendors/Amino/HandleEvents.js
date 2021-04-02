@@ -315,6 +315,8 @@ Debug('########################### HandleEvent() ');
                 AssetInfo = PVR.GetAssetById(AssetsIdList[Indexal]);
                 
                 Debug(AssetInfo.title +', '+ OperationsList.recorded +', '+  '0' +', '+ AssetsIdList[Indexal] +', '+  AssetInfo.activeRecording);
+                
+                Debug('>>>>>>>>>>> startTime= '+AssetInfo.startTime);
 
                 ActRec = (AssetInfo.activeRecording === 0) ? 'false' : 'true';
 

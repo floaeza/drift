@@ -19,7 +19,7 @@
 
         ++Line;
 
-        if(Line > 20){
+        if(Line > 30){
             ClearDebugOnScreen();
             Line = 0;
         }

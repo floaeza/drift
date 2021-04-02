@@ -18,6 +18,8 @@ var PressedKey      = 0,
 var EV_KEY__UP      = 33,
     EV_KEY__DOWN    = 34;
     
+    var SwapPausePlay = true;
+    
 var CheckInfo = 0;
     
     function KeyHandler(e) {
@@ -58,8 +60,6 @@ var CheckInfo = 0;
 
                 case REMOTE_GREEN:
 
-                    AVMedia.Play('src=pvr://0000001975');
-                    Debug('pvr://0000001975');
                     break;
 
         /********** NAVEGACION **********/
@@ -216,8 +216,22 @@ var CheckInfo = 0;
                 break;
                 
                 case REMOTE_PLAY:
-                    if(CurrentModule === 'Tv'){
+                    
+                    
+                    if(typeof(gSTB) !== 'undefined'){
+                        if(CurrentModule === 'Tv'){
+                            if(SwapPausePlay === false){
+                                TvPlay();
+                                SwapPausePlay = true;
+                            } else {
+                                TvPause();
+                                SwapPausePlay = false;
+                            }
+                        }
+                    } else {
+                        if(CurrentModule === 'Tv'){
                         TvPlay();
+                        }
                     }
                 break;
 

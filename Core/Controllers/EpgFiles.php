@@ -24,7 +24,7 @@
     $PackagesId = $PackagesData->getPackagesId();
 
     // Valida si existe el directorio con los archivos EPG
-    if (is_readable($Libraries['EpgFilesPath'])) {
+    // if (is_readable($Libraries['EpgFilesPath'])) {
         foreach ($PackagesId as $Package):
             $id_paquete = $Package['id_paquete'];
             $fechas = SetNextDays($GuideDays); 
@@ -43,25 +43,25 @@
                 echo "No hay archivo para eliminar". PHP_EOL;
             }
         endforeach;
-    } else {
-        foreach ($PackagesId as $Package):
-            $id_paquete = $Package['id_paquete'];
-                $fechas = array(date('Ymd')); 
-                $archivo = "EpgData.php";
-                for($dia = 0; $dia < count($fechas); $dia++){
-                   //$fechas[$dia].chr(13).chr(10);
-                   $opcion = "$fechas[$dia]";
-                   $cmd = "/usr/bin/php -f {$archivo} {$opcion} {$id_paquete}";
-                   echo exec($cmd). PHP_EOL;
-                }
-                $archivo_ayer = "Epg/epg_general_".$Package['id_paquete'].".json";
-                if (file_exists($archivo_ayer)) {
-                    unlink($archivo_ayer); 
-                } else {
-                    echo "No hay archivo para eliminar". PHP_EOL;
-                }
-        endforeach;
-    }
+    // } else {
+    //     foreach ($PackagesId as $Package):
+    //         $id_paquete = $Package['id_paquete'];
+    //             $fechas = array(date('Ymd')); 
+    //             $archivo = "EpgData.php";
+    //             for($dia = 0; $dia < count($fechas); $dia++){
+    //                //$fechas[$dia].chr(13).chr(10);
+    //                $opcion = "$fechas[$dia]";
+    //                $cmd = "/usr/bin/php -f {$archivo} {$opcion} {$id_paquete}";
+    //                echo exec($cmd). PHP_EOL;
+    //             }
+    //             $archivo_ayer = "Epg/epg_general_".$Package['id_paquete'].".json";
+    //             if (file_exists($archivo_ayer)) {
+    //                 unlink($archivo_ayer); 
+    //             } else {
+    //                 echo "No hay archivo para eliminar". PHP_EOL;
+    //             }
+    //     endforeach;
+    // }
 
 function SetNextDays($FutureDays){
     $Dates = [];

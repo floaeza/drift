@@ -60,15 +60,6 @@
         $PreChannelRow['PORT'] = $PreChannelRow['puerto'];
         unset($PreChannelRow['puerto']);
 
-        $PreChannelRow['PRGR'] = $PreChannelRow['programa'];
-        unset($PreChannelRow['programa']);
-
-        $PreChannelRow['PSCN'] = $PreChannelRow['posicion'];
-        unset($PreChannelRow['posicion']);
-
-        $PreChannelRow['AUDI'] = $PreChannelRow['audio'];
-        unset($PreChannelRow['audio']);
-
         $PreChannelRow['CHNL'] = $PreChannelRow['numero_canal'];
         unset($PreChannelRow['numero_canal']);
         
@@ -653,10 +644,10 @@ function ReplaceXtrainChar($Str){
     //Codigos a reemplazar y el caracter que lo sustituye
     //                       á         é        í           ó       ú           ü       ñ
     $ReplacedCodes  = array("/u00a0", "/u0082", "/u00a1", "/u00a2", "/u00a3", "/u0081", "/u00a4", "/u00ad", "/u00b5", "/u0090", "/u00b5", 
-    "/u00b5", "/u00e9", "/u0088", "/u0085", "/u0083", "/u00a8","/u0089","/u008a","/u0094", "/u008c","/u0092","/u0084","/u0086","/u00e2/u0080/u0099","/u00e2/u0080/u0098","/u00a9","/u00f8F","gt;","lt;","/u00c3");
+    "/u00b5", "/u00e9", "/u0088", "/u0085", "/u0083", "/u00a8","/u0089","/u008a","/u0094", "/u008c","/u0092","/u0084","/u0086","/u00e2/u0080/u0099","/u00e2/u0080/u0098","/u00a9","/u00f8F","gt;","lt;","/u00c3","/u00c3");
     //Caracteres especiales comentados para futuras referencias
     $ReplaceChar    = array("a"     ,"e"      ,"i"      ,"o"      ,"u"      ,"u"      ,"n"      , "¡"     , "a"/*�?*/, "e"/*É*/, "i"/*�?*/,
-    "o"/*Ó*/,"u"/*Ú*/, "e"/*ê*/,  "a"/*à*/, "a"/*à*/, "¿",     "e",     "e"/*è*/,  "o",   "i"/*î*/, "AE"/*Æ*/,"a"/*ä*/,"a"/*å*/,"'", "","","%","","","e");
+    "o"/*Ó*/,"u"/*Ú*/, "e"/*ê*/,  "a"/*à*/, "a"/*à*/, "¿",     "e",     "e"/*è*/,  "o",   "i"/*î*/, "AE"/*Æ*/,"a"/*ä*/,"a"/*å*/,"'", "","","%","","","e","o");
     $ReplacedString = str_replace($ReplacedCodes, $ReplaceChar ,$ReplacedString);
     $nEnd = $ReplacedString;    
     return $nEnd;

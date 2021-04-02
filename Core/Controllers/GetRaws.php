@@ -9,7 +9,7 @@ require_once '../Models/Utilities.php';
 
     $SourceRaw = !empty($_POST['SourceRaw']) ? $_POST['SourceRaw'] : '';
 
-    $Result = $UtilitiesModel->GetDataFromUrl($SourceRaw);
+    $Result = $UtilitiesModel->GetDataFromUrl($SourceRaw.'?da');
 
         $InfoArray = explode('href', $Result);
 

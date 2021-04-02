@@ -377,6 +377,45 @@ public function selectFromOtherSelect($tabla, $rows = '*', $select1, $select2, $
         }
 }
 
+public function NormalJoin($tabla1, $tabla2, $rows, $comunID){
+    $q = 'SELECT '.$rows.' FROM '.$tabla.' INNER JOIN '.$tabla2.' ON '.$tabla1.'.'.$comunID.' = '.$tabla2.'.'.$comunID;
+    $this->consulta = $q;
+    // Checa si existe la tabla
+    if($this->tablaExiste($tabla1)){
+        $query = $this->conexion->query($q);
+    if($query){
+                    $this->numResults = $query->num_rows;
+
+                    for($i = 0; $i < $this->numResults; $i++){
+                        $r = $query->fetch_array();
+                        $key = array_keys($r);
+
+                        for($x = 0; $x < count($key); $x++){
+
+                            if(!is_int($key[$x])){
+                                if($query->num_rows >= 1){
+                                    $this->result[$i][$key[$x]] = $r[$key[$x]];
+                                }
+                                    else{
+                                        $this->result[$i][$key[$x]] = null;
+                                    }
+                            }
+                        }
+                    }
+                return true; //La consulta fue exitosa
+    }
+                else{
+                    array_push($this->result,'database error');
+                    $this->setLog('selectd');
+                    
+                    return false;
+                }
+      }
+        else{
+            return false; //No existe la tabla
+        }
+}
+
 //Funcion para insertar datos a la tabla
     public function insert($tabla,$parametro=array()){
     	//Confirma que exista la  tabla

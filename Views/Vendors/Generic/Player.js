@@ -6,8 +6,6 @@
 
     // Variables globales
     var PlayingChannel  = false,
-        PlayingVod      = false,
-        PlayingRecording = false,
         PauseLive       = false;
 
     var WindowMaxWidth  = 0,
@@ -48,12 +46,49 @@
 
     function PlayVideo(Source){
         Debug('Playing: '+Source);
+        Debug('GETRAWS: '+Source);
+        GetRaws(Source);
     }
     
-    function PreviewVideo(Source){
-         Debug('Playing: '+Source);
-         
-         PlayingVod = true;
+    function GetRaws(Source){
+        var RawSource = Source.replace('rtsp','http') + '/raw/';
+        RawSource = RawSource.replace('554','8080');
+
+        Debug(RawSource);
+        IndexPlaylist = 0;
+        LengthPlaylist = 0;
+
+        $.ajax({
+            type: 'POST',
+            async: false,
+            url: 'Core/Controllers/GetRaws.php',
+            data : {
+                SourceRaw: RawSource
+            },
+            success: function(data){
+                Playlist = $.parseJSON(data);
+                
+                console.log(Playlist);
+                
+                IndexPlaylist = 0;
+                LengthPlaylist = Playlist.length - 1;
+            }
+        });
+    }
+    
+    function SetPlaylist(option){
+        //if(option === 'forward'){
+            
+            IndexPlaylist++;
+            
+            if(IndexPlaylist === LengthPlaylist){
+                OpenRecordPlayOptions();
+            } else {
+                // play
+               Debug(Playlist[IndexPlaylist]);
+            }
+  
+        //} 
     }
     
 /* *****************************************************************************
@@ -101,7 +136,7 @@
  * ****************************************************************************/ 
 
     function AssetStatus(Duration){
-        if(PlayingRecording === true || PlayingVod === true){
+        if(PlayingRecording === true){
 
         }
     }

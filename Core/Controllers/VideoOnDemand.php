@@ -25,7 +25,6 @@
     
     $Response = '';
     $FirstElement = 0;
-    
     switch ($Option){
         case 'GetMoviesList':
 

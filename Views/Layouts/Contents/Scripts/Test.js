@@ -13,7 +13,11 @@ function GetMoviesList(){
     }); 
 }
 function init (){
+    
     GetMoviesList();
-    PlayVideo(Libraries['MoviesSource'] + MoviesList[5].FLDR + MoviesList[5].FILE);
+    // console.log(MoviesList);
+    
+    var f = AVMedia.Play('src=http://10.0.3.10/vod/mvs/M00001/1917.mp4');
+    Debug(f)
 }
 setTimeout(init, 300);
