@@ -282,4 +282,14 @@ class Devices extends Database {
 
         return $this->Device;
     }
+
+    function getDevicesByPower($Status){
+        $this->Function = 'getStatus';
+
+        $this->connect();
+        $this->select("dispositivos","mensaje_evento","","","","","mensaje_evento = '$Status'");
+        $this->Device = $this->getResult();
+        
+        return count($this->Device);
+    }
 }
