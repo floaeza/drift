@@ -5,27 +5,25 @@
  */
 
 require_once './../Models/Database.php';
-require_once './../Models/Utilities.php';
 require_once './../DataAccess/Config.php';
 require_once './../DataAccess/Devices.php';
 
-echo $CurrentController = 'DeviceDashboard';
+    $CurrentController = 'DeviceDashboard';
 
-echo $Option         = !empty($_POST['Option']) ? $_POST['Option'] : 'GetDevicesByStatus';
+    $Option         = !empty($_POST['Option']) ? $_POST['Option'] : 'GetDevicesByStatus';
 
 $DevicesData   = new Series('System', $CurrentController);
-$Utilities    = new Utilities();
 
 $Response = '';
 $FirstElement = 0;
 
 switch ($Option){
     case 'GetDevicesByStatus':
-        $Status   = !empty($_POST['Status']) ? $_POST['Status'] : 'POWER_OFF';
+        echo $Status   = !empty($_POST['Status']) ? $_POST['Status'] : 'POWER_OFF';
 
         $Response = $DevicesData->getDevicesByStatus($Status);
 
-        
+
         break;
 }
 
