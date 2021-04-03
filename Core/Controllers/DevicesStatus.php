@@ -12,7 +12,7 @@ require_once './../DataAccess/Devices.php';
 
     echo $Option         = !empty($_POST['Option']) ? $_POST['Option'] : 'GetDevicesByStatus';
 
-$DevicesData   = new Series('System', $CurrentController);
+$DevicesData   = new Devices('System', $CurrentController);
 
 $Response = '';
 $FirstElement = 0;
