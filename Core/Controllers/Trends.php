@@ -1,18 +1,25 @@
-<?php
-
-    require_once './../Models/Database.php';
-    require_once './../Models/Utilities.php';
-    require_once './../DataAccess/Config.php';
-    require_once './../DataAccess/Trends.php';
-
+<?php 
+/* *****************************************************************************
+ * OBJETIVO: 
+ * PARAMETROS RECIBIDOS: 
+ * CREADO Junio 2018
+ * ****************************************************************************/
+    session_start();
+    require '../Models/Config.php';
+    require '../Models/Log.php';
+    require '../../General/Languages/es.php';
+    require '../DAO/TrendsDAO.php';
+    
     $TrendsDAO = new Trends($DirectoryLog);
     
     $Option = !empty($_POST['Option']) ? $_POST['Option'] : 'ChannelsAverageTime';
+    
     switch ($Option){
         case 'ChannelsViewTime':
             $From      = !empty($_POST['From']) ? $_POST['From'] : '';
             $Parameter = !empty($_POST['Parameter']) ? $_POST['Parameter'] : '';
             $OrderBy   = !empty($_POST['OrderBy']) ? $_POST['OrderBy'] : '';
+
             $List = $TrendsDAO->getChannelsTime($From, $Parameter, $OrderBy);
 
             $ArrayChannelList = array();
@@ -22,10 +29,7 @@
                     $Hours = $Seconds/3600;
                     $HoursText = conversor_segundos($Seconds);
                     $ColorBar = SetColor($Seconds);
-                    array_push($ArrayChannelList, array('NME' => $Trend['nombre_canal'], 
-                    'HRS'=>$Hours, 
-                    'CLR'=>$ColorBar,
-                    'HRSTXT'=>$HoursText));
+                    array_push($ArrayChannelList, array($Trend['nombre_canal'], $Hours, $ColorBar ,$HoursText));
             endforeach;
 
             echo json_encode($ArrayChannelList);
@@ -56,14 +60,6 @@
 
             //echo json_encode($ArrayChannelList);
         break;
-        case 'FirstRegisters':
-            $List= $TrendsDAO->getFirstRegisters();
-            $ArrayChannelList = array();
-            foreach ($List as $Trend):
-                array_push($ArrayChannelList, array('firstDate' => $Trend['fecha_inicio']));
-            endforeach;
-            echo json_encode($ArrayChannelList);
-            break;
     }
     
     
@@ -107,5 +103,3 @@
         return $horas.' h '.$minutos.' m '.$segundos.' s';
     }
     
-
-

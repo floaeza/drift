@@ -48,13 +48,5 @@ class Stations extends Database {
 
         return $this->StationsList;
     }
-    function getChannelsName(){
-        $this->Function = 'getChannelsName';
-        $this->connect();
-        $this->NormalJoin('estaciones', 'canales', 'nombre_canal', 'id_estacion');
-        $this->ChannelsName = $this->getResult();
-        $this->disconnect();
-        return $this->ChannelsName;
-    }
 
 }

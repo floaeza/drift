@@ -18,7 +18,7 @@ The above copyright notice and this permission notice shall be included in all c
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Material Dashboard by Creative Tim
+    BBINCO
   </title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -28,6 +28,14 @@ The above copyright notice and this permission notice shall be included in all c
   <link href="../assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
+<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
 </head>
 
 <body class="">
@@ -121,9 +129,12 @@ The above copyright notice and this permission notice shall be included in all c
                   <canvas id="myChart"></canvas>
                 </div>
                 <div class="card-body">
-                  <h4 class="card-title">Daily Sales</h4>
-                  <p class="card-category">
-                    <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>
+                    <select id="SelectYear">
+                      <option value="0">Seleccione un año</option>
+                    </select>
+                    <select id="SelectMonth">
+                      <option value="0">Seleccione un mes</option>
+                    </select>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
@@ -696,9 +707,83 @@ The above copyright notice and this permission notice shall be included in all c
     });
   </script>
   <script>
+    let selectMonth = document.getElementById("SelectMonth");
+    let selectYear = document.getElementById("SelectYear");
+  // Varibles para las fechas
+    let fechaActual = new Date();
+    let months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo',
+    'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+    let actualYear = fechaActual.getFullYear();
+    let actualMonth = fechaActual.getMonth(); 
+    let yearSelected = 0;
+    let monthSelected = 0;
+    var ChannelsViewObj = [],
+        FirstDate       = [], 
+        ChannelsListJson = '';
+        // From = 'Beginning', // Beginning | Day | Month
+
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js
       // md.initDashboardPageCharts();
+      fillMonthsButton();
+    //   $('#SelectMonth').change(function(){
+    //      MonthSelected  = $(this).val();
+    //      getChannelsHoursList('Month', 'nombre_canal ASC', getMonthString());
+    //      console.log(ChannelsViewObj);
+    //      var channelsName = [];
+    //      var channelsTimeOfView = [];
+    //      ChannelsViewObj.forEach(element => {
+    //         channelsName.push(element.NME);
+    //         channelsTimeOfView.push(element.HRS);
+    //      });
+         
+    //      getCharts(channelsName, channelsTimeOfView);
+         
+    
+
+    // });
+    
+    
+    $('#SelectYear').change(function(){
+     yearSelected  = $(this).val();
+     monthSelected = $('#SelectMonth').val();
+    if (yearSelected == actualYear) {
+      let cont = 0;
+      removeOptions(selectMonth);
+      months.forEach(element => {
+      if (cont > actualMonth) {
+        return;
+      }else{
+        var option = document.createElement("option");
+        option.value = cont;
+        option.text  = element;
+        selectMonth.appendChild(option);
+        cont++; 
+      }
+    });
+    }else{
+      removeOptions(selectMonth);
+      let cont = 0;
+      months.forEach(element => {
+      var option = document.createElement("option");
+          option.value = cont;
+          option.text  = element;
+          selectMonth.appendChild(option);
+          cont++; 
+      });
+      $('#SelectMonth').val(0);
+    }
+    monthSelected = $('#SelectMonth').val();
+    getChannelsHoursList('Month', 'nombre_canal ASC', getMonthString(monthSelected, yearSelected));
+    
+  
+
+
+  });
+
+    });
+
+    function getCharts(channelsName, hoursOfView){
       var ctx = document.getElementById('myChart').getContext('2d');
       Chart.defaults.global.defaultFontColor = "#fff";
       var chart = new Chart(ctx, {
@@ -707,13 +792,13 @@ The above copyright notice and this permission notice shall be included in all c
 
           // The data for our dataset
           data: {
-              labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+              labels: channelsName,
               datasets: [{
                   label: 'My First dataset',
                   // backgroundColor: 'rgb(255, 99, 132)',
                   scaleFontColor: "#FFFFFF",
                   borderColor: '#f34f03',
-                  data: [0, 10, 5, 2, 20, 30, 45]
+                  data: hoursOfView
               }]
           },
 
@@ -728,12 +813,12 @@ The above copyright notice and this permission notice shall be included in all c
 
           // The data for our dataset
           data: {
-              labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+              labels: channelsName,
               datasets: [{
                   label: 'My First dataset',
                   // backgroundColor: 'rgb(255, 99, 132)',
                   borderColor: 'rgb(255, 99, 132)',
-                  data: [0, 10, 5, 2, 20, 30, 45]
+                  data: hoursOfView
               }]
           },
 
@@ -742,11 +827,79 @@ The above copyright notice and this permission notice shall be included in all c
             
           }
       });
+    }
+    function fillMonthsButton(){
+      $.ajax({
+                type: "POST",
+                url: "http://172.16.0.15/BBINCOTV/IPTV/Core/Controllers/Charts.php",
+                data: { 
+                    Option    : 'FirstRegisters',
+                }, 
+                async: false,
+                success: function (response) {
+                  FirstDate  = $.parseJSON(response);
+                }
+            });             
+      let firstDateDBObject = Date.parse(FirstDate[0].firstDate);
+      let firstDateDBObjectDate = new Date(firstDateDBObject);
+      let cont = 0;
+        months.forEach(element => {
+          if (cont > actualMonth) {
+            return;
+          }else{
+            var option = document.createElement("option");
+            option.value = cont;
+            option.text  = element;
+            selectMonth.appendChild(option);
+            cont++; 
+          }
+        });
+        let firstYear = firstDateDBObjectDate.getFullYear();
+        let dif = actualYear - firstYear;
+        for (let x = 0; x <= dif; x++) {
+            var option = document.createElement("option");
+                option.value = firstYear+x;
+                option.text  = firstYear+x;
+                selectYear.appendChild(option);
 
-    });
+        }
+        $('#SelectYear').val(actualYear);
+        $('#SelectMonth').val(actualMonth);
+}
 
+    function getChannelsHoursList(From, Order, Parameter){
+      $.ajax({
+                type: "POST",
+                url: "http://172.16.0.15/BBINCOTV/IPTV/Core/Controllers/Charts.php",
+                data: { 
+                    Option    : 'ChannelsViewTime',
+                    From      : From,
+                    Parameter : Parameter,
+                    OrderBy   : Order
+                }, 
+                async: false,
+                success: function (response) {
+                    ChannelsListJson = response;
+                    ChannelsViewObj  = $.parseJSON(response);
+                }
+            });
 
-  </script>
+    }
+    function getMonthString(mS, aY){
+      if(actualMonth<10){
+        var P = '0'+mS+'-'+aY;
+      }else{
+        var P = mS+'-'+aY;
+      }
+      return P;
+    }
+    function removeOptions(selectElement) {
+        var i, L = selectElement.options.length - 1;
+        for(i = L; i >= 0; i--) {
+            selectElement.remove(i);
+        }
+    }
+ </script>
 </body>
 
 </html>
