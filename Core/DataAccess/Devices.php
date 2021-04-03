@@ -289,7 +289,7 @@ class Devices extends Database {
         $this->connect();
         $this->select("dispositivos","mensaje_evento","","","","","mensaje_evento = '$Status'");
         $this->Device = $this->getResult();
-        
+
         return count($this->Device);
     }
 }
