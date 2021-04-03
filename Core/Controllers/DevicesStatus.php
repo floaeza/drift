@@ -10,7 +10,7 @@ require_once './../DataAccess/Devices.php';
 
     $CurrentController = 'DeviceDashboard';
 
-    $Option         = !empty($_POST['Option']) ? $_POST['Option'] : 'GetDevicesByStatus';
+    $Option         = !empty($_POST['Option']) ? $_POST['Option'] : '';
 
 $DevicesData   = new Devices('System', $CurrentController);
 
