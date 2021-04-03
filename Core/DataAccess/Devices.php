@@ -283,7 +283,7 @@ class Devices extends Database {
         return $this->Device;
     }
 
-    function getDevicesByPower($Status){
+    function getDevicesByStatus($Status){
         $this->Function = 'getStatus';
 
         $this->connect();

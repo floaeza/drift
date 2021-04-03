@@ -20,10 +20,10 @@ $Response = '';
 $FirstElement = 0;
 
 switch ($Option){
-    case 'GetDevicesByPower':
+    case 'GetDevicesByStatus':
         $Status   = !empty($_POST['Status']) ? $_POST['Status'] : '';
 
-        $Response = $DevicesData->getDevicesByPower($Status);
+        $Response = $DevicesData->getDevicesByStatus($Status);
 
         break;
 }

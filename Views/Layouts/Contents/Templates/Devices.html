@@ -698,6 +698,24 @@ The above copyright notice and this permission notice shall be included in all c
 </script>
 <script>
     //
+    var SourceControllers = 'http://172.16.0.15/BBINCOTV/IPTV/Core/Controllers/';
+
+    function GetDevicesByStatus(Status){
+        $.ajax({
+            type: 'POST',
+            async: false,
+            url: SourceControllers + 'DevicesStatus.php',
+            data: {
+                Option : 'GetDevicesByStatus',
+                Status : Status
+            },
+            success: function (response){
+                console.log($.parseJSON(response));
+            }
+        });
+    }
+
+    GetDevicesByStatus('POWER_OFF');
 
 
 </script>
