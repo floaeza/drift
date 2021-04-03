@@ -9,9 +9,9 @@ require_once './../Models/Utilities.php';
 require_once './../DataAccess/Config.php';
 require_once './../DataAccess/Devices.php';
 
-$CurrentController = 'DeviceDashboard';
+echo $CurrentController = 'DeviceDashboard';
 
-$Option         = !empty($_POST['Option']) ? $_POST['Option'] : 'GetDevicesByStatus';
+echo $Option         = !empty($_POST['Option']) ? $_POST['Option'] : 'GetDevicesByStatus';
 
 $DevicesData   = new Series('System', $CurrentController);
 $Utilities    = new Utilities();
@@ -25,6 +25,7 @@ switch ($Option){
 
         $Response = $DevicesData->getDevicesByStatus($Status);
 
+        
         break;
 }
 
