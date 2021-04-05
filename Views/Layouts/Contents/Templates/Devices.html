@@ -702,6 +702,8 @@ The above copyright notice and this permission notice shall be included in all c
 
     var DevicesOn = document.getElementById('DevicesOn');
 
+    var DevicesStatus = '';
+
     function GetDevicesByStatus(){
         $.ajax({
             type: 'POST',
@@ -712,6 +714,8 @@ The above copyright notice and this permission notice shall be included in all c
             },
             success: function (response){
                 console.log($.parseJSON(response));
+
+                DevicesStatus = $.parseJSON(response);
             }
         });
     }
