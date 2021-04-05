@@ -57,11 +57,13 @@ switch ($Option){
                 array_push($DeviceList, $Row['modelo']);
 
                 if($Row['ultima_actualizacion'] === 'POWER_OFF'){
+                    array_push($DeviceList, $Row['ultima_actualizacion']);
                     array_push($DeviceList, '');
                     array_push($DeviceList, 'off');
                     array_push($DeviceList, 'off');
                 } else {
                     array_push($DeviceList, $Row['ultima_actualizacion']);
+                    array_push($DeviceList, $Row['mensaje_evento']);
                     array_push($DeviceList, 'on');
 
                     if($Row['hdmi'] === '0'){
@@ -72,7 +74,8 @@ switch ($Option){
                 }
             endforeach;
 
-            $Response = array_chunk($DeviceList, 7);
+            $Response = array_chunk($DeviceList, 8);
+            
         break;
 }
 
