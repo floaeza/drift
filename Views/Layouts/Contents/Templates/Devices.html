@@ -59,9 +59,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 <h3 class="card-title" id="DevicesOn"></h3> <!-- BD DATA-->
                             </div>
                             <div class="card-footer">
-                                <div class="stats">
-                                    <i class="material-icons">update</i> Just Updated <!-- BD DATA-->
-                                </div>
+                                <div class="stats" id="UpdatedTime"></div><!-- BD DATA-->
                             </div>
                         </div>
                     </div>
@@ -72,7 +70,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     <i class="material-icons">settings_power</i>
                                 </div>
                                 <p class="card-category">Dispositivos apagados</p>
-                                <h3 class="card-title">83 OFF</h3> <!-- BD DATA-->
+                                <h3 class="card-title" id="DevicesOff"></h3> <!-- BD DATA-->
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
@@ -87,8 +85,8 @@ The above copyright notice and this permission notice shall be included in all c
                                 <div class="card-icon">
                                     <i class="material-icons">info_outline</i>
                                 </div>
-                                <p class="card-category">Fixed Issues</p>
-                                <h3 class="card-title">75</h3>
+                                <p class="card-category">Televisiones encendidas</p>
+                                <h3 class="card-title" id="HdmiOn"></h3>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
@@ -700,7 +698,8 @@ The above copyright notice and this permission notice shall be included in all c
     //
     var SourceControllers = 'http://172.16.0.15/BBINCOTV/IPTV/Core/Controllers/';
 
-    var DevicesOn = document.getElementById('DevicesOn');
+    var DevicesOn = document.getElementById('DevicesOn'),
+        UpdatedTime = document.getElementById('UpdatedTime');
 
     var DevicesStatus = '';
 
@@ -715,8 +714,10 @@ The above copyright notice and this permission notice shall be included in all c
             success: function (response){
                 DevicesStatus = $.parseJSON(response);
 
-                DevicesOn.textContent = DevicesStatus[0].DevicesOn +'ON';
-                
+                DevicesOn.textContent = DevicesStatus[0].DevicesOn +' ON';
+
+                UpdatedTime.innerHTML = "<i class='material-icons'>update</i> "+ DevicesStatus[0].UpdatedTime;
+
             }
         });
     }
