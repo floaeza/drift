@@ -75,7 +75,7 @@ switch ($Option){
             endforeach;
 
             $Response = array_chunk($DeviceList, 8);
-            
+
         break;
 }
 
