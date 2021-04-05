@@ -19,11 +19,11 @@ $FirstElement = 0;
 
 switch ($Option){
     case 'GetDevicesByStatus':
-        $Status   = !empty($_POST['Status']) ? $_POST['Status'] : '';
-
+        echo $Status   = !empty($_POST['Status']) ? $_POST['Status'] : '';
+echo "<br>";
         if($Status === 'POWER_ON'){
-            $OffDevices = $DevicesData->getDevicesByStatus($Status);
-            $DevicesCount = $DevicesData->getOperatingDevices();
+            echo $OffDevices = $DevicesData->getDevicesByStatus($Status);echo "<br>";
+           echo  $DevicesCount = $DevicesData->getOperatingDevices();echo "<br>";
 
             $Response = $DevicesCount - $OffDevices;
         } else {
