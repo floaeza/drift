@@ -308,7 +308,7 @@ class Devices extends Database {
 
         $this->connect();
         $this->select("dispositivo_locacion","*","dispositivos ON dispositivo_locacion.id_dispositivo = dispositivos.id_dispositivo",
-        "locaciones ON dispositivo_locacion.id_locacion ON  locaciones.id_locacion");
+        "locaciones ON dispositivo_locacion.id_locacion = locaciones.id_locacion");
         $this->DeviceList = $this->getResult();
         $this->disconnect();
 
