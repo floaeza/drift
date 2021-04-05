@@ -168,8 +168,7 @@ The above copyright notice and this permission notice shall be included in all c
 
                     <div class="col-sm-4">
                         <div class="card card-chart">
-                            <div class="card-header card-header-warning">
-                                <canvas id="myChart2"></canvas>
+                            <div class="card-header card-header-info">
                             </div>
                             <div class="card-body">
                                 <h4 class="card-title">Email Subscriptions</h4>
@@ -186,7 +185,7 @@ The above copyright notice and this permission notice shall be included in all c
                 </div>
             </div>
         </div>
-        <footer class="footer">
+        <!--footer-- class="footer">
             <div class="container-fluid">
                 <nav class="float-left">
                     <ul>
@@ -220,7 +219,7 @@ The above copyright notice and this permission notice shall be included in all c
                     <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
                 </div>
             </div>
-        </footer>
+        </footer-->
     </div>
 </div>
 <!--   Core JS Files   -->
@@ -475,7 +474,8 @@ The above copyright notice and this permission notice shall be included in all c
     }
 
 
-    var DevicesList = '';
+    var DevicesList = '',
+        DeviceInfoList = '';
 
     function LoadDeviceList(){
 
@@ -487,7 +487,8 @@ The above copyright notice and this permission notice shall be included in all c
             async: false,
             url: SourceControllers + 'DevicesStatus.php',
             success: function (response) {
-                DevicesList = $.parseJSON(response);
+                DevicesList = $.parseJSON(response.DeviceList);
+                DeviceInfoList = $.parseJSON(response.DeviceInfoList);
 
                 $('#DevicesList').DataTable({
                     data: DevicesList,
@@ -510,11 +511,26 @@ The above copyright notice and this permission notice shall be included in all c
                     } else {
                         $('#DevicesList').DataTable().$('tr.selected').removeClass('selected');
                         $(this).addClass('selected');
-                        //SetDevicesSelected();
+                        SetDeviceSelected();
                     }
                 });
             }
         });
+    }
+
+    var RowDeviceSelected   = '',
+        DeviceSelected  = '',
+        DeviceSelectedId = '';
+
+    function SetDeviceSelected(){
+        RowDeviceSelected = $('#DevicesList').DataTable().row('.selected')[0][0];
+        DeviceSelected = DeviceInfoList[RowDeviceSelected];
+
+        DeviceSelectedId = DeviceSelected[0];
+
+        // MacDevice.innerHTML = DeviceSelected[2]; // Mac address
+        // ChannelInputNumber.value = DeviceSelected[5]; // Numero canal
+        // ChannelOptionId.value= DeviceSelected[7]; // Id canal
     }
 
     GetDevicesByStatus();

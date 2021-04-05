@@ -50,10 +50,10 @@ switch ($Option){
             $DeviceListResult = $DevicesData->GetDeviceLocationList();
 
             $DeviceList = array();
+            $DeviceInfoList = array();
             foreach ($DeviceListResult as $Row):
                 array_push($DeviceList, $Row['id_dispositivo']);
                 array_push($DeviceList, $Row['codigo_locacion']);
-                array_push($DeviceList, $Row['ip']);
                 array_push($DeviceList, $Row['mac_address']);
                 array_push($DeviceList, $Row['modelo']);
 
@@ -74,9 +74,16 @@ switch ($Option){
                     }
                 }
 
+                array_push($DeviceInfoList, $Row['id_dispositivo']);
+                array_push($DeviceInfoList, $Row['ip']);
+                array_push($DeviceInfoList, $Row['modelo']);
+                array_push($DeviceInfoList, $Row['version_software']);
+                array_push($DeviceInfoList, $Row['fecha_activacion']);
+
             endforeach;
 
-            $Response = array_chunk($DeviceList, 9);
+
+            $Response = array('DeviceList'=>array_chunk($DeviceList, 9), 'DeviceInfoList'=>array_chunk($DeviceInfoList, 6));
 
         break;
 }
