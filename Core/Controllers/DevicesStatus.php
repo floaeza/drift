@@ -10,7 +10,7 @@ require_once './../DataAccess/Devices.php';
 
     $CurrentController = 'DeviceDashboard';
 
-    $Option         = !empty($_POST['Option']) ? $_POST['Option'] : '';
+    $Option         = !empty($_POST['Option']) ? $_POST['Option'] : 'DeviceList';
 
 $DevicesData   = new Devices('System', $CurrentController);
 
@@ -73,7 +73,7 @@ switch ($Option){
                         array_push($DeviceList, '<i class="material-icons StatusOn">tv</i>');
                     }
                 }
-                
+
             endforeach;
 
             $Response = array_chunk($DeviceList, 9);
