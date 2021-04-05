@@ -713,9 +713,10 @@ The above copyright notice and this permission notice shall be included in all c
                 Option : 'GetDevicesByStatus'
             },
             success: function (response){
-                console.log($.parseJSON(response));
-
                 DevicesStatus = $.parseJSON(response);
+
+                DevicesOn.textContent = DevicesStatus[0].DevicesOn +'ON';
+                
             }
         });
     }
