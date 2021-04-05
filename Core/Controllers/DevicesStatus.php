@@ -22,7 +22,7 @@ switch ($Option){
         echo $Status   = !empty($_POST['Status']) ? $_POST['Status'] : 'POWER_ON';
 echo "<br>";
         if($Status === 'POWER_ON'){
-            echo $OffDevices = $DevicesData->getDevicesByStatus($Status);echo "<br>";
+            echo $OffDevices = $DevicesData->getDevicesByStatus('POWER_OFF');echo "<br>";
            echo  $DevicesCount = $DevicesData->getOperatingDevices();echo "<br>";
 
             $Response = $DevicesCount - $OffDevices;
