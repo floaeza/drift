@@ -125,7 +125,7 @@ The above copyright notice and this permission notice shall be included in all c
           <div class="row">
             <div class="col-sm-8">
               <div class="card card-chart">
-                <div class="card-header card-header-success">
+                <div id ='cardChart' class="card-header card-header-success">
                   <canvas id="myChart"></canvas>
                 </div>
                 <div class="card-body">
@@ -137,8 +137,8 @@ The above copyright notice and this permission notice shall be included in all c
                     </select>
                 </div>
                 <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons">access_time</i> updated 4 minutes ago
+                  <div id="status" class="stats">
+                    <i id="icon" class="material-icons">access_time</i> updated 4 minutes ago
                   </div>
                 </div>
               </div>
@@ -708,7 +708,11 @@ The above copyright notice and this permission notice shall be included in all c
   </script>
   <script>
     let selectMonth = document.getElementById("SelectMonth");
-    let selectYear = document.getElementById("SelectYear");
+    let selectYear  = document.getElementById("SelectYear");
+    let status      = document.getElementById('status');
+    let icon        = document.getElementById('icon');
+    let cardChart   = document.getElementById('cardChart');
+    let char        = document.getElementById('myChart');
   // Varibles para las fechas
     let fechaActual = new Date();
     let months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo',
@@ -775,8 +779,51 @@ The above copyright notice and this permission notice shall be included in all c
     }
     monthSelected = $('#SelectMonth').val();
     getChannelsHoursList('Month', 'nombre_canal ASC', getMonthString(monthSelected, yearSelected));
-    
-  
+    if (!ChannelsViewObj.length) {
+        status.innerHTML= 'No hay registros para mostrar';
+        var icon = document.createElement('i');
+        icon.className = 'material-icons text-danger';
+        icon.innerHTML = 'warning';
+        status.appendChild(icon);
+    }else{
+      status.innerHTML = 'Registros cargados con exito';
+         var channelsName = [];
+         var channelsTimeOfView = [];
+             ChannelsViewObj.forEach(element => {
+                  channelsName.push(element.NME);
+                  channelsTimeOfView.push(element.HRS);
+              });
+              getCharts(channelsName, hoursOfView);
+              
+    }
+
+  });
+
+  $('#SelectMonth').change(function(){
+     monthSelected  = $(this).val();
+     yearSelected = $('#SelectYear').val();
+     getChannelsHoursList('Month', 'nombre_canal ASC', getMonthString(monthSelected, yearSelected));
+    if (!ChannelsViewObj.length) {
+      status.innerHTML= 'No hay registros para mostrar';
+        var icon = document.createElement('i');
+        icon.className = 'material-icons text-danger';
+        icon.innerHTML = 'warning';
+        status.appendChild(icon);
+        getCharts([], []);
+    }else{
+         status.innerHTML = 'Registros cargados con exito';
+         var icon = document.createElement('i');
+          icon.className = 'material-icons text-success';
+          icon.innerHTML = 'check_circle';
+          status.appendChild(icon);
+         var channelsName = [];
+         var channelsTimeOfView = [];
+             ChannelsViewObj.forEach(element => {
+                  channelsName.push(element.NME);
+                  channelsTimeOfView.push(element.HRS);
+              });
+              getCharts(channelsName, channelsTimeOfView);
+    }
 
 
   });
