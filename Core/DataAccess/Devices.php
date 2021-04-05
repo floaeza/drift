@@ -302,4 +302,16 @@ class Devices extends Database {
 
         return count($this->Device);
     }
+
+    function GetDeviceLocationList(){
+        $this->Function = 'GetDeviceLocationList';
+
+        $this->connect();
+        $this->select("dispositivo_locacion","*","dispositivos ON dispositivo_locacion.id_dispositivo = dispositivos.id_dispositivo",
+        "locaciones ON dispositivo_locacion.id_locacion ON  locaciones.id_locacion");
+        $this->DeviceList = $this->getResult();
+        $this->disconnect();
+
+        return $this->DeviceList;
+    }
 }

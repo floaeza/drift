@@ -47,11 +47,12 @@ switch ($Option){
 
         case 'DeviceList':
 
-            $DeviceListResult = $DevicesData->GetDeviceList();
+            $DeviceListResult = $DevicesData->GetDeviceLocationList();
 
             $DeviceList = array();
             foreach ($DeviceListResult as $Row):
                 array_push($DeviceList, $Row['id_dispositivo']);
+                array_push($DeviceList, $Row['codigo_locacion']);
                 array_push($DeviceList, $Row['ip']);
                 array_push($DeviceList, $Row['mac_address']);
                 array_push($DeviceList, $Row['modelo']);
@@ -72,9 +73,10 @@ switch ($Option){
                         array_push($DeviceList, '<i class="material-icons StatusOn">tv</i>');
                     }
                 }
+                
             endforeach;
 
-            $Response = array_chunk($DeviceList, 8);
+            $Response = array_chunk($DeviceList, 9);
 
         break;
 }
