@@ -56,13 +56,13 @@ switch ($Option){
                 array_push($DeviceList, $Row['mac_address']);
                 array_push($DeviceList, $Row['modelo']);
 
-                if($Row['ultima_actualizacion'] === 'POWER_OFF'){
-                    array_push($DeviceList, $Row['ultima_actualizacion']);
+                if($Row['mensaje_evento'] === 'POWER_OFF'){
+                    array_push($DeviceList, $Row['ultima_ejecucion']);
                     array_push($DeviceList, '');
                     array_push($DeviceList, '<i class="material-icons StatusOff">power_off</i>');
                     array_push($DeviceList, 'off');
                 } else {
-                    array_push($DeviceList, $Row['ultima_actualizacion']);
+                    array_push($DeviceList, $Row['ultima_ejecucion']);
                     array_push($DeviceList, $Row['mensaje_evento']);
                     array_push($DeviceList, '<i class="material-icons StatusOn">power</i>');
 
