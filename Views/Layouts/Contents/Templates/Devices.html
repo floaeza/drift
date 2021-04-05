@@ -487,10 +487,11 @@ The above copyright notice and this permission notice shall be included in all c
             async: false,
             url: SourceControllers + 'DevicesStatus.php',
             success: function (response) {
-                console.log($.parseJSON(response));
+                var Response = ($.parseJSON(response);
 
-                DevicesList = $.parseJSON(response.DeviceList);
-                DeviceInfoList = $.parseJSON(response.DeviceInfoList);
+                DevicesList = Response.DeviceList;
+                DeviceInfoList = Response.DeviceInfoList;
+                
 
                 $('#DevicesList').DataTable({
                     data: DevicesList,
