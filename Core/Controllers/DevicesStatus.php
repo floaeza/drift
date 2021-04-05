@@ -61,7 +61,7 @@ switch ($Option){
                     array_push($DeviceList, $Row['ultima_ejecucion']);
                     array_push($DeviceList, '');
                     array_push($DeviceList, '<i class="material-icons StatusOff">power_off</i>');
-                    array_push($DeviceList, '<i class="material-icons StatusOn">tv</i>');
+                    array_push($DeviceList, '<i class="material-icons StatusOff">tv_off</i>');
                 } else {
                     array_push($DeviceList, $Row['ultima_ejecucion']);
                     array_push($DeviceList, $Row['mensaje_evento']);
