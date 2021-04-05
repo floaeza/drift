@@ -74,7 +74,7 @@ The above copyright notice and this permission notice shall be included in all c
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
-                                    <i class="material-icons">date_range</i> Last 24 Hours
+                                    <i class="material-icons">update</i>
                                 </div>
                             </div>
                         </div>
@@ -90,7 +90,7 @@ The above copyright notice and this permission notice shall be included in all c
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
-                                    <i class="material-icons">local_offer</i> Tracked from Github
+                                    <i class="material-icons">update</i>
                                 </div>
                             </div>
                         </div>
@@ -101,12 +101,12 @@ The above copyright notice and this permission notice shall be included in all c
                                 <div class="card-icon">
                                     <i class="fa fa-twitter"></i>
                                 </div>
-                                <p class="card-category">Followers</p>
-                                <h3 class="card-title">+245</h3>
+                                <p class="card-category">Televisiones apagadas</p>
+                                <h3 class="card-title" id="HdmiOff"></h3>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
-                                    <i class="material-icons">update</i> Just Updated
+                                    <i class="material-icons">update</i>
                                 </div>
                             </div>
                         </div>
@@ -699,6 +699,9 @@ The above copyright notice and this permission notice shall be included in all c
     var SourceControllers = 'http://172.16.0.15/BBINCOTV/IPTV/Core/Controllers/';
 
     var DevicesOn = document.getElementById('DevicesOn'),
+        DevicesOff = document.getElementById('DevicesOff'),
+        HdmiOn = document.getElementById('HdmiOn'),
+        HdmiOff = document.getElementById('HdmiOff'),
         UpdatedTime = document.getElementById('UpdatedTime');
 
     var DevicesStatus = '';
@@ -715,8 +718,11 @@ The above copyright notice and this permission notice shall be included in all c
                 DevicesStatus = $.parseJSON(response);
 
                 DevicesOn.textContent = DevicesStatus[0].DevicesOn +' ON';
-
+                DevicesOff.textContent = DevicesStatus[0].DevicesOff +' OFF';
+                HdmiOn.textContent = DevicesStatus[0].HdmiConnected;
+                HdmiOff.textContent = DevicesStatus[0].HdmiDisconnected;
                 UpdatedTime.innerHTML = "<i class='material-icons'>update</i> "+ DevicesStatus[0].UpdatedTime;
+                console.log("<i class='material-icons'>update</i> "+ DevicesStatus[0].UpdatedTime);
 
             }
         });

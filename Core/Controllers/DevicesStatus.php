@@ -39,7 +39,7 @@ switch ($Option){
                 'HdmiDisconnected' => $HdmiDisconnected,
                 'DevicesOff' => $DevicesCount,
                 'HdmiConnected' => $HdmiConnected,
-                'UpdatedTime',date('M j, h:i A')
+                'UpdatedTime'=>date('M j, h:i A')
             ]);
 
         $Response = $Status;
