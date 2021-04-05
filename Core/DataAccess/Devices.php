@@ -292,4 +292,14 @@ class Devices extends Database {
 
         return count($this->Device);
     }
+
+    function getDevicesHdmi($Status){
+        $this->Function = 'getHdmi';
+
+        $this->connect();
+        $this->select("dispositivos","hdmi","","","","","hdmi = '$Status'");
+        $this->Device = $this->getResult();
+
+        return count($this->Device);
+    }
 }

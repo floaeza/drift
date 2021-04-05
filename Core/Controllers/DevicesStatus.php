@@ -19,17 +19,30 @@ $FirstElement = 0;
 
 switch ($Option){
     case 'GetDevicesByStatus':
-        $Status   = !empty($_POST['Status']) ? $_POST['Status'] : '';
+        $Status = array();
 
-        if($Status === 'POWER_ON'){
+        // DEVICES ON
             $OffDevices = $DevicesData->getDevicesByStatus('POWER_OFF');
             $DevicesCount = $DevicesData->getOperatingDevices();
+            $ON = ['DevicesOn' => $DevicesCount];
+            array_push($Status,$ON);
 
-            $Response = $DevicesCount - $OffDevices;
-        } else {
-            $Response = $DevicesData->getDevicesByStatus($Status);
-        }
+        // DEVICES OFF
+            $DevicesCount = $DevicesData->getDevicesByStatus('POWER_OFF');
+            $OFF = ['DevicesOff' => $DevicesCount];
+            array_push($Status,$OFF);
 
+        // HDMI CONNECTED
+            $HdmiConnected = $DevicesData->getDevicesHdmi('1');
+            $CONNECTED = ['HdmiConnected' => $HdmiConnected];
+            array_push($Status,$CONNECTED);
+
+        // HDMI CONNECTED
+            $HdmiDisconnected = $DevicesData->getDevicesHdmi('0');
+            $DISCONNECTED = ['HdmiDisconnected' => $HdmiDisconnected];
+            array_push($Status,$DISCONNECTED);
+
+        $Response = $Status;
         break;
 }
 

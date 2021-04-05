@@ -48,7 +48,7 @@ The above copyright notice and this permission notice shall be included in all c
         <!-- End Navbar -->
         <div class="content">
             <div class="container-fluid">
-                <div class="row" id="CardsHeader">
+                <div class="row">
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="card card-stats">
                             <div class="card-header card-header-success card-header-icon">
@@ -56,7 +56,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     <i class="material-icons">settings_power</i>
                                 </div>
                                 <p class="card-category">Dispositivos encendidos</p>
-                                <h3 class="card-title">150 ON</h3> <!-- BD DATA-->
+                                <h3 class="card-title" id="DevicesOn"></h3> <!-- BD DATA-->
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
@@ -700,18 +700,15 @@ The above copyright notice and this permission notice shall be included in all c
     //
     var SourceControllers = 'http://172.16.0.15/BBINCOTV/IPTV/Core/Controllers/';
 
-    var CardsHeader = document.getElementById('CardsHeader').childNodes;
+    var DevicesOn = document.getElementById('DevicesOn');
 
-    console.log(CardsHeader);
-
-    function GetDevicesByStatus(Status){
+    function GetDevicesByStatus(){
         $.ajax({
             type: 'POST',
             async: false,
             url: SourceControllers + 'DevicesStatus.php',
             data: {
-                Option : 'GetDevicesByStatus',
-                Status : Status
+                Option : 'GetDevicesByStatus'
             },
             success: function (response){
                 console.log($.parseJSON(response));
@@ -719,7 +716,7 @@ The above copyright notice and this permission notice shall be included in all c
         });
     }
 
-    GetDevicesByStatus('POWER_ON');
+    GetDevicesByStatus();
 
 
 </script>
