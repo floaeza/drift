@@ -109,7 +109,7 @@ The above copyright notice and this permission notice shall be included in all c
                         </div>
                     </div>
                 </div>
-                <table id="DevicesList" style="width:100%"></table>
+
                 <div class="row">
                     <div class="col-lg-8 col-md-12">
                         <div class="card">
@@ -143,7 +143,7 @@ The above copyright notice and this permission notice shall be included in all c
                             <div class="card-body">
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="profile">
-                                        <!--table id="DevicesList" class="ui celled table" style="width:100%"></table-->
+                                        <table id="DevicesList" class="ui celled table" style="width:100%"></table>
                                     </div>
                                     <div class="tab-pane" id="messages">
 
@@ -215,6 +215,10 @@ The above copyright notice and this permission notice shall be included in all c
 </div>
 <!--   Core JS Files   -->
 <script src="../assets/js/core/jquery.min.js"></script>
+<!-- Datatables -->
+<link rel="stylesheet" type="text/css" href="../assets/DataTables/datatables.min.css"/>
+<script type="text/javascript" src="../assets/DataTables/datatables.min.js"></script>
+
 <script src="../assets/js/core/popper.min.js"></script>
 <script src="../assets/js/core/bootstrap-material-design.min.js"></script>
 <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
@@ -257,10 +261,6 @@ The above copyright notice and this permission notice shall be included in all c
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="../assets/demo/demo.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-<!-- Datatables -->
-<link rel="stylesheet" type="text/css" href="../assets/DataTables/datatables.min.css"/>
-<script type="text/javascript" src="../assets/DataTables/datatables.min.js"></script>
-
 <script>
     $(document).ready(function() {
         $().ready(function() {
@@ -474,6 +474,7 @@ The above copyright notice and this permission notice shall be included in all c
             data: {
                 Option: 'DeviceList'
             },
+            async: false,
             url: SourceControllers + 'DevicesStatus.php',
             success: function (response) {
                 DevicesList = $.parseJSON(response);
