@@ -59,7 +59,7 @@ switch ($Option){
                 if($Row['ultima_actualizacion'] === 'POWER_OFF'){
                     array_push($DeviceList, $Row['ultima_actualizacion']);
                     array_push($DeviceList, '');
-                    array_push($DeviceList, 'off');
+                    array_push($DeviceList, '<i class="material-icons StatusOff">power_off</i>');
                     array_push($DeviceList, 'off');
                 } else {
                     array_push($DeviceList, $Row['ultima_actualizacion']);
@@ -67,9 +67,9 @@ switch ($Option){
                     array_push($DeviceList, '<i class="material-icons StatusOn">power</i>');
 
                     if($Row['hdmi'] === '0'){
-                        array_push($DeviceList, 'off');
+                        array_push($DeviceList, '<i class="material-icons StatusOff">tv_off</i>');
                     } else {
-                        array_push($DeviceList, 'on');
+                        array_push($DeviceList, '<i class="material-icons StatusOn">tv</i>');
                     }
                 }
             endforeach;
