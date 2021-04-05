@@ -44,6 +44,36 @@ switch ($Option){
 
         $Response = $Status;
         break;
+
+        case 'DeviceList':
+
+            $DeviceListResult = $DevicesData->GetDeviceList();
+
+            $DeviceList = array();
+            foreach ($DeviceListResult as $Row):
+                array_push($DeviceList, $Row['id_dispositivo']);
+                array_push($DeviceList, $Row['ip']);
+                array_push($DeviceList, $Row['mac_address']);
+                array_push($DeviceList, $Row['modelo']);
+
+                if($Row['ultima_actualizacion'] === 'POWER_OFF'){
+                    array_push($DeviceList, '');
+                    array_push($DeviceList, 'off');
+                    array_push($DeviceList, 'off');
+                } else {
+                    array_push($DeviceList, $Row['ultima_actualizacion']);
+                    array_push($DeviceList, 'on');
+
+                    if($Row['hdmi'] === '0'){
+                        array_push($DeviceList, 'off');
+                    } else {
+                        array_push($DeviceList, 'on');
+                    }
+                }
+            endforeach;
+
+            $Response = array_chunk($DeviceList, 8);
+        break;
 }
 
 //
