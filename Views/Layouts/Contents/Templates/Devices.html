@@ -50,7 +50,7 @@ The above copyright notice and this permission notice shall be included in all c
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="card card-stats">
+                        <div class="card card-stats" id="CardsHeader">
                             <div class="card-header card-header-success card-header-icon">
                                 <div class="card-icon">
                                     <i class="material-icons">settings_power</i>
@@ -700,6 +700,10 @@ The above copyright notice and this permission notice shall be included in all c
     //
     var SourceControllers = 'http://172.16.0.15/BBINCOTV/IPTV/Core/Controllers/';
 
+    var CardsHeader = document.getElementById('CardsHeader').childNodes;
+
+    console.log(CardsHeader);
+
     function GetDevicesByStatus(Status){
         $.ajax({
             type: 'POST',
@@ -714,7 +718,7 @@ The above copyright notice and this permission notice shall be included in all c
             }
         });
     }
-console.log('-------->');
+
     GetDevicesByStatus('POWER_ON');
 
 
