@@ -72,7 +72,7 @@ switch ($Option){
                 }
             endforeach;
 
-            $Response = array_chunk($DeviceList, 8);
+            $Response = array_chunk($DeviceList, 7);
         break;
 }
 

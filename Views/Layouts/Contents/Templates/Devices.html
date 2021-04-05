@@ -459,8 +459,6 @@ The above copyright notice and this permission notice shall be included in all c
                 HdmiOn.textContent = DevicesStatus[0].HdmiConnected;
                 HdmiOff.textContent = DevicesStatus[0].HdmiDisconnected;
                 UpdatedTime.innerHTML = "<i class='material-icons'>update</i> "+ DevicesStatus[0].UpdatedTime;
-                console.log("<i class='material-icons'>update</i> "+ DevicesStatus[0].UpdatedTime);
-
             }
         });
     }
@@ -507,6 +505,8 @@ The above copyright notice and this permission notice shall be included in all c
     }
 
     GetDevicesByStatus();
+
+    LoadDeviceList();
 
 </script>
 
