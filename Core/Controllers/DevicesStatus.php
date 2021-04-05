@@ -10,7 +10,7 @@ require_once './../DataAccess/Devices.php';
 
     $CurrentController = 'DeviceDashboard';
 
-    $Option         = !empty($_POST['Option']) ? $_POST['Option'] : 'GetDevicesByStatus';
+    $Option         = !empty($_POST['Option']) ? $_POST['Option'] : '';
 
 $DevicesData   = new Devices('System', $CurrentController);
 
@@ -19,11 +19,11 @@ $FirstElement = 0;
 
 switch ($Option){
     case 'GetDevicesByStatus':
-        echo $Status   = !empty($_POST['Status']) ? $_POST['Status'] : 'POWER_ON';
-echo "<br>";
+        $Status   = !empty($_POST['Status']) ? $_POST['Status'] : '';
+
         if($Status === 'POWER_ON'){
-            echo $OffDevices = $DevicesData->getDevicesByStatus('POWER_OFF');echo "<br>";
-           echo  $DevicesCount = $DevicesData->getOperatingDevices();echo "<br>";
+            $OffDevices = $DevicesData->getDevicesByStatus('POWER_OFF');
+            $DevicesCount = $DevicesData->getOperatingDevices();
 
             $Response = $DevicesCount - $OffDevices;
         } else {
