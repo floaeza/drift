@@ -64,7 +64,7 @@ switch ($Option){
                 } else {
                     array_push($DeviceList, $Row['ultima_actualizacion']);
                     array_push($DeviceList, $Row['mensaje_evento']);
-                    array_push($DeviceList, 'on');
+                    array_push($DeviceList, '<i class="material-icons StatusOn">power</i>');
 
                     if($Row['hdmi'] === '0'){
                         array_push($DeviceList, 'off');
