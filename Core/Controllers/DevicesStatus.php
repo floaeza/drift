@@ -34,12 +34,12 @@ switch ($Option){
         // HDMI CONNECTED
             $HdmiDisconnected = $DevicesData->getDevicesHdmi('0');
 
-            array_push($Status,array(
+            array_push($Status,[
                 'DevicesOn' => $DevicesCount,
                 'HdmiDisconnected' => $HdmiDisconnected,
                 'DevicesOff' => $DevicesCount,
                 'HdmiConnected' => $HdmiConnected
-            ));
+            ]);
 
         $Response = $Status;
         break;
