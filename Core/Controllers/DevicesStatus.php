@@ -15,7 +15,6 @@ require_once './../DataAccess/Devices.php';
 $DevicesData   = new Devices('System', $CurrentController);
 
 $Response = '';
-$FirstElement = 0;
 
 switch ($Option){
     case 'GetDevicesByStatus':

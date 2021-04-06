@@ -180,7 +180,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 <p class="card-description" id="DeviceFirmware"></p>
 
                                 <div class="card-footer">Ultima actualización
-                                    <div class="stats" id="DeviceLastUptade"></div>
+                                    <div class="stats" id="DeviceLastUpdate"></div>
                                 </div>
                                 <div class="card-footer">Fecha activación
                                     <div class="stats" id="DeviceRegisterDate"></div>
@@ -534,7 +534,7 @@ The above copyright notice and this permission notice shall be included in all c
         DeviceMacAddress = document.getElementById('DeviceMacAddress'),
         DeviceIp = document.getElementById('DeviceIp'),
         DeviceCode = document.getElementById('DeviceCode'),
-        DeviceLastUptade = document.getElementById('DeviceLastUptade'),
+        DeviceLastUpdate = document.getElementById('DeviceLastUpdate'),
         DeviceFirmware = document.getElementById('DeviceFirmware'),
         DeviceRegisterDate = document.getElementById('DeviceRegisterDate');
 
@@ -543,18 +543,23 @@ The above copyright notice and this permission notice shall be included in all c
 
         DeviceIp.textContent = DeviceInfoList[RowDeviceSelected][0];
         DeviceFirmware.textContent = DeviceInfoList[RowDeviceSelected][1];
-        DeviceLastUptade.innerHTML = '<i className="material-icons">access_time</i> '+DeviceInfoList[RowDeviceSelected][2];
+        DeviceLastUpdate.innerHTML = '<i class="material-icons">access_time</i> '+DeviceInfoList[RowDeviceSelected][2];
 
         DeviceSelectedId = DevicesList[RowDeviceSelected][0];
         DeviceImage.src = '../assets/img/'+DevicesList[RowDeviceSelected][3]+'.png';
         DeviceCode.textContent = DevicesList[RowDeviceSelected][1];
         DeviceMacAddress.textContent = DevicesList[RowDeviceSelected][2];
-        DeviceRegisterDate.innerHTML = '<i className="material-icons">calendar_today</i> '+DevicesList[RowDeviceSelected][4];
+        DeviceRegisterDate.innerHTML = '<i class="material-icons">calendar_today</i> '+DevicesList[RowDeviceSelected][4];
     }
 
     GetDevicesByStatus();
-
     LoadDeviceList();
+
+    // setInterval(GetDevicesByStatus, 400000);
+    // setInterval(LoadDeviceList, 400000);
+
+    setInterval(GetDevicesByStatus, 100000);
+    setInterval(LoadDeviceList, 100000);
 
 </script>
 
