@@ -51,36 +51,36 @@ switch ($Option){
             $DeviceList = array();
             $DeviceInfoList = array();
             foreach ($DeviceListResult as $Row):
-                array_push($DeviceList, $Row['id_dispositivo']);
-                array_push($DeviceList, $Row['codigo_locacion']);
-                array_push($DeviceList, $Row['mac_address']);
-                array_push($DeviceList, $Row['modelo']);
+                if($Row['mac_address'] !== '00:00:00:00:00:00') {
+                    array_push($DeviceList, $Row['id_dispositivo']);
+                    array_push($DeviceList, $Row['codigo_locacion']);
+                    array_push($DeviceList, $Row['mac_address']);
+                    array_push($DeviceList, $Row['modelo']);
 
-                if($Row['mensaje_evento'] === 'POWER_OFF'){
-                    array_push($DeviceList, $Row['ultima_ejecucion']);
-                    array_push($DeviceList, '');
-                    array_push($DeviceList, '<i class="material-icons StatusOff">power_off</i>');
-                    array_push($DeviceList, '<i class="material-icons StatusOff">tv_off</i>');
-                } else {
-                    array_push($DeviceList, $Row['ultima_ejecucion']);
-                    array_push($DeviceList, $Row['mensaje_evento']);
-                    array_push($DeviceList, '<i class="material-icons StatusOn">power</i>');
-
-                    if($Row['hdmi'] === '0'){
+                    if ($Row['mensaje_evento'] === 'POWER_OFF') {
+                        array_push($DeviceList, $Row['ultima_ejecucion']);
+                        array_push($DeviceList, '');
+                        array_push($DeviceList, '<i class="material-icons StatusOff">power_off</i>');
                         array_push($DeviceList, '<i class="material-icons StatusOff">tv_off</i>');
                     } else {
-                        array_push($DeviceList, '<i class="material-icons StatusOn">tv</i>');
+                        array_push($DeviceList, $Row['ultima_ejecucion']);
+                        array_push($DeviceList, $Row['mensaje_evento']);
+                        array_push($DeviceList, '<i class="material-icons StatusOn">power</i>');
+
+                        if ($Row['hdmi'] === '0') {
+                            array_push($DeviceList, '<i class="material-icons StatusOff">tv_off</i>');
+                        } else {
+                            array_push($DeviceList, '<i class="material-icons StatusOn">tv</i>');
+                        }
                     }
+
+                    array_push($DeviceInfoList, $Row['ip']);
+                    array_push($DeviceInfoList, $Row['version_software']);
+                    array_push($DeviceInfoList, $Row['fecha_activacion']);
                 }
-
-                array_push($DeviceInfoList, $Row['ip']);
-                array_push($DeviceInfoList, $Row['version_software']);
-                array_push($DeviceInfoList, $Row['fecha_activacion']);
-
             endforeach;
 
             $Response = array('DeviceList'=>array_chunk($DeviceList, 8), 'DeviceInfoList'=>array_chunk($DeviceInfoList, 3));
-
         break;
 }
 

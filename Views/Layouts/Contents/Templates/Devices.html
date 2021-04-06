@@ -45,13 +45,13 @@ The above copyright notice and this permission notice shall be included in all c
 <div class="wrapper ">
     <div class="main-panel">
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+        <!--nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
             <div class="container-fluid">
                 <div class="navbar-wrapper">
                     <a class="navbar-brand" href="javascript:;">Dashboard</a>
                 </div>
             </div>
-        </nav>
+        </nav-->
         <!-- End Navbar -->
         <div class="content">
             <div class="container-fluid">
@@ -486,7 +486,6 @@ The above copyright notice and this permission notice shall be included in all c
         DeviceInfoList = '';
 
     function LoadDeviceList(){
-
         $.ajax({
             type: 'POST',
             data: {
@@ -499,32 +498,41 @@ The above copyright notice and this permission notice shall be included in all c
 
                 DevicesList = Response.DeviceList;
                 DeviceInfoList = Response.DeviceInfoList;
-
-                $('#DevicesList').DataTable({
-                    data: DevicesList,
-                    columns: [
-                        { title: 'Id' },
-                        { title: 'Codigo locación' },
-                        { title: 'Mac address' },
-                        { title: 'Modelo' },
-                        { title: 'Ultima actualización' },
-                        { title: 'Ultimo evento' },
-                        { title: 'POWER' },
-                        { title: 'HDMI' },
-                    ]
-                });
-
-                $('#DevicesList tbody').on( 'click', 'tr', function () {
-                    if ($(this).hasClass('selected')) {
-                        $(this).removeClass('selected');
-                    } else {
-                        $('#DevicesList').DataTable().$('tr.selected').removeClass('selected');
-                        $(this).addClass('selected');
-                        SetDeviceSelected();
-                    }
-                });
             }
         });
+    }
+
+    var DevicesTable = '';
+    function SetTable(){
+        DevicesTable = $('#DevicesList').DataTable({
+            data: DevicesList,
+            columns: [
+                { title: 'Id' },
+                { title: 'Codigo locación' },
+                { title: 'Mac address' },
+                { title: 'Modelo' },
+                { title: 'Ultima actualización' },
+                { title: 'Ultimo evento' },
+                { title: 'POWER' },
+                { title: 'HDMI' },
+            ]
+        });
+
+        $('#DevicesList tbody').on( 'click', 'tr', function () {
+            if ($(this).hasClass('selected')) {
+                $(this).removeClass('selected');
+            } else {
+                $('#DevicesList').DataTable().$('tr.selected').removeClass('selected');
+                $(this).addClass('selected');
+                SetDeviceSelected();
+            }
+        });
+    }
+
+    function ReloadData(){
+        GetDevicesByStatus();
+        LoadDeviceList();
+        DevicesTable.ajax.reload( null, false );
     }
 
     var RowDeviceSelected   = '',
@@ -555,11 +563,7 @@ The above copyright notice and this permission notice shall be included in all c
     GetDevicesByStatus();
     LoadDeviceList();
 
-    // setInterval(GetDevicesByStatus, 400000);
-    // setInterval(LoadDeviceList, 400000);
-
-    setInterval(GetDevicesByStatus, 100000);
-    setInterval(LoadDeviceList, 100000);
+    setInterval(ReloadData, 100000);
 
 </script>
 
