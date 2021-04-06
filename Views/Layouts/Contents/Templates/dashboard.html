@@ -121,12 +121,11 @@ The above copyright notice and this permission notice shall be included in all c
               </div>
             </div>
           </div>
-
           <div class="row">
             <div class="col-sm-8">
               <div class="card card-chart">
-                <div id ='cardChart' class="card-header card-header-success">
-                  <canvas id="myChart"></canvas>
+                <div id ='cardChartChannels' class="card-header card-header-success">
+                  <canvas id="chartChannels"></canvas>
                 </div>
                 <div class="card-body">
                     <select id="SelectYear">
@@ -144,9 +143,33 @@ The above copyright notice and this permission notice shall be included in all c
               </div>
             </div>
             <div class="col-sm-4">
+              <div class="card">
+                <div id="cardTableChannelViews" class="card-body">
+                  <table id="ChannelViewsTable" class="display" width="100%"></table>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8">
+              <div class="card card-chart">
+                <div id= 'cardChartLocation' class="card-header card-header-success">
+                    <canvas id="chartLocation"></canvas>
+                </div>
+                <div class="card-body">
+                </div>
+                <div class="card-footer">
+                  <div id="status" class="stats">
+                    <i id="icon" class="material-icons">access_time</i> updated 4 minutes ago
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
               <div class="card card-chart">
                 <div class="card-header card-header-warning">
-                  <canvas id="myChart2"></canvas>
+                  
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">Email Subscriptions</h4>
@@ -159,7 +182,6 @@ The above copyright notice and this permission notice shall be included in all c
                 </div>
               </div>
             </div>
-            
           </div>
           <div class="row">
             <div class="col-lg-6 col-md-12">
@@ -535,6 +557,8 @@ The above copyright notice and this permission notice shall be included in all c
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.css"/>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.js"></script>
   <script>
     $(document).ready(function() {
       $().ready(function() {
@@ -711,8 +735,11 @@ The above copyright notice and this permission notice shall be included in all c
     let selectYear  = document.getElementById("SelectYear");
     let status      = document.getElementById('status');
     let icon        = document.getElementById('icon');
-    let cardChart   = document.getElementById('cardChart');
-    let char        = document.getElementById('myChart');
+    let cardChartChannels   = document.getElementById('cardChartChannels');
+    let cardChartLocation   = document.getElementById('cardChartLocation');
+    let cardTableChannelViews = document.getElementById('cardTableChannelViews');
+    let defaultC = ['-','-','-'];
+    let defaultD = [0,0,0];
   // Varibles para las fechas
     let fechaActual = new Date();
     let months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo',
@@ -725,11 +752,14 @@ The above copyright notice and this permission notice shall be included in all c
         FirstDate       = [], 
         ChannelsListJson = '';
         // From = 'Beginning', // Beginning | Day | Month
+    var dataSet = [['NO DATASET','NO DATASET']];
 
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js
       // md.initDashboardPageCharts();
       fillMonthsButton();
+      getCharts(defaultC, defaultD);
+      getTables();
     //   $('#SelectMonth').change(function(){
     //      MonthSelected  = $(this).val();
     //      getChannelsHoursList('Month', 'nombre_canal ASC', getMonthString());
@@ -746,9 +776,8 @@ The above copyright notice and this permission notice shall be included in all c
     
 
     // });
-    
-    
     $('#SelectYear').change(function(){
+      removeTables();
      yearSelected  = $(this).val();
      monthSelected = $('#SelectMonth').val();
     if (yearSelected == actualYear) {
@@ -780,19 +809,32 @@ The above copyright notice and this permission notice shall be included in all c
     monthSelected = $('#SelectMonth').val();
     getChannelsHoursList('Month', 'nombre_canal ASC', getMonthString(monthSelected, yearSelected));
     if (!ChannelsViewObj.length) {
+        dataSet = [['NO DATASET','NO DATASET']];
         status.innerHTML= 'No hay registros para mostrar';
         var icon = document.createElement('i');
         icon.className = 'material-icons text-danger';
         icon.innerHTML = 'warning';
         status.appendChild(icon);
+        removeCharts();
+        getCharts(defaultC, defaultD);
+        removeTables();
+        getTables();
     }else{
       status.innerHTML = 'Registros cargados con exito';
          var channelsName = [];
          var channelsTimeOfView = [];
+             dataSet = [];
              ChannelsViewObj.forEach(element => {
                   channelsName.push(element.NME);
                   channelsTimeOfView.push(element.HRS);
+                  var aux = [];
+                  aux.push(element.NME);
+                  aux.push(element.HRSTXT);
+                  dataSet.push(aux);
               });
+              removeCharts();
+              removeTables();
+              getTables();
               getCharts(channelsName, hoursOfView);
               
     }
@@ -804,12 +846,16 @@ The above copyright notice and this permission notice shall be included in all c
      yearSelected = $('#SelectYear').val();
      getChannelsHoursList('Month', 'nombre_canal ASC', getMonthString(monthSelected, yearSelected));
     if (!ChannelsViewObj.length) {
-      status.innerHTML= 'No hay registros para mostrar';
+        dataSet = [['NO DATASET','NO DATASET']];
+        status.innerHTML= 'No hay registros para mostrar';
         var icon = document.createElement('i');
         icon.className = 'material-icons text-danger';
         icon.innerHTML = 'warning';
         status.appendChild(icon);
-        getCharts([], []);
+        removeCharts();
+        getCharts(defaultC, defaultD);
+        removeTables();
+        getTables();
     }else{
          status.innerHTML = 'Registros cargados con exito';
          var icon = document.createElement('i');
@@ -818,10 +864,18 @@ The above copyright notice and this permission notice shall be included in all c
           status.appendChild(icon);
          var channelsName = [];
          var channelsTimeOfView = [];
+              dataSet = [];
              ChannelsViewObj.forEach(element => {
                   channelsName.push(element.NME);
                   channelsTimeOfView.push(element.HRS);
+                  var aux = [];
+                  aux.push(element.NME);
+                  aux.push(element.HRSTXT);
+                  dataSet.push(aux);
               });
+              removeCharts();
+              removeTables();
+              getTables();
               getCharts(channelsName, channelsTimeOfView);
     }
 
@@ -831,7 +885,7 @@ The above copyright notice and this permission notice shall be included in all c
     });
 
     function getCharts(channelsName, hoursOfView){
-      var ctx = document.getElementById('myChart').getContext('2d');
+      var ctx = document.getElementById('chartChannels').getContext('2d');
       Chart.defaults.global.defaultFontColor = "#fff";
       var chart = new Chart(ctx, {
           // The type of chart we want to create
@@ -841,7 +895,7 @@ The above copyright notice and this permission notice shall be included in all c
           data: {
               labels: channelsName,
               datasets: [{
-                  label: 'My First dataset',
+                  label: 'HORAS',
                   // backgroundColor: 'rgb(255, 99, 132)',
                   scaleFontColor: "#FFFFFF",
                   borderColor: '#f34f03',
@@ -853,7 +907,7 @@ The above copyright notice and this permission notice shall be included in all c
           options: {}
           
       });
-      var ctx = document.getElementById('myChart2').getContext('2d');
+      var ctx = document.getElementById('chartLocation').getContext('2d');
       var chart = new Chart(ctx, {
           // The type of chart we want to create
           type: 'bar',
@@ -862,7 +916,7 @@ The above copyright notice and this permission notice shall be included in all c
           data: {
               labels: channelsName,
               datasets: [{
-                  label: 'My First dataset',
+                  label: 'HORAS',
                   // backgroundColor: 'rgb(255, 99, 132)',
                   borderColor: 'rgb(255, 99, 132)',
                   data: hoursOfView
@@ -878,7 +932,7 @@ The above copyright notice and this permission notice shall be included in all c
     function fillMonthsButton(){
       $.ajax({
                 type: "POST",
-                url: "http://172.16.0.15/BBINCOTV/IPTV/Core/Controllers/Charts.php",
+                url: "/BBINCOTV/IPTV/Core/Controllers/Charts.php",
                 data: { 
                     Option    : 'FirstRegisters',
                 }, 
@@ -917,7 +971,7 @@ The above copyright notice and this permission notice shall be included in all c
     function getChannelsHoursList(From, Order, Parameter){
       $.ajax({
                 type: "POST",
-                url: "http://172.16.0.15/BBINCOTV/IPTV/Core/Controllers/Charts.php",
+                url: "/BBINCOTV/IPTV/Core/Controllers/Charts.php",
                 data: { 
                     Option    : 'ChannelsViewTime',
                     From      : From,
@@ -945,6 +999,37 @@ The above copyright notice and this permission notice shall be included in all c
         for(i = L; i >= 0; i--) {
             selectElement.remove(i);
         }
+    }
+    function removeCharts(){
+      cardChartChannels.removeChild(document.getElementById('chartChannels'));
+      cardChartLocation.removeChild(document.getElementById('chartLocation'));
+      var chartChannel = document.createElement('canvas');
+          chartChannel.setAttribute('id', 'chartChannels');
+      var chartLocation = document.createElement('canvas');
+          chartLocation.setAttribute('id', 'chartLocation');
+       cardChartChannels.appendChild(chartChannel);
+       cardChartLocation.appendChild(chartLocation);
+    }
+    function removeTables(){
+      debugger
+      cardTableChannelViews.removeChild(cardTableChannelViews.childNodes[1]);
+      var channelTableViews = document.createElement('table');
+          channelTableViews.setAttribute('id', 'ChannelViewsTable');
+          channelTableViews.setAttribute('class', 'display');
+          channelTableViews.setAttribute('width', '100%');
+      cardTableChannelViews.appendChild(channelTableViews);
+    }
+    function getTables(){
+      $('#ChannelViewsTable').DataTable( {
+        data: dataSet,
+        columns: [
+            { title: "Canal" },
+            { title: "Horas de transmisión" }
+        ],
+        "pageLength": 10,
+        "lengthChange": false,
+        "searching": false
+    } );
     }
  </script>
 </body>
