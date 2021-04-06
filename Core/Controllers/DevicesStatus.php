@@ -10,7 +10,7 @@ require_once './../DataAccess/Devices.php';
 
     $CurrentController = 'DeviceDashboard';
 
-    $Option         = !empty($_POST['Option']) ? $_POST['Option'] : 'DeviceList';
+    $Option         = !empty($_POST['Option']) ? $_POST['Option'] : 'UpdateRebootDevice';
 
 $DevicesData   = new Devices('System', $CurrentController);
 
@@ -84,7 +84,7 @@ switch ($Option){
         break;
 
         case 'UpdateRebootDevice':
-            $DeviceId = !empty($_POST['DeviceId']) ? $_POST['DeviceId'] : '';
+            $DeviceId = !empty($_POST['DeviceId']) ? $_POST['DeviceId'] : '2';
             $DevicesData = array('reiniciar'=>1);
 
             $Response = $DevicesData->updateDevice($DeviceId, $DevicesData);
