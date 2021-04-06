@@ -82,6 +82,11 @@ switch ($Option){
 
             $Response = array('DeviceList'=>array_chunk($DeviceList, 8), 'DeviceInfoList'=>array_chunk($DeviceInfoList, 3));
         break;
+
+        case 'UpdateRebootDevice':
+
+            //updateDevice
+        break;
 }
 
 //

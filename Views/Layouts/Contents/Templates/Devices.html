@@ -532,6 +532,11 @@ The above copyright notice and this permission notice shall be included in all c
     function ReloadData(){
         GetDevicesByStatus();
         LoadDeviceList();
+
+        $('#DevicesList').DataTable( {
+            ajax: DevicesList
+        } );
+
         DevicesTable.ajax.reload( null, false );
     }
 
