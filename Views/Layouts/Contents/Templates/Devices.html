@@ -185,7 +185,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 <div class="card-footer">Fecha activación
                                     <div class="stats" id="DeviceRegisterDate"></div>
                                 </div>
-                                <a href="javascript:;" class="btn btn-primary btn-round">Reboot</a>
+                                <button id="Reboot" class="btn btn-info btn-block" onclick="md.showNotification('bottom','right','El reinicio se ejecutara en la proxima actualización del dispositivo','success')">Reboot</button>
                             </div>
                         </div>
                     </div>
@@ -531,9 +531,9 @@ The above copyright notice and this permission notice shall be included in all c
 
     function ReloadData(){
         GetDevicesByStatus();
+
         LoadDeviceList();
 
-        DevicesTable.destroy();
         DevicesTable.destroy();
 
         SetTable();
@@ -569,6 +569,25 @@ The above copyright notice and this permission notice shall be included in all c
     SetTable();
 
     setInterval(ReloadData, 100000);
+
+    $('#Reboot').click( function () {
+        UpdateDevice(DeviceSelectedId)
+    });
+
+    function UpdateDevice(DeviceSelectedId){
+        $.ajax({
+            type: 'POST',
+            data: {
+                Option: 'UpdateRebootDevice',
+                DeviceId: DeviceSelectedId
+            },
+            async: false,
+            url: SourceControllers + 'DevicesStatus.php',
+            success: function (response) {
+                //var Response = $.parseJSON(response);
+            }
+        });
+    }
 
 </script>
 
