@@ -84,10 +84,11 @@ switch ($Option){
         break;
 
         case 'UpdateRebootDevice':
-            $DeviceId = !empty($_POST['DeviceId']) ? $_POST['DeviceId'] : '2';
-            $DevicesData = array('reiniciar'=>1);
+            echo $DeviceId = !empty($_POST['DeviceId']) ? $_POST['DeviceId'] : '2';
 
-            $Response = $DevicesData->updateDevice($DeviceId, $DevicesData);
+            $DevicesUpdateData = array('reiniciar'=>1);
+
+            $Response = $DevicesData->updateDevice($DeviceId, $DevicesUpdateData);
         break;
 }
 
