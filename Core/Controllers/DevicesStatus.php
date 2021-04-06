@@ -79,7 +79,7 @@ switch ($Option){
                 array_push($DeviceInfoList, $Row['fecha_activacion']);
 
             endforeach;
-            
+
             $Response = array('DeviceList'=>array_chunk($DeviceList, 8), 'DeviceInfoList'=>array_chunk($DeviceInfoList, 3));
 
         break;
