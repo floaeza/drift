@@ -533,11 +533,10 @@ The above copyright notice and this permission notice shall be included in all c
         GetDevicesByStatus();
         LoadDeviceList();
 
-        $('#DevicesList').DataTable( {
-            ajax: DevicesList
-        } );
+        DevicesTable.destroy();
+        DevicesTable.destroy();
 
-        DevicesTable.ajax.reload( null, false );
+        SetTable();
     }
 
     var RowDeviceSelected   = '',
