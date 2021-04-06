@@ -166,27 +166,26 @@ The above copyright notice and this permission notice shall be included in all c
                         </div>
                     </div>
 
-                    <div class="col-md-4">
-                        <div class="card card-profile">
-                            <div class="card-avatar">
+                    <div className="col-md-4">
+                        <div className="card card-profile">
+                            <div className="card-avatar">
                                 <a href="javascript:;">
-                                    <img class="img" src="../assets/img/A540.png">
+                                    <img className="img" id="DeviceImage" src="../assets/img/blank.png"/>
                                 </a>
                             </div>
-                            <div class="card-body">
-                                <h6 class="card-category text-gray">00:02:02:4f:9b:af</h6>
-                                <h4 class="card-title">10.30.0.15</h4>
-                                <p class="card-description">SISTEMAS</p>
+                            <div className="card-body">
+                                <h6 className="card-category text-gray" id="DeviceMacAddress"></h6>
+                                <h4 className="card-title" id="DeviceIp"></h4>
+                                <p className="card-description" id="DeviceCode"></p>
+                                <p className="card-description" id="DeviceFirmware"></p>
 
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons">access_time</i> 2021-04-05 05:27:15
-                                    </div>
-                                    <div class="stats">
-                                        <i class="material-icons">calendar</i> 2021-04-05
-                                    </div>
+                                <div className="card-footer">Ultima actualización
+                                    <div className="stats" id="DeviceLastUptade"></div>
                                 </div>
-                                <a href="javascript:;" class="btn btn-primary btn-round">Reboot</a>
+                                <div className="card-footer">Fecha activación
+                                    <div className="stats" id="DeviceRegisterDate"></div>
+                                </div>
+                                <a href="javascript:;" className="btn btn-primary btn-round">Reboot</a>
                             </div>
                         </div>
                     </div>
@@ -497,7 +496,7 @@ The above copyright notice and this permission notice shall be included in all c
             url: SourceControllers + 'DevicesStatus.php',
             success: function (response) {
                 var Response = ($.parseJSON(response));
-console.log(Response);
+
                 DevicesList = Response.DeviceList;
                 DeviceInfoList = Response.DeviceInfoList;
 
@@ -529,18 +528,28 @@ console.log(Response);
     }
 
     var RowDeviceSelected   = '',
-        DeviceSelected  = '',
         DeviceSelectedId = '';
+
+    var DeviceImage = document.getElementById('DeviceImage'),
+        DeviceMacAddress = document.getElementById('DeviceMacAddress'),
+        DeviceIp = document.getElementById('DeviceIp'),
+        DeviceCode = document.getElementById('DeviceCode'),
+        DeviceLastUptade = document.getElementById('DeviceLastUptade'),
+        DeviceFirmware = document.getElementById('DeviceFirmware'),
+        DeviceRegisterDate = document.getElementById('DeviceRegisterDate');
 
     function SetDeviceSelected(){
         RowDeviceSelected = $('#DevicesList').DataTable().row('.selected')[0][0];
-        DeviceSelected = DeviceInfoList[RowDeviceSelected];
 
-        DeviceSelectedId = DeviceSelected[0];
+        DeviceIp.textContent = DeviceInfoList[RowDeviceSelected][0];
+        DeviceFirmware.textContent = DeviceInfoList[RowDeviceSelected][1];
+        DeviceLastUptade.innerHTML = '<i className="material-icons">access_time</i> '+DeviceInfoList[RowDeviceSelected][2];
 
-        // MacDevice.innerHTML = DeviceSelected[2]; // Mac address
-        // ChannelInputNumber.value = DeviceSelected[5]; // Numero canal
-        // ChannelOptionId.value= DeviceSelected[7]; // Id canal
+        DeviceSelectedId = DevicesList[RowDeviceSelected][0];
+        DeviceImage.src = '../assets/img/'+DevicesList[RowDeviceSelected][3]+'.png';
+        DeviceCode.textContent = DevicesList[RowDeviceSelected][1];
+        DeviceMacAddress.textContent = DevicesList[RowDeviceSelected][2];
+        DeviceRegisterDate.innerHTML = '<i className="material-icons">calendar_today</i> '+DevicesList[RowDeviceSelected][4];
     }
 
     GetDevicesByStatus();

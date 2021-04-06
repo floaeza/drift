@@ -74,16 +74,13 @@ switch ($Option){
                     }
                 }
 
-                array_push($DeviceInfoList, $Row['id_dispositivo']);
                 array_push($DeviceInfoList, $Row['ip']);
-                array_push($DeviceInfoList, $Row['modelo']);
                 array_push($DeviceInfoList, $Row['version_software']);
                 array_push($DeviceInfoList, $Row['fecha_activacion']);
 
             endforeach;
-
-
-            $Response = array('DeviceList'=>array_chunk($DeviceList, 8), 'DeviceInfoList'=>array_chunk($DeviceInfoList, 5));
+            
+            $Response = array('DeviceList'=>array_chunk($DeviceList, 8), 'DeviceInfoList'=>array_chunk($DeviceInfoList, 3));
 
         break;
 }
