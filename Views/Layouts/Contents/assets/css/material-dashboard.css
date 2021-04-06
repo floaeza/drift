@@ -15850,7 +15850,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 .fixed-plugin .dropdown-menu li {
   display: block;
   padding: 18px 2px;
-  width: 25%;
+  width: 60%;
   float: left;
 }
 
@@ -16731,8 +16731,8 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 
 .fixed-plugin .dropdown-menu>.active>a.img-holder,
 .fixed-plugin .dropdown-menu>.active>a.img-holder {
-  border-color: #00bbff;
-  background-color: #FFFFFF;
+  /* border-color: #00bbff;
+  background-color: #FFFFFF; */
 }
 
 .fixed-plugin .dropdown-menu>li>a img {

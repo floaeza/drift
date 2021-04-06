@@ -64,6 +64,23 @@
             endforeach;
             echo json_encode($ArrayChannelList);
             break;
+        case 'LocationsViewTime':
+            $From      = !empty($_POST['From']) ? $_POST['From'] : 'Beginning';
+            $Parameter = !empty($_POST['Parameter']) ? $_POST['Parameter'] : '';
+            $OrderBy   = !empty($_POST['OrderBy']) ? $_POST['OrderBy'] : 'nombre_canal ASC';
+            $List= $TrendsDAO->getLocationTime($From, $Parameter);
+            $ArrayChannelList = array();
+            foreach ($List as $Trend):
+                $Seconds = intval($Trend['segundos']);
+                $Hours = $Seconds/3600;
+                $HoursText = conversor_segundos($Seconds);
+                array_push($ArrayChannelList, array('CL' => $Trend['codigo_locacion'],
+                'HRS' => $Hours,
+                'HRSTXT' => $HoursText
+               ));
+            endforeach;
+            echo json_encode($ArrayChannelList);
+            break;
     }
     
     

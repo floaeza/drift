@@ -39,7 +39,7 @@ The above copyright notice and this permission notice shall be included in all c
 </head>
 
 <body class="">
-  <div class="wrapper ">
+  <div class="wrapper">
     <div class="main-panel">
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
@@ -128,12 +128,6 @@ The above copyright notice and this permission notice shall be included in all c
                   <canvas id="chartChannels"></canvas>
                 </div>
                 <div class="card-body">
-                    <select id="SelectYear">
-                      <option value="0">Seleccione un año</option>
-                    </select>
-                    <select id="SelectMonth">
-                      <option value="0">Seleccione un mes</option>
-                    </select>
                 </div>
                 <div class="card-footer">
                   <div id="status" class="stats">
@@ -161,24 +155,14 @@ The above copyright notice and this permission notice shall be included in all c
                 </div>
                 <div class="card-footer">
                   <div id="status" class="stats">
-                    <i id="icon" class="material-icons">access_time</i> updated 4 minutes ago
                   </div>
                 </div>
               </div>
             </div>
             <div class="col-sm-4">
-              <div class="card card-chart">
-                <div class="card-header card-header-warning">
-                  
-                </div>
-                <div class="card-body">
-                  <h4 class="card-title">Email Subscriptions</h4>
-                  <p class="card-category">Last Campaign Performance</p>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons">access_time</i> campaign sent 2 days ago
-                  </div>
+              <div class="card">
+                <div id="cardTableLocationViews" class="card-body">
+                  <table id="LocationsViewsTable" class="display" width="100%"></table>
                 </div>
               </div>
             </div>
@@ -513,6 +497,34 @@ The above copyright notice and this permission notice shall be included in all c
       </footer>
     </div>
   </div>
+  <div class="fixed-plugin">
+    <div class="dropdown show-dropdown">
+      <a href="#" data-toggle="dropdown">
+        <i class="fa fa-cog fa-2x"> </i>
+      </a>
+      <ul class="dropdown-menu">
+        <li class="header-title"> Seleccione un año</li>
+        <li>
+          <a class="img-holder switch-trigger" href="javascript:void(0)">
+            <select id="SelectYear" href="javascript:void(0)" style="border: 0px; text-align: center;">
+              <option value="0">Seleccione un año</option>
+            </select>
+          </a>
+        </li>
+            <div class="clearfix"></div>
+          </a>
+        </li>
+        <li class="header-title">Seleccione un mes</li>
+        <li>
+          <a class="img-holder switch-trigger" href="javascript:void(0)">
+            <select id="SelectMonth" href="javascript:void(0)" style="border: 0px; text-align: center;">
+              <option value="0">Seleccione un mes</option>
+            </select>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
   <!--   Core JS Files   -->
   <script src="../assets/js/core/jquery.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>
@@ -738,6 +750,7 @@ The above copyright notice and this permission notice shall be included in all c
     let cardChartChannels   = document.getElementById('cardChartChannels');
     let cardChartLocation   = document.getElementById('cardChartLocation');
     let cardTableChannelViews = document.getElementById('cardTableChannelViews');
+    let cardTableLocationViews= document.getElementById('cardTableLocationViews');
     let defaultC = ['-','-','-'];
     let defaultD = [0,0,0];
   // Varibles para las fechas
@@ -751,8 +764,12 @@ The above copyright notice and this permission notice shall be included in all c
     var ChannelsViewObj = [],
         FirstDate       = [], 
         ChannelsListJson = '';
+    var LocationsViewObj = [];
         // From = 'Beginning', // Beginning | Day | Month
     var dataSet = [['NO DATASET','NO DATASET']];
+    var dataSetLocation = [['NO DATASET','NO DATASET']];
+
+        
 
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js
@@ -760,6 +777,7 @@ The above copyright notice and this permission notice shall be included in all c
       fillMonthsButton();
       getCharts(defaultC, defaultD);
       getTables();
+      
     //   $('#SelectMonth').change(function(){
     //      MonthSelected  = $(this).val();
     //      getChannelsHoursList('Month', 'nombre_canal ASC', getMonthString());
@@ -781,7 +799,7 @@ The above copyright notice and this permission notice shall be included in all c
      yearSelected  = $(this).val();
      monthSelected = $('#SelectMonth').val();
     if (yearSelected == actualYear) {
-      let cont = 0;
+      let cont = 1;
       removeOptions(selectMonth);
       months.forEach(element => {
       if (cont > actualMonth) {
@@ -796,7 +814,7 @@ The above copyright notice and this permission notice shall be included in all c
     });
     }else{
       removeOptions(selectMonth);
-      let cont = 0;
+      let cont = 1;
       months.forEach(element => {
       var option = document.createElement("option");
           option.value = cont;
@@ -804,26 +822,34 @@ The above copyright notice and this permission notice shall be included in all c
           selectMonth.appendChild(option);
           cont++; 
       });
-      $('#SelectMonth').val(0);
+      $('#SelectMonth').val(1);
     }
     monthSelected = $('#SelectMonth').val();
     getChannelsHoursList('Month', 'nombre_canal ASC', getMonthString(monthSelected, yearSelected));
     if (!ChannelsViewObj.length) {
         dataSet = [['NO DATASET','NO DATASET']];
+        dataSetLocation = [['NO DATASET','NO DATASET']];
         status.innerHTML= 'No hay registros para mostrar';
         var icon = document.createElement('i');
         icon.className = 'material-icons text-danger';
         icon.innerHTML = 'warning';
         status.appendChild(icon);
         removeCharts();
-        getCharts(defaultC, defaultD);
+        getCharts(defaultC, defaultD, defaultC, defaultD);
         removeTables();
         getTables();
     }else{
       status.innerHTML = 'Registros cargados con exito';
+         var icon = document.createElement('i');
+          icon.className = 'material-icons text-success';
+          icon.innerHTML = 'check_circle';
+          status.appendChild(icon);
          var channelsName = [];
          var channelsTimeOfView = [];
-             dataSet = [];
+             dataSet = [],
+             dataSetLocation = [];
+         var LocationsName = [];
+         var LocationsTimeOfView = [];
              ChannelsViewObj.forEach(element => {
                   channelsName.push(element.NME);
                   channelsTimeOfView.push(element.HRS);
@@ -832,28 +858,37 @@ The above copyright notice and this permission notice shall be included in all c
                   aux.push(element.HRSTXT);
                   dataSet.push(aux);
               });
+              LocationsViewObj.forEach(element => {
+                LocationsName.push(element.CL);
+                LocationsTimeOfView.push(element.HRS);
+                var aux = [];
+                aux.push(element.CL);
+                aux.push(element.HRSTXT);
+                dataSetLocation.push(aux);
+              });
               removeCharts();
               removeTables();
               getTables();
-              getCharts(channelsName, hoursOfView);
+              getCharts(channelsName, channelsTimeOfView, LocationsName, LocationsTimeOfView);
               
     }
 
   });
 
-  $('#SelectMonth').change(function(){
+    $('#SelectMonth').change(function(){
      monthSelected  = $(this).val();
      yearSelected = $('#SelectYear').val();
      getChannelsHoursList('Month', 'nombre_canal ASC', getMonthString(monthSelected, yearSelected));
     if (!ChannelsViewObj.length) {
         dataSet = [['NO DATASET','NO DATASET']];
+        dataSetLocation = [['NO DATASET','NO DATASET']];
         status.innerHTML= 'No hay registros para mostrar';
         var icon = document.createElement('i');
         icon.className = 'material-icons text-danger';
         icon.innerHTML = 'warning';
         status.appendChild(icon);
         removeCharts();
-        getCharts(defaultC, defaultD);
+        getCharts(defaultC, defaultD, defaultC, defaultD);
         removeTables();
         getTables();
     }else{
@@ -864,7 +899,10 @@ The above copyright notice and this permission notice shall be included in all c
           status.appendChild(icon);
          var channelsName = [];
          var channelsTimeOfView = [];
-              dataSet = [];
+         var LocationsName = [];
+         var LocationsTimeOfView = [];
+              dataSet = [],
+              dataSetLocation = [];
              ChannelsViewObj.forEach(element => {
                   channelsName.push(element.NME);
                   channelsTimeOfView.push(element.HRS);
@@ -873,18 +911,24 @@ The above copyright notice and this permission notice shall be included in all c
                   aux.push(element.HRSTXT);
                   dataSet.push(aux);
               });
+              LocationsViewObj.forEach(element => {
+                LocationsName.push(element.CL);
+                LocationsTimeOfView.push(element.HRS);
+                var aux = [];
+                    aux.push(element.CL);
+                    aux.push(element.HRSTXT);
+                    dataSetLocation.push(aux);
+              });
               removeCharts();
               removeTables();
               getTables();
-              getCharts(channelsName, channelsTimeOfView);
+              getCharts(channelsName, channelsTimeOfView, LocationsName, LocationsTimeOfView);
+              console.log(ChannelsViewObj);
     }
-
-
   });
-
     });
 
-    function getCharts(channelsName, hoursOfView){
+    function getCharts(channelsName, hoursOfView, LocationsName, hoursOfViewLocations){
       var ctx = document.getElementById('chartChannels').getContext('2d');
       Chart.defaults.global.defaultFontColor = "#fff";
       var chart = new Chart(ctx, {
@@ -914,12 +958,12 @@ The above copyright notice and this permission notice shall be included in all c
 
           // The data for our dataset
           data: {
-              labels: channelsName,
+              labels: LocationsName,
               datasets: [{
                   label: 'HORAS',
                   // backgroundColor: 'rgb(255, 99, 132)',
                   borderColor: 'rgb(255, 99, 132)',
-                  data: hoursOfView
+                  data: hoursOfViewLocations
               }]
           },
 
@@ -943,7 +987,7 @@ The above copyright notice and this permission notice shall be included in all c
             });             
       let firstDateDBObject = Date.parse(FirstDate[0].firstDate);
       let firstDateDBObjectDate = new Date(firstDateDBObject);
-      let cont = 0;
+      let cont = 1;
         months.forEach(element => {
           if (cont > actualMonth) {
             return;
@@ -984,10 +1028,23 @@ The above copyright notice and this permission notice shall be included in all c
                     ChannelsViewObj  = $.parseJSON(response);
                 }
             });
+            $.ajax({
+                type: "POST",
+                url: "/BBINCOTV/IPTV/Core/Controllers/Charts.php",
+                data: { 
+                    Option    : 'LocationsViewTime',
+                    From      : From,
+                    Parameter : Parameter,
+                }, 
+                async: false,
+                success: function (response) {
+                    LocationsViewObj  = $.parseJSON(response);
+                }
+            });
 
     }
     function getMonthString(mS, aY){
-      if(actualMonth<10){
+      if(monthSelected<10){
         var P = '0'+mS+'-'+aY;
       }else{
         var P = mS+'-'+aY;
@@ -1011,13 +1068,19 @@ The above copyright notice and this permission notice shall be included in all c
        cardChartLocation.appendChild(chartLocation);
     }
     function removeTables(){
-      debugger
       cardTableChannelViews.removeChild(cardTableChannelViews.childNodes[1]);
       var channelTableViews = document.createElement('table');
           channelTableViews.setAttribute('id', 'ChannelViewsTable');
           channelTableViews.setAttribute('class', 'display');
           channelTableViews.setAttribute('width', '100%');
       cardTableChannelViews.appendChild(channelTableViews);
+
+      cardTableLocationViews.removeChild(cardTableLocationViews.childNodes[1]);
+      var locationTableViews = document.createElement('table');
+          locationTableViews.setAttribute('id', 'LocationsViewsTable');
+          locationTableViews.setAttribute('class', 'display');
+          locationTableViews.setAttribute('width', '100%');
+      cardTableLocationViews.appendChild(locationTableViews);
     }
     function getTables(){
       $('#ChannelViewsTable').DataTable( {
@@ -1029,7 +1092,34 @@ The above copyright notice and this permission notice shall be included in all c
         "pageLength": 10,
         "lengthChange": false,
         "searching": false
-    } );
+    });
+    $('#LocationsViewsTable').DataTable( {
+        data: dataSetLocation,
+        columns: [
+            { title: "Locacion" },
+            { title: "Horas de transmisión" }
+        ],
+        "pageLength": 10,
+        "lengthChange": false,
+        "searching": false
+    });
+    }
+    function max (obj){
+      var puntajeX1 = 1022, casos = 5, prestaciones = 20 , educacion = 1, impuestos = 100;
+    // var obj = {
+    //   puntajeX1 : puntajeX1,
+    //   casos : casos,
+    //   prestaciones : prestaciones,
+    //   educacion : educacion,
+    //   impuestos : impuestos
+    // }
+    var maxKey = Object.keys(obj).sort(function (a, b) {
+      return obj[a] < obj[b];
+    })[0];
+
+    var result = {};
+        result[maxKey] = obj[maxKey];
+      return result;
     }
  </script>
 </body>
