@@ -25,18 +25,18 @@ switch ($Option){
             $DevicesCount = $DevicesData->getOperatingDevices();
 
         // DEVICES OFF
-            $DevicesCount = $DevicesData->getDevicesByStatus('POWER_OFF');
+            $DevicesCountOff = $DevicesData->getDevicesByStatus('POWER_OFF');
 
         // HDMI CONNECTED
             $HdmiConnected = $DevicesData->getDevicesHdmi('1');
 
         // HDMI CONNECTED
-            $HdmiDisconnected = $DevicesData->getDevicesHdmi('0');
+            $HdmiDisconnected = $DevicesData->getDevicesHdmi('0') - 1;
 
             array_push($Status,[
-                'DevicesOn' => $DevicesCount,
+                'DevicesOn' => $DevicesCount-$OffDevices,
                 'HdmiDisconnected' => $HdmiDisconnected,
-                'DevicesOff' => $DevicesCount,
+                'DevicesOff' => $DevicesCountOff,
                 'HdmiConnected' => $HdmiConnected,
                 'UpdatedTime'=>date('M j, h:i A')
             ]);
