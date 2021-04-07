@@ -529,10 +529,16 @@
                     }
                 }
                 if($ProgramsLength === 0){
+                    
+                    if($arrayCanales[$j]['STTN'] === 'VIDEO_ES'){
+                        $des = 'Tv guide soon';
+                    } else {
+                        $des = '';
+                    }
                     array_push($arrayCanales[$j]['PROGRAMS'], 
                         array('STTN' => $arrayCanales[$j]['STTN'],
                               'DBKY' => '',
-                              'TTLE' =>  $arrayCanales[$j]['NAME'],
+                              'TTLE' => $des,
                               'DSCR' => '',
                               'DRTN' => '24',
                               'MNTS' => '',
