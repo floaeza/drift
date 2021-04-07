@@ -41,6 +41,8 @@
         StopVideo();
 
         Video.open(Source + CheckPort);
+
+        //ret = video.open(url, null, {pltbuf: 3600});
         
         Video.play(1);   
 

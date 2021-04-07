@@ -4,167 +4,192 @@
  * Tipo: Controlador
  * @@@@@@@@@@@@@@@@@@@ IMPORTANTE @@@@@@@@@@@@@@@@@@@
  * Actualizar la ubicacion del dispositivo antes de cambiarlo de lugar
+ *
  */
 
-    require_once '../Models/Utilities.php';
-    require_once '../Models/Database.php';
-    require_once '../DataAccess/Devices.php';
-    require_once '../DataAccess/Programs.php';
-    
-    $UtilitiesModel = new Utilities();
-    $DevicesData    = new Devices('system', 'ExportDvr');
-    $ProgramsData   = new Programs('system', 'ExportDvr');
-    $FirstElement   = 0;
-    
-   
-    $MacAddress  = '00:02:02:4f:9b:af';
-    
-    $Device   = $DevicesData->getDevice($MacAddress);
-    $Location = $DevicesData->getDeviceLocation($Device[$FirstElement]['id_dispositivo']);
-    
-    $Ip = $Device[$FirstElement]['ip'];
-    $Id = $Location[$FirstElement]['id_locacion'];
-    
-    //8079
-    //8080
-    
-    $RecordsInfo = 'http://'.$Ip.':8080/PVRRecordsInfo.txt';
-    $PathRecordings = 'http://'.$Ip.':8080';
-    
-    $Result = $UtilitiesModel->GetDataFromUrl($RecordsInfo);
-    
-    $RecordInfoArray = explode(': src', $Result);
-    
-    $ArrayRecordsList = array();
-    
-    array_shift($RecordInfoArray);
+// DELETE FROM `pvr_programas` WHERE `pvr_programas`.`mac_address_pvr` = ""
 
-        foreach ($RecordInfoArray as $Row=>$RecordRow):
 
-            $EpochRecordDate = intval($UtilitiesModel->getBetween($RecordRow, 'start=', ' metadata'));
-            $RecordDate = date('l jS \of F Y h:i:s A', $EpochRecordDate);
+// streamerctl listassets > /PVR/PVRRecordsInfo.txt && amimongoose -p 404
 
-            $AssetZerosId = $UtilitiesModel->getBetween($RecordRow, "assetname='", "'");
+// SELECT * FROM `pvr_programas` WHERE mac_address_pvr = "00:02:02:44:4b:6b"
 
-           $Databasekey = $UtilitiesModel->getBetween($RecordRow, '#', '=');
+require_once '../Models/Utilities.php';
+require_once '../Models/Database.php';
+require_once '../DataAccess/Devices.php';
+require_once '../DataAccess/Programs.php';
 
-            $Duration = $UtilitiesModel->getBetween($RecordRow, 'duration=', ' reclength');
+$UtilitiesModel = new Utilities();
+$DevicesData    = new Devices('system', 'ExportDvr');
+$ProgramsData   = new Programs('system', 'ExportDvr');
+$FirstElement   = 0;
 
-            // title='Amino-PLT' url=
-            $RecordPLT = $UtilitiesModel->getBetween($RecordRow, "title='", "' url=");
-            if($RecordPLT !== 'Amino-PLT'){
-                $RecordNameReplace = $UtilitiesModel->getBetween($RecordRow, '%', '@');
-                
-                $RecordName = str_replace("'", "", $RecordNameReplace);
 
-                if(empty($RecordName)){
-                    $UrlVad = $PathRecordings.'/'.$AssetZerosId.'/meta/';
+$MacAddress  = '00:02:02:65:09:19';
 
-                    $UrlVadData = $UtilitiesModel->GetDataFromUrl($UrlVad);
 
-                    $VadParsed = $UtilitiesModel->ParseVad($UrlVadData, $AssetZerosId);
+//echo  $MacAddress. PHP_EOL;
 
-                    $Vad = $UtilitiesModel->getBetween($VadParsed,'Name', '/');
+$Device   = $DevicesData->getDevice($MacAddress);
+$Location = $DevicesData->getDeviceLocation($Device[$FirstElement]['id_dispositivo']);
 
-                    $VadNumber = substr($Vad, -13);
+$Ip = $Device[$FirstElement]['ip'];
+//echo  $Ip. PHP_EOL;
+$Id = $Location[$FirstElement]['id_locacion'];
 
-                    $UrlVadM3 = $UrlVad.$VadNumber.'/meta/MDT0,3';
-                    
-                    //$VadNumber.'/meta/MDT0,3';
+//8079
+//8080
 
-                    $MDT0Exist = $UtilitiesModel->RemoteFileExists($UrlVadM3);
+$RecordsInfo = 'http://'.$Ip.':404/PVRRecordsInfo.txt';
+$PathRecordings = 'http://'.$Ip.':404';
 
-                    if($MDT0Exist === true){
+echo $RecordsInfo . '<br>';
 
-                        $DataMDT0 = $UtilitiesModel->GetDataFromUrl($UrlVadM3);
-                        //print_r($DataMDT0);
-                    } else {
-                        $UrlVadM5 = $UrlVad.$VadNumber."/meta/MDT0,5";
-                        $DataMDT0 = $UtilitiesModel->GetDataFromUrl($UrlVadM5);
-                    }
+//echo $RecordsInfo. PHP_EOL;
 
-                    $RecordNameSubs = substr($DataMDT0,110); 
-                    $RecordNameClean =  $UtilitiesModel->Clean($RecordNameSubs);
+$Result = $UtilitiesModel->GetDataFromUrl($RecordsInfo);
 
-                    $Title  = explode("-", $RecordNameClean);
-                    
-                    
-                    if(strlen($Title[0]) > 150){
-                        $Title  = explode(" ", $RecordNameSubs);
-                    }
-                    
-                    
-                    $RecordNamePre =  $Title[0];
-                    
-                    $arr = str_split($RecordNamePre);
-                    array_shift($arr);
-                    $RecordName   = implode('', $arr);
-                    
-                    
-                    $RecordDescriptionReplace = $UtilitiesModel->getBetween($RecordNameSubs, "-", ";");
-                    
-                    $PreDatabasekey = substr($RecordNameClean, -25);
-                    $Databasekey = substr($PreDatabasekey, 0, 14);
-                                    
-                    if(strlen($RecordDescriptionReplace) === 0){
-                        $DescriptionReplaceA  = explode(".", $RecordNameSubs);
-                        
-                        $RecordDescriptionReplace = $DescriptionReplaceA[0];
-                        
-                        $Databasekey = substr($RecordNameClean, -15);
-                    } else if(strlen($RecordDescriptionReplace) > 300){
-                        $DescriptionReplace1  = explode(",", $RecordDescriptionReplace);
-                        
-                        $RecordDescription = $DescriptionReplace1[0];
-                    }
-                    
-                    $RecordDescription = str_replace("'", "", $RecordDescriptionReplace);
 
-                } else {
-                    $RecordDescriptionReplace = $UtilitiesModel->getBetween($RecordRow, "@", "#");
-                    $RecordDescription = str_replace("'", "", $RecordDescriptionReplace);
-                }
+$RecordInfoArray = explode(': src', $Result);
 
-                $AssetId = ltrim($AssetZerosId, "0"); 
-                $AssetDate = date('Ymd', $EpochRecordDate);
+$ArrayRecordsList = array();
 
-                if(empty($RecordDescription)){
-                    $RecordDescription = 'No description';
-                }
-   
-                $StartTime= "01:00";
-                $dateinsec=strtotime($StartTime);
-                $newdate=$dateinsec+$Duration;
-                $EndTime = date('H:i',$newdate);
-                    
-                
-                if(strlen($RecordName > 1)){
-                $ProgramInfo = array('id_locacion'          => $Id,
-                                    'id_operacion'          => '4',
-                                    'id_asset'              => $AssetId,
-                                    'mac_address_pvr'       => $MacAddress,
-                                    'databasekey'           => $Databasekey,
-                                    'titulo_programa'       => $RecordName,
-                                    'descripcion_programa'  => $RecordDescription,
-                                    'fecha_programa'        => $AssetDate,
-                                    'hora_inicio'           => $StartTime,
-                                    'hora_final'            => $EndTime,
-                                    'utc_inicio'            => '0',
-                                    'utc_final'             => '0',
-                                    'url_canal'             => 'igmp://');
-                
-                $Response = ' ';                
-                $AddProgram = $ProgramsData->setProgram($ProgramInfo);
+foreach ($RecordInfoArray as $Row=>$RecordRow):
+//            echo "<br>";echo "<br>";print_r($RecordRow); echo "<br>";echo "<br>";
+    $EpochRecordDate = intval($UtilitiesModel->getBetween($RecordRow, 'start=', ' metadata'));
+    $RecordDate = date('l jS \of F Y h:i:s A', $EpochRecordDate);
 
-                if(intval($AddProgram) >= 1){
-                    $Response = ' === Program added';
-                } else {
-                    $Response = ' === There was a problem, try again later';
-                }
+    $AssetZerosId = $UtilitiesModel->getBetween($RecordRow, "assetname='", "'");
 
-                echo $Row. $Response.'<br><br>';
-                print_r($ProgramInfo); echo "<br>"; echo "<br>";
-                echo '____________________________________________________<br><br>';
+    $Databasekey = $UtilitiesModel->getBetween($RecordRow, '#', '=');
+
+
+    $Duration = $UtilitiesModel->getBetween($RecordRow, 'duration=', ' reclength');
+
+    // title='Amino-PLT' url=
+    $RecordPLT = $UtilitiesModel->getBetween($RecordRow, "title='", "' url=");
+    if($RecordPLT !== 'Amino-PLT'){
+        $RecordNameReplace = $UtilitiesModel->getBetween($RecordRow, '%', '@');
+
+        $RecordName = str_replace("'", "", $RecordNameReplace);
+
+        if(empty($RecordName)){
+            $UrlVad = $PathRecordings.'/'.$AssetZerosId.'/meta/';
+
+            $UrlVadData = $UtilitiesModel->GetDataFromUrl($UrlVad);
+
+            $VadParsed = $UtilitiesModel->ParseVad($UrlVadData, $AssetZerosId);
+
+            $Vad = $UtilitiesModel->getBetween($VadParsed,'Name', '/');
+
+            $VadNumber = substr($Vad, -13);
+
+            $UrlVadM3 = $UrlVad.$VadNumber.'/meta/MDT0,3';
+
+            //$VadNumber.'/meta/MDT0,3';
+
+            $MDT0Exist = $UtilitiesModel->RemoteFileExists($UrlVadM3);
+
+            if($MDT0Exist === true){
+
+                $DataMDT0 = $UtilitiesModel->GetDataFromUrl($UrlVadM3);
+                //print_r($DataMDT0);
+            } else {
+                $UrlVadM5 = $UrlVad.$VadNumber."/meta/MDT0,5";
+                $DataMDT0 = $UtilitiesModel->GetDataFromUrl($UrlVadM5);
+            }
+
+            $RecordNameSubs = substr($DataMDT0,110);
+
+            $RecordNameClean =  $UtilitiesModel->Clean($RecordNameSubs);
+
+            $Title  = explode("-", $RecordNameClean);
+
+            if(strlen($Title[0]) > 150){
+                $count_var = preg_replace('[^\s]', '', $Title[0]);
+                $count = strlen($count_var);
+
+                if($count < 1){
+                    $Title  = explode(" ", $RecordNameSubs);
                 }
             }
-        endforeach;
+
+
+            $RecordNamePre =  $Title[0];
+
+            $arr = str_split($RecordNamePre);
+            array_shift($arr);
+            $RecordName   = implode('', $arr);
+
+
+            $RecordDescriptionReplace = $UtilitiesModel->getBetween($RecordNameSubs, "-", ";");
+
+            $PreDatabasekey = substr($RecordNameClean, -25);
+            $Databasekey = substr($PreDatabasekey, 0, 14);
+
+            if(strlen($RecordDescriptionReplace) === 0){
+                $DescriptionReplaceA  = explode(".", $RecordNameSubs);
+
+                $RecordDescriptionReplace = $DescriptionReplaceA[0];
+
+                $Databasekey = substr($RecordNameClean, -15);
+            } else if(strlen($RecordDescriptionReplace) > 300){
+                $DescriptionReplace1  = explode(",", $RecordDescriptionReplace);
+
+                $RecordDescription = $DescriptionReplace1[0];
+            }
+
+            $RecordDescription = str_replace("'", "", $RecordDescriptionReplace);
+
+        } else {
+            $RecordDescriptionReplace = $UtilitiesModel->getBetween($RecordRow, "@", "#");
+            $RecordDescription = str_replace("'", "", $RecordDescriptionReplace);
+        }
+
+        $AssetId = ltrim($AssetZerosId, "0");
+        $AssetDate = date('Ymd', $EpochRecordDate);
+
+        if(empty($RecordDescription)){
+            $RecordDescription = 'No description';
+        }
+
+        $StartTime= "01:00";
+        $dateinsec=strtotime($StartTime);
+        $newdate=$dateinsec+$Duration;
+        $EndTime = date('H:i',$newdate);
+
+//                echo $RecordName; echo '<br>';
+//
+//                echo strlen($RecordName);
+//                echo '<br>';
+        if(strlen($RecordName) > 1){
+            $ProgramInfo = array('id_locacion'          => $Id,
+                'id_operacion'          => '4',
+                'id_asset'              => $AssetId,
+                'mac_address_pvr'       => $MacAddress,
+                'databasekey'           => $Databasekey,
+                'titulo_programa'       => $RecordName,
+                'descripcion_programa'  => $RecordDescription,
+                'fecha_programa'        => $AssetDate,
+                'hora_inicio'           => $StartTime,
+                'hora_final'            => $EndTime,
+                'utc_inicio'            => '0',
+                'utc_final'             => '0',
+                'url_canal'             => 'igmp://');
+
+            $Response = ' ';
+
+//                $AddProgram = $ProgramsData->setProgram($ProgramInfo);
+//
+//                if(intval($AddProgram) >= 1){
+//                    $Response = ' === Program added';
+//                } else {
+//                    $Response = ' === There was a problem, try again later';
+//                }
+//
+//                echo $Row. $Response;echo '<br>';
+            print_r($ProgramInfo); echo '<br>';
+            echo '____________________________________________________________________________________________________________________________________________________________________________'.'<br>';
+        }
+    }
+endforeach;

@@ -19,7 +19,9 @@
     $ActiveDevices = $DevicesData->GetActiveDeviceList();
     
     $LicensingServer = $CentralServer .'Licensing/index.php?Client='.$Identifier.'&Devices='.$ActiveDevices;
-    
+
+    echo $LicensingServer. PHP_EOL;
+
     $DataServer = file_get_contents($LicensingServer);
     
     $License = json_decode($DataServer, true);
@@ -34,7 +36,9 @@
     if(empty($ServerIp)){
         $ServerIp = !empty($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : '';
     }
-    
+
+    echo $ServerIp. PHP_EOL;
+
     if(!empty($ServerIp)){
         $NewValue = array('valor_parametro'=> $ServerIp);
         $SetServerIp = $ConfigData->SetLicensingParameters('ServerIp',$NewValue);
