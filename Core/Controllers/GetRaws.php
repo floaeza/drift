@@ -1,6 +1,8 @@
 <?php
 
-
+//PUERTOS DISPONIBLES EN EL DVR
+//8079
+//8080
 
 require_once '../Models/Utilities.php';
 

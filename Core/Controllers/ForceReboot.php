@@ -32,7 +32,7 @@ putenv('PATH=/bin:/usr/local/bin');
             
             if(empty($Device['ip'])){
 
-                $DeviceUpdate = array('mensaje_evento' => 'POWER OFF');
+                $DeviceUpdate = array('mensaje_evento' => 'OUTDATED');
             } else {
 
                 if(strtotime($Device['ultima_ejecucion']) < $CurrentTime){
@@ -40,7 +40,7 @@ putenv('PATH=/bin:/usr/local/bin');
                     //echo '*************************************************************'. PHP_EOL;
                     //echo $Device['id_dispositivo']  . ' ~ '.$Device['ip']. ' ~ '.$Device['marca'].' ~ '.$Device['ultima_ejecucion']. PHP_EOL;
                     
-                    $DeviceUpdate = array('mensaje_evento' => 'FORCE UPDATE');
+                    $DeviceUpdate = array('mensaje_evento' => 'OUTDATED');
                     
                     if($Device['marca'] === 'Amino'){
                         $output = shell_exec("cd /usr/local/bin/ && export STBPASS=stbrckey && export STBKEY=keys/amino/STBrc-KEY.private && ./STBremoteconf ".$Device['ip']." ".$AminoCommand);
@@ -53,7 +53,7 @@ putenv('PATH=/bin:/usr/local/bin');
                         $output = stream_get_contents($stream);
 
                     } else if($Device['marca'] === 'Kamai'){
-                        $DeviceUpdate = array('mensaje_evento' => 'FORCE UPDATE', 'reiniciar' => '1');
+                        $DeviceUpdate = array('mensaje_evento' => 'OUTDATED', 'reiniciar' => '1');
                     }
                     
                     echo "<pre>{$output}</pre>". PHP_EOL; 
@@ -61,7 +61,7 @@ putenv('PATH=/bin:/usr/local/bin');
                     //echo 'UPDATE! '.$Device['id_dispositivo']  . ' ~ '.$Device['ip'].' ~ '.$Device['ultima_ejecucion']. '<br>';echo '<br>';
                 } else {
                     
-                    $DeviceUpdate = array('mensaje_evento' => 'POWER ON');
+                    $DeviceUpdate = array('mensaje_evento' => 'UPDATED');
                     //echo 'OK      '.$Device['id_dispositivo']  . ' ~ '.$Device['ip'].' ~ '.$Device['ultima_ejecucion'].'<br>';echo '<br>';
                 }
             }
