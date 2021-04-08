@@ -104,8 +104,8 @@
             $Footer->set('Settings', $Libraries['Settings']);
 
             // Libreria para maniputal el template asignado
-            $Footer->set('LayoutScript', $Libraries['TvScripts'].$ModuleInfo['opcion_template'].'.js' );
-            $Footer->set('LayoutRecorderScript', $Libraries['TvScripts'].$ModuleInfo['opcion_template'].$Libraries['Recorder'].'.js' );
+            $Footer->set('LayoutScript', $Libraries['TvScript']);
+            $Footer->set('LayoutRecorderScript', $Libraries['TvScriptRecorder']);
             
             // Librerias javascript por marca
             $Footer->set('Player', $VendorFolder.$Libraries['Player']);
