@@ -38,7 +38,10 @@ The above copyright notice and this permission notice shall be included in all c
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
 </head>
 
-<body class="">
+<body class="">+
+  <!-- <div id="contenedor_carga">
+    <div id="carga"></div>
+  </div> -->
   <div class="wrapper">
     <div class="main-panel">
       <!-- Navbar -->
@@ -498,8 +501,10 @@ The above copyright notice and this permission notice shall be included in all c
       // Javascript method's body can be found in assets/js/demos.js
       // md.initDashboardPageCharts();
       fillMonthsButton();
-      getCharts(defaultC, defaultD);
-      getTables();
+      monthSelected = $('#SelectMonth').val();
+      yearSelected = $('#SelectYear').val();
+      getChannelsHoursList('Month', 'nombre_canal ASC', getMonthString(monthSelected, yearSelected));
+      getAll();
       
     //   $('#SelectMonth').change(function(){
     //      MonthSelected  = $(this).val();
@@ -525,7 +530,7 @@ The above copyright notice and this permission notice shall be included in all c
       let cont = 1;
       removeOptions(selectMonth);
       months.forEach(element => {
-      if (cont > actualMonth) {
+      if (cont > actualMonth+1) {
         return;
       }else{
         var option = document.createElement("option");
@@ -549,6 +554,7 @@ The above copyright notice and this permission notice shall be included in all c
     }
     monthSelected = $('#SelectMonth').val();
     getChannelsHoursList('Month', 'nombre_canal ASC', getMonthString(monthSelected, yearSelected));
+    console.log(getMonthString(monthSelected, yearSelected));
     if (!ChannelsViewObj.length) {
         dataSet = [['NO DATASET','NO DATASET']];
         dataSetLocation = [['NO DATASET','NO DATASET']];
@@ -568,55 +574,7 @@ The above copyright notice and this permission notice shall be included in all c
           icon.className = 'material-icons text-success';
           icon.innerHTML = 'check_circle';
           status.appendChild(icon);
-         var channelsName = [];
-         var channelsTimeOfView = [];
-             dataSet = [],
-             dataSetLocation = [];
-             dataSetChannelAverage = [];
-         var LocationsName = [];
-         var LocationsTimeOfView = [];
-         var maxViewChannel = [];
-         var channelsAverage = [];
-         var channelsTimeAverage = [];
-             ChannelsViewObj.forEach(element => {
-                  channelsName.push(element.NME);
-                  channelsTimeOfView.push(element.HRS);
-                  var aux = [];
-                  aux.push(element.NME);
-                  aux.push(element.HRSTXT);
-                  dataSet.push(aux);
-              });
-              ChannelsAverageObj.forEach(element => {
-                channelsAverage.push(element.NME);
-                channelsTimeAverage.push(element.HRS)
-                var aux = [];
-                  aux.push(element.NME);
-                  aux.push(element.HRSTXT);
-                  dataSetChannelAverage.push(aux);
-              });
-              LocationsViewObj.forEach(element => {
-                LocationsName.push(element.CL);
-                LocationsTimeOfView.push(element.HRS);
-                var aux = [];
-                aux.push(element.CL);
-                aux.push(element.HRSTXT);
-                dataSetLocation.push(aux);
-              });
-              ChannelsViewObj.forEach(element => {
-                if (element.HRS == getMax(channelsTimeOfView)) {
-                    maxViewChannel.push(element)
-                  }
-              });
-              maxViewChannel.forEach(element => {
-                let hrs= 0;
-                moreViewChannel.innerHTML = element.NME;
-                hrs= parseInt(element.HRS, 10);
-                hoursViewChannel.innerHTML = hrs + ' HRS';
-              });
-              removeCharts();
-              removeTables();
-              getTables();
-              getCharts(channelsName, channelsTimeOfView, LocationsName, LocationsTimeOfView);
+          getAll();
               
     }
 
@@ -627,6 +585,7 @@ The above copyright notice and this permission notice shall be included in all c
      monthSelected  = $(this).val();
      yearSelected = $('#SelectYear').val();
      getChannelsHoursList('Month', 'nombre_canal ASC', getMonthString(monthSelected, yearSelected));
+     console.log(getMonthString(monthSelected, yearSelected));
     if (!ChannelsViewObj.length) {
         dataSet = [['NO DATASET','NO DATASET']];
         dataSetLocation = [['NO DATASET','NO DATASET']];
@@ -646,79 +605,7 @@ The above copyright notice and this permission notice shall be included in all c
           icon.className = 'material-icons text-success';
           icon.innerHTML = 'check_circle';
           status.appendChild(icon);
-         var channelsName = [];
-         var channelsTimeOfView = [];
-         var LocationsName = [];
-         var LocationsTimeOfView = [];
-              dataSet = [],
-              dataSetLocation = [];
-              dataSetChannelAverage = [];
-         var maxViewChannel = [];
-         var maxViewLocation = [];
-         var channelsAverage = [];
-         var channelsTimeAverage = [];
-         var maxAverage = [];
-             ChannelsViewObj.forEach(element => {
-                  channelsName.push(element.NME);
-                  channelsTimeOfView.push(element.HRS);
-                  var aux = [];
-                  aux.push(element.NME);
-                  aux.push(element.HRSTXT);
-                  dataSet.push(aux);
-              });
-              ChannelsAverageObj.forEach(element => {
-                channelsAverage.push(element.NME);
-                channelsTimeAverage.push(element.HRS)
-                var aux = [];
-                aux.push(element.NME);
-                aux.push(element.HRSTXT);
-                dataSetChannelAverage.push(aux);
-              });
-              LocationsViewObj.forEach(element => {
-                LocationsName.push(element.CL);
-                LocationsTimeOfView.push(element.HRS);
-                var aux = [];
-                    aux.push(element.CL);
-                    aux.push(element.HRSTXT);
-                    dataSetLocation.push(aux);
-              });
-              ChannelsViewObj.forEach(element => {
-                if (element.HRS == getMax(channelsTimeOfView)) {
-                    maxViewChannel.push(element)
-                  }
-              });
-              ChannelsAverageObj.forEach(element => {
-                if (element.HRS == getMax(channelsTimeAverage)) {
-                  maxAverage.push(element);
-                }
-              });
-              LocationsViewObj.forEach(element => {
-                if (element.HRS == getMax(LocationsTimeOfView)) {
-                  maxViewLocation.push(element);
-                  }
-              });
-              removeCharts();
-              removeTables();
-              getTables();
-              getCharts(channelsName, channelsTimeOfView, LocationsName, LocationsTimeOfView);
-              maxViewChannel.forEach(element => {
-                let hrs= 0;
-                moreViewChannel.innerHTML = element.NME;
-                hrs= parseInt(element.HRS, 10);
-                hoursViewChannel.innerHTML = hrs + ' HRS';
-              });
-              maxViewLocation.forEach(element => {
-                let hrs= 0;
-                moreViewLocation.innerHTML = element.CL;
-                hrs= parseInt(element.HRS, 10);
-                hoursViewLocation.innerHTML = hrs + ' HRS';
-              });
-              maxAverage.forEach(element => {
-                let sns = 0;
-                AverageChannel.innerHTML = element.NME;
-                sns= parseInt(element.HRS, 10);
-                Average.innerHTML = sns + ' S'
-              });
+          getAll();
     }
   });
     });
@@ -784,7 +671,7 @@ The above copyright notice and this permission notice shall be included in all c
       let firstDateDBObjectDate = new Date(firstDateDBObject);
       let cont = 1;
         months.forEach(element => {
-          if (cont > actualMonth) {
+          if (cont > actualMonth+1) {
             return;
           }else{
             var option = document.createElement("option");
@@ -952,6 +839,82 @@ The above copyright notice and this permission notice shall be included in all c
           }
       }
       return mayor;
+    }
+    function getAll(){
+      var channelsName = [];
+         var channelsTimeOfView = [];
+         var LocationsName = [];
+         var LocationsTimeOfView = [];
+              dataSet = [],
+              dataSetLocation = [];
+              dataSetChannelAverage = [];
+         var maxViewChannel = [];
+         var maxViewLocation = [];
+         var channelsAverage = [];
+         var channelsTimeAverage = [];
+         var maxAverage = [];
+             ChannelsViewObj.forEach(element => {
+                  channelsName.push(element.NME);
+                  channelsTimeOfView.push(element.HRS);
+                  var aux = [];
+                  aux.push(element.NME);
+                  aux.push(element.HRSTXT);
+                  dataSet.push(aux);
+              });
+              ChannelsAverageObj.forEach(element => {
+                channelsAverage.push(element.NME);
+                channelsTimeAverage.push(element.HRS)
+                var aux = [];
+                aux.push(element.NME);
+                aux.push(element.HRSTXT);
+                dataSetChannelAverage.push(aux);
+              });
+              LocationsViewObj.forEach(element => {
+                LocationsName.push(element.CL);
+                LocationsTimeOfView.push(element.HRS);
+                var aux = [];
+                    aux.push(element.CL);
+                    aux.push(element.HRSTXT);
+                    dataSetLocation.push(aux);
+              });
+              ChannelsViewObj.forEach(element => {
+                if (element.HRS == getMax(channelsTimeOfView)) {
+                    maxViewChannel.push(element)
+                  }
+              });
+              ChannelsAverageObj.forEach(element => {
+                if (element.HRS == getMax(channelsTimeAverage)) {
+                  maxAverage.push(element);
+                }
+              });
+              LocationsViewObj.forEach(element => {
+                if (element.HRS == getMax(LocationsTimeOfView)) {
+                  maxViewLocation.push(element);
+                  }
+              });
+              removeCharts();
+              removeTables();
+              getTables();
+              getCharts(channelsName, channelsTimeOfView, LocationsName, LocationsTimeOfView);
+              maxViewChannel.forEach(element => {
+                let hrs= 0;
+                moreViewChannel.innerHTML = element.NME;
+                hrs= parseInt(element.HRS, 10);
+                hoursViewChannel.innerHTML = hrs + ' HRS';
+              });
+              maxViewLocation.forEach(element => {
+                let hrs= 0;
+                moreViewLocation.innerHTML = element.CL;
+                hrs= parseInt(element.HRS, 10);
+                hoursViewLocation.innerHTML = hrs + ' HRS';
+              });
+              maxAverage.forEach(element => {
+                let sns = 0;
+                AverageChannel.innerHTML = element.NME;
+                sns= parseInt(element.HRS, 10);
+                let hrs = sns/3600;
+                Average.innerHTML = hrs.toFixed(2) + ' HRS';
+              });
     }
  </script>
 </body>
