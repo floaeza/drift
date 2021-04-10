@@ -37,12 +37,13 @@
     <div id='EpgHeader'>
         <div id='EpgWeather'>
 
-            <canvas id='WeatherIcon' width='35' height='35'></canvas>
+            
             <div id='WeatherSummary'></div>
 
             <div id='TemperatureGroup'>
                 <span id='WeatherFarenheit'></span><span>&deg; F/</span>
                 <span id='WeatherCelsius'></span><span>&deg; C</span>
+                <canvas id='WeatherIcon' width='35' height='35'></canvas>
             </div>
         </div>
         <div id='EpgDate'></div>
@@ -50,10 +51,12 @@
 
     <!-- -->
     <div id='EpgNowAiring'></div>
+
+
     <div id='EpgDays'>
-        <b><i class='fa fa-chevron-left'></i></b>
+         <!--<b><i class='fa fa-chevron-left'></i></b>-->
         <div id='EpgDay'></div>
-        <b><i class='fa fa-chevron-right'></i></b>
+        <!--<b><i class='fa fa-chevron-right'></i></b></b>-->
     </div>
 
     <!-- Lista de canales -->
@@ -83,9 +86,10 @@
         <div id='ProgramRow5'></div>
     </div>
 
+
     <!-- Contiene las horas en la guia  -->
     <div id='ProgramFocus'></div>
-
+    
     <div id='EpgChannelLogo' class='EpgLogo'></div>
 
     <div id='EpgProgramInfo'>
@@ -99,10 +103,12 @@
         <div id='EpgRecording'></div>
         <div id='EpgSerie'></div>
     </div>
+    
+    <!-- Contiene Logo Empresa-->
+    <div id='EpgMainLogo' class='EpgMainLogo'><img src='Media/Logos/MainLogo.png'/> </div>
 
     <div id='Message'></div>
 </div>
-
 <!-- Barra Pause Live Tv y Grabacion en reproduccion -->
 
 <div id='BarContainer'>

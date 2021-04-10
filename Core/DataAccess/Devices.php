@@ -104,7 +104,7 @@ class Devices extends Database {
 
         return $this->Device;
     }
-
+    
     function updateGetDevice($DeviceId, $DeviceUpdate,$MacAddress){
         $this->Function = 'updateGetDevice';
 
@@ -117,7 +117,7 @@ class Devices extends Database {
 
         return $this->Device;
     }
-
+    
     function getDeviceLocation($DeviceId) {
         $this->Function = 'getDeviceLocation';
         
@@ -282,7 +282,8 @@ class Devices extends Database {
 
         return $this->Device;
     }
-
+    
+    
     function getDevicesByStatus($Status){
         $this->Function = 'getStatus';
 
@@ -314,4 +315,16 @@ class Devices extends Database {
 
         return $this->DeviceList;
     }
+    
+    function GetLocationList(){
+        $this->Function = 'GetLocationList';
+
+        $this->connect();
+        $this->select("locaciones","codigo_locacion");
+        $this->DeviceList = $this->getResult();
+        $this->disconnect();
+
+        return $this->DeviceList;
+    }
+    
 }
