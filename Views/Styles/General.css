@@ -77,6 +77,10 @@ and open the template in the editor.
     src: url(./Fonts/Gotham-Book-A.ttf);
 }
 
+@font-face {
+    font-family: Gotham Light;
+    src: url(./Fonts/Gotham-Light.ttf);
+}
 /*
 TITULOS
 <div style='font-family: novecento;'>1 Aviso program Avenger infinity war 14:38 /-($)!?</div>
@@ -193,7 +197,7 @@ div#InfoContainer {
     bottom: 0;
     position: fixed;
     visibility: hidden;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 div.ChannelNumber {
@@ -231,7 +235,7 @@ div.Title {
     float: left;
     width: 57%;
     overflow: hidden;
-        white-space: nowrap;
+    white-space: nowrap;
 
 }
 

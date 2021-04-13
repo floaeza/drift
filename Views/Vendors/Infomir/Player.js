@@ -38,12 +38,12 @@
          * 1 	video window   */
         gSTB.SetTopWin(0);
         
-
+ var Ext = gSTB.StandBy(false);
 /* *****************************************************************************
  * Reproductor de canal
  * ****************************************************************************/
     
-    function PlayChannel(Source, Port){
+    function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition){
 
         var CheckPort = '';
         
@@ -60,10 +60,21 @@
         //gSTB.Play(url);
         player.play({
             uri: Source + CheckPort,
-            solution: 'auto'
+            solution: 'auto',
+            program: ProgramIdPosition
         });
         
-        Debug(Source + CheckPort);
+        player.onTracksInfo = function () {
+            Debug('Information on audio and video tracks of the media content is received.');
+        };
+
+        player.onPlayStart = function () {
+            Debug('Video playback has begun.');
+        };
+        
+        player.onPlayError = function () {
+            Debug('Video playback error.');
+        };
 
         // Maximiza el video en caso de que no este en pantalla completa
         MaximizeTV();

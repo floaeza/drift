@@ -302,8 +302,14 @@ Debug('########################### HandleEvent() ');
         AssetsIdList = PVR.GetAssetIdList();
         
         if (typeof AssetsIdList !== 'object'){ AssetsCount = 0; } else { AssetsCount = AssetsIdList.count; }
+               
+        var YesterdayUtcDate = Date.UTC(moment().format('Y'), (moment().format('MM') -2), moment().format('DD'), moment().format('HH'), moment().format('mm'));
+                    YesterdayUtcDate = YesterdayUtcDate / 1000;
+                    
+        Debug('>>>>>>>>>>> YesterdayUtcDate '+YesterdayUtcDate);
 
         if (AssetsCount > 0){
+            
             var Indexal = 1,
                 AssetInfo = [],
                 ActRec    = false;
@@ -314,19 +320,23 @@ Debug('########################### HandleEvent() ');
                 
                 AssetInfo = PVR.GetAssetById(AssetsIdList[Indexal]);
                 
+                if(AssetInfo.startTime < YesterdayUtcDate){
+                    Debug('<<<<<<<<<< startTime <<<<'+AssetInfo.startTime);
+                } else {
+                
                 Debug(AssetInfo.title +', '+ OperationsList.recorded +', '+  '0' +', '+ AssetsIdList[Indexal] +', '+  AssetInfo.activeRecording);
                 
-                Debug('>>>>>>>>>>> startTime= '+AssetInfo.startTime);
+                Debug('>>>>>>>>>>> startTime >>>>'+AssetInfo.startTime);
 
                 ActRec = (AssetInfo.activeRecording === 0) ? 'false' : 'true';
 
                 UpdateProgramStatus(AssetInfo.title, OperationsList.recorded, '0', AssetsIdList[Indexal], ActRec);
-                
-                
 
+                }
             }
         } 
     }
+    
     
     function DeleteOldestAssets(){
         /* Elimina los 6 assets mas viejos cuando llega al 95% el disco duro*/

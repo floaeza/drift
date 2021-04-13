@@ -16,22 +16,6 @@
     <div class='Description'></div>
 </div>
 
-<div id='ChannelNumber'></div><!-- Cuadro con informacion del canal-->
-<div id='InfoContainer' class='BackgroundInfo'>
-    <div class='ChannelNumber'></div>
-    <div class='Quality'></div>
-    <div class='ChannelName'></div>
-    <div class='Date'></div>
-    <div class='Title'></div>
-    <div class='Duration'></div>
-    <div class='Time'></div>
-    <div class='Description'></div>
-</div>
-
-<div id='ChannelNumber'></div>
-
-<!-- Guia electronica -->
-
 <div id='EpgContainer'>
     <!-- Contiene informacion del programa y el canal, fecha y hora -->
     <div id='EpgHeader'>

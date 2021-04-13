@@ -16,22 +16,6 @@
     <div class='Description'></div>
 </div>
 
-<div id='ChannelNumber'></div><!-- Cuadro con informacion del canal-->
-<div id='InfoContainer' class='BackgroundInfo'>
-    <div class='ChannelNumber'></div>
-    <div class='Quality'></div>
-    <div class='ChannelName'></div>
-    <div class='Date'></div>
-    <div class='Title'></div>
-    <div class='Duration'></div>
-    <div class='Time'></div>
-    <div class='Description'></div>
-</div>
-
-<div id='ChannelNumber'></div>
-
-<!-- Guia electronica -->
-
 <div id='EpgContainer'>
     <!-- Contiene informacion del programa y el canal, fecha y hora -->
     <div id='EpgHeader'>
@@ -43,7 +27,7 @@
             <div id='TemperatureGroup'>
                 <span id='WeatherFarenheit'></span><span>&deg; F/</span>
                 <span id='WeatherCelsius'></span><span>&deg; C</span>
-                <canvas id='WeatherIcon' width='35' height='35'></canvas>
+                <canvas id='WeatherIcon' width='30' height='30'></canvas>
             </div>
         </div>
         <div id='EpgDate'></div>
@@ -56,7 +40,7 @@
     <div id='EpgDays'>
          <!--<b><i class='fa fa-chevron-left'></i></b>-->
         <div id='EpgDay'></div>
-        <!--<b><i class='fa fa-chevron-right'></i></b></b>-->
+        <!--<b><i class='fa fa-chevron-right'></i></b>-->
     </div>
 
     <!-- Lista de canales -->
@@ -66,6 +50,8 @@
         <div id='ChannelRow3'><p class='ChannelNumber'></p><p class='ChannelName'></p></div>
         <div id='ChannelRow4'><p class='ChannelNumber'></p><p class='ChannelName'></p></div>
         <div id='ChannelRow5'><p class='ChannelNumber'></p><p class='ChannelName'></p></div>
+        <div id='ChannelRow6'><p class='ChannelNumber'></p><p class='ChannelName'></p></div>
+        <div id='ChannelRow7'><p class='ChannelNumber'></p><p class='ChannelName'></p></div>
     </div>
 
     <!-- Contiene las horas en la guia  -->
@@ -84,12 +70,13 @@
         <div id='ProgramRow3'></div>
         <div id='ProgramRow4'></div>
         <div id='ProgramRow5'></div>
+        <div id='ProgramRow6'></div>
+        <div id='ProgramRow7'></div>
     </div>
-
 
     <!-- Contiene las horas en la guia  -->
     <div id='ProgramFocus'></div>
-    
+
     <div id='EpgChannelLogo' class='EpgLogo'></div>
 
     <div id='EpgProgramInfo'>
@@ -152,17 +139,24 @@
 <!-- Panel grabador -->
 <div id='PvrContainer'>
 
-    <div id='PvrDiskInfo'>
-        <div id='UsedSize'></div>
-        <div class='BarUsedSize'></div>
-        <div id='BarUsedSize'></div>
-    </div>
-
     <div class='PvrHeader'>
         <i class='fa fa-chevron-left PvrChevronLeft'></i>
         <div id='CurrentPvrOption'></div>
         <i class='fa fa-chevron-right PvrChevronRight'></i>
     </div>
+
+    <div id='PvrNow'>Now: 501 - EPN</div>
+
+    <div id='PvrMainLogo'><img src='Media/Logos/PvrMainLogo.png'/> </div>
+    
+    <div id='PvrWeather'> 
+        <span id='PvrWeatherFarenheit'>70</span><span>&deg; F/</span>
+        <span id='PvrWeatherCelsius'>21</span><span>&deg; C</span>
+        <i class='fas fa-sun PvrSun'></i>
+    </div>
+
+    <div id='PvrDate'>Mar, 29 / 12:35 PM</div>
+
 
     <div id='PvrList'>
         <div class='PvrProgram'></div>
@@ -184,6 +178,13 @@
         <div id='PvrProgramEpisode'></div>
         <div id='PvrProgramDescription'></div>
         <div id='PvrProgramTitle'></div>
+        <div id='PvrProgramRecordingData'>Recording Date: Monday, March 15,2021</div>
+    </div>
+
+    <div id='PvrDiskInfo'>
+        <div id='UsedSize'></div>
+        <div class='BarUsedSize'></div>
+        <div id='BarUsedSize'></div>
     </div>
 
     <div id='PvrOptions'>
