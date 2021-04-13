@@ -22,8 +22,7 @@ $Libraries['StylesPath']        = './Views/Styles/';
 $Libraries['VendorsPath']       = './Views/Vendors/';
 $Libraries['ScriptsPath']       = './Views/Scripts/';
 
-$Libraries['TvScript']    = $Libraries['LayoutsPath'].'Tv/Scripts/Containers.js';
-$Libraries['TvScriptRecorder']    = $Libraries['LayoutsPath'].'Tv/Scripts/Whpvr.js';
+$Libraries['TvScripts']    = $Libraries['LayoutsPath'].'Tv/Scripts/';
 $Libraries['TvStyles']     = $Libraries['LayoutsPath'].'Tv/Styles/';
 $Libraries['TvTemplates']  = $Libraries['LayoutsPhpPath'].'Tv/Templates/';
 
