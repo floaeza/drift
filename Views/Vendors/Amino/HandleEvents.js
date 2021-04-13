@@ -85,10 +85,9 @@ Debug('########################### HandleEvent() ');
             if(Executing === false){
                 UpdateQuickInfoDevice();
             }
-        } else if(NUMBER_EVENT === IGMP_STATUS_PLAYING || NUMBER_EVENT === STATUS_PLAYING){
+        }  else if(NUMBER_EVENT === VIDEO_STARTED){
             //
-            Debug('----> HANDLE EVENTS STATUS_PLAYING');
-            EventString = 'STATUS_PLAYING';
+            EventString = 'VIDEO_STARTED';
 
             if(CurrentModule === 'Tv'){
                 Debug('----> HANDLE EVENTS ActiveDigitalChannel: '+ActiveDigitalChannel);
@@ -97,6 +96,12 @@ Debug('########################### HandleEvent() ');
                     ImageDigital.style.display = 'none';
                 }
             }
+        } else if(NUMBER_EVENT === IGMP_STATUS_PLAYING || NUMBER_EVENT === STATUS_PLAYING){
+            //
+            Debug('----> HANDLE EVENTS STATUS_PLAYING');
+            EventString = 'STATUS_PLAYING';
+
+
 
             Debug('----> HANDLE EVENTS Executing: '+Executing);
             if(Executing === false){
@@ -120,257 +125,308 @@ Debug('########################### HandleEvent() ');
             if(Executing === false){
                 UpdateQuickInfoDevice();
             }
+        } else if(NUMBER_EVENT === HDMI_STATUS_UPDATED) {
+            if(System.HdmiConnected === true){
+                EventHdmi = 1;
+            } else {
+                EventHdmi = 0;
+            }
+
+            if(Executing === false){
+                UpdateQuickInfoDevice();
+            }
         }
     }
-    
-    
-    
+
+
+
 /*******************************************************************************
  * Actualiza informacion del disco duro
  *******************************************************************************/
 
-    function UpdateDiskInfo(){
-        
-        var StorageInfo = [];
-            StorageInfo = PVR.GetStorageInfo();
-        
-        $.ajax({
-            type: 'POST',
-            url: 'Core/Controllers/Recorder.php',
-            data: { 
-                Option     : 'SetPvrInfo', 
-                LocationId : Device['LocationId'],
-                MacAddress : MacAddress,
-                TotalSize : StorageInfo.totalSize,
-                AvailableSize : StorageInfo.availableSize
-            },
-            success: function (response){
-                //Debug(response);
-            }
-        });
-    }
+function UpdateDiskInfo(){
+
+    var StorageInfo = [];
+    StorageInfo = PVR.GetStorageInfo();
+
+    $.ajax({
+        type: 'POST',
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option     : 'SetPvrInfo',
+            LocationId : Device['LocationId'],
+            MacAddress : MacAddress,
+            TotalSize : StorageInfo.totalSize,
+            AvailableSize : StorageInfo.availableSize
+        },
+        success: function (response){
+            //Debug(response);
+        }
+    });
+}
 
 /*******************************************************************************
  * Obtien lista de programas para grabar
  *******************************************************************************/
-    
-    function GetProgramsToSchedule(){
-        $.ajax({
-            type: 'POST',
-            url: 'Core/Controllers/Recorder.php',
-            data: { 
-                Option     : 'CheckProgramsToSchedule',
-                MacAddress : MacAddress
-            },
-            success: function (response){
-                ProgramsToSchedule = $.parseJSON(response);
 
-                var Indexps     = 0,
-                    NewSchedule = [],
-                    ProgramId   = '',
-                    Title       = '',
-                    Source      = '',
-                    Start       = '',
-                    End         = '';
+function GetProgramsToSchedule(){
+    $.ajax({
+        type: 'POST',
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option     : 'CheckProgramsToSchedule',
+            MacAddress : MacAddress
+        },
+        success: function (response){
+            ProgramsToSchedule = $.parseJSON(response);
 
-                for(Indexps = 0;  Indexps < ProgramsToSchedule.length; Indexps++){
+            var Indexps     = 0,
+                NewSchedule = [],
+                ProgramId   = '',
+                Title       = '',
+                Source      = '',
+                Start       = '',
+                End         = '';
 
-                    ProgramId = ProgramsToSchedule[Indexps]['id_programa'];
-                    Title = ProgramsToSchedule[Indexps]['titulo_programa'];
-                    Source = ProgramsToSchedule[Indexps]['url_canal'];
-                    Start = ProgramsToSchedule[Indexps]['utc_inicio'];
-                    End = ProgramsToSchedule[Indexps]['utc_final'];
-                    
-                    Debug(Source +','+ Title +','+ Start +','+ End);
-                    
-                    NewSchedule = PVR.AddSchedule(Source, ProgramId, Start, End);
-                    NewSchedule.WriteMeta('This is Metadata for scheduled asset '+ Title);
-                    
-                    if (typeof NewSchedule !== 'object'){
-                        //CurrentTime = Date.UTC(moment().format('Y'), moment().format('MM'), moment().format('DD'), moment().format('HH'), moment().format('mm'));
-                        Debug('Fail new schedule');
-                    } else {
-                        UpdateProgramStatus(ProgramId, OperationsList.recording, NewSchedule.streamId, '', '');
-                        Debug('Newschedule: '+NewSchedule.streamId);
-                        
-                    }
+            for(Indexps = 0;  Indexps < ProgramsToSchedule.length; Indexps++){
+
+                ProgramId = ProgramsToSchedule[Indexps]['id_programa'];
+                Title = ProgramsToSchedule[Indexps]['titulo_programa'];
+                Source = ProgramsToSchedule[Indexps]['url_canal'];
+                Start = ProgramsToSchedule[Indexps]['utc_inicio'];
+                End = ProgramsToSchedule[Indexps]['utc_final'];
+
+                Debug(Source +','+ Title +','+ Start +','+ End);
+
+                NewSchedule = PVR.AddSchedule(Source, ProgramId, Start, End);
+                NewSchedule.WriteMeta('This is Metadata for scheduled asset '+ Title);
+
+                if (typeof NewSchedule !== 'object'){
+                    //CurrentTime = Date.UTC(moment().format('Y'), moment().format('MM'), moment().format('DD'), moment().format('HH'), moment().format('mm'));
+                    Debug('Fail new schedule');
+                } else {
+                    UpdateProgramStreamId(ProgramId, OperationsList.recording, NewSchedule.streamId);
+                    Debug('Newschedule: '+NewSchedule.streamId);
+
                 }
             }
-        });
-    }
-    
+        }
+    });
+}
+
 /*******************************************************************************
  * Obtien lista de programas a eliminar
  *******************************************************************************/
-    
-    function GetSchedulesToDelete(){
-        $.ajax({
-            type: 'POST',
-            url: 'Core/Controllers/Recorder.php',
-            data: { 
-                Option     : 'CheckSchedulesToDelete',
-                MacAddress : MacAddress
-            },
-            success: function (response){
-                ProgramsToDelete = $.parseJSON(response);
 
-                var Indexps     = 0;
-                
-                
-                var ResultDelete = -1,
-                    StreamId     = -1,
-                    AssetId      = -1,
-                    Active       = -1;
+function GetSchedulesToDelete(){
+    $.ajax({
+        type: 'POST',
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option     : 'CheckSchedulesToDelete',
+            MacAddress : MacAddress
+        },
+        success: function (response){
+            ProgramsToDelete = $.parseJSON(response);
 
-                for(Indexps = 0;  Indexps < ProgramsToDelete.length; Indexps++){
-                    
-                    StreamId = parseInt(ProgramsToDelete[Indexps].id_stream,10);
-                    AssetId  = parseInt(ProgramsToDelete[Indexps].id_asset,10);
-                    Active   = parseInt(ProgramsToDelete[Indexps].grabacion_activa,10);
-                    
-                    if(StreamId === 0){
+            var Indexps     = 0;
+
+
+            var ResultDelete = -1,
+                StreamId     = -1,
+                AssetId      = -1,
+                Active       = -1;
+
+            for(Indexps = 0;  Indexps < ProgramsToDelete.length; Indexps++){
+
+                StreamId = parseInt(ProgramsToDelete[Indexps].id_stream,10);
+                AssetId  = parseInt(ProgramsToDelete[Indexps].id_asset,10);
+                Active   = parseInt(ProgramsToDelete[Indexps].grabacion_activa,10);
+
+                if(StreamId === 0){
+                    DeleteProgram(ProgramsToDelete[Indexps].id_programa);
+                } if(AssetId > 0 && Active === 0){
+                    ResultDelete = PVR.DeleteAsset(AssetId);
+
+                    if(ResultDelete === 0){
                         DeleteProgram(ProgramsToDelete[Indexps].id_programa);
-                    } if(AssetId > 0 && Active === 0){
-                        ResultDelete = PVR.DeleteAsset(AssetId);
-                        
-                        if(ResultDelete === 0){
-                            DeleteProgram(ProgramsToDelete[Indexps].id_programa);
-                        }
+                    }
+                } else {
+                    ResultDelete = PVR.DeleteSchedule(StreamId);
+
+                    if(Active === 1){
+                        UpdateProgramDelete(ProgramsToDelete[Indexps].id_programa, OperationsList.delete, AssetId);
                     } else {
-                        ResultDelete = PVR.DeleteSchedule(StreamId);
-                        
-                        if(Active === 1){
-                            UpdateProgramStatus(ProgramsToDelete[Indexps].id_programa, OperationsList.delete, '', AssetId, 'false');
-                        } else {
-                            DeleteProgram(ProgramsToDelete[Indexps].id_programa);
-                        }
+                        DeleteProgram(ProgramsToDelete[Indexps].id_programa);
                     }
                 }
             }
-        });
-    }
-    
+        }
+    });
+}
+
 /*******************************************************************************
  * Actualiza el estatus de la grabacion y su stream id
- *******************************************************************************/   
+ *******************************************************************************/
 
-    function DeleteProgram(ProgramId){
-        $.ajax({
-            type: 'POST',
-            url: 'Core/Controllers/Recorder.php',
-            data: { 
-                Option     : 'DeleteProgram',
-                ProgramId : ProgramId
-            },
-            success: function (response){
-                //Debug(response);
-            }
-        });
-    }
-    
+function DeleteProgram(ProgramId){
+    $.ajax({
+        type: 'POST',
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option     : 'DeleteProgram',
+            ProgramId : ProgramId
+        },
+        success: function (response){
+            //Debug(response);
+        }
+    });
+}
+
 /*******************************************************************************
  * Actualiza el estatus de la grabacion y su stream id
- *******************************************************************************/   
+ *******************************************************************************/
 
-    function UpdateProgramStatus(ProgramId, OperationId, StreamId, AssetId, ActiveRecording){
-        
-        $.ajax({
-            type: 'POST',
-            url: 'Core/Controllers/Recorder.php',
-            data: { 
-                Option     : 'UpdateProgramStatus',
-                ProgramId : ProgramId,
-                OperationId : OperationId,
-                StreamId : StreamId,
-                AssetId : AssetId,
-                ActiveRecording : ActiveRecording
-            },
-            success: function (response){
-                //Debug('----------UpdateProgramStatus----------');
-                Debug(response);
-            }
-        });
-    }
-    
-    
+function UpdateProgramAsset(ProgramId, OperationId, AssetId, ActiveRecording){
+
+    $.ajax({
+        type: 'POST',
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option     : 'UpdateProgramAsset',
+            ProgramId : ProgramId,
+            OperationId : OperationId,
+            AssetId : AssetId,
+            ActiveRecording : ActiveRecording
+        },
+        success: function (response){
+            Debug('----------UpdateProgramAsset----------');
+            Debug(response);
+        }
+    });
+}
+
+function UpdateProgramStreamId(ProgramId, OperationId, StreamId){
+
+    $.ajax({
+        type: 'POST',
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option     : 'UpdateProgramStreamId',
+            ProgramId : ProgramId,
+            OperationId : OperationId,
+            StreamId : StreamId
+        },
+        success: function (response){
+            Debug('----------UpdateProgramStreamid----------');
+            Debug(response);
+        }
+    });
+}
+
+function UpdateProgramDelete(ProgramId, OperationId, AssetId){
+
+    $.ajax({
+        type: 'POST',
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option     : 'UpdateProgramStatusDelete',
+            ProgramId : ProgramId,
+            OperationId : OperationId,
+            AssetId : AssetId
+        },
+        success: function (response){
+            Debug('----------UpdateProgramDelete----------');
+            Debug(response);
+        }
+    });
+}
+
+
+
 /*******************************************************************************
  * Actualiza el asset id
- *******************************************************************************/   
+ *******************************************************************************/
 
-    function UpdateAssetsId(){
-        
-        AssetsIdList = PVR.GetAssetIdList();
-        
-        if (typeof AssetsIdList !== 'object'){ AssetsCount = 0; } else { AssetsCount = AssetsIdList.count; }
+function UpdateAssetsId(){
 
-        if (AssetsCount > 0){
-            var Indexal = 1,
-                AssetInfo = [],
-                ActRec    = false;
-        
-            for(Indexal = 1;  Indexal <= AssetsIdList.count; Indexal++){
-                
-                //Debug('::::::::= '+AssetsIdList.count);
-                
-                AssetInfo = PVR.GetAssetById(AssetsIdList[Indexal]);
-                
-                Debug(AssetInfo.title +', '+ OperationsList.recorded +', '+  '0' +', '+ AssetsIdList[Indexal] +', '+  AssetInfo.activeRecording);
-                
-                Debug('>>>>>>>>>>> startTime= '+AssetInfo.startTime);
+    AssetsIdList = PVR.GetAssetIdList();
 
-                ActRec = (AssetInfo.activeRecording === 0) ? 'false' : 'true';
+    if (typeof AssetsIdList !== 'object'){ AssetsCount = 0; } else { AssetsCount = AssetsIdList.count; }
 
-                UpdateProgramStatus(AssetInfo.title, OperationsList.recorded, '0', AssetsIdList[Indexal], ActRec);
-                
-                
+    if (AssetsCount > 0){
+        var Indexal = 1,
+            AssetInfo = [],
+            ActRec    = false,
+            Option    = '';
 
-            }
-        } 
+        for(Indexal = 1;  Indexal <= AssetsIdList.count; Indexal++){
+
+            //Debug('::::::::= '+AssetsIdList.count);
+
+            AssetInfo = PVR.GetAssetById(AssetsIdList[Indexal]);
+
+            Debug('----------------------> UpdateAssetsId '+AssetsIdList.count);
+
+            Debug(AssetInfo.title +', '+ OperationsList.recorded +', '+ AssetsIdList[Indexal] +', '+  AssetInfo.activeRecording);
+
+            ActRec = (AssetInfo.activeRecording === 0) ? false : true;
+
+            Option = (AssetInfo.activeRecording === 0) ? OperationsList.recorded : OperationsList.recording;
+
+            UpdateProgramAsset(AssetInfo.title, Option, AssetsIdList[Indexal], ActRec);
+
+        }
     }
-    
-    function DeleteOldestAssets(){
-        /* Elimina los 6 assets mas viejos cuando llega al 95% el disco duro*/
-        AssetsIdList = PVR.GetAssetIdList();
-        
-        if (typeof AssetsIdList !== 'object'){ AssetsCount = 0; } else { AssetsCount = AssetsIdList.count; }
+}
 
-        if (AssetsCount > 0){
-            var Indexal = 1,
-                AssetInfo = [],
-                ActRec    = false;
-        
-            for(Indexal = 1;  Indexal <= 6; Indexal++){
+function DeleteOldestAssets(){
+    /* Elimina los 6 assets mas viejos cuando llega al 95% el disco duro*/
+    AssetsIdList = PVR.GetAssetIdList();
 
-                AssetInfo = PVR.GetAssetById(AssetsIdList[Indexal]);
+    if (typeof AssetsIdList !== 'object'){ AssetsCount = 0; } else { AssetsCount = AssetsIdList.count; }
 
-                ActRec = (AssetInfo.activeRecording === 0) ? 'false' : 'true';
-                
-                //Debug(Indexal+'= ######### ProgramId: '+AssetInfo.title +', AssetId: '+ AssetsIdList[Indexal] +', Active:'+  ActRec);
+    if (AssetsCount > 0){
+        var Indexal = 1,
+            AssetInfo = [],
+            ActRec    = false;
 
-                UpdateProgramStatus(AssetInfo.title, OperationsList.recorded, '0', AssetsIdList[Indexal], ActRec);
-            }
-        } 
+        for(Indexal = 1;  Indexal <= 6; Indexal++){
+
+            AssetInfo = PVR.GetAssetById(AssetsIdList[Indexal]);
+
+            ActRec = (AssetInfo.activeRecording === 0) ? false : true;
+
+            //Debug(Indexal+'= ######### ProgramId: '+AssetInfo.title +', AssetId: '+ AssetsIdList[Indexal] +', Active:'+  ActRec);
+
+            UpdateProgramAsset(AssetInfo.title, OperationsList.recorded, AssetsIdList[Indexal], ActRec);
+        }
     }
-    
-  
+}
+
+
 /*******************************************************************************
  * Carga inicial con funciones para el DVR
  *******************************************************************************/
 
-    if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
-        UpdateDiskInfo();
-        
-        HandlerPvr();
+if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
+    UpdateDiskInfo();
 
-        setInterval(HandlerPvr,60000);
-    }
-    
-    function HandlerPvr(){
-        
-        GetProgramsToSchedule();
-        
-        GetSchedulesToDelete();
+    HandlerPvr();
 
-        Debug('-------> HandlerPvr');
-    }
+    GetProgramsSerie();
+
+    setInterval(HandlerPvr,60000);
+}
+
+function HandlerPvr(){
+
+    UpdateAssetsId();
+
+    GetProgramsToSchedule();
+
+    GetSchedulesToDelete();
+
+    Debug('-------> HandlerPvr');
+}
 
