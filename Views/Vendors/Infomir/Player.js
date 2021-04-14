@@ -4,6 +4,48 @@
  * Vendor: Infomir
  */
 
+<<<<<<< HEAD
+    // Variables globales
+    var PlayingChannel  = false,
+        PlayingVod      = true,
+        PauseLive       = false;
+        
+    var WindowMaxWidth  = 0,
+        WindowMaxHeight = 0,
+        WindowMinWidth  = 0,
+        WindowMinHeight = 0;
+
+    var player = stbPlayerManager.list[0];
+        //gSTB.SetTopWin(0);
+        
+        player.videoWindowMode = 0;
+        player.aspectConversion = 5;
+        
+    var player2 = stbPlayerManager.list[1];
+    
+        player2.videoWindowMode = 0;
+        player2.aspectConversion = 5;
+    
+    var Swap            = false,
+        Playlist        = '',
+        IndexPlaylist   = -1;
+        LengthPlaylist  = 0;
+        
+        GetWindowFullSize();
+        GetWindowMinSize();
+        
+        /* Set the preset window over others.
+         * 0 	graphic window
+         * 1 	video window   */
+        gSTB.SetTopWin(0);
+        
+ var Ext = gSTB.StandBy(false);
+/* *****************************************************************************
+ * Reproductor de canal
+ * ****************************************************************************/
+    
+    function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition){
+=======
 // Variables globales
 var PlayingChannel  = false,
     PlayingVod      = true,
@@ -42,13 +84,52 @@ var Ext = gSTB.StandBy(false);
 /* *****************************************************************************
  * Reproductor de canal
  * ****************************************************************************/
+>>>>>>> refs/remotes/origin/main
 
 function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition){
 
     var CheckPort = '';
 
+<<<<<<< HEAD
+        //gSTB.Play(url);
+        player.play({
+            uri: Source + CheckPort,
+            solution: 'auto',
+            program: ProgramIdPosition
+        });
+        
+        player.onTracksInfo = function () {
+            Debug('Information on audio and video tracks of the media content is received.');
+        };
+
+        player.onPlayStart = function () {
+            Debug('Video playback has begun.');
+        };
+        
+        player.onPlayError = function () {
+            Debug('Video playback error.');
+        };
+
+        // Maximiza el video en caso de que no este en pantalla completa
+        MaximizeTV();
+
+        // Activamos la bandera
+        PlayingChannel = true;
+        
+        // Si la guia esta cerrada muestra cuadro con informacion del canal en reproduccion
+        ShowInfo();
+        
+        // Si tiene una fecha ya registrada guarda estadisticas en la BD
+        if(StartDateChannel !== ''){
+            SetChannelStatistics();
+        }
+           
+        // Actualiza la fecha inicio de la reproduccion del canal */
+        StartDateChannel = new Date();
+=======
     if(Port){
         CheckPort = ':' + Port;
+>>>>>>> refs/remotes/origin/main
     }
 
     // Detiene el proceso de la reproduccion anterior
