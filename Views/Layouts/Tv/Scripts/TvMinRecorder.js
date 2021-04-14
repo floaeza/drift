@@ -16,7 +16,7 @@ var DaysEpg                 = [],
     EpgDayNumber            = 0;
 
 var TotalPrograms           = 100,
-    MaxRows                 = 5,
+    MaxRows                 = 7,
     Rows                    = 1;
 
 var HourRows                = 1,
@@ -39,11 +39,11 @@ var RowSelected             = 1,
 var FocusChannelPosition    = 0;
 FocusProgramPosition    = 0;
 
-var ColorFocus              = '';
+var ColorFocus          = '';
 BackgroundFocus         = '';
 
 var ProgramsToLeft          = false,
-    ProgramsToChange          = false;
+    ProgramsToChange        = false;
 
 var EpgTime                 = '',
     SecondsToCloseEpg       = 300,
@@ -102,7 +102,7 @@ function OpenEpg(){
 
         /* Activa bandera, muestra contenedor y asigna la informacion de la cabecera */
         EpgContainer.style.visibility = 'visible';
-        EpgNowAiring.innerHTML = 'Now airing: '+ChannelsJson[ChannelPosition].INDC + ' - ' + ChannelsJson[ChannelPosition].CHNL + '<br> ('+ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].TTLE+')';
+        EpgNowAiring.innerHTML = 'Now: '+ChannelsJson[ChannelPosition].INDC + ' - ' + ChannelsJson[ChannelPosition].CHNL;
         EpgDate.textContent = FormatDateAndHour;
         EpgDay.textContent = 'Today';
         ActiveEpgContainer = true;
@@ -528,6 +528,8 @@ var NodesRowPrograms1 = '',
     NodesRowPrograms3 = '',
     NodesRowPrograms4 = '',
     NodesRowPrograms5 = '';
+    NodesRowPrograms6 = '',
+    NodesRowPrograms7 = '';
 
 function GetRowsPrograms(){
     NodesRowPrograms1 = document.getElementById('ProgramRow1').childNodes;
@@ -535,6 +537,8 @@ function GetRowsPrograms(){
     NodesRowPrograms3 = document.getElementById('ProgramRow3').childNodes;
     NodesRowPrograms4 = document.getElementById('ProgramRow4').childNodes;
     NodesRowPrograms5 = document.getElementById('ProgramRow5').childNodes;
+    NodesRowPrograms6 = document.getElementById('ProgramRow6').childNodes;
+    NodesRowPrograms7 = document.getElementById('ProgramRow7').childNodes;
 }
 
 function GetFocusStyle(){
@@ -574,6 +578,16 @@ function FocusEpgProgram(RowSelected,ProgramSelect){
 
             case 5:
                 ProgramSelect = NodesRowPrograms5.length;
+                --ProgramSelect;
+                break;
+            
+            case 6:
+                ProgramSelect = NodesRowPrograms6.length;
+                --ProgramSelect;
+                break;
+
+            case 7:
+                ProgramSelect = NodesRowPrograms7.length;
                 --ProgramSelect;
                 break;
         }
@@ -625,6 +639,24 @@ function FocusEpgProgram(RowSelected,ProgramSelect){
                     }
                 }
                 break;
+
+            case 6:
+                if(typeof(NodesRowPrograms6[ProgramSelect]) === 'undefined') {
+                    --ProgramSelect;
+                    while(typeof(NodesRowPrograms6[ProgramSelect]) === 'undefined') {
+                        --ProgramSelect;
+                        }
+                    }
+                break;
+
+            case 7:
+                if(typeof(NodesRowPrograms7[ProgramSelect]) === 'undefined') {
+                    --ProgramSelect;
+                    while(typeof(NodesRowPrograms7[ProgramSelect]) === 'undefined') {
+                        --ProgramSelect;
+                            }
+                        }
+                break;
         }
         ProgramSelected = ProgramSelect;
         ProgramsToChange = false;
@@ -672,6 +704,23 @@ function FocusEpgProgram(RowSelected,ProgramSelect){
             FocusChannelPosition = Positions.split(',')[0];
             FocusProgramPosition = Positions.split(',')[1];
             break;
+
+        case 6:
+            NodesRowPrograms6[ProgramSelect].style.backgroundColor = BackgroundFocus;
+            NodesRowPrograms6[ProgramSelect].style.color = ColorFocus;
+            Positions = NodesRowPrograms5[ProgramSelect].title;
+            FocusChannelPosition = Positions.split(',')[0];
+            FocusProgramPosition = Positions.split(',')[1];
+            break;
+
+        case 7:
+            NodesRowPrograms7[ProgramSelect].style.backgroundColor = BackgroundFocus;
+            NodesRowPrograms7[ProgramSelect].style.color = ColorFocus;
+            Positions = NodesRowPrograms5[ProgramSelect].title;
+            FocusChannelPosition = Positions.split(',')[0];
+            FocusProgramPosition = Positions.split(',')[1];
+            break;
+            
     }
     //console.log('================= 3) FocusEpgProgram('+RowSelected+','+ProgramSelect+')');
     ShowInfoEpg();
@@ -707,6 +756,16 @@ function UnfocusEpgProgram(RowSelected,ProgramSelected){
             NodesRowPrograms5[ProgramSelected].style.backgroundColor = BackgroundUnfocus;
             NodesRowPrograms5[ProgramSelected].style.color = ColorUnfocus;
             break;
+
+        case 6:
+            NodesRowPrograms6[ProgramSelected].style.backgroundColor = BackgroundUnfocus;
+            NodesRowPrograms6[ProgramSelected].style.color = ColorUnfocus;
+            break;
+
+        case 7:
+            NodesRowPrograms7[ProgramSelected].style.backgroundColor = BackgroundUnfocus;
+            NodesRowPrograms7[ProgramSelected].style.color = ColorUnfocus;
+            break;
     }
 }
 
@@ -720,12 +779,10 @@ function ShowInfoEpg(){
             }
         }
     }
-    EpgInfoContainerNodes[3].textContent  = ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].DSCR;
+    EpgInfoContainerNodes[9].textContent  = ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].DSCR;
     EpgInfoContainerNodes[5].textContent  = FormatHours(ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].STRH)+' - '+FormatHours(ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].FNLH);
-    EpgInfoContainerNodes[7].textContent  = TimeConvert(ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].MNTS);
-    EpgInfoContainerNodes[9].textContent  = ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].TVRT;
-    EpgInfoContainerNodes[11].innerHTML   = ShowStars(ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].STRS);
-    EpgInfoContainerNodes[13].textContent = ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].EPSD;
+    EpgInfoContainerNodes[7].textContent  = ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].TVRT;
+   
 }
 
 

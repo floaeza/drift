@@ -1000,7 +1000,7 @@ Debug(myDate);
                 }
                 
                 IndexProgram++;
-=======
+
 /* @Creado por: Tania Maldonado
  * @Fecha: Noviembre 2019
  * @Tipo: Funciones para controlar la guia
@@ -2740,7 +2740,7 @@ Debug(myDate);
         }
     }
     
-=======
+
 /*******************************************************************************
  * Contuye y agrega los datos a mostrar de cada renglon con la programacion
  *******************************************************************************/

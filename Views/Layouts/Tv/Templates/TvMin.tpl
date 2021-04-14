@@ -14,15 +14,13 @@
     <div class='Duration'></div>
     <div class='Time'></div>
     <div class='Description'></div>
+    <div class='Rating'></div>
 </div>
 
 <div id='EpgContainer'>
     <!-- Contiene informacion del programa y el canal, fecha y hora -->
     <div id='EpgHeader'>
         <div id='EpgWeather'>
-
-            
-            <div id='WeatherSummary'></div>
 
             <div id='TemperatureGroup'>
                 <span id='WeatherFarenheit'></span><span>&deg; F/</span>
@@ -77,18 +75,12 @@
     <!-- Contiene las horas en la guia  -->
     <div id='ProgramFocus'></div>
 
-    <div id='EpgChannelLogo' class='EpgLogo'></div>
-
     <div id='EpgProgramInfo'>
         <div id='EpgTitle'></div>
-        <div id='EpgDescription'></div>
+        <div id='EpgChannelLogo' class='EpgLogo'></div>
         <div id='EpgTime'></div>
-        <div id='EpgDuration'></div>
         <div id='EpgRating'></div>
-        <div id='EpgStars'></div>
-        <div id='EpgEpisode'></div>
-        <div id='EpgRecording'></div>
-        <div id='EpgSerie'></div>
+        <div id='EpgDescription'></div>
     </div>
     
     <!-- Contiene Logo Empresa-->
@@ -145,17 +137,20 @@
         <i class='fa fa-chevron-right PvrChevronRight'></i>
     </div>
 
-    <div id='PvrNow'>Now: 501 - EPN</div>
+    <div id='PvrNow'></div>
 
     <div id='PvrMainLogo'><img src='Media/Logos/PvrMainLogo.png'/> </div>
-    
-    <div id='PvrWeather'> 
-        <span id='PvrWeatherFarenheit'>70</span><span>&deg; F/</span>
-        <span id='PvrWeatherCelsius'>21</span><span>&deg; C</span>
-        <i class='fas fa-sun PvrSun'></i>
-    </div>
 
-    <div id='PvrDate'>Mar, 29 / 12:35 PM</div>
+           <div id='PvrWeather'>
+
+            <div id='TemperatureGroup'>
+                <span id='WeatherFarenheit'></span><span>&deg; F/</span>
+                <span id='WeatherCelsius'></span><span>&deg; C</span>
+                <canvas id='WeatherIcon' width='30' height='30'></canvas>
+            </div>
+        </div>
+
+    <div id='PvrDate'></div>
 
 
     <div id='PvrList'>
@@ -172,13 +167,9 @@
     </div>
 
     <div id='PvrInfo'>
-        <div id='PvrProgramDate'></div>
-        <div id='PvrProgramDuration'></div>
-        <div id='PvrProgramStars'></div>
-        <div id='PvrProgramEpisode'></div>
-        <div id='PvrProgramDescription'></div>
         <div id='PvrProgramTitle'></div>
-        <div id='PvrProgramRecordingData'>Recording Date: Monday, March 15,2021</div>
+        <div id='PvrProgramDate'></div>
+        <div id='PvrProgramDescription'></div>
     </div>
 
     <div id='PvrDiskInfo'>

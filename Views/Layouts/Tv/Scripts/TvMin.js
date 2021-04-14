@@ -59,6 +59,9 @@ if(Device['Type'] !== 'NONE'){
         CurrentPvrOption        = document.getElementById('CurrentPvrOption'),
         PvrDiskInfoNodes        = document.getElementById('PvrDiskInfo').childNodes;
 
+    var PvrNow            = document.getElementById('PvrNow'),
+        PvrDate           = document.getElementById('PvrDate');
+
     var PvrTimer                = '',
         SecondsToClosePvr       = 300,
         TimeoutPvr              = SecondsToClosePvr * 1000;
@@ -175,7 +178,7 @@ function CloseRecordingOptions(){
         var AllPrograms = document.getElementsByClassName('Program'),
             IndexProgram = 0;
         for(IndexProgram = 0; IndexProgram < AllPrograms.length; IndexProgram++) {
-            AllPrograms[IndexProgram].style.outline = '1px solid '+BackgroundFocus;
+            AllPrograms[IndexProgram].style.outline = '1px solid rgba(24, 46, 58, 0.9';
         }
 
         RecordingOptions.style.visibility = 'hidden';
@@ -754,6 +757,10 @@ function OpenPvr(){
 
         PvrContainer.style.visibility = 'visible';
 
+        /*Informacion en pantalla PVR*/
+        PvrNow.innerHTML = 'Now: '+ChannelsJson[ChannelPosition].INDC + ' - ' + ChannelsJson[ChannelPosition].CHNL;
+        PvrDate.textContent = FormatDateAndHour;
+
         RecordingPanel = true;
 
         OptionPanel = 'Recordings';
@@ -907,14 +914,12 @@ function SetRecordings(Direction){
 
             if(IndexRecorded < RecordingsList.length){
                 if(RecordingsList[IndexRecorded].length > 2){
-                    Icon = '<i class="fa fa-folder-open"></i>';
                     Title = 'serie';
                 } else {
-                    Icon = '<i class="fa fa-file-o"></i>';
                     Title = 'rec';
                 }
 
-                PvrListNodes[Row].innerHTML = Icon + ' '+ RecordingsList[IndexRecorded][IndexProgram];
+                PvrListNodes[Row].innerHTML = RecordingsList[IndexRecorded][IndexProgram];
                 PvrListNodes[Row].title = Title + ','+IndexRecorded+',1';
 
                 Row++;
@@ -976,19 +981,11 @@ function SetFocusRecordings(){
         IndexRecordedProgFocus   = parseInt(PvrListNodes[PvrRowFocus].title.split(',')[2]);
 
         if(RowTypeFocus === 'serie'){
-            PvrInfoNodes[1].textContent  = 'Episodes:';
-            PvrInfoNodes[3].textContent  = '';
-            PvrInfoNodes[5].innerHTML    = '';
-            PvrInfoNodes[7].textContent  = RecordingsList[IndexRecordedFocus].length - 1;
-            PvrInfoNodes[9].textContent  = '';
-            PvrInfoNodes[11].textContent = RecordingsList[IndexRecordedFocus][0];
+            PvrInfoNodes[3].textContent  = 'Recording Date: '+ moment(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].date).format('MMMM Do YYYY');
+            PvrInfoNodes[5].textContent  = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].description;
+            PvrInfoNodes[1].textContent = RecordingsList[IndexRecordedFocus][0];
         } else {
-            PvrInfoNodes[1].textContent  = moment(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].date).format('MMMM Do YYYY');
-            PvrInfoNodes[3].textContent  = TimeConvert(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].duration);
-            PvrInfoNodes[5].innerHTML    = ShowStars(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].rating);
-            PvrInfoNodes[7].textContent  = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].episode;
-            PvrInfoNodes[9].textContent  = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].description;
-            PvrInfoNodes[11].textContent = RecordingsList[IndexRecordedFocus][0];
+           
         }
     }  else {
         ClearInfoPanelPvr();

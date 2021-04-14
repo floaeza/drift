@@ -16,7 +16,7 @@ Debug('########################### Time() ');
     function SetDate(){
         TimeRunning++;
         
-        FormatDateAndHour = moment().format('dddd  MMMM Do YYYY, h:mm a');
+        FormatDateAndHour = moment().format('MMM DD / h:mm a');
 
         if(CurrentModule === 'Tv'){
             if(ActiveInfoContainer === true){
@@ -27,7 +27,7 @@ Debug('########################### Time() ');
                 EpgDate.textContent = FormatDateAndHour;
             }
         } else if(CurrentModule === 'Menu' || CurrentModule === 'Movies'){
-            FormatDate = moment().format('dddd  MMMM Do YYYY');
+            FormatDate = moment().format('MMM DD ');
             FormatHour = moment().format('h:mm a');
         
             MenuDate.textContent = FormatDate;
