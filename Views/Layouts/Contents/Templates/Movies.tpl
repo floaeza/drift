@@ -64,7 +64,7 @@
     </div> -->
     <div id='PanelRight'>
         <div id="PanelRecommendedMovies">
-            <div class="PrincipalMoviesTitle">PanelRecommendedMovies</div>
+            <div class="PrincipalMoviesTitle">Recommended Movies</div>
             <div id="RecommendedMoviesList" class="RecommendedMoviesRow"></div>
         </div>
         <div id="PanelAllMovies">
@@ -86,8 +86,8 @@
     <div class='MovieDescription'></div>
     <div class='Director'></div>
     <div class='Casting'></div>
-    <div class='Buttons' id='PlayPanel'><i class='fa fa-play'></i> Play</div>
-    <div class='Buttons' id='ExitPanel'><i class='fa fa-times'></i> Exit</div>
+    <div class='Buttons' id='PlayPanel'><i class='fa fa-play'></i> PLAY</div>
+    <div class='Buttons' id='ExitPanel'><i class='fa fa-times'></i> EXIT</div>
 </div>
 
 <div id='BackgroundPanel'></div>

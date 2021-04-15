@@ -458,7 +458,7 @@ div#MoviePanel {
     visibility: hidden;
     bottom: 0;
     position: fixed;
-    background: rgba(0, 0, 0, 0.7);
+    background: #131313;
     z-index: 1;
 }
 

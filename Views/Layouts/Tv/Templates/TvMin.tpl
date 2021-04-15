@@ -21,14 +21,14 @@
     <!-- Contiene informacion del programa y el canal, fecha y hora -->
     <div id='EpgHeader'>
         <div id='EpgWeather'>
-
             <div id='TemperatureGroup'>
                 <span id='WeatherFarenheit'></span><span>&deg; F/</span>
-                <span id='WeatherCelsius'></span><span>&deg; C</span>
-                <canvas id='WeatherIcon' width='30' height='30'></canvas>
-            </div>
+                <span id='WeatherCelsius'></span><span>&deg; C</span></div>
+            <div id='Icon'><canvas id='WeatherIcon' width='30' height='30'></canvas></div>  
         </div>
+
         <div id='EpgDate'></div>
+
     </div>
 
     <!-- -->
@@ -139,11 +139,10 @@
 
     <div id='PvrNow'></div>
 
-    <div id='PvrMainLogo'><img src='Media/Logos/PvrMainLogo.png'/> </div>
+    <div id='PvrMainLogo'><img src='Media/Logos/PvrMainLogo.png'/></div>
 
-           <div id='PvrWeather'>
-
-            <div id='TemperatureGroup'>
+        <div id='PvrWeather'>
+        <div id='TemperatureGroup'>
                 <span id='WeatherFarenheit'></span><span>&deg; F/</span>
                 <span id='WeatherCelsius'></span><span>&deg; C</span>
                 <canvas id='WeatherIcon' width='30' height='30'></canvas>

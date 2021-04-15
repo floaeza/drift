@@ -424,7 +424,7 @@ function GetRecordingsToRecord(){
 
 function GetPvrInfo(){
     if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
-        SetPvrInfo();
+        SetPvrInfo(); 
     } else {
         $.ajax({
             type: 'POST',
@@ -760,7 +760,7 @@ function OpenPvr(){
         /*Informacion en pantalla PVR*/
         PvrNow.innerHTML = 'Now: '+ChannelsJson[ChannelPosition].INDC + ' - ' + ChannelsJson[ChannelPosition].CHNL;
         PvrDate.textContent = FormatDateAndHour;
-
+        
         RecordingPanel = true;
 
         OptionPanel = 'Recordings';
@@ -770,6 +770,8 @@ function OpenPvr(){
         SetOptionPanel();
 
         GetPvrInfo();
+
+        GetWeather();
 
         PvrTimer = setTimeout(ClosePvr,TimeoutPvr);
     }
