@@ -4,48 +4,6 @@
  * Vendor: Infomir
  */
 
-<<<<<<< HEAD
-    // Variables globales
-    var PlayingChannel  = false,
-        PlayingVod      = true,
-        PauseLive       = false;
-        
-    var WindowMaxWidth  = 0,
-        WindowMaxHeight = 0,
-        WindowMinWidth  = 0,
-        WindowMinHeight = 0;
-
-    var player = stbPlayerManager.list[0];
-        //gSTB.SetTopWin(0);
-        
-        player.videoWindowMode = 0;
-        player.aspectConversion = 5;
-        
-    var player2 = stbPlayerManager.list[1];
-    
-        player2.videoWindowMode = 0;
-        player2.aspectConversion = 5;
-    
-    var Swap            = false,
-        Playlist        = '',
-        IndexPlaylist   = -1;
-        LengthPlaylist  = 0;
-        
-        GetWindowFullSize();
-        GetWindowMinSize();
-        
-        /* Set the preset window over others.
-         * 0 	graphic window
-         * 1 	video window   */
-        gSTB.SetTopWin(0);
-        
- var Ext = gSTB.StandBy(false);
-/* *****************************************************************************
- * Reproductor de canal
- * ****************************************************************************/
-    
-    function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition){
-=======
 // Variables globales
 var PlayingChannel  = false,
     PlayingVod      = true,
@@ -81,55 +39,18 @@ GetWindowMinSize();
 gSTB.SetTopWin(0);
 
 var Ext = gSTB.StandBy(false);
+
+
 /* *****************************************************************************
  * Reproductor de canal
  * ****************************************************************************/
->>>>>>> refs/remotes/origin/main
 
 function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition){
 
     var CheckPort = '';
 
-<<<<<<< HEAD
-        //gSTB.Play(url);
-        player.play({
-            uri: Source + CheckPort,
-            solution: 'auto',
-            program: ProgramIdPosition
-        });
-        
-        player.onTracksInfo = function () {
-            Debug('Information on audio and video tracks of the media content is received.');
-        };
-
-        player.onPlayStart = function () {
-            Debug('Video playback has begun.');
-        };
-        
-        player.onPlayError = function () {
-            Debug('Video playback error.');
-        };
-
-        // Maximiza el video en caso de que no este en pantalla completa
-        MaximizeTV();
-
-        // Activamos la bandera
-        PlayingChannel = true;
-        
-        // Si la guia esta cerrada muestra cuadro con informacion del canal en reproduccion
-        ShowInfo();
-        
-        // Si tiene una fecha ya registrada guarda estadisticas en la BD
-        if(StartDateChannel !== ''){
-            SetChannelStatistics();
-        }
-           
-        // Actualiza la fecha inicio de la reproduccion del canal */
-        StartDateChannel = new Date();
-=======
     if(Port){
         CheckPort = ':' + Port;
->>>>>>> refs/remotes/origin/main
     }
 
     // Detiene el proceso de la reproduccion anterior
@@ -156,6 +77,7 @@ function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition){
     player.onPlayError = function () {
         Debug('Video playback error.');
     };
+
 
     // Maximiza el video en caso de que no este en pantalla completa
     MaximizeTV();
@@ -217,33 +139,42 @@ function PlayDigitalChannel(Source){
  * Reproduce videos
  * ****************************************************************************/
 
+var Playlist = '',
+    IndexPlaylist = 0;
+LengthPlaylist = 0;
+
 function PlayVideo(Source){
     // Detiene el proceso de la reproduccion anterior
     StopVideo();
 
-    // Reproduce el video
     if(CurrentModule === 'Tv'){
-        IndexPlaylist = -1;
-        LengthPlaylist = 0;
-
         GetRaws(Source);
+
+        LengthPlaylist = Playlist.length;
+        Debug('--------------->>> '+Playlist[IndexPlaylist]);
+        //Reproduce el video
+        player.play({
+            uri: Playlist[IndexPlaylist],
+            solution: 'auto'
+        });
+
     } else {
         //Reproduce el video
         player.play({
             uri: Source,
             solution: 'auto'
         });
-
-        player.onPlayEnd = function () {
-            if(CurrentModule === 'Movies'){
-                // Termino pelicula
-                EndOfMovie();
-            }
-        };
     }
 
-
-
+    player.onPlayEnd = function () {
+        if(CurrentModule === 'Tv' && PlayingRecording === true){
+            // segmente de la grabacion termino
+            SetPlaylist('forward');
+        } else if(CurrentModule === 'Movies'){
+            // Termino pelicula
+            EndOfMovie();
+        }
+    };
 
     // Maximiza el video en caso de que no este en pantalla completa
     MaximizeTV();
@@ -383,37 +314,20 @@ function SwapPlayers(){
     }
 }
 
-function PreviewVideo(Source){
-    // Guarda la estadistica
-    StopVideo();
-
-    // Reproduce el video
-    player.play({
-        uri: Source,
-        solution: 'auto'
-    });
-
-    player.onPlayStart = function () {
-        //player.position = 300;
-        SetPosition(300);
-    };
-
-    // Maximiza el video en caso de que no este en pantalla completa
-    MaximizeTV();
-}
-
-function SetPosition(Pos){
-    player.position = Pos;
-}
-
 
 /* *****************************************************************************
  * Obtiene los tamanos maximos y minimos de la pantalla
  * ****************************************************************************/
 
 function GetWindowFullSize(){
-    WindowMaxWidth   = player.viewport['width'];
-    WindowMaxHeight  = player.viewport['height'];
+//        WindowMaxWidth   = player.viewport['width'];
+//        WindowMaxHeight  = player.viewport['height'];
+//
+//        Debug(WindowMaxWidth);
+//        Debug(WindowMaxHeight);
+
+    WindowMaxWidth   = 3840;
+    WindowMaxHeight  = 2160;
 
     Debug(WindowMaxWidth);
     Debug(WindowMaxHeight);
@@ -440,9 +354,7 @@ function MaximizeTV(){
 
     player.setViewport({x: 0, y: 0, width: WindowMaxWidth, height: WindowMaxHeight,save: true});
     player2.setViewport({x: 0, y: 0, width: WindowMaxWidth, height: WindowMaxHeight,save: true});
-
-//        player.setViewport({x: 0, y: 0, width: 720, height: 480,save: true});
-//        player2.setViewport({x: 721, y: 0, width: 720, height: 480,save: true});
+    //Debug(JSON.stringify(player.viewport));
 }
 
 /* *****************************************************************************
@@ -482,40 +394,15 @@ function StopVideo(){
 }
 
 function PauseVideo(){
-    Debug('-------------* PauseVideo + Swap = '+Swap);
-    if(Swap === false){
-        player.pause();
-        Debug('-------------* PauseVideo + Swap = player');
-    } else {
-        player2.pause();
-        Debug('-------------/ PauseVideo + Swap = player2');
-    }
+    player.pause();
 }
 
 function ResumeVideo(){
-    Debug('-------------* ResumeVideo + Swap = '+Swap);
-    if(Swap === false){
-        player.resume();
-        Debug('-------------* ResumeVideo + Swap = player');
-    } else {
-        player2.resume();
-        Debug('-------------/ ResumeVideo + Swap = player2');
-    }
+    player.resume();
 }
 
 function SpeedVideo(Speed){
     gSTB.SetSpeed(Speed);
-}
-
-function UpdatePosition(Option){
-
-    PositionAsset = gSTB.GetPosTime();
-
-    (Option === 'add') ? PositionAsset += 30: PositionAsset -= 30;
-
-    gSTB.SetPosTime(PositionAsset);
-
-    gSTB.Continue();
 }
 
 /* *****************************************************************************
@@ -523,10 +410,9 @@ function UpdatePosition(Option){
  * ****************************************************************************/
 
 function AssetStatus(Duration){
-    if(PlayingRecording === true || PlayingVod === true){
-//            PositionAsset = GetPosTime();
-//            PositionAsset = stbPlayer.position;
-        PositionAsset = gSTB.GetPosTime();
+    if(PlayingRecording === true){
+        PositionAsset = GetPosTime();
+        PositionAsset = stbPlayer.position;
         DurationAsset = parseInt(Duration,10) * 60;
 
         PercentagePosition = Math.round((PositionAsset * 100) / DurationAsset);
