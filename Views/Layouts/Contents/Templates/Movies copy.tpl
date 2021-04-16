@@ -43,13 +43,11 @@
 <div id='ListPanel'>
     <div id='PanelHeader'>
         <div id='Title'>Movies</div>
-
         <div id='MenuHour'></div>
-
         <div id='MenuDate'></div>
         <div id='MenuOptions'>
-            <div id='MenuOptions1' class='MenuOptions'><i class="fa fa-filter" aria-hidden="true"></i></div>
-            <div id='MenuOptions2' class='MenuOptions'><i class='fa fa-sign-out-alt'></i></div>
+            <div class='MenuOptions'><i class="fa fa-filter" aria-hidden="true"></i></div>
+            <div class='MenuOptions'><i class='fa fa-sign-out-alt'></i></div>
         </div>
         <div id='Banner'></div>
     </div>
@@ -117,7 +115,7 @@
     <div id="filterMovieCategory">
             <div class='OptionsFilter'>By Year</div>
             <div class='OptionsFilter'>By Gender</div>
-            <div class='OptionsFilter'>Back</div>
+            <div class='OptionsFilter'>Regresar</div>
     </div>
 </div>
 <!-- Panel Genero-->
