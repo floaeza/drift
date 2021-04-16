@@ -102,7 +102,7 @@ function OpenEpg(){
 
         /* Activa bandera, muestra contenedor y asigna la informacion de la cabecera */
         EpgContainer.style.visibility = 'visible';
-        EpgNowAiring.innerHTML = 'Now: '+ChannelsJson[ChannelPosition].INDC + ' - ' + ChannelsJson[ChannelPosition].CHNL;
+        EpgNowAiring.innerHTML = 'Now: '+ChannelsJson[ChannelPosition].CHNL + ' - ' + ChannelsJson[ChannelPosition].INDC;
         EpgDate.textContent = FormatDateAndHour;
         EpgDay.textContent = 'Today';
         ActiveEpgContainer = true;

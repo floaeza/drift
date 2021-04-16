@@ -458,7 +458,7 @@ div#MoviePanel {
     visibility: hidden;
     bottom: 0;
     position: fixed;
-    background: rgba(0, 0, 0, 0.7);
+    background: #131313;
     z-index: 1;
 }
 
@@ -514,21 +514,21 @@ div.Year {
 }
 
 div.Rating {
-    width: 7%;
-    font-weight: bold;
+    width: 5%;
     float: left;
     margin: 0.5% 0%;
     text-align: center;
-    font-size: 38px;
+    font-size: 30px;
     text-shadow: 2px 2px 2px #000;
-    color: #efa46d;
+    background: #616161;
+    color: #FFF;
 }
 
 div.Score {
     width: 3.3%;
     font-weight: bold;
     float: left;
-    border: 3px solid #ccad07;
+    border: 3px solid #008ECC;
     border-radius: 60px;
     font-size: 25px;
     margin: 1% 0%;
@@ -539,7 +539,7 @@ div.Score {
 div.Star {
     font-weight: bold;
     float: left;
-    color: #e8bb0a;
+    color: #008ECC;
     width: 3.5%;
     border-radius: 60px;
     font-size: 30px;
@@ -555,10 +555,14 @@ div.MovieDescription {
 }
 
 div#PlayPanel {
+    position: fixed;
+    bottom: 4%;
     left: 5%;
 }
 
 div#ExitPanel {
+    position: fixed;
+    bottom: 4%;
     left: 20%;
 }
 

@@ -34,9 +34,7 @@ div#EpgChannels {
     bottom: 15%;
     left: 4%;
     overflow: hidden;
-    /*border-top-left-radius:15px;*/
-    /*border-bottom-left-radius:15px;*/
-    border-radius: 15px 0px 0px 15px;
+    border-radius: 6px 0px 0px 6px;
     
 }
 
@@ -47,9 +45,7 @@ div#EpgPrograms {
     bottom: 15%;
     right: 4%;
     overflow: hidden;
-    /*border-top-right-radius:15px;*/
-   /* border-bottom-right-radius:15px;*/
-    border-radius: 0px 15px 15px 0px;
+    border-radius: 0px 6px 6px 0px;
 }
 
 div#EpgProgramInfo {
@@ -76,7 +72,7 @@ div#EpgHours {
 
 /***************************** [Header] *****************************/
 div#EpgNowAiring {
-    width: 32%;
+    width: 28%;
     height: 6%;
     position: fixed;
     padding-left: 3%;
@@ -88,26 +84,36 @@ div#EpgNowAiring {
 }
 
 div#EpgDate {
-    width: 60%;
+    width: 20%;
     height: 5%;
     position: fixed;
-    left: 71%;
+    right: 18%;
     top: 5%;
+    text-align: right;
     font-size: 18px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
 }
 
 div#EpgWeather {
-    width: 40%;
+    width: 10%;
     height: 5%;
-    top: 3%;
-    left: 85.5%;
+    top: 5%;
+    right:6%;
+    position: fixed;
+    text-align: right;
+}
+
+div#Icon{
+    width: 3%;
+    height: 5%;
+    top: 4%;
+    right:3%;
     position: fixed;
 }
 
 div#TemperatureGroup {
-    width: 35;
+    width: 100%;
     height: 100%;
     font-size: 18px;
     font-family: Arial, Helvetica, sans-serif;
@@ -115,7 +121,6 @@ div#TemperatureGroup {
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
     font-weight: bold;
 }
-
 
 div#EpgDays {
     width: 20%;
@@ -262,14 +267,14 @@ p.ChannelName {
     white-space: nowrap;
     line-height: 50px;
     text-align: left;
-    padding-left: 5%;
+    padding-left: 1%;
 }
 
 p.ChannelNumber  {
-    width:30%;
+    width:25%;
     height: 100%;
     float: left;
-    margin: 0;
+    margin:0;
     text-align: right;
     line-height: 50px;
 }
@@ -281,6 +286,7 @@ div.HourRow {
     width: 20%;
     height: 100%;
     font-size: 20px;
+    text-transform: uppercase;
     background-color: #182e3a;
 }
 
@@ -326,6 +332,8 @@ div#ChannelRow2,
 div#ChannelRow3,
 div#ChannelRow4,
 div#ChannelRow5 {
+    font-size: 20px;
+    text-transform: uppercase;
     height: 20%;
     width: 100%;
     background-color: #2f4142;
@@ -351,12 +359,12 @@ div#EpgMainLogo {
     position: fixed;
     width: 10%;
     height: 30%;
-    top: 9%;
-    margin-left: 84.5%;
+    top: 13%;
+    right: 6%;
 }
 
 div#EpgTitle {
-    width: 75%;
+    width: 85%;
     height: 15%;
     margin-top: 2%;
     margin-left: 1%;
@@ -370,11 +378,12 @@ div#EpgTitle {
 
 div#EpgDescription {
     width: 48%;
-    height: 30%;
+    height: 20%;
     margin-left: 0.5%;
     padding-top: 1%;
     position: fixed;
     top: 18%;
+    overflow: hidden;
     text-align: justify;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 18px;
@@ -382,8 +391,8 @@ div#EpgDescription {
 }
 
 div#EpgTime {
-    width: 25%;
-    height: 10%;
+    width: 15%;
+    height: 5%;
     position: fixed;
     top: 16%;
     margin-left: 0.5%;
@@ -391,8 +400,8 @@ div#EpgTime {
 }
 
 div#EpgRating {
-    width: 25%;
-    height: 10%;
+    width: 15%;
+    height: 5%;
     position: fixed;
     top: 16%;
     left: 48%;
