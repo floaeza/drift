@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /* Creado por: Tania Maldonado
  * Fecha: Abril 2020
  * Tipo: Grabador y reproductor de grabaciones
@@ -9,3241 +8,2198 @@
  * - NONE     [STB sin HDD, ubicacion DEFAULT || ubicacion sin STB grabador]
  */
 
-    /* Variables contenedores generales */
-    var PlayingRecording            = false,
-        RecordingOptionsActive      = false,
-        RecordManualOptionsActive   = false,
-        RecordPlayOptionsActive     = false,
-        ActivePvrInfoContainer      = false,
-        RecordingPanel              = false,
-        RecordOptions               = false,
-        DeleteOptions               = false;
+/* Variables contenedores generales */
+var PlayingRecording            = false,
+    RecordingOptionsActive      = false,
+    RecordManualOptionsActive   = false,
+    RecordPlayOptionsActive     = false,
+    ActivePvrInfoContainer      = false,
+    RecordingPanel              = false,
+    RecordOptions               = false,
+    DeleteOptions               = false;
 
-    /* Variables a utilizar con grabador activo */
-    if(Device['Type'] !== 'NONE'){
-        
-        /* Panel pvr en la guia */
-        var RecordingOptions        = document.getElementById('RecordingOptions'),
-            RecordingOptionsNodes   = RecordingOptions.childNodes,
-            RecordManualOptions     = document.getElementById('RecordingManualOptions'),
-            RecordManualOptionsNodes= RecordManualOptions.childNodes,
-            RecorderMessage         = document.getElementById('RecorderMessage');
-    
-        var OptionsNodesArray       = [1,3,5,7],
-            ManualNodesArray        = [4,6,8,10,15,17],
-            RecordsNodesArray       = [1,3,5],
-            OptionsFocus            = -1,
-            RecorderMessageTimer    = '',
-            RecordingOptionTimer    = '',
-            RecordingManualTimer    = '',
-            MacAddressPvr           = MacAddress;
-    
-        var OperationsList          = { record:1, delete:2, recording:3, recorded:4};
-        
-        var RecordingsList          = '',
-            SchedulesList           = '',
-            SeriesList              = '',
-            DiskInfo                = '';
-    
-        var RecordPlayOptions       = document.getElementById('RecordPlayOptions'),
-            RecordPlayOptionsNodes  = RecordPlayOptions.childNodes;
-        
-        /* Pvr panel */
-        var PvrContainer            = document.getElementById('PvrContainer'),
-            PvrOptions              = document.getElementById('PvrOptions'),
-            PvrOptionsNodes         = PvrOptions.childNodes,
-            PvrDeleteOptions        = document.getElementById('PvrDeleteOptions'),
-            PvrDeleteOptionsNodes   = PvrDeleteOptions.childNodes,
-            PvrListNodes            = document.getElementById('PvrList').childNodes,
-            PvrInfoNodes            = document.getElementById('PvrInfo').childNodes,
-            CurrentPvrOption        = document.getElementById('CurrentPvrOption'),
-            PvrDiskInfoNodes        = document.getElementById('PvrDiskInfo').childNodes;
-    
-        var PvrTimer                = '',
-            SecondsToClosePvr       = 300,
-            TimeoutPvr              = SecondsToClosePvr * 1000;
-    
-        var OptionPanel             = '',
-            ListTypeFocus           = '',
-            RowTypeFocus            = '',
-            PvrRowFocus             = 1,
-            LastPvrRowFocus         = 0,
-            DiskInfoIndex           = 0;
-        
-            /* Recordings */
-        var IndexRecordedFocus      = -1,
-            IndexRecordedProgFocus  = 0,
-            FirstIndexRecorded      = 0;
+/* Variables a utilizar con grabador activo */
+if(Device['Type'] !== 'NONE'){
 
-            /* Schedules */
-        var IndexScheduleFocus      = -1,
-            IndexScheduleProgFocus  = 0,
-            FirstIndexSchedule      = 0;
-    
-            /* Series */
-        var IndexSerieFocus         = -1,
-            FirstIndexSerie         = 0;
-    
-        var NewStartHour            = '',
-            NewEndHour              = '',
-            ProgramUtcStartDate     = 0,
-            REC_CHNL_POS            = 0,
-            REC_PROG_POS            = 0,
-            ADD_SERIE_BCKG          = false,
-            ProgramUtcEndDate       = 0,
-            SecondsRange            = 20 * 60, //20 min
-            SecondsOffset           = Math.abs((Device.OffsetZone * 60 * 60));
-           
-        var SpeedArray              = ['2','4','8','12','16'],
-            Speed                   = 0,
-            SpeedText               = '',
-            OptionText              = '',
-            ForwardIndex            = -1,
-            BackwardIndex           = -1;
-    
-        var BarContainer            = document.getElementById('BarContainer'),
-            BarPosition             = document.getElementById('BarPosition'),
-            BarStatus               = document.getElementById('BarStatus');
-    
-        var BarTimer                = '',
-            BarUpdate               = '',
-            DurationAsset           = 0,
-            PositionAsset           = 0,
-            PercentagePosition      = 0;
-            
-        var ManualHour              = 1,
-            ManualMinute            = 0,
-            ManualIndicator         = 0,
-            ManualTime              = 0,
-            ManualListIndicator     = ['AM','PM'],
-            ManualListTime          = ['+15 min','+30 min','+1 hour','+1.5 hours','+2 hours', '+2.5 hours','+3 hours'],
-            ManualListMinutes       = [15,30,60,90,120,150,180];
-    
-    }
-    
+    /* Panel pvr en la guia */
+    var RecordingOptions        = document.getElementById('RecordingOptions'),
+        RecordingOptionsNodes   = RecordingOptions.childNodes,
+        RecordManualOptions     = document.getElementById('RecordingManualOptions'),
+        RecordManualOptionsNodes= RecordManualOptions.childNodes,
+        RecorderMessage         = document.getElementById('RecorderMessage');
+
+    var OptionsNodesArray       = [1,3,5,7],
+        ManualNodesArray        = [4,6,8,10,15,17],
+        RecordsNodesArray       = [1,3,5],
+        OptionsFocus            = -1,
+        RecorderMessageTimer    = '',
+        RecordingOptionTimer    = '',
+        RecordingManualTimer    = '',
+        MacAddressPvr           = MacAddress;
+
+    var OperationsList          = { record:1, delete:2, recording:3, recorded:4};
+
+    var RecordingsList          = '',
+        SchedulesList           = '',
+        SeriesList              = '',
+        DiskInfo                = '';
+
+    var RecordPlayOptions       = document.getElementById('RecordPlayOptions'),
+        RecordPlayOptionsNodes  = RecordPlayOptions.childNodes;
+
+    /* Pvr panel */
+    var PvrContainer            = document.getElementById('PvrContainer'),
+        PvrOptions              = document.getElementById('PvrOptions'),
+        PvrOptionsNodes         = PvrOptions.childNodes,
+        PvrDeleteOptions        = document.getElementById('PvrDeleteOptions'),
+        PvrDeleteOptionsNodes   = PvrDeleteOptions.childNodes,
+        PvrListNodes            = document.getElementById('PvrList').childNodes,
+        PvrInfoNodes            = document.getElementById('PvrInfo').childNodes,
+        CurrentPvrOption        = document.getElementById('CurrentPvrOption'),
+        PvrDiskInfoNodes        = document.getElementById('PvrDiskInfo').childNodes;
+
+    var PvrTimer                = '',
+        SecondsToClosePvr       = 300,
+        TimeoutPvr              = SecondsToClosePvr * 1000;
+
+    var OptionPanel             = '',
+        ListTypeFocus           = '',
+        RowTypeFocus            = '',
+        PvrRowFocus             = 1,
+        LastPvrRowFocus         = 0,
+        DiskInfoIndex           = 0;
+
+    /* Recordings */
+    var IndexRecordedFocus      = -1,
+        IndexRecordedProgFocus  = 0,
+        FirstIndexRecorded      = 0;
+
+    /* Schedules */
+    var IndexScheduleFocus      = -1,
+        IndexScheduleProgFocus  = 0,
+        FirstIndexSchedule      = 0;
+
+    /* Series */
+    var IndexSerieFocus         = -1,
+        FirstIndexSerie         = 0;
+
+    var NewStartHour            = '',
+        NewEndHour              = '',
+        ProgramUtcStartDate     = 0,
+        REC_CHNL_POS            = 0,
+        REC_PROG_POS            = 0,
+        ADD_SERIE_BCKG          = false,
+        ProgramUtcEndDate       = 0,
+        SecondsRange            = 20 * 60, //20 min
+        SecondsOffset           = Math.abs((Device.OffsetZone * 60 * 60));
+
+    var SpeedArray              = ['2','4','8','12','16'],
+        Speed                   = 0,
+        SpeedText               = '',
+        OptionText              = '',
+        ForwardIndex            = -1,
+        BackwardIndex           = -1;
+
+    var BarContainer            = document.getElementById('BarContainer'),
+        BarPosition             = document.getElementById('BarPosition'),
+        BarStatus               = document.getElementById('BarStatus');
+
+    var BarTimer                = '',
+        BarUpdate               = '',
+        DurationAsset           = 0,
+        PositionAsset           = 0,
+        PercentagePosition      = 0;
+
+    var ManualHour              = 1,
+        ManualMinute            = 0,
+        ManualIndicator         = 0,
+        ManualTime              = 0,
+        ManualListIndicator     = ['AM','PM'],
+        ManualListTime          = ['+15 min','+30 min','+1 hour','+1.5 hours','+2 hours', '+2.5 hours','+3 hours'],
+        ManualListMinutes       = [15,30,60,90,120,150,180];
+
+}
+
 /*******************************************************************************
  * Abre, cierra y pone el foco en las opciones del grabador solo si la guia esta activa y "puede" grabar
  *******************************************************************************/
 
-    function OpenRecordingOptions(){
-        RecordingOptionsActive = true;
+function OpenRecordingOptions(){
+    RecordingOptionsActive = true;
+
+    clearTimeout(RecordingOptionTimer);
+    RecordingOptionTimer = setTimeout(CloseRecordingOptions,8000);
+
+    // Quita las lineas de los programas para que no se vean encima del cuadro de opciones
+    var AllPrograms = document.getElementsByClassName('Program'),
+        IndexProgram = 0;
+    for(IndexProgram = 0; IndexProgram < AllPrograms.length; IndexProgram++) {
+        AllPrograms[IndexProgram].style.outline = 'none'; //1px solid rgb(0, 68, 114)
+    }
+    //
+    RecordingOptions.style.visibility = 'visible';
+
+    SetFocusOptionRecording('down');
+}
+
+function SetFocusOptionRecording(Direction){
+    if(OptionsFocus >= 0){
+        RecordingOptionsNodes[OptionsNodesArray[OptionsFocus]].classList.remove('RecordingOptionFocus');
+    }
+
+    (Direction === 'down') ? OptionsFocus++: OptionsFocus--;
+
+    if(OptionsFocus >= OptionsNodesArray.length){
+        OptionsFocus = 0;
+    } else if(OptionsFocus < 0){
+        OptionsFocus = (OptionsNodesArray.length -1 );
+    }
+
+    RecordingOptionsNodes[OptionsNodesArray[OptionsFocus]].classList.add('RecordingOptionFocus');
+
+    clearTimeout(RecordingOptionTimer);
+
+    RecordingOptionTimer = setTimeout(CloseRecordingOptions,8000);
+}
+
+function CloseRecordingOptions(){
+    if(ActiveEpgContainer === true && RecordingOptionsActive === true){
+        RecordingOptionsActive = false;
 
         clearTimeout(RecordingOptionTimer);
-        RecordingOptionTimer = setTimeout(CloseRecordingOptions,8000);
 
-        // Quita las lineas de los programas para que no se vean encima del cuadro de opciones
-            var AllPrograms = document.getElementsByClassName('Program'),
-                IndexProgram = 0;
-            for(IndexProgram = 0; IndexProgram < AllPrograms.length; IndexProgram++) {
-                AllPrograms[IndexProgram].style.outline = 'none'; //1px solid rgb(0, 68, 114)
-            }
-        // 
-        RecordingOptions.style.visibility = 'visible';
+        OptionsFocus = -1;
 
-        SetFocusOptionRecording('down');
-    }
-    
-    function SetFocusOptionRecording(Direction){
-        if(OptionsFocus >= 0){
-            RecordingOptionsNodes[OptionsNodesArray[OptionsFocus]].classList.remove('RecordingOptionFocus');
+        // Agrega las lineas de los programas
+        var AllPrograms = document.getElementsByClassName('Program'),
+            IndexProgram = 0;
+        for(IndexProgram = 0; IndexProgram < AllPrograms.length; IndexProgram++) {
+            AllPrograms[IndexProgram].style.outline = '1px solid '+BackgroundFocus;
         }
-        
-        (Direction === 'down') ? OptionsFocus++: OptionsFocus--;
 
-        if(OptionsFocus >= OptionsNodesArray.length){
-            OptionsFocus = 0;
-        } else if(OptionsFocus < 0){
-            OptionsFocus = (OptionsNodesArray.length -1 );
-        }
-        
-        RecordingOptionsNodes[OptionsNodesArray[OptionsFocus]].classList.add('RecordingOptionFocus');
-        
-        clearTimeout(RecordingOptionTimer);
-        
-        RecordingOptionTimer = setTimeout(CloseRecordingOptions,8000);
-    }
-    
-    function CloseRecordingOptions(){
-        if(ActiveEpgContainer === true && RecordingOptionsActive === true){
-            RecordingOptionsActive = false;
-            
-            clearTimeout(RecordingOptionTimer);
-            
-            OptionsFocus = -1;
-            
-            // Agrega las lineas de los programas
-                var AllPrograms = document.getElementsByClassName('Program'),
-                    IndexProgram = 0;
-                for(IndexProgram = 0; IndexProgram < AllPrograms.length; IndexProgram++) {
-                    AllPrograms[IndexProgram].style.outline = '1px solid '+BackgroundFocus; 
-                }
+        RecordingOptions.style.visibility = 'hidden';
 
-            RecordingOptions.style.visibility = 'hidden';
-            
-            var IndexOptionsNodes = 0;
-            
-            for(IndexOptionsNodes = 0; IndexOptionsNodes < OptionsNodesArray.length; IndexOptionsNodes++){
-                RecordingOptionsNodes[OptionsNodesArray[IndexOptionsNodes]].classList.remove('RecordingOptionFocus');
-            }
+        var IndexOptionsNodes = 0;
+
+        for(IndexOptionsNodes = 0; IndexOptionsNodes < OptionsNodesArray.length; IndexOptionsNodes++){
+            RecordingOptionsNodes[OptionsNodesArray[IndexOptionsNodes]].classList.remove('RecordingOptionFocus');
         }
     }
-    
-    function SelectRecordingsOption(){
-Debug('--- TvOk - SelectRecordingsOption');
-        switch (OptionsNodesArray[OptionsFocus]) {
-            case 1:
+}
+
+function SelectRecordingsOption(){
+
+    switch (OptionsNodesArray[OptionsFocus]) {
+        case 1:
+            CloseRecordingOptions();
+
+            PlayChannelEpg();
+
+            break;
+
+        case 3:
+            REC_CHNL_POS = FocusChannelPosition;
+            REC_PROG_POS = FocusProgramPosition;
+
+            ADD_SERIE_BCKG = false;
+
+            if(ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].DRTN !== '24'){
+                CheckRecordings();
+            } else {
                 CloseRecordingOptions();
-                
-                PlayChannelEpg();
-
-            break;
-            
-            case 3:
-                REC_CHNL_POS = FocusChannelPosition;
-                REC_PROG_POS = FocusProgramPosition;
-                    
-                ADD_SERIE_BCKG = false;
-                
-                if(ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].DRTN !== '24'){
-                    CheckRecordings();
-                } else {
-                    CloseRecordingOptions();
-                    OpenManualRecord();
-                }
-            break;
-            
-            case 5:
-                Debug('--- TvOk - 5');
-                if(ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].DRTN !== '24'){
-                    AddSerie();
-                    Debug('--- TvOk - AddSerie');
-                } else {
-                    ShowRecorderMessage('Not available on this channel');
-                }
+                OpenManualRecord();
+            }
             break;
 
-            case 7:
-                CloseRecordingOptions();
+        case 5:
+            if(ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].DRTN !== '24'){
+                AddSerie();
+            } else {
+                ShowRecorderMessage('Not available on this channel');
+            }
             break;
-        }
+
+        case 7:
+            CloseRecordingOptions();
+            break;
     }
-    
+}
+
 /*******************************************************************************
  * Agrega programa en serie
  *******************************************************************************/
 
-    function SetMacAddressPvr(){
-        // Elige aleatoriamente la mac addres donde se guardara la serie en caso de que haya mas de un grabador 
-        if(Device['Type'] === 'WHP_HDDN'){
-            if(Device['MacAddressPvr'].length > 1){
-                var RandomMac = getRandomInt(0,Device['MacAddressPvr'].length);
-                    MacAddressPvr = Device['MacAddressPvr'][RandomMac];
-            } else {
-                MacAddressPvr = Device['MacAddressPvr'][0];
-            }
+function SetMacAddressPvr(){
+    // Elige aleatoriamente la mac addres donde se guardara la serie en caso de que haya mas de un grabador
+    if(Device['Type'] === 'WHP_HDDN'){
+        if(Device['MacAddressPvr'].length > 1){
+            var RandomMac = getRandomInt(0,Device['MacAddressPvr'].length);
+            MacAddressPvr = Device['MacAddressPvr'][RandomMac];
+        } else {
+            MacAddressPvr = Device['MacAddressPvr'][0];
         }
     }
+}
 
-    function AddSerie(){
-        Debug('---- AddSerie');
-        SetMacAddressPvr();
-        
-        $.ajax({
-            type: 'POST',
-            url: 'Core/Controllers/Recorder.php',
-            data: { 
-                Option     : 'AddSerie', 
-                LocationId : Device['LocationId'],
-                MacAddressPvr : MacAddressPvr,
-                OperationId : OperationsList['record'],
-                TitleSerie : ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].TTLE,
-                Channel : ChannelsJson[FocusChannelPosition].CHNL + ' - ' +ChannelsJson[FocusChannelPosition].INDC,
-                Position : parseInt(FocusChannelPosition,10)
-            },
-            success: function (response){
-                ShowRecorderMessage($.parseJSON(response));
-                CloseRecordingOptions();
-                
-                GetProgramsSerie();
-            }
-        });
-    }
-    
+function AddSerie(){
+    SetMacAddressPvr();
+
+    $.ajax({
+        type: 'POST',
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option     : 'AddSerie',
+            LocationId : Device['LocationId'],
+            MacAddressPvr : MacAddressPvr,
+            OperationId : OperationsList['record'],
+            TitleSerie : ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].TTLE,
+            Channel : ChannelsJson[FocusChannelPosition].CHNL + ' - ' +ChannelsJson[FocusChannelPosition].INDC,
+            Position : parseInt(FocusChannelPosition,10)
+        },
+        success: function (response){
+            ShowRecorderMessage($.parseJSON(response));
+            CloseRecordingOptions();
+
+            GetProgramsSerie();
+        }
+    });
+}
+
 /*******************************************************************************
- * 
- *******************************************************************************/   
+ *
+ *******************************************************************************/
 
-    function GetProgramsSerie(){
-        Debug('::::::::::::::::::::::::: GetProgramsSerie::: ');
-        GetSeries();
-        
-        var IndexS = 0,
-            IndexP = 0,
-            Position = 0;
-    
+function GetProgramsSerie(){
+    Debug('::::::::::::::::::::::::: GetProgramsSerie::: ');
+    GetSeries();
+
+    var IndexS = 0,
+        IndexP = 0,
+        Position = 0;
+
     Debug('SeriesList.length::: ' + SeriesList.length);
-        
-        if(EpgDataActive === true && SeriesList.length > 0){
-            
-            ADD_SERIE_BCKG = true;
-            
-            for(IndexS = 0; IndexS < SeriesList.length; IndexS++){
-                
-                Position = SeriesList[IndexS].posicion;
-                Debug('Pos::: '+Position);
-                
-                
-                if(ChannelsJsonToday.length === 0){
-                    for(IndexP = 0; IndexP < ChannelsJson[Position].P_Length; IndexP++){
-                        if(SeriesList[IndexS].titulo === ChannelsJson[Position].PROGRAMS[IndexP].TTLE){
-                            Debug('*-*-*-*-*- Encontro coincidencia: '+ChannelsJson[Position].PROGRAMS[IndexP].TTLE + ' ' +ChannelsJson[Position].PROGRAMS[IndexP].DBKY);
 
-                            REC_CHNL_POS = Position;
-                            REC_PROG_POS = IndexP;
+    if(EpgDataActive === true && SeriesList.length > 0){
 
-                            CheckRecordings();
-                        }
+        ADD_SERIE_BCKG = true;
+
+        for(IndexS = 0; IndexS < SeriesList.length; IndexS++){
+
+            Position = SeriesList[IndexS].posicion;
+            Debug('Pos::: '+Position);
+
+
+            if(ChannelsJsonToday.length === 0){
+                for(IndexP = 0; IndexP < ChannelsJson[Position].P_Length; IndexP++){
+                    if(SeriesList[IndexS].titulo === ChannelsJson[Position].PROGRAMS[IndexP].TTLE){
+                        Debug('*-*-*-*-*- Encontro coincidencia: '+ChannelsJson[Position].PROGRAMS[IndexP].TTLE + ' ' +ChannelsJson[Position].PROGRAMS[IndexP].DBKY);
+
+                        REC_CHNL_POS = Position;
+                        REC_PROG_POS = IndexP;
+
+                        CheckRecordings();
                     }
                 }
             }
         }
     }
-    
+}
+
 /*******************************************************************************
  * Agrega programa en serie
  *******************************************************************************/
 
-    function ShowRecorderMessage(Message){
-        clearTimeout(RecorderMessageTimer);
-        
-        RecorderMessageTimer = setTimeout(HideRecorderMessage,5000);
-        RecorderMessage.textContent = '';
-        RecorderMessage.style.display = 'inline';
-        RecorderMessage.textContent = Message;
-    }
-    
-    function HideRecorderMessage(){
-        clearTimeout(RecorderMessageTimer);
-        RecorderMessage.textContent = '';
-        RecorderMessage.style.display = 'none';
-    }
-    
+function ShowRecorderMessage(Message){
+    clearTimeout(RecorderMessageTimer);
+
+    RecorderMessageTimer = setTimeout(HideRecorderMessage,5000);
+    RecorderMessage.textContent = '';
+    RecorderMessage.style.display = 'inline';
+    RecorderMessage.textContent = Message;
+}
+
+function HideRecorderMessage(){
+    clearTimeout(RecorderMessageTimer);
+    RecorderMessage.textContent = '';
+    RecorderMessage.style.display = 'none';
+}
+
 /*******************************************************************************
  * Agrega programa
  *******************************************************************************/
-    function GetRecordings(){
+function GetRecordings(){
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option     : 'RecordingsList',
+            LocationId : Device['LocationId'],
+            MacAddress : MacAddress
+        },
+        success: function (response){
+            RecordingsList = $.parseJSON(response);
+        }
+    });
+}
+
+function GetSchedules(){
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option     : 'SchedulesList',
+            LocationId : Device['LocationId']
+        },
+        success: function (response){
+            SchedulesList = $.parseJSON(response);
+        }
+    });
+}
+
+function GetSeries(){
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option     : 'SeriesList',
+            LocationId : Device['LocationId']
+        },
+        success: function (response){
+            SeriesList = $.parseJSON(response);
+        }
+    });
+}
+
+function GetRecordingsToRecord(){
+    $.ajax({
+        type: 'POST',
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option     : 'RecordingsToRecord',
+            LocationId : Device['LocationId']
+        },
+        success: function (response){
+            RecordingsToCheck = $.parseJSON(response);
+        }
+    });
+}
+
+function GetPvrInfo(){
+    if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
+        SetPvrInfo();
+    } else {
         $.ajax({
             type: 'POST',
-            async: false,
             url: 'Core/Controllers/Recorder.php',
-            data: { 
-                Option     : 'RecordingsList', 
+            data: {
+                Option     : 'GetPvrInfo',
                 LocationId : Device['LocationId'],
                 MacAddress : MacAddress
             },
             success: function (response){
-                RecordingsList = $.parseJSON(response);
-            }
-        });        
-    }
-    
-    function GetSchedules(){
-        $.ajax({
-            type: 'POST',
-            async: false,
-            url: 'Core/Controllers/Recorder.php',
-            data: { 
-                Option     : 'SchedulesList', 
-                LocationId : Device['LocationId']
-            },
-            success: function (response){
-                SchedulesList = $.parseJSON(response);
-            }
-        });        
-    }
-    
-    function GetSeries(){
-        $.ajax({
-            type: 'POST',
-            async: false,
-            url: 'Core/Controllers/Recorder.php',
-            data: { 
-                Option     : 'SeriesList', 
-                LocationId : Device['LocationId']
-            },
-            success: function (response){
-                SeriesList = $.parseJSON(response);
-            }
-        });        
-    }
-    
-    function GetRecordingsToRecord(){
-        $.ajax({
-            type: 'POST',
-            url: 'Core/Controllers/Recorder.php',
-            data: { 
-                Option     : 'RecordingsToRecord', 
-                LocationId : Device['LocationId']
-            },
-            success: function (response){
-                RecordingsToCheck = $.parseJSON(response);
-            }
-        });        
-    }
-    
-    function GetPvrInfo(){
-        if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
-            SetPvrInfo();
-        } else {
-            $.ajax({
-                type: 'POST',
-                url: 'Core/Controllers/Recorder.php',
-                data: { 
-                    Option     : 'GetPvrInfo', 
-                    LocationId : Device['LocationId'],
-                    MacAddress : MacAddress
-                },
-                success: function (response){
-                    DiskInfo = $.parseJSON(response);
+                DiskInfo = $.parseJSON(response);
 
-                    if(DiskInfo.length > 0){
-                        SetPvrInfo();
-                    }
-                }
-            });  
-        }
-    }
-    
-    function CheckManualRecording(){
-        $.ajax({
-            type: 'POST',
-            async: false,
-            url: 'Core/Controllers/Recorder.php',
-            data: { 
-                Option     : 'RecordingsToRecord', 
-                LocationId : Device['LocationId']
-            },
-            success: function (response){
-                RecordingsToCheck = $.parseJSON(response);
-
-                // Convierte a UTC el tiempo inicio de la grabacion que se quiere agregar
-            var ProgramYear    = ChannelsJson[REC_CHNL_POS].DTNU.slice(0,4),
-                ProgramMonth   = ChannelsJson[REC_CHNL_POS].DTNU.slice(4,6),
-                ProgramDay     = ChannelsJson[REC_CHNL_POS].DTNU.slice(6,8);
-        
-                
-                
-            var ProgramStart = Time12to24(ManualHour+':'+ManualMinute+' '+ManualListIndicator[ManualIndicator].toLowerCase());
-            var ProgramEnd   = moment(ProgramStart, 'HH:mm').add(ManualListMinutes[ManualTime], 'minutes').format('HH:mm'); 
-                                           
-            var ProgramStartHour    = pad(ProgramStart.slice(0,2),2),
-                ProgramStartMinute  = pad(ProgramStart.slice(3,5),2),
-                ProgramEndHour      = ProgramEnd.slice(0,2),
-                ProgramEndMinute    = ProgramEnd.slice(3,5);
-        
-                ProgramUtcStartDate = Date.UTC(ProgramYear, (ProgramMonth -1), ProgramDay, ProgramStartHour, ProgramStartMinute);
-                ProgramUtcEndDate   = Date.UTC(ProgramYear, (ProgramMonth -1), ProgramDay, ProgramEndHour, ProgramEndMinute);
-        
-                ProgramUtcStartDate = ProgramUtcStartDate / 1000;
-                ProgramUtcEndDate = ProgramUtcEndDate / 1000;
-
-                NewStartHour = ProgramStart;
-                NewEndHour   = ProgramEnd;
-                
-                
-                var CurrentUtcDate = Date.UTC(moment().format('Y'), (moment().format('MM') -1), moment().format('DD'), moment().format('HH'), moment().format('mm'));
-                    CurrentUtcDate = CurrentUtcDate / 1000;
-                
-                if(ProgramUtcStartDate < CurrentUtcDate){
-                    Coincidences = 2;
-                }
-                
-                /* Agregamos el tiempo offset -6 o -7 en segundos */
-                ProgramUtcStartDate = ProgramUtcStartDate + SecondsOffset;
-                ProgramUtcEndDate   = ProgramUtcEndDate + SecondsOffset;
-                
-                if(ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].DBKY === ''){
-                    NewDatabasekey  = 'PR'+ProgramStartHour+ProgramStartMinute+ProgramEndHour+ProgramEndMinute+ProgramMonth+ProgramDay;
-                } else {
-                    NewDatabasekey = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].DBKY;
-                }
-                
-                if(RecordingsToCheck.length > 0){
-                    var IndexR                  = 0,
-                        ProgramUtcStartDate_DB  = '',
-                        ProgramUtcEndDate_DB    = '';
-                
-                    var Coincidences    = 0,
-                        SameDatabasekey = false;
-
-                    for(IndexR = 0; IndexR < RecordingsToCheck.length; IndexR++){
-                        /* VALIDACION 1 - Por databasekey si ya existe en la BD finaliza el proceso */
-
-                        if(RecordingsToCheck[IndexR].databasekey === ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].DBKY){
-                            SameDatabasekey = true;
-
-                            IndexR = RecordingsToCheck.length;
-                        } else {
-                        /* Obtiene el tiempo de las grabaciones ya agregadas en la base de datos en UTC */
-                            ProgramUtcStartDate_DB = parseInt(RecordingsToCheck[IndexR].utc_start,10);
-                            ProgramUtcEndDate_DB   = parseInt(RecordingsToCheck[IndexR].utc_final,10);
-                            
-                            //Debug('------ ProgramUtcStartDate: '+ProgramUtcStartDate + ' ProgramUtcEndDate: '+ProgramUtcEndDate);
-                            //Debug('****** ProgramUtcStartDate: '+ProgramUtcStartDate_DB + ' ProgramUtcEndDate: '+ProgramUtcEndDate_DB);
-                            
-                            /* Si la HoraIniProgAgregar es mayor a la HoraFinProgBd */
-                            if(ProgramUtcStartDate > ProgramUtcEndDate_DB){
-                                // 0 Coincidences
-                            } 
-                            /* Else Si la HoraFinProgAgregar es menor a la HoraIniProgBD */
-                            if(ProgramUtcStartDate < ProgramUtcStartDate_DB){
-                                // 0 Coincidences
-                            }
-                            /* Else esta en el mismo rango de la hora inicio y final */
-                            if(ProgramUtcStartDate >= ProgramUtcStartDate_DB && ProgramUtcEndDate <= ProgramUtcEndDate_DB){
-                                Coincidences++;
-                                //Debug('// 1 Else esta en el mismo rango de la hora inicio y final::: Coincidences: '+Coincidences);
-                            }
-                            /* Else esta en el mismo rango de la hora inicio */
-                            else if(ProgramUtcStartDate > ProgramUtcStartDate_DB && ProgramUtcEndDate < (ProgramUtcStartDate_DB + SecondsRange)){
-                                Coincidences++;
-                                //Debug('// 2 Else esta en el mismo rango de la hora inicio::: Coincidences: '+Coincidences);
-                            }
-                            /* Else esta en el mismo rango de la hora inicio y final */
-                            else if(ProgramUtcEndDate < ProgramUtcEndDate_DB && ProgramUtcStartDate > (ProgramUtcEndDate_DB + SecondsRange)){
-                                Coincidences++;
-                                //Debug('// 3 Else esta en el mismo rango de la hora inicio y final::: Coincidences: '+Coincidences);
-                            } 
-                        }
-                        //Debug('Coincidences: '+Coincidences);
-                        //Debug('-------------------------------------------------------------------');
-                    }
-
-
-                    if(Coincidences >= 2){
-                        if(ADD_SERIE_BCKG === false){
-                        ShowRecorderMessage('Reached the limit of schedules at the same time');
-                        }
-                    } else {
-                       AddRecord();
-                    }
-                } else {
-                    AddRecord();
+                if(DiskInfo.length > 0){
+                    SetPvrInfo();
                 }
             }
         });
     }
-    
-    function CheckRecordings(){
-        $.ajax({
-            type: 'POST',
-            async: false,
-            url: 'Core/Controllers/Recorder.php',
-            data: { 
-                Option     : 'RecordingsToRecord', 
-                LocationId : Device['LocationId']
-            },
-            success: function (response){
-                RecordingsToCheck = $.parseJSON(response);
-                
-                Debug('--------------------------------------->>0');
-                        Debug(REC_CHNL_POS);
-                        Debug(REC_PROG_POS);
+}
 
-                // Convierte a UTC el tiempo inicio de la grabacion que se quiere agregar
+function CheckManualRecording(){
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option     : 'RecordingsToRecord',
+            LocationId : Device['LocationId']
+        },
+        success: function (response){
+            RecordingsToCheck = $.parseJSON(response);
+
+            // Convierte a UTC el tiempo inicio de la grabacion que se quiere agregar
+            var ProgramYear    = ChannelsJson[REC_CHNL_POS].DTNU.slice(0,4),
+                ProgramMonth   = ChannelsJson[REC_CHNL_POS].DTNU.slice(4,6),
+                ProgramDay     = ChannelsJson[REC_CHNL_POS].DTNU.slice(6,8);
+
+            var ProgramStart = Time12to24(ManualHour+':'+ManualMinute+' '+ManualListIndicator[ManualIndicator].toLowerCase());
+            var ProgramEnd   = moment(ProgramStart, 'HH:mm').add(ManualListMinutes[ManualTime], 'minutes').format('HH:mm');
+
+            var ProgramStartHour    = pad(ProgramStart.slice(0,2),2),
+                ProgramStartMinute  = pad(ProgramStart.slice(3,5),2),
+                ProgramEndHour      = ProgramEnd.slice(0,2),
+                ProgramEndMinute    = ProgramEnd.slice(3,5);
+
+            ProgramUtcStartDate = Date.UTC(ProgramYear, (ProgramMonth -1), ProgramDay, ProgramStartHour, ProgramStartMinute);
+            ProgramUtcEndDate   = Date.UTC(ProgramYear, (ProgramMonth -1), ProgramDay, ProgramEndHour, ProgramEndMinute);
+
+            ProgramUtcStartDate = ProgramUtcStartDate / 1000;
+            ProgramUtcEndDate = ProgramUtcEndDate / 1000;
+
+            NewStartHour = ProgramStart;
+            NewEndHour   = ProgramEnd;
+
+
+            var CurrentUtcDate = Date.UTC(moment().format('Y'), (moment().format('MM') -1), moment().format('DD'), moment().format('HH'), moment().format('mm'));
+            CurrentUtcDate = CurrentUtcDate / 1000;
+
+            if(ProgramUtcStartDate < CurrentUtcDate){
+                Coincidences = 2;
+            }
+
+            /* Agregamos el tiempo offset -6 o -7 en segundos */
+            ProgramUtcStartDate = ProgramUtcStartDate + SecondsOffset;
+            ProgramUtcEndDate   = ProgramUtcEndDate + SecondsOffset;
+
+            if(ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].DBKY === ''){
+                NewDatabasekey  = 'PR'+ProgramStartHour+ProgramStartMinute+ProgramEndHour+ProgramEndMinute+ProgramMonth+ProgramDay;
+            } else {
+                NewDatabasekey = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].DBKY;
+            }
+
+            if(RecordingsToCheck.length > 0){
+                var IndexR                  = 0,
+                    ProgramUtcStartDate_DB  = '',
+                    ProgramUtcEndDate_DB    = '';
+
+                var Coincidences    = 0,
+                    SameDatabasekey = false;
+
+                for(IndexR = 0; IndexR < RecordingsToCheck.length; IndexR++){
+                    /* VALIDACION 1 - Por databasekey si ya existe en la BD finaliza el proceso */
+
+                    if(RecordingsToCheck[IndexR].databasekey === ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].DBKY){
+                        SameDatabasekey = true;
+
+                        IndexR = RecordingsToCheck.length;
+                    } else {
+                        /* Obtiene el tiempo de las grabaciones ya agregadas en la base de datos en UTC */
+                        ProgramUtcStartDate_DB = parseInt(RecordingsToCheck[IndexR].utc_start,10);
+                        ProgramUtcEndDate_DB   = parseInt(RecordingsToCheck[IndexR].utc_final,10);
+
+                        //Debug('------ ProgramUtcStartDate: '+ProgramUtcStartDate + ' ProgramUtcEndDate: '+ProgramUtcEndDate);
+                        //Debug('****** ProgramUtcStartDate: '+ProgramUtcStartDate_DB + ' ProgramUtcEndDate: '+ProgramUtcEndDate_DB);
+
+                        /* Si la HoraIniProgAgregar es mayor a la HoraFinProgBd */
+                        if(ProgramUtcStartDate > ProgramUtcEndDate_DB){
+                            // 0 Coincidences
+                        }
+                        /* Else Si la HoraFinProgAgregar es menor a la HoraIniProgBD */
+                        if(ProgramUtcStartDate < ProgramUtcStartDate_DB){
+                            // 0 Coincidences
+                        }
+                        /* Else esta en el mismo rango de la hora inicio y final */
+                        if(ProgramUtcStartDate >= ProgramUtcStartDate_DB && ProgramUtcEndDate <= ProgramUtcEndDate_DB){
+                            Coincidences++;
+                            //Debug('// 1 Else esta en el mismo rango de la hora inicio y final::: Coincidences: '+Coincidences);
+                        }
+                        /* Else esta en el mismo rango de la hora inicio */
+                        else if(ProgramUtcStartDate > ProgramUtcStartDate_DB && ProgramUtcEndDate < (ProgramUtcStartDate_DB + SecondsRange)){
+                            Coincidences++;
+                            //Debug('// 2 Else esta en el mismo rango de la hora inicio::: Coincidences: '+Coincidences);
+                        }
+                        /* Else esta en el mismo rango de la hora inicio y final */
+                        else if(ProgramUtcEndDate < ProgramUtcEndDate_DB && ProgramUtcStartDate > (ProgramUtcEndDate_DB + SecondsRange)){
+                            Coincidences++;
+                            //Debug('// 3 Else esta en el mismo rango de la hora inicio y final::: Coincidences: '+Coincidences);
+                        }
+                    }
+                    //Debug('Coincidences: '+Coincidences);
+                    //Debug('-------------------------------------------------------------------');
+                }
+
+
+                if(Coincidences >= 2){
+                    if(ADD_SERIE_BCKG === false){
+                        ShowRecorderMessage('Reached the limit of schedules at the same time');
+                    }
+                } else {
+                    AddRecord();
+                }
+            } else {
+                AddRecord();
+            }
+        }
+    });
+}
+
+function CheckRecordings(){
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option     : 'RecordingsToRecord',
+            LocationId : Device['LocationId']
+        },
+        success: function (response){
+            RecordingsToCheck = $.parseJSON(response);
+
+            Debug('--------------------------------------->>0');
+            Debug(REC_CHNL_POS);
+            Debug(REC_PROG_POS);
+
+            // Convierte a UTC el tiempo inicio de la grabacion que se quiere agregar
             var ProgramYear    = ChannelsJson[REC_CHNL_POS].DTNU.slice(0,4),
                 ProgramMonth   = ChannelsJson[REC_CHNL_POS].DTNU.slice(4,6),
                 ProgramDay     = ChannelsJson[REC_CHNL_POS].DTNU.slice(6,8),
 
                 ProgramStartHour   = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].STRH.slice(0,2),
                 ProgramStartMinute = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].STRH.slice(3,5),
-                
+
                 ProgramEndHour     = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].FNLH.slice(0,2),
                 ProgramEndMinute   = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].FNLH.slice(3,5);
-        
-                Debug('--------------------------------------->>1');
-                Debug(ProgramStartHour + ' '+ProgramStartMinute);
-                Debug(ProgramEndHour + ' '+ProgramEndMinute);
-                
-                if(ProgramEndHour === '00' && parseInt(ProgramEndMinute) > 0){
-                    
-                    Debug(ChannelsJson[REC_CHNL_POS].DTNU);
 
-                    var dateString = ProgramYear+'-'+ProgramMonth+'-'+ProgramDay;
-                    
-                    Debug(dateString);
-                    var myDate = new Date(dateString);
-Debug(myDate);
-                    //add a day to the date
-                    myDate.setDate(myDate.getDate() + 2);
+            Debug('--------------------------------------->>1');
+            Debug(ProgramStartHour + ' '+ProgramStartMinute);
+            Debug(ProgramEndHour + ' '+ProgramEndMinute);
 
-                    //add a day to the date
-                    Debug(myDate);
-                    
-                    
-                }
-                
-                
 
-                ProgramUtcStartDate = Date.UTC(ProgramYear, (ProgramMonth -1), ProgramDay, ProgramStartHour, ProgramStartMinute);
-                ProgramUtcEndDate = Date.UTC(ProgramYear, (ProgramMonth -1), ProgramDay, ProgramEndHour, ProgramEndMinute);
-                Debug('--------------------------------------->>2');
-                Debug(ProgramUtcStartDate);
-                Debug(ProgramUtcEndDate);
-        
+
+            ProgramUtcStartDate = Date.UTC(ProgramYear, (ProgramMonth -1), ProgramDay, ProgramStartHour, ProgramStartMinute);
+            ProgramUtcEndDate = Date.UTC(ProgramYear, (ProgramMonth -1), ProgramDay, ProgramEndHour, ProgramEndMinute);
+            Debug('--------------------------------------->>2');
+            Debug(ProgramUtcStartDate);
+            Debug(ProgramUtcEndDate);
+
+            ProgramUtcStartDate = ProgramUtcStartDate / 1000;
+            ProgramUtcEndDate = ProgramUtcEndDate / 1000;
+            Debug('--------------------------------------->>3');
+            Debug(ProgramUtcStartDate);
+            Debug(ProgramUtcEndDate);
+
+            Debug('--------------------------------------->>3.1');
+            Debug(parseInt(REC_CHNL_POS));
+            Debug(OnloadProgramsPositions[RowSelected]);
+            Debug(EpgDayNumber);
+
+            if(parseInt(REC_PROG_POS) === OnloadProgramsPositions[RowSelected] && EpgDayNumber === 0){
+
+                var CurrentHour  = moment().format('HH:mm');
+                NewStartHour = moment(CurrentHour, 'HH:mm')
+                    .add(1, 'minutes')
+                    .format('HH:mm');
+
+                ProgramUtcStartDate = Date.UTC(ProgramYear, (ProgramMonth -1), ProgramDay, moment().format('HH'), moment().format('mm'));
                 ProgramUtcStartDate = ProgramUtcStartDate / 1000;
-                ProgramUtcEndDate = ProgramUtcEndDate / 1000;
-                Debug('--------------------------------------->>3');
-                Debug(ProgramUtcStartDate);
-                Debug(ProgramUtcEndDate);
-                
-                Debug('--------------------------------------->>3.1');
-                Debug(parseInt(REC_CHNL_POS));
-                Debug(OnloadProgramsPositions[RowSelected]);
-                Debug(EpgDayNumber);
 
-                if(parseInt(REC_PROG_POS) === OnloadProgramsPositions[RowSelected] && EpgDayNumber === 0){
+                ProgramUtcStartDate = ProgramUtcStartDate + 90;
 
-                    var CurrentHour  = moment().format('HH:mm');
-                        NewStartHour = moment(CurrentHour, 'HH:mm')
-                                                   .add(1, 'minutes')
-                                                   .format('HH:mm');          
-
-                        ProgramUtcStartDate = Date.UTC(ProgramYear, (ProgramMonth -1), ProgramDay, moment().format('HH'), moment().format('mm'));
-                        ProgramUtcStartDate = ProgramUtcStartDate / 1000;
-                       
-                        ProgramUtcStartDate = ProgramUtcStartDate + 100;
-                        
-                        Debug('--------------------------------------->>3.2');
-                        Debug(NewStartHour);
-                        Debug(ProgramUtcStartDate);
-                } else {
-                    NewStartHour = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].STRH;
-                }
-                
-                
-                
-                NewEndHour = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].FNLH;
-                
-                Debug('--------------------------------------->>4');
+                Debug('--------------------------------------->>3.2');
                 Debug(NewStartHour);
-                Debug(NewEndHour);
-                
-                var CurrentUtcDate = Date.UTC(moment().format('Y'), (moment().format('MM') -1), moment().format('DD'), moment().format('HH'), moment().format('mm'));
-                    CurrentUtcDate = CurrentUtcDate / 1000;
-                    
-                Debug('--------------------------------------->>5');
-                Debug(CurrentUtcDate);
                 Debug(ProgramUtcStartDate);
-                
-                
-                var TimeDiff = ProgramUtcStartDate - CurrentUtcDate;
-                Debug(TimeDiff);
-                if(TimeDiff < 0){
-                    Debug('--------------------------------------->>5.1 FIN');
-                } else {
-                
-                    if(ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].DBKY === ''){
-                        NewDatabasekey  = 'PR'+ProgramStartHour+ProgramStartMinute+ProgramEndHour+ProgramEndMinute+ProgramMonth+ProgramDay;
+            } else {
+                NewStartHour = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].STRH;
+            }
+
+
+
+            NewEndHour = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].FNLH;
+
+            Debug('--------------------------------------->>4');
+            Debug(NewStartHour);
+            Debug(NewEndHour);
+
+            var CurrentUtcDate = Date.UTC(moment().format('Y'), (moment().format('MM') -1), moment().format('DD'), moment().format('HH'), moment().format('mm'));
+            CurrentUtcDate = CurrentUtcDate / 1000;
+
+            Debug('--------------------------------------->>5');
+            Debug(CurrentUtcDate);
+            Debug(ProgramUtcStartDate);
+
+            if(ProgramUtcStartDate < CurrentUtcDate){
+                Coincidences = 2;
+                Debug('--------------------------------------->>5.1');
+                Debug(Coincidences);
+            }
+
+            if(ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].DBKY === ''){
+                NewDatabasekey  = 'PR'+ProgramStartHour+ProgramStartMinute+ProgramEndHour+ProgramEndMinute+ProgramMonth+ProgramDay;
+            } else {
+                NewDatabasekey = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].DBKY;
+            }
+
+            /* Agregamos el tiempo offset -6 o -7 en segundos */
+            ProgramUtcStartDate = ProgramUtcStartDate + SecondsOffset;
+            ProgramUtcEndDate   = ProgramUtcEndDate + SecondsOffset;
+
+            Debug('--------------------------------------->>6');
+            Debug(ProgramUtcStartDate);
+            Debug(ProgramUtcEndDate);
+
+            if(RecordingsToCheck.length > 0){
+                var IndexR                  = 0,
+                    ProgramUtcStartDate_DB  = '',
+                    ProgramUtcEndDate_DB    = '';
+
+                var Coincidences    = 0,
+                    SameDatabasekey = false;
+
+                for(IndexR = 0; IndexR < RecordingsToCheck.length; IndexR++){
+                    /* VALIDACION 1 - Por databasekey si ya existe en la BD finaliza el proceso */
+
+                    if(RecordingsToCheck[IndexR].databasekey === ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].DBKY){
+                        SameDatabasekey = true;
+
+                        IndexR = RecordingsToCheck.length;
                     } else {
-                        NewDatabasekey = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].DBKY;
-                    }
+                        /* Obtiene el tiempo de las grabaciones ya agregadas en la base de datos en UTC */
+                        ProgramUtcStartDate_DB = parseInt(RecordingsToCheck[IndexR].utc_start,10);
+                        ProgramUtcEndDate_DB   = parseInt(RecordingsToCheck[IndexR].utc_final,10);
 
-                    /* Agregamos el tiempo offset -6 o -7 en segundos */
-                    ProgramUtcStartDate = ProgramUtcStartDate + SecondsOffset;
-                    ProgramUtcEndDate   = ProgramUtcEndDate + SecondsOffset;
+                        //Debug('------ ProgramUtcStartDate: '+ProgramUtcStartDate + ' ProgramUtcEndDate: '+ProgramUtcEndDate);
+                        //Debug('****** ProgramUtcStartDate: '+ProgramUtcStartDate_DB + ' ProgramUtcEndDate: '+ProgramUtcEndDate_DB);
 
-                    Debug('--------------------------------------->>6');
-                    Debug(ProgramUtcStartDate);
-                    Debug(ProgramUtcEndDate);
-
-                    if(RecordingsToCheck.length > 0){
-                        var IndexR                  = 0,
-                            ProgramUtcStartDate_DB  = '',
-                            ProgramUtcEndDate_DB    = '';
-
-                        var Coincidences    = 0,
-                            SameDatabasekey = false;
-
-                        for(IndexR = 0; IndexR < RecordingsToCheck.length; IndexR++){
-                            /* VALIDACION 1 - Por databasekey si ya existe en la BD finaliza el proceso */
-
-                            if(RecordingsToCheck[IndexR].databasekey === ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].DBKY){
-                                SameDatabasekey = true;
-
-                                IndexR = RecordingsToCheck.length;
-                            } else {
-                            /* Obtiene el tiempo de las grabaciones ya agregadas en la base de datos en UTC */
-                                ProgramUtcStartDate_DB = parseInt(RecordingsToCheck[IndexR].utc_start,10);
-                                ProgramUtcEndDate_DB   = parseInt(RecordingsToCheck[IndexR].utc_final,10);
-
-                                //Debug('------ ProgramUtcStartDate: '+ProgramUtcStartDate + ' ProgramUtcEndDate: '+ProgramUtcEndDate);
-                                //Debug('****** ProgramUtcStartDate: '+ProgramUtcStartDate_DB + ' ProgramUtcEndDate: '+ProgramUtcEndDate_DB);
-
-                                /* Si la HoraIniProgAgregar es mayor a la HoraFinProgBd */
-                                if(ProgramUtcStartDate > ProgramUtcEndDate_DB){
-                                    // 0 Coincidences
-                                } 
-                                /* Else Si la HoraFinProgAgregar es menor a la HoraIniProgBD */
-                                if(ProgramUtcStartDate < ProgramUtcStartDate_DB){
-                                    // 0 Coincidences
-                                }
-                                /* Else esta en el mismo rango de la hora inicio y final */
-                                if(ProgramUtcStartDate >= ProgramUtcStartDate_DB && ProgramUtcEndDate <= ProgramUtcEndDate_DB){
-                                    Coincidences++;
-                                    //Debug('// 1 Else esta en el mismo rango de la hora inicio y final::: Coincidences: '+Coincidences);
-                                }
-                                /* Else esta en el mismo rango de la hora inicio */
-                                else if(ProgramUtcStartDate > ProgramUtcStartDate_DB && ProgramUtcEndDate < (ProgramUtcStartDate_DB + SecondsRange)){
-                                    Coincidences++;
-                                    //Debug('// 2 Else esta en el mismo rango de la hora inicio::: Coincidences: '+Coincidences);
-                                }
-                                /* Else esta en el mismo rango de la hora inicio y final */
-                                else if(ProgramUtcEndDate < ProgramUtcEndDate_DB && ProgramUtcStartDate > (ProgramUtcEndDate_DB + SecondsRange)){
-                                    Coincidences++;
-                                    //Debug('// 3 Else esta en el mismo rango de la hora inicio y final::: Coincidences: '+Coincidences);
-                                } 
-                            }
-                            //Debug('Coincidences: '+Coincidences);
-                            //Debug('-------------------------------------------------------------------');
+                        /* Si la HoraIniProgAgregar es mayor a la HoraFinProgBd */
+                        if(ProgramUtcStartDate > ProgramUtcEndDate_DB){
+                            // 0 Coincidences
                         }
+                        /* Else Si la HoraFinProgAgregar es menor a la HoraIniProgBD */
+                        if(ProgramUtcStartDate < ProgramUtcStartDate_DB){
+                            // 0 Coincidences
+                        }
+                        /* Else esta en el mismo rango de la hora inicio y final */
+                        if(ProgramUtcStartDate >= ProgramUtcStartDate_DB && ProgramUtcEndDate <= ProgramUtcEndDate_DB){
+                            Coincidences++;
+                            //Debug('// 1 Else esta en el mismo rango de la hora inicio y final::: Coincidences: '+Coincidences);
+                        }
+                        /* Else esta en el mismo rango de la hora inicio */
+                        else if(ProgramUtcStartDate > ProgramUtcStartDate_DB && ProgramUtcEndDate < (ProgramUtcStartDate_DB + SecondsRange)){
+                            Coincidences++;
+                            //Debug('// 2 Else esta en el mismo rango de la hora inicio::: Coincidences: '+Coincidences);
+                        }
+                        /* Else esta en el mismo rango de la hora inicio y final */
+                        else if(ProgramUtcEndDate < ProgramUtcEndDate_DB && ProgramUtcStartDate > (ProgramUtcEndDate_DB + SecondsRange)){
+                            Coincidences++;
+                            //Debug('// 3 Else esta en el mismo rango de la hora inicio y final::: Coincidences: '+Coincidences);
+                        }
+                    }
+                    //Debug('Coincidences: '+Coincidences);
+                    //Debug('-------------------------------------------------------------------');
+                }
 
 
-                        if(SameDatabasekey === true){
-                            if(ADD_SERIE_BCKG === false){
-                                ShowRecorderMessage('Program already added');
-                            }
-                        } else {
-                            if(Coincidences >= 2){
-                                if(ADD_SERIE_BCKG === false){
-                                ShowRecorderMessage('Reached the limit of schedules at the same time');
-                                }
-                            } else {
-                                AddRecord();
-                            }
+                if(SameDatabasekey === true){
+                    if(ADD_SERIE_BCKG === false){
+                        ShowRecorderMessage('Program already added');
+                    }
+                } else {
+                    if(Coincidences >= 2){
+                        if(ADD_SERIE_BCKG === false){
+                            ShowRecorderMessage('Reached the limit of schedules at the same time');
                         }
                     } else {
                         AddRecord();
                     }
                 }
+            } else {
+                AddRecord();
             }
-        });
-    }
-    
-    
-    function AddRecord(){
-        SetMacAddressPvr();
-        
-        $.ajax({
-            type: 'POST',
-            url: 'Core/Controllers/Recorder.php',
-            data: { 
-                Option          : 'AddRecord', 
-                LocationId      : Device['LocationId'],
-                MacAddressPvr   : MacAddressPvr,
-                OperationId     : OperationsList['record'],
-                Title           : ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].TTLE,
-                Databasekey     : NewDatabasekey,
-                Episode         : ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].EPSD,
-                Description     : ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].DSCR,
-                Rating          : ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].STRS,
-                Date            : ChannelsJson[REC_CHNL_POS].DTNU,
-                StarTime        : NewStartHour,
-                EndTime         : NewEndHour,
-                UtcStart        : ProgramUtcStartDate,
-                UtcEnd          : ProgramUtcEndDate,
-                ChannelSource   : ChannelsJson[REC_CHNL_POS].SRCE +':'+ChannelsJson[REC_PROG_POS].PORT
-            },
-            success: function (response){
-                if(ADD_SERIE_BCKG === false){
-                    ShowRecorderMessage($.parseJSON(response));
-                    CloseRecordingOptions();
-                    CloseManualRecord();
-                }
-                
-                Debug('AddRecord '+MacAddressPvr+' - '+ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].TTLE);
+        }
+    });
+}
+
+
+function AddRecord(){
+    SetMacAddressPvr();
+
+    $.ajax({
+        type: 'POST',
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option          : 'AddRecord',
+            LocationId      : Device['LocationId'],
+            MacAddressPvr   : MacAddressPvr,
+            OperationId     : OperationsList['record'],
+            Title           : ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].TTLE,
+            Databasekey     : NewDatabasekey,
+            Episode         : ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].EPSD,
+            Description     : ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].DSCR,
+            Rating          : ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].STRS,
+            Date            : ChannelsJson[REC_CHNL_POS].DTNU,
+            StarTime        : NewStartHour,
+            EndTime         : NewEndHour,
+            UtcStart        : ProgramUtcStartDate,
+            UtcEnd          : ProgramUtcEndDate,
+            ChannelSource   : ChannelsJson[REC_CHNL_POS].SRCE +':'+ChannelsJson[REC_PROG_POS].PORT
+        },
+        success: function (response){
+            if(ADD_SERIE_BCKG === false){
+                ShowRecorderMessage($.parseJSON(response));
+                CloseRecordingOptions();
+                CloseManualRecord();
             }
-        });
-    }
-    
+
+            Debug('AddRecord '+MacAddressPvr+' - '+ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].TTLE);
+        }
+    });
+}
+
 /*******************************************************************************
  * Muestra lista de graciones, schedules y series
  *******************************************************************************/
 
-    function OpenPvr(){
-        if(RecordingPanel === false){
-            
-            IndexRecordedFocus  = -1;
-            IndexRecordedProgFocus = 0;
-            
-            MinimizeTV();
+function OpenPvr(){
+    if(RecordingPanel === false){
 
-            GetRecordings();
-            
-            HidePvrInfo();
+        IndexRecordedFocus  = -1;
+        IndexRecordedProgFocus = 0;
 
-            PvrContainer.style.visibility = 'visible';
+        MinimizeTV();
 
-            RecordingPanel = true;
+        GetRecordings();
 
-            OptionPanel = 'Recordings';
+        HidePvrInfo();
 
-            ListTypeFocus = 'all';
+        PvrContainer.style.visibility = 'visible';
 
-            SetOptionPanel();
-            
-            GetPvrInfo();
+        RecordingPanel = true;
 
-            PvrTimer = setTimeout(ClosePvr,TimeoutPvr);
-        }
+        OptionPanel = 'Recordings';
+
+        ListTypeFocus = 'all';
+
+        SetOptionPanel();
+
+        GetPvrInfo();
+
+        PvrTimer = setTimeout(ClosePvr,TimeoutPvr);
     }
-    
-    function ClosePvr(){
-        PvrContainer.style.visibility = 'hidden';
-        
-        RecordingPanel          = false;
-        RecordOptions           = false;
-        DeleteOptions           = false;
-        
-        MaximizeTV();
-        
-        if(PlayingRecording === false){
-            RecordingsList          = '';
-        }
-        
-        SchedulesList           = '';
-        SeriesList              = '';
-        
-        OptionPanel             = '';
-        ListTypeFocus           = '';
-        RowTypeFocus            = '';
-        PvrRowFocus             = 1;
-        LastPvrRowFocus         = 0;
+}
 
-        FirstIndexRecorded      = 0;
-        
-        IndexScheduleFocus      = -1;
-        IndexScheduleProgFocus  = 0;
-        FirstIndexSchedule      = 0;
-        
-        IndexSerieFocus         = -1;
-        FirstIndexSerie         = 0;
+function ClosePvr(){
+    PvrContainer.style.visibility = 'hidden';
 
-        HideRecordOption();
-        
-        HideDeleteOption();
-        
-        clearTimeout(PvrTimer);
+    RecordingPanel          = false;
+    RecordOptions           = false;
+    DeleteOptions           = false;
+
+    MaximizeTV();
+
+    if(PlayingRecording === false){
+        RecordingsList          = '';
     }
-    
-    function SetOptionPanel(){
-        if(OptionPanel === 'Recordings'){
-            SetRecordings('');
-            
-            SetFocusRecordings();
-            
-            CurrentPvrOption.textContent = OptionPanel;
-        } else if(OptionPanel === 'Schedules'){
-            SetSchedules('');
-            
-            SetFocusSchedules();
-            
-            CurrentPvrOption.textContent = OptionPanel;
-        } else if(OptionPanel === 'Series'){
-            SetSeries('');
-            
-            SetFocusSeries();
-            
-            CurrentPvrOption.textContent = OptionPanel;
-        }
-    }
-    
-    function SetPvrInfo(){
-        //Device['MacAddressPvr'].length
-        
-        var AvailableSize  = 0,
-            TotalSize = 0;
 
-        if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
+    SchedulesList           = '';
+    SeriesList              = '';
+
+    OptionPanel             = '';
+    ListTypeFocus           = '';
+    RowTypeFocus            = '';
+    PvrRowFocus             = 1;
+    LastPvrRowFocus         = 0;
+
+    FirstIndexRecorded      = 0;
+
+    IndexScheduleFocus      = -1;
+    IndexScheduleProgFocus  = 0;
+    FirstIndexSchedule      = 0;
+
+    IndexSerieFocus         = -1;
+    FirstIndexSerie         = 0;
+
+    HideRecordOption();
+
+    HideDeleteOption();
+
+    clearTimeout(PvrTimer);
+}
+
+function SetOptionPanel(){
+    if(OptionPanel === 'Recordings'){
+        SetRecordings('');
+
+        SetFocusRecordings();
+
+        CurrentPvrOption.textContent = OptionPanel;
+    } else if(OptionPanel === 'Schedules'){
+        SetSchedules('');
+
+        SetFocusSchedules();
+
+        CurrentPvrOption.textContent = OptionPanel;
+    } else if(OptionPanel === 'Series'){
+        SetSeries('');
+
+        SetFocusSeries();
+
+        CurrentPvrOption.textContent = OptionPanel;
+    }
+}
+
+function SetPvrInfo(){
+    //Device['MacAddressPvr'].length
+
+    var AvailableSize  = 0,
+        TotalSize = 0;
+
+    if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
         var StorageInfo = [];
-            StorageInfo = PVR.GetStorageInfo();
-        }
-        
-            if (typeof StorageInfo === 'undefined') {
-                AvailableSize  = (parseInt(DiskInfo[DiskInfoIndex].espacio_disponible,10) / 1024);
-                TotalSize = (parseInt(DiskInfo[DiskInfoIndex].espacio_total,10) / 1024);
-            } else {
-                AvailableSize = (parseInt(StorageInfo.availableSize,10)/ 1024);
-                TotalSize = (parseInt(StorageInfo.totalSize,10)/ 1024);
-            }
-
-            AvailableSize  = (AvailableSize / 1024).toFixed(2);
-            TotalSize = (TotalSize / 1024).toFixed(2);
-            
-        var Percentage = (AvailableSize / TotalSize) * 100,
-            PercentageSize = (100 - Percentage).toFixed(2);
-        
-            PvrDiskInfoNodes[1].textContent = AvailableSize + ' GB available of ' + TotalSize + ' GB';
-            PvrDiskInfoNodes[5].textContent = PercentageSize + '%';
-            PvrDiskInfoNodes[5].style.width = PercentageSize + '%';
-            
-            if(PercentageSize > 95){
-                PvrDiskInfoNodes[5].style.color = '#e36464';
-                if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
-                    DeleteOldestAssets();
-                }
-            } 
-
-            TotalSize = null;
-            Percentage = null;
+        StorageInfo = PVR.GetStorageInfo();
     }
-    
+
+    if (typeof StorageInfo === 'undefined') {
+        AvailableSize  = (parseInt(DiskInfo[DiskInfoIndex].espacio_disponible,10) / 1024);
+        TotalSize = (parseInt(DiskInfo[DiskInfoIndex].espacio_total,10) / 1024);
+    } else {
+        AvailableSize = (parseInt(StorageInfo.availableSize,10)/ 1024);
+        TotalSize = (parseInt(StorageInfo.totalSize,10)/ 1024);
+    }
+
+    AvailableSize  = (AvailableSize / 1024).toFixed(2);
+    TotalSize = (TotalSize / 1024).toFixed(2);
+
+    var Percentage = (AvailableSize / TotalSize) * 100,
+        PercentageSize = (100 - Percentage).toFixed(2);
+
+    PvrDiskInfoNodes[1].textContent = AvailableSize + ' GB available of ' + TotalSize + ' GB';
+    PvrDiskInfoNodes[5].textContent = PercentageSize + '%';
+    PvrDiskInfoNodes[5].style.width = PercentageSize + '%';
+
+    if(PercentageSize > 95){
+        PvrDiskInfoNodes[5].style.color = '#e36464';
+        if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
+            DeleteOldestAssets();
+        }
+    }
+
+    TotalSize = null;
+    Percentage = null;
+}
+
 /*******************************************************************************
  * Muestra lista de graciones
  *******************************************************************************/
-        
-    function SetRecordings(Direction){
 
-        var Row  = 1,
-            Icon  = '',
-            Title = '',
-            IndexProgram = 0;
-    
-        var IndexRecorded = 0;
+function SetRecordings(Direction){
 
-        if(ListTypeFocus === 'all'){
-            
-            if(IndexRecordedFocus === -1){
-                IndexRecorded = -1;
-            } else {
-                IndexRecorded = IndexRecordedFocus;
-                
-                if (Direction === 'up'){
-                    IndexRecorded -= 11;
-                    IndexRecordedFocus--;
-                } else {
-                    IndexRecordedFocus++;
-                }
-            }
-            
-            var ActiveRec = '';
-            for (Row = 1; Row <= 19; Row++) {
+    var Row  = 1,
+        Icon  = '',
+        Title = '',
+        IndexProgram = 0;
 
-                IndexRecorded++;
-                
-                if(Row === 1){
-                    FirstIndexRecorded = IndexRecorded;
-                }
+    var IndexRecorded = 0;
 
-                if(IndexRecorded < RecordingsList.length){
-                    if(RecordingsList[IndexRecorded].length > 2){
-                        Icon = '<i class="fa fa-folder-open"></i>';
-                        Title = 'serie';
-                    } else {
-                        Icon = '<i class="fa fa-file"></i>';
-                        Title = 'rec';
-                    }
-                    
-                    if(RecordingsList[IndexRecorded][1].active === '1'){
-                        ActiveRec = ' (recording)';
-                        Icon = '<i class="fa fa-circle" id="IconRecording"></i>';
-                    } else {
-                        ActiveRec = '';
-                    }
+    if(ListTypeFocus === 'all'){
 
-                    PvrListNodes[Row].innerHTML = Icon + ' '+ RecordingsList[IndexRecorded][IndexProgram] + ActiveRec;
-                    PvrListNodes[Row].title = Title + ','+IndexRecorded+',1';
-                    
-                    Row++;
-                } else {
-                    PvrListNodes[Row].innerHTML = '';
-                    PvrListNodes[Row].title = '';
-                }
-            }
+        if(IndexRecordedFocus === -1){
+            IndexRecorded = -1;
         } else {
-                Icon = '<i class="fa fa-file"></i>';
-                Title = 'rec';
-               
-                IndexProgram = IndexRecordedProgFocus;
-                
-                if(IndexRecordedProgFocus !== 1){
-                    IndexProgram++;
-                } 
-                
-                if (Direction === 'up'){
-                    IndexProgram -= 11;
-                    IndexRecordedProgFocus--;
-                } 
+            IndexRecorded = IndexRecordedFocus;
 
-            for (Row = 1; Row <= 19; Row++) {
-                
-                if(IndexProgram < RecordingsList[IndexRecordedFocus].length){
-                    
-                    if(RecordingsList[IndexRecordedFocus][IndexProgram].active === '1'){
-                        ActiveRec = ' (recording)';
-                        Icon = '<i class="fa fa-circle" id="IconRecording"></i>';
-                    } else {
-                        ActiveRec = '';
-                    }
-
-                    if(RecordingsList[IndexRecordedFocus][IndexProgram].episode !== ''){
-                        PvrListNodes[Row].innerHTML = Icon + ' '+ IndexProgram+ ' - '+ RecordingsList[IndexRecordedFocus][IndexProgram].episode + ActiveRec;
-                    } else {
-                        PvrListNodes[Row].innerHTML = Icon + ' '+ IndexProgram+ ' - '+  moment(RecordingsList[IndexRecordedFocus][IndexProgram].date).format('MMMM Do YYYY')  + ActiveRec;
-                    }
-                    
-                    PvrListNodes[Row].title = Title + ','+IndexRecordedFocus+','+IndexProgram;
-                    Row++;
-                } else {
-                    PvrListNodes[Row].innerHTML = '';
-                    PvrListNodes[Row].title = '';
-                }
-                
-                IndexProgram++;
-
-/* @Creado por: Tania Maldonado
- * @Fecha: Noviembre 2019
- * @Tipo: Funciones para controlar la guia
- */
-    var EpgContainer            = document.getElementById('EpgContainer'),
-        EpgDay                  = document.getElementById('EpgDay'),
-        EpgDate                 = document.getElementById('EpgDate'),
-        EpgChannelLogo          = document.getElementById('EpgChannelLogo'),
-        EpgNowAiring            = document.getElementById('EpgNowAiring'),
-        EpgHours                = document.getElementById('EpgHours'),
-        EpgHoursNodes           = EpgHours.childNodes,
-        EpgInfoContainerNodes   = document.getElementById('EpgProgramInfo').childNodes;
-
-    var DaysEpg                 = [],
-        MaxEpgDay               = 10,
-        EpgDayNumber            = 0;
-
-    var TotalPrograms           = 100,
-        MaxRows                 = 5,
-        Rows                    = 1;
-
-    var HourRows                = 1,
-        MaxHourRows             = 5;
-
-    var OnloadProgramsPositions = { 1:-1, 2:-1, 3:-1, 4:-1, 5:-1 },
-        FirstProgramsPositions  = { 1:-1, 2:-1, 3:-1, 4:-1, 5:-1 },
-        LastProgramsPositions   = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 },
-        FirstChannelPosition    = 0,
-        CurrentChannelPosition  = 0,
-        LastChannelPosition     = 0;
-
-    var OnLoadHourPosition      = 0,
-        CurrentHourPosition     = 0,
-        LastHourPosition        = 0;
-
-    var RowSelected             = 1,
-        ProgramSelected         = 0;
-
-    var FocusChannelPosition    = 0;
-        FocusProgramPosition    = 0;
-
-    var ColorFocus              = '';
-        BackgroundFocus         = '';
-
-    var ProgramsToLeft          = false,
-        ProgramsToChange          = false;
-
-    var EpgTime                 = '',
-        SecondsToCloseEpg       = 300,
-        TimeoutEpg              = SecondsToCloseEpg * 1000;
-
-        GetFocusStyle();
-
-        //setTimeout(OpenEpg,2000, '');
-
-    var NextChannelsJson        = [],
-        ChannelsJsonToday       = [],
-        NextEpgDataActive       = false,
-        NextEpgActive           = false;
-
-    function GetNextJsonEpg(Direction){
-        NextEpgDataActive = false;
-
-        (Direction === 'RIGHT') ? EpgDayNumber++: EpgDayNumber--;
-
-
-            var NewEpgDateFormat = AddDays(EpgDayNumber),
-                NewEpgDate = NewEpgDateFormat.yyyymmdd(),
-                NewSourceEpgFile = Libraries['EpgDaysPath'] + 'epg_' + NewEpgDate + '_' + Device['Services']['PackageId'] + '.json';
-
-            $.ajax({
-                async: false,
-                url: NewSourceEpgFile,
-                success: function (response){
-                    NextChannelsJson = [];
-                    NextChannelsJson = response;
-
-                    NextEpgDataActive = true;
-
-                    if(EpgDayNumber === 1){
-                        ChannelsJsonToday = ChannelsJson;
-                    }
-
-                    Debug('------- GetNextJsonEpg -> ChannelsLength: '+ChannelsLength);
-                },
-                error: function (response){
-                    // El archivo no se encuentra o viene vacio, consulta a la base de datos
-                    NextEpgDataActive = false;
-                }
-            });
-    }
-
-/*******************************************************************************
- *
- *******************************************************************************/
-
-    function OpenEpg(){
-        if(ActiveEpgContainer === false && EpgDataActive === true){
-            Debug('------- OpenEpg 1 -> EpgDataActive: '+EpgDataActive);
-
-
-
-            /* Activa bandera, muestra contenedor y asigna la informacion de la cabecera */
-            EpgContainer.style.visibility = 'visible';
-            EpgNowAiring.innerHTML = 'Now: '+ChannelsJson[ChannelPosition].INDC + ' - ' + ChannelsJson[ChannelPosition].CHNL;
-            EpgDate.textContent = FormatDateAndHour;
-            EpgDay.textContent = 'Today';
-            ActiveEpgContainer = true;
-
-
-
-            if(NextEpgActive === true){
-                OnLoadHourPosition      = 0;
-                CurrentHourPosition     = 0;
-                EpgDay.textContent      = AddDaysFormat(EpgDayNumber);
-
-                /*Contruye los renglones de la programacion actual */
-                CurrentChannelPosition  = FirstChannelPosition;
+            if (Direction === 'up'){
+                IndexRecorded -= 11;
+                IndexRecordedFocus--;
             } else {
-                EpgDayNumber = 0;
-
-                EpgDay.textContent = 'Today';
-                OnLoadHourPosition      = FindCurrentHour(GetCurrentHour());
-                CurrentHourPosition     = OnLoadHourPosition;
-
-                /*Contruye los renglones de la programacion actual */
-                CurrentChannelPosition  = ChannelPosition;
-            }
-
-            BuildProgramsRow(CurrentHourPosition, CurrentChannelPosition);
-
-            BuildChannelsRow(CurrentChannelPosition);
-
-            FocusEpgProgram(RowSelected,ProgramSelected);
-
-            GetWeather();
-
-            MinimizeTV();
-
-            EpgTimer = setTimeout(CloseEpg,TimeoutEpg);
-
-            SetChannelLogo();
-            Debug('------- OpenEpg 2 -> EpgDataActive: '+EpgDataActive);
-        } else if(ActiveEpgContainer === true){
-            Debug('------- OpenEpg 3 -> EpgDataActive: '+EpgDataActive);
-            CloseEpg();
-        }
-    }
-
-/*******************************************************************************
- *
- *******************************************************************************/
-
-    function CloseEpg(){
-        if(ActiveEpgContainer === true){
-            EpgContainer.style.visibility = 'hidden';
-            ActiveEpgContainer = false;
-
-            OnloadProgramsPositions = { 1:-1, 2:-1, 3:-1, 4:-1, 5:-1 };
-            FirstProgramsPositions  = { 1:-1, 2:-1, 3:-1, 4:-1, 5:-1 };
-            LastProgramsPositions   = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
-            FirstChannelPosition    = 0;
-            CurrentChannelPosition  = 0;
-            LastChannelPosition     = 0;
-
-            OnLoadHourPosition      = 0;
-            CurrentHourPosition     = 0;
-            LastHourPosition        = 0;
-
-            RowSelected             = 1;
-            ProgramSelected         = 0;
-
-            FocusChannelPosition    = 0;
-            FocusProgramPosition    = 0;
-
-            ProgramsToLeft          = false;
-            ProgramsToChange          = false;
-
-            MaximizeTV();
-
-            if(NextEpgActive === true){
-                ChannelsJson = ChannelsJsonToday;
-            }
-
-            NextEpgDataActive   = false;
-            NextEpgActive       = false;
-            EpgDayNumber        =  0;
-
-            clearTimeout(EpgTimer);
-        }
-    }
-
-/*******************************************************************************
- *
- *******************************************************************************/
-
-    function ClearEpg(){
-        ActiveEpgContainer      = false;
-        OnloadProgramsPositions = { 1:-1, 2:-1, 3:-1, 4:-1, 5:-1 };
-        FirstProgramsPositions  = { 1:-1, 2:-1, 3:-1, 4:-1, 5:-1 };
-        LastProgramsPositions   = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
-        //FirstChannelPosition    = 0;
-        LastChannelPosition     = 0;
-
-        OnLoadHourPosition      = 0;
-        CSrrentHourPosition     = 0;
-        LastHourPosition        = 0;
-
-        ProgramSelected         = 0;
-
-        FocusChannelPosition    = 0;
-        FocusProgramPosition    = 0;
-
-        ProgramsToLeft          = false;
-        ProgramsToChange          = false;
-    }
-
-/*******************************************************************************
- * Construye los renglones con la programacion
- *******************************************************************************/
-
-
-    function BuildProgramsRow(SetCurrentHourPosition, CurrentChannelPosition){
-        //console.log('__________ [1][BuildProgramsRow]: ('+SetCurrentHourPosition+','+ CurrentChannelPosition+')');
-
-        var HourPosition        = -1,
-            ExtraHourPosition   = -1,
-            BuildHoursPositions = SetCurrentHourPosition,
-            BuildHourPosition   = SetCurrentHourPosition;
-
-        for (HourRows = 1; HourRows <= MaxHourRows; HourRows++) {
-
-            if(BuildHoursPositions <= (Hours.length-1)){
-                //console.log('__________ [1.1][BuildProgramsRow]:  BuildHoursPositions '+ BuildHoursPositions + ' HourPosition: '+Hours[BuildHoursPositions][1]);
-                if(BuildHoursPositions >= 0 && BuildHoursPositions <= 12){
-                    EpgHours.style.backgroundImage	= 'url("./Media/General/def.png")';
-                } else if(BuildHoursPositions > 12 && BuildHoursPositions <= 25){
-                    EpgHours.style.backgroundImage	= 'url("./Media/General/def.png")';
-                } else if(BuildHoursPositions > 25 && BuildHoursPositions <= 29){
-                    EpgHours.style.backgroundImage	= 'url("./Media/General/def.png")';
-                } else if(BuildHoursPositions > 29 && BuildHoursPositions <= 37){
-                    EpgHours.style.backgroundImage	= 'url("./Media/General/def.png")';
-                } else if(BuildHoursPositions > 37 && BuildHoursPositions <= 47){
-                    EpgHours.style.backgroundImage	= 'url("./Media/General/def.png")';
-                }
-
-                HourPosition += 2;
-                EpgHoursNodes[HourPosition].textContent = Hours[BuildHoursPositions][1];
-                EpgHoursNodes[HourPosition].title = BuildHoursPositions;
-                ++BuildHoursPositions;
-                LastHourPosition = BuildHoursPositions;
-
-            } else {
-                HourPosition += 2;
-                ++ExtraHourPosition;
-                EpgHoursNodes[HourPosition].textContent = Hours[ExtraHourPosition][1];
-                EpgHoursNodes[HourPosition].title = 46;
-
+                IndexRecordedFocus++;
             }
         }
 
-
-        var CurrentProgramPosition  = 0;
-            CurrentHourPosition = SetCurrentHourPosition;
-        //console.log('_________ [1.4][BuildProgramsRow]: ('+BuildHourPosition+','+ CurrentChannelPosition+')');
-        for (Rows = 1; Rows <= MaxRows; Rows++) {
-            CurrentProgramPosition = LoadCurrentDataPosition(BuildHourPosition, CurrentChannelPosition);
-
-            //console.log('_________ [1.5][BuildProgramsRow]: CurrentProgramPosition= '+CurrentProgramPosition);
-
-            //console.log('_________ [1.6][BuildProgramsRow]: -> WriteProgramsRow(CurrentProgramPosition: '+CurrentProgramPosition +' CurrentChannelPosition: '+CurrentChannelPosition + ' Row: '+Rows+')');
-            WriteProgramsRow(CurrentProgramPosition, CurrentChannelPosition, Rows);
-            ++CurrentChannelPosition;
-
-            if(CurrentChannelPosition > ChannelsLength){
-                CurrentChannelPosition = 0;
-            }
-        }
-
-        //console.log('______________________________________');
-        //console.log('OnloadProgramsPositions: ');
-        //console.log(OnloadProgramsPositions);
-        //console.log('FirstProgramsPositions: ');
-        //console.log(FirstProgramsPositions);
-        //console.log('LastProgramsPositions: ');
-        //console.log(LastProgramsPositions);
-        //console.log('______________________________________');
-
-        GetRowsPrograms();
-        //console.log('_________ [1.7][BuildProgramsRow]: -> GetRowsPrograms');
-    }
-
-/*******************************************************************************
- * Obtiene la posicion actual del programa del canal en contruccion
- *******************************************************************************/
-
-    function LoadCurrentDataPosition(HourPosition, CurrentChannelPosition){
-        var NewProgramPosition = 0,
-            CurrentHour     = Hours[HourPosition][0],
-            StartHour       = '',
-            EndHour         = '',
-            IndexProgram    = 0;
-
-            for(IndexProgram = 0; IndexProgram < ChannelsJson[CurrentChannelPosition].P_Length; IndexProgram++){
-                /*Obtiene las horas inicio y fin de cada programa*/
-                StartHour = ChannelsJson[CurrentChannelPosition].PROGRAMS[IndexProgram].STRH;
-                EndHour   = ChannelsJson[CurrentChannelPosition].PROGRAMS[IndexProgram].FNLH;
-
-                //console.log('######## StartHour: '+ StartHour+ ' EndHour: '+EndHour);
-                //console.log('######## CompareStartHour: '+ CompareHours(StartHour, CurrentHour) + ' CurrentHour '+CurrentHour);
-                //console.log('######## CompareEndHour: '+ CompareHours(EndHour, CurrentHour) + ' CurrentHour '+CurrentHour);
-
-                //Debug('StartHour: '+StartHour + ' CurrentHour: '+CurrentHour + ' CompareHours: ' + CompareHours(StartHour, CurrentHour));
-                if(CompareHours(StartHour, CurrentHour) === '='){
-                    /* Asigna la posicion correcta */
-                    NewProgramPosition = IndexProgram;
-
-                    /* Iguala IndexPrograma para terminar el ciclo FOR */
-                    IndexProgram = ChannelsJson[CurrentChannelPosition].P_Length;
-                    //console.log('///////// '+CompareHours(StartHour, CurrentHour) + ' = '+NewProgramPosition);
-                } else if(CompareHours(StartHour, CurrentHour) === '>'){
-                    /* Asigna la posicion correcta */
-                    NewProgramPosition = IndexProgram;
-
-                    /* Iguala IndexPrograma para terminar el ciclo FOR */
-                    IndexProgram = ChannelsJson[CurrentChannelPosition].P_Length;
-                    //console.log('///////// '+CompareHours(StartHour, CurrentHour) + ' > '+NewProgramPosition);
-                } else if(CompareHours(StartHour, CurrentHour) === '<' && CompareHours(EndHour, CurrentHour) === '>'){
-                    /* Asigna la posicion correcta */
-                    NewProgramPosition = IndexProgram;
-
-                    /* Iguala IndexPrograma para terminar el ciclo FOR */
-                    IndexProgram = ChannelsJson[CurrentChannelPosition].P_Length;
-                    //console.log('///////// '+CompareHours(StartHour, CurrentHour) + ' < > '+NewProgramPosition);
-                }
-                else if(CompareHours(StartHour, CurrentHour) === '<' && CompareHours(StartHour, '23:00') === '='){
-                    /* Asigna la posicion correcta */
-                    NewProgramPosition = IndexProgram;
-
-                    /* Iguala IndexPrograma para terminar el ciclo FOR */
-                    IndexProgram = ChannelsJson[CurrentChannelPosition].P_Length;
-                    //console.log('///////// '+CompareHours(StartHour, CurrentHour) + ' < = '+NewProgramPosition);
-                }
-            }
-
-            //Debug('%% NewProgramPosition '+NewProgramPosition);
-        return NewProgramPosition;
-    }
-
-/*******************************************************************************
- * Contuye y agrega los datos a mostrar de cada renglon con la programacion
- *******************************************************************************/
-
-    function WriteProgramsRow(CurrentProgramPosition, CurrentChannelPosition, Row){
-    //console.log('::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: WriteProgramsRow('+CurrentProgramPosition+','+ CurrentChannelPosition+','+ Row+')');
-        var ProgramRow          = document.getElementById('ProgramRow'+Row),
-            ProgramNode         = '',
-            DivElement          = '',
-            ProgramWidth        = 0,
-            RowProgramPosition  = 0,
-            TotalWidth          = 0;
-
-        var NewFormatFinal      = 0,
-            NewFormatCurrent    = 0,
-            SubstractLenght     = 0;
-
-            ProgramRow.innerHTML = '';
-
-            if(FirstProgramsPositions[Row] === -1){
-                FirstProgramsPositions[Row] = CurrentProgramPosition;
-                OnloadProgramsPositions[Row]   = CurrentProgramPosition;
-                //console.log('................. 1.0) FirstProgramsPositions[Row] === -1: '+FirstProgramsPositions[Row]);
-            } else {
-                FirstProgramsPositions[Row] = CurrentProgramPosition;
-                //console.log('................. 1.1) FirstProgramsPositions[Row]: '+FirstProgramsPositions[Row]);
-            }
-
-        for (RowProgramPosition = CurrentProgramPosition; RowProgramPosition < TotalPrograms; RowProgramPosition++) {
-            /* Obtiene la hora inicial del programa */
-            //console.log('................. FOR ('+CurrentProgramPosition+','+ CurrentChannelPosition+','+ Row+')');
-            var ProgramStart    = ChannelsJson[CurrentChannelPosition].PROGRAMS[RowProgramPosition].STRH,
-                ProgramFinal    = ChannelsJson[CurrentChannelPosition].PROGRAMS[RowProgramPosition].FNLH,
-                NextStartHour   = EpgHoursNodes[9].title;
-                ++NextStartHour;
-                if(NextStartHour >= 47){ NextStartHour = 46; }
-
-            var CurrentStartEpgHour  = Time12to24(EpgHoursNodes[1].textContent),
-                CurrentFinalEpgHour  = Time12to24(Hours[(++NextStartHour)][1]),
-                CompareStartEpgHours = CompareHours(ProgramStart, CurrentStartEpgHour),
-                CompareFinalEpgHours = CompareHours(ProgramFinal, CurrentFinalEpgHour),
-                Overflow = 0;
-
-                //console.log('ProgramStart: ' +ProgramStart + ' ProgramFinal: '+ProgramFinal);
-                //console.log('CurrentStart: ' +CurrentStartEpgHour + ' CurrentFinal: '+CurrentFinalEpgHour);
-                //console.log('CompareStartEpgHours: ' +CompareStartEpgHours);
-                //console.log('CompareFinalEpgHours: ' +CompareFinalEpgHours);
-
-            if(CompareStartEpgHours === '<'){
-                /* Obtiene la hora inicio del programa para sacar la diferencia */
-                    if(ChannelsJson[CurrentChannelPosition].PROGRAMS[RowProgramPosition].FNLH === '00:00'){
-                       NewFormatFinal = moment('23:59', 'HH:mm');
-                    } else {
-                        NewFormatFinal = moment(ChannelsJson[CurrentChannelPosition].PROGRAMS[RowProgramPosition].FNLH, 'HH:mm');
-                    }
-                    NewFormatCurrent = moment(CurrentStartEpgHour, 'HH:mm');
-                    SubstractLenght = Math.abs(NewFormatFinal.diff(NewFormatCurrent, 'hours', true));
-                    //console.log('................. < 1.1.1) SubstractLenght: '+SubstractLenght);
-
-                    ProgramWidth = (SubstractLenght * 40);
-                    //console.log('................. < 1.1.2) ProgramWidth: '+ProgramWidth);
-                    TotalWidth = 0;
-                    TotalWidth += ProgramWidth;
-                    //console.log('................. < 1.1.3) TotalWidth: '+TotalWidth);
-
-            } else if(CompareFinalEpgHours === '>'){
-                /* Obtiene la hora final del programa para sacar la diferencia */
-                    NewFormatFinal = moment(ChannelsJson[CurrentChannelPosition].PROGRAMS[RowProgramPosition].STRH, 'HH:mm');
-                    NewFormatCurrent = moment(CurrentFinalEpgHour, 'HH:mm');
-                    SubstractLenght = Math.abs(NewFormatFinal.diff(NewFormatCurrent, 'hours', true));
-                    //console.log('................. > 1.1.1) SubstractLenght: '+SubstractLenght);
-
-                    ProgramWidth = (SubstractLenght * 40);
-                    //console.log('................. > 1.1.2) ProgramWidth: '+ProgramWidth);
-
-                    TotalWidth += ProgramWidth;
-                    //console.log('................. > 1.1.3) TotalWidth: '+TotalWidth);
-            } else {
-                /* Obtiene la longitud del programa */
-                ProgramWidth = (parseFloat(ChannelsJson[CurrentChannelPosition].PROGRAMS[RowProgramPosition].DRTN, 10) * 40);
-                //console.log('................. 1.1.4) ProgramWidth: '+ProgramWidth);
-
-                /* Suma la longitud contruida */
-                TotalWidth += ProgramWidth;
-                //console.log('................. 1.1.5) TotalWidth: '+TotalWidth);
-            }
-
-            if(TotalWidth > 100){
-                Overflow = TotalWidth - 100;
-                ProgramWidth = ProgramWidth - Overflow;
-            }
-
-            if(ChannelsJson[CurrentChannelPosition].P_Length === 1){
-                ProgramWidth = 100;
-            }
-
-
-            //console.log('................. 1.2.0) Width: '+ProgramWidth + ' C: '+CurrentChannelPosition+' P: '+RowProgramPosition);
-            //console.log('................. 1.2.2) Start: '+ChannelsJson[CurrentChannelPosition].PROGRAMS[RowProgramPosition].STRH +' Final: '+ChannelsJson[CurrentChannelPosition].PROGRAMS[RowProgramPosition].FNLH+' Title: '+ChannelsJson[CurrentChannelPosition].PROGRAMS[RowProgramPosition].TTLE);
-            DivElement  = document.createElement('div');
-            ProgramNode = document.createTextNode(ChannelsJson[CurrentChannelPosition].PROGRAMS[RowProgramPosition].TTLE);
-            DivElement.appendChild(ProgramNode);
-            DivElement.setAttribute('class', 'Program');
-            DivElement.setAttribute('title', CurrentChannelPosition+','+RowProgramPosition);
-            DivElement.setAttribute('style', 'width:'+ProgramWidth+'%');
-
-            ProgramRow.appendChild(DivElement);
-
-
-            if(TotalWidth === 100){
-                /* Valida si la longitud contruida es igual a 100 */
-                LastProgramsPositions[Row] = RowProgramPosition;
-                //console.log('................. 1.3.0) LastProgramsPositions[Row]: '+Row + ' - ' +LastProgramsPositions[Row]);
-
-                RowProgramPosition = TotalPrograms;
-                //console.log('................. 1.3.1) RowProgramPosition: '+RowProgramPosition);
-            }
-            else if(TotalWidth > 99){
-                /* Valida si la longitud contruida es mayor a 100 */
-                LastProgramsPositions[Row] = RowProgramPosition;
-                //console.log('................. 1.3.2) LastProgramsPositions[Row]: '+Row + ' - ' +LastProgramsPositions[Row]);
-
-                RowProgramPosition = TotalPrograms;
-                //console.log('................. 1.3.3) RowProgramPosition: '+RowProgramPosition);
-            }
-            else if(RowProgramPosition === (ChannelsJson[CurrentChannelPosition].P_Length - 1)){
-                /* Valida si la longitud contruida es mayor a 100 */
-                LastProgramsPositions[Row] = RowProgramPosition;
-                //console.log('................. 1.3.2) LastProgramsPositions[Row]: '+Row + ' - ' +LastProgramsPositions[Row]);
-
-                RowProgramPosition = TotalPrograms;
-                //console.log('................. 1.3.3) RowProgramPosition: '+RowProgramPosition);
-            }
-
-            //console.log('_._._._._._._._._._._._._._._._._._._.');
-        }
-        //console.log(':::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::');
-        //console.log(' ');
-    }
-
-/*******************************************************************************
- * Construye los renglones con los canales
- *******************************************************************************/
-
-    function BuildChannelsRow(CurrentChannelPosition){
-        FirstChannelPosition = CurrentChannelPosition;
-
-        for (Rows = 1; Rows <= MaxRows; Rows++) {
-            WriteChannelsRow(CurrentChannelPosition, Rows);
-            LastChannelPosition = CurrentChannelPosition;
-            ++CurrentChannelPosition;
-
-            if(CurrentChannelPosition > ChannelsLength){
-                CurrentChannelPosition = 0;
->>>>>>> refs/remotes/origin/main
-            }
-        }
-    }
-
-<<<<<<< HEAD
-    function SetFocusRecordings(){
-        var Row = 1;
-        
+        var ActiveRec = '';
         for (Row = 1; Row <= 19; Row++) {
-            PvrListNodes[Row].setAttribute('class','PvrProgram'); 
-            Row++;
+
+            IndexRecorded++;
+
+            if(Row === 1){
+                FirstIndexRecorded = IndexRecorded;
+            }
+
+            if(IndexRecorded < RecordingsList.length){
+                if(RecordingsList[IndexRecorded].length > 2){
+                    Icon = '<i class="fa fa-folder-open"></i>';
+                    Title = 'serie';
+                } else {
+                    Icon = '<i class="fa fa-file"></i>';
+                    Title = 'rec';
+                }
+
+                if(RecordingsList[IndexRecorded][1].active === '1'){
+                    ActiveRec = ' (recording)';
+                    Icon = '<i class="fa fa-circle" id="IconRecording"></i>';
+                } else {
+                    ActiveRec = '';
+                }
+
+                PvrListNodes[Row].innerHTML = Icon + ' '+ RecordingsList[IndexRecorded][IndexProgram] + ActiveRec;
+                PvrListNodes[Row].title = Title + ','+IndexRecorded+',1';
+
+                Row++;
+            } else {
+                PvrListNodes[Row].innerHTML = '';
+                PvrListNodes[Row].title = '';
+            }
+        }
+    } else {
+        Icon = '<i class="fa fa-file"></i>';
+        Title = 'rec';
+
+        IndexProgram = IndexRecordedProgFocus;
+
+        if(IndexRecordedProgFocus !== 1){
+            IndexProgram++;
         }
 
-        PvrListNodes[PvrRowFocus].setAttribute('class','PvrProgramFocus'); 
+        if (Direction === 'up'){
+            IndexProgram -= 11;
+            IndexRecordedProgFocus--;
+        }
 
-        RowTypeFocus  = PvrListNodes[PvrRowFocus].title.split(',')[0];
-        
-        if(RowTypeFocus !== ''){
-            IndexRecordedFocus  = parseInt(PvrListNodes[PvrRowFocus].title.split(',')[1]);
-            IndexRecordedProgFocus   = parseInt(PvrListNodes[PvrRowFocus].title.split(',')[2]);
+        for (Row = 1; Row <= 19; Row++) {
 
-            if(RowTypeFocus === 'serie'){
-                PvrInfoNodes[1].textContent  = 'Episodes:';
-                PvrInfoNodes[3].textContent  = '';
-                PvrInfoNodes[5].innerHTML    = '';
-                PvrInfoNodes[7].textContent  = RecordingsList[IndexRecordedFocus].length - 1;
-                PvrInfoNodes[9].textContent  = '';
-                PvrInfoNodes[11].textContent = RecordingsList[IndexRecordedFocus][0];
+            if(IndexProgram < RecordingsList[IndexRecordedFocus].length){
+
+                if(RecordingsList[IndexRecordedFocus][IndexProgram].active === '1'){
+                    ActiveRec = ' (recording)';
+                    Icon = '<i class="fa fa-circle" id="IconRecording"></i>';
+                } else {
+                    ActiveRec = '';
+                }
+
+                if(RecordingsList[IndexRecordedFocus][IndexProgram].episode !== ''){
+                    PvrListNodes[Row].innerHTML = Icon + ' '+ IndexProgram+ ' - '+ RecordingsList[IndexRecordedFocus][IndexProgram].episode + ActiveRec;
+                } else {
+                    PvrListNodes[Row].innerHTML = Icon + ' '+ IndexProgram+ ' - '+  moment(RecordingsList[IndexRecordedFocus][IndexProgram].date).format('MMMM Do YYYY')  + ActiveRec;
+                }
+
+                PvrListNodes[Row].title = Title + ','+IndexRecordedFocus+','+IndexProgram;
+                Row++;
             } else {
-                PvrInfoNodes[1].textContent  = moment(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].date).format('MMMM Do YYYY');
-                PvrInfoNodes[3].textContent  = TimeConvert(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].duration);
-                PvrInfoNodes[5].innerHTML    = ShowStars(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].rating);
-                PvrInfoNodes[7].textContent  = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].episode;
-                PvrInfoNodes[9].textContent  = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].description;
-                PvrInfoNodes[11].textContent = RecordingsList[IndexRecordedFocus][0];
+                PvrListNodes[Row].innerHTML = '';
+                PvrListNodes[Row].title = '';
             }
-        }  else {
-            ClearInfoPanelPvr();
+
+            IndexProgram++;
         }
     }
-    
+}
+
+function SetFocusRecordings(){
+    var Row = 1;
+
+    for (Row = 1; Row <= 19; Row++) {
+        PvrListNodes[Row].setAttribute('class','PvrProgram');
+        Row++;
+    }
+
+    PvrListNodes[PvrRowFocus].setAttribute('class','PvrProgramFocus');
+
+    RowTypeFocus  = PvrListNodes[PvrRowFocus].title.split(',')[0];
+
+    if(RowTypeFocus !== ''){
+        IndexRecordedFocus  = parseInt(PvrListNodes[PvrRowFocus].title.split(',')[1]);
+        IndexRecordedProgFocus   = parseInt(PvrListNodes[PvrRowFocus].title.split(',')[2]);
+
+        if(RowTypeFocus === 'serie'){
+            PvrInfoNodes[1].textContent  = 'Episodes:';
+            PvrInfoNodes[3].textContent  = '';
+            PvrInfoNodes[5].innerHTML    = '';
+            PvrInfoNodes[7].textContent  = RecordingsList[IndexRecordedFocus].length - 1;
+            PvrInfoNodes[9].textContent  = '';
+            PvrInfoNodes[11].textContent = RecordingsList[IndexRecordedFocus][0];
+        } else {
+            PvrInfoNodes[1].textContent  = moment(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].date).format('MMMM Do YYYY');
+            PvrInfoNodes[3].textContent  = TimeConvert(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].duration);
+            PvrInfoNodes[5].innerHTML    = ShowStars(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].rating);
+            PvrInfoNodes[7].textContent  = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].episode;
+            PvrInfoNodes[9].textContent  = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].description;
+            PvrInfoNodes[11].textContent = RecordingsList[IndexRecordedFocus][0];
+        }
+    }  else {
+        ClearInfoPanelPvr();
+    }
+}
+
 /*******************************************************************************
  *  Opciones para las grabaciones completas
  *******************************************************************************/
 
-    function ShowRecordOption(){
-        RecordOptions = true;
-        
-        PvrOptions.style.visibility = 'visible';
-        
-        SetFocusOptionRecord('down');
-    }
-    
-    function HideRecordOption(){
-        RecordOptions = false;
-        
-        PvrOptions.style.visibility = 'hidden';
-        
-        OptionsFocus = -1;
-        
-        var IndexOptionsNodes = 0;
-            
-        for(IndexOptionsNodes = 0; IndexOptionsNodes < RecordsNodesArray.length; IndexOptionsNodes++){
-            PvrOptionsNodes[RecordsNodesArray[IndexOptionsNodes]].classList.remove('RecordingOptionFocus');
-        }
-    }
-    
-    
-    function SetFocusOptionRecord(Direction){
-        if(OptionsFocus >= 0){
-            PvrOptionsNodes[RecordsNodesArray[OptionsFocus]].classList.remove('RecordingOptionFocus');
-        }
-        
-        (Direction === 'down') ? OptionsFocus++: OptionsFocus--;
+function ShowRecordOption(){
+    RecordOptions = true;
 
-        if(OptionsFocus >= RecordsNodesArray.length){
-            OptionsFocus = 0;
-        } else if(OptionsFocus < 0){
-            OptionsFocus = (RecordsNodesArray.length -1 );
-        }
-        
-        PvrOptionsNodes[RecordsNodesArray[OptionsFocus]].classList.add('RecordingOptionFocus');
-    }
-    
-    function SelectRecordOption(){
+    PvrOptions.style.visibility = 'visible';
 
-        switch (RecordsNodesArray[OptionsFocus]) {
-            case 1:
-                ClearSpeed();
-                
-                PlayVideo(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].url);
-                
-                Debug('URL>>>>>> '+RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].url)
-                
-                PlayingRecording = true;
-                
-                ClosePvr();
-                
-                ShowPvrInfo();
-                
-                SetSpeed('play');
-            break;
-            
-            case 3:
-                HideRecordOption();
-                
-                SetDeleteProgram();
+    SetFocusOptionRecord('down');
+}
+
+function HideRecordOption(){
+    RecordOptions = false;
+
+    PvrOptions.style.visibility = 'hidden';
+
+    OptionsFocus = -1;
+
+    var IndexOptionsNodes = 0;
+
+    for(IndexOptionsNodes = 0; IndexOptionsNodes < RecordsNodesArray.length; IndexOptionsNodes++){
+        PvrOptionsNodes[RecordsNodesArray[IndexOptionsNodes]].classList.remove('RecordingOptionFocus');
+    }
+}
+
+
+function SetFocusOptionRecord(Direction){
+    if(OptionsFocus >= 0){
+        PvrOptionsNodes[RecordsNodesArray[OptionsFocus]].classList.remove('RecordingOptionFocus');
+    }
+
+    (Direction === 'down') ? OptionsFocus++: OptionsFocus--;
+
+    if(OptionsFocus >= RecordsNodesArray.length){
+        OptionsFocus = 0;
+    } else if(OptionsFocus < 0){
+        OptionsFocus = (RecordsNodesArray.length -1 );
+    }
+
+    PvrOptionsNodes[RecordsNodesArray[OptionsFocus]].classList.add('RecordingOptionFocus');
+}
+
+function SelectRecordOption(){
+
+    switch (RecordsNodesArray[OptionsFocus]) {
+        case 1:
+            ClearSpeed();
+
+            PlayVideo(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].url);
+
+            PlayingRecording = true;
+
+            ClosePvr();
+
+            ShowPvrInfo();
+
+            SetSpeed('play');
             break;
 
-            case 5:
-                HideRecordOption();
+        case 3:
+            HideRecordOption();
+
+            SetDeleteProgram();
             break;
-        }
+
+        case 5:
+            HideRecordOption();
+            break;
     }
-    
+}
+
 /*******************************************************************************
  *  Opciones para eliminar algun schedule o serie
  *******************************************************************************/
 
-    function ShowDeleteOption(){
-        DeleteOptions = true;
-        
-        PvrDeleteOptions.style.visibility = 'visible';
-        
-        SetFocusOptionDelete('down');
-    }
-    
-    function HideDeleteOption(){
-        DeleteOptions = false;
-        
-        PvrDeleteOptions.style.visibility = 'hidden';
-        
-        OptionsFocus = -1;
-        
-        var IndexOptionsNodes = 0;
-            
-        for(IndexOptionsNodes = 0; IndexOptionsNodes < (RecordsNodesArray.length - 1); IndexOptionsNodes++){
-            PvrDeleteOptionsNodes[RecordsNodesArray[IndexOptionsNodes]].classList.remove('RecordingOptionFocus');
-        }
-    }
-    
-    
-    function SetFocusOptionDelete(Direction){
-        if(OptionsFocus >= 0){
-            PvrDeleteOptionsNodes[RecordsNodesArray[OptionsFocus]].classList.remove('RecordingOptionFocus');
-        }
-        
-        (Direction === 'down') ? OptionsFocus++: OptionsFocus--;
+function ShowDeleteOption(){
+    DeleteOptions = true;
 
-        if(OptionsFocus >= (RecordsNodesArray.length - 1)){
-            OptionsFocus = 0;
-        } else if(OptionsFocus < 0){
-            OptionsFocus = (RecordsNodesArray.length - 2);
-        }
-        
-        PvrDeleteOptionsNodes[RecordsNodesArray[OptionsFocus]].classList.add('RecordingOptionFocus');
-    }
-    
-    function SelectDeleteOption(){
+    PvrDeleteOptions.style.visibility = 'visible';
 
-        switch (RecordsNodesArray[OptionsFocus]) {
-            case 1:
-                HideDeleteOption();
-                
-                if(OptionPanel === 'Schedules'){
-                    SetDeleteProgram();
-                } else {
-                    DeleteSerie();
-                }
-            break;
-            
-            case 3:
-                HideDeleteOption();
-            break;
-        }
+    SetFocusOptionDelete('down');
+}
+
+function HideDeleteOption(){
+    DeleteOptions = false;
+
+    PvrDeleteOptions.style.visibility = 'hidden';
+
+    OptionsFocus = -1;
+
+    var IndexOptionsNodes = 0;
+
+    for(IndexOptionsNodes = 0; IndexOptionsNodes < (RecordsNodesArray.length - 1); IndexOptionsNodes++){
+        PvrDeleteOptionsNodes[RecordsNodesArray[IndexOptionsNodes]].classList.remove('RecordingOptionFocus');
     }
-      
-       
+}
+
+
+function SetFocusOptionDelete(Direction){
+    if(OptionsFocus >= 0){
+        PvrDeleteOptionsNodes[RecordsNodesArray[OptionsFocus]].classList.remove('RecordingOptionFocus');
+    }
+
+    (Direction === 'down') ? OptionsFocus++: OptionsFocus--;
+
+    if(OptionsFocus >= (RecordsNodesArray.length - 1)){
+        OptionsFocus = 0;
+    } else if(OptionsFocus < 0){
+        OptionsFocus = (RecordsNodesArray.length - 2);
+    }
+
+    PvrDeleteOptionsNodes[RecordsNodesArray[OptionsFocus]].classList.add('RecordingOptionFocus');
+}
+
+function SelectDeleteOption(){
+
+    switch (RecordsNodesArray[OptionsFocus]) {
+        case 1:
+            HideDeleteOption();
+
+            if(OptionPanel === 'Schedules'){
+                SetDeleteProgram();
+            } else {
+                DeleteSerie();
+            }
+            break;
+
+        case 3:
+            HideDeleteOption();
+            break;
+    }
+}
+
+
 /*******************************************************************************
  * Elimina logicamente la grabacion en la base de datos
- *******************************************************************************/    
+ *******************************************************************************/
 
-    function SetDeleteProgram(){
-        LastPvrRowFocus = PvrRowFocus ;
-        
-        var ProgramId = '';
-        
-        if(OptionPanel === 'Recordings'){
-            ProgramId = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].id;
-        } else {
-            ProgramId = SchedulesList[IndexScheduleFocus][IndexScheduleProgFocus].id;
-        }
-        
-        $.ajax({
-            type: 'POST',
-            url: 'Core/Controllers/Recorder.php',
-            data: { 
-                Option          : 'SetDeleteProgram', 
-                OperationId     : OperationsList['delete'],
-                ProgramId       : ProgramId
-            },
-            success: function (response){
-                
-                Response = $.parseJSON(response);
+function SetDeleteProgram(){
+    LastPvrRowFocus = PvrRowFocus ;
 
-                ShowRecorderMessage(Response.Message);
-                
-                if(Response.Update === true && PlayingRecording === false){
+    var ProgramId = '';
 
-                    if(OptionPanel === 'Recordings'){
-                        GetRecordings();
+    if(OptionPanel === 'Recordings'){
+        ProgramId = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].id;
+    } else {
+        ProgramId = SchedulesList[IndexScheduleFocus][IndexScheduleProgFocus].id;
+    }
 
-                        FirstIndexRecorded--;
+    $.ajax({
+        type: 'POST',
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option          : 'SetDeleteProgram',
+            OperationId     : OperationsList['delete'],
+            ProgramId       : ProgramId
+        },
+        success: function (response){
 
-                        IndexRecordedFocus = FirstIndexRecorded;
+            Response = $.parseJSON(response);
 
-                        ListTypeFocus = 'all';
+            ShowRecorderMessage(Response.Message);
 
-                        SetRecordings('');
+            if(Response.Update === true && PlayingRecording === false){
 
-                        PvrRowFocus = LastPvrRowFocus;
+                if(OptionPanel === 'Recordings'){
+                    GetRecordings();
 
-                        SetFocusRecordings();
-                    } else {
-                        GetSchedules();
-                        
-                        FirstIndexSchedule--;
+                    FirstIndexRecorded--;
 
-                        IndexScheduleFocus = FirstIndexSchedule;
+                    IndexRecordedFocus = FirstIndexRecorded;
 
-                        ListTypeFocus = 'all';
+                    ListTypeFocus = 'all';
 
-                        SetSchedules('');
+                    SetRecordings('');
 
-                        PvrRowFocus = LastPvrRowFocus;
+                    PvrRowFocus = LastPvrRowFocus;
 
-                        SetFocusSchedules();
-                    }
+                    SetFocusRecordings();
+                } else {
+                    GetSchedules();
+
+                    FirstIndexSchedule--;
+
+                    IndexScheduleFocus = FirstIndexSchedule;
+
+                    ListTypeFocus = 'all';
+
+                    SetSchedules('');
+
+                    PvrRowFocus = LastPvrRowFocus;
+
+                    SetFocusSchedules();
                 }
             }
-        });
-    }
-    
+        }
+    });
+}
+
 /*******************************************************************************
  * Elimina de la lista la serie
- *******************************************************************************/    
+ *******************************************************************************/
 
-    function DeleteSerie(){
-        LastPvrRowFocus = PvrRowFocus ;
+function DeleteSerie(){
+    LastPvrRowFocus = PvrRowFocus ;
 
-        Debug('IndexSerieFocus: '+IndexSerieFocus);
-        $.ajax({
-            type: 'POST',
-            url: 'Core/Controllers/Recorder.php',
-            data: { 
-                Option  : 'DeleteSerie', 
-                SerieId : SeriesList[IndexSerieFocus].id_serie
-            },
-            success: function (response){
-                
-                Response = $.parseJSON(response);
+    Debug('IndexSerieFocus: '+IndexSerieFocus);
+    $.ajax({
+        type: 'POST',
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option  : 'DeleteSerie',
+            SerieId : SeriesList[IndexSerieFocus].id_serie
+        },
+        success: function (response){
 
-                ShowRecorderMessage(Response.Message);
-                
-                if(Response.Delete === true){
-                    
-                    GetSeries();
+            Response = $.parseJSON(response);
 
-                    FirstIndexSerie--;
-                    
-                    IndexSerieFocus = FirstIndexSerie;
+            ShowRecorderMessage(Response.Message);
 
-                    SetSeries('');
-                    
-                    PvrRowFocus = LastPvrRowFocus;
-                }
+            if(Response.Delete === true){
+
+                GetSeries();
+
+                FirstIndexSerie--;
+
+                IndexSerieFocus = FirstIndexSerie;
+
+                SetSeries('');
+
+                PvrRowFocus = LastPvrRowFocus;
             }
-        });
-    }
-   
+        }
+    });
+}
+
 /*******************************************************************************
  * Muestra y oculta la informacion de la grabacion en reproduccion
  *******************************************************************************/
 
-    function ShowPvrInfo(){
-        
-        if(ActivePvrInfoContainer === false){
-            InfoContainer.style.visibility = 'visible';
-        
-            ShowBarStatus();
+function ShowPvrInfo(){
 
-            ActivePvrInfoContainer = true;
+    if(ActivePvrInfoContainer === false){
+        InfoContainer.style.visibility = 'visible';
 
-            InfoContainerNodes[1].innerHTML  = '<p class="RecInfo">REC:</p>';
-            InfoContainerNodes[3].textContent  = '';
-            InfoContainerNodes[5].textContent  = RecordingsList[IndexRecordedFocus][0];
-            InfoContainerNodes[7].textContent  = moment(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].date).format('MMMM Do YYYY');
-            InfoContainerNodes[9].textContent  = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].episode;
-            InfoContainerNodes[11].innerHTML   = ShowStars(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].rating);
-            InfoContainerNodes[13].textContent = TimeConvert(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].duration);
-            InfoContainerNodes[15].textContent = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].description;
+        ShowBarStatus();
 
-            clearTimeout(InfoTimer);
+        ActivePvrInfoContainer = true;
 
-            InfoTimer = setTimeout(HidePvrInfo,TimeoutInfo);
-        } else {
-            HideBarStatus();
-            HidePvrInfo();
-        }
+        InfoContainerNodes[1].innerHTML  = '<p class="RecInfo">REC:</p>';
+        InfoContainerNodes[3].textContent  = '';
+        InfoContainerNodes[5].textContent  = RecordingsList[IndexRecordedFocus][0];
+        InfoContainerNodes[7].textContent  = moment(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].date).format('MMMM Do YYYY');
+        InfoContainerNodes[9].textContent  = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].episode;
+        InfoContainerNodes[11].innerHTML   = ShowStars(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].rating);
+        InfoContainerNodes[13].textContent = TimeConvert(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].duration);
+        InfoContainerNodes[15].textContent = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].description;
+
+        clearTimeout(InfoTimer);
+
+        InfoTimer = setTimeout(HidePvrInfo,TimeoutInfo);
+    } else {
+        HideBarStatus();
+        HidePvrInfo();
     }
-    
-    function HidePvrInfo(){
-        if(ActivePvrInfoContainer === true){
-            ActivePvrInfoContainer = false;
+}
 
-            InfoContainer.style.visibility = 'hidden';
+function HidePvrInfo(){
+    if(ActivePvrInfoContainer === true){
+        ActivePvrInfoContainer = false;
 
-            InfoContainerNodes[1].innerHTML  = '';
-            InfoContainerNodes[3].textContent  = '';
-            InfoContainerNodes[5].textContent  = '';
-            InfoContainerNodes[7].textContent  = '';
-            InfoContainerNodes[9].textContent  = '';
-            InfoContainerNodes[11].innerHTML   = '';
-            InfoContainerNodes[13].textContent = '';
-            InfoContainerNodes[15].textContent = '';
+        InfoContainer.style.visibility = 'hidden';
 
-            clearTimeout(InfoTimer);
-        }
+        InfoContainerNodes[1].innerHTML  = '';
+        InfoContainerNodes[3].textContent  = '';
+        InfoContainerNodes[5].textContent  = '';
+        InfoContainerNodes[7].textContent  = '';
+        InfoContainerNodes[9].textContent  = '';
+        InfoContainerNodes[11].innerHTML   = '';
+        InfoContainerNodes[13].textContent = '';
+        InfoContainerNodes[15].textContent = '';
+
+        clearTimeout(InfoTimer);
     }
-    
+}
+
 /*******************************************************************************
  * Muestra lista de schedules
  *******************************************************************************/
-        
-    function SetSchedules(Direction){
 
-        var Row  = 1,
-            Icon  = '',
-            Title = '',
-            IndexProgram = 0;
-    
-        var IndexSchedule = 0;
+function SetSchedules(Direction){
 
-        if(ListTypeFocus === 'all'){
-            
-            if(IndexScheduleFocus === -1){
-                IndexSchedule = -1;
-            } else {
-                IndexSchedule = IndexScheduleFocus;
-                
-                if (Direction === 'up'){
-                    IndexSchedule -= 11;
-                    IndexScheduleFocus--;
-                } else {
-                    IndexScheduleFocus++;
-                }
-            }
-            
-            
-            for (Row = 1; Row <= 19; Row++) {
+    var Row  = 1,
+        Icon  = '',
+        Title = '',
+        IndexProgram = 0;
 
-                IndexSchedule++;
-                
-                if(Row === 1){
-                    FirstIndexSchedule = IndexSchedule;
-                }
+    var IndexSchedule = 0;
 
-                if(IndexSchedule < SchedulesList.length){
-                    if(SchedulesList[IndexSchedule].length > 2){
-                        Icon = '<i class="fa fa-folder-open"></i>';
-                        Title = 'serie';
-                    } else {
-                        Icon = '<i class="fa fa-file-o"></i>';
-                        Title = 'rec';
-                    }
+    if(ListTypeFocus === 'all'){
 
-                    PvrListNodes[Row].innerHTML = Icon + ' '+ SchedulesList[IndexSchedule][IndexProgram];
-                    PvrListNodes[Row].title = Title + ','+IndexSchedule+',1';
-                    
-                    Row++;
-                } else {
-                    PvrListNodes[Row].innerHTML = '';
-                    PvrListNodes[Row].title = '';
-                }
-            }
+        if(IndexScheduleFocus === -1){
+            IndexSchedule = -1;
         } else {
-                Icon = '<i class="fa fa-file"></i>';
-                Title = 'rec';
-               
-                IndexProgram = IndexScheduleProgFocus;
-                
-                if(IndexScheduleProgFocus !== 1){
-                    IndexProgram++;
-                } 
-                
-                if (Direction === 'up'){
-                    IndexProgram -= 11;
-                    IndexScheduleProgFocus--;
-                } 
+            IndexSchedule = IndexScheduleFocus;
 
-            for (Row = 1; Row <= 19; Row++) {
-                
-                if(IndexProgram < SchedulesList[IndexScheduleFocus].length){
-
-                    if(SchedulesList[IndexScheduleFocus][IndexProgram].episode !== ''){
-                        PvrListNodes[Row].innerHTML = Icon + ' '+ IndexProgram+ ' - '+ SchedulesList[IndexScheduleFocus][IndexProgram].episode;
-                    } else {
-                        PvrListNodes[Row].innerHTML = Icon + ' '+ IndexProgram+ ' - '+  moment(SchedulesList[IndexScheduleFocus][IndexProgram].date).format('MMMM Do YYYY');
-                    }
-                    PvrListNodes[Row].title = Title + ','+IndexScheduleFocus+','+IndexProgram;
-                    Row++;
-                } else {
-                    PvrListNodes[Row].innerHTML = '';
-                    PvrListNodes[Row].title = '';
-                }
-                
-                IndexProgram++;
-            }
-        }
-    }
-
-    function SetFocusSchedules(){
-        var Row = 1,
-            ScheduleDate = '',
-            StartHour    = '',
-            FinalHour    = '';
-        
-        for (Row = 1; Row <= 19; Row++) {
-            PvrListNodes[Row].setAttribute('class','PvrProgram'); 
-            Row++;
-        }
-
-        PvrListNodes[PvrRowFocus].setAttribute('class','PvrProgramFocus'); 
-
-        RowTypeFocus  = PvrListNodes[PvrRowFocus].title.split(',')[0];
-        
-        if(RowTypeFocus !== ''){
-            IndexScheduleFocus  = parseInt(PvrListNodes[PvrRowFocus].title.split(',')[1]);
-            IndexScheduleProgFocus   = parseInt(PvrListNodes[PvrRowFocus].title.split(',')[2]);
-
-            if(RowTypeFocus === 'serie'){
-                PvrInfoNodes[1].textContent  = 'Episodes:';
-                PvrInfoNodes[3].textContent  = '';
-                PvrInfoNodes[5].textContent  = '';
-                PvrInfoNodes[7].textContent  = SchedulesList[IndexScheduleFocus].length - 1;
-                PvrInfoNodes[9].textContent  = '';
-                PvrInfoNodes[11].textContent = SchedulesList[IndexScheduleFocus][0];
+            if (Direction === 'up'){
+                IndexSchedule -= 11;
+                IndexScheduleFocus--;
             } else {
-                
-                ScheduleDate = SchedulesList[IndexScheduleFocus][IndexScheduleProgFocus].date;
-                StartHour    = SchedulesList[IndexScheduleFocus][IndexScheduleProgFocus].start;
-                StartHour    = StartHour.replace(/:/g,'');
-                FinalHour    = SchedulesList[IndexScheduleFocus][IndexScheduleProgFocus].final;
-                FinalHour    = FinalHour.replace(/:/g,'');
-                
-                PvrInfoNodes[1].textContent  = moment(ScheduleDate).format('MMMM Do YYYY');
-                PvrInfoNodes[3].textContent  = moment(ScheduleDate + ' ' + StartHour).format('h:mm a') + ' - ' + moment(ScheduleDate + ' ' + FinalHour).format('h:mm a');
-                PvrInfoNodes[5].textContent  = '';
-                PvrInfoNodes[7].textContent  = SchedulesList[IndexScheduleFocus][IndexScheduleProgFocus].episode;
-                PvrInfoNodes[9].textContent  = SchedulesList[IndexScheduleFocus][IndexScheduleProgFocus].description;
-                PvrInfoNodes[11].textContent = SchedulesList[IndexScheduleFocus][0];
+                IndexScheduleFocus++;
             }
-        }  else {
-            ClearInfoPanelPvr();
+        }
+
+
+        for (Row = 1; Row <= 19; Row++) {
+
+            IndexSchedule++;
+
+            if(Row === 1){
+                FirstIndexSchedule = IndexSchedule;
+            }
+
+            if(IndexSchedule < SchedulesList.length){
+                if(SchedulesList[IndexSchedule].length > 2){
+                    Icon = '<i class="fa fa-folder-open"></i>';
+                    Title = 'serie';
+                } else {
+                    Icon = '<i class="fa fa-file-o"></i>';
+                    Title = 'rec';
+                }
+
+                PvrListNodes[Row].innerHTML = Icon + ' '+ SchedulesList[IndexSchedule][IndexProgram];
+                PvrListNodes[Row].title = Title + ','+IndexSchedule+',1';
+
+                Row++;
+            } else {
+                PvrListNodes[Row].innerHTML = '';
+                PvrListNodes[Row].title = '';
+            }
+        }
+    } else {
+        Icon = '<i class="fa fa-file"></i>';
+        Title = 'rec';
+
+        IndexProgram = IndexScheduleProgFocus;
+
+        if(IndexScheduleProgFocus !== 1){
+            IndexProgram++;
+        }
+
+        if (Direction === 'up'){
+            IndexProgram -= 11;
+            IndexScheduleProgFocus--;
+        }
+
+        for (Row = 1; Row <= 19; Row++) {
+
+            if(IndexProgram < SchedulesList[IndexScheduleFocus].length){
+
+                if(SchedulesList[IndexScheduleFocus][IndexProgram].episode !== ''){
+                    PvrListNodes[Row].innerHTML = Icon + ' '+ IndexProgram+ ' - '+ SchedulesList[IndexScheduleFocus][IndexProgram].episode;
+                } else {
+                    PvrListNodes[Row].innerHTML = Icon + ' '+ IndexProgram+ ' - '+  moment(SchedulesList[IndexScheduleFocus][IndexProgram].date).format('MMMM Do YYYY');
+                }
+                PvrListNodes[Row].title = Title + ','+IndexScheduleFocus+','+IndexProgram;
+                Row++;
+            } else {
+                PvrListNodes[Row].innerHTML = '';
+                PvrListNodes[Row].title = '';
+            }
+
+            IndexProgram++;
         }
     }
-    
+}
+
+function SetFocusSchedules(){
+    var Row = 1,
+        ScheduleDate = '',
+        StartHour    = '',
+        FinalHour    = '';
+
+    for (Row = 1; Row <= 19; Row++) {
+        PvrListNodes[Row].setAttribute('class','PvrProgram');
+        Row++;
+    }
+
+    PvrListNodes[PvrRowFocus].setAttribute('class','PvrProgramFocus');
+
+    RowTypeFocus  = PvrListNodes[PvrRowFocus].title.split(',')[0];
+
+    if(RowTypeFocus !== ''){
+        IndexScheduleFocus  = parseInt(PvrListNodes[PvrRowFocus].title.split(',')[1]);
+        IndexScheduleProgFocus   = parseInt(PvrListNodes[PvrRowFocus].title.split(',')[2]);
+
+        if(RowTypeFocus === 'serie'){
+            PvrInfoNodes[1].textContent  = 'Episodes:';
+            PvrInfoNodes[3].textContent  = '';
+            PvrInfoNodes[5].textContent  = '';
+            PvrInfoNodes[7].textContent  = SchedulesList[IndexScheduleFocus].length - 1;
+            PvrInfoNodes[9].textContent  = '';
+            PvrInfoNodes[11].textContent = SchedulesList[IndexScheduleFocus][0];
+        } else {
+
+            ScheduleDate = SchedulesList[IndexScheduleFocus][IndexScheduleProgFocus].date;
+            StartHour    = SchedulesList[IndexScheduleFocus][IndexScheduleProgFocus].start;
+            StartHour    = StartHour.replace(/:/g,'');
+            FinalHour    = SchedulesList[IndexScheduleFocus][IndexScheduleProgFocus].final;
+            FinalHour    = FinalHour.replace(/:/g,'');
+
+            PvrInfoNodes[1].textContent  = moment(ScheduleDate).format('MMMM Do YYYY');
+            PvrInfoNodes[3].textContent  = moment(ScheduleDate + ' ' + StartHour).format('h:mm a') + ' - ' + moment(ScheduleDate + ' ' + FinalHour).format('h:mm a');
+            PvrInfoNodes[5].textContent  = '';
+            PvrInfoNodes[7].textContent  = SchedulesList[IndexScheduleFocus][IndexScheduleProgFocus].episode;
+            PvrInfoNodes[9].textContent  = SchedulesList[IndexScheduleFocus][IndexScheduleProgFocus].description;
+            PvrInfoNodes[11].textContent = SchedulesList[IndexScheduleFocus][0];
+        }
+    }  else {
+        ClearInfoPanelPvr();
+    }
+}
+
 /*******************************************************************************
  * Muestra lista de series
  *******************************************************************************/
 
-    function SetSeries(Direction){
+function SetSeries(Direction){
 
-        var Row  = 1,
-            Icon = '<i class="fa fa-bookmark"></i>',
-            Title = 'series';
-    
-        var IndexSerie = 0;
+    var Row  = 1,
+        Icon = '<i class="fa fa-bookmark"></i>',
+        Title = 'series';
 
-        if(ListTypeFocus === 'all'){
-            
-            if(IndexSerieFocus === -1){
-                IndexSerie = -1;
-            } else {
-                IndexSerie = IndexSerieFocus;
-                
-                if (Direction === 'up'){
-                    IndexSerie -= 11;
-                    IndexSerieFocus--;
-                } else {
-                    IndexSerieFocus++;
-                }
-            }
-                        
-            for (Row = 1; Row <= 19; Row++) {
+    var IndexSerie = 0;
 
-                IndexSerie++;
-                
-                if(Row === 1){
-                    FirstIndexSerie = IndexSerie;
-                }
+    if(ListTypeFocus === 'all'){
 
-                if(IndexSerie < SeriesList.length){
-                    PvrListNodes[Row].innerHTML = Icon + ' '+ SeriesList[IndexSerie].titulo;
-                    PvrListNodes[Row].title = Title + ','+IndexSerie;
-                    
-                    Row++;
-                } else {
-                    PvrListNodes[Row].innerHTML = '';
-                    PvrListNodes[Row].title = '';
-                }
-            }
-        } 
-    }
-
-    function SetFocusSeries(){
-        var Row = 1,
-            SerieDate = '';
-        
-        for (Row = 1; Row <= 19; Row++) {
-            PvrListNodes[Row].setAttribute('class','PvrProgram'); 
-            Row++;
-        }
-        
-        PvrListNodes[PvrRowFocus].setAttribute('class','PvrProgramFocus'); 
-
-        RowTypeFocus  = PvrListNodes[PvrRowFocus].title.split(',')[0];
-        
-        if(RowTypeFocus !== ''){
-            IndexSerieFocus  = parseInt(PvrListNodes[PvrRowFocus].title.split(',')[1]);
-
-            SerieDate = SeriesList[IndexSerieFocus].fecha_adicion;
-
-            PvrInfoNodes[1].textContent  = 'Recording since: '+moment(SerieDate).format('MMMM Do YYYY');
-            PvrInfoNodes[3].textContent  = '';
-            PvrInfoNodes[5].textContent  = '';
-            PvrInfoNodes[7].textContent  = 'Recording on: '+SeriesList[IndexSerieFocus].canal;
-            PvrInfoNodes[9].textContent  = '';
-            PvrInfoNodes[11].textContent = '';
+        if(IndexSerieFocus === -1){
+            IndexSerie = -1;
         } else {
-            ClearInfoPanelPvr();
+            IndexSerie = IndexSerieFocus;
+
+            if (Direction === 'up'){
+                IndexSerie -= 11;
+                IndexSerieFocus--;
+            } else {
+                IndexSerieFocus++;
+            }
+        }
+
+        for (Row = 1; Row <= 19; Row++) {
+
+            IndexSerie++;
+
+            if(Row === 1){
+                FirstIndexSerie = IndexSerie;
+            }
+
+            if(IndexSerie < SeriesList.length){
+                PvrListNodes[Row].innerHTML = Icon + ' '+ SeriesList[IndexSerie].titulo;
+                PvrListNodes[Row].title = Title + ','+IndexSerie;
+
+                Row++;
+            } else {
+                PvrListNodes[Row].innerHTML = '';
+                PvrListNodes[Row].title = '';
+            }
         }
     }
-    
-    
-    function ClearInfoPanelPvr(){
-        PvrInfoNodes[1].textContent  = '';
+}
+
+function SetFocusSeries(){
+    var Row = 1,
+        SerieDate = '';
+
+    for (Row = 1; Row <= 19; Row++) {
+        PvrListNodes[Row].setAttribute('class','PvrProgram');
+        Row++;
+    }
+
+    PvrListNodes[PvrRowFocus].setAttribute('class','PvrProgramFocus');
+
+    RowTypeFocus  = PvrListNodes[PvrRowFocus].title.split(',')[0];
+
+    if(RowTypeFocus !== ''){
+        IndexSerieFocus  = parseInt(PvrListNodes[PvrRowFocus].title.split(',')[1]);
+
+        SerieDate = SeriesList[IndexSerieFocus].fecha_adicion;
+
+        PvrInfoNodes[1].textContent  = 'Recording since: '+moment(SerieDate).format('MMMM Do YYYY');
         PvrInfoNodes[3].textContent  = '';
         PvrInfoNodes[5].textContent  = '';
-        PvrInfoNodes[7].textContent  = '';
+        PvrInfoNodes[7].textContent  = 'Recording on: '+SeriesList[IndexSerieFocus].canal;
         PvrInfoNodes[9].textContent  = '';
         PvrInfoNodes[11].textContent = '';
+    } else {
+        ClearInfoPanelPvr();
     }
-    
+}
+
+
+function ClearInfoPanelPvr(){
+    PvrInfoNodes[1].textContent  = '';
+    PvrInfoNodes[3].textContent  = '';
+    PvrInfoNodes[5].textContent  = '';
+    PvrInfoNodes[7].textContent  = '';
+    PvrInfoNodes[9].textContent  = '';
+    PvrInfoNodes[11].textContent = '';
+}
+
 /*******************************************************************************
  * Abre, cierra y pone el foco en las opciones de la grabacion
  *******************************************************************************/
 
-    function OpenRecordPlayOptions(){
-        if(PlayingRecording === true){
-            RecordPlayOptionsActive = true;
-            
-            RecordPlayOptions.style.visibility = 'visible';
-            
-            SetFocusOptionRecordPlay('down');
-        }
-    }
-    
-    function SetFocusOptionRecordPlay(Direction){
-        if(OptionsFocus >= 0){
-            RecordPlayOptionsNodes[OptionsNodesArray[OptionsFocus]].classList.remove('RecordingOptionFocus');
-        }
-        
-        (Direction === 'down') ? OptionsFocus++: OptionsFocus--;
+function OpenRecordPlayOptions(){
+    if(PlayingRecording === true){
+        RecordPlayOptionsActive = true;
 
-        if(OptionsFocus >= OptionsNodesArray.length){
-            OptionsFocus = 0;
-        } else if(OptionsFocus < 0){
-            OptionsFocus = (OptionsNodesArray.length -1 );
-        }
-        
-        RecordPlayOptionsNodes[OptionsNodesArray[OptionsFocus]].classList.add('RecordingOptionFocus');
-    }
-    
-    function CloseRecordPlayOptions(){
-        if(RecordPlayOptionsActive === true){
-            RecordPlayOptionsActive = false;
-            
-            OptionsFocus = -1;
-            
-            RecordPlayOptions.style.visibility = 'hidden';
-            
-            var IndexOptionsNodes = 0;
-            
-            for(IndexOptionsNodes = 0; IndexOptionsNodes < OptionsNodesArray.length; IndexOptionsNodes++){
-                RecordPlayOptionsNodes[OptionsNodesArray[IndexOptionsNodes]].classList.remove('RecordingOptionFocus');
-            }
-        }
-    }
-    
-    function SelectRecordPlayOption(){
+        RecordPlayOptions.style.visibility = 'visible';
 
-        switch (OptionsNodesArray[OptionsFocus]) {
-            case 1:
-                // play again
-                ClearSpeed();
-                
-                PlayingRecording = true;
-                
-                PlayVideo(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].url);
-                
-                Debug('URL>>>>>>>>>> '+RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].url);
-                
-                ShowPvrInfo();
-                
-                SetSpeed('play');
-            break;
-            
-            case 3:
-                // delete
-                OptionPanel = 'Recordings';
-                
-                SetDeleteProgram();
-                
-                StopVideo();
-                
-                SetChannel('');
-       
-            break;
-            
-            case 5:
-                // stop
-                PlayingRecording =  false;
-                
-                StopVideo();
-                
-                HideBarStatus();
-                
-                SetChannel('');
-            break;
-        }
-        
-        CloseRecordPlayOptions();
+        SetFocusOptionRecordPlay('down');
     }
- 
+}
+
+function SetFocusOptionRecordPlay(Direction){
+    if(OptionsFocus >= 0){
+        RecordPlayOptionsNodes[OptionsNodesArray[OptionsFocus]].classList.remove('RecordingOptionFocus');
+    }
+
+    (Direction === 'down') ? OptionsFocus++: OptionsFocus--;
+
+    if(OptionsFocus >= OptionsNodesArray.length){
+        OptionsFocus = 0;
+    } else if(OptionsFocus < 0){
+        OptionsFocus = (OptionsNodesArray.length -1 );
+    }
+
+    RecordPlayOptionsNodes[OptionsNodesArray[OptionsFocus]].classList.add('RecordingOptionFocus');
+}
+
+function CloseRecordPlayOptions(){
+    if(RecordPlayOptionsActive === true){
+        RecordPlayOptionsActive = false;
+
+        OptionsFocus = -1;
+
+        RecordPlayOptions.style.visibility = 'hidden';
+
+        var IndexOptionsNodes = 0;
+
+        for(IndexOptionsNodes = 0; IndexOptionsNodes < OptionsNodesArray.length; IndexOptionsNodes++){
+            RecordPlayOptionsNodes[OptionsNodesArray[IndexOptionsNodes]].classList.remove('RecordingOptionFocus');
+        }
+    }
+}
+
+function SelectRecordPlayOption(){
+
+    switch (OptionsNodesArray[OptionsFocus]) {
+        case 1:
+            // play again
+            ClearSpeed();
+
+            PlayingRecording = true;
+
+            PlayVideo(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].url);
+
+            ShowPvrInfo();
+
+            SetSpeed('play');
+            break;
+
+        case 3:
+            // delete
+            OptionPanel = 'Recordings';
+
+            SetDeleteProgram();
+
+            StopVideo();
+
+            SetChannel('');
+
+            break;
+
+        case 5:
+            // stop
+            PlayingRecording =  false;
+
+            StopVideo();
+
+            HideBarStatus();
+
+            SetChannel('');
+            break;
+    }
+
+    CloseRecordPlayOptions();
+}
+
 /*******************************************************************************
  * Opciones reproduccion
  *******************************************************************************/
 
-    function ClearSpeed(){
-        SpeedText           = '';
-        OptionText          = '';
-        Speed               = 0;
-        ForwardIndex        = -1;
-        BackwardIndex       = -1;
-        PercentagePosition  = 0;
-        PositionAsset       = 0;
-        DurationAsset       = 0;
-    }
+function ClearSpeed(){
+    SpeedText           = '';
+    OptionText          = '';
+    Speed               = 0;
+    ForwardIndex        = -1;
+    BackwardIndex       = -1;
+    PercentagePosition  = 0;
+    PositionAsset       = 0;
+    DurationAsset       = 0;
+}
 
-    function SetSpeed(Option){
-        Debug('SetSpeed -->> ' + Option);
-        if(Option === 'forward'){
-            BackwardIndex = -1;
+function SetSpeed(Option){
+    Debug('SetSpeed -->> ' + Option);
+    if(Option === 'forward'){
+        BackwardIndex = -1;
 
-            if(ForwardIndex < (SpeedArray.length - 1)){
-                ForwardIndex++;
-            }
-            
-            Speed = SpeedArray[ForwardIndex];
-            
-            SpeedText = Speed+'x';
-            
-            SpeedVideo(Speed);
-        } else if(Option === 'backward'){
-            ForwardIndex = -1;
-
-            if(BackwardIndex < (SpeedArray.length - 1)){
-                BackwardIndex++;
-            }
-            
-            Speed = -Math.abs(SpeedArray[BackwardIndex]);
-            
-            SpeedText = Speed+'x';
-            
-            SpeedVideo(Speed);
-        } else if(Option === 'pause'){
-            ForwardIndex = -1;
-            BackwardIndex = -1;
-
-            Speed = 0;
-            SpeedText = '';
-            
-            PauseVideo();
-        } else if(Option === 'play'){
-            ForwardIndex = -1;
-            BackwardIndex = -1;
-
-            Speed = 1;
-            SpeedText = '';
-            
-            Debug('SetSpeed -->>> ' + Speed);
-            ResumeVideo();
-            Debug('ResumeVideo -->>> ');
+        if(ForwardIndex < (SpeedArray.length - 1)){
+            ForwardIndex++;
         }
-        
-        OptionText = Option;
-        
-        ShowBarStatus();
-    }
-    
-    function ShowBarStatus(){
-        
-        /* Muestra la barra */
-        BarContainer.style.display = 'inline';
-        
-        if(OptionText === 'play'){
-            /* Limpia el contador */
-            clearTimeout(BarTimer);
 
-            /* Contador para ocultar contenedor principal con la informacion*/
-            BarTimer = setTimeout(HideBarStatus,7000);
-        } else {
-            clearTimeout(BarTimer);
+        Speed = SpeedArray[ForwardIndex];
+
+        SpeedText = Speed+'x';
+
+        SpeedVideo(Speed);
+    } else if(Option === 'backward'){
+        ForwardIndex = -1;
+
+        if(BackwardIndex < (SpeedArray.length - 1)){
+            BackwardIndex++;
         }
-        
-        Debug('ShowBarStatus......');
-        UpdateBarStatus();
-        
-        clearTimeout(BarUpdate);
-        
-        BarUpdate = setInterval(UpdateBarStatus,1000);
+
+        Speed = -Math.abs(SpeedArray[BackwardIndex]);
+
+        SpeedText = Speed+'x';
+
+        SpeedVideo(Speed);
+    } else if(Option === 'pause'){
+        ForwardIndex = -1;
+        BackwardIndex = -1;
+
+        Speed = 0;
+        SpeedText = '';
+
+        PauseVideo();
+    } else if(Option === 'play'){
+        ForwardIndex = -1;
+        BackwardIndex = -1;
+
+        Speed = 1;
+        SpeedText = '';
+
+        Debug('SetSpeed -->>> ' + Speed);
+        ResumeVideo();
+        Debug('ResumeVideo -->>> ');
     }
-    
-    function UpdateBarStatus(){
-        var AssetDuration = 0;
-        
-        if(PlayingRecording === true){
-            AssetDuration = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].duration;
-        }
-        AssetStatus(AssetDuration);
-        
-        BarPosition.style.width = PercentagePosition +'%';
-        BarPosition.textContent = SecondsToTime(PositionAsset);
-        BarStatus.innerHTML = "<p>"+SecondsToTime(DurationAsset)+"</p><i class='fa fa-"+OptionText+"' ></i><p>"+SpeedText+"</p>";
-    }
-    
-    function HideBarStatus(){     
-        BarContainer.style.display = 'none';
+
+    OptionText = Option;
+
+    ShowBarStatus();
+}
+
+function ShowBarStatus(){
+
+    /* Muestra la barra */
+    BarContainer.style.display = 'inline';
+
+    if(OptionText === 'play'){
+        /* Limpia el contador */
         clearTimeout(BarTimer);
-        clearTimeout(BarUpdate);
+
+        /* Contador para ocultar contenedor principal con la informacion*/
+        BarTimer = setTimeout(HideBarStatus,7000);
+    } else {
+        clearTimeout(BarTimer);
     }
-    
+
+    Debug('ShowBarStatus......');
+    UpdateBarStatus();
+
+    clearTimeout(BarUpdate);
+
+    BarUpdate = setInterval(UpdateBarStatus,1000);
+}
+
+function UpdateBarStatus(){
+    var AssetDuration = 0;
+
+    if(PlayingRecording === true){
+        AssetDuration = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].duration;
+    }
+    AssetStatus(AssetDuration);
+
+    BarPosition.style.width = PercentagePosition +'%';
+    BarPosition.textContent = SecondsToTime(PositionAsset);
+    BarStatus.innerHTML = "<p>"+SecondsToTime(DurationAsset)+"</p><i class='fa fa-"+OptionText+"' ></i><p>"+SpeedText+"</p>";
+}
+
+function HideBarStatus(){
+    BarContainer.style.display = 'none';
+    clearTimeout(BarTimer);
+    clearTimeout(BarUpdate);
+}
+
 /*******************************************************************************
  *  Opciones para agregar manualmente una grabaciones
  *******************************************************************************/
 
-    function OpenManualRecord(){
-        RecordManualOptionsActive = true;
-        
-        clearTimeout(RecordingManualTimer);
-        RecordingManualTimer = setTimeout(CloseManualRecord,8000);
+function OpenManualRecord(){
+    RecordManualOptionsActive = true;
 
-        // Quita las lineas de los programas para que no se vean encima del cuadro de opciones
-            var AllPrograms = document.getElementsByClassName('Program'),
-                IndexProgram = 0;
-            for(IndexProgram = 0; IndexProgram < AllPrograms.length; IndexProgram++) {
-                AllPrograms[IndexProgram].style.outline = 'none'; //1px solid rgb(0, 68, 114)
-            }
-        // 
-        
-        RecordManualOptions.style.visibility = 'visible';
-        
-        SetFocusManualOption('down');
-        
-        ManualHour   = parseInt(moment().format('h'));
-        ManualMinute = parseInt(moment().format('mm'));
-        
-        if(moment().format('A') === 'AM'){
+    clearTimeout(RecordingManualTimer);
+    RecordingManualTimer = setTimeout(CloseManualRecord,8000);
+
+    // Quita las lineas de los programas para que no se vean encima del cuadro de opciones
+    var AllPrograms = document.getElementsByClassName('Program'),
+        IndexProgram = 0;
+    for(IndexProgram = 0; IndexProgram < AllPrograms.length; IndexProgram++) {
+        AllPrograms[IndexProgram].style.outline = 'none'; //1px solid rgb(0, 68, 114)
+    }
+    //
+
+    RecordManualOptions.style.visibility = 'visible';
+
+    SetFocusManualOption('down');
+
+    ManualHour   = parseInt(moment().format('h'));
+    ManualMinute = parseInt(moment().format('mm'));
+
+    if(moment().format('A') === 'AM'){
+        ManualIndicator = 0;
+    } else {
+        ManualIndicator = 1;
+    }
+
+    RecordManualOptionsNodes[ManualNodesArray[0]].textContent = pad(ManualHour,2);
+    RecordManualOptionsNodes[ManualNodesArray[1]].textContent = pad(ManualMinute,2);
+    RecordManualOptionsNodes[ManualNodesArray[2]].textContent = ManualListIndicator[ManualIndicator];
+    RecordManualOptionsNodes[ManualNodesArray[3]].textContent = ManualListTime[ManualTime];
+}
+
+function CloseManualRecord(){
+    if(ActiveEpgContainer === true && RecordManualOptionsActive === true){
+        RecordManualOptionsActive = false;
+
+        clearTimeout(RecordingManualTimer);
+
+        // Agrega las lineas de los programas
+        var AllPrograms = document.getElementsByClassName('Program'),
+            IndexProgram = 0;
+        for(IndexProgram = 0; IndexProgram < AllPrograms.length; IndexProgram++) {
+            AllPrograms[IndexProgram].style.outline = '1px solid '+BackgroundFocus;
+        }
+
+        RecordManualOptions.style.visibility = 'hidden';
+
+        OptionsFocus = -1;
+
+        ManualHour              = 1;
+        ManualMinute            = 0;
+        ManualIndicator         = 0;
+        ManualTime              = 0;
+
+        var IndexOptionsNodes = 0;
+
+        for(IndexOptionsNodes = 0; IndexOptionsNodes < (ManualNodesArray.length - 1); IndexOptionsNodes++){
+            RecordManualOptionsNodes[ManualNodesArray[IndexOptionsNodes]].classList.remove('RecordingOptionFocus');
+        }
+    }
+}
+
+
+function SetFocusManualOption(Direction){
+    if(OptionsFocus >= 0){
+        RecordManualOptionsNodes[ManualNodesArray[OptionsFocus]].classList.remove('RecordingOptionFocus');
+    }
+
+    (Direction === 'down') ? OptionsFocus++: OptionsFocus--;
+
+    if(OptionsFocus >= ManualNodesArray.length){
+        OptionsFocus = 0;
+    } else if(OptionsFocus < 0){
+        OptionsFocus = (ManualNodesArray.length - 1 );
+    }
+
+    RecordManualOptionsNodes[ManualNodesArray[OptionsFocus]].classList.add('RecordingOptionFocus');
+
+    clearTimeout(RecordingManualTimer);
+
+    RecordingManualTimer = setTimeout(CloseManualRecord,8000);
+}
+
+
+function SetManualTime(Option){
+    if(OptionsFocus === 0){
+        // 01 - 12
+        (Option === 'down') ? ManualHour--: ManualHour++;
+
+        if(ManualHour > 12){
+            ManualHour = 1;
+        } else if(ManualHour <= 0){
+            ManualHour = 12;
+        }
+
+        RecordManualOptionsNodes[ManualNodesArray[OptionsFocus]].textContent = pad(ManualHour,2);
+    } else if(OptionsFocus === 1){
+        // 00 - 59
+        (Option === 'down') ? ManualMinute--: ManualMinute++;
+
+        if(ManualMinute > 59){
+            ManualMinute = 0;
+        } else if(ManualHour <= 0){
+            ManualMinute = 59;
+        }
+
+        RecordManualOptionsNodes[ManualNodesArray[OptionsFocus]].textContent = pad(ManualMinute,2);
+    } else if(OptionsFocus === 2){
+        // AM - PM
+        (Option === 'down') ? ManualIndicator--: ManualIndicator++;
+
+        if(ManualIndicator > 1){
             ManualIndicator = 0;
-        } else {
+        } else if(ManualIndicator < 0){
             ManualIndicator = 1;
         }
-        
-        RecordManualOptionsNodes[ManualNodesArray[0]].textContent = pad(ManualHour,2);
-        RecordManualOptionsNodes[ManualNodesArray[1]].textContent = pad(ManualMinute,2);
-        RecordManualOptionsNodes[ManualNodesArray[2]].textContent = ManualListIndicator[ManualIndicator];
-        RecordManualOptionsNodes[ManualNodesArray[3]].textContent = ManualListTime[ManualTime];
-    }
-    
-    function CloseManualRecord(){
-        if(ActiveEpgContainer === true && RecordManualOptionsActive === true){
-            RecordManualOptionsActive = false;
-            
-            clearTimeout(RecordingManualTimer);
-            
-            // Agrega las lineas de los programas
-            var AllPrograms = document.getElementsByClassName('Program'),
-                IndexProgram = 0;
-            for(IndexProgram = 0; IndexProgram < AllPrograms.length; IndexProgram++) {
-                AllPrograms[IndexProgram].style.outline = '1px solid '+BackgroundFocus; 
-            }
 
-            RecordManualOptions.style.visibility = 'hidden';
+        RecordManualOptionsNodes[ManualNodesArray[OptionsFocus]].textContent = ManualListIndicator[ManualIndicator];
+    } else if(OptionsFocus === 3){
+        // +15, +30, +1, +1.5, +2, +2.5 +3
+        (Option === 'down') ? ManualTime--: ManualTime++;
 
-            OptionsFocus = -1;
-            
-            ManualHour              = 1;
-            ManualMinute            = 0;
-            ManualIndicator         = 0;
-            ManualTime              = 0;
-
-            var IndexOptionsNodes = 0;
-
-            for(IndexOptionsNodes = 0; IndexOptionsNodes < (ManualNodesArray.length - 1); IndexOptionsNodes++){
-                RecordManualOptionsNodes[ManualNodesArray[IndexOptionsNodes]].classList.remove('RecordingOptionFocus');
-            }
+        if(ManualTime > (ManualListTime.length -1)){
+            ManualTime = 0;
+        } else if(ManualTime < 0){
+            ManualTime = ManualListTime.length -1;
         }
-    }
-    
-    
-    function SetFocusManualOption(Direction){
-        if(OptionsFocus >= 0){
-            RecordManualOptionsNodes[ManualNodesArray[OptionsFocus]].classList.remove('RecordingOptionFocus');
-        }
-        
-        (Direction === 'down') ? OptionsFocus++: OptionsFocus--;
 
-        if(OptionsFocus >= ManualNodesArray.length){
-            OptionsFocus = 0;
-        } else if(OptionsFocus < 0){
-            OptionsFocus = (ManualNodesArray.length - 1 );
-        }
-        
-        RecordManualOptionsNodes[ManualNodesArray[OptionsFocus]].classList.add('RecordingOptionFocus');
-        
-        clearTimeout(RecordingManualTimer);
-        
-        RecordingManualTimer = setTimeout(CloseManualRecord,8000);
-    }
-    
-            
-    function SetManualTime(Option){
-        if(OptionsFocus === 0){
-            // 01 - 12
-            (Option === 'down') ? ManualHour--: ManualHour++;
-            
-            if(ManualHour > 12){
-                ManualHour = 1;
-            } else if(ManualHour <= 0){
-                ManualHour = 12;
-            }
-
-            RecordManualOptionsNodes[ManualNodesArray[OptionsFocus]].textContent = pad(ManualHour,2);
-        } else if(OptionsFocus === 1){
-            // 00 - 59
-            (Option === 'down') ? ManualMinute--: ManualMinute++;
-            
-            if(ManualMinute > 59){
-                ManualMinute = 0;
-            } else if(ManualHour <= 0){
-                ManualMinute = 59;
-            }
-
-            RecordManualOptionsNodes[ManualNodesArray[OptionsFocus]].textContent = pad(ManualMinute,2);
-        } else if(OptionsFocus === 2){
-            // AM - PM
-            (Option === 'down') ? ManualIndicator--: ManualIndicator++;
-            
-            if(ManualIndicator > 1){
-                ManualIndicator = 0;
-            } else if(ManualIndicator < 0){
-                ManualIndicator = 1;
-            }
-            
-            RecordManualOptionsNodes[ManualNodesArray[OptionsFocus]].textContent = ManualListIndicator[ManualIndicator];
-        } else if(OptionsFocus === 3){
-            // +15, +30, +1, +1.5, +2, +2.5 +3
-            (Option === 'down') ? ManualTime--: ManualTime++;
-            
-            if(ManualTime > (ManualListTime.length -1)){
-                ManualTime = 0;
-            } else if(ManualTime < 0){
-                ManualTime = ManualListTime.length -1;
-            }
-
-            RecordManualOptionsNodes[ManualNodesArray[OptionsFocus]].textContent = ManualListTime[ManualTime];
-        } else if(OptionsFocus === 4){
-            SetFocusManualOption('up');
-        } else if(OptionsFocus === 5){
-            SetFocusManualOption('down');
+        RecordManualOptionsNodes[ManualNodesArray[OptionsFocus]].textContent = ManualListTime[ManualTime];
+    } else if(OptionsFocus === 4){
+        SetFocusManualOption('up');
+    } else if(OptionsFocus === 5){
+        SetFocusManualOption('down');
 //            OptionsFocus = 0;
 //            ManualHour--;
 //            SetManualTime('up');
-                
-            
-        }
-        
-        clearTimeout(RecordingManualTimer);
-        
-        RecordingManualTimer = setTimeout(CloseManualRecord,8000);
-    }
-    
-    function SelectManualRecordOption(){
 
-        switch (ManualNodesArray[OptionsFocus]) {
-            case 4:
-            case 6:
-            case 8:
-            case 10:
-                SetFocusManualOption('down');
-            break;
-            
-            case 15:
-                CheckManualRecording();
-            break;
-            
-            case 17:
-                CloseManualRecord();
-            break;
-        }
+
     }
-    
+
+    clearTimeout(RecordingManualTimer);
+
+    RecordingManualTimer = setTimeout(CloseManualRecord,8000);
+}
+
+function SelectManualRecordOption(){
+
+    switch (ManualNodesArray[OptionsFocus]) {
+        case 4:
+        case 6:
+        case 8:
+        case 10:
+            SetFocusManualOption('down');
+            break;
+
+        case 15:
+            CheckManualRecording();
+            break;
+
+        case 17:
+            CloseManualRecord();
+            break;
+    }
+}
+
 /*******************************************************************************
  * Funciones botones
  *******************************************************************************/
-    
-    function PvrUp(){
-        if(RecordOptions === true){
-            SetFocusOptionRecord('up');
-        } else if(DeleteOptions === true){
-            SetFocusOptionDelete('up');
-        } else if(OptionPanel === 'Recordings') {
-            if(PvrRowFocus === 1){
-                if(ListTypeFocus === 'serie'){
-                    if(IndexRecordedProgFocus !== 1){
-                        SetRecordings('up');
 
-                        PvrRowFocus = 19;
-
-                        SetFocusRecordings();
-                    }
-                } else {
-                    if(IndexRecordedFocus !== 0){
-                        SetRecordings('up');
-
-                        PvrRowFocus = 19;
-
-                        SetFocusRecordings();
-                    }
-                }
-            } else {
-                if(PvrRowFocus <= 19){
-                    PvrRowFocus -= 2;
-                    SetFocusRecordings();
-                }
-            }
-        }else if(OptionPanel === 'Schedules') {
-            if(PvrRowFocus === 1){
-                if(ListTypeFocus === 'serie'){
-                    if(IndexScheduleProgFocus !== 1){
-                        SetSchedules('up');
-
-                        PvrRowFocus = 19;
-
-                        SetFocusScheduless();
-                    }
-                } else {
-                    if(IndexScheduleFocus !== 0){
-                        SetSchedules('up');
-
-                        PvrRowFocus = 19;
-
-                        SetFocusSchedules();
-                    }
-                }
-            } else {
-                if(PvrRowFocus <= 19){
-                    PvrRowFocus -= 2;
-                    SetFocusSchedules();
-                }
-            }
-        } else if(OptionPanel === 'Series') {
-            if(PvrRowFocus === 1){
-                if(IndexSerieFocus !== 0){
-                    SetSeries('up');
+function PvrUp(){
+    if(RecordOptions === true){
+        SetFocusOptionRecord('up');
+    } else if(DeleteOptions === true){
+        SetFocusOptionDelete('up');
+    } else if(OptionPanel === 'Recordings') {
+        if(PvrRowFocus === 1){
+            if(ListTypeFocus === 'serie'){
+                if(IndexRecordedProgFocus !== 1){
+                    SetRecordings('up');
 
                     PvrRowFocus = 19;
 
-                    SetFocusSeries();
-                }
-            } else {
-                if(PvrRowFocus <= 19){
-                    PvrRowFocus -= 2;
-                    SetFocusSeries();
-                }
-            }
-        }
-        
-        clearTimeout(PvrTimer);
-        PvrTimer = setTimeout(ClosePvr,TimeoutPvr);
-    }
-    
-    function PvrDown(){
-        if(RecordOptions === true){
-            SetFocusOptionRecord('down');
-        } else if(DeleteOptions === true){
-            SetFocusOptionDelete('down');
-        } else if(OptionPanel === 'Recordings') {
-            if(PvrRowFocus === 19){
-                if(ListTypeFocus === 'serie'){
-                    if((RecordingsList[IndexRecordedFocus].length - 1) > 10 && IndexRecordedProgFocus < (RecordingsList[IndexRecordedFocus].length - 1) ){
-                        SetRecordings('down');
-
-                        PvrRowFocus = 1; 
-
-                        SetFocusRecordings();
-                    }
-                } else {
-                    if(RecordingsList.length > 10 && IndexRecordedFocus < (RecordingsList.length - 1)){
-                        SetRecordings('down');
-
-                        PvrRowFocus = 1;
-
-                        SetFocusRecordings();
-                    }
-                }
-            } else {
-                if(PvrRowFocus >= 1){
-                    PvrRowFocus += 2;
                     SetFocusRecordings();
                 }
-            }
-        } else if(OptionPanel === 'Schedules') {
-            if(PvrRowFocus === 19){
-                if(ListTypeFocus === 'serie'){
-                    if((SchedulesList[IndexScheduleFocus].length - 1) > 10 && IndexScheduleProgFocus < (SchedulesList[IndexScheduleFocus].length - 1) ){
-                        SetSchedules('down');
-
-                        PvrRowFocus = 1; 
-
-                        SetFocusSchedules();
-                    }
-                } else {
-                    if(SchedulesList.length > 10 && IndexScheduleFocus < (SchedulesList.length - 1)){
-                        SetSchedules('down');
-
-                        PvrRowFocus = 1;
-
-                        SetFocusSchedules();
-                    }
-                }
             } else {
-                if(PvrRowFocus >= 1){
-                    PvrRowFocus += 2;
-                    SetFocusSchedules();
-                }
-            }
-        } else if(OptionPanel === 'Series') {
-            if(PvrRowFocus === 19){
-                if(SeriesList.length > 10 && IndexSerieFocus < (SeriesList.length - 1)){
-                    SetSeries('down');
+                if(IndexRecordedFocus !== 0){
+                    SetRecordings('up');
 
                     PvrRowFocus = 19;
 
-                    SetFocusSeries();
-                }
-            } else {
-                if(PvrRowFocus >= 1){
-                    PvrRowFocus += 2;
-                    SetFocusSeries();
+                    SetFocusRecordings();
                 }
             }
-        } 
-        
-        clearTimeout(PvrTimer);
-        PvrTimer = setTimeout(ClosePvr,TimeoutPvr);
-    }
-    
-    function PvrRight(){
-        if(RecordOptions === false && DeleteOptions === false){
-            
-            if(ListTypeFocus === 'serie'){
-                PvrClose();
-            }
-                
-            if(OptionPanel === 'Recordings'){
-
-                IndexScheduleFocus      = -1;
-                IndexScheduleProgFocus  = 0;
-            
-                GetSchedules();
-
-                OptionPanel = 'Schedules';
-
-            } else if(OptionPanel === 'Schedules'){
-
-                IndexSerieFocus         = -1;
-                        
-                GetSeries();
-
-                OptionPanel = 'Series';
-
-            } else if(OptionPanel === 'Series'){
-
-                IndexRecordedFocus      = -1;
-                IndexRecordedProgFocus  = 0;
-            
-                GetRecordings();
-                
-                OptionPanel = 'Recordings';
-            }
-            
-            SetOptionPanel();
-        }
-        
-        clearTimeout(PvrTimer);
-        PvrTimer = setTimeout(ClosePvr,TimeoutPvr);
-    }
-    
-    function PvrLeft(){
-        if(RecordOptions === false && DeleteOptions === false){
-            
-            if(ListTypeFocus === 'serie'){
-                PvrClose();
-            }
-                
-            if(OptionPanel === 'Recordings'){
-                
-                IndexSerieFocus         = -1;
-                        
-                GetSeries();
-
-                OptionPanel = 'Series';
-
-            } else if(OptionPanel === 'Schedules'){
-                
-                IndexRecordedFocus      = -1;
-                IndexRecordedProgFocus  = 0;
-            
-                GetRecordings();
-                
-                OptionPanel = 'Recordings';
-
-            } else if(OptionPanel === 'Series'){
-
-                IndexScheduleFocus      = -1;
-                IndexScheduleProgFocus  = 0;
-            
-                GetSchedules();
-
-                OptionPanel = 'Schedules';
-            }
-            
-            SetOptionPanel();
-        }
-        
-        clearTimeout(PvrTimer);
-        PvrTimer = setTimeout(ClosePvr,TimeoutPvr);
-    }  
-        
-    function PvrOk(){
-        if(RecordOptions === true){
-            SelectRecordOption();
-        } else if(DeleteOptions === true){
-            SelectDeleteOption();
-        } else if(OptionPanel === 'Recordings') {
-            if(RowTypeFocus === 'serie'){
-                
-                ListTypeFocus = 'serie';
-                
-                SetRecordings('');
-                
-                LastPvrRowFocus = PvrRowFocus;
-                
-                PvrRowFocus = 1;
-                    
+        } else {
+            if(PvrRowFocus <= 19){
+                PvrRowFocus -= 2;
                 SetFocusRecordings();
+            }
+        }
+    }else if(OptionPanel === 'Schedules') {
+        if(PvrRowFocus === 1){
+            if(ListTypeFocus === 'serie'){
+                if(IndexScheduleProgFocus !== 1){
+                    SetSchedules('up');
+
+                    PvrRowFocus = 19;
+
+                    SetFocusScheduless();
+                }
             } else {
-                if(IndexRecordedFocus !== -1){
-                    ShowRecordOption();
+                if(IndexScheduleFocus !== 0){
+                    SetSchedules('up');
+
+                    PvrRowFocus = 19;
+
+                    SetFocusSchedules();
                 }
             }
-        }else if(OptionPanel === 'Schedules' || OptionPanel === 'Series') {
-            if(RowTypeFocus === 'serie'){
-                
-                ListTypeFocus = 'serie';
-                
-                SetSchedules('');
-                
-                LastPvrRowFocus = PvrRowFocus;
-                
-                PvrRowFocus = 1;
-                    
+        } else {
+            if(PvrRowFocus <= 19){
+                PvrRowFocus -= 2;
                 SetFocusSchedules();
+            }
+        }
+    } else if(OptionPanel === 'Series') {
+        if(PvrRowFocus === 1){
+            if(IndexSerieFocus !== 0){
+                SetSeries('up');
+
+                PvrRowFocus = 19;
+
+                SetFocusSeries();
+            }
+        } else {
+            if(PvrRowFocus <= 19){
+                PvrRowFocus -= 2;
+                SetFocusSeries();
+            }
+        }
+    }
+
+    clearTimeout(PvrTimer);
+    PvrTimer = setTimeout(ClosePvr,TimeoutPvr);
+}
+
+function PvrDown(){
+    if(RecordOptions === true){
+        SetFocusOptionRecord('down');
+    } else if(DeleteOptions === true){
+        SetFocusOptionDelete('down');
+    } else if(OptionPanel === 'Recordings') {
+        if(PvrRowFocus === 19){
+            if(ListTypeFocus === 'serie'){
+                if((RecordingsList[IndexRecordedFocus].length - 1) > 10 && IndexRecordedProgFocus < (RecordingsList[IndexRecordedFocus].length - 1) ){
+                    SetRecordings('down');
+
+                    PvrRowFocus = 1;
+
+                    SetFocusRecordings();
+                }
             } else {
-                if((OptionPanel === 'Schedules' && IndexScheduleFocus !== -1) || (OptionPanel === 'Series' && IndexSerieFocus !== -1)){
-                    ShowDeleteOption();
+                if(RecordingsList.length > 10 && IndexRecordedFocus < (RecordingsList.length - 1)){
+                    SetRecordings('down');
+
+                    PvrRowFocus = 1;
+
+                    SetFocusRecordings();
                 }
             }
-        } 
+        } else {
+            if(PvrRowFocus >= 1){
+                PvrRowFocus += 2;
+                SetFocusRecordings();
+            }
+        }
+    } else if(OptionPanel === 'Schedules') {
+        if(PvrRowFocus === 19){
+            if(ListTypeFocus === 'serie'){
+                if((SchedulesList[IndexScheduleFocus].length - 1) > 10 && IndexScheduleProgFocus < (SchedulesList[IndexScheduleFocus].length - 1) ){
+                    SetSchedules('down');
+
+                    PvrRowFocus = 1;
+
+                    SetFocusSchedules();
+                }
+            } else {
+                if(SchedulesList.length > 10 && IndexScheduleFocus < (SchedulesList.length - 1)){
+                    SetSchedules('down');
+
+                    PvrRowFocus = 1;
+
+                    SetFocusSchedules();
+                }
+            }
+        } else {
+            if(PvrRowFocus >= 1){
+                PvrRowFocus += 2;
+                SetFocusSchedules();
+            }
+        }
+    } else if(OptionPanel === 'Series') {
+        if(PvrRowFocus === 19){
+            if(SeriesList.length > 10 && IndexSerieFocus < (SeriesList.length - 1)){
+                SetSeries('down');
+
+                PvrRowFocus = 19;
+
+                SetFocusSeries();
+            }
+        } else {
+            if(PvrRowFocus >= 1){
+                PvrRowFocus += 2;
+                SetFocusSeries();
+            }
+        }
     }
-    
-    function PvrClose(){
+
+    clearTimeout(PvrTimer);
+    PvrTimer = setTimeout(ClosePvr,TimeoutPvr);
+}
+
+function PvrRight(){
+    if(RecordOptions === false && DeleteOptions === false){
+
         if(ListTypeFocus === 'serie'){
-            if(OptionPanel === 'Recordings') { 
-                FirstIndexRecorded--;
+            PvrClose();
+        }
 
-                IndexRecordedFocus = FirstIndexRecorded;
+        if(OptionPanel === 'Recordings'){
 
-                ListTypeFocus = 'all';
+            IndexScheduleFocus      = -1;
+            IndexScheduleProgFocus  = 0;
 
-                SetRecordings('');
+            GetSchedules();
 
-                PvrRowFocus = LastPvrRowFocus;
+            OptionPanel = 'Schedules';
 
-                SetFocusRecordings();
-            } else if(OptionPanel === 'Schedules') {
-                FirstIndexSchedule--;
-            
-                IndexScheduleFocus = FirstIndexSchedule;
+        } else if(OptionPanel === 'Schedules'){
 
-                ListTypeFocus = 'all';
+            IndexSerieFocus         = -1;
 
-                SetSchedules('');
+            GetSeries();
 
-                PvrRowFocus = LastPvrRowFocus;
+            OptionPanel = 'Series';
 
-                SetFocusSchedules();
-            }
+        } else if(OptionPanel === 'Series'){
+
+            IndexRecordedFocus      = -1;
+            IndexRecordedProgFocus  = 0;
+
+            GetRecordings();
+
+            OptionPanel = 'Recordings';
+        }
+
+        SetOptionPanel();
+    }
+
+    clearTimeout(PvrTimer);
+    PvrTimer = setTimeout(ClosePvr,TimeoutPvr);
+}
+
+function PvrLeft(){
+    if(RecordOptions === false && DeleteOptions === false){
+
+        if(ListTypeFocus === 'serie'){
+            PvrClose();
+        }
+
+        if(OptionPanel === 'Recordings'){
+
+            IndexSerieFocus         = -1;
+
+            GetSeries();
+
+            OptionPanel = 'Series';
+
+        } else if(OptionPanel === 'Schedules'){
+
+            IndexRecordedFocus      = -1;
+            IndexRecordedProgFocus  = 0;
+
+            GetRecordings();
+
+            OptionPanel = 'Recordings';
+
+        } else if(OptionPanel === 'Series'){
+
+            IndexScheduleFocus      = -1;
+            IndexScheduleProgFocus  = 0;
+
+            GetSchedules();
+
+            OptionPanel = 'Schedules';
+        }
+
+        SetOptionPanel();
+    }
+
+    clearTimeout(PvrTimer);
+    PvrTimer = setTimeout(ClosePvr,TimeoutPvr);
+}
+
+function PvrOk(){
+    if(RecordOptions === true){
+        SelectRecordOption();
+    } else if(DeleteOptions === true){
+        SelectDeleteOption();
+    } else if(OptionPanel === 'Recordings') {
+        if(RowTypeFocus === 'serie'){
+
+            ListTypeFocus = 'serie';
+
+            SetRecordings('');
+
+            LastPvrRowFocus = PvrRowFocus;
+
+            PvrRowFocus = 1;
+
+            SetFocusRecordings();
         } else {
-            ClosePvr();
-        }
-    }
-    
-
-/*******************************************************************************
- * Contuye y agrega los datos a mostrar de cada renglon con la programacion
- *******************************************************************************/
-
-    function WriteChannelsRow(CurrentChannelPosition, Row){
-
-        var ChannelRowNodes = document.getElementById('ChannelRow'+Row).childNodes;
-            ChannelRowNodes[0].textContent = ChannelsJson[CurrentChannelPosition].CHNL;
-            if(ChannelsJson[CurrentChannelPosition].QLTY === 'HD'){
-                ChannelRowNodes[1].textContent = ChannelsJson[CurrentChannelPosition].INDC +' '+ChannelsJson[CurrentChannelPosition].QLTY;
-            } else {
-                ChannelRowNodes[1].textContent = ChannelsJson[CurrentChannelPosition].INDC;
-            }
-    }
-
-/*******************************************************************************
- *
- *******************************************************************************/
-    var NodesRowPrograms1 = '',
-        NodesRowPrograms2 = '',
-        NodesRowPrograms3 = '',
-        NodesRowPrograms4 = '',
-        NodesRowPrograms5 = '';
-
-    function GetRowsPrograms(){
-        NodesRowPrograms1 = document.getElementById('ProgramRow1').childNodes;
-        NodesRowPrograms2 = document.getElementById('ProgramRow2').childNodes;
-        NodesRowPrograms3 = document.getElementById('ProgramRow3').childNodes;
-        NodesRowPrograms4 = document.getElementById('ProgramRow4').childNodes;
-        NodesRowPrograms5 = document.getElementById('ProgramRow5').childNodes;
-    }
-
-    function GetFocusStyle(){
-        var ProgramFocus        = document.getElementById('ProgramFocus'),
-            ProgramFocusStyle   = window.getComputedStyle(ProgramFocus);
-            ColorFocus          = ProgramFocusStyle.color;
-            BackgroundFocus     = ProgramFocusStyle.backgroundColor;
-
-            ProgramFocus = null;
-            ProgramFocusStyle = null;
-    }
-
-
-    function FocusEpgProgram(RowSelected,ProgramSelect){
-        //console.log('================= 1) FocusEpgProgram('+RowSelected+','+ProgramSelect+')');
-        if(ProgramsToLeft === true){
-            switch (RowSelected) {
-                case 1:
-                    ProgramSelect = NodesRowPrograms1.length;
-                    --ProgramSelect;
-                break;
-
-                case 2:
-                    ProgramSelect = NodesRowPrograms2.length;
-                    --ProgramSelect;
-                break;
-
-                case 3:
-                    ProgramSelect = NodesRowPrograms3.length;
-                    --ProgramSelect;
-                break;
-
-                case 4:
-                    ProgramSelect = NodesRowPrograms4.length;
-                    --ProgramSelect;
-                break;
-
-                case 5:
-                    ProgramSelect = NodesRowPrograms5.length;
-                    --ProgramSelect;
-                break;
-            }
-            ProgramSelected = ProgramSelect;
-            ProgramsToLeft = false;
-        } else if(ProgramsToChange === true){
-            switch (RowSelected) {
-                case 1:
-                    if(typeof(NodesRowPrograms1[ProgramSelect]) === 'undefined') {
-                        --ProgramSelect;
-                        while(typeof(NodesRowPrograms1[ProgramSelect]) === 'undefined') {
-                            --ProgramSelect;
-                        }
-                    }
-                break;
-
-                case 2:
-                    if(typeof(NodesRowPrograms2[ProgramSelect]) === 'undefined') {
-                        --ProgramSelect;
-                        while(typeof(NodesRowPrograms2[ProgramSelect]) === 'undefined') {
-                            --ProgramSelect;
-                        }
-                    }
-                break;
-
-                case 3:
-                    if(typeof(NodesRowPrograms3[ProgramSelect]) === 'undefined') {
-                        --ProgramSelect;
-                        while(typeof(NodesRowPrograms3[ProgramSelect]) === 'undefined') {
-                            --ProgramSelect;
-                        }
-                    }
-                break;
-
-                case 4:
-                    if(typeof(NodesRowPrograms4[ProgramSelect]) === 'undefined') {
-                        --ProgramSelect;
-                        while(typeof(NodesRowPrograms4[ProgramSelect]) === 'undefined') {
-                            --ProgramSelect;
-                        }
-                    }
-                break;
-
-                case 5:
-                    if(typeof(NodesRowPrograms5[ProgramSelect]) === 'undefined') {
-                        --ProgramSelect;
-                        while(typeof(NodesRowPrograms5[ProgramSelect]) === 'undefined') {
-                            --ProgramSelect;
-                        }
-                    }
-                break;
-            }
-            ProgramSelected = ProgramSelect;
-            ProgramsToChange = false;
-        }
-
-        //console.log('================= 2) FocusEpgProgram('+RowSelected+','+ProgramSelect+')');
-
-        switch (RowSelected) {
-            case 1:
-                NodesRowPrograms1[ProgramSelect].style.backgroundColor = BackgroundFocus;
-                NodesRowPrograms1[ProgramSelect].style.color = ColorFocus;
-                Positions = NodesRowPrograms1[ProgramSelect].title;
-                FocusChannelPosition = Positions.split(',')[0];
-                FocusProgramPosition = Positions.split(',')[1];
-            break;
-
-            case 2:
-                NodesRowPrograms2[ProgramSelect].style.backgroundColor = BackgroundFocus;
-                NodesRowPrograms2[ProgramSelect].style.color = ColorFocus;
-                Positions = NodesRowPrograms2[ProgramSelect].title;
-                FocusChannelPosition = Positions.split(',')[0];
-                FocusProgramPosition = Positions.split(',')[1];
-            break;
-
-            case 3:
-                NodesRowPrograms3[ProgramSelect].style.backgroundColor = BackgroundFocus;
-                NodesRowPrograms3[ProgramSelect].style.color = ColorFocus;
-                Positions = NodesRowPrograms3[ProgramSelect].title;
-                FocusChannelPosition = Positions.split(',')[0];
-                FocusProgramPosition = Positions.split(',')[1];
-            break;
-
-            case 4:
-                NodesRowPrograms4[ProgramSelect].style.backgroundColor = BackgroundFocus;
-                NodesRowPrograms4[ProgramSelect].style.color = ColorFocus;
-                Positions = NodesRowPrograms4[ProgramSelect].title;
-                FocusChannelPosition = Positions.split(',')[0];
-                FocusProgramPosition = Positions.split(',')[1];
-            break;
-
-            case 5:
-                NodesRowPrograms5[ProgramSelect].style.backgroundColor = BackgroundFocus;
-                NodesRowPrograms5[ProgramSelect].style.color = ColorFocus;
-                Positions = NodesRowPrograms5[ProgramSelect].title;
-                FocusChannelPosition = Positions.split(',')[0];
-                FocusProgramPosition = Positions.split(',')[1];
-            break;
-        }
-        //console.log('================= 3) FocusEpgProgram('+RowSelected+','+ProgramSelect+')');
-        ShowInfoEpg();
-    }
-
-        var BackgroundUnfocus = 'transparent',
-            ColorUnfocus = '#fff';
-
-    function UnfocusEpgProgram(RowSelected,ProgramSelected){
-
-        switch (RowSelected) {
-            case 1:
-                NodesRowPrograms1[ProgramSelected].style.backgroundColor = BackgroundUnfocus;
-                NodesRowPrograms1[ProgramSelected].style.color = ColorUnfocus;
-            break;
-
-            case 2:
-                NodesRowPrograms2[ProgramSelected].style.backgroundColor = BackgroundUnfocus;
-                NodesRowPrograms2[ProgramSelected].style.color = ColorUnfocus;
-            break;
-
-            case 3:
-                NodesRowPrograms3[ProgramSelected].style.backgroundColor = BackgroundUnfocus;
-                NodesRowPrograms3[ProgramSelected].style.color = ColorUnfocus;
-            break;
-
-            case 4:
-                NodesRowPrograms4[ProgramSelected].style.backgroundColor = BackgroundUnfocus;
-                NodesRowPrograms4[ProgramSelected].style.color = ColorUnfocus;
-            break;
-
-            case 5:
-                NodesRowPrograms5[ProgramSelected].style.backgroundColor = BackgroundUnfocus;
-                NodesRowPrograms5[ProgramSelected].style.color = ColorUnfocus;
-            break;
-        }
-    }
-
-    function ShowInfoEpg(){
-        EpgInfoContainerNodes[1].innerHTML  = ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].TTLE;
-        if(RecordingsToCheck !== ''){
-            for(IndexRec = 0; IndexRec < RecordingsToCheck.length; IndexRec++){
-                if(RecordingsToCheck[IndexRec].databasekey === ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].DBKY) {
-                    EpgInfoContainerNodes[1].innerHTML  = ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].TTLE + '<p class="RecInfo">  REC</p>';
-                    IndexRec = RecordingsToCheck.length;
-                }
+            if(IndexRecordedFocus !== -1){
+                ShowRecordOption();
             }
         }
-        EpgInfoContainerNodes[3].textContent  = ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].DSCR;
-        EpgInfoContainerNodes[5].textContent  = FormatHours(ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].STRH)+' - '+FormatHours(ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].FNLH);
-        EpgInfoContainerNodes[7].textContent  = TimeConvert(ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].MNTS);
-        EpgInfoContainerNodes[9].textContent  = ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].TVRT;
-        EpgInfoContainerNodes[11].innerHTML   = ShowStars(ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].STRS);
-        EpgInfoContainerNodes[13].textContent = ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].EPSD;
-    }
+    }else if(OptionPanel === 'Schedules' || OptionPanel === 'Series') {
+        if(RowTypeFocus === 'serie'){
 
+            ListTypeFocus = 'serie';
 
-    function SetChannelLogo(){
-        EpgChannelLogo.style.backgroundImage = 'url("'+ Libraries['ChannelsPath'] + ChannelsJson[CurrentChannelPosition].LOGO+'")';
-    }
+            SetSchedules('');
 
-/*******************************************************************************
- *
- *******************************************************************************/
+            LastPvrRowFocus = PvrRowFocus;
 
-    function ProgramRight(){
-        if(ChannelsJson[FocusChannelPosition].P_Length === 1){
-            /* Mueve por posicion de hora*/
-            if(LastHourPosition < 47){
-                UnfocusEpgProgram(RowSelected,ProgramSelected);
+            PvrRowFocus = 1;
 
-                BuildProgramsRow(LastHourPosition, FirstChannelPosition);
-
-                ProgramSelected = 0;
-
-                FocusEpgProgram(RowSelected,ProgramSelected);
-            }
-        } else if(parseInt(FocusProgramPosition,10) === LastProgramsPositions[RowSelected]){
-            /* Mientras no llegue al final de la programacion */
-            if(parseInt(FocusProgramPosition,10) < (ChannelsJson[FocusChannelPosition].P_Length - 1)){
-                /* Mueve por posicion de hora*/
-                UnfocusEpgProgram(RowSelected,ProgramSelected);
-
-                BuildProgramsRow(LastHourPosition, FirstChannelPosition);
-
-                ProgramSelected = 0;
-
-                FocusEpgProgram(RowSelected,ProgramSelected);
-            } else if(parseInt(FocusProgramPosition,10) === (ChannelsJson[FocusChannelPosition].P_Length - 1)){
-
-                GetNextJsonEpg('RIGHT');
-
-                if(NextEpgDataActive === true){
-
-                    NextEpgActive = true;
-
-                    ClearEpg();
-
-                    ChannelsJson = NextChannelsJson;
-
-                    OpenEpg();
-                }
-            }
+            SetFocusSchedules();
         } else {
-            /* Cambia foco del programa */
-            UnfocusEpgProgram(RowSelected,ProgramSelected);
-
-            ++ProgramSelected;
-
-            FocusEpgProgram(RowSelected,ProgramSelected);
-        }
-    }
-
-/*******************************************************************************
- *
- *******************************************************************************/
-
-    function ProgramLeft(){
-
-        if(ChannelsJson[FocusChannelPosition].P_Length === 1){
-
-            if(CurrentHourPosition > OnLoadHourPosition){
-
-                UnfocusEpgProgram(RowSelected,ProgramSelected);
-
-                var NewCurrentHourPosition = CurrentHourPosition;
-
-                    NewCurrentHourPosition -= 5;
-
-                BuildProgramsRow(NewCurrentHourPosition, FirstChannelPosition);
-
-                ProgramsToLeft = true;
-
-                FocusEpgProgram(RowSelected,ProgramSelected);
+            if((OptionPanel === 'Schedules' && IndexScheduleFocus !== -1) || (OptionPanel === 'Series' && IndexSerieFocus !== -1)){
+                ShowDeleteOption();
             }
-        } else if(parseInt(FocusProgramPosition,10) === OnloadProgramsPositions[RowSelected]){
-            // Do nothing
-            if(NextEpgDataActive === true && NextEpgActive === true){
-                    if(EpgDayNumber === 1){
-                        CloseEpg();
-
-                        OpenEpg();
-                    } else {
-                        GetNextJsonEpg('LEFT');
-
-                        ClearEpg();
-
-                        ChannelsJson = NextChannelsJson;
-
-                        OpenEpg();
-                    }
-                }
-        }  else if(parseInt(FocusProgramPosition,10) === FirstProgramsPositions[RowSelected]){
-
-            UnfocusEpgProgram(RowSelected,ProgramSelected);
-
-            var NewCurrentHourPosition = CurrentHourPosition;
-
-            NewCurrentHourPosition -= 5;
-
-            BuildProgramsRow(NewCurrentHourPosition, FirstChannelPosition);
-
-            ProgramsToLeft = true;
-
-            FocusEpgProgram(RowSelected,ProgramSelected);
-
-        } else if(parseInt(FocusProgramPosition,10) !== OnloadProgramsPositions[RowSelected]){
-
-            UnfocusEpgProgram(RowSelected,ProgramSelected);
-
-            --ProgramSelected;
-
-            FocusEpgProgram(RowSelected,ProgramSelected);
         }
     }
+}
 
-/*******************************************************************************
- *
- *******************************************************************************/
+function PvrClose(){
+    if(ListTypeFocus === 'serie'){
+        if(OptionPanel === 'Recordings') {
+            FirstIndexRecorded--;
 
-    function ProgramDown(){
-        if(RowSelected === 5){
+            IndexRecordedFocus = FirstIndexRecorded;
 
-            ++LastChannelPosition;
+            ListTypeFocus = 'all';
 
-            if(LastChannelPosition > ChannelsLength){
-                LastChannelPosition = 0;
-            }
+            SetRecordings('');
 
-            UnfocusEpgProgram(RowSelected,ProgramSelected);
+            PvrRowFocus = LastPvrRowFocus;
 
-        var TmpCurrentHourPosition = CurrentHourPosition;
+            SetFocusRecordings();
+        } else if(OptionPanel === 'Schedules') {
+            FirstIndexSchedule--;
 
-            FirstProgramsPositions = { 1:-1, 2:-1, 3:-1, 4:-1, 5:-1 };
+            IndexScheduleFocus = FirstIndexSchedule;
 
-            BuildProgramsRow(OnLoadHourPosition, LastChannelPosition);
+            ListTypeFocus = 'all';
 
-            BuildProgramsRow(TmpCurrentHourPosition, LastChannelPosition);
+            SetSchedules('');
 
-            RowSelected = 1;
+            PvrRowFocus = LastPvrRowFocus;
 
-            CurrentChannelPosition = LastChannelPosition;
-
-            SetChannelLogo();
-
-            ProgramsToChange = true;
-
-            FocusEpgProgram(RowSelected,ProgramSelected);
-
-            BuildChannelsRow(LastChannelPosition);
-        } else {
-            ProgramsToChange = true;
-
-            UnfocusEpgProgram(RowSelected,ProgramSelected);
-
-            ++CurrentChannelPosition;
-            ++RowSelected;
-
-            if(CurrentChannelPosition > ChannelsLength){
-                CurrentChannelPosition = 0;
-            }
-
-            SetChannelLogo();
-
-            FocusEpgProgram(RowSelected,ProgramSelected);
+            SetFocusSchedules();
         }
+    } else {
+        ClosePvr();
     }
-
-    function PageDown(){
-        ++LastChannelPosition;
-
-        if(LastChannelPosition > ChannelsLength){
-            LastChannelPosition = 0;
-        }
-
-        UnfocusEpgProgram(RowSelected,ProgramSelected);
-
-    var TmpCurrentHourPosition = CurrentHourPosition;
-
-        FirstProgramsPositions = { 1:-1, 2:-1, 3:-1, 4:-1, 5:-1 };
-
-        BuildProgramsRow(OnLoadHourPosition, LastChannelPosition);
-
-        BuildProgramsRow(TmpCurrentHourPosition, LastChannelPosition);
-
-        CurrentChannelPosition = LastChannelPosition;
-
-        SetChannelLogo();
-
-        ProgramsToChange = true;
-
-        FocusEpgProgram(RowSelected,ProgramSelected);
-
-        BuildChannelsRow(LastChannelPosition);
-
-    }
-
-/*******************************************************************************
- *
- *******************************************************************************/
-
-    function ProgramUp(){
-        if(RowSelected === 1){
-
-            FirstChannelPosition -= 5;
-
-            if(FirstChannelPosition < 0){
-                FirstChannelPosition = ChannelsLength - 4;
-            }
-
-            UnfocusEpgProgram(RowSelected,ProgramSelected);
-
-        var TmpCurrentHourPosition = CurrentHourPosition;
-
-            FirstProgramsPositions = { 1:-1, 2:-1, 3:-1, 4:-1, 5:-1 };
-
-            BuildProgramsRow(OnLoadHourPosition, FirstChannelPosition);
-
-            BuildProgramsRow(TmpCurrentHourPosition, FirstChannelPosition);
-
-            RowSelected = 5;
-
-            ProgramsToChange = true;
-
-            FocusEpgProgram(RowSelected,ProgramSelected);
-
-            BuildChannelsRow(FirstChannelPosition);
-
-            CurrentChannelPosition = LastChannelPosition;
-
-            SetChannelLogo();
-        } else {
-            ProgramsToChange = true;
-
-            UnfocusEpgProgram(RowSelected,ProgramSelected);
-
-            --CurrentChannelPosition;
-            --RowSelected;
-
-            if(CurrentChannelPosition < 0){
-                CurrentChannelPosition = ChannelsLength;
-            }
-
-            SetChannelLogo();
-
-            FocusEpgProgram(RowSelected,ProgramSelected);
-        }
-    }
-
-
-    function PageUp(){
-
-        FirstChannelPosition -= 5;
-
-        if(FirstChannelPosition < 0){
-            FirstChannelPosition = ChannelsLength - 4;
-        }
-
-        UnfocusEpgProgram(RowSelected,ProgramSelected);
-
-    var TmpCurrentHourPosition = CurrentHourPosition;
-
-        FirstProgramsPositions = { 1:-1, 2:-1, 3:-1, 4:-1, 5:-1 };
-
-        BuildProgramsRow(OnLoadHourPosition, FirstChannelPosition);
-
-        BuildProgramsRow(TmpCurrentHourPosition, FirstChannelPosition);
-
-        ProgramsToChange = true;
-
-        FocusEpgProgram(RowSelected,ProgramSelected);
-
-        BuildChannelsRow(FirstChannelPosition);
-
-        CurrentChannelPosition = LastChannelPosition;
-
-        SetChannelLogo();
-    }
->>>>>>> refs/remotes/origin/main
+}
