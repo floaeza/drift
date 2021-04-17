@@ -76,7 +76,10 @@ and open the template in the editor.
     font-family: gotham;
     src: url(./Fonts/Gotham-Book-A.ttf);
 }
-
+@font-face {
+    font-family: arial;
+    src: url(./Fonts/Gotham-Book-A.ttf);
+}
 @font-face {
     font-family: Gotham Light;
     src: url(./Fonts/Gotham-Light.ttf);
