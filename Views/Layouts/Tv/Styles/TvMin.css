@@ -91,7 +91,7 @@ div#EpgDate {
     top: 5%;
     text-align: right;
     font-size: 18px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Arial Rounded MT Bold";
     font-weight: bold;
 }
 
@@ -412,8 +412,8 @@ div#EpgRating,
 div#EpgTime{
     text-align: left;
     font-size: 16px;
-    font-weight: bold;   
-    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-family: "Arial Rounded MT Bold";
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
 }
 

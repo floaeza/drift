@@ -782,7 +782,6 @@ function ShowInfoEpg(){
     EpgInfoContainerNodes[9].textContent  = ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].DSCR;
     EpgInfoContainerNodes[5].textContent  = FormatHours(ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].STRH)+' - '+FormatHours(ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].FNLH);
     EpgInfoContainerNodes[7].textContent  = ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].TVRT;
-
 }
 
 
