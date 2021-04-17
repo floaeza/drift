@@ -134,7 +134,7 @@ function OpenEpg(){
         FocusEpgProgram(RowSelected,ProgramSelected);
 
         GetWeather();
-
+        Debug('GetWeather');
         MinimizeTV();
 
         EpgTimer = setTimeout(CloseEpg,TimeoutEpg);
