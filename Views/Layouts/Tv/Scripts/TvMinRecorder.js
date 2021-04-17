@@ -761,6 +761,9 @@ function OpenPvr() {
         PvrNow.innerHTML = 'Now: ' + ChannelsJson[ChannelPosition].INDC + ' - ' + ChannelsJson[ChannelPosition].CHNL;
         PvrDate.textContent = FormatDateAndHour;
 
+        GetWeather();
+        Debug('GetWeather');
+
         RecordingPanel = true;
 
         OptionPanel = 'Recordings';
@@ -771,8 +774,7 @@ function OpenPvr() {
 
         GetPvrInfo();
 
-        GetWeather();
-        Debug('GetWeather');
+     
 
         PvrTimer = setTimeout(ClosePvr, TimeoutPvr);
 

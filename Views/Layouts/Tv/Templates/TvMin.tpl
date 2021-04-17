@@ -142,7 +142,7 @@
     <div id='PvrMainLogo'><img src='Media/Logos/MainLogo.png'/></div>
 
         <div id='PvrWeather'>
-        <div id='TemperatureGroup'>
+          <div id='TemperatureGroup'>
                 <span id='WeatherFarenheit'></span><span>&deg; F/</span>
                 <span id='WeatherCelsius'></span><span>&deg; C</span></div>
             <div id='Icon'><canvas id='WeatherIcon' width='30' height='30'></canvas></div>  
