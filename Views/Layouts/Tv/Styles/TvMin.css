@@ -79,8 +79,7 @@ div#EpgNowAiring {
     padding-top: 2.5%;
     text-align: left;
     font-size: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
+    font-family: Arial Rounded MT Bold;
 }
 
 div#EpgDate {
@@ -91,8 +90,7 @@ div#EpgDate {
     top: 5%;
     text-align: right;
     font-size: 18px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
+    font-family: Arial Rounded MT Bold;
 }
 
 div#EpgWeather {
@@ -116,10 +114,9 @@ div#TemperatureGroup {
     width: 100%;
     height: 100%;
     font-size: 18px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial Rounded MT Bold;
     color: #0396a6;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
-    font-weight: bold;
 }
 
 div#EpgDays {
@@ -128,8 +125,7 @@ div#EpgDays {
     bottom: 50%;
     position: fixed;
     font-size: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
+    font-family: Arial Rounded MT Bold;
     margin-left: 10%;
     text-shadow: 4px 3px 2px rgba(0,0,0,0.5);
 }
@@ -319,7 +315,7 @@ div#ProgramRow4,
 div#ProgramRow5 {
     width: 100%;
     height: 20%;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial Rounded MT Bold;
     font-weight: bold;
     background-color: #246681;
 }
@@ -521,7 +517,7 @@ div.RecordingOptionsButton {
     min-height: 15%;
     border-radius: 5px;
     margin-top: 2.5%;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial Rounded MT Bold;
 }
 
 
@@ -551,8 +547,7 @@ div#PvrNow {
     position: fixed;
     margin-left: 3.2%;
     top:5%;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
+    font-family: Arial Rounded MT Bold;
     font-size: 20px;
     color: #fff;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
@@ -583,8 +578,7 @@ div#PvrWeather{
     position: fixed;
     margin-left: 4.5%;
     top:87%;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
+    font-family: Arial Rounded MT Bold;
     font-size: 18px;
     color: #0396a6;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
@@ -602,8 +596,7 @@ div#PvrDate{
     margin-left: 4.5%;
     margin-top: 1%;
     top: 90%;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
+    font-family: Arial Rounded MT Bold;
     font-size: 18px;
     color: #fff;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
@@ -635,8 +628,7 @@ div.PvrHeader {
 div#CurrentPvrOption {
     width: 70%;
     margin: 0 auto;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
+    font-family: Arial Rounded MT Bold;
     font-size: 35px;
 }
 
@@ -672,6 +664,7 @@ div.PvrProgram {
     margin: 0.2%;
     background: #2f414a;
     border-radius: 10px;
+    text-align: center;
 }
 
 .PvrProgramFocus {
@@ -686,6 +679,7 @@ div.PvrProgram {
     font-weight: bold;
     background: #dfbe5e;
     border-radius: 10px;
+    text-align: center;
 }
 
 div#PvrOptions {
@@ -762,8 +756,7 @@ div#PvrProgramDate{
     overflow: hidden;
     color: #fff;
     font-size: 18px;
-    font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial Rounded MT Bold;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
 }
 
@@ -777,7 +770,7 @@ div#PvrProgramDescription {
     text-align: left;
     color: #fff;
     font-size: 18px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: Calibri;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
 }
 

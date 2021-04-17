@@ -760,7 +760,7 @@ function OpenPvr(){
         /*Informacion en pantalla PVR*/
         PvrNow.innerHTML = 'Now: '+ChannelsJson[ChannelPosition].INDC + ' - ' + ChannelsJson[ChannelPosition].CHNL;
         PvrDate.textContent = FormatDateAndHour;
-
+        
         RecordingPanel = true;
 
         OptionPanel = 'Recordings';
