@@ -111,6 +111,7 @@
         </div>
     </div>
 </div>
+
 <!-- Menu Filtros-->
 <div id="MenuFilters">
     <h2>List Movies</h2>
