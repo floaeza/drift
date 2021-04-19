@@ -348,7 +348,6 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
  * Actualiza el asset id
  *******************************************************************************/
 
-<<<<<<< HEAD
     function UpdateAssetsId(){
         
         AssetsIdList = PVR.GetAssetIdList();
@@ -395,39 +394,6 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
         AssetsIdList = PVR.GetAssetIdList();
         
         if (typeof AssetsIdList !== 'object'){ AssetsCount = 0; } else { AssetsCount = AssetsIdList.count; }
-=======
-function UpdateAssetsId(){
-
-    AssetsIdList = PVR.GetAssetIdList();
-
-    if (typeof AssetsIdList !== 'object'){ AssetsCount = 0; } else { AssetsCount = AssetsIdList.count; }
-
-    if (AssetsCount > 0){
-        var Indexal = 1,
-            AssetInfo = [],
-            ActRec    = false,
-            Option    = '';
-
-        for(Indexal = 1;  Indexal <= AssetsIdList.count; Indexal++){
-
-            //Debug('::::::::= '+AssetsIdList.count);
-
-            AssetInfo = PVR.GetAssetById(AssetsIdList[Indexal]);
-
-            Debug('----------------------> UpdateAssetsId '+AssetsIdList.count);
-
-            Debug(AssetInfo.title +', '+ OperationsList.recorded +', '+ AssetsIdList[Indexal] +', '+  AssetInfo.activeRecording);
-
-            ActRec = (AssetInfo.activeRecording === 0) ? false : true;
-
-            Option = (AssetInfo.activeRecording === 0) ? OperationsList.recorded : OperationsList.recording;
-
-            UpdateProgramAsset(AssetInfo.title, Option, AssetsIdList[Indexal], ActRec);
-
-        }
-    }
-}
->>>>>>> refs/remotes/origin/main
 
 function DeleteOldestAssets(){
     /* Elimina los 6 assets mas viejos cuando llega al 95% el disco duro*/
@@ -479,3 +445,4 @@ function HandlerPvr(){
     Debug('-------> HandlerPvr');
 }
 
+}

@@ -114,11 +114,10 @@
 
 <!-- Menu Filtros-->
 <div id="MenuFilters">
-    <h2>List Movies</h2>
     <div id="filterMovieCategory">
-            <div class='OptionsFilter'>By Year</div>
-            <div class='OptionsFilter'>By Gender</div>
-            <div class='OptionsFilter'>Back</div>
+            <div class='OptionsFilter'><i class='fa fa-video-camera'></i>By Year</div>
+            <div class='OptionsFilter'><i class='fa fa-film'></i>By Gender</div>
+            <div class='OptionsFilter'><i class='fa fa-arrow-circle-o-left'></i>Back</div>
     </div>
 </div>
 <!-- Panel Genero-->

@@ -774,7 +774,7 @@ function OpenPvr() {
 
         GetPvrInfo();
 
-     
+
 
         PvrTimer = setTimeout(ClosePvr, TimeoutPvr);
 
