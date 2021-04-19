@@ -115,9 +115,9 @@
 <!-- Menu Filtros-->
 <div id="MenuFilters">
     <div id="filterMovieCategory">
-            <div class='OptionsFilter'><i class='fa fa-video-camera'></i>By Year</div>
-            <div class='OptionsFilter'><i class='fa fa-film'></i>By Gender</div>
-            <div class='OptionsFilter'><i class='fa fa-arrow-circle-o-left'></i>Back</div>
+            <div class='OptionsFilter'><i class='fa fa-film'></i>&nbsp;By Year</div>
+            <div class='OptionsFilter'><i class='fa fa-video'></i>&nbsp;By Gender</div>
+            <div class='OptionsFilter'><i class='fa fa-chevron-circle-left'></i>&nbsp;Back</div>
     </div>
 </div>
 <!-- Panel Genero-->

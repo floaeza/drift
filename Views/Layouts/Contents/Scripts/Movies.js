@@ -16,10 +16,10 @@
         MoviePanelNodes                   = MoviePanel.childNodes,
         MoviePanelChildren                = MoviePanel.children;
     //Variables estilos
-    var StyleFocusMovies                  = '3px solid rgb(255, 255, 255)',
-        StyleFocusPanelMovie              = '3px solid rgb(0, 128, 255)',
+    var StyleFocusMovies                  = '3px solid rgb(0, 128, 255)',
+        StyleFocusPanelMovie              = '3px solid rgb(49, 57, 71)',
         StyleFocusPlayingMovie            = '3px solid rgb(255, 255, 255)',
-        StyleFocusMenuHeader              = '3px solid rgb(255, 255, 255)',
+        StyleFocusMenuHeader              = '5px solid rgb(9, 111, 175)',
         StyleFocusMenuFilter              = '3px solid rgb(255, 255, 255)',
         StyleFocusMenuYearFilter          = '3px solid rgb(255, 255, 255)',
         StyleFocusMenuLanguage            = '3px solid rgb(255, 255, 255)';
@@ -183,28 +183,28 @@ $.ajax({
 *******************************************************************************/
 function SetFocusHeader(Direction){
     if (Direction == 'set') {
-        MenuHeaderChildren[0].style.border = StyleFocusMenuHeader;
+        MenuHeaderChildren[0].style.borderBottom = StyleFocusMenuHeader;
     } else if (Direction == 'down') {
         MenuHeader = document.getElementById('MenuOptions');
         MenuHeaderChildren = MenuHeader.children;
         var positionFocus = getPositionFocusInMenu(StyleFocusMenuHeader, MenuHeaderChildren);
         if (positionFocus+1 >= MenuHeaderChildren.length) {
-            MenuHeaderChildren[positionFocus].style.border = '';
-            MenuHeaderChildren[0].style.border = StyleFocusMenuHeader;
+            MenuHeaderChildren[positionFocus].style.borderBottom = '';
+            MenuHeaderChildren[0].style.borderBottom = StyleFocusMenuHeader;
         }else{
-            MenuHeaderChildren[positionFocus].style.border = '';
-            MenuHeaderChildren[positionFocus+1].style.border = StyleFocusMenuHeader;
+            MenuHeaderChildren[positionFocus].style.borderBottom = '';
+            MenuHeaderChildren[positionFocus+1].style.borderBottom = StyleFocusMenuHeader;
         }
     } else if (Direction == 'up') {
         MenuHeader = document.getElementById('MenuOptions');
         MenuHeaderChildren = MenuHeader.children;
         var positionFocus = getPositionFocusInMenu(StyleFocusMenuHeader, MenuHeaderChildren);
         if (positionFocus == 0) {
-            MenuHeaderChildren[positionFocus].style.border = '';
-            MenuHeaderChildren[(MenuHeaderChildren.length)-1].style.border = StyleFocusMenuHeader;
+            MenuHeaderChildren[positionFocus].style.borderBottom = '';
+            MenuHeaderChildren[(MenuHeaderChildren.length)-1].style.borderBottom = StyleFocusMenuHeader;
         }else{
-            MenuHeaderChildren[positionFocus].style.border = '';
-            MenuHeaderChildren[positionFocus-1].style.border = StyleFocusMenuHeader;
+            MenuHeaderChildren[positionFocus].style.borderBottom = '';
+            MenuHeaderChildren[positionFocus-1].style.borderBottom = StyleFocusMenuHeader;
         }  
     }
 // if(MenuFocus >= 0){

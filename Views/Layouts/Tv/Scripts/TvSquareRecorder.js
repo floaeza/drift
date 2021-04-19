@@ -562,7 +562,7 @@ function CheckRecordings(){
 
 
             ProgramUtcStartDate = Date.UTC(ProgramYear, (ProgramMonth -1), ProgramDay, ProgramStartHour, ProgramStartMinute);
-            ProgramUtcEndDate = Date.UTC(ProgramYear, (ProgramMonth -1), ProgramDay, ProgramEndHour, ProgramEndMinute);
+            ProgramUtcEndDate  = Date.UTC(ProgramYear, (ProgramMonth -1), ProgramDay, ProgramEndHour, ProgramEndMinute);
             Debug('--------------------------------------->>2');
             Debug(ProgramUtcStartDate);
             Debug(ProgramUtcEndDate);
@@ -606,7 +606,7 @@ function CheckRecordings(){
             Debug(NewEndHour);
 
             var CurrentUtcDate = Date.UTC(moment().format('Y'), (moment().format('MM') -1), moment().format('DD'), moment().format('HH'), moment().format('mm'));
-            CurrentUtcDate = CurrentUtcDate / 1000;
+                CurrentUtcDate = CurrentUtcDate / 1000;
 
             Debug('--------------------------------------->>5');
             Debug(CurrentUtcDate);
