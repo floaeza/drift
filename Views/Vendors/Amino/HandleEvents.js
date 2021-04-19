@@ -387,13 +387,7 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
             }
         } 
     }
-    
-    
-    function DeleteOldestAssets(){
-        /* Elimina los 6 assets mas viejos cuando llega al 95% el disco duro*/
-        AssetsIdList = PVR.GetAssetIdList();
-        
-        if (typeof AssetsIdList !== 'object'){ AssetsCount = 0; } else { AssetsCount = AssetsIdList.count; }
+
 
 function DeleteOldestAssets(){
     /* Elimina los 6 assets mas viejos cuando llega al 95% el disco duro*/
@@ -445,4 +439,3 @@ function HandlerPvr(){
     Debug('-------> HandlerPvr');
 }
 
-}
