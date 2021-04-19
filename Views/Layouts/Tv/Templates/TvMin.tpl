@@ -14,31 +14,30 @@
     <div class='Duration'></div>
     <div class='Time'></div>
     <div class='Description'></div>
-    <div class='Rating'></div>
 </div>
 
 <div id='EpgContainer'>
     <!-- Contiene informacion del programa y el canal, fecha y hora -->
     <div id='EpgHeader'>
         <div id='EpgWeather'>
+
+            <canvas id='WeatherIcon' width='35' height='35'></canvas>
+            <div id='WeatherSummary'></div>
+
             <div id='TemperatureGroup'>
                 <span id='WeatherFarenheit'></span><span>&deg; F/</span>
-                <span id='WeatherCelsius'></span><span>&deg; C</span></div>
-            <div id='Icon'><canvas id='WeatherIcon' width='30' height='30'></canvas></div>  
+                <span id='WeatherCelsius'></span><span>&deg; C</span>
+            </div>
         </div>
-
         <div id='EpgDate'></div>
-
     </div>
 
     <!-- -->
     <div id='EpgNowAiring'></div>
-
-
     <div id='EpgDays'>
-         <!--<b><i class='fa fa-chevron-left'></i></b>-->
+        <b><i class='fa fa-chevron-left'></i></b>
         <div id='EpgDay'></div>
-        <!--<b><i class='fa fa-chevron-right'></i></b>-->
+        <b><i class='fa fa-chevron-right'></i></b>
     </div>
 
     <!-- Lista de canales -->
@@ -48,8 +47,6 @@
         <div id='ChannelRow3'><p class='ChannelNumber'></p><p class='ChannelName'></p></div>
         <div id='ChannelRow4'><p class='ChannelNumber'></p><p class='ChannelName'></p></div>
         <div id='ChannelRow5'><p class='ChannelNumber'></p><p class='ChannelName'></p></div>
-        <div id='ChannelRow6'><p class='ChannelNumber'></p><p class='ChannelName'></p></div>
-        <div id='ChannelRow7'><p class='ChannelNumber'></p><p class='ChannelName'></p></div>
     </div>
 
     <!-- Contiene las horas en la guia  -->
@@ -68,26 +65,28 @@
         <div id='ProgramRow3'></div>
         <div id='ProgramRow4'></div>
         <div id='ProgramRow5'></div>
-        <div id='ProgramRow6'></div>
-        <div id='ProgramRow7'></div>
     </div>
 
     <!-- Contiene las horas en la guia  -->
     <div id='ProgramFocus'></div>
 
+    <div id='EpgChannelLogo' class='EpgLogo'></div>
+
     <div id='EpgProgramInfo'>
         <div id='EpgTitle'></div>
-        <div id='EpgChannelLogo' class='EpgLogo'></div>
-        <div id='EpgTime'></div>
-        <div id='EpgRating'></div>
         <div id='EpgDescription'></div>
+        <div id='EpgTime'></div>
+        <div id='EpgDuration'></div>
+        <div id='EpgRating'></div>
+        <div id='EpgStars'></div>
+        <div id='EpgEpisode'></div>
+        <div id='EpgRecording'></div>
+        <div id='EpgSerie'></div>
     </div>
-    
-    <!-- Contiene Logo Empresa-->
-    <div id='EpgMainLogo' class='EpgMainLogo'><img src='Media/Logos/MainLogo.png'/> </div>
 
     <div id='Message'></div>
 </div>
+
 <!-- Barra Pause Live Tv y Grabacion en reproduccion -->
 
 <div id='BarContainer'>
@@ -131,25 +130,17 @@
 <!-- Panel grabador -->
 <div id='PvrContainer'>
 
+    <div id='PvrDiskInfo'>
+        <div id='UsedSize'></div>
+        <div class='BarUsedSize'></div>
+        <div id='BarUsedSize'></div>
+    </div>
+
     <div class='PvrHeader'>
         <i class='fa fa-chevron-left PvrChevronLeft'></i>
         <div id='CurrentPvrOption'></div>
         <i class='fa fa-chevron-right PvrChevronRight'></i>
     </div>
-
-    <div id='PvrNow'></div>
-
-    <div id='PvrMainLogo'><img src='Media/Logos/MainLogo.png'/></div>
-
-        <div id='PvrWeather'>
-          <div id='TemperatureGroup'>
-                <span id='WeatherFarenheit'></span><span>&deg; F/</span>
-                <span id='WeatherCelsius'></span><span>&deg; C</span></div>
-            <div id='Icon'><canvas id='WeatherIcon' width='30' height='30'></canvas></div>  
-        </div>
-
-    <div id='PvrDate'></div>
-
 
     <div id='PvrList'>
         <div class='PvrProgram'></div>
@@ -165,15 +156,12 @@
     </div>
 
     <div id='PvrInfo'>
-        <div id='PvrProgramTitle'></div>
         <div id='PvrProgramDate'></div>
+        <div id='PvrProgramDuration'></div>
+        <div id='PvrProgramStars'></div>
+        <div id='PvrProgramEpisode'></div>
         <div id='PvrProgramDescription'></div>
-    </div>
-
-    <div id='PvrDiskInfo'>
-        <div id='UsedSize'></div>
-        <div class='BarUsedSize'></div>
-        <div id='BarUsedSize'></div>
+        <div id='PvrProgramTitle'></div>
     </div>
 
     <div id='PvrOptions'>
