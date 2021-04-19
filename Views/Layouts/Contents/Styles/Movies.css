@@ -159,9 +159,16 @@ div#MenuFilters {
     visibility: hidden;/*oculta el panel en el menu principal*/
 }
 
+div#filterMovieCategory{
+    width: 20%;
+    height: 100%;
+    position: fixed;
+    border-right: 4px solid #79b1d3;
+}
 div.OptionsFilter {
     width: 90%;
-    height: 19%;
+    height: 8%;
+    position: fixed;
     line-height: normal;
     margin: 5%;
     text-align: center;
