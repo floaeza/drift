@@ -559,8 +559,24 @@ function CheckRecordings(){
             Debug(ProgramStartHour + ' '+ProgramStartMinute);
             Debug(ProgramEndHour + ' '+ProgramEndMinute);
 
+            if(ProgramEndHour === '00' && parseInt(ProgramEndMinute) > 0){
+
+                Debug(ChannelsJson[REC_CHNL_POS].DTNU);
+
+                var dateString = ProgramYear+'-'+ProgramMonth+'-'+ProgramDay;
+
+                Debug(dateString);
+                var myDate = new Date(dateString);
+                Debug(myDate);
+                //add a day to the date
+                myDate.setDate(myDate.getDate() + 2);
+
+                //add a day to the date
+                Debug(myDate);
 
 
+            }
+            
             ProgramUtcStartDate = Date.UTC(ProgramYear, (ProgramMonth -1), ProgramDay, ProgramStartHour, ProgramStartMinute);
             ProgramUtcEndDate = Date.UTC(ProgramYear, (ProgramMonth -1), ProgramDay, ProgramEndHour, ProgramEndMinute);
             Debug('--------------------------------------->>2');
