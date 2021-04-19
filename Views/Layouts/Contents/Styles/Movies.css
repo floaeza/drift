@@ -156,7 +156,6 @@ div#MenuFilters {
     z-index: 1;
     text-align: center;
     background: #005a9e;
-    border-right: 4px solid #79b1d3;
     visibility: hidden;/*oculta el panel en el menu principal*/
 }
 
@@ -411,9 +410,6 @@ div#Filter {
     font-family: bebas;
 }
 
-div#filterMovieCategory{
-    margin-top: 10%;
-}
 
 div.OptionsFilter {
     width: 90%;
