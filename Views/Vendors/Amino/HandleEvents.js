@@ -170,6 +170,7 @@ function UpdateDiskInfo(){
  *******************************************************************************/
 
 function GetProgramsToSchedule(){
+    Debug('-------->> GetProgramsToSchedule');
     $.ajax({
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
@@ -213,6 +214,7 @@ function GetProgramsToSchedule(){
             }
         }
     });
+    Debug('--------<< GetProgramsToSchedule');
 }
 
 /*******************************************************************************
@@ -220,6 +222,8 @@ function GetProgramsToSchedule(){
  *******************************************************************************/
 
 function GetSchedulesToDelete(){
+
+    Debug('-------->> GetSchedulesToDelete');
     $.ajax({
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
@@ -264,6 +268,8 @@ function GetSchedulesToDelete(){
             }
         }
     });
+
+    Debug('--------<< GetSchedulesToDelete');
 }
 
 /*******************************************************************************
@@ -350,6 +356,8 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
  *******************************************************************************/
 
     function UpdateAssetsId(){
+
+        Debug('-------->> UpdateAssetsId');
         
         AssetsIdList = PVR.GetAssetIdList();
         
@@ -388,7 +396,8 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
 
                 }
             }
-        } 
+        }
+    Debug('--------<< UpdateAssetsId');
     }
 
 
