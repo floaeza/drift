@@ -89,8 +89,8 @@
     <div class='MovieDescription'></div>
     <div class='Director'></div>
     <div class='Casting'></div>
-    <div class='Buttons' id='PlayPanel'><i class='fa fa-play'></i> PLAY</div>
-    <div class='Buttons' id='ExitPanel'><i class='fa fa-times'></i> EXIT</div>
+    <div class='Buttons' id='PlayPanel'><i class='fa fa-play'></i>&nbsp; PLAY</div>
+    <div class='Buttons' id='ExitPanel'><i class='fa fa-times'></i>&nbsp; EXIT</div>
 </div>
 
 <div id='BackgroundPanel'></div>

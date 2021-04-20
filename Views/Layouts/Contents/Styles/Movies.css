@@ -302,7 +302,8 @@ div#PanelHeader {
     top: 0;
     z-index: 1;
     color: #fff;
-    background: #002b46;
+    background: #202020;
+    border-right: 2px solid #005a9e;
 }
 
 div#PanelLeft {
@@ -466,7 +467,7 @@ div#MoviePanel {
     visibility: hidden;
     bottom: 0;
     position: fixed;
-    background: linear-gradient(#030619, rgb(0, 43, 70));
+    background: linear-gradient(#030619, #002b46);
     z-index: 1;
 }
 

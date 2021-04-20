@@ -17,7 +17,7 @@
         MoviePanelChildren                = MoviePanel.children;
     //Variables estilos
     var StyleFocusMovies                  = '3px solid rgb(0, 128, 255)',
-        StyleFocusPanelMovie              = 'rgb(49, 57, 71)',
+        StyleFocusPanelMovie              = 'rgb(233, 187, 38)',
         StyleFocusPlayingMovie            = '3px solid rgb(255, 255, 255)',
         StyleFocusMenuHeader              = '8px solid rgb(9, 111, 175)',
         StyleFocusMenuFilter              = 'rgb(0, 43, 70)',
@@ -299,7 +299,7 @@ function SetMoviesList(){
     StopVideo();
     refreshMoviesPrincipalList(MoviesList, 'RecommendedMoviesList');
     refreshMoviesPrincipalList(MoviesList, 'AllMoviesList');
-    BackgroundPanel.style.backgroundImage = "url('"+FolderSource + "bg/black.png')";
+    BackgroundPanel.style.backgroundImage = "url('"+FolderSource + "bg/BGMovies.PNG')";
     PlayingVod = false;
 // var IndexR = 0,
 //     IndexM = 0,
@@ -574,7 +574,7 @@ if(MoviePanelFocus === 'Play'){
     
     CurrentFocus = 'Movies';
     
-    BackgroundPanel.style.backgroundImage = "url('"+FolderSource + "bg/black.png')";
+    BackgroundPanel.style.backgroundImage = "url('"+FolderSource + "bg/BGMovies.PNG')";
 } else {
     CurrentFocus = 'Playing';
     
@@ -1660,7 +1660,7 @@ function ExitMoviePanel(){
             PanelYearFilter.style.visibility= 'visible';
             MenuFilters.style.visibility = "visible";
             MoviePanel.style.visibility = 'hidden'; 
-            BackgroundPanel.style.backgroundImage = "url('"+FolderSource + "bg/black.png')";
+            BackgroundPanel.style.backgroundImage = "url('"+FolderSource + "bg/BGMovies.PNG')";
             CurrentFocus = 'SelectMovieByYear';
         } else {
             //Si se abrio desde la pagina principal
@@ -1675,7 +1675,7 @@ function ExitMoviePanel(){
             ListPanel.style.visibility = 'visible';
             PanelRight.style.visibility = 'visible';
             MoviePanel.style.visibility = 'hidden';
-            BackgroundPanel.style.backgroundImage = "url('"+FolderSource + "bg/black.png')";
+            BackgroundPanel.style.backgroundImage = "url('"+FolderSource + "bg/BGMovies.PNG')";
         }
             // //Si se abrio desde la pagina principal
             // RecommendedMoviesList         = document.getElementById('RecommendedMoviesList'),
