@@ -1985,6 +1985,8 @@ function CheckRecordings(){
                 Debug('--------------------------------------->>3.2');
                 Debug(NewStartHour);
                 Debug(ProgramUtcStartDate);
+
+
             } else {
                 NewStartHour = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].STRH;
             }
@@ -2007,8 +2009,13 @@ function CheckRecordings(){
 
             var TimeDiff = ProgramUtcStartDate - CurrentUtcDate;
             Debug(TimeDiff);
-            if(TimeDiff < 0){
+
+            var TimeDiffEnd = ProgramUtcStartDate - ProgramUtcEndDate;
+            Debug(TimeDiffEnd);
+
+            if(TimeDiff < 0 || TimeDiffEnd < 0){
                 Debug('--------------------------------------->>5.1 FIN');
+                ShowRecorderMessage('The program has already been broadcast ');
             } else {
 
                 if(ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].DBKY === ''){
