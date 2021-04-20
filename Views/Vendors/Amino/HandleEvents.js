@@ -196,12 +196,13 @@ function GetProgramsToSchedule(){
                 Start = ProgramsToSchedule[Indexps]['utc_inicio'];
                 End = ProgramsToSchedule[Indexps]['utc_final'];
 
-                Debug(Source +','+ Title +','+ Start +','+ End);
+                Debug('> '+Source +', '+ Title +', '+ Start +', '+ End);
 
                 NewSchedule = PVR.AddSchedule(Source, ProgramId, Start, End);
-                NewSchedule.WriteMeta('This is Metadata for scheduled asset '+ Title);
 
                 Debug(NewSchedule.ScheduleInfo);
+
+                NewSchedule.WriteMeta('This is Metadata for scheduled asset '+ Title);
 
                 if (typeof NewSchedule !== 'object'){
                     //CurrentTime = Date.UTC(moment().format('Y'), moment().format('MM'), moment().format('DD'), moment().format('HH'), moment().format('mm'));
