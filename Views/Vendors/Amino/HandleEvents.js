@@ -203,6 +203,7 @@ function GetProgramsToSchedule(){
                 if (typeof(NewSchedule) === 'undefined'){
                     //CurrentTime = Date.UTC(moment().format('Y'), moment().format('MM'), moment().format('DD'), moment().format('HH'), moment().format('mm'));
                     Debug('> Fail new schedule');
+                    DeleteProgram(ProgramId);
                 } else {
                     NewSchedule.WriteMeta('This is Metadata for scheduled asset '+ Title);
                     Debug('New schedule added, streamid = '+NewSchedule.streamId);
