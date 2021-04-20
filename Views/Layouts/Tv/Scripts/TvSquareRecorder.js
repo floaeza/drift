@@ -1933,42 +1933,26 @@ function CheckRecordings(){
             Debug(ProgramStartHour + ' '+ProgramStartMinute);
             Debug(ProgramEndHour + ' '+ProgramEndMinute);
 
-            if(ProgramEndHour === '00' && parseInt(ProgramEndMinute) >= 0){
-                // Debug('--------------------------------------->>1.1');
-                // Debug(ChannelsJson[REC_CHNL_POS].DTNU);
-                //
-                // var dateString = ProgramYear+'-'+ProgramMonth+'-'+ProgramDay;
-                //
-                // Debug(dateString);
-                // var myDate = new Date(dateString);
-                // Debug(myDate);
-                // //add a day to the date
-                // myDate.setDate(myDate.getDate() + 2);
-                //
-                // //add a day to the date
-                // Debug(myDate);
-            }
-
             ProgramUtcStartDate = Date.UTC(ProgramYear, (ProgramMonth -1), ProgramDay, ProgramStartHour, ProgramStartMinute);
 
             Debug('--------------------------------------->>2');
             Debug(ProgramUtcStartDate);
+            Debug(ProgramUtcEndDate);
+
+            ProgramUtcStartDate = ProgramUtcStartDate / 1000;
 
             if(parseInt(REC_PROG_POS) === LastProgramsPositions[RowSelected]){
-                Debug('--------------------------------------->>2.1');
+                Debug('--------------------------------------->>2.1 ');
                 var ProgramSeconds   = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].MNTS * 120;
                 Debug(ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].MNTS);
                 Debug(ProgramSeconds);
                 ProgramUtcEndDate = ProgramUtcStartDate + ProgramSeconds;
             } else {
-                Debug('--------------------------------------->>2.2');
+                Debug('--------------------------------------->>2.2 ');
                 ProgramUtcEndDate = Date.UTC(ProgramYear, (ProgramMonth -1), ProgramDay, ProgramEndHour, ProgramEndMinute);
+                ProgramUtcEndDate = ProgramUtcEndDate / 1000;
             }
 
-            Debug(ProgramUtcEndDate);
-
-            ProgramUtcStartDate = ProgramUtcStartDate / 1000;
-            ProgramUtcEndDate = ProgramUtcEndDate / 1000;
             Debug('--------------------------------------->>3');
             Debug(ProgramUtcStartDate);
             Debug(ProgramUtcEndDate);
