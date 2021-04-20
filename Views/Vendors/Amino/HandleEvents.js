@@ -284,7 +284,7 @@ function DeleteProgram(ProgramId){
 }
 
 /*******************************************************************************
- * Actualiza el estatus de la grabacion y su stream id
+ * Actualiza el estatus de la grabacion y su stream id 
  *******************************************************************************/
 
 function UpdateProgramAsset(ProgramId, OperationId, AssetId, ActiveRecording){
@@ -379,9 +379,11 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
                 
                 Debug('>>>>>>>>>>> startTime >>>>'+AssetInfo.startTime);
 
-                ActRec = (AssetInfo.activeRecording === 0) ? 'false' : 'true';
+                ActRec = (AssetInfo.activeRecording === 0) ? false : true;
 
-                UpdateProgramStatus(AssetInfo.title, OperationsList.recorded, '0', AssetsIdList[Indexal], ActRec);
+                Option = (AssetInfo.activeRecording === 0) ? OperationsList.recorded : OperationsList.recording;
+
+                UpdateProgramAsset(AssetInfo.title, Option, AssetsIdList[Indexal], ActRec);
 
                 }
             }
