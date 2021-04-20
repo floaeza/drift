@@ -201,6 +201,8 @@ function GetProgramsToSchedule(){
                 NewSchedule = PVR.AddSchedule(Source, ProgramId, Start, End);
                 NewSchedule.WriteMeta('This is Metadata for scheduled asset '+ Title);
 
+                Debug(NewSchedule.ScheduleInfo);
+
                 if (typeof NewSchedule !== 'object'){
                     //CurrentTime = Date.UTC(moment().format('Y'), moment().format('MM'), moment().format('DD'), moment().format('HH'), moment().format('mm'));
                     Debug('Fail new schedule');
@@ -284,7 +286,7 @@ function DeleteProgram(ProgramId){
 }
 
 /*******************************************************************************
- * Actualiza el estatus de la grabacion y su stream id 
+ * Actualiza el estatus de la grabacion y su stream id
  *******************************************************************************/
 
 function UpdateProgramAsset(ProgramId, OperationId, AssetId, ActiveRecording){
