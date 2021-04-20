@@ -17,10 +17,10 @@
         MoviePanelChildren                = MoviePanel.children;
     //Variables estilos
     var StyleFocusMovies                  = '3px solid rgb(0, 128, 255)',
-        StyleFocusPanelMovie              = '3px solid rgb(49, 57, 71)',
+        StyleFocusPanelMovie              = 'rgb(49, 57, 71)',
         StyleFocusPlayingMovie            = '3px solid rgb(255, 255, 255)',
-        StyleFocusMenuHeader              = '5px solid rgb(9, 111, 175)',
-        StyleFocusMenuFilter              = '3px solid rgb(255, 255, 255)',
+        StyleFocusMenuHeader              = '8px solid rgb(9, 111, 175)',
+        StyleFocusMenuFilter              = 'rgb(121, 177, 211)',
         StyleFocusMenuYearFilter          = '3px solid rgb(255, 255, 255)',
         StyleFocusMenuLanguage            = '3px solid rgb(255, 255, 255)';
     //Variebles de utilidad
@@ -440,7 +440,7 @@ function LoadMoviePanel(moviesContainer, movieOnPlay){
             var movieTagP             = moviesArray[movieSelectedPosition].getElementsByTagName('p');
             var movieName             = movieTagP[0].innerHTML;
             var buttonPlay            = document.getElementById('PlayPanel'); 
-                buttonPlay.style.border = StyleFocusPanelMovie;
+                buttonPlay.style.backgroundColor = StyleFocusPanelMovie;
             CurrentFocus = 'MoviePanel';
             ListPanel.style.visibility = 'hidden';
             MoviePanel.style.visibility = 'visible';
@@ -471,7 +471,7 @@ function LoadMoviePanel(moviesContainer, movieOnPlay){
             var movieTagP             = moviesArray[movieSelectedPosition].getElementsByTagName('p');
             var movieName             = movieTagP[0].innerHTML;
             var buttonPlay            = document.getElementById('PlayPanel'); 
-                buttonPlay.style.border = StyleFocusPanelMovie;
+                buttonPlay.style.backgroundColor = StyleFocusPanelMovie;
             CurrentFocus = 'MoviePanel';
             ListPanel.style.visibility = 'hidden';
             MoviePanel.style.visibility = 'visible';
@@ -508,7 +508,7 @@ function LoadMoviePanel(moviesContainer, movieOnPlay){
         // var movieTagP             = moviesArray[movieSelectedPosition].getElementsByTagName('p');
         var movieName                = movieOnPlay;
         var buttonPlay               = document.getElementById('PlayPanel'); 
-            buttonPlay.style.border  = StyleFocusPanelMovie;
+            buttonPlay.style.backgroundColor  = StyleFocusPanelMovie;
         CurrentFocus = 'MoviePanel';
         ListPanel.style.visibility   = 'hidden';
         MoviePanel.style.visibility  = 'visible';
@@ -1164,7 +1164,7 @@ function getPositionFocusInPanelMovie(style, panelNodes){
     //Esta funcion recupera la posicion del boton en el panel de peliculas que tiene el focus dentro de su padre
    var position = -1;
    for (var x = 0; x < panelNodes.length; x++) {
-       if (panelNodes[x].style.border == style) {
+       if (panelNodes[x].style.backgroundColor== style) {
        position=x;
    } 
    }
@@ -1174,12 +1174,24 @@ function getPositionFocusInMenu(style, panelNodes){
     //Esta funcion recupera la posicion de un menu que tiene el focus dentro de su padre
    var position = -1;
    for (var x = 0; x < panelNodes.length; x++) {
-       if (panelNodes[x].style.border == style) {
+       if (panelNodes[x].style.borderBottom == style) {
        position=x;
    } 
    }
    return position;
 }
+
+function getPositionFocusInMenuFilter(style, panelNodes){
+    //Esta funcion recupera la posicion de un menu que tiene el focus dentro de su padre
+   var position = -1;
+   for (var x = 0; x < panelNodes.length; x++) {
+       if (panelNodes[x].style.backgroundColor == style) {
+       position=x;
+   } 
+   }
+   return position;
+}
+
 function refreshLanguages(){
 
     // PIDS = gSTB.GetAudioPIDs();
@@ -1279,20 +1291,20 @@ function SetFocusOnMoviePanel(Direction){
    if (Direction == 'right') {
        var position = getPositionFocusInPanelMovie(StyleFocusPanelMovie, MoviePanelChildren);
        if (position == 12) {
-           MoviePanelChildren[position].style.border = '';
-           MoviePanelChildren[position-1].style.border = StyleFocusPanelMovie;
+           MoviePanelChildren[position].style.backgroundColor = '';
+           MoviePanelChildren[position-1].style.backgroundColor = StyleFocusPanelMovie;
        }else{
-           MoviePanelChildren[position].style.border = '';
-           MoviePanelChildren[position+1].style.border = StyleFocusPanelMovie;
+           MoviePanelChildren[position].style.backgroundColor = '';
+           MoviePanelChildren[position+1].style.backgroundColor = StyleFocusPanelMovie;
        }
    }else if (Direction == 'left') {
        var position = getPositionFocusInPanelMovie(StyleFocusPanelMovie, MoviePanelChildren);
        if (position == 11) {
-           MoviePanelChildren[position].style.border = '';
-           MoviePanelChildren[position+1].style.border = StyleFocusPanelMovie;
+           MoviePanelChildren[position].style.backgroundColor = '';
+           MoviePanelChildren[position+1].style.backgroundColor = StyleFocusPanelMovie;
        }else{
-           MoviePanelChildren[position].style.border = '';
-           MoviePanelChildren[position-1].style.border = StyleFocusPanelMovie;
+           MoviePanelChildren[position].style.backgroundColor = '';
+           MoviePanelChildren[position-1].style.backgroundColor = StyleFocusPanelMovie;
        }
    }
 }
@@ -1397,29 +1409,29 @@ function SetFocusOnMenuFilter(Direction){
     if (Direction == 'down') {
         FilterMovieCategoryList = document.getElementById('filterMovieCategory');
         FilterMovieCategoryListChildren = FilterMovieCategoryList.children;
-        var positionFocus = getPositionFocusInMenu(StyleFocusMenuFilter, FilterMovieCategoryListChildren);
+        var positionFocus = getPositionFocusInMenuFilter(StyleFocusMenuFilter, FilterMovieCategoryListChildren);
         if (positionFocus+1 >= FilterMovieCategoryListChildren.length) {
-            FilterMovieCategoryListChildren[positionFocus].style.border = '';
-            FilterMovieCategoryListChildren[0].style.border = StyleFocusMenuFilter;
+            FilterMovieCategoryListChildren[positionFocus].style.backgroundColor = '';
+            FilterMovieCategoryListChildren[0].style.backgroundColor = StyleFocusMenuFilter;
         }else{
-            FilterMovieCategoryListChildren[positionFocus].style.border = '';
-            FilterMovieCategoryListChildren[positionFocus+1].style.border = StyleFocusMenuFilter;
+            FilterMovieCategoryListChildren[positionFocus].style.backgroundColor = '';
+            FilterMovieCategoryListChildren[positionFocus+1].style.backgroundColor = StyleFocusMenuFilter;
         }
         setFilterMovies(); 
     } else if (Direction == 'up') {
         FilterMovieCategoryList = document.getElementById('filterMovieCategory');
         FilterMovieCategoryListChildren = FilterMovieCategoryList.children;
-        var positionFocus = getPositionFocusInMenu(StyleFocusMenuFilter, FilterMovieCategoryListChildren);
+        var positionFocus = getPositionFocusInMenuFilter(StyleFocusMenuFilter, FilterMovieCategoryListChildren);
         if (positionFocus == 0) {
-            FilterMovieCategoryListChildren[positionFocus].style.border = '';
-            FilterMovieCategoryListChildren[(FilterMovieCategoryListChildren.length)-1].style.border = StyleFocusMenuFilter;
+            FilterMovieCategoryListChildren[positionFocus].style.backgroundColor = '';
+            FilterMovieCategoryListChildren[(FilterMovieCategoryListChildren.length)-1].style.backgroundColor = StyleFocusMenuFilter;
         }else{
-            FilterMovieCategoryListChildren[positionFocus].style.border = '';
-            FilterMovieCategoryListChildren[positionFocus-1].style.border = StyleFocusMenuFilter;
+            FilterMovieCategoryListChildren[positionFocus].style.backgroundColor = '';
+            FilterMovieCategoryListChildren[positionFocus-1].style.backgroundColor = StyleFocusMenuFilter;
         }
         setFilterMovies();  
     } else if (Direction == 'right') {
-        var position = getPositionFocusInMenu(StyleFocusMenuFilter, FilterMovieCategoryListChildren);
+        var position = getPositionFocusInMenuFilter(StyleFocusMenuFilter, FilterMovieCategoryListChildren);
         switch (position) {
             case 0:
                 SetFocusOnMenuByYear('set');
@@ -1634,7 +1646,7 @@ function SelectPlayOption(){
         case 12:
             //Salir
             ExitMoviePanel();
-            MoviePanelChildren[12].style.border = '';
+            MoviePanelChildren[12].style.backgroundColor = '';
             break;
     }
 }
@@ -1712,7 +1724,7 @@ function FiltersList(){
     CurrentFocus = "FilterMovies";
     MenuFilters.style.visibility = "visible";
     //Seleccionando filtro por años por default
-    FilterMovieCategoryListChildren[0].style.border = StyleFocusMenuFilter;
+    FilterMovieCategoryListChildren[0].style.backgroundColor = StyleFocusMenuFilter;
     LoadFilterByYearPanel();
 }
 function LoadFilterByYearPanel (){
@@ -1742,7 +1754,7 @@ function LoadFilterByYearPanel (){
 }
 function setFilterMovies(){
     //Funcion que actualiza los paneles de peliculas segun la opcion de filtro sobre la que este seleccionado el focus
-    var position = getPositionFocusInMenu(StyleFocusMenuFilter, FilterMovieCategoryListChildren);
+    var position = getPositionFocusInMenuFilter(StyleFocusMenuFilter, FilterMovieCategoryListChildren);
     switch (position) {
         case 0:
             clearAllPanel();
