@@ -163,7 +163,7 @@ div#filterMovieCategory{
     padding-top: 28%;
 }
 div.OptionsFilter {
-    height: 35%;
+    height: 50%;
     color: #fff;
     font-family: Century Gothic;
     text-align: left;
@@ -171,6 +171,7 @@ div.OptionsFilter {
     font-weight: bold;
     line-height: normal;
     margin: 5% 0 5% 0;
+    padding: 5%;
 }
 /***************************** [ Opciones en modo no visible ] *****************************/
 div.PlayingOptionsHidden{

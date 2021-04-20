@@ -21,7 +21,7 @@
         StyleFocusPlayingMovie            = '3px solid rgb(255, 255, 255)',
         StyleFocusMenuHeader              = '8px solid rgb(9, 111, 175)',
         StyleFocusMenuFilter              = 'rgb(121, 177, 211)',
-        StyleFocusMenuYearFilter          = '3px solid rgb(255, 255, 255)',
+        StyleFocusMenuYearFilter          = 'rgb(121, 177, 211)',
         StyleFocusMenuLanguage            = '3px solid rgb(255, 255, 255)';
     //Variebles de utilidad
     var y                                 = 0,
@@ -1458,35 +1458,35 @@ function SetFocusOnMenuByYear(Direction){
     YearFilterChildren              = YearFilter.children;
     if (Direction == 'set') {
         CurrentFocus = 'SelectYear';
-        YearFilterChildren[0].style.border = StyleFocusMenuYearFilter;
-        var positionFocus = getPositionFocusInMenu(StyleFocusMenuYearFilter, YearFilterChildren);
+        YearFilterChildren[0].style.backgroundColor = StyleFocusMenuYearFilter;
+        var positionFocus = getPositionFocusInMenuFilter(StyleFocusMenuYearFilter, YearFilterChildren);
         var movies = getMoviesByYear(positionFocus);
         refreshMoviesPrincipalList(movies, 'MoviesByYearList');
     } else if (Direction == 'down') {
         YearFilter = document.getElementById('yearfilter');
         YearFilterChildren = YearFilter.children;
-        var positionFocus = getPositionFocusInMenu(StyleFocusMenuYearFilter, YearFilterChildren);
+        var positionFocus = getPositionFocusInMenuFilter(StyleFocusMenuYearFilter, YearFilterChildren);
         if (positionFocus+1 >= YearFilterChildren.length) {
             // YearFilterChildren[positionFocus].style = '';
             // YearFilterChildren[0].style = StyleFocusMenuYearFilter;
             return;
         }else{
-            YearFilterChildren[positionFocus].style.border = '';
-            YearFilterChildren[positionFocus+1].style.border = StyleFocusMenuYearFilter;
+            YearFilterChildren[positionFocus].style.backgroundColor = '';
+            YearFilterChildren[positionFocus+1].style.backgroundColor = StyleFocusMenuYearFilter;
         }
         var movies = getMoviesByYear(positionFocus+1);
         refreshMoviesPrincipalList(movies, 'MoviesByYearList');
     } else if (Direction == 'up') {
         YearFilter = document.getElementById('yearfilter');
         YearFilterChildren = YearFilter.children;
-        var positionFocus = getPositionFocusInMenu(StyleFocusMenuYearFilter, YearFilterChildren);
+        var positionFocus = getPositionFocusInMenuFilter(StyleFocusMenuYearFilter, YearFilterChildren);
         if (positionFocus == 0) {
             // YearFilterChildren[positionFocus].style = '';
             // YearFilterChildren[(YearFilterChildren.length)-1].style = StyleFocusMenuYearFilter;
             return;
         }else{
-            YearFilterChildren[positionFocus].style.border = '';
-            YearFilterChildren[positionFocus-1].style.border = StyleFocusMenuYearFilter;
+            YearFilterChildren[positionFocus].style.backgroundColor = '';
+            YearFilterChildren[positionFocus-1].style.backgroundColor = StyleFocusMenuYearFilter;
         } 
         var movies = getMoviesByYear(positionFocus-1);
         refreshMoviesPrincipalList(movies, 'MoviesByYearList');
@@ -1495,8 +1495,8 @@ function SetFocusOnMenuByYear(Direction){
     } else if (Direction == 'left'){
         YearFilter = document.getElementById('yearfilter');
         YearFilterChildren = YearFilter.children;
-        var positionFocus = getPositionFocusInMenu(StyleFocusMenuYearFilter, YearFilterChildren);
-        YearFilterChildren[positionFocus].style.border = '';
+        var positionFocus = getPositionFocusInMenuFilter(StyleFocusMenuYearFilter, YearFilterChildren);
+        YearFilterChildren[positionFocus].style.backgroundColor = '';
         CurrentFocus = "FilterMovies";
     }
 }
@@ -1535,7 +1535,7 @@ function SetFocusOnMovieByYear(Direction){
                 YearFilter                      = document.getElementById('yearfilter'),
                 YearFilterNodes                 = YearFilter.childNodes,
                 YearFilterChildren              = YearFilter.children;
-                var positionYear = getPositionFocusInMenu(StyleFocusMenuYearFilter, YearFilterChildren);
+                var positionYear = getPositionFocusInMenuFilter(StyleFocusMenuYearFilter, YearFilterChildren);
                 var movies       = getMoviesByYear(positionYear);
                 var rows = Math.ceil(movies.length/4);
                 var matrix = getMatrix(rows, movies.length, 4);
@@ -1565,7 +1565,7 @@ function SetFocusOnMovieByYear(Direction){
             YearFilter                      = document.getElementById('yearfilter'),
             YearFilterNodes                 = YearFilter.childNodes,
             YearFilterChildren              = YearFilter.children;
-            var positionYear = getPositionFocusInMenu(StyleFocusMenuYearFilter, YearFilterChildren);
+            var positionYear = getPositionFocusInMenuFilter(StyleFocusMenuYearFilter, YearFilterChildren);
             var movies       = getMoviesByYear(positionYear);           
             var rows = Math.ceil(movies.length/4);
             var matrix = getMatrix(rows, movies.length, 4);
