@@ -98,7 +98,6 @@
 <div id='RecordingOptions'>
     <div class='RecordingOptionsButton'>Tune channel</div>
     <div class='RecordingOptionsButton'>Add record</div>
-    <div class='RecordingOptionsButton'>Add manual record</div>
     <div class='RecordingOptionsButton'>Record all shows</div>
     <div class='RecordingOptionsButton'>Close</div>
 </div>
