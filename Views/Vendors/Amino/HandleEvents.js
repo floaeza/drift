@@ -205,11 +205,10 @@ function GetProgramsToSchedule(){
                     //CurrentTime = Date.UTC(moment().format('Y'), moment().format('MM'), moment().format('DD'), moment().format('HH'), moment().format('mm'));
                     Debug('Fail new schedule');
                 } else {
+                    Debug('New schedule added, streamid = '+NewSchedule.streamId);
                     UpdateProgramStreamId(ProgramId, OperationsList.recording, NewSchedule.streamId);
                     Debug('Newschedule: ' + NewSchedule.streamId);
                 }
-                NewSchedule = null;
-                NewSchedule = [];
             }
         }
     });
