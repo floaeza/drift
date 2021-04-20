@@ -1943,7 +1943,7 @@ function CheckRecordings(){
 
             if(parseInt(REC_PROG_POS) === LastProgramsPositions[RowSelected]){
                 Debug('--------------------------------------->>2.1 ');
-                var ProgramSeconds   = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].MNTS * 120;
+                var ProgramSeconds   = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].MNTS * 60;
                 Debug(ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].MNTS);
                 Debug(ProgramSeconds);
                 ProgramUtcEndDate = ProgramUtcStartDate + ProgramSeconds;
