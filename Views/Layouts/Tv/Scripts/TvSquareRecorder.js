@@ -2010,7 +2010,7 @@ function CheckRecordings(){
             var TimeDiff = ProgramUtcStartDate - CurrentUtcDate;
             Debug(TimeDiff);
 
-            var TimeDiffEnd = ProgramUtcStartDate - ProgramUtcEndDate;
+            var TimeDiffEnd = ProgramUtcEndDate - ProgramUtcStartDate;
             Debug(TimeDiffEnd);
 
             if(TimeDiff < 0 || TimeDiffEnd < 0){
