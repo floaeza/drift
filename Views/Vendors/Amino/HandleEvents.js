@@ -200,7 +200,9 @@ function GetProgramsToSchedule(){
 
                 NewSchedule = PVR.AddSchedule(Source, ProgramId, Start, End);
 
-                if (typeof(NewSchedule.streamId) !== 'undefined'){
+                Debug(NewSchedule);
+
+                if (typeof(NewSchedule.streamId) === 'undefined'){
                     //CurrentTime = Date.UTC(moment().format('Y'), moment().format('MM'), moment().format('DD'), moment().format('HH'), moment().format('mm'));
                     Debug('> Fail new schedule');
                 } else {
