@@ -20,8 +20,8 @@
         StyleFocusPanelMovie              = 'rgb(49, 57, 71)',
         StyleFocusPlayingMovie            = '3px solid rgb(255, 255, 255)',
         StyleFocusMenuHeader              = '8px solid rgb(9, 111, 175)',
-        StyleFocusMenuFilter              = 'rgb(121, 177, 211)',
-        StyleFocusMenuYearFilter          = 'rgb(121, 177, 211)',
+        StyleFocusMenuFilter              = 'rgb(0, 43, 70)',
+        StyleFocusMenuYearFilter          = 'rgb(0, 43, 70)',
         StyleFocusMenuLanguage            = '3px solid rgb(255, 255, 255)';
     //Variebles de utilidad
     var y                                 = 0,
