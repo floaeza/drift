@@ -199,12 +199,9 @@ function GetProgramsToSchedule(){
                 Debug('> '+Source +', '+ Title +', '+ Start +', '+ End);
 
                 NewSchedule = PVR.AddSchedule(Source, ProgramId, Start, End);
-
-                Debug(NewSchedule.ScheduleInfo);
-
                 NewSchedule.WriteMeta('This is Metadata for scheduled asset '+ Title);
 
-                if (typeof NewSchedule !== 'object'){
+                if (typeof(NewSchedule) !== 'object'){
                     //CurrentTime = Date.UTC(moment().format('Y'), moment().format('MM'), moment().format('DD'), moment().format('HH'), moment().format('mm'));
                     Debug('Fail new schedule');
                 } else {
