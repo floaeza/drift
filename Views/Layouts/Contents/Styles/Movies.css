@@ -163,16 +163,15 @@ div#filterMovieCategory{
     padding-top: 28%;
 }
 div.OptionsFilter {
-    width: 90%;
-    height: 20%;
-    padding: 4%;
+    height: 50%;
     color: #fff;
     font-family: Century Gothic;
-    text-align: center;
+    text-align: left;
     font-size: 25px;
     font-weight: bold;
     line-height: normal;
-    margin: 5% 5% 5% 0;
+    margin: 5% 0 5% 0;
+    padding: 5%;
 }
 /***************************** [ Opciones en modo no visible ] *****************************/
 div.PlayingOptionsHidden{
@@ -566,15 +565,25 @@ div.MovieDescription {
 }
 
 div#PlayPanel {
+    height: 10%;
     position: fixed;
     bottom: 4%;
     left: 5%;
+    border-radius: 10px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
 
 div#ExitPanel {
+    height: 10%;
     position: fixed;
     bottom: 4%;
     left: 20%;
+    border-radius: 10px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
 
 div.Casting {
