@@ -196,13 +196,11 @@ function GetProgramsToSchedule(){
                 Start = ProgramsToSchedule[Indexps]['utc_inicio'];
                 End = ProgramsToSchedule[Indexps]['utc_final'];
 
-                Debug('> '+Source +', '+ Title +', '+ Start +', '+ End);
+                Debug('>> '+Source +', '+ Title +', '+ Start +', '+ End);
 
                 NewSchedule = PVR.AddSchedule(Source, ProgramId, Start, End);
 
-                Debug(NewSchedule);
-
-                if (typeof(NewSchedule.streamId) === 'undefined'){
+                if (typeof(NewSchedule) === 'undefined'){
                     //CurrentTime = Date.UTC(moment().format('Y'), moment().format('MM'), moment().format('DD'), moment().format('HH'), moment().format('mm'));
                     Debug('> Fail new schedule');
                 } else {
