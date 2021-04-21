@@ -23,6 +23,8 @@
     // Variables kamai
     var Video   = new ENTONE.video(1,0);
 
+        Video.setVideoCallback(HandleVideo);
+
 /* *****************************************************************************
  * Reproductor de canal
  * ****************************************************************************/

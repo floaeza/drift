@@ -47,25 +47,36 @@ ENTONE.stb.setHdmiEvtCallback(function(e){
 }, this);
 
 
-ENTONE.video.setVideoCallback(function(e){
-    EventString = e;
+// Video.setVideoCallback(function(e){
+//     EventString = e;
+//
+//     Debug('EventString: '+EventString);
+//     if(EventString === 'EN_VIDEOEVENT_FIRST_PTS'){
+//         if(Executing === false){
+//             UpdateQuickInfoDevice();
+//         }
+//     } else if(EventString === 'EN_VIDEOEVENT_MPEG_TIMEOUT'){
+//
+//         if(Executing === false){
+//             UpdateQuickInfoDevice();
+//         }
+//     } else if(EventString === 'EN_VIDEOEVENT_EOS'){
+//         if(CurrentModule === 'Tv'){
+//             SetDigitalChannel();
+//         }
+//     }
+// }, this);
 
-    Debug('EventString: '+EventString);
-    if(EventString === 'EN_VIDEOEVENT_FIRST_PTS'){
-        if(Executing === false){
-            UpdateQuickInfoDevice();
-        }
-    } else if(EventString === 'EN_VIDEOEVENT_MPEG_TIMEOUT'){
+    function HandleVideo(event_type){
 
-        if(Executing === false){
-            UpdateQuickInfoDevice();
-        }
-    } else if(EventString === 'EN_VIDEOEVENT_EOS'){
-        if(CurrentModule === 'Tv'){
-            SetDigitalChannel();
+        Debug('---> EventType: '+event_type);
+
+        if(event_type === 'EN_VIDEOEVENT_EOS'){
+            if(CurrentModule === 'Tv'){
+                SetDigitalChannel();
+            }
         }
     }
-}, this);
 
 
 ENTONE.network.setNetworkEvtCallback(function(e){
