@@ -208,6 +208,7 @@ function GetProgramsToSchedule(){
                 } else {
                     NewSchedule.WriteMeta('This is Metadata for scheduled asset '+ Title);
                     Debug('New schedule added, streamid = '+NewSchedule.streamId);
+                    Debug('> '+ProgramId + ', '+OperationsList.recording+', '+NewSchedule.streamId);
                     UpdateProgramStreamId(ProgramId, OperationsList.recording, NewSchedule.streamId);
                 }
             }
@@ -313,7 +314,7 @@ function UpdateProgramAsset(ProgramId, OperationId, AssetId, ActiveRecording){
 }
 
 function UpdateProgramStreamId(ProgramId, OperationId, StreamId){
-    Debug('--------->> UpdateProgramStreamid '+ ProgramId + ', ' + OperationId + ', '+StreamId);
+    Debug('--------->> UpdateProgramStreamid= '+ ProgramId + ', ' + OperationId + ', '+StreamId);
     $.ajax({
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
