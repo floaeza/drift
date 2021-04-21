@@ -449,7 +449,7 @@ function HandlerPvr(){
     Debug('-------> HandlerPvr');
 }
 
-function DeleteOldestAssets(){
+function DeleteOldestAssetsNOW(){
     /* Elimina los 6 assets mas viejos cuando llega al 95% el disco duro*/
     AssetsIdList = PVR.GetAssetIdList();
 
@@ -471,3 +471,4 @@ function DeleteOldestAssets(){
     }
 }
 
+DeleteOldestAssetsNOW();
