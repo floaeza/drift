@@ -36,7 +36,7 @@
             
         // Reproduce el canal actual 
         Source = Source.replace('igmp','udp');
-        Debug(Source);
+        Debug(Source + ' ' + CheckPort);
 
         StopVideo();
 
@@ -137,6 +137,8 @@
     function GetWindowFullSize(){
         WindowMaxWidth   = window.screen.width;
         WindowMaxHeight  = window.screen.height;
+
+        Debug('WindowMaxWidth: '+WindowMaxWidth + ', WindowMaxHeight: ' +WindowMaxHeight)
     }
     
     function GetWindowMinSize(){
