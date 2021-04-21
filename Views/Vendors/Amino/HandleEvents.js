@@ -383,19 +383,15 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
                 if(AssetInfo.startTime < YesterdayUtcDate){
                     Debug('<<<<<<<<<< startTime <<<<'+AssetInfo.startTime);
                 } else {
-                
-                Debug(AssetInfo.title +', '+ OperationsList.recorded +', '+  '0' +', '+ AssetsIdList[Indexal] +', '+  AssetInfo.activeRecording);
-                
-                Debug('>>>>>>>>>>> startTime >>>>'+AssetInfo.startTime);
+                    Debug('>>>>>>>>>>> startTime >>>>'+AssetInfo.startTime);
 
-                ActRec = (AssetInfo.activeRecording === 0) ? false : true;
+                    ActRec = (AssetInfo.activeRecording === 0) ? false : true;
 
-                Option = (AssetInfo.activeRecording === 0) ? OperationsList.recorded : OperationsList.recording;
+                    Option = (AssetInfo.activeRecording === 0) ? OperationsList.recorded : OperationsList.recording;
 
-                Debug(AssetInfo.title +', '+ OperationsList.recorded +', '+  Option +', '+ AssetsIdList[Indexal] +', '+  ActRec);
+                    Debug(AssetInfo.title +', '+ OperationsList.recorded +', '+  Option +', '+ AssetsIdList[Indexal] +', '+  ActRec);
 
-                UpdateProgramAsset(AssetInfo.title, Option, AssetsIdList[Indexal], ActRec);
-
+                    UpdateProgramAsset(AssetInfo.title, Option, AssetsIdList[Indexal], ActRec);
                 }
             }
         }
