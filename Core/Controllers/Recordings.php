@@ -24,5 +24,6 @@ $Response = '';
 $FirstElement = 0;
 
 $Schedules = $ProgramsData->getProgramsToSchedule($MacAddress);
-
+echo time();
+echo'<br>';
 print_r($Schedules);
