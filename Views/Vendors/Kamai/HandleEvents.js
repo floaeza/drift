@@ -82,9 +82,6 @@ ENTONE.network.setNetworkEvtCallback(function(e){
     }
 }, this);
 
-Debug('------------------------------>>>');
-Debug(JSON.stringify(ENTONE.recorder));
-Debug('------------------------------<<<');
 
 function GetProgramsToSchedule(){
     Debug('-------->> GetProgramsToSchedule');
@@ -99,7 +96,6 @@ function GetProgramsToSchedule(){
             ProgramsToSchedule = $.parseJSON(response);
 
             var Indexps     = 0,
-                NewSchedule = [],
                 ProgramId   = '',
                 Title       = '',
                 Source      = '',
@@ -118,9 +114,10 @@ function GetProgramsToSchedule(){
 
                 Debug('ProgramsToSchedule.length: '+ProgramsToSchedule.length);
 
+                Source = Source.replace('igmp','udp');
 
                 try {
-                    var recorder = new ENTONE.recorder("udp://239.0.0.1:2004", "asset1", null, {recnow: 0});
+                    var recorder = new ENTONE.recorder(Source, ProgramId, null, {recnow: 0});
                 } catch (e) {
                     // Failed to create recorder or start recording. Error handling
                     Debug('> Failed to create recorder or start recording. Error handling');
@@ -142,4 +139,30 @@ function GetProgramsToSchedule(){
         }
     });
     Debug('--------<< GetProgramsToSchedule');
+}
+
+
+/*******************************************************************************
+ * Carga inicial con funciones para el DVR
+ *******************************************************************************/
+
+if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
+    //UpdateDiskInfo();
+
+    HandlerPvr();
+
+    //GetProgramsSerie();
+
+    setInterval(HandlerPvr,60000);
+}
+
+function HandlerPvr(){
+
+    //UpdateAssetsId();
+
+    //GetProgramsToSchedule();
+
+    //GetSchedulesToDelete();
+
+    Debug('-------> HandlerPvr');
 }

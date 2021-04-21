@@ -20,8 +20,8 @@ $LocationId     = !empty($_POST['LocationId']) ? $_POST['LocationId'] : '190';
 $MacAddressPvr  = !empty($_POST['MacAddressPvr']) ? $_POST['MacAddressPvr'] : '';
 
 $SeriesData = new Series($MacAddress, $CurrentController);
-$ProgramsData = new Programs($MacAddress, $CurrentModule);
-$DiskData = new DiskInfo($MacAddress, $CurrentModule);
+$ProgramsData = new Programs($MacAddress, $CurrentController);
+$DiskData = new DiskInfo($MacAddress, $CurrentController);
 $Utilities = new Utilities();
 
 $Response = '';
@@ -410,7 +410,7 @@ switch ($Option){
         $ProgramId = !empty($_POST['ProgramId']) ? $_POST['ProgramId'] : '';
 
         $Response = $ProgramsData->DeleteProgram($ProgramId);
-        break;
+    break;
 }
 
 
