@@ -69,30 +69,6 @@ ENTONE.stb.setHdmiEvtCallback(function(e){
     }
 }, this);
 
-
-// Video.setVideoCallback(function(e){
-//     EventString = e;
-//
-//     Debug('EventString: '+EventString);
-//     if(EventString === 'EN_VIDEOEVENT_FIRST_PTS'){
-//         if(Executing === false){
-//             UpdateQuickInfoDevice();
-//         }
-//     } else if(EventString === 'EN_VIDEOEVENT_MPEG_TIMEOUT'){
-//
-//         if(Executing === false){
-//             UpdateQuickInfoDevice();
-//         }
-//     } else if(EventString === 'EN_VIDEOEVENT_EOS'){
-//         if(CurrentModule === 'Tv'){
-//             SetDigitalChannel();
-//         }
-//     }
-// }, this);
-
-
-
-
 ENTONE.network.setNetworkEvtCallback(function(e){
 
     EventValue = e.status;
@@ -105,3 +81,65 @@ ENTONE.network.setNetworkEvtCallback(function(e){
         }
     }
 }, this);
+
+Debug('------------------------------>>>');
+Debug(JSON.stringify(ENTONE.recorder));
+Debug('------------------------------<<<');
+
+function GetProgramsToSchedule(){
+    Debug('-------->> GetProgramsToSchedule');
+    $.ajax({
+        type: 'POST',
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option     : 'CheckProgramsToSchedule',
+            MacAddress : MacAddress
+        },
+        success: function (response){
+            ProgramsToSchedule = $.parseJSON(response);
+
+            var Indexps     = 0,
+                NewSchedule = [],
+                ProgramId   = '',
+                Title       = '',
+                Source      = '',
+                Start       = '',
+                End         = '';
+
+            for(Indexps = 0;  Indexps < ProgramsToSchedule.length; Indexps++){
+
+                ProgramId = ProgramsToSchedule[Indexps]['id_programa'];
+                Title = ProgramsToSchedule[Indexps]['titulo_programa'];
+                Source = ProgramsToSchedule[Indexps]['url_canal'];
+                Start = ProgramsToSchedule[Indexps]['utc_inicio'];
+                End = ProgramsToSchedule[Indexps]['utc_final'];
+
+                Debug('>> '+Source +', '+ Title +', '+ Start +', '+ End);
+
+                Debug('ProgramsToSchedule.length: '+ProgramsToSchedule.length);
+
+
+                try {
+                    var recorder = new ENTONE.recorder("udp://239.0.0.1:2004", "asset1", null, {recnow: 0});
+                } catch (e) {
+                    // Failed to create recorder or start recording. Error handling
+                    Debug('> Failed to create recorder or start recording. Error handling');
+                }
+
+               // NewSchedule = PVR.AddSchedule(Source, ProgramId, Start, End);
+               //
+               //  if (typeof(NewSchedule) === 'undefined'){
+               //      //CurrentTime = Date.UTC(moment().format('Y'), moment().format('MM'), moment().format('DD'), moment().format('HH'), moment().format('mm'));
+               //      Debug('> Fail new schedule');
+               //      DeleteProgram(ProgramId);
+               //  } else {
+               //      NewSchedule.WriteMeta('This is Metadata for scheduled asset '+ Title);
+               //      Debug('New schedule added, streamid = '+NewSchedule.streamId);
+               //      Debug('> '+ProgramId + ', '+OperationsList.recording+', '+NewSchedule.streamId);
+               //      UpdateProgramStreamId(ProgramId, OperationsList.recording, NewSchedule.streamId);
+               //  }
+            }
+        }
+    });
+    Debug('--------<< GetProgramsToSchedule');
+}
