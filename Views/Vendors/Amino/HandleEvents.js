@@ -423,31 +423,6 @@ function DeleteOldestAssets(){
     }
 }
 
-
-function DeleteOldestAssetsNOW(){
-    /* Elimina los 6 assets mas viejos cuando llega al 95% el disco duro*/
-    AssetsIdList = PVR.GetAssetIdList();
-
-    if (typeof AssetsIdList !== 'object'){ AssetsCount = 0; } else { AssetsCount = AssetsIdList.count; }
-
-    if (AssetsCount > 0){
-        var Indexal = 1,
-            Res = 0,
-            AssetInfo = [],
-            ActRec    = false;
-
-        for(Indexal = 1;  Indexal <= 500; Indexal++){
-
-            //AssetInfo = PVR.GetAssetById(AssetsIdList[Indexal]);
-            Debug('AssetId= '+AssetsIdList[Indexal]);
-            Res = PVR.DeleteAsset(AssetsIdList[Indexal]);
-            Debug('Return: '+Res);
-        }
-    }
-}
-
-DeleteOldestAssetsNOW();
-    
 /*******************************************************************************
  * Carga inicial con funciones para el DVR
  *******************************************************************************/
