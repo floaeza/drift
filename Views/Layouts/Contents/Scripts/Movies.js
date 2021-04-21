@@ -16,12 +16,12 @@
         MoviePanelNodes                   = MoviePanel.childNodes,
         MoviePanelChildren                = MoviePanel.children;
     //Variables estilos
-    var StyleFocusMovies                  = '3px solid rgb(0, 128, 255)',
+    var StyleFocusMovies                  = '3px solid rgb(233, 187, 38)',
         StyleFocusPanelMovie              = 'rgb(233, 187, 38)',
         StyleFocusPlayingMovie            = '3px solid rgb(255, 255, 255)',
-        StyleFocusMenuHeader              = '8px solid rgb(9, 111, 175)',
-        StyleFocusMenuFilter              = 'rgb(0, 43, 70)',
-        StyleFocusMenuYearFilter          = 'rgb(0, 43, 70)',
+        StyleFocusMenuHeader              = 'rgb(233, 187, 38)',
+        StyleFocusMenuFilter              = 'rgb(233, 187, 38)',
+        StyleFocusMenuYearFilter          = 'rgb(233, 187, 38)',
         StyleFocusMenuLanguage            = '3px solid rgb(255, 255, 255)';
     //Variebles de utilidad
     var y                                 = 0,
@@ -183,28 +183,28 @@ $.ajax({
 *******************************************************************************/
 function SetFocusHeader(Direction){
     if (Direction == 'set') {
-        MenuHeaderChildren[0].style.borderBottom = StyleFocusMenuHeader;
+        MenuHeaderChildren[0].style.backgroundColor = StyleFocusMenuHeader;
     } else if (Direction == 'down') {
         MenuHeader = document.getElementById('MenuOptions');
         MenuHeaderChildren = MenuHeader.children;
         var positionFocus = getPositionFocusInMenu(StyleFocusMenuHeader, MenuHeaderChildren);
         if (positionFocus+1 >= MenuHeaderChildren.length) {
-            MenuHeaderChildren[positionFocus].style.borderBottom = '';
-            MenuHeaderChildren[0].style.borderBottom = StyleFocusMenuHeader;
+            MenuHeaderChildren[positionFocus].style.backgroundColor = '';
+            MenuHeaderChildren[0].style.backgroundColor = StyleFocusMenuHeader;
         }else{
-            MenuHeaderChildren[positionFocus].style.borderBottom = '';
-            MenuHeaderChildren[positionFocus+1].style.borderBottom = StyleFocusMenuHeader;
+            MenuHeaderChildren[positionFocus].style.backgroundColor = '';
+            MenuHeaderChildren[positionFocus+1].style.backgroundColor = StyleFocusMenuHeader;
         }
     } else if (Direction == 'up') {
         MenuHeader = document.getElementById('MenuOptions');
         MenuHeaderChildren = MenuHeader.children;
         var positionFocus = getPositionFocusInMenu(StyleFocusMenuHeader, MenuHeaderChildren);
         if (positionFocus == 0) {
-            MenuHeaderChildren[positionFocus].style.borderBottom = '';
-            MenuHeaderChildren[(MenuHeaderChildren.length)-1].style.borderBottom = StyleFocusMenuHeader;
+            MenuHeaderChildren[positionFocus].style.backgroundColor = '';
+            MenuHeaderChildren[(MenuHeaderChildren.length)-1].style.backgroundColor = StyleFocusMenuHeader;
         }else{
-            MenuHeaderChildren[positionFocus].style.borderBottom = '';
-            MenuHeaderChildren[positionFocus-1].style.borderBottom = StyleFocusMenuHeader;
+            MenuHeaderChildren[positionFocus].style.backgroundColor = '';
+            MenuHeaderChildren[positionFocus-1].style.backgroundColor = StyleFocusMenuHeader;
         }  
     }
 // if(MenuFocus >= 0){
@@ -1174,7 +1174,7 @@ function getPositionFocusInMenu(style, panelNodes){
     //Esta funcion recupera la posicion de un menu que tiene el focus dentro de su padre
    var position = -1;
    for (var x = 0; x < panelNodes.length; x++) {
-       if (panelNodes[x].style.borderBottom == style) {
+       if (panelNodes[x].style.backgroundColor == style) {
        position=x;
    } 
    }

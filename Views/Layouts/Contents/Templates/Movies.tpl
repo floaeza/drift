@@ -42,7 +42,7 @@
 </div>
 <div id='ListPanel'>
     <div id='PanelHeader'>
-        <div id='Title'>Movies</div>
+        <div id='Title'><img src="Media/Logos/TituloMovies.png"></div>
 
         <div id='MenuHour'></div>
 
