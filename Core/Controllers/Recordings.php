@@ -13,7 +13,7 @@ require_once './../DataAccess/DiskInfo.php';
 
 $CurrentController = 'RecordingsController';
 
-$MacAddress     = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '';
+$MacAddress     = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '00:03:e6:eb:a1:9c';
 $OperationId     = !empty($_POST['OperationId']) ? $_POST['OperationId'] : '';
 $LocationId     = !empty($_POST['LocationId']) ? $_POST['LocationId'] : '';
 $MacAddressPvr  = !empty($_POST['MacAddressPvr']) ? $_POST['MacAddressPvr'] : '';
