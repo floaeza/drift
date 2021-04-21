@@ -406,7 +406,8 @@ function SetRecordings(Direction){
             }
         }
 
-        var ActiveRec = '';
+        var ActiveRec = '',
+            LastChr = '';
         for (Row = 1; Row <= 19; Row++) {
 
             IndexRecorded++;
@@ -422,17 +423,19 @@ function SetRecordings(Direction){
                 } else {
                     Icon = '<i class="fa fa-file"></i>';
                     Title = 'rec';
-                }
 
-                if(RecordingsList[IndexRecorded][1].active === '1'){
-                    ActiveRec = ' (recording)';
-                    Icon = '<i class="fa fa-circle" id="IconRecording"></i>';
-                } else {
-                    if(RecordingsList[IndexRecorded][1].substr(RecordingsList[IndexRecorded][1].length - 1) === '0'){
-                        ActiveRec = ' (scheduled)';
-                        Icon = '<i class="fa fa-chevron-right" id="IconRecording"></i>';
+                    if(RecordingsList[IndexRecorded][1].active === '1'){
+                        ActiveRec = ' (recording)';
+                        Icon = '<i class="fa fa-circle" id="IconRecording"></i>';
                     } else {
-                        ActiveRec = '';
+                        LastChr = RecordingsList[IndexRecorded][1].url;
+
+                        if(LastChr.substr(LastChr.length - 1) === '0'){
+                            ActiveRec = ' (scheduled)';
+                            Icon = '<i class="fa fa-chevron-right" id="IconRecording"></i>';
+                        } else {
+                            ActiveRec = '';
+                        }
                     }
                 }
 
