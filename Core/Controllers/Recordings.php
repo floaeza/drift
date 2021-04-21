@@ -24,6 +24,10 @@ $Response = '';
 $FirstElement = 0;
 
 $Schedules = $ProgramsData->getProgramsToSchedule($MacAddress);
-echo time();
-echo'<br>';
-print_r($Schedules);
+
+$CurrentTime = time();
+
+    foreach ($Schedules as $schedule):
+        var_dump($schedule['utc_inicio']); echo '<br>';
+        var_dump($CurrentTime); echo '<br>';
+    endforeach;
