@@ -161,7 +161,6 @@ div#MenuFilters {
 
 div#filterMovieCategory{
     margin-top: 28%;
-    margin-left: 15%;
 }
 div.OptionsFilter {
     height: 50%;
@@ -171,7 +170,6 @@ div.OptionsFilter {
     font-size: 25px;
     font-weight: bold;
     line-height: normal;
-    margin: 5% 0 5% 0;
     padding: 5%;
 }
 /***************************** [ Opciones en modo no visible ] *****************************/
