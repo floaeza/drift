@@ -371,7 +371,8 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
             
             var Indexal = 1,
                 AssetInfo = [],
-                ActRec    = false;
+                ActRec    = false,
+                Option = '';
         
             for(Indexal = 1;  Indexal <= AssetsIdList.count; Indexal++){
                 
@@ -390,6 +391,8 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
                 ActRec = (AssetInfo.activeRecording === 0) ? false : true;
 
                 Option = (AssetInfo.activeRecording === 0) ? OperationsList.recorded : OperationsList.recording;
+
+                Debug(AssetInfo.title +', '+ OperationsList.recorded +', '+  Option +', '+ AssetsIdList[Indexal] +', '+  ActRec);
 
                 UpdateProgramAsset(AssetInfo.title, Option, AssetsIdList[Indexal], ActRec);
 
