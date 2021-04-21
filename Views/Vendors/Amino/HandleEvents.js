@@ -35,7 +35,7 @@ Debug('########################### HandleEvent() ');
 
         AVMedia.onEvent='HandleEvent()';
 
-        NetMan.onEvent = 'processNetManEvent()';
+        //NetMan.onEvent = 'processNetManEvent()';
 
         function processNetManEvent() {
             EventNetman = NetMan.Event;
@@ -198,6 +198,8 @@ function GetProgramsToSchedule(){
                 End = ProgramsToSchedule[Indexps]['utc_final'];
 
                 Debug('>> '+Source +', '+ Title +', '+ Start +', '+ End);
+
+                Debug('ProgramsToSchedule.length: '+ProgramsToSchedule.length);
 
                 NewSchedule = PVR.AddSchedule(Source, ProgramId, Start, End);
 

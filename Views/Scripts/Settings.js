@@ -185,7 +185,8 @@ function UpdateQuickInfoDevice(){
             DeviceId: Device.DeviceId,
             EventString: EventString,
             EventHdmi: EventHdmi,
-            EventNetman: EventNetman,
+            //EventNetman: EventNetman,
+            LastChannel: ChannelsJson[ChannelPosition].CHNL + ' - ' +ChannelsJson[ChannelPosition].NAME,
             CurrentDate: moment().format('Y-MM-DD h:mm:ss')
         },
         beforeSend: function (){

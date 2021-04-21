@@ -15,7 +15,8 @@ $DevicesData  = new Devices($MacAddress, $CurrentController);
 
 $EventString = !empty($_POST['EventString']) ? $_POST['EventString'] : '';
 $EventHdmi   = !empty($_POST['EventHdmi']) ? $_POST['EventHdmi'] : '';
-$EventNetman = !empty($_POST['EventNetman']) ? $_POST['EventNetman'] : '';
+//$EventNetman = !empty($_POST['EventNetman']) ? $_POST['EventNetman'] : '';
+$LastChannel = !empty($_POST['LastChannel']) ? $_POST['LastChannel'] : '';
 $CurrentDate = !empty($_POST['CurrentDate']) ? $_POST['CurrentDate'] : '';
 $DeviceId    = !empty($_POST['DeviceId']) ? $_POST['DeviceId'] : '';
 
@@ -24,7 +25,7 @@ $DeviceUpdate =  array (
     'ultima_ejecucion' => $CurrentDate,
     'mensaje_evento'   => $EventString,
     'hdmi'             => $EventHdmi,
-    'netman'           => $EventNetman);
+    'ultimo_canal'           => $LastChannel);
 
 $UpdateDevice = $DevicesData->updateGetDevice($DeviceId, $DeviceUpdate,$MacAddress);
 
