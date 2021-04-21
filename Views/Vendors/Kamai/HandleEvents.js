@@ -67,16 +67,7 @@ ENTONE.stb.setHdmiEvtCallback(function(e){
 //     }
 // }, this);
 
-    function HandleVideo(event_type){
 
-        Debug('---> EventType: '+event_type);
-
-        // if(event_type === 'EN_VIDEOEVENT_EOS'){
-        //     if(CurrentModule === 'Tv'){
-        //         SetDigitalChannel();
-        //     }
-        // }
-    }
 
 
 ENTONE.network.setNetworkEvtCallback(function(e){

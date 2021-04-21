@@ -24,8 +24,19 @@ Debug('ENTONE.video.cleanupAll()');
 
     // Variables kamai
     var Video   = new ENTONE.video(1,0);
-
+Debug('new ENTONE.video(1,0)');
         Video.setVideoCallback(HandleVideo);
+
+function HandleVideo(event_type){
+
+    Debug('---> EventType: '+event_type);
+
+    // if(event_type === 'EN_VIDEOEVENT_EOS'){
+    //     if(CurrentModule === 'Tv'){
+    //         SetDigitalChannel();
+    //     }
+    // }
+}
 
         Debug('Video.setVideoCallback(HandleVideo)');
 
