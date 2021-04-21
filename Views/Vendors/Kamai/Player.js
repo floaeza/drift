@@ -20,25 +20,8 @@
     // Limpiar todo antes de comenzar con la reproducción de TV
         ENTONE.video.cleanupAll();
 
-Debug('ENTONE.video.cleanupAll()');
-
     // Variables kamai
     var Video   = new ENTONE.video(1,0);
-Debug('new ENTONE.video(1,0)');
-        Video.setVideoCallback(HandleVideo);
-
-function HandleVideo(event_type){
-
-    Debug('---> EventType: '+event_type);
-
-    // if(event_type === 'EN_VIDEOEVENT_EOS'){
-    //     if(CurrentModule === 'Tv'){
-    //         SetDigitalChannel();
-    //     }
-    // }
-}
-
-        Debug('Video.setVideoCallback(HandleVideo)');
 
 /* *****************************************************************************
  * Reproductor de canal
@@ -61,7 +44,9 @@ function HandleVideo(event_type){
 
         //ret = video.open(url, null, {pltbuf: 3600});
         
-        Video.play(1);   
+        Video.play(1);
+
+        Video.setVideoCallback(HandleVideo);
 
         // Maximiza el video en caso de que no este en pantalla completa
         MaximizeTV();

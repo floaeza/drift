@@ -29,6 +29,18 @@
 
 EventHdmi = 1;
 
+function HandleVideo(event_type){
+
+    Debug('---> EventType: '+event_type);
+
+    // if(event_type === 'EN_VIDEOEVENT_EOS'){
+    //     if(CurrentModule === 'Tv'){
+    //         SetDigitalChannel();
+    //     }
+    // }
+}
+
+
 ENTONE.stb.setHdmiEvtCallback(function(e){
     EventHdmiObj = e;
 
