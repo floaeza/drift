@@ -25,6 +25,8 @@
 
         Video.setVideoCallback(HandleVideo);
 
+        Debug('Video.setVideoCallback(HandleVideo)');
+
 /* *****************************************************************************
  * Reproductor de canal
  * ****************************************************************************/

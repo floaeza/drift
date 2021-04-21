@@ -71,11 +71,11 @@ ENTONE.stb.setHdmiEvtCallback(function(e){
 
         Debug('---> EventType: '+event_type);
 
-        if(event_type === 'EN_VIDEOEVENT_EOS'){
-            if(CurrentModule === 'Tv'){
-                SetDigitalChannel();
-            }
-        }
+        // if(event_type === 'EN_VIDEOEVENT_EOS'){
+        //     if(CurrentModule === 'Tv'){
+        //         SetDigitalChannel();
+        //     }
+        // }
     }
 
 
