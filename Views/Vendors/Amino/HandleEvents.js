@@ -348,8 +348,6 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
     });
 }
 
-
-
 /*******************************************************************************
  * Actualiza el asset id
  *******************************************************************************/
@@ -384,6 +382,8 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
                     Debug('<<<<<<<<<< startTime <<<<'+AssetInfo.startTime);
                 } else {
                     Debug('>>>>>>>>>>> startTime >>>>'+AssetInfo.startTime);
+
+                    Debug(JSON.stringify(AssetInfo));
 
                     ActRec = (AssetInfo.activeRecording === 0) ? false : true;
 
