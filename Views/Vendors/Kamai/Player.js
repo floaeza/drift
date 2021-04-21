@@ -20,6 +20,8 @@
     // Limpiar todo antes de comenzar con la reproducción de TV
         ENTONE.video.cleanupAll();
 
+Debug('ENTONE.video.cleanupAll()');
+
     // Variables kamai
     var Video   = new ENTONE.video(1,0);
 
