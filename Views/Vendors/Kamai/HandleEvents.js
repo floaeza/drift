@@ -47,7 +47,7 @@ ENTONE.stb.setHdmiEvtCallback(function(e){
 }, this);
 
 
-Video.setVideoCallback(function(e){
+ENTONE.video.setVideoCallback(function(e){
     EventString = e;
 
     Debug('EventString: '+EventString);
