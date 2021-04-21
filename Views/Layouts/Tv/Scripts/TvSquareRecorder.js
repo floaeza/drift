@@ -428,7 +428,12 @@ function SetRecordings(Direction){
                     ActiveRec = ' (recording)';
                     Icon = '<i class="fa fa-circle" id="IconRecording"></i>';
                 } else {
-                    ActiveRec = '';
+                    if(RecordingsList[IndexRecorded][1].substr(RecordingsList[IndexRecorded][1].length - 1) === '0'){
+                        ActiveRec = ' (scheduled)';
+                        Icon = '<i class="fa fa-chevron-right" id="IconRecording"></i>';
+                    } else {
+                        ActiveRec = '';
+                    }
                 }
 
                 PvrListNodes[Row].innerHTML = Icon + ' '+ RecordingsList[IndexRecorded][IndexProgram] + ActiveRec;
