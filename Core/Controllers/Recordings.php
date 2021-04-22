@@ -45,7 +45,7 @@ $SchedulesResponse = array();
             $SchedulesResponse = array_push($schedule);
         } else {
             // do nothing
-            echo 'do nothing';
+            echo 'do nothing';echo '<br>';
         }
 
     endforeach;
