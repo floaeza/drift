@@ -451,7 +451,8 @@ switch ($Option){
         $Result = $ProgramsData->updateProgram($ProgramId, $InfoUpdate);
 
         $Response = array($Result, $TypeResult);
-        break;
+    break;
+
 }
 
 

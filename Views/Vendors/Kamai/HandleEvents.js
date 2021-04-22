@@ -126,9 +126,10 @@ function GetProgramsToSchedule(){
                         setTimeout(function(){
                             recorder.stop();
                             recorder.cleanup();
+                            UpdateProgramActive(ProgramId, OperationsList.recorded, '0');
                         }, TimeOut);
 
-                    UpdateProgramActive(ProgramId, OperationsList.recording, '0','1')
+                    UpdateProgramActive(ProgramId, OperationsList.recording, '1');
                 // } catch (e) {
                 //     Debug('> Failed to create recorder or start recording. Error handling');
                 // }
