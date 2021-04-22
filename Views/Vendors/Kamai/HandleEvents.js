@@ -119,7 +119,7 @@ function GetProgramsToSchedule(){
 
                 // try {
 
-                Debug('Recordings >> '+ProgramId);
+                Debug('Recordings >> Start= '+ProgramId);
                 Recordings[ProgramId] = new ENTONE.recorder(Source, pad(parseInt(ProgramId), 10), null, {recnow:1});
                 Recordings[ProgramId].start();
                     //var recorder = new ENTONE.recorder(Source, pad(parseInt(ProgramId), 10), null, {recnow:1});
@@ -128,16 +128,16 @@ function GetProgramsToSchedule(){
                         Recordings[ProgramId].setRecorderCallback(function(e, h){
                         //recorder.setRecorderCallback(function(e, h){
                             Debug('-------------------------> setRecorderCallback: '+e);
-                            // if(e === ''){
+                            // if (e === ENTONE.recorder.PVR_RECORD_FINISHED){
                             //     UpdateDiskInfo();
                             // }
                         }, this);
 
                         setTimeout(function(){
                             //recorder.stop();
+                            Debug('Recordings >> Stop= '+ProgramId);
                             Recordings[ProgramId].stop();
                             //recorder.cleanup();
-                            Recordings[ProgramId].cleanup();
                             UpdateProgramActive(ProgramId, OperationsList.recorded, false);
                         }, TimeOut);
 
@@ -265,6 +265,7 @@ function HandlerPvr(){
 
     // var AL = ENTONE.recorder.getAssetList();
     // Debug(JSON.stringify(AL));
+    // ENTONE.recorder.getAssetInfo(assetname)
 
     Debug('-------> HandlerPvr');
 }
