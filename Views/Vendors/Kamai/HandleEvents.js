@@ -84,12 +84,12 @@ ENTONE.network.setNetworkEvtCallback(function(e){
 
 
 function GetProgramsToSchedule(){
-    Debug('-------->> GetProgramsToSchedule');
+    Debug('-------->> GetProgramsToScheduleNow');
     $.ajax({
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
         data: {
-            Option     : 'CheckProgramsToSchedule',
+            Option     : 'CheckProgramsToScheduleNow',
             MacAddress : MacAddress
         },
         success: function (response){
@@ -114,14 +114,14 @@ function GetProgramsToSchedule(){
 
                 Debug('ProgramsToSchedule.length: '+ProgramsToSchedule.length);
 
-                Source = Source.replace('igmp','udp');
+                //Source = Source.replace('igmp','udp');
 
-                try {
-                    var recorder = new ENTONE.recorder(Source, ProgramId, null, {recnow: 0});
-                } catch (e) {
-                    // Failed to create recorder or start recording. Error handling
-                    Debug('> Failed to create recorder or start recording. Error handling');
-                }
+                // try {
+                //     var recorder = new ENTONE.recorder(Source, ProgramId, null, {recnow: 0});
+                // } catch (e) {
+                //     // Failed to create recorder or start recording. Error handling
+                //     Debug('> Failed to create recorder or start recording. Error handling');
+                // }
 
                // NewSchedule = PVR.AddSchedule(Source, ProgramId, Start, End);
                //
@@ -138,7 +138,7 @@ function GetProgramsToSchedule(){
             }
         }
     });
-    Debug('--------<< GetProgramsToSchedule');
+    Debug('--------<< GetProgramsToScheduleNow');
 }
 
 

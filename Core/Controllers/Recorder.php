@@ -417,25 +417,20 @@ switch ($Option){
 
         $CurrentTime = time();
 
-        $SchedulesResponse = array();
+        $Response = array();
 
         foreach ($Schedules as $schedule):
-
             $ScheduleTime = intval($schedule['utc_inicio']);
 
             if($ScheduleTime < $CurrentTime){
                 // ya paso el tiempo de inicio, borrar la grabacion
                 $ProgramsData->DeleteProgram($schedule['id_programa']);
-
             } else if(($CurrentTime > ($ScheduleTime - 90)) && ($CurrentTime  < $ScheduleTime)){
                 // graba
-
-                $SchedulesResponse = array_push($schedule);
+                array_push($Response, $schedule);
             } else {
                 // do nothing
-                echo 'do nothing';
             }
-
         endforeach;
 
     break;

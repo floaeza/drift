@@ -35,24 +35,12 @@ $SchedulesResponse = array();
 
         if($ScheduleTime < $CurrentTime){
             // ya paso el tiempo de inicio, borrar la grabacion
-            echo 'ya paso el tiempo de inicio, borrar la grabacion';echo '<br>';
-            $Response = $ProgramsData->DeleteProgram($schedule['id_programa']);
-            print_r($Response); echo '<br>';
+            $ProgramsData->DeleteProgram($schedule['id_programa']);
         } else if(($CurrentTime > ($ScheduleTime - 90)) && ($CurrentTime  < $ScheduleTime)){
             // graba
-            echo 'graba y actualiza el estatus de la grabación';echo '<br>';
-
-//            $SchRow = array('id_programa' => $schedule['id_programa'],
-//                            'titulo_programa' => $schedule['titulo_programa'],
-//                            'url_canal' => $schedule['url_canal'],
-//                            'utc_inicio' => $schedule['utc_inicio'],
-//                            'utc_final' => $schedule['utc_final']);
-//
-//            print_r($SchRow); echo "<br>";
             array_push($SchedulesResponse, $schedule);
         } else {
             // do nothing
-            echo 'do nothing';echo '<br>';
         }
 
     endforeach;
