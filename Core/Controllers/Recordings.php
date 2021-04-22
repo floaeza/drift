@@ -40,9 +40,14 @@ $SchedulesResponse = array();
             print_r($Response); echo '<br>';
         } else if(($CurrentTime > ($ScheduleTime - 90)) && ($CurrentTime  < $ScheduleTime)){
             // graba
-            echo 'graba y actualiza el estatus de la grabación';
-            print_r($schedule); echo '<br>';
-            $SchedulesResponse = array_push($schedule);
+            echo 'graba y actualiza el estatus de la grabación';echo '<br>';
+
+            $SchRow = array('id_programa' => $schedule['id_programa'],
+                            'titulo_programa' => $schedule['titulo_programa'],
+                            'url_canal' => $schedule['url_canal'],
+                            'utc_inicio' => $schedule['utc_inicio'],
+                            'utc_final' => $schedule['utc_final']);
+            $SchedulesResponse = array_push($SchRow);
         } else {
             // do nothing
             echo 'do nothing';echo '<br>';
