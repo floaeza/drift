@@ -152,7 +152,7 @@ function UpdateProgramActive(ProgramId, OperationId, ActiveRecording){
             Option     : 'UpdateProgramActive',
             ProgramId : ProgramId,
             OperationId : OperationId,
-            ActiveRecording : ActiveRecording
+            ActiveRecording : ActiveRecording,
         },
         success: function (response){
             Debug('----------UpdateProgramActive----------');

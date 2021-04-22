@@ -444,7 +444,7 @@ switch ($Option){
 
         $ActiveRecording = ($ActiveRec === 'true') ? '1' : '0';
 
-        $InfoUpdate =  array ('id_operacion' => $OperationId, 'grabacion_activa' =>$ActiveRecording);
+        $InfoUpdate =  array ('id_operacion' => $OperationId, 'id_asset' => $ProgramId, 'grabacion_activa' =>$ActiveRecording);
 
         $TypeResult = 'UpdateProgramActive: update grabacion activa '.$ActiveRecording. ' -$OperationId '.$OperationId;
 
