@@ -115,7 +115,7 @@ function GetProgramsToSchedule(){
 
                 Debug('>> '+Source +', '+ Title +', '+ Start +', '+ End + ', '+TimeOut);
 
-                try {
+                // try {
                     var recorder = new ENTONE.recorder(Source, 'asset_'+ProgramId, null, {recnow:1});
                         recorder.start();
 
@@ -128,15 +128,37 @@ function GetProgramsToSchedule(){
                         }, TimeOut);
 
                     UpdateProgramAsset(ProgramId, OperationsList.recording, '0','1')
-                } catch (e) {
-                    Debug('> Failed to create recorder or start recording. Error handling');
-                }
+                // } catch (e) {
+                //     Debug('> Failed to create recorder or start recording. Error handling');
+                // }
             }
         }
     });
     Debug('--------<< GetProgramsToScheduleNow');
 }
 
+/*******************************************************************************
+ * Actualiza el estatus de la grabacion y su stream id
+ *******************************************************************************/
+
+function UpdateProgramAsset(ProgramId, OperationId, AssetId, ActiveRecording){
+
+    $.ajax({
+        type: 'POST',
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option     : 'UpdateProgramAsset',
+            ProgramId : ProgramId,
+            OperationId : OperationId,
+            AssetId : AssetId,
+            ActiveRecording : ActiveRecording
+        },
+        success: function (response){
+            Debug('----------UpdateProgramAsset----------');
+            Debug(response);
+        }
+    });
+}
 
 /*******************************************************************************
  * Carga inicial con funciones para el DVR

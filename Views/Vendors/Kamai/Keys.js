@@ -36,7 +36,9 @@
         REMOTE_PAUSE                 = ENTONE.input.KEY_PAUSE, // PAUSE
         REMOTE_BACKWARD              = ENTONE.input.KEY_REWIND, // BACKWARD [57528]
         REMOTE_FORWARD               = ENTONE.input.KEY_FASTFORWARD, // FORWARD
-        REMOTE_TELETEXT              = ENTONE.input.KEY_TELETEXT;
+        REMOTE_TELETEXT              = ENTONE.input.KEY_TELETEXT,
+        REMOTE_FAST_BACKWARD         = '',
+        REMOTE_FAST_FORWARD          = '';
 
     var REMOTE_0 = ENTONE.input.KEY_0,
         REMOTE_1 = ENTONE.input.KEY_1,

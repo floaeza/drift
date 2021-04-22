@@ -33,5 +33,18 @@
         REMOTE_PLAY                  = hcap.key.Code.PLAY, // PLAY
         REMOTE_PAUSE                 = hcap.key.Code.PAUSE,  // PAUSE
         REMOTE_BACKWARD              = hcap.key.Code.REWIND, // BACKWARD
-        REMOTE_FORWARD               = hcap.key.Code.FAST_FORWARD; // FORWARD
+        REMOTE_FORWARD               = hcap.key.Code.FAST_FORWARD, // FORWARD
+        REMOTE_FAST_BACKWARD         = '',
+        REMOTE_FAST_FORWARD          = '';
 
+
+var REMOTE_0 = '',
+    REMOTE_1 = '',
+    REMOTE_2 = '',
+    REMOTE_3 = '',
+    REMOTE_4 = '',
+    REMOTE_5 = '',
+    REMOTE_6 = '',
+    REMOTE_7 = '',
+    REMOTE_8 = '',
+    REMOTE_9 = '';
