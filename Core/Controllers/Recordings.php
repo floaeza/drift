@@ -28,8 +28,9 @@ print_r($Schedules); ECHO "<BR>";
 $CurrentTime = time();
 
     foreach ($Schedules as $schedule):
-        echo $ScheduleTime = intval(schedule['utc_inicio']);
-    echo '<br>';
+        $ScheduleTime = intval(schedule['utc_inicio']);
+
+        print_r($ScheduleTime); echo "<br>";
 
         if($ScheduleTime < $CurrentTime){
             // ya paso el tiempo de inicio, borrar la grabacion
