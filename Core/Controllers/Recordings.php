@@ -28,7 +28,8 @@ $Schedules = $ProgramsData->getProgramsToSchedule($MacAddress);
 $CurrentTime = time();
 
     foreach ($Schedules as $schedule):
-        $ScheduleTime = intval(schedule['utc_inicio']);
+        echo $ScheduleTime = intval(schedule['utc_inicio']);
+    echo '<br>';
 
         if($ScheduleTime < $CurrentTime){
             // ya paso el tiempo de inicio, borrar la grabacion
