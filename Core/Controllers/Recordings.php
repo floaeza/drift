@@ -46,7 +46,7 @@ $CurrentTime = time();
         if($ScheduleTime < $CurrentTime){
             // ya paso el tiempo de inicio, borrar la grabacion
             echo 'ya paso el tiempo de inicio, borrar la grabacion';
-        } else if(($CurrentTime > ($ScheduleTime - 80)) && (($CurrentTime + 80) < $ScheduleTime)){
+        } else if(($CurrentTime > ($ScheduleTime - 80)) && ($CurrentTime  < $ScheduleTime)){
             // graba
             echo 'graba';
         } else {
