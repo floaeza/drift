@@ -90,7 +90,7 @@ function GetProgramsToSchedule(){
         url: 'Core/Controllers/Recorder.php',
         data: {
             Option     : 'CheckProgramsToScheduleNow',
-            MacAddress : '00:03:e6:eb:a1:9c' //MacAddress
+            MacAddress : MacAddress
         },
         success: function (response){
             ProgramsToSchedule = $.parseJSON(response);
@@ -151,7 +151,7 @@ function HandlerPvr(){
 
     //UpdateAssetsId();
 
-    //GetProgramsToSchedule();
+    GetProgramsToSchedule();
 
     //GetSchedulesToDelete();
 
