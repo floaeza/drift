@@ -28,8 +28,10 @@ print_r($Schedules); ECHO "<BR>";
 $CurrentTime = time();
 
     foreach ($Schedules as $schedule):
-        $ScheduleTime = intval(schedule['utc_inicio']);
 
+        $ScheduleTime = intval($schedule['utc_inicio']);
+
+        echo "ScheduleTime: ";
         print_r($ScheduleTime); echo "<br>";
 
         if($ScheduleTime < $CurrentTime){
