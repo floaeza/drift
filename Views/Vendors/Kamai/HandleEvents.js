@@ -187,14 +187,7 @@ function HandlerPvr(){
     //
     // Debug(JSON.stringify(AL));
     //
-    // ENTONE.recorder.deleteAsset('asset1');
-
-
+     ENTONE.recorder.deleteAsset('asset_159');
 
     Debug('-------> HandlerPvr');
 }
-
-
-setTimeout(function(){
-    PlayVideo('pvr://asset_159');
-}, 5000);
