@@ -47,6 +47,8 @@ $SchedulesResponse = array();
                             'url_canal' => $schedule['url_canal'],
                             'utc_inicio' => $schedule['utc_inicio'],
                             'utc_final' => $schedule['utc_final']);
+
+            print_r($SchRow); echo "<br>";
             $SchedulesResponse = array_push($SchRow);
         } else {
             // do nothing
