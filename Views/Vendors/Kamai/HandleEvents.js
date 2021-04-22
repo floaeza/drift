@@ -111,7 +111,7 @@ function GetProgramsToSchedule(){
                 Source = Source.replace('igmp','udp');
                 Start = ProgramsToSchedule[Indexps]['utc_inicio'];
                 End = ProgramsToSchedule[Indexps]['utc_final'];
-                TimeOut = parseInt(End) - parseInt(Start);
+                TimeOut = (parseInt(End) - parseInt(Start))*1000;
 
                 Debug('>> '+Source +', '+ Title +', '+ Start +', '+ End + ', '+TimeOut);
 
