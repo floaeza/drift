@@ -27,30 +27,25 @@ $Schedules = $ProgramsData->getProgramsToSchedule($MacAddress);
 
 $CurrentTime = time();
 
+$SchedulesResponse = array();
+
     foreach ($Schedules as $schedule):
 
         $ScheduleTime = intval($schedule['utc_inicio']);
 
-        echo 'ScheduleTime: ';
-        print_r($ScheduleTime); echo '<br>';
-
-        echo 'CurrentTime: ';
-        print_r($CurrentTime); echo '<br>';
-
-        echo 'ScheduleTime - 80: ';
-        echo $ScheduleTime - 80; echo '<br>';
-
-        echo 'CurrentTime + 80: ';
-        echo $CurrentTime + 80; echo '<br>';
-
         if($ScheduleTime < $CurrentTime){
             // ya paso el tiempo de inicio, borrar la grabacion
-            echo 'ya paso el tiempo de inicio, borrar la grabacion';
-        } else if(($CurrentTime > ($ScheduleTime - 80)) && ($CurrentTime  < $ScheduleTime)){
+            echo 'ya paso el tiempo de inicio, borrar la grabacion<br>';
+            $Response = $ProgramsData->DeleteProgram($schedule['id_programa']);
+
+        } else if(($CurrentTime > ($ScheduleTime - 90)) && ($CurrentTime  < $ScheduleTime)){
             // graba
-            echo 'graba';
+            echo 'graba y actualiza el estatus de la grabación<br>';
+            $SchedulesResponse = array_push($schedule);
         } else {
             // do nothing
-            echo 'dp nothing';
+            echo 'do nothing';
         }
+
+        print_r($Response); echo '<br>';
     endforeach;

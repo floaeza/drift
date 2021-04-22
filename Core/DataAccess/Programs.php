@@ -65,10 +65,14 @@ class Programs extends Database {
         $this->connect();
         $this->select("pvr_programas", "*",
             "", "", "", "",
-            "id_locacion = '".$LocationId."' AND id_operacion = '3' ");
+            "id_locacion = '".$LocationId."' AND id_operacion = '1'");
+        $ToRecord = $this->getResult();
+        $this->select("pvr_programas", "*",
+            "", "", "", "",
+            "id_locacion = '".$LocationId."' AND id_operacion = '3'");
+        $Recording = $this->getResult();
 
-        $this->ProgramsList = $this->getSql();
-        $this->ProgramsList = $this->getResult();
+        $this->ProgramsList = array_merge($ToRecord, $Recording);
 
         $this->disconnect();
 
