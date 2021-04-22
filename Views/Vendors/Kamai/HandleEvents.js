@@ -186,10 +186,7 @@ function HandlerPvr(){
 
     Debug(JSON.stringify(AL));
 
-    ENTONE.recorder.deleteAsset('154');
-    ENTONE.recorder.deleteAsset('156');
-    ENTONE.recorder.deleteAsset('157');
-    ENTONE.recorder.deleteAsset('158');
+    ENTONE.recorder.deleteAsset('asset1');
 
     Debug('-------> HandlerPvr');
 }
