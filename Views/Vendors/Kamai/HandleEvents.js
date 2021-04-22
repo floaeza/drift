@@ -100,41 +100,32 @@ function GetProgramsToSchedule(){
                 Title       = '',
                 Source      = '',
                 Start       = '',
-                End         = '';
+                End         = '',
+                TimeOut     = 0;
 
             for(Indexps = 0;  Indexps < ProgramsToSchedule.length; Indexps++){
 
                 ProgramId = ProgramsToSchedule[Indexps]['id_programa'];
                 Title = ProgramsToSchedule[Indexps]['titulo_programa'];
                 Source = ProgramsToSchedule[Indexps]['url_canal'];
+                Source = Source.replace('igmp','udp');
                 Start = ProgramsToSchedule[Indexps]['utc_inicio'];
                 End = ProgramsToSchedule[Indexps]['utc_final'];
+                TimeOut = parseInt(End) - parseInt(Start);
 
-                Debug('>> '+Source +', '+ Title +', '+ Start +', '+ End);
+                Debug('>> '+Source +', '+ Title +', '+ Start +', '+ End + ', '+TimeOut);
 
-                Debug('ProgramsToSchedule.length: '+ProgramsToSchedule.length);
+                try {
+                    var recorder = new ENTONE.recorder(Source, ProgramId, null, {recnow: 1});
 
-                //Source = Source.replace('igmp','udp');
+                    setTimeout(function(){
+                        recorder.stop();
+                    }, TimeOut);
 
-                // try {
-                //     var recorder = new ENTONE.recorder(Source, ProgramId, null, {recnow: 0});
-                // } catch (e) {
-                //     // Failed to create recorder or start recording. Error handling
-                //     Debug('> Failed to create recorder or start recording. Error handling');
-                // }
-
-               // NewSchedule = PVR.AddSchedule(Source, ProgramId, Start, End);
-               //
-               //  if (typeof(NewSchedule) === 'undefined'){
-               //      //CurrentTime = Date.UTC(moment().format('Y'), moment().format('MM'), moment().format('DD'), moment().format('HH'), moment().format('mm'));
-               //      Debug('> Fail new schedule');
-               //      DeleteProgram(ProgramId);
-               //  } else {
-               //      NewSchedule.WriteMeta('This is Metadata for scheduled asset '+ Title);
-               //      Debug('New schedule added, streamid = '+NewSchedule.streamId);
-               //      Debug('> '+ProgramId + ', '+OperationsList.recording+', '+NewSchedule.streamId);
-               //      UpdateProgramStreamId(ProgramId, OperationsList.recording, NewSchedule.streamId);
-               //  }
+                    UpdateProgramAsset(ProgramId, OperationsList.recording, '0','1')
+                } catch (e) {
+                    Debug('> Failed to create recorder or start recording. Error handling');
+                }
             }
         }
     });
