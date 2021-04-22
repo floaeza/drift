@@ -116,7 +116,11 @@ function GetProgramsToSchedule(){
                 Debug('>> '+Source +', '+ Title +', '+ Start +', '+ End + ', '+TimeOut);
 
                 try {
-                    var recorder = new ENTONE.recorder(Source, ProgramId, null, {recnow: 1});
+                    var recorder = new ENTONE.recorder(Source, ProgramId, null, {recnow:1});
+
+                    recorder.setRecorderCallback(function(e, h){
+                        Debug(e);
+                    }, this);
 
                     setTimeout(function(){
                         recorder.stop();
