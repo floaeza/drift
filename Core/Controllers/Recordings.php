@@ -24,7 +24,7 @@ $Response = '';
 $FirstElement = 0;
 
 $Schedules = $ProgramsData->getProgramsToSchedule($MacAddress);
-
+print_r($Schedules); ECHO "<BR>";
 $CurrentTime = time();
 
     foreach ($Schedules as $schedule):
