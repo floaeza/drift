@@ -128,7 +128,7 @@ function GetProgramsToSchedule(){
                             recorder.cleanup();
                         }, TimeOut);
 
-                    UpdateProgramAsset(ProgramId, OperationsList.recording, '0','1')
+                    UpdateProgramActive(ProgramId, OperationsList.recording, '0','1')
                 // } catch (e) {
                 //     Debug('> Failed to create recorder or start recording. Error handling');
                 // }
@@ -142,20 +142,19 @@ function GetProgramsToSchedule(){
  * Actualiza el estatus de la grabacion y su stream id
  *******************************************************************************/
 
-function UpdateProgramAsset(ProgramId, OperationId, AssetId, ActiveRecording){
+function UpdateProgramActive(ProgramId, OperationId, ActiveRecording){
 
     $.ajax({
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
         data: {
-            Option     : 'UpdateProgramAsset',
+            Option     : 'UpdateProgramActive',
             ProgramId : ProgramId,
             OperationId : OperationId,
-            AssetId : AssetId,
             ActiveRecording : ActiveRecording
         },
         success: function (response){
-            Debug('----------UpdateProgramAsset----------');
+            Debug('----------UpdateProgramActive----------');
             Debug(response);
         }
     });
@@ -187,7 +186,7 @@ function HandlerPvr(){
     //
     // Debug(JSON.stringify(AL));
     //
-     ENTONE.recorder.deleteAsset('asset_159');
+    //  ENTONE.recorder.deleteAsset('asset_159');
 
     Debug('-------> HandlerPvr');
 }

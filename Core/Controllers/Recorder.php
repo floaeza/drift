@@ -435,6 +435,23 @@ switch ($Option){
 
     break;
 
+    case 'UpdateProgramActive':
+
+        $ProgramId   = !empty($_POST['ProgramId']) ? $_POST['ProgramId'] : '';
+        $OperationId = !empty($_POST['OperationId']) ? $_POST['OperationId'] : '';
+        $ActiveRec   = !empty($_POST['ActiveRecording']) ? $_POST['ActiveRecording'] : '';
+
+
+        $ActiveRecording = ($ActiveRec === 'true') ? '1' : '0';
+
+        $InfoUpdate =  array ('id_operacion' => $OperationId, 'grabacion_activa' =>$ActiveRecording);
+
+        $TypeResult = 'UpdateProgramActive: update grabacion activa '.$ActiveRecording. ' -$OperationId '.$OperationId;
+
+        $Result = $ProgramsData->updateProgram($ProgramId, $InfoUpdate);
+
+        $Response = array($Result, $TypeResult);
+        break;
 }
 
 
