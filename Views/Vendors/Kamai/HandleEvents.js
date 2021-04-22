@@ -182,20 +182,34 @@ function GetSchedulesToDelete(){
 
             var AssetId      = 0;
 
+            Debug('ProgramsDeleteLength: '+ProgramsToDelete.length);
+
             for(Indexps = 0;  Indexps < ProgramsToDelete.length; Indexps++){
                 AssetId  = parseInt(ProgramsToDelete[Indexps].id_programa,10);
-Debug('ID: '+ProgramsToDelete[Indexps].id_programa+'AssetId '+AssetId);
-                if(AssetId > 0){
-                    //ENTONE.recorder.deleteAsset(pad(AssetId, 10));
-                    ENTONE.recorder.deleteAsset('asset_'+ProgramsToDelete[Indexps].id_programa);
-                }
+Debug('ID: '+ProgramsToDelete[Indexps].id_programa);
 
+                //ENTONE.recorder.deleteAsset(pad(AssetId, 10));
+                ENTONE.recorder.deleteAsset('asset_'+ProgramsToDelete[Indexps].id_programa);
                 DeleteProgram(ProgramsToDelete[Indexps].id_programa);
             }
         }
     });
 
     Debug('--------<< GetSchedulesToDelete');
+}
+
+function DeleteProgram(ProgramId){
+    $.ajax({
+        type: 'POST',
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option     : 'DeleteProgram',
+            ProgramId : ProgramId
+        },
+        success: function (response){
+            //Debug(response);
+        }
+    });
 }
 
 /*******************************************************************************
