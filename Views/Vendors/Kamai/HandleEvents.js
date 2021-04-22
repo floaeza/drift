@@ -116,7 +116,7 @@ function GetProgramsToSchedule(){
                 Debug('>> '+Source +', '+ Title +', '+ Start +', '+ End + ', '+TimeOut);
 
                 // try {
-                    var recorder = new ENTONE.recorder(Source, 'asset_'+ProgramId, null, {recnow:1});
+                    var recorder = new ENTONE.recorder(Source, pad(parseInt(ProgramId), 10), null, {recnow:1});
                         recorder.start();
 
                         recorder.setRecorderCallback(function(e, h){
@@ -162,6 +162,46 @@ function UpdateProgramActive(ProgramId, OperationId, ActiveRecording){
 }
 
 /*******************************************************************************
+ * Obtien lista de programas a eliminar
+ *******************************************************************************/
+
+function GetSchedulesToDelete(){
+
+    Debug('-------->> GetSchedulesToDelete');
+    $.ajax({
+        type: 'POST',
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option     : 'CheckSchedulesToDelete',
+            MacAddress : MacAddress
+        },
+        success: function (response){
+            ProgramsToDelete = $.parseJSON(response);
+
+            var Indexps     = 0;
+
+
+            var ResultDelete = -1,
+                StreamId     = -1,
+                AssetId      = -1,
+                Active       = -1;
+
+            for(Indexps = 0;  Indexps < ProgramsToDelete.length; Indexps++){
+                AssetId  = parseInt(ProgramsToDelete[Indexps].id_asset,10);
+
+                if(AssetId > 0){
+                    ENTONE.recorder.deleteAsset(pad(AssetId, 10));
+                }
+
+                DeleteProgram(ProgramsToDelete[Indexps].id_programa);
+            }
+        }
+    });
+
+    Debug('--------<< GetSchedulesToDelete');
+}
+
+/*******************************************************************************
  * Carga inicial con funciones para el DVR
  *******************************************************************************/
 
@@ -186,7 +226,13 @@ function HandlerPvr(){
     var AL = ENTONE.recorder.getAssetList();
     Debug(JSON.stringify(AL));
 
-    //  ENTONE.recorder.deleteAsset('asset_159');
-
     Debug('-------> HandlerPvr');
+}
+
+function pad(number, length) {
+    var str = '' + number;
+    while (str.length < length) {
+        str = '0' + str;
+    }
+    return str;
 }
