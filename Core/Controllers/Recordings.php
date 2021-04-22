@@ -35,12 +35,12 @@ $SchedulesResponse = array();
 
         if($ScheduleTime < $CurrentTime){
             // ya paso el tiempo de inicio, borrar la grabacion
-            echo 'ya paso el tiempo de inicio, borrar la grabacion<br>';
+            echo 'ya paso el tiempo de inicio, borrar la grabacion';
             $Response = $ProgramsData->DeleteProgram($schedule['id_programa']);
 
         } else if(($CurrentTime > ($ScheduleTime - 90)) && ($CurrentTime  < $ScheduleTime)){
             // graba
-            echo 'graba y actualiza el estatus de la grabación<br>';
+            echo 'graba y actualiza el estatus de la grabación';
             $SchedulesResponse = array_push($schedule);
         } else {
             // do nothing
