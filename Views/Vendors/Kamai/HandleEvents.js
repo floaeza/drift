@@ -177,7 +177,7 @@ function GetSchedulesToDelete(){
         },
         success: function (response){
             ProgramsToDelete = $.parseJSON(response);
-
+Debug('ProgramsToDelete: '+ProgramsToDelete);
             var Indexps     = 0;
 
 
@@ -188,10 +188,10 @@ function GetSchedulesToDelete(){
 
             for(Indexps = 0;  Indexps < ProgramsToDelete.length; Indexps++){
                 AssetId  = parseInt(ProgramsToDelete[Indexps].id_asset,10);
-
+Debug('AssetId '+AssetId);
                 if(AssetId > 0){
                     //ENTONE.recorder.deleteAsset(pad(AssetId, 10));
-                    ENTONE.recorder.deleteAsset('asset_'+AssetId);
+                    ENTONE.recorder.deleteAsset('asset_'+ProgramsToDelete[Indexps].id_asset);
                 }
 
                 DeleteProgram(ProgramsToDelete[Indexps].id_programa);
