@@ -127,7 +127,7 @@ function GetProgramsToSchedule(){
 
                         Recordings[ProgramId].setRecorderCallback(function(e, h){
                         //recorder.setRecorderCallback(function(e, h){
-                            Debug('-------------------------> setRecorderCallback: '+e);
+                            Debug('-------------------------> setRecorderCallback: '+ProgramId+ ', '+e);
                             // if (e === ENTONE.recorder.PVR_RECORD_FINISHED){
                             //     UpdateDiskInfo();
                             // }
