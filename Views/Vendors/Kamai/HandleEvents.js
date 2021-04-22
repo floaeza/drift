@@ -167,7 +167,7 @@ function UpdateProgramActive(ProgramId, OperationId, ActiveRecording){
 
 function GetSchedulesToDelete(){
 
-    Debug('-------->> GetSchedulesToDelete  '+MacAddress);
+    Debug('-------->> GetSchedulesToDelete');
     $.ajax({
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
@@ -177,7 +177,7 @@ function GetSchedulesToDelete(){
         },
         success: function (response){
             ProgramsToDelete = $.parseJSON(response);
-Debug('ProgramsToDelete: '+ProgramsToDelete);
+Debug('ProgramsToDelete: '+JSON.stringify(ProgramsToDelete));
             var Indexps     = 0;
 
 
