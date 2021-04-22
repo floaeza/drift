@@ -221,7 +221,7 @@ function HandlerPvr(){
 
     GetProgramsToSchedule();
 
-    //GetSchedulesToDelete();
+    GetSchedulesToDelete();
 
     var AL = ENTONE.recorder.getAssetList();
     Debug(JSON.stringify(AL));
