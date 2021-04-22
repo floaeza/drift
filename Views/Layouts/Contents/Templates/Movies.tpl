@@ -48,8 +48,9 @@
 
         <div id='MenuDate'></div>
         <div id='MenuOptions'>
-            <div id='MenuOptions1' class='MenuOptions'><i class="fa fa-filter" aria-hidden="true"></i></div>
-            <div id='MenuOptions2' class='MenuOptions'><i class='fa fa-sign-out-alt'></i></div>
+            <div id='MenuOptions1' class='MenuOptions'><i class='fa fa-home'></i></div>
+            <div id='MenuOptions2' class='MenuOptions'><i class="fa fa-filter" aria-hidden="true"></i></div>
+            <div id='MenuOptions3' class='MenuOptions'><i class='fa fa-sign-out-alt'></i></div>
         </div>
         <div id='Banner'></div>
     </div>

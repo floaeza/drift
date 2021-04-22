@@ -81,6 +81,10 @@ and open the template in the editor.
     font-family: Gotham Light;
     src: url(./Fonts/Gotham-Light.ttf);
 }
+@font-face {
+    font-family: Gothic;
+    src: url(./Fonts/CenturyGothic.ttf);
+}
 /*
 TITULOS
 <div style='font-family: novecento;'>1 Aviso program Avenger infinity war 14:38 /-($)!?</div>

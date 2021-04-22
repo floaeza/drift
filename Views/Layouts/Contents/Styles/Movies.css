@@ -35,7 +35,6 @@ div#yearfilter {
     width: 18%;
     height: 100%;
     padding-top: 7%;
-    border-right: 5px solid #e9bb26;
     box-shadow: 3px 3px 5px 0px rgba(0, 0, 0);
 }
 div#PanelYearFilter {
@@ -44,11 +43,11 @@ div#PanelYearFilter {
     position: fixed;
     z-index: 1;
     display: flex;
-    right: 0;
+
     color: #fff;
     text-align: center;
     font-size: 25px;
-    font-family: Century Gothic;
+    font-family: Gothic;
     visibility: hidden;/*oculta el panel en el menu principal*/
 }
 div#PanelMoviesByYear {
@@ -99,7 +98,7 @@ div.RowMovieByYearPoster h3 {
 div#PanelGenderFilter {
     /* color:#fff; */
     font-size: 30px;
-    font-family: Century Gothic;
+    font-family: Gothic;
     width: 69%;
     height: 100%;
     /* margin: 5px; */
@@ -148,13 +147,12 @@ div#PanelMoviesByGender {
 }
 /***************************** [ Menu filtros ] *****************************/
 div#MenuFilters {
-    width: 20%;
+    width: 22%;
     height: 100%;
     margin: 0;
     bottom: 0;
     position: fixed;
     z-index: 1;
-    border-right: 5px solid #e9bb26;
     box-shadow: 3px 3px 5px 0px rgba(0, 0, 0);
     visibility: hidden;/*oculta el panel en el menu principal*/
 }
@@ -165,7 +163,7 @@ div#filterMovieCategory{
 div.OptionsFilter {
     height: 50%;
     color: #fff;
-    font-family: Century Gothic;
+    font-family: Gothic;
     text-align: left;
     font-size: 25px;
     font-weight: bold;
@@ -252,7 +250,7 @@ div.RecommendedMoviesRowPoster h3 {
     font-size: 20px;
     text-align: left;
     text-shadow: 2px 2px 2px #000;
-    font-family: Century Gothic;;
+    font-family: Gothic;
     font-weight: bold;
 }
 /***************************** [ All Movies ] *****************************/
@@ -374,7 +372,7 @@ div#MenuHour {
 #MenuHour,
 #MenuDate
 {
-    font-family: Century Gothic;
+    font-family: Gothic;
     font-size: 25px;
     font-weight: bold;
 }
@@ -390,7 +388,7 @@ div#MenuOptions {
 
 div.MenuOptions {
     width: 100%;
-    height: 8%;
+    height: 10%;
     float: left;
     font-size: 25px;
     text-align: center;
@@ -485,7 +483,7 @@ position: fixed;
 text-align: left;
 font-size: 60px;
 font-weight: bold;
-font-family: Century Gothic;
+font-family: Gothic;
 color: #ffff;
 overflow: hidden;
 }
@@ -581,6 +579,7 @@ div#PlayPanel {
     display:flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 div#ExitPanel {
@@ -592,6 +591,7 @@ div#ExitPanel {
     display:flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 div.Casting {
@@ -640,7 +640,7 @@ div.MovieOption {
 .Director,
 .Casting{
     text-align: left;
-    font-size: 25px;
+    font-size: 22px;
     font-family: Bell MT;
     font-style: italic;
 }

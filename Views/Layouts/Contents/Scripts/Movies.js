@@ -248,10 +248,13 @@ function SelectMenuOption(){
     var position = getPositionFocusInMenu(StyleFocusMenuHeader, MenuHeaderChildren);
     switch (position) {
         case 0:
+            //Home
+            break;
+        case 1:
             //Filtros
             FiltersList();
             break;
-        case 1:
+        case 2:
             //Salir al menu principal
             GoPage('menu.php', Device['MenuId'], 'Menu');
             break;
@@ -979,7 +982,9 @@ if(CurrentFocus === 'Menu'){
     LoadMoviePanel('MoviesByYearList');
 }   else if(CurrentFocus === 'SelectLanguage'){
     SetFocusOnMenuLanguage('ok');
-} 
+} else if (CurrentFocus === 'FilterMovies'){
+    SetFocusOnMenuFilter('ok');
+}  
 }
 function VodInfo(){
 if(CurrentFocus === 'Playing' || CurrentFocus === 'StopPlaying'){
@@ -1450,7 +1455,25 @@ function SetFocusOnMenuFilter(Direction){
                 IsMenuFilterSelected = false;
                 break;
         }
+    } else if (Direction == 'ok'){
+        var position = getPositionFocusInMenuFilter(StyleFocusMenuFilter, FilterMovieCategoryListChildren);
+        switch (position) {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+        RecommendedMoviesList         = document.getElementById('RecommendedMoviesList'),
+        RecommendedMoviesListChildren = RecommendedMoviesList.children;
+        RecommendedMoviesListChildren[0].style.border = StyleFocusMovies;
+        ListPanel.style.visibility = 'visible';
+        PanelRight.style.visibility = 'visible';
+        BackgroundPanel.style.backgroundImage = "url('"+FolderSource + "bg/BGMovies.PNG')";
+        MenuFilters.style.visibility = 'hidden';
+        break; 
+        }
     }
+      
 }
 function SetFocusOnMenuByYear(Direction){
     YearFilter                      = document.getElementById('yearfilter'),
