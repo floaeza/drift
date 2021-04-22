@@ -57,4 +57,4 @@ $SchedulesResponse = array();
 
     endforeach;
 
-        print_r($SchedulesResponse);
+        echo json_encode($SchedulesResponse);
