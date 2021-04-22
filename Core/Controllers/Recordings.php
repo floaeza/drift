@@ -24,7 +24,6 @@ $Response = '';
 $FirstElement = 0;
 
 $Schedules = $ProgramsData->getProgramsToSchedule($MacAddress);
-print_r($Schedules); echo '<br>';
 
 $CurrentTime = time();
 
@@ -42,12 +41,12 @@ $SchedulesResponse = array();
         } else if(($CurrentTime > ($ScheduleTime - 90)) && ($CurrentTime  < $ScheduleTime)){
             // graba
             echo 'graba y actualiza el estatus de la grabación';
+            print_r($schedule); echo '<br>';
             $SchedulesResponse = array_push($schedule);
         } else {
             // do nothing
             echo 'do nothing';
         }
-
 
     endforeach;
 
