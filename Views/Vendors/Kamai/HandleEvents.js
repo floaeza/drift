@@ -116,15 +116,16 @@ function GetProgramsToSchedule(){
                 Debug('>> '+Source +', '+ Title +', '+ Start +', '+ End + ', '+TimeOut);
 
                 try {
-                    var recorder = new ENTONE.recorder(Source, ProgramId, null, {recnow:1});
+                    var recorder = new ENTONE.recorder(Source, 'asset_'+ProgramId, null, {recnow:1});
+                        recorder.start();
 
-                    recorder.setRecorderCallback(function(e, h){
-                        Debug(e);
-                    }, this);
+                        recorder.setRecorderCallback(function(e, h){
+                            Debug(e);
+                        }, this);
 
-                    setTimeout(function(){
-                        recorder.stop();
-                    }, TimeOut);
+                        setTimeout(function(){
+                            recorder.stop();
+                        }, TimeOut);
 
                     UpdateProgramAsset(ProgramId, OperationsList.recording, '0','1')
                 } catch (e) {
