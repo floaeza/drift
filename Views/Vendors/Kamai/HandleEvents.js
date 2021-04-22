@@ -177,7 +177,7 @@ function GetSchedulesToDelete(){
         },
         success: function (response){
             ProgramsToDelete = $.parseJSON(response);
-Debug('ProgramsToDelete: '+JSON.stringify(ProgramsToDelete));
+
             var Indexps     = 0;
 
             var AssetId      = -1;
