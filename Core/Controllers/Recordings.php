@@ -24,15 +24,24 @@ $Response = '';
 $FirstElement = 0;
 
 $Schedules = $ProgramsData->getProgramsToSchedule($MacAddress);
-print_r($Schedules); ECHO "<BR>";
+
 $CurrentTime = time();
 
     foreach ($Schedules as $schedule):
 
         $ScheduleTime = intval($schedule['utc_inicio']);
 
-        echo "ScheduleTime: ";
-        print_r($ScheduleTime); echo "<br>";
+        echo 'ScheduleTime: ';
+        print_r($ScheduleTime); echo '<br>';
+
+        echo 'CurrentTime: ';
+        print_r($CurrentTime); echo '<br>';
+
+        echo 'ScheduleTime - 80: ';
+        echo $ScheduleTime - 80; echo '<br>';
+
+        echo 'CurrentTime + 80: ';
+        echo $CurrentTime + 80; echo '<br>';
 
         if($ScheduleTime < $CurrentTime){
             // ya paso el tiempo de inicio, borrar la grabacion
