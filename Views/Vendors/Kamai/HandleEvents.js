@@ -180,17 +180,17 @@ function GetSchedulesToDelete(){
 
             var Indexps     = 0;
 
-            var AssetId      = -1;
+            var AssetId      = 0;
 
             for(Indexps = 0;  Indexps < ProgramsToDelete.length; Indexps++){
-                AssetId  = parseInt(ProgramsToDelete[Indexps].id_asset,10);
+                AssetId  = parseInt(ProgramsToDelete[Indexps].id_programa,10);
 Debug('ID: '+ProgramsToDelete[Indexps].id_programa+'AssetId '+AssetId);
-                // if(AssetId > 0){
-                //     //ENTONE.recorder.deleteAsset(pad(AssetId, 10));
-                //     ENTONE.recorder.deleteAsset('asset_'+ProgramsToDelete[Indexps].id_asset);
-                // }
-                //
-                // DeleteProgram(ProgramsToDelete[Indexps].id_programa);
+                if(AssetId > 0){
+                    //ENTONE.recorder.deleteAsset(pad(AssetId, 10));
+                    ENTONE.recorder.deleteAsset('asset_'+ProgramsToDelete[Indexps].id_programa);
+                }
+
+                DeleteProgram(ProgramsToDelete[Indexps].id_programa);
             }
         }
     });
