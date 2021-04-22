@@ -190,7 +190,8 @@ function GetSchedulesToDelete(){
                 AssetId  = parseInt(ProgramsToDelete[Indexps].id_asset,10);
 
                 if(AssetId > 0){
-                    ENTONE.recorder.deleteAsset(pad(AssetId, 10));
+                    //ENTONE.recorder.deleteAsset(pad(AssetId, 10));
+                    ENTONE.recorder.deleteAsset('asset_'+AssetId);
                 }
 
                 DeleteProgram(ProgramsToDelete[Indexps].id_programa);
