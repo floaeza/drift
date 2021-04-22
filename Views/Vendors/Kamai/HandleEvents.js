@@ -103,6 +103,8 @@ function GetProgramsToSchedule(){
                 End         = '',
                 TimeOut     = 0;
 
+            var Recordings = new Object();
+
             for(Indexps = 0;  Indexps < ProgramsToSchedule.length; Indexps++){
 
                 ProgramId = ProgramsToSchedule[Indexps]['id_programa'];
@@ -113,23 +115,33 @@ function GetProgramsToSchedule(){
                 End = ProgramsToSchedule[Indexps]['utc_final'];
                 TimeOut = (parseInt(End) - parseInt(Start))*1000;
 
-                Debug('>> '+Source +', '+ Title +', '+ Start +', '+ End + ', '+TimeOut);
+                Debug('>> '+ProgramId + ', ' +Source +', '+ Title +', '+ Start +', '+ End + ', '+TimeOut);
 
                 // try {
-                    var recorder = new ENTONE.recorder(Source, pad(parseInt(ProgramId), 10), null, {recnow:1});
-                        recorder.start();
 
-                        recorder.setRecorderCallback(function(e, h){
-                            Debug(e);
+                Debug('Recordings >> '+ProgramId);
+                Recordings[ProgramId] = new ENTONE.recorder(Source, pad(parseInt(ProgramId), 10), null, {recnow:1});
+                Recordings[ProgramId].start();
+                    //var recorder = new ENTONE.recorder(Source, pad(parseInt(ProgramId), 10), null, {recnow:1});
+                    //recorder.start();
+
+                        Recordings[ProgramId].setRecorderCallback(function(e, h){
+                        //recorder.setRecorderCallback(function(e, h){
+                            Debug('-------------------------> setRecorderCallback: '+e);
+                            // if(e === ''){
+                            //     UpdateDiskInfo();
+                            // }
                         }, this);
 
                         setTimeout(function(){
-                            recorder.stop();
-                            recorder.cleanup();
-                            UpdateProgramActive(ProgramId, OperationsList.recorded, '0');
+                            //recorder.stop();
+                            Recordings[ProgramId].stop();
+                            //recorder.cleanup();
+                            Recordings[ProgramId].cleanup();
+                            UpdateProgramActive(ProgramId, OperationsList.recorded, false);
                         }, TimeOut);
 
-                    UpdateProgramActive(ProgramId, OperationsList.recording, '1');
+                    UpdateProgramActive(ProgramId, OperationsList.recording, true);
                 // } catch (e) {
                 //     Debug('> Failed to create recorder or start recording. Error handling');
                 // }
@@ -178,18 +190,12 @@ function GetSchedulesToDelete(){
         success: function (response){
             ProgramsToDelete = $.parseJSON(response);
 
-            var Indexps     = 0;
-
-            var AssetId      = 0;
-
-            Debug('ProgramsDeleteLength: '+ProgramsToDelete.length);
+            var Indexps = 0,
+                AssetId = 0;
 
             for(Indexps = 0;  Indexps < ProgramsToDelete.length; Indexps++){
                 AssetId  = parseInt(ProgramsToDelete[Indexps].id_programa,10);
-Debug('ID: '+ProgramsToDelete[Indexps].id_programa);
-
-                //ENTONE.recorder.deleteAsset(pad(AssetId, 10));
-                ENTONE.recorder.deleteAsset('asset_'+ProgramsToDelete[Indexps].id_programa);
+                ENTONE.recorder.deleteAsset(pad(AssetId, 10));
                 DeleteProgram(ProgramsToDelete[Indexps].id_programa);
             }
         }
@@ -213,29 +219,52 @@ function DeleteProgram(ProgramId){
 }
 
 /*******************************************************************************
+ * Actualiza informacion del disco duro
+ *******************************************************************************/
+
+function UpdateDiskInfo(){
+
+    var StorageInfo = [];
+        StorageInfo = ENTONE.recorder.getStorageInfo();
+
+    $.ajax({
+        type: 'POST',
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option     : 'SetPvrInfo',
+            LocationId : Device['LocationId'],
+            MacAddress : MacAddress,
+            TotalSize : StorageInfo.pvrTotalSpace,
+            AvailableSize : StorageInfo.pvrFreeSpace
+        },
+        success: function (response){
+            //Debug(response);
+        }
+    });
+}
+
+/*******************************************************************************
  * Carga inicial con funciones para el DVR
  *******************************************************************************/
 
 if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
-    //UpdateDiskInfo();
+    UpdateDiskInfo();
 
     HandlerPvr();
 
-    //GetProgramsSerie();
+    GetProgramsSerie();
 
     setInterval(HandlerPvr,60000);
 }
 
 function HandlerPvr(){
 
-    //UpdateAssetsId();
-
     GetProgramsToSchedule();
 
     GetSchedulesToDelete();
 
-    var AL = ENTONE.recorder.getAssetList();
-    Debug(JSON.stringify(AL));
+    // var AL = ENTONE.recorder.getAssetList();
+    // Debug(JSON.stringify(AL));
 
     Debug('-------> HandlerPvr');
 }

@@ -26,7 +26,7 @@ var CheckInfo = 0;
         PressedKey = e.which;
         e.preventDefault();
         //Debug('@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
-        //Debug(PressedKey);
+        Debug(PressedKey);
 
         if(typeof(gSTB) !== 'undefined' && PressedKey === 9){
             ShiftKey = e.shiftKey;
