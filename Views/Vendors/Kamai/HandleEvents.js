@@ -189,10 +189,8 @@ function HandlerPvr(){
     //
     // ENTONE.recorder.deleteAsset('asset1');
 
-    PlayVideo('pvr://asset_159');
-
-    // var video = new Entone.video('pvr://asset_159');
-    // video.play();
+     var video = new Entone.video('pvr://asset_159');
+     video.play();
 
     Debug('-------> HandlerPvr');
 }
