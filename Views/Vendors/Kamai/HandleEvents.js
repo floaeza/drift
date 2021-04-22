@@ -182,5 +182,9 @@ function HandlerPvr(){
 
     //GetSchedulesToDelete();
 
+    var AL = ENTONE.recorder.getAssetList();
+
+    Debug(JSON.stringify(AL));
+
     Debug('-------> HandlerPvr');
 }
