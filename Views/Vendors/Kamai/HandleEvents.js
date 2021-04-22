@@ -182,11 +182,13 @@ function HandlerPvr(){
 
     //GetSchedulesToDelete();
 
-    var AL = ENTONE.recorder.getAssetList();
+    // var AL = ENTONE.recorder.getAssetList();
+    //
+    // Debug(JSON.stringify(AL));
+    //
+    // ENTONE.recorder.deleteAsset('asset1');
 
-    Debug(JSON.stringify(AL));
-
-    ENTONE.recorder.deleteAsset('asset1');
+    PlayVideo('pvr://asset_159');
 
     Debug('-------> HandlerPvr');
 }
