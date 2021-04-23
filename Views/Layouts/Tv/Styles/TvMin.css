@@ -12,15 +12,19 @@ and open the template in the editor.
 
 .Times {
     margin: 0;
+    float: left;
 }
 
 .Ttle {
     margin: 0;
     color: #dfbe5e;
+    float: left;
 }
 
 .Rtg{
     margin: 0;
+    float: left;
+    color: #0396a6;
 }
 
 div#EpgContainer {
