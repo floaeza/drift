@@ -428,6 +428,7 @@ function SetRecordings(Direction){
                 if(RecordingsList[IndexRecorded].length > 2){
                     Icon = '<i class="fa fa-folder-open"></i>';
                     Title = 'serie';
+                    PvrListNodes[Row].innerHTML = '\u00A0'+ Icon + ' '+ RecordingsList[IndexRecorded][IndexProgram] + ActiveRec;
                 } else {
                     Icon = '<i class="fa fa-file"></i>';
                     Title = 'rec';
@@ -445,9 +446,11 @@ function SetRecordings(Direction){
                             ActiveRec = '';
                         }
                     }
+                    PvrListNodes[Row].innerHTML = '\u00A0'+ Icon + ' '+ RecordingsList[IndexRecorded][IndexProgram] + ActiveRec + '<p class="RowDur">'+TimeConvert( RecordingsList[IndexRecordedFocus][IndexProgram].duration)+'</p>';
+
                 }
 
-                    PvrListNodes[Row].innerHTML = '\u00A0'+ Icon + ' '+ RecordingsList[IndexRecorded][IndexProgram] + ActiveRec;
+
                 PvrListNodes[Row].title = Title + ','+IndexRecorded+',1';
 
                 Row++;
@@ -485,7 +488,7 @@ function SetRecordings(Direction){
                 if(RecordingsList[IndexRecordedFocus][IndexProgram].episode !== ''){
                     PvrListNodes[Row].innerHTML = '\u00A0'+Icon + ' '+ IndexProgram+ ' - '+ RecordingsList[IndexRecordedFocus][IndexProgram].episode + ActiveRec + '<p class="RowDur">'+TimeConvert( RecordingsList[IndexRecordedFocus][IndexProgram].duration)+'</p>';
                 } else {
-                    PvrListNodes[Row].innerHTML = '\u00A0'+Icon + ' '+ IndexProgram+ ' - '+  moment(RecordingsList[IndexRecordedFocus][IndexProgram].date).format('MMMM Do YYYY')  + ActiveRec;
+                    PvrListNodes[Row].innerHTML = '\u00A0'+Icon + ' '+ IndexProgram+ ' - '+  moment(RecordingsList[IndexRecordedFocus][IndexProgram].date).format('MMMM Do YYYY')  + ActiveRec + '<p class="RowDur">'+TimeConvert( RecordingsList[IndexRecordedFocus][IndexProgram].duration)+'</p>';
                 }
 
                 PvrListNodes[Row].title = '\u00A0'+Title + ','+IndexRecordedFocus+','+IndexProgram;
