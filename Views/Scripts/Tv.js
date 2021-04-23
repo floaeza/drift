@@ -554,9 +554,9 @@
             /* Carga la informacion actual*/
             LoadCurrentData(FindCurrentHour(GetCurrentHour()));
 
-            var Times = '<p class="Times">('+FormatHours(ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].STRH)+' - '+FormatHours(ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].FNLH)+')</p>';
-            var Ttle = '<p class="Ttle">'+ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].TTLE+'</p>';
-            var Rtg = '<p class="Rtg">'+ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].TVRT+'</p>';
+            var Times = '<p class="Times">\u00A0('+FormatHours(ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].STRH)+' - '+FormatHours(ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].FNLH)+')</p>';
+            var Ttle = '<p class="Ttle">'+ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].TTLE+'\u00A0</p>';
+            var Rtg = '<p class="Rtg">\u00A0'+ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].TVRT+'</p>';
             if(EpgDataActive === true){
                 InfoContainerNodes[1].textContent  = ChannelsJson[ChannelPosition].CHNL+' - ' +ChannelsJson[ChannelPosition].INDC.toUpperCase();
                 //InfoContainerNodes[3].textContent  = ChannelsJson[ChannelPosition].QLTY;
