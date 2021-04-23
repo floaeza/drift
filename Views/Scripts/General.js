@@ -409,6 +409,8 @@ function ConvertToHourEpoch(time24){
         $('#WeatherFarenheit').html(String(Math.round(ObjectWeather.Temperature)));
         $('#WeatherCelsius').html(String(toCelsius(ObjectWeather.Temperature)));
     }
+
+
         
     function toCelsius(f) {
         var x = (5/9) * (f-32);

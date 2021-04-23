@@ -274,7 +274,7 @@ function OpenPvr(){
 
         GetPvrInfo();
 
-        GetWeather();
+        GetWeatherPvr();
 
         PvrTimer = setTimeout(ClosePvr,TimeoutPvr);
     }
@@ -2254,4 +2254,25 @@ function DeleteSerie(){
             }
         }
     });
+}
+
+function GetWeatherPvr(){
+    $.ajax({
+        type: 'GET',
+        url: 'Core/Controllers/Weather.php',
+        success: function (response) {
+            ObjectWeather = JSON.parse(response);
+            SetIconPvr();
+        }
+    });
+}
+
+function SetIconPvr(){
+    var skycons = new Skycons({
+        'color': 'white'
+    });
+
+    skycons.add('PvrWeatherIcon', ObjectWeather.Icon);
+    $('#PvrWeatherFarenheit').html(String(Math.round(ObjectWeather.Temperature)));
+    $('#PvrWeatherCelsius').html(String(toCelsius(ObjectWeather.Temperature)));
 }
