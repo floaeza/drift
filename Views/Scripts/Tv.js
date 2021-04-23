@@ -556,16 +556,17 @@
 
             var Times = '<p class="Times">('+FormatHours(ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].STRH)+' - '+FormatHours(ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].FNLH)+')</p>';
             var Ttle = '<p class="Ttle">'+ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].TTLE+'</p>';
+            var Rtg = '<p class="Rtg">'+ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].RTNG+'</p>';
             if(EpgDataActive === true){
                 InfoContainerNodes[1].textContent  = ChannelsJson[ChannelPosition].CHNL+' - ';
                 InfoContainerNodes[3].textContent  = ChannelsJson[ChannelPosition].QLTY;
                 InfoContainerNodes[5].textContent  = ChannelsJson[ChannelPosition].INDC;
                 InfoContainerNodes[7].textContent  = FormatDateAndHour;
-                InfoContainerNodes[9].innerHTML    = Ttle + Times;
+                InfoContainerNodes[9].innerHTML    = Ttle + Times + Rtg;
                 if(RecordingsToCheck !== ''){
                     for(IndexRec = 0; IndexRec < RecordingsToCheck.length; IndexRec++){
                         if(RecordingsToCheck[IndexRec].databasekey === ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].DBKY) {
-                            InfoContainerNodes[9].innerHTML  = Ttle + Times + '<p class="RecInfo">  REC</p>';
+                            InfoContainerNodes[9].innerHTML  = Ttle + Times + Rtg + '<p class="RecInfo">  REC</p>';
                             IndexRec = RecordingsToCheck.length;
                         }
                     }
@@ -583,6 +584,7 @@
 
             Times = null;
             Ttle = null;
+            Rtg = null;
 
              /* Limpia el contador */
             clearTimeout(InfoTimer);

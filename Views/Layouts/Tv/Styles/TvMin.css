@@ -10,6 +10,18 @@ and open the template in the editor.
 
 /***************************** [CONTENEDORES] *****************************/
 
+.Times {
+    margin: 0;
+}
+
+.Ttle {
+    margin: 0;
+}
+
+.Rtg{
+    margin: 0;
+}
+
 div#EpgContainer {
     width: 100%;
     height: 100%;
