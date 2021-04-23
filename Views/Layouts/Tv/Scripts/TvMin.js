@@ -517,9 +517,9 @@ function WriteChannelsRow(CurrentChannelPosition, Row){
     var ChannelRowNodes = document.getElementById('ChannelRow'+Row).childNodes;
     ChannelRowNodes[0].textContent = ChannelsJson[CurrentChannelPosition].CHNL;
     if(ChannelsJson[CurrentChannelPosition].QLTY === 'HD'){
-        ChannelRowNodes[1].textContent = ChannelsJson[CurrentChannelPosition].INDC +' '+ChannelsJson[CurrentChannelPosition].QLTY;
+        ChannelRowNodes[1].textContent = ' - ' + ChannelsJson[CurrentChannelPosition].INDC +' '+ChannelsJson[CurrentChannelPosition].QLTY;
     } else {
-        ChannelRowNodes[1].textContent = ChannelsJson[CurrentChannelPosition].INDC;
+        ChannelRowNodes[1].textContent = ' - ' + ChannelsJson[CurrentChannelPosition].INDC;
     }
 }
 
