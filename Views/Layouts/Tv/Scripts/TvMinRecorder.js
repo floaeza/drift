@@ -2261,7 +2261,7 @@ function DeleteSerie(){
 function GetWeatherPvr(){
 
     PvrDate.textContent = FormatDateAndHour;
-    
+
     $.ajax({
         type: 'GET',
         url: 'Core/Controllers/Weather.php',
