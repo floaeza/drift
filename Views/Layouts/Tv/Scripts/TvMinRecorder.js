@@ -231,87 +231,6 @@ function SelectRecordingsOption(){
  * Agrega programa en serie
  *******************************************************************************/
 
-function SetMacAddressPvr(){
-    // Elige aleatoriamente la mac addres donde se guardara la serie en caso de que haya mas de un grabador
-    if(Device['Type'] === 'WHP_HDDN'){
-        if(Device['MacAddressPvr'].length > 1){
-            var RandomMac = getRandomInt(0,Device['MacAddressPvr'].length);
-            MacAddressPvr = Device['MacAddressPvr'][RandomMac];
-        } else {
-            MacAddressPvr = Device['MacAddressPvr'][0];
-        }
-    }
-}
-
-function AddSerie(){
-    Debug('---- AddSerie');
-    SetMacAddressPvr();
-
-    $.ajax({
-        type: 'POST',
-        url: 'Core/Controllers/Recorder.php',
-        data: {
-            Option     : 'AddSerie',
-            LocationId : Device['LocationId'],
-            MacAddressPvr : MacAddressPvr,
-            OperationId : OperationsList['record'],
-            TitleSerie : ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].TTLE,
-            Channel : ChannelsJson[FocusChannelPosition].CHNL + ' - ' +ChannelsJson[FocusChannelPosition].INDC,
-            Position : parseInt(FocusChannelPosition,10)
-        },
-        success: function (response){
-            ShowRecorderMessage($.parseJSON(response));
-            CloseRecordingOptions();
-
-            GetProgramsSerie();
-        }
-    });
-}
-
-/*******************************************************************************
- *
- *******************************************************************************/
-
-function GetProgramsSerie(){
-    Debug('::::::::::::::::::::::::: GetProgramsSerie::: ');
-    GetSeries();
-
-    var IndexS = 0,
-        IndexP = 0,
-        Position = 0;
-
-    Debug('SeriesList.length::: ' + SeriesList.length);
-
-    if(EpgDataActive === true && SeriesList.length > 0){
-
-        ADD_SERIE_BCKG = true;
-
-        for(IndexS = 0; IndexS < SeriesList.length; IndexS++){
-
-            Position = SeriesList[IndexS].posicion;
-            Debug('Pos::: '+Position);
-
-
-            if(ChannelsJsonToday.length === 0){
-                for(IndexP = 0; IndexP < ChannelsJson[Position].P_Length; IndexP++){
-                    if(SeriesList[IndexS].titulo === ChannelsJson[Position].PROGRAMS[IndexP].TTLE){
-                        Debug('*-*-*-*-*- Encontro coincidencia: '+ChannelsJson[Position].PROGRAMS[IndexP].TTLE + ' ' +ChannelsJson[Position].PROGRAMS[IndexP].DBKY);
-
-                        REC_CHNL_POS = Position;
-                        REC_PROG_POS = IndexP;
-
-                        CheckRecordings();
-                    }
-                }
-            }
-        }
-    }
-}
-
-/*******************************************************************************
- * Agrega programa en serie
- *******************************************************************************/
-
 function ShowRecorderMessage(Message){
     clearTimeout(RecorderMessageTimer);
 
@@ -325,444 +244,6 @@ function HideRecorderMessage(){
     clearTimeout(RecorderMessageTimer);
     RecorderMessage.textContent = '';
     RecorderMessage.style.display = 'none';
-}
-
-/*******************************************************************************
- * Agrega programa
- *******************************************************************************/
-function GetRecordings(){
-    $.ajax({
-        type: 'POST',
-        async: false,
-        url: 'Core/Controllers/Recorder.php',
-        data: {
-            Option     : 'RecordingsList',
-            LocationId : Device['LocationId'],
-            MacAddress : MacAddress
-        },
-        success: function (response){
-            RecordingsList = $.parseJSON(response);
-        }
-    });
-}
-
-function GetSchedules(){
-    $.ajax({
-        type: 'POST',
-        async: false,
-        url: 'Core/Controllers/Recorder.php',
-        data: {
-            Option     : 'SchedulesList',
-            LocationId : Device['LocationId']
-        },
-        success: function (response){
-            SchedulesList = $.parseJSON(response);
-        }
-    });
-}
-
-function GetSeries(){
-    $.ajax({
-        type: 'POST',
-        async: false,
-        url: 'Core/Controllers/Recorder.php',
-        data: {
-            Option     : 'SeriesList',
-            LocationId : Device['LocationId']
-        },
-        success: function (response){
-            SeriesList = $.parseJSON(response);
-        }
-    });
-}
-
-function GetRecordingsToRecord(){
-    $.ajax({
-        type: 'POST',
-        url: 'Core/Controllers/Recorder.php',
-        data: {
-            Option     : 'RecordingsToRecord',
-            LocationId : Device['LocationId']
-        },
-        success: function (response){
-            RecordingsToCheck = $.parseJSON(response);
-        }
-    });
-}
-
-function GetPvrInfo(){
-    if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
-        SetPvrInfo();
-    } else {
-        $.ajax({
-            type: 'POST',
-            url: 'Core/Controllers/Recorder.php',
-            data: {
-                Option     : 'GetPvrInfo',
-                LocationId : Device['LocationId'],
-                MacAddress : MacAddress
-            },
-            success: function (response){
-                DiskInfo = $.parseJSON(response);
-
-                if(DiskInfo.length > 0){
-                    SetPvrInfo();
-                }
-            }
-        });
-    }
-}
-
-function CheckManualRecording(){
-    $.ajax({
-        type: 'POST',
-        async: false,
-        url: 'Core/Controllers/Recorder.php',
-        data: {
-            Option     : 'RecordingsToRecord',
-            LocationId : Device['LocationId']
-        },
-        success: function (response){
-            RecordingsToCheck = $.parseJSON(response);
-
-            // Convierte a UTC el tiempo inicio de la grabacion que se quiere agregar
-            var ProgramYear    = ChannelsJson[REC_CHNL_POS].DTNU.slice(0,4),
-                ProgramMonth   = ChannelsJson[REC_CHNL_POS].DTNU.slice(4,6),
-                ProgramDay     = ChannelsJson[REC_CHNL_POS].DTNU.slice(6,8);
-
-
-
-            var ProgramStart = Time12to24(ManualHour+':'+ManualMinute+' '+ManualListIndicator[ManualIndicator].toLowerCase());
-            var ProgramEnd   = moment(ProgramStart, 'HH:mm').add(ManualListMinutes[ManualTime], 'minutes').format('HH:mm');
-
-            var ProgramStartHour    = pad(ProgramStart.slice(0,2),2),
-                ProgramStartMinute  = pad(ProgramStart.slice(3,5),2),
-                ProgramEndHour      = ProgramEnd.slice(0,2),
-                ProgramEndMinute    = ProgramEnd.slice(3,5);
-
-            ProgramUtcStartDate = Date.UTC(ProgramYear, (ProgramMonth -1), ProgramDay, ProgramStartHour, ProgramStartMinute);
-            ProgramUtcEndDate   = Date.UTC(ProgramYear, (ProgramMonth -1), ProgramDay, ProgramEndHour, ProgramEndMinute);
-
-            ProgramUtcStartDate = ProgramUtcStartDate / 1000;
-            ProgramUtcEndDate = ProgramUtcEndDate / 1000;
-
-            NewStartHour = ProgramStart;
-            NewEndHour   = ProgramEnd;
-
-
-            var CurrentUtcDate = Date.UTC(moment().format('Y'), (moment().format('MM') -1), moment().format('DD'), moment().format('HH'), moment().format('mm'));
-            CurrentUtcDate = CurrentUtcDate / 1000;
-
-            if(ProgramUtcStartDate < CurrentUtcDate){
-                Coincidences = 2;
-            }
-
-            /* Agregamos el tiempo offset -6 o -7 en segundos */
-            ProgramUtcStartDate = ProgramUtcStartDate + SecondsOffset;
-            ProgramUtcEndDate   = ProgramUtcEndDate + SecondsOffset;
-
-            if(ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].DBKY === ''){
-                NewDatabasekey  = 'PR'+ProgramStartHour+ProgramStartMinute+ProgramEndHour+ProgramEndMinute+ProgramMonth+ProgramDay;
-            } else {
-                NewDatabasekey = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].DBKY;
-            }
-
-            if(RecordingsToCheck.length > 0){
-                var IndexR                  = 0,
-                    ProgramUtcStartDate_DB  = '',
-                    ProgramUtcEndDate_DB    = '';
-
-                var Coincidences    = 0,
-                    SameDatabasekey = false;
-
-                for(IndexR = 0; IndexR < RecordingsToCheck.length; IndexR++){
-                    /* VALIDACION 1 - Por databasekey si ya existe en la BD finaliza el proceso */
-
-                    if(RecordingsToCheck[IndexR].databasekey === ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].DBKY){
-                        SameDatabasekey = true;
-
-                        IndexR = RecordingsToCheck.length;
-                    } else {
-                        /* Obtiene el tiempo de las grabaciones ya agregadas en la base de datos en UTC */
-                        ProgramUtcStartDate_DB = parseInt(RecordingsToCheck[IndexR].utc_start,10);
-                        ProgramUtcEndDate_DB   = parseInt(RecordingsToCheck[IndexR].utc_final,10);
-
-                        //Debug('------ ProgramUtcStartDate: '+ProgramUtcStartDate + ' ProgramUtcEndDate: '+ProgramUtcEndDate);
-                        //Debug('****** ProgramUtcStartDate: '+ProgramUtcStartDate_DB + ' ProgramUtcEndDate: '+ProgramUtcEndDate_DB);
-
-                        /* Si la HoraIniProgAgregar es mayor a la HoraFinProgBd */
-                        if(ProgramUtcStartDate > ProgramUtcEndDate_DB){
-                            // 0 Coincidences
-                        }
-                        /* Else Si la HoraFinProgAgregar es menor a la HoraIniProgBD */
-                        if(ProgramUtcStartDate < ProgramUtcStartDate_DB){
-                            // 0 Coincidences
-                        }
-                        /* Else esta en el mismo rango de la hora inicio y final */
-                        if(ProgramUtcStartDate >= ProgramUtcStartDate_DB && ProgramUtcEndDate <= ProgramUtcEndDate_DB){
-                            Coincidences++;
-                            //Debug('// 1 Else esta en el mismo rango de la hora inicio y final::: Coincidences: '+Coincidences);
-                        }
-                        /* Else esta en el mismo rango de la hora inicio */
-                        else if(ProgramUtcStartDate > ProgramUtcStartDate_DB && ProgramUtcEndDate < (ProgramUtcStartDate_DB + SecondsRange)){
-                            Coincidences++;
-                            //Debug('// 2 Else esta en el mismo rango de la hora inicio::: Coincidences: '+Coincidences);
-                        }
-                        /* Else esta en el mismo rango de la hora inicio y final */
-                        else if(ProgramUtcEndDate < ProgramUtcEndDate_DB && ProgramUtcStartDate > (ProgramUtcEndDate_DB + SecondsRange)){
-                            Coincidences++;
-                            //Debug('// 3 Else esta en el mismo rango de la hora inicio y final::: Coincidences: '+Coincidences);
-                        }
-                    }
-                    //Debug('Coincidences: '+Coincidences);
-                    //Debug('-------------------------------------------------------------------');
-                }
-
-
-                if(Coincidences >= 2){
-                    if(ADD_SERIE_BCKG === false){
-                        ShowRecorderMessage('Reached the limit of schedules at the same time');
-                    }
-                } else {
-                    AddRecord();
-                }
-            } else {
-                AddRecord();
-            }
-        }
-    });
-}
-
-function CheckRecordings(){
-    $.ajax({
-        type: 'POST',
-        async: false,
-        url: 'Core/Controllers/Recorder.php',
-        data: {
-            Option     : 'RecordingsToRecord',
-            LocationId : Device['LocationId']
-        },
-        success: function (response){
-            RecordingsToCheck = $.parseJSON(response);
-
-            Debug('--------------------------------------->>0');
-            Debug(REC_CHNL_POS);
-            Debug(REC_PROG_POS);
-
-            // Convierte a UTC el tiempo inicio de la grabacion que se quiere agregar
-            var ProgramYear    = ChannelsJson[REC_CHNL_POS].DTNU.slice(0,4),
-                ProgramMonth   = ChannelsJson[REC_CHNL_POS].DTNU.slice(4,6),
-                ProgramDay     = ChannelsJson[REC_CHNL_POS].DTNU.slice(6,8),
-
-                ProgramStartHour   = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].STRH.slice(0,2),
-                ProgramStartMinute = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].STRH.slice(3,5),
-
-                ProgramEndHour     = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].FNLH.slice(0,2),
-                ProgramEndMinute   = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].FNLH.slice(3,5);
-
-            Debug('--------------------------------------->>1');
-            Debug(ProgramStartHour + ' '+ProgramStartMinute);
-            Debug(ProgramEndHour + ' '+ProgramEndMinute);
-
-            if(ProgramEndHour === '00' && parseInt(ProgramEndMinute) > 0){
-
-                Debug(ChannelsJson[REC_CHNL_POS].DTNU);
-
-                var dateString = ProgramYear+'-'+ProgramMonth+'-'+ProgramDay;
-
-                Debug(dateString);
-                var myDate = new Date(dateString);
-                Debug(myDate);
-                //add a day to the date
-                myDate.setDate(myDate.getDate() + 2);
-
-                //add a day to the date
-                Debug(myDate);
-
-
-            }
-
-
-
-            ProgramUtcStartDate = Date.UTC(ProgramYear, (ProgramMonth -1), ProgramDay, ProgramStartHour, ProgramStartMinute);
-            ProgramUtcEndDate = Date.UTC(ProgramYear, (ProgramMonth -1), ProgramDay, ProgramEndHour, ProgramEndMinute);
-            Debug('--------------------------------------->>2');
-            Debug(ProgramUtcStartDate);
-            Debug(ProgramUtcEndDate);
-
-            ProgramUtcStartDate = ProgramUtcStartDate / 1000;
-            ProgramUtcEndDate = ProgramUtcEndDate / 1000;
-            Debug('--------------------------------------->>3');
-            Debug(ProgramUtcStartDate);
-            Debug(ProgramUtcEndDate);
-
-            Debug('--------------------------------------->>3.1');
-            Debug(parseInt(REC_CHNL_POS));
-            Debug(OnloadProgramsPositions[RowSelected]);
-            Debug(EpgDayNumber);
-
-            if(parseInt(REC_PROG_POS) === OnloadProgramsPositions[RowSelected] && EpgDayNumber === 0){
-
-                var CurrentHour  = moment().format('HH:mm');
-                NewStartHour = moment(CurrentHour, 'HH:mm')
-                    .add(1, 'minutes')
-                    .format('HH:mm');
-
-                ProgramUtcStartDate = Date.UTC(ProgramYear, (ProgramMonth -1), ProgramDay, moment().format('HH'), moment().format('mm'));
-                ProgramUtcStartDate = ProgramUtcStartDate / 1000;
-
-                ProgramUtcStartDate = ProgramUtcStartDate + 100;
-
-                Debug('--------------------------------------->>3.2');
-                Debug(NewStartHour);
-                Debug(ProgramUtcStartDate);
-            } else {
-                NewStartHour = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].STRH;
-            }
-
-
-
-            NewEndHour = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].FNLH;
-
-            Debug('--------------------------------------->>4');
-            Debug(NewStartHour);
-            Debug(NewEndHour);
-
-            var CurrentUtcDate = Date.UTC(moment().format('Y'), (moment().format('MM') -1), moment().format('DD'), moment().format('HH'), moment().format('mm'));
-            CurrentUtcDate = CurrentUtcDate / 1000;
-
-            Debug('--------------------------------------->>5');
-            Debug(CurrentUtcDate);
-            Debug(ProgramUtcStartDate);
-
-
-            var TimeDiff = ProgramUtcStartDate - CurrentUtcDate;
-            Debug(TimeDiff);
-            if(TimeDiff < 0){
-                Debug('--------------------------------------->>5.1 FIN');
-            } else {
-
-                if(ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].DBKY === ''){
-                    NewDatabasekey  = 'PR'+ProgramStartHour+ProgramStartMinute+ProgramEndHour+ProgramEndMinute+ProgramMonth+ProgramDay;
-                } else {
-                    NewDatabasekey = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].DBKY;
-                }
-
-                /* Agregamos el tiempo offset -6 o -7 en segundos */
-                ProgramUtcStartDate = ProgramUtcStartDate + SecondsOffset;
-                ProgramUtcEndDate   = ProgramUtcEndDate + SecondsOffset;
-
-                Debug('--------------------------------------->>6');
-                Debug(ProgramUtcStartDate);
-                Debug(ProgramUtcEndDate);
-
-                if(RecordingsToCheck.length > 0){
-                    var IndexR                  = 0,
-                        ProgramUtcStartDate_DB  = '',
-                        ProgramUtcEndDate_DB    = '';
-
-                    var Coincidences    = 0,
-                        SameDatabasekey = false;
-
-                    for(IndexR = 0; IndexR < RecordingsToCheck.length; IndexR++){
-                        /* VALIDACION 1 - Por databasekey si ya existe en la BD finaliza el proceso */
-
-                        if(RecordingsToCheck[IndexR].databasekey === ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].DBKY){
-                            SameDatabasekey = true;
-
-                            IndexR = RecordingsToCheck.length;
-                        } else {
-                            /* Obtiene el tiempo de las grabaciones ya agregadas en la base de datos en UTC */
-                            ProgramUtcStartDate_DB = parseInt(RecordingsToCheck[IndexR].utc_start,10);
-                            ProgramUtcEndDate_DB   = parseInt(RecordingsToCheck[IndexR].utc_final,10);
-
-                            //Debug('------ ProgramUtcStartDate: '+ProgramUtcStartDate + ' ProgramUtcEndDate: '+ProgramUtcEndDate);
-                            //Debug('****** ProgramUtcStartDate: '+ProgramUtcStartDate_DB + ' ProgramUtcEndDate: '+ProgramUtcEndDate_DB);
-
-                            /* Si la HoraIniProgAgregar es mayor a la HoraFinProgBd */
-                            if(ProgramUtcStartDate > ProgramUtcEndDate_DB){
-                                // 0 Coincidences
-                            }
-                            /* Else Si la HoraFinProgAgregar es menor a la HoraIniProgBD */
-                            if(ProgramUtcStartDate < ProgramUtcStartDate_DB){
-                                // 0 Coincidences
-                            }
-                            /* Else esta en el mismo rango de la hora inicio y final */
-                            if(ProgramUtcStartDate >= ProgramUtcStartDate_DB && ProgramUtcEndDate <= ProgramUtcEndDate_DB){
-                                Coincidences++;
-                                //Debug('// 1 Else esta en el mismo rango de la hora inicio y final::: Coincidences: '+Coincidences);
-                            }
-                            /* Else esta en el mismo rango de la hora inicio */
-                            else if(ProgramUtcStartDate > ProgramUtcStartDate_DB && ProgramUtcEndDate < (ProgramUtcStartDate_DB + SecondsRange)){
-                                Coincidences++;
-                                //Debug('// 2 Else esta en el mismo rango de la hora inicio::: Coincidences: '+Coincidences);
-                            }
-                            /* Else esta en el mismo rango de la hora inicio y final */
-                            else if(ProgramUtcEndDate < ProgramUtcEndDate_DB && ProgramUtcStartDate > (ProgramUtcEndDate_DB + SecondsRange)){
-                                Coincidences++;
-                                //Debug('// 3 Else esta en el mismo rango de la hora inicio y final::: Coincidences: '+Coincidences);
-                            }
-                        }
-                        //Debug('Coincidences: '+Coincidences);
-                        //Debug('-------------------------------------------------------------------');
-                    }
-
-
-                    if(SameDatabasekey === true){
-                        if(ADD_SERIE_BCKG === false){
-                            ShowRecorderMessage('Program already added');
-                        }
-                    } else {
-                        if(Coincidences >= 2){
-                            if(ADD_SERIE_BCKG === false){
-                                ShowRecorderMessage('Reached the limit of schedules at the same time');
-                            }
-                        } else {
-                            AddRecord();
-                        }
-                    }
-                } else {
-                    AddRecord();
-                }
-            }
-        }
-    });
-}
-
-
-function AddRecord(){
-    SetMacAddressPvr();
-
-    $.ajax({
-        type: 'POST',
-        url: 'Core/Controllers/Recorder.php',
-        data: {
-            Option          : 'AddRecord',
-            LocationId      : Device['LocationId'],
-            MacAddressPvr   : MacAddressPvr,
-            OperationId     : OperationsList['record'],
-            Title           : ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].TTLE,
-            Databasekey     : NewDatabasekey,
-            Episode         : ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].EPSD,
-            Description     : ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].DSCR,
-            Rating          : ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].STRS,
-            Date            : ChannelsJson[REC_CHNL_POS].DTNU,
-            StarTime        : NewStartHour,
-            EndTime         : NewEndHour,
-            UtcStart        : ProgramUtcStartDate,
-            UtcEnd          : ProgramUtcEndDate,
-            ChannelSource   : ChannelsJson[REC_CHNL_POS].SRCE +':'+ChannelsJson[REC_PROG_POS].PORT
-        },
-        success: function (response){
-            if(ADD_SERIE_BCKG === false){
-                ShowRecorderMessage($.parseJSON(response));
-                CloseRecordingOptions();
-                CloseManualRecord();
-            }
-
-            Debug('AddRecord '+MacAddressPvr+' - '+ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].TTLE);
-        }
-    });
 }
 
 /*******************************************************************************
@@ -865,15 +346,23 @@ function SetPvrInfo(){
 
     if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
         var StorageInfo = [];
-        StorageInfo = PVR.GetStorageInfo();
-    }
 
-    if (typeof StorageInfo === 'undefined') {
+        if(typeof(ASTB) !== 'undefined') {
+            StorageInfo = PVR.GetStorageInfo();
+
+            AvailableSize = (parseInt(StorageInfo.availableSize,10)/ 1024);
+            TotalSize = (parseInt(StorageInfo.totalSize,10)/ 1024);
+
+        } else if(typeof(ENTONE) !== 'undefined'){
+            StorageInfo = ENTONE.recorder.getStorageInfo();
+
+            TotalSize = (StorageInfo.pvrTotalSpace / 1024) / 1024;
+            AvailableSize = (StorageInfo.pvrFreeSpace / 1024) / 1024;
+
+        }
+    } else {
         AvailableSize  = (parseInt(DiskInfo[DiskInfoIndex].espacio_disponible,10) / 1024);
         TotalSize = (parseInt(DiskInfo[DiskInfoIndex].espacio_total,10) / 1024);
-    } else {
-        AvailableSize = (parseInt(StorageInfo.availableSize,10)/ 1024);
-        TotalSize = (parseInt(StorageInfo.totalSize,10)/ 1024);
     }
 
     AvailableSize  = (AvailableSize / 1024).toFixed(2);
@@ -925,7 +414,8 @@ function SetRecordings(Direction){
             }
         }
 
-        var ActiveRec = '';
+        var ActiveRec = '',
+            LastChr = '';
         for (Row = 1; Row <= 19; Row++) {
 
             IndexRecorded++;
@@ -941,13 +431,20 @@ function SetRecordings(Direction){
                 } else {
                     Icon = '<i class="fa fa-file"></i>';
                     Title = 'rec';
-                }
 
-                if(RecordingsList[IndexRecorded][1].active === '1'){
-                    ActiveRec = ' (recording)';
-                    Icon = '<i class="fa fa-circle" id="IconRecording"></i>';
-                } else {
-                    ActiveRec = '';
+                    if(RecordingsList[IndexRecorded][1].active === '1'){
+                        ActiveRec = ' (recording)';
+                        Icon = '<i class="fa fa-circle" id="IconRecording"></i>';
+                    } else {
+                        LastChr = RecordingsList[IndexRecorded][1].url;
+
+                        if(LastChr.substr(LastChr.length - 1) === '0'){
+                            ActiveRec = ' (scheduled)';
+                            Icon = '<i class="fa fa-chevron-right" id="IconRecording"></i>';
+                        } else {
+                            ActiveRec = '';
+                        }
+                    }
                 }
 
                 PvrListNodes[Row].innerHTML = Icon + ' '+ RecordingsList[IndexRecorded][IndexProgram] + ActiveRec;
@@ -1173,109 +670,6 @@ function SelectDeleteOption(){
             HideDeleteOption();
             break;
     }
-}
-
-
-/*******************************************************************************
- * Elimina logicamente la grabacion en la base de datos
- *******************************************************************************/
-
-function SetDeleteProgram(){
-    LastPvrRowFocus = PvrRowFocus ;
-
-    var ProgramId = '';
-
-    if(OptionPanel === 'Recordings'){
-        ProgramId = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].id;
-    } else {
-        ProgramId = SchedulesList[IndexScheduleFocus][IndexScheduleProgFocus].id;
-    }
-
-    $.ajax({
-        type: 'POST',
-        url: 'Core/Controllers/Recorder.php',
-        data: {
-            Option          : 'SetDeleteProgram',
-            OperationId     : OperationsList['delete'],
-            ProgramId       : ProgramId
-        },
-        success: function (response){
-
-            Response = $.parseJSON(response);
-
-            ShowRecorderMessage(Response.Message);
-
-            if(Response.Update === true && PlayingRecording === false){
-
-                if(OptionPanel === 'Recordings'){
-                    GetRecordings();
-
-                    FirstIndexRecorded--;
-
-                    IndexRecordedFocus = FirstIndexRecorded;
-
-                    ListTypeFocus = 'all';
-
-                    SetRecordings('');
-
-                    PvrRowFocus = LastPvrRowFocus;
-
-                    SetFocusRecordings();
-                } else {
-                    GetSchedules();
-
-                    FirstIndexSchedule--;
-
-                    IndexScheduleFocus = FirstIndexSchedule;
-
-                    ListTypeFocus = 'all';
-
-                    SetSchedules('');
-
-                    PvrRowFocus = LastPvrRowFocus;
-
-                    SetFocusSchedules();
-                }
-            }
-        }
-    });
-}
-
-/*******************************************************************************
- * Elimina de la lista la serie
- *******************************************************************************/
-
-function DeleteSerie(){
-    LastPvrRowFocus = PvrRowFocus ;
-
-    Debug('IndexSerieFocus: '+IndexSerieFocus);
-    $.ajax({
-        type: 'POST',
-        url: 'Core/Controllers/Recorder.php',
-        data: {
-            Option  : 'DeleteSerie',
-            SerieId : SeriesList[IndexSerieFocus].id_serie
-        },
-        success: function (response){
-
-            Response = $.parseJSON(response);
-
-            ShowRecorderMessage(Response.Message);
-
-            if(Response.Delete === true){
-
-                GetSeries();
-
-                FirstIndexSerie--;
-
-                IndexSerieFocus = FirstIndexSerie;
-
-                SetSeries('');
-
-                PvrRowFocus = LastPvrRowFocus;
-            }
-        }
-    });
 }
 
 /*******************************************************************************
@@ -2231,4 +1625,628 @@ function PvrClose(){
     } else {
         ClosePvr();
     }
+}
+
+/******************************************************************************************************************************************************************
+ *  AJAX!
+ ******************************************************************************************************************************************************************/
+
+/*******************************************************************************
+ * Agrega programa en serie
+ *******************************************************************************/
+
+function SetMacAddressPvr(){
+    // Elige aleatoriamente la mac addres donde se guardara la serie en caso de que haya mas de un grabador
+    if(Device['Type'] === 'WHP_HDDN'){
+        if(Device['MacAddressPvr'].length > 1){
+            var RandomMac = getRandomInt(0,Device['MacAddressPvr'].length);
+            MacAddressPvr = Device['MacAddressPvr'][RandomMac];
+        } else {
+            MacAddressPvr = Device['MacAddressPvr'][0];
+        }
+    }
+}
+
+function AddSerie(){
+    Debug('---- AddSerie');
+    SetMacAddressPvr();
+
+    $.ajax({
+        type: 'POST',
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option     : 'AddSerie',
+            LocationId : Device['LocationId'],
+            MacAddressPvr : MacAddressPvr,
+            OperationId : OperationsList['record'],
+            TitleSerie : ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].TTLE,
+            Channel : ChannelsJson[FocusChannelPosition].CHNL + ' - ' +ChannelsJson[FocusChannelPosition].INDC,
+            Position : parseInt(FocusChannelPosition,10)
+        },
+        success: function (response){
+            ShowRecorderMessage($.parseJSON(response));
+            CloseRecordingOptions();
+
+            GetProgramsSerie();
+        }
+    });
+}
+
+/*******************************************************************************
+ *
+ *******************************************************************************/
+
+function GetProgramsSerie(){
+    Debug('::::::::::::::::::::::::: GetProgramsSerie::: ');
+    GetSeries();
+
+    var IndexS = 0,
+        IndexP = 0,
+        Position = 0;
+
+    Debug('SeriesList.length::: ' + SeriesList.length);
+
+    if(EpgDataActive === true && SeriesList.length > 0){
+
+        ADD_SERIE_BCKG = true;
+
+        for(IndexS = 0; IndexS < SeriesList.length; IndexS++){
+
+            Position = SeriesList[IndexS].posicion;
+            Debug('Pos::: '+Position);
+
+
+            if(ChannelsJsonToday.length === 0){
+                for(IndexP = 0; IndexP < ChannelsJson[Position].P_Length; IndexP++){
+                    if(SeriesList[IndexS].titulo === ChannelsJson[Position].PROGRAMS[IndexP].TTLE){
+                        Debug('*-*-*-*-*- Encontro coincidencia: '+ChannelsJson[Position].PROGRAMS[IndexP].TTLE + ' ' +ChannelsJson[Position].PROGRAMS[IndexP].DBKY);
+
+                        REC_CHNL_POS = Position;
+                        REC_PROG_POS = IndexP;
+
+                        CheckRecordings();
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*******************************************************************************
+ * Agrega programa
+ *******************************************************************************/
+function GetRecordings(){
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option     : 'RecordingsList',
+            LocationId : Device['LocationId'],
+            MacAddress : MacAddress
+        },
+        success: function (response){
+            RecordingsList = $.parseJSON(response);
+        }
+    });
+}
+
+function GetSchedules(){
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option     : 'SchedulesList',
+            LocationId : Device['LocationId']
+        },
+        success: function (response){
+            SchedulesList = $.parseJSON(response);
+        }
+    });
+}
+
+function GetSeries(){
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option     : 'SeriesList',
+            LocationId : Device['LocationId']
+        },
+        success: function (response){
+            SeriesList = $.parseJSON(response);
+        }
+    });
+}
+
+function GetRecordingsToRecord(){
+    $.ajax({
+        type: 'POST',
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option     : 'RecordingsToRecord',
+            LocationId : Device['LocationId']
+        },
+        success: function (response){
+            RecordingsToCheck = $.parseJSON(response);
+        }
+    });
+}
+
+function GetPvrInfo(){
+    if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
+        SetPvrInfo();
+    } else {
+        $.ajax({
+            type: 'POST',
+            url: 'Core/Controllers/Recorder.php',
+            data: {
+                Option     : 'GetPvrInfo',
+                LocationId : Device['LocationId'],
+                MacAddress : MacAddress
+            },
+            success: function (response){
+                DiskInfo = $.parseJSON(response);
+
+                if(DiskInfo.length > 0){
+                    SetPvrInfo();
+                }
+            }
+        });
+    }
+}
+
+function CheckManualRecording(){
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option     : 'RecordingsToRecord',
+            LocationId : Device['LocationId']
+        },
+        success: function (response){
+            RecordingsToCheck = $.parseJSON(response);
+
+            // Convierte a UTC el tiempo inicio de la grabacion que se quiere agregar
+            var ProgramYear    = ChannelsJson[REC_CHNL_POS].DTNU.slice(0,4),
+                ProgramMonth   = ChannelsJson[REC_CHNL_POS].DTNU.slice(4,6),
+                ProgramDay     = ChannelsJson[REC_CHNL_POS].DTNU.slice(6,8);
+
+
+
+            var ProgramStart = Time12to24(ManualHour+':'+ManualMinute+' '+ManualListIndicator[ManualIndicator].toLowerCase());
+            var ProgramEnd   = moment(ProgramStart, 'HH:mm').add(ManualListMinutes[ManualTime], 'minutes').format('HH:mm');
+
+            var ProgramStartHour    = pad(ProgramStart.slice(0,2),2),
+                ProgramStartMinute  = pad(ProgramStart.slice(3,5),2),
+                ProgramEndHour      = ProgramEnd.slice(0,2),
+                ProgramEndMinute    = ProgramEnd.slice(3,5);
+
+            ProgramUtcStartDate = Date.UTC(ProgramYear, (ProgramMonth -1), ProgramDay, ProgramStartHour, ProgramStartMinute);
+            ProgramUtcEndDate   = Date.UTC(ProgramYear, (ProgramMonth -1), ProgramDay, ProgramEndHour, ProgramEndMinute);
+
+            ProgramUtcStartDate = ProgramUtcStartDate / 1000;
+            ProgramUtcEndDate = ProgramUtcEndDate / 1000;
+
+            NewStartHour = ProgramStart;
+            NewEndHour   = ProgramEnd;
+
+
+            var CurrentUtcDate = Date.UTC(moment().format('Y'), (moment().format('MM') -1), moment().format('DD'), moment().format('HH'), moment().format('mm'));
+            CurrentUtcDate = CurrentUtcDate / 1000;
+
+            if(ProgramUtcStartDate < CurrentUtcDate){
+                Coincidences = 2;
+            }
+
+            /* Agregamos el tiempo offset -6 o -7 en segundos */
+            ProgramUtcStartDate = ProgramUtcStartDate + SecondsOffset;
+            ProgramUtcEndDate   = ProgramUtcEndDate + SecondsOffset;
+
+            if(ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].DBKY === ''){
+                NewDatabasekey  = 'PR'+ProgramStartHour+ProgramStartMinute+ProgramEndHour+ProgramEndMinute+ProgramMonth+ProgramDay;
+            } else {
+                NewDatabasekey = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].DBKY;
+            }
+
+            if(RecordingsToCheck.length > 0){
+                var IndexR                  = 0,
+                    ProgramUtcStartDate_DB  = '',
+                    ProgramUtcEndDate_DB    = '';
+
+                var Coincidences    = 0,
+                    SameDatabasekey = false;
+
+                for(IndexR = 0; IndexR < RecordingsToCheck.length; IndexR++){
+                    /* VALIDACION 1 - Por databasekey si ya existe en la BD finaliza el proceso */
+
+                    if(RecordingsToCheck[IndexR].databasekey === ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].DBKY){
+                        SameDatabasekey = true;
+
+                        IndexR = RecordingsToCheck.length;
+                    } else {
+                        /* Obtiene el tiempo de las grabaciones ya agregadas en la base de datos en UTC */
+                        ProgramUtcStartDate_DB = parseInt(RecordingsToCheck[IndexR].utc_start,10);
+                        ProgramUtcEndDate_DB   = parseInt(RecordingsToCheck[IndexR].utc_final,10);
+
+                        //Debug('------ ProgramUtcStartDate: '+ProgramUtcStartDate + ' ProgramUtcEndDate: '+ProgramUtcEndDate);
+                        //Debug('****** ProgramUtcStartDate: '+ProgramUtcStartDate_DB + ' ProgramUtcEndDate: '+ProgramUtcEndDate_DB);
+
+                        /* Si la HoraIniProgAgregar es mayor a la HoraFinProgBd */
+                        if(ProgramUtcStartDate > ProgramUtcEndDate_DB){
+                            // 0 Coincidences
+                        }
+                        /* Else Si la HoraFinProgAgregar es menor a la HoraIniProgBD */
+                        if(ProgramUtcStartDate < ProgramUtcStartDate_DB){
+                            // 0 Coincidences
+                        }
+                        /* Else esta en el mismo rango de la hora inicio y final */
+                        if(ProgramUtcStartDate >= ProgramUtcStartDate_DB && ProgramUtcEndDate <= ProgramUtcEndDate_DB){
+                            Coincidences++;
+                            //Debug('// 1 Else esta en el mismo rango de la hora inicio y final::: Coincidences: '+Coincidences);
+                        }
+                        /* Else esta en el mismo rango de la hora inicio */
+                        else if(ProgramUtcStartDate > ProgramUtcStartDate_DB && ProgramUtcEndDate < (ProgramUtcStartDate_DB + SecondsRange)){
+                            Coincidences++;
+                            //Debug('// 2 Else esta en el mismo rango de la hora inicio::: Coincidences: '+Coincidences);
+                        }
+                        /* Else esta en el mismo rango de la hora inicio y final */
+                        else if(ProgramUtcEndDate < ProgramUtcEndDate_DB && ProgramUtcStartDate > (ProgramUtcEndDate_DB + SecondsRange)){
+                            Coincidences++;
+                            //Debug('// 3 Else esta en el mismo rango de la hora inicio y final::: Coincidences: '+Coincidences);
+                        }
+                    }
+                    //Debug('Coincidences: '+Coincidences);
+                    //Debug('-------------------------------------------------------------------');
+                }
+
+
+                if(Coincidences >= 2){
+                    if(ADD_SERIE_BCKG === false){
+                        ShowRecorderMessage('Reached the limit of schedules at the same time');
+                    }
+                } else {
+                    AddRecord();
+                }
+            } else {
+                AddRecord();
+            }
+        }
+    });
+}
+
+function CheckRecordings(){
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option     : 'RecordingsToRecord',
+            LocationId : Device['LocationId']
+        },
+        success: function (response){
+            RecordingsToCheck = $.parseJSON(response);
+
+            Debug('--------------------------------------->>0');
+            Debug(REC_CHNL_POS);
+            Debug(REC_PROG_POS);
+
+            // Convierte a UTC el tiempo inicio de la grabacion que se quiere agregar
+            var ProgramYear    = ChannelsJson[REC_CHNL_POS].DTNU.slice(0,4),
+                ProgramMonth   = ChannelsJson[REC_CHNL_POS].DTNU.slice(4,6),
+                ProgramDay     = ChannelsJson[REC_CHNL_POS].DTNU.slice(6,8),
+
+                ProgramStartHour   = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].STRH.slice(0,2),
+                ProgramStartMinute = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].STRH.slice(3,5),
+
+                ProgramEndHour     = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].FNLH.slice(0,2),
+                ProgramEndMinute   = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].FNLH.slice(3,5);
+
+            Debug('--------------------------------------->>1');
+            Debug(ProgramStartHour + ' '+ProgramStartMinute);
+            Debug(ProgramEndHour + ' '+ProgramEndMinute);
+
+            ProgramUtcStartDate = Date.UTC(ProgramYear, (ProgramMonth -1), ProgramDay, ProgramStartHour, ProgramStartMinute);
+
+            Debug('--------------------------------------->>2');
+            Debug(ProgramUtcStartDate);
+            Debug(ProgramUtcEndDate);
+
+            ProgramUtcStartDate = ProgramUtcStartDate / 1000;
+
+            if(parseInt(REC_PROG_POS) === LastProgramsPositions[RowSelected]){
+                Debug('--------------------------------------->>2.1 ');
+                var ProgramSeconds   = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].MNTS * 60;
+                Debug(ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].MNTS);
+                Debug(ProgramSeconds);
+                ProgramUtcEndDate = ProgramUtcStartDate + ProgramSeconds;
+            } else {
+                Debug('--------------------------------------->>2.2 ');
+                ProgramUtcEndDate = Date.UTC(ProgramYear, (ProgramMonth -1), ProgramDay, ProgramEndHour, ProgramEndMinute);
+                ProgramUtcEndDate = ProgramUtcEndDate / 1000;
+            }
+
+            Debug('--------------------------------------->>3');
+            Debug(ProgramUtcStartDate);
+            Debug(ProgramUtcEndDate);
+
+            Debug('--------------------------------------->>3.1');
+            Debug(parseInt(REC_CHNL_POS));
+            Debug(OnloadProgramsPositions[RowSelected]);
+            Debug(EpgDayNumber);
+
+            if(parseInt(REC_PROG_POS) === OnloadProgramsPositions[RowSelected] && EpgDayNumber === 0){
+
+                var CurrentHour  = moment().format('HH:mm');
+                NewStartHour = moment(CurrentHour, 'HH:mm')
+                    .add(1, 'minutes')
+                    .format('HH:mm');
+
+                ProgramUtcStartDate = Date.UTC(ProgramYear, (ProgramMonth -1), ProgramDay, moment().format('HH'), moment().format('mm'));
+                ProgramUtcStartDate = ProgramUtcStartDate / 1000;
+
+                ProgramUtcStartDate = ProgramUtcStartDate + 100;
+
+                Debug('--------------------------------------->>3.2');
+                Debug(NewStartHour);
+                Debug(ProgramUtcStartDate);
+
+
+            } else {
+                NewStartHour = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].STRH;
+            }
+
+
+
+            NewEndHour = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].FNLH;
+
+            Debug('--------------------------------------->>4');
+            Debug(NewStartHour);
+            Debug(NewEndHour);
+
+            var CurrentUtcDate = Date.UTC(moment().format('Y'), (moment().format('MM') -1), moment().format('DD'), moment().format('HH'), moment().format('mm'));
+            CurrentUtcDate = CurrentUtcDate / 1000;
+
+            Debug('--------------------------------------->>5');
+            Debug(CurrentUtcDate);
+            Debug(ProgramUtcStartDate);
+
+
+            var TimeDiff = ProgramUtcStartDate - CurrentUtcDate;
+            Debug(TimeDiff);
+
+            var TimeDiffEnd = ProgramUtcEndDate - ProgramUtcStartDate;
+            Debug(TimeDiffEnd);
+
+            if(TimeDiff < 0 || TimeDiffEnd < 0){
+                Debug('--------------------------------------->>5.1 FIN');
+                ShowRecorderMessage('The program has already been broadcast ');
+            } else {
+
+                if(ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].DBKY === ''){
+                    NewDatabasekey  = 'PR'+ProgramStartHour+ProgramStartMinute+ProgramEndHour+ProgramEndMinute+ProgramMonth+ProgramDay;
+                } else {
+                    NewDatabasekey = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].DBKY;
+                }
+
+                /* Agregamos el tiempo offset -6 o -7 en segundos */
+                ProgramUtcStartDate = ProgramUtcStartDate + SecondsOffset;
+                ProgramUtcEndDate   = ProgramUtcEndDate + SecondsOffset;
+
+                Debug('--------------------------------------->>6');
+                Debug(ProgramUtcStartDate);
+                Debug(ProgramUtcEndDate);
+
+                if(RecordingsToCheck.length > 0){
+                    var IndexR                  = 0,
+                        ProgramUtcStartDate_DB  = '',
+                        ProgramUtcEndDate_DB    = '';
+
+                    var Coincidences    = 0,
+                        SameDatabasekey = false;
+
+                    for(IndexR = 0; IndexR < RecordingsToCheck.length; IndexR++){
+                        /* VALIDACION 1 - Por databasekey si ya existe en la BD finaliza el proceso */
+
+                        if(RecordingsToCheck[IndexR].databasekey === ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].DBKY){
+                            SameDatabasekey = true;
+
+                            IndexR = RecordingsToCheck.length;
+                        } else {
+                            /* Obtiene el tiempo de las grabaciones ya agregadas en la base de datos en UTC */
+                            ProgramUtcStartDate_DB = parseInt(RecordingsToCheck[IndexR].utc_start,10);
+                            ProgramUtcEndDate_DB   = parseInt(RecordingsToCheck[IndexR].utc_final,10);
+
+                            //Debug('------ ProgramUtcStartDate: '+ProgramUtcStartDate + ' ProgramUtcEndDate: '+ProgramUtcEndDate);
+                            //Debug('****** ProgramUtcStartDate: '+ProgramUtcStartDate_DB + ' ProgramUtcEndDate: '+ProgramUtcEndDate_DB);
+
+                            /* Si la HoraIniProgAgregar es mayor a la HoraFinProgBd */
+                            if(ProgramUtcStartDate > ProgramUtcEndDate_DB){
+                                // 0 Coincidences
+                            }
+                            /* Else Si la HoraFinProgAgregar es menor a la HoraIniProgBD */
+                            if(ProgramUtcStartDate < ProgramUtcStartDate_DB){
+                                // 0 Coincidences
+                            }
+                            /* Else esta en el mismo rango de la hora inicio y final */
+                            if(ProgramUtcStartDate >= ProgramUtcStartDate_DB && ProgramUtcEndDate <= ProgramUtcEndDate_DB){
+                                Coincidences++;
+                                //Debug('// 1 Else esta en el mismo rango de la hora inicio y final::: Coincidences: '+Coincidences);
+                            }
+                            /* Else esta en el mismo rango de la hora inicio */
+                            else if(ProgramUtcStartDate > ProgramUtcStartDate_DB && ProgramUtcEndDate < (ProgramUtcStartDate_DB + SecondsRange)){
+                                Coincidences++;
+                                //Debug('// 2 Else esta en el mismo rango de la hora inicio::: Coincidences: '+Coincidences);
+                            }
+                            /* Else esta en el mismo rango de la hora inicio y final */
+                            else if(ProgramUtcEndDate < ProgramUtcEndDate_DB && ProgramUtcStartDate > (ProgramUtcEndDate_DB + SecondsRange)){
+                                Coincidences++;
+                                //Debug('// 3 Else esta en el mismo rango de la hora inicio y final::: Coincidences: '+Coincidences);
+                            }
+                        }
+                        //Debug('Coincidences: '+Coincidences);
+                        //Debug('-------------------------------------------------------------------');
+                    }
+
+
+                    if(SameDatabasekey === true){
+                        if(ADD_SERIE_BCKG === false){
+                            ShowRecorderMessage('Program already added');
+                        }
+                    } else {
+                        if(Coincidences >= 2){
+                            if(ADD_SERIE_BCKG === false){
+                                ShowRecorderMessage('Reached the limit of schedules at the same time');
+                            }
+                        } else {
+                            AddRecord();
+                        }
+                    }
+                } else {
+                    AddRecord();
+                }
+            }
+        }
+    });
+}
+
+
+function AddRecord(){
+    SetMacAddressPvr();
+
+    $.ajax({
+        type: 'POST',
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option          : 'AddRecord',
+            LocationId      : Device['LocationId'],
+            MacAddressPvr   : MacAddressPvr,
+            OperationId     : OperationsList['record'],
+            Title           : ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].TTLE,
+            Databasekey     : NewDatabasekey,
+            Episode         : ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].EPSD,
+            Description     : ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].DSCR,
+            Rating          : ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].STRS,
+            Date            : ChannelsJson[REC_CHNL_POS].DTNU,
+            StarTime        : NewStartHour,
+            EndTime         : NewEndHour,
+            UtcStart        : ProgramUtcStartDate,
+            UtcEnd          : ProgramUtcEndDate,
+            ChannelSource   : ChannelsJson[REC_CHNL_POS].SRCE +':'+ChannelsJson[REC_PROG_POS].PORT
+        },
+        success: function (response){
+            if(ADD_SERIE_BCKG === false){
+                ShowRecorderMessage($.parseJSON(response));
+                CloseRecordingOptions();
+                CloseManualRecord();
+            }
+
+            Debug('AddRecord '+MacAddressPvr+' - '+ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].TTLE);
+        }
+    });
+}
+
+/*******************************************************************************
+ * Elimina logicamente la grabacion en la base de datos
+ *******************************************************************************/
+
+function SetDeleteProgram(){
+    LastPvrRowFocus = PvrRowFocus ;
+
+    var ProgramId = '';
+
+    if(OptionPanel === 'Recordings'){
+        ProgramId = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].id;
+    } else {
+        ProgramId = SchedulesList[IndexScheduleFocus][IndexScheduleProgFocus].id;
+    }
+
+    $.ajax({
+        type: 'POST',
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option          : 'SetDeleteProgram',
+            OperationId     : OperationsList['delete'],
+            ProgramId       : ProgramId
+        },
+        success: function (response){
+
+            Response = $.parseJSON(response);
+
+            ShowRecorderMessage(Response.Message);
+
+            if(Response.Update === true && PlayingRecording === false){
+
+                if(OptionPanel === 'Recordings'){
+                    GetRecordings();
+
+                    FirstIndexRecorded--;
+
+                    IndexRecordedFocus = FirstIndexRecorded;
+
+                    ListTypeFocus = 'all';
+
+                    SetRecordings('');
+
+                    PvrRowFocus = LastPvrRowFocus;
+
+                    SetFocusRecordings();
+                } else {
+                    GetSchedules();
+
+                    FirstIndexSchedule--;
+
+                    IndexScheduleFocus = FirstIndexSchedule;
+
+                    ListTypeFocus = 'all';
+
+                    SetSchedules('');
+
+                    PvrRowFocus = LastPvrRowFocus;
+
+                    SetFocusSchedules();
+                }
+            }
+        }
+    });
+}
+
+/*******************************************************************************
+ * Elimina de la lista la serie
+ *******************************************************************************/
+
+function DeleteSerie(){
+    LastPvrRowFocus = PvrRowFocus ;
+
+    Debug('IndexSerieFocus: '+IndexSerieFocus);
+    $.ajax({
+        type: 'POST',
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option  : 'DeleteSerie',
+            SerieId : SeriesList[IndexSerieFocus].id_serie
+        },
+        success: function (response){
+
+            Response = $.parseJSON(response);
+
+            ShowRecorderMessage(Response.Message);
+
+            if(Response.Delete === true){
+
+                GetSeries();
+
+                FirstIndexSerie--;
+
+                IndexSerieFocus = FirstIndexSerie;
+
+                SetSeries('');
+
+                PvrRowFocus = LastPvrRowFocus;
+            }
+        }
+    });
 }
