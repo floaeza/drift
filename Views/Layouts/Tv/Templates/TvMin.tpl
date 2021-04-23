@@ -129,7 +129,10 @@
 
 <!-- Panel grabador -->
 <div id='PvrContainer'>
-    <div id='EpgMainLogo'></div>
+    <div id='PvrLogoContainer'>
+        <div id='PvrMainLogo'></div>
+    </div>
+
     <div id='PvrDiskInfo'>
         <div id='UsedSize'></div>
         <div class='BarUsedSize'></div>

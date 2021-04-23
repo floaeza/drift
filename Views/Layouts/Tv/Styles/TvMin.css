@@ -34,6 +34,21 @@ and open the template in the editor.
     padding-right: 1%;
 }
 
+div#PvrLogoContainer {
+
+}
+
+#PvrMainLogo {
+    position: fixed;
+    width: 15%;
+    height: 31%;
+    top: 9%;
+    right: 2%;
+    background-image: url('/BBINCOTV/IPTV/Media/Logos/MainLogo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 div#EpgContainer {
     width: 100%;
     height: 100%;
