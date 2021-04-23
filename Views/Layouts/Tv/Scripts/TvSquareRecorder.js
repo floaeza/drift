@@ -357,8 +357,8 @@ function SetPvrInfo(){
             StorageInfo = ENTONE.recorder.getStorageInfo();
                 Debug(StorageInfo.pvrTotalSpace);
             Debug(StorageInfo.pvrFreeSpace);
-             TotalSize = StorageInfo.pvrTotalSpace / 2048;
-             AvailableSize = StorageInfo.pvrFreeSpace / 2048;
+             TotalSize = StorageInfo.pvrTotalSpace;
+             AvailableSize = StorageInfo.pvrFreeSpace;
 
              Debug(TotalSize);
              Debug(AvailableSize);
