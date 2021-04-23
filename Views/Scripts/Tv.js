@@ -406,7 +406,7 @@
 
     function NumericChange(Key){
 
-        Debug(Key);
+        Debug('Key: '+Key);
         if(ActiveEpgContainer === false){
             /* Limpiamos el timer */
             clearTimeout(NumericChangeTimer);
@@ -420,6 +420,7 @@
                 ChannelToChange = ChannelToChange + Key;
             }
 
+            Debug('ChannelToChange: '+ChannelToChange);
             if(ChannelToChange > ChannelMax){
                 /* Si excede el numero de canales maximo limpia el timer y regrese a su valor inicial el numero a cambiar */
                 clearTimeout(NumericChangeTimer);
