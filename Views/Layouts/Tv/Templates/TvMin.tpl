@@ -43,10 +43,14 @@
         <div id='ChannelRow3'><p class='ChannelNumber'></p><p class='ChannelName'></p></div>
         <div id='ChannelRow4'><p class='ChannelNumber'></p><p class='ChannelName'></p></div>
         <div id='ChannelRow5'><p class='ChannelNumber'></p><p class='ChannelName'></p></div>
+        <div id='ChannelRow6'><p class='ChannelNumber'></p><p class='ChannelName'></p></div>
+        <div id='ChannelRow7'><p class='ChannelNumber'></p><p class='ChannelName'></p></div>
     </div>
 
     <!-- Contiene las horas en la guia  -->
     <div id='EpgHours'>
+        <div class='HourRow'></div>
+        <div class='HourRow'></div>
         <div class='HourRow'></div>
         <div class='HourRow'></div>
         <div class='HourRow'></div>

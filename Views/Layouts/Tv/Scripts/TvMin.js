@@ -23,9 +23,9 @@ var TotalPrograms           = 100,
 var HourRows                = 1,
     MaxHourRows             = 5;
 
-var OnloadProgramsPositions = { 1:-1, 2:-1, 3:-1, 4:-1, 5:-1 },
-    FirstProgramsPositions  = { 1:-1, 2:-1, 3:-1, 4:-1, 5:-1 },
-    LastProgramsPositions   = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 },
+var OnloadProgramsPositions = { 1:-1, 2:-1, 3:-1, 4:-1, 5:-1, 6:-1, 7:-1 },
+    FirstProgramsPositions  = { 1:-1, 2:-1, 3:-1, 4:-1, 5:-1, 6:-1, 7:-1 },
+    LastProgramsPositions   = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6:-1, 7:-1 },
     FirstChannelPosition    = 0,
     CurrentChannelPosition  = 0,
     LastChannelPosition     = 0;
@@ -157,9 +157,9 @@ function CloseEpg(){
         EpgContainer.style.visibility = 'hidden';
         ActiveEpgContainer = false;
 
-        OnloadProgramsPositions = { 1:-1, 2:-1, 3:-1, 4:-1, 5:-1 };
-        FirstProgramsPositions  = { 1:-1, 2:-1, 3:-1, 4:-1, 5:-1 };
-        LastProgramsPositions   = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+        OnloadProgramsPositions = { 1:-1, 2:-1, 3:-1, 4:-1, 5:-1, 6:-1, 7:-1 };
+        FirstProgramsPositions  = { 1:-1, 2:-1, 3:-1, 4:-1, 5:-1, 6:-1, 7:-1 };
+        LastProgramsPositions   = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6:-1, 7:-1 };
         FirstChannelPosition    = 0;
         CurrentChannelPosition  = 0;
         LastChannelPosition     = 0;
@@ -199,9 +199,9 @@ function CloseEpg(){
 
 function ClearEpg(){
     ActiveEpgContainer      = false;
-    OnloadProgramsPositions = { 1:-1, 2:-1, 3:-1, 4:-1, 5:-1 };
-    FirstProgramsPositions  = { 1:-1, 2:-1, 3:-1, 4:-1, 5:-1 };
-    LastProgramsPositions   = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+    OnloadProgramsPositions = { 1:-1, 2:-1, 3:-1, 4:-1, 5:-1, 6:-1, 7:-1 };
+    FirstProgramsPositions  = { 1:-1, 2:-1, 3:-1, 4:-1, 5:-1, 6:-1, 7:-1 };
+    LastProgramsPositions   = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6:-1, 7:-1 };
     //FirstChannelPosition    = 0;
     LastChannelPosition     = 0;
 
@@ -802,7 +802,7 @@ function ProgramLeft(){
 
             var NewCurrentHourPosition = CurrentHourPosition;
 
-            NewCurrentHourPosition -= 5;
+            NewCurrentHourPosition -= 7;
 
             BuildProgramsRow(NewCurrentHourPosition, FirstChannelPosition);
 
@@ -833,7 +833,7 @@ function ProgramLeft(){
 
         var NewCurrentHourPosition = CurrentHourPosition;
 
-        NewCurrentHourPosition -= 5;
+        NewCurrentHourPosition -= 7;
 
         BuildProgramsRow(NewCurrentHourPosition, FirstChannelPosition);
 
@@ -856,7 +856,7 @@ function ProgramLeft(){
  *******************************************************************************/
 
 function ProgramDown(){
-    if(RowSelected === 5){
+    if(RowSelected === 7){
 
         ++LastChannelPosition;
 
@@ -868,7 +868,7 @@ function ProgramDown(){
 
         var TmpCurrentHourPosition = CurrentHourPosition;
 
-        FirstProgramsPositions = { 1:-1, 2:-1, 3:-1, 4:-1, 5:-1 };
+        FirstProgramsPositions = { 1:-1, 2:-1, 3:-1, 4:-1, 5:-1, 6:-1, 7:-1 };
 
         BuildProgramsRow(OnLoadHourPosition, LastChannelPosition);
 
@@ -914,7 +914,7 @@ function PageDown(){
 
     var TmpCurrentHourPosition = CurrentHourPosition;
 
-    FirstProgramsPositions = { 1:-1, 2:-1, 3:-1, 4:-1, 5:-1 };
+    FirstProgramsPositions = { 1:-1, 2:-1, 3:-1, 4:-1, 5:-1, 6:-1, 7:-1 };
 
     BuildProgramsRow(OnLoadHourPosition, LastChannelPosition);
 
@@ -939,23 +939,23 @@ function PageDown(){
 function ProgramUp(){
     if(RowSelected === 1){
 
-        FirstChannelPosition -= 5;
+        FirstChannelPosition -= 7;
 
         if(FirstChannelPosition < 0){
-            FirstChannelPosition = ChannelsLength - 4;
+            FirstChannelPosition = ChannelsLength - 6;
         }
 
         UnfocusEpgProgram(RowSelected,ProgramSelected);
 
         var TmpCurrentHourPosition = CurrentHourPosition;
 
-        FirstProgramsPositions = { 1:-1, 2:-1, 3:-1, 4:-1, 5:-1 };
+        FirstProgramsPositions = { 1:-1, 2:-1, 3:-1, 4:-1, 5:-1, 6:-1, 7:-1 };
 
         BuildProgramsRow(OnLoadHourPosition, FirstChannelPosition);
 
         BuildProgramsRow(TmpCurrentHourPosition, FirstChannelPosition);
 
-        RowSelected = 5;
+        RowSelected = 7;
 
         ProgramsToChange = true;
 
@@ -987,17 +987,17 @@ function ProgramUp(){
 
 function PageUp(){
 
-    FirstChannelPosition -= 5;
+    FirstChannelPosition -= 7;
 
     if(FirstChannelPosition < 0){
-        FirstChannelPosition = ChannelsLength - 4;
+        FirstChannelPosition = ChannelsLength - 6;
     }
 
     UnfocusEpgProgram(RowSelected,ProgramSelected);
 
     var TmpCurrentHourPosition = CurrentHourPosition;
 
-    FirstProgramsPositions = { 1:-1, 2:-1, 3:-1, 4:-1, 5:-1 };
+    FirstProgramsPositions = { 1:-1, 2:-1, 3:-1, 4:-1, 5:-1, 6:-1, 7:-1 };
 
     BuildProgramsRow(OnLoadHourPosition, FirstChannelPosition);
 

@@ -334,7 +334,9 @@ div#ChannelRow1,
 div#ChannelRow2,
 div#ChannelRow3,
 div#ChannelRow4,
-div#ChannelRow5 {
+div#ChannelRow5,
+div#ChannelRow6,
+div#ChannelRow7 {
     font-size: 20px;
     text-transform: uppercase;
     height: 20%;
