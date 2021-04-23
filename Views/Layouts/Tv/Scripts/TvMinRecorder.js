@@ -274,6 +274,8 @@ function OpenPvr(){
 
         GetPvrInfo();
 
+        GetWeather();
+
         PvrTimer = setTimeout(ClosePvr,TimeoutPvr);
     }
 }

@@ -36,14 +36,18 @@ and open the template in the editor.
 
 #PvrLogoContainer {
     background: #2f414a;
+    position: fixed;
+    width: 29%;
+    height: 35%;
+    top: 42%;
+    left: 2.5%;
+    border-radius: 6px;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
 }
 
 #PvrMainLogo {
-    position: fixed;
-    width: 15%;
-    height: 31%;
-    top: 9%;
-    right: 2%;
+    width: 100%;
+    height: 100%;
     background-image: url('/BBINCOTV/IPTV/Media/Logos/MainLogo.png');
     background-repeat: no-repeat;
     background-position: center;
