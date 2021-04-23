@@ -421,6 +421,9 @@
             }
 
             Debug('ChannelToChange: '+ChannelToChange);
+
+            Debug('ChannelMax: '+ChannelMax);
+
             if(ChannelToChange > ChannelMax){
                 /* Si excede el numero de canales maximo limpia el timer y regrese a su valor inicial el numero a cambiar */
                 clearTimeout(NumericChangeTimer);
