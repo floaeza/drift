@@ -604,24 +604,6 @@ div#PvrNow {
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
 }
 
-div#PvrMainLogo {
-    width: 28%;
-    height: 35%;
-    position: fixed;
-    margin-left: 3.2%;
-    top: 50%;
-    box-shadow: 0 0 4px #000;
-    border-radius: 10px;
-    background-color: #2f4142;
-}
-
-div#PvrMainLogo img{
-    display: block;
-    margin-top: 10%;
-    margin-left: auto;
-    margin-right: auto;
-
-}
 
 div#PvrWeather{
     width: 25%;
