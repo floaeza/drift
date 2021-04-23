@@ -43,7 +43,6 @@ div#EpgChannels {
     height: 35%;
     bottom: 15%;
     left: 4%;
-    overflow: hidden;
     border-radius: 6px 0px 0px 6px;
     
 }
@@ -54,7 +53,6 @@ div#EpgPrograms {
     height: 35%;
     bottom: 15%;
     right: 4%;
-    overflow: hidden;
     border-radius: 0px 6px 6px 0px;
 }
 
