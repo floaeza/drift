@@ -20,14 +20,12 @@
     <!-- Contiene informacion del programa y el canal, fecha y hora -->
     <div id='EpgHeader'>
         <div id='EpgWeather'>
-
-            <canvas id='WeatherIcon' width='35' height='35'></canvas>
-            <div id='WeatherSummary'></div>
-
             <div id='TemperatureGroup'>
                 <span id='WeatherFarenheit'></span><span>&deg; F/</span>
                 <span id='WeatherCelsius'></span><span>&deg; C</span>
             </div>
+            <canvas id='WeatherIcon' width='35' height='35'></canvas>
+            <div id='WeatherSummary'></div>
         </div>
         <div id='EpgDate'></div>
     </div>
