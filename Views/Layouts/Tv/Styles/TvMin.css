@@ -24,6 +24,12 @@ div#EpgContainer {
     display: none;
 }
 
+#WeatherIcon {
+    top: 4%;
+    position: fixed;
+    right: 2%;
+}
+
 div#EpgHeader {
     height: 5%;
     width: 98%;
