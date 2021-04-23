@@ -141,7 +141,7 @@
             </div>
             <canvas id='PvrWeatherIcon' width='35' height='35'></canvas>
         </div>
-        <div id='PvrDate'></div>
+        <div id='EpgDate'></div>
     </div>
 
     <div id='PvrDiskInfo'>
