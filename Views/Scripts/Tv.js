@@ -431,6 +431,7 @@
 
                 ChannelContainer.textContent = '';
             } else {
+                Debug('ChannelToChange << ChannelMax '+ChannelToChange)
                 /* Muestra el contener del canal con los numeros recibidos */
                 ChannelContainer.textContent = ChannelToChange;
                 Debug('ChannelContainer.textContent: '+ChannelToChange);
