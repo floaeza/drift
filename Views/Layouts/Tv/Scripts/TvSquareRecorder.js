@@ -358,7 +358,7 @@ function SetPvrInfo(){
                 Debug(StorageInfo.pvrTotalSpace);
             Debug(StorageInfo.pvrFreeSpace);
              TotalSize = (StorageInfo.pvrTotalSpace / 1024) / 1024;
-             AvailableSize = StorageInfo.pvrFreeSpace / 1024;
+             AvailableSize = (StorageInfo.pvrFreeSpace / 1024) / 1024;
 
              Debug(TotalSize);
              Debug(AvailableSize);
