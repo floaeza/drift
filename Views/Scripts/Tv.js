@@ -430,17 +430,17 @@
             } else {
                 /* Muestra el contener del canal con los numeros recibidos */
                 ChannelContainer.textContent = ChannelToChange;
-
+                Debug('ChannelContainer.textContent: '+ChannelToChange);
                 clearTimeout(NumericChangeTimer);
 
                 /* Crea timer para ocultar el canal y hacer el cambio */
                 NumericChangeTimer = setTimeout(function () {
                     /*Obtiene el numero de canal actual*/
                     var CurrentChannel   = parseInt(ChannelsJson[ChannelPosition].CHNL, 10);
-
+                    Debug('CurrentChannel: '+CurrentChannel);
                     /* Busca la posicion del canal o recibido */
                     var PositionToChange = FindChannelPosition(ChannelToChange);
-
+                    Debug('PositionToChange: '+PositionToChange);
                     if(ChannelToChange !== CurrentChannel){
                         /* Asignamos el ultimo canal reproducido */
                         LastChannelPosition = ChannelPosition;
