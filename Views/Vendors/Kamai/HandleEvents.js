@@ -227,10 +227,6 @@ function UpdateDiskInfo(){
     var StorageInfo = [];
         StorageInfo = ENTONE.recorder.getStorageInfo();
 
-        //Debug(JSON.stringify(StorageInfo));
-        Debug(StorageInfo.pvrTotalSpace / 1024);
-        Debug(StorageInfo.pvrFreeSpace / 1024);
-
     $.ajax({
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',

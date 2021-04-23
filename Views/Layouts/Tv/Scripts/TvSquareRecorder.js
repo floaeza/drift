@@ -346,15 +346,24 @@ function SetPvrInfo(){
 
     if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
         var StorageInfo = [];
-        StorageInfo = PVR.GetStorageInfo();
+
+        if(typeof(ASTB) !== 'undefined') {
+            StorageInfo = PVR.GetStorageInfo();
+
+            AvailableSize = (parseInt(StorageInfo.availableSize,10)/ 1024);
+            TotalSize = (parseInt(StorageInfo.totalSize,10)/ 1024);
+
+        } else if(typeof(ENTONE) !== 'undefined'){
+            StorageInfo = ENTONE.recorder.getStorageInfo();
+
+            AvailableSize = StorageInfo.pvrTotalSpace / 1024;
+            TotalSize  = StorageInfo.pvrFreeSpace / 1024;
+        }
     }
 
     if (typeof StorageInfo === 'undefined') {
         AvailableSize  = (parseInt(DiskInfo[DiskInfoIndex].espacio_disponible,10) / 1024);
         TotalSize = (parseInt(DiskInfo[DiskInfoIndex].espacio_total,10) / 1024);
-    } else {
-        AvailableSize = (parseInt(StorageInfo.availableSize,10)/ 1024);
-        TotalSize = (parseInt(StorageInfo.totalSize,10)/ 1024);
     }
 
     AvailableSize  = (AvailableSize / 1024).toFixed(2);
