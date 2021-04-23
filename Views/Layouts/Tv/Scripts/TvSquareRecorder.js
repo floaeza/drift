@@ -356,8 +356,8 @@ function SetPvrInfo(){
         } else if(typeof(ENTONE) !== 'undefined'){
             StorageInfo = ENTONE.recorder.getStorageInfo();
 
-             TotalSize = StorageInfo.pvrTotalSpace;
-             AvailableSize = StorageInfo.pvrFreeSpace;
+             TotalSize = StorageInfo.pvrTotalSpace / 1024;
+             AvailableSize = StorageInfo.pvrFreeSpace / 1024;
         }
     }
 
