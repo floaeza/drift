@@ -322,7 +322,9 @@ div#ProgramRow1,
 div#ProgramRow2,
 div#ProgramRow3,
 div#ProgramRow4,
-div#ProgramRow5 {
+div#ProgramRow5,
+div#ProgramRow6,
+div#ProgramRow7 {
     width: 100%;
     height: 20%;
     font-family: Arial Rounded MT Bold;
