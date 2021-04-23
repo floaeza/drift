@@ -446,8 +446,8 @@ function SetRecordings(Direction){
                             ActiveRec = '';
                         }
                     }
-                    Debug('** '+RecordingsList[IndexRecorded][IndexProgram].duration);
-                    PvrListNodes[Row].innerHTML = '\u00A0'+ Icon + ' '+ RecordingsList[IndexRecorded][IndexProgram] + ActiveRec + '<p class="RowDur">'+TimeConvert( RecordingsList[IndexRecorded][IndexProgram].duration)+'</p>';
+                    Debug('** '+RecordingsList[IndexRecorded][1].duration);
+                    PvrListNodes[Row].innerHTML = '\u00A0'+ Icon + ' '+ RecordingsList[IndexRecorded][IndexProgram] + ActiveRec + '<p class="RowDur">'+TimeConvert( RecordingsList[IndexRecorded][1].duration)+'</p>';
                 }
 
 
