@@ -37,14 +37,3 @@
         REMOTE_FAST_BACKWARD         = '',
         REMOTE_FAST_FORWARD          = '';
 
-
-var REMOTE_0 = '',
-    REMOTE_1 = '',
-    REMOTE_2 = '',
-    REMOTE_3 = '',
-    REMOTE_4 = '',
-    REMOTE_5 = '',
-    REMOTE_6 = '',
-    REMOTE_7 = '',
-    REMOTE_8 = '',
-    REMOTE_9 = '';

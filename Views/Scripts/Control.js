@@ -295,7 +295,6 @@ var CheckInfo = 0;
                 case 55: // 7
                 case 56: // 8
                 case 57: // 9
-                    Debug(PressedKey - 48);
                     if(CurrentModule === 'Tv'){
                         NumericChange(PressedKey - 48);
                     }
@@ -313,66 +312,6 @@ var CheckInfo = 0;
                 case 105: // 9
                     if(CurrentModule === 'Tv' && MacAddress === '00:00:00:00:00:00'){
                         NumericChange(PressedKey - 96);
-                    }
-                break;
-
-                case REMOTE_0:
-                    if(CurrentModule === 'Tv'){
-                        NumericChange(0);
-                    }
-                break;
-
-                case REMOTE_1:
-                    if(CurrentModule === 'Tv'){
-                        NumericChange(1);
-                    }
-                break;
-
-                case REMOTE_2:
-                    if(CurrentModule === 'Tv'){
-                        NumericChange(2);
-                    }
-                break;
-
-                case REMOTE_3:
-                    if(CurrentModule === 'Tv'){
-                        NumericChange(3);
-                    }
-                break;
-
-                case REMOTE_4:
-                    if(CurrentModule === 'Tv'){
-                        NumericChange(4);
-                    }
-                break;
-
-                case REMOTE_5:
-                    if(CurrentModule === 'Tv'){
-                        NumericChange(5);
-                    }
-                break;
-
-                case REMOTE_6:
-                    if(CurrentModule === 'Tv'){
-                        NumericChange(6);
-                    }
-                break;
-
-                case REMOTE_7:
-                    if(CurrentModule === 'Tv'){
-                        NumericChange(7);
-                    }
-                break;
-
-                case REMOTE_8:
-                    if(CurrentModule === 'Tv'){
-                        NumericChange(8);
-                    }
-                break;
-
-                case REMOTE_9:
-                    if(CurrentModule === 'Tv'){
-                        NumericChange(9);
                     }
                 break;
             }

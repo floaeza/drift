@@ -39,14 +39,3 @@
         REMOTE_TELETEXT              = ENTONE.input.KEY_TELETEXT,
         REMOTE_FAST_BACKWARD         = '',
         REMOTE_FAST_FORWARD          = '';
-
-    var REMOTE_0 = ENTONE.input.KEY_0,
-        REMOTE_1 = ENTONE.input.KEY_1,
-        REMOTE_2 = ENTONE.input.KEY_2,
-        REMOTE_3 = ENTONE.input.KEY_3,
-        REMOTE_4 = ENTONE.input.KEY_4,
-        REMOTE_5 = ENTONE.input.KEY_5,
-        REMOTE_6 = ENTONE.input.KEY_6,
-        REMOTE_7 = ENTONE.input.KEY_7,
-        REMOTE_8 = ENTONE.input.KEY_8,
-        REMOTE_9 = ENTONE.input.KEY_9;
