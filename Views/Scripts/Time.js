@@ -27,8 +27,10 @@ Debug('########################### Time() ');
                 EpgDate.textContent = FormatDateAndHour;
             }
 
-            if(RecordingPanel === true){
-                PvrDate.textContent = FormatDateAndHour;
+            if(RecordingPanel){
+                if(RecordingPanel === true) {
+                    PvrDate.textContent = FormatDateAndHour;
+                }
             }
 
         } else if(CurrentModule === 'Menu' || CurrentModule === 'Movies'){
