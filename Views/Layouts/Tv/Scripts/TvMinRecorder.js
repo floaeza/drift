@@ -483,7 +483,7 @@ function SetRecordings(Direction){
                 }
 
                 if(RecordingsList[IndexRecordedFocus][IndexProgram].episode !== ''){
-                    PvrListNodes[Row].innerHTML = '\u00A0'+Icon + ' '+ IndexProgram+ ' - '+ RecordingsList[IndexRecordedFocus][IndexProgram].episode + ActiveRec + '<p>'+TimeConvert( RecordingsList[IndexRecordedFocus][IndexProgram].duration)+'</p>';
+                    PvrListNodes[Row].innerHTML = '\u00A0'+Icon + ' '+ IndexProgram+ ' - '+ RecordingsList[IndexRecordedFocus][IndexProgram].episode + ActiveRec + '<p class="RowDur">'+TimeConvert( RecordingsList[IndexRecordedFocus][IndexProgram].duration)+'</p>';
                 } else {
                     PvrListNodes[Row].innerHTML = '\u00A0'+Icon + ' '+ IndexProgram+ ' - '+  moment(RecordingsList[IndexRecordedFocus][IndexProgram].date).format('MMMM Do YYYY')  + ActiveRec;
                 }
