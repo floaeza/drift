@@ -450,7 +450,7 @@ function WriteProgramsRow(CurrentProgramPosition, CurrentChannelPosition, Row){
         //console.log('................. 1.2.0) Width: '+ProgramWidth + ' C: '+CurrentChannelPosition+' P: '+RowProgramPosition);
         //console.log('................. 1.2.2) Start: '+ChannelsJson[CurrentChannelPosition].PROGRAMS[RowProgramPosition].STRH +' Final: '+ChannelsJson[CurrentChannelPosition].PROGRAMS[RowProgramPosition].FNLH+' Title: '+ChannelsJson[CurrentChannelPosition].PROGRAMS[RowProgramPosition].TTLE);
         DivElement  = document.createElement('div');
-        ProgramNode = document.createTextNode(ChannelsJson[CurrentChannelPosition].PROGRAMS[RowProgramPosition].TTLE);
+        ProgramNode = document.createTextNode(' '+ChannelsJson[CurrentChannelPosition].PROGRAMS[RowProgramPosition].TTLE);
         DivElement.appendChild(ProgramNode);
         DivElement.setAttribute('class', 'Program');
         DivElement.setAttribute('title', CurrentChannelPosition+','+RowProgramPosition);
