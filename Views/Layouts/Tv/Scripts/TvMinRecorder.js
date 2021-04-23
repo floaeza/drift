@@ -428,7 +428,7 @@ function SetRecordings(Direction){
                 if(RecordingsList[IndexRecorded].length > 2){
                     Icon = '<i class="fa fa-folder-open"></i>';
                     Title = 'serie';
-                    PvrListNodes[Row].innerHTML = '\u00A0'+ Icon + ' '+ RecordingsList[IndexRecorded][IndexProgram] + ActiveRec;
+                    PvrListNodes[Row].innerHTML = '\u00A0'+ Icon + ' '+ RecordingsList[IndexRecorded][IndexProgram];
                 } else {
                     Icon = '<i class="fa fa-file"></i>';
                     Title = 'rec';
@@ -439,7 +439,7 @@ function SetRecordings(Direction){
                     } else {
                         LastChr = RecordingsList[IndexRecorded][1].url;
 
-                        if(LastChr.substr(LastChr.length - 1) === '0'){
+                        if(LastChr.substr(LastChr.length - 4) === '0000'){
                             ActiveRec = ' (scheduled)';
                             Icon = '<i class="fa fa-chevron-right" id="IconRecording"></i>';
                         } else {
@@ -447,7 +447,6 @@ function SetRecordings(Direction){
                         }
                     }
                     PvrListNodes[Row].innerHTML = '\u00A0'+ Icon + ' '+ RecordingsList[IndexRecorded][IndexProgram] + ActiveRec + '<p class="RowDur">'+TimeConvert( RecordingsList[IndexRecorded][IndexProgram].duration)+'</p>';
-
                 }
 
 
