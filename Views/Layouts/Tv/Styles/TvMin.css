@@ -130,7 +130,7 @@ div#TemperatureGroup {
 }
 
 div#EpgDays {
-    wwidth: 16%;
+    width: 16%;
     height: 5%;
     bottom: 50%;
     position: fixed;
@@ -359,12 +359,13 @@ div.EpgLogo {
 
 /*Contiene logo empresa*/
 div#EpgMainLogo {
-    position: fixed;
-    width: 10%;
-    height: 30%;
-    top: 13%;
-    right: 6%;
+    width: 15%;
+    height: 31%;
+    top: 9%;
+    right: 2%;
     background-image: url('/BBINCOTV/IPTV/Media/Logos/MainLogo.png');
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 div#EpgTitle {
