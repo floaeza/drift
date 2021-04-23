@@ -557,9 +557,9 @@
             var Times = '<p class="Times">('+FormatHours(ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].STRH)+' - '+FormatHours(ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].FNLH)+')</p>';
             var Ttle = '<p class="Ttle">'+ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].TTLE+'</p>';
             if(EpgDataActive === true){
-                InfoContainerNodes[1].textContent  = ChannelsJson[ChannelPosition].CHNL;
+                InfoContainerNodes[1].textContent  = ChannelsJson[ChannelPosition].CHNL+' - ';
                 InfoContainerNodes[3].textContent  = ChannelsJson[ChannelPosition].QLTY;
-                InfoContainerNodes[5].textContent  = ' - '+ChannelsJson[ChannelPosition].INDC;
+                InfoContainerNodes[5].textContent  = ChannelsJson[ChannelPosition].INDC;
                 InfoContainerNodes[7].textContent  = FormatDateAndHour;
                 InfoContainerNodes[9].innerHTML    = Ttle + Times;
                 if(RecordingsToCheck !== ''){
