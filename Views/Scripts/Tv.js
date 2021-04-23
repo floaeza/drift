@@ -558,7 +558,7 @@
             var Ttle = '<p class="Ttle">'+ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].TTLE+'</p>';
             var Rtg = '<p class="Rtg">'+ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].TVRT+'</p>';
             if(EpgDataActive === true){
-                InfoContainerNodes[1].textContent  = ChannelsJson[ChannelPosition].CHNL+' - ' +ChannelsJson[ChannelPosition].INDC;
+                InfoContainerNodes[1].textContent  = ChannelsJson[ChannelPosition].CHNL+' - ' +ChannelsJson[ChannelPosition].INDC.toUpperCase();
                 //InfoContainerNodes[3].textContent  = ChannelsJson[ChannelPosition].QLTY;
                 //InfoContainerNodes[5].textContent  = ChannelsJson[ChannelPosition].INDC;
                 InfoContainerNodes[7].textContent  = FormatDateAndHour;
