@@ -227,6 +227,8 @@ function UpdateDiskInfo(){
     var StorageInfo = [];
         StorageInfo = ENTONE.recorder.getStorageInfo();
 
+        Debug(JSON.stringify(StorageInfo));
+
     $.ajax({
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
