@@ -378,7 +378,7 @@ div#EpgDescription {
     top: 18%;
     overflow: hidden;
     text-align: justify;
-    font-family: Calibri;
+    font-family: calibri-regular;
     font-size: 18px;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
 }
