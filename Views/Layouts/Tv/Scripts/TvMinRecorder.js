@@ -520,10 +520,10 @@ function SetFocusRecordings(){
         IndexRecordedProgFocus   = parseInt(PvrListNodes[PvrRowFocus].title.split(',')[2]);
 
         if(RowTypeFocus === 'serie'){
-            PvrInfoNodes[1].textContent  = 'Episodes:';
+            PvrInfoNodes[1].textContent  = 'Episodes:'+RecordingsList[IndexRecordedFocus].length - 1;
             PvrInfoNodes[3].textContent  = '';
             PvrInfoNodes[5].innerHTML    = '';
-            PvrInfoNodes[7].textContent  = RecordingsList[IndexRecordedFocus].length - 1;
+           // PvrInfoNodes[7].textContent  = RecordingsList[IndexRecordedFocus].length - 1;
             PvrInfoNodes[9].textContent  = '';
             PvrInfoNodes[11].textContent = RecordingsList[IndexRecordedFocus][0];
         } else {
