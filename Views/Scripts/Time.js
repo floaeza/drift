@@ -27,7 +27,7 @@ Debug('########################### Time() ');
                 EpgDate.textContent = FormatDateAndHour;
             }
 
-            if(RecordingPanel){
+            if(typeof (RecordingPanel) !== 'undefined'){
                 if(RecordingPanel === true) {
                     PvrDate.textContent = FormatDateAndHour;
                 }
