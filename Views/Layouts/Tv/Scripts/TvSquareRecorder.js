@@ -355,13 +355,10 @@ function SetPvrInfo(){
 
         } else if(typeof(ENTONE) !== 'undefined'){
             StorageInfo = ENTONE.recorder.getStorageInfo();
-                Debug(StorageInfo.pvrTotalSpace);
-            Debug(StorageInfo.pvrFreeSpace);
+
              TotalSize = (StorageInfo.pvrTotalSpace / 1024) / 1024;
              AvailableSize = (StorageInfo.pvrFreeSpace / 1024) / 1024;
 
-             Debug(TotalSize);
-             Debug(AvailableSize);
         }
     } else {
         AvailableSize  = (parseInt(DiskInfo[DiskInfoIndex].espacio_disponible,10) / 1024);
@@ -370,8 +367,7 @@ function SetPvrInfo(){
 
     AvailableSize  = (AvailableSize / 1024).toFixed(2);
     TotalSize = (TotalSize / 1024).toFixed(2);
-    Debug(TotalSize);
-    Debug(AvailableSize);
+
     var Percentage = (AvailableSize / TotalSize) * 100,
         PercentageSize = (100 - Percentage).toFixed(2);
 
