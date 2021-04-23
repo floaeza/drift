@@ -407,7 +407,7 @@ function SetRecordings(Direction){
             IndexRecorded = IndexRecordedFocus;
 
             if (Direction === 'up'){
-                IndexRecorded -= 11;
+                IndexRecorded -= 10; //**11
                 IndexRecordedFocus--;
             } else {
                 IndexRecordedFocus++;
@@ -416,7 +416,7 @@ function SetRecordings(Direction){
 
         var ActiveRec = '',
             LastChr = '';
-        for (Row = 1; Row <= 19; Row++) {
+        for (Row = 1; Row <= 17; Row++) {
 
             IndexRecorded++;
 
@@ -467,11 +467,11 @@ function SetRecordings(Direction){
         }
 
         if (Direction === 'up'){
-            IndexProgram -= 11;
+            IndexProgram -= 10; //**11
             IndexRecordedProgFocus--;
         }
 
-        for (Row = 1; Row <= 19; Row++) {
+        for (Row = 1; Row <= 17; Row++) {
 
             if(IndexProgram < RecordingsList[IndexRecordedFocus].length){
 
@@ -503,7 +503,7 @@ function SetRecordings(Direction){
 function SetFocusRecordings(){
     var Row = 1;
 
-    for (Row = 1; Row <= 19; Row++) {
+    for (Row = 1; Row <= 17; Row++) {
         PvrListNodes[Row].setAttribute('class','PvrProgram');
         Row++;
     }
@@ -743,7 +743,7 @@ function SetSchedules(Direction){
             IndexSchedule = IndexScheduleFocus;
 
             if (Direction === 'up'){
-                IndexSchedule -= 11;
+                IndexSchedule -= 10; //**11
                 IndexScheduleFocus--;
             } else {
                 IndexScheduleFocus++;
@@ -751,7 +751,7 @@ function SetSchedules(Direction){
         }
 
 
-        for (Row = 1; Row <= 19; Row++) {
+        for (Row = 1; Row <= 17; Row++) {
 
             IndexSchedule++;
 
@@ -788,11 +788,11 @@ function SetSchedules(Direction){
         }
 
         if (Direction === 'up'){
-            IndexProgram -= 11;
+            IndexProgram -= 10; //**11
             IndexScheduleProgFocus--;
         }
 
-        for (Row = 1; Row <= 19; Row++) {
+        for (Row = 1; Row <= 17; Row++) {
 
             if(IndexProgram < SchedulesList[IndexScheduleFocus].length){
 
@@ -819,7 +819,7 @@ function SetFocusSchedules(){
         StartHour    = '',
         FinalHour    = '';
 
-    for (Row = 1; Row <= 19; Row++) {
+    for (Row = 1; Row <= 17; Row++) {
         PvrListNodes[Row].setAttribute('class','PvrProgram');
         Row++;
     }
@@ -879,14 +879,14 @@ function SetSeries(Direction){
             IndexSerie = IndexSerieFocus;
 
             if (Direction === 'up'){
-                IndexSerie -= 11;
+                IndexSerie -= 10; //**11
                 IndexSerieFocus--;
             } else {
                 IndexSerieFocus++;
             }
         }
 
-        for (Row = 1; Row <= 19; Row++) {
+        for (Row = 1; Row <= 17; Row++) {
 
             IndexSerie++;
 
@@ -911,7 +911,7 @@ function SetFocusSeries(){
     var Row = 1,
         SerieDate = '';
 
-    for (Row = 1; Row <= 19; Row++) {
+    for (Row = 1; Row <= 17; Row++) {
         PvrListNodes[Row].setAttribute('class','PvrProgram');
         Row++;
     }
@@ -1330,7 +1330,7 @@ function PvrUp(){
                 if(IndexRecordedProgFocus !== 1){
                     SetRecordings('up');
 
-                    PvrRowFocus = 19;
+                    PvrRowFocus = 17;
 
                     SetFocusRecordings();
                 }
@@ -1338,13 +1338,13 @@ function PvrUp(){
                 if(IndexRecordedFocus !== 0){
                     SetRecordings('up');
 
-                    PvrRowFocus = 19;
+                    PvrRowFocus = 17;
 
                     SetFocusRecordings();
                 }
             }
         } else {
-            if(PvrRowFocus <= 19){
+            if(PvrRowFocus <= 17){
                 PvrRowFocus -= 2;
                 SetFocusRecordings();
             }
@@ -1355,7 +1355,7 @@ function PvrUp(){
                 if(IndexScheduleProgFocus !== 1){
                     SetSchedules('up');
 
-                    PvrRowFocus = 19;
+                    PvrRowFocus = 17;
 
                     SetFocusScheduless();
                 }
@@ -1363,13 +1363,13 @@ function PvrUp(){
                 if(IndexScheduleFocus !== 0){
                     SetSchedules('up');
 
-                    PvrRowFocus = 19;
+                    PvrRowFocus = 17;
 
                     SetFocusSchedules();
                 }
             }
         } else {
-            if(PvrRowFocus <= 19){
+            if(PvrRowFocus <= 17){
                 PvrRowFocus -= 2;
                 SetFocusSchedules();
             }
@@ -1379,12 +1379,12 @@ function PvrUp(){
             if(IndexSerieFocus !== 0){
                 SetSeries('up');
 
-                PvrRowFocus = 19;
+                PvrRowFocus = 17;
 
                 SetFocusSeries();
             }
         } else {
-            if(PvrRowFocus <= 19){
+            if(PvrRowFocus <= 17){
                 PvrRowFocus -= 2;
                 SetFocusSeries();
             }
@@ -1401,9 +1401,9 @@ function PvrDown(){
     } else if(DeleteOptions === true){
         SetFocusOptionDelete('down');
     } else if(OptionPanel === 'Recordings') {
-        if(PvrRowFocus === 19){
+        if(PvrRowFocus === 17){
             if(ListTypeFocus === 'serie'){
-                if((RecordingsList[IndexRecordedFocus].length - 1) > 10 && IndexRecordedProgFocus < (RecordingsList[IndexRecordedFocus].length - 1) ){
+                if((RecordingsList[IndexRecordedFocus].length - 1) > 9 && IndexRecordedProgFocus < (RecordingsList[IndexRecordedFocus].length - 1) ){
                     SetRecordings('down');
 
                     PvrRowFocus = 1;
@@ -1411,7 +1411,7 @@ function PvrDown(){
                     SetFocusRecordings();
                 }
             } else {
-                if(RecordingsList.length > 10 && IndexRecordedFocus < (RecordingsList.length - 1)){
+                if(RecordingsList.length > 9 && IndexRecordedFocus < (RecordingsList.length - 1)){
                     SetRecordings('down');
 
                     PvrRowFocus = 1;
@@ -1426,9 +1426,9 @@ function PvrDown(){
             }
         }
     } else if(OptionPanel === 'Schedules') {
-        if(PvrRowFocus === 19){
+        if(PvrRowFocus === 17){
             if(ListTypeFocus === 'serie'){
-                if((SchedulesList[IndexScheduleFocus].length - 1) > 10 && IndexScheduleProgFocus < (SchedulesList[IndexScheduleFocus].length - 1) ){
+                if((SchedulesList[IndexScheduleFocus].length - 1) > 9 && IndexScheduleProgFocus < (SchedulesList[IndexScheduleFocus].length - 1) ){
                     SetSchedules('down');
 
                     PvrRowFocus = 1;
@@ -1436,7 +1436,7 @@ function PvrDown(){
                     SetFocusSchedules();
                 }
             } else {
-                if(SchedulesList.length > 10 && IndexScheduleFocus < (SchedulesList.length - 1)){
+                if(SchedulesList.length > 9 && IndexScheduleFocus < (SchedulesList.length - 1)){
                     SetSchedules('down');
 
                     PvrRowFocus = 1;
@@ -1451,11 +1451,11 @@ function PvrDown(){
             }
         }
     } else if(OptionPanel === 'Series') {
-        if(PvrRowFocus === 19){
-            if(SeriesList.length > 10 && IndexSerieFocus < (SeriesList.length - 1)){
+        if(PvrRowFocus === 17){
+            if(SeriesList.length > 9 && IndexSerieFocus < (SeriesList.length - 1)){
                 SetSeries('down');
 
-                PvrRowFocus = 19;
+                PvrRowFocus = 17;
 
                 SetFocusSeries();
             }
