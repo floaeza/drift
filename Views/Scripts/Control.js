@@ -295,7 +295,7 @@ var CheckInfo = 0;
                 case 55: // 7
                 case 56: // 8
                 case 57: // 9
-                    Debug(PressedKey);
+                    Debug(PressedKey - 48);
                     if(CurrentModule === 'Tv'){
                         NumericChange(PressedKey - 48);
                     }
