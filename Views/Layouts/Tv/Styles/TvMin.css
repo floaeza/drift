@@ -11,8 +11,8 @@ and open the template in the editor.
 /***************************** [CONTENEDORES] *****************************/
 #PvrWeatherIcon{
     position: fixed;
-    bottom: 10%;
-    left: 20%;
+    bottom: 9.8%;
+    left: 22%;
 }
 .Times {
     margin: 0;
@@ -838,8 +838,8 @@ div#UsedSize {
 div.BarUsedSize {
     width: 62%;
     height: 4%;
-    background: rgba(255,255,255,0.5);
-    border-radius: 10px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 6px;
     position: fixed;
 }
 
@@ -847,7 +847,7 @@ div#BarUsedSize {
     background: #0396a6;
     color: #000;
     text-align: left;
-    border-radius: 10px;
+    border-radius: 6px;
 }
 
 div#RecordPlayOptions {

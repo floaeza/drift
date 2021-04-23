@@ -54,7 +54,7 @@
     var ActiveInfoContainer  = false,
         InfoTimer            = '',
         SecondsToCloseInfo   = 10,                                   /* Segundos para ocultar cuadro de informacion */
-        TimeoutInfo          = SecondsToCloseInfo * 10000,
+        TimeoutInfo          = SecondsToCloseInfo * 1000,
         InfoContainer        = document.getElementById('InfoContainer'),
         InfoContainerNodes   = document.getElementById('InfoContainer').childNodes;
 
