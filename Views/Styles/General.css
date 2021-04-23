@@ -89,6 +89,10 @@ and open the template in the editor.
     font-family: calibri-regular;
     src: url(./Fonts/calibri-regular.ttf);
 }
+@font-face {
+    font-family: arial-rounded;
+    src: url(./Fonts/ARLRDBD.ttf);
+}
 /*
 TITULOS
 <div style='font-family: novecento;'>1 Aviso program Avenger infinity war 14:38 /-($)!?</div>

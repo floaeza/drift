@@ -16,6 +16,8 @@
     <div class='Description'></div>
 </div>
 
+<div id='EpgMainLogo'></div>
+
 <div id='EpgContainer'>
     <!-- Contiene informacion del programa y el canal, fecha y hora -->
     <div id='EpgHeader'>
