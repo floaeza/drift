@@ -409,7 +409,7 @@ function WriteProgramsRow(CurrentProgramPosition, CurrentChannelPosition, Row){
             SubstractLenght = Math.abs(NewFormatFinal.diff(NewFormatCurrent, 'hours', true));
             //console.log('................. < 1.1.1) SubstractLenght: '+SubstractLenght);
 
-            ProgramWidth = (SubstractLenght * 40);
+            ProgramWidth = (SubstractLenght * 50);
             //console.log('................. < 1.1.2) ProgramWidth: '+ProgramWidth);
             TotalWidth = 0;
             TotalWidth += ProgramWidth;
@@ -422,14 +422,14 @@ function WriteProgramsRow(CurrentProgramPosition, CurrentChannelPosition, Row){
             SubstractLenght = Math.abs(NewFormatFinal.diff(NewFormatCurrent, 'hours', true));
             //console.log('................. > 1.1.1) SubstractLenght: '+SubstractLenght);
 
-            ProgramWidth = (SubstractLenght * 40);
+            ProgramWidth = (SubstractLenght * 50);
             //console.log('................. > 1.1.2) ProgramWidth: '+ProgramWidth);
 
             TotalWidth += ProgramWidth;
             //console.log('................. > 1.1.3) TotalWidth: '+TotalWidth);
         } else {
             /* Obtiene la longitud del programa */
-            ProgramWidth = (parseFloat(ChannelsJson[CurrentChannelPosition].PROGRAMS[RowProgramPosition].DRTN, 10) * 40);
+            ProgramWidth = (parseFloat(ChannelsJson[CurrentChannelPosition].PROGRAMS[RowProgramPosition].DRTN, 10) * 50);
             //console.log('................. 1.1.4) ProgramWidth: '+ProgramWidth);
 
             /* Suma la longitud contruida */
