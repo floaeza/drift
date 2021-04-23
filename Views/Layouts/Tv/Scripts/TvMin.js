@@ -17,11 +17,11 @@ var DaysEpg                 = [],
     EpgDayNumber            = 0;
 
 var TotalPrograms           = 100,
-    MaxRows                 = 5,
+    MaxRows                 = 7,
     Rows                    = 1;
 
 var HourRows                = 1,
-    MaxHourRows             = 5;
+    MaxHourRows             = 4;
 
 var OnloadProgramsPositions = { 1:-1, 2:-1, 3:-1, 4:-1, 5:-1, 6:-1, 7:-1 },
     FirstProgramsPositions  = { 1:-1, 2:-1, 3:-1, 4:-1, 5:-1, 6:-1, 7:-1 },
@@ -530,7 +530,10 @@ var NodesRowPrograms1 = '',
     NodesRowPrograms2 = '',
     NodesRowPrograms3 = '',
     NodesRowPrograms4 = '',
-    NodesRowPrograms5 = '';
+    NodesRowPrograms5 = '',
+    NodesRowPrograms6 = '',
+    NodesRowPrograms7 = '';
+
 
 function GetRowsPrograms(){
     NodesRowPrograms1 = document.getElementById('ProgramRow1').childNodes;
@@ -538,6 +541,8 @@ function GetRowsPrograms(){
     NodesRowPrograms3 = document.getElementById('ProgramRow3').childNodes;
     NodesRowPrograms4 = document.getElementById('ProgramRow4').childNodes;
     NodesRowPrograms5 = document.getElementById('ProgramRow5').childNodes;
+    NodesRowPrograms6 = document.getElementById('ProgramRow6').childNodes;
+    NodesRowPrograms7 = document.getElementById('ProgramRow7').childNodes;
 }
 
 function GetFocusStyle(){
@@ -577,6 +582,14 @@ function FocusEpgProgram(RowSelected,ProgramSelect){
 
             case 5:
                 ProgramSelect = NodesRowPrograms5.length;
+                --ProgramSelect;
+                break;
+            case 6:
+                ProgramSelect = NodesRowPrograms6.length;
+                --ProgramSelect;
+                break;
+            case 7:
+                ProgramSelect = NodesRowPrograms7.length;
                 --ProgramSelect;
                 break;
         }
@@ -628,6 +641,22 @@ function FocusEpgProgram(RowSelected,ProgramSelect){
                     }
                 }
                 break;
+            case 6:
+                if(typeof(NodesRowPrograms6[ProgramSelect]) === 'undefined') {
+                    --ProgramSelect;
+                    while(typeof(NodesRowPrograms6[ProgramSelect]) === 'undefined') {
+                        --ProgramSelect;
+                    }
+                }
+                break;
+            case 7:
+                if(typeof(NodesRowPrograms7[ProgramSelect]) === 'undefined') {
+                    --ProgramSelect;
+                    while(typeof(NodesRowPrograms7[ProgramSelect]) === 'undefined') {
+                        --ProgramSelect;
+                    }
+                }
+                break;
         }
         ProgramSelected = ProgramSelect;
         ProgramsToChange = false;
@@ -675,6 +704,20 @@ function FocusEpgProgram(RowSelected,ProgramSelect){
             FocusChannelPosition = Positions.split(',')[0];
             FocusProgramPosition = Positions.split(',')[1];
             break;
+        case 6:
+            NodesRowPrograms6[ProgramSelect].style.backgroundColor = BackgroundFocus;
+            NodesRowPrograms6[ProgramSelect].style.color = ColorFocus;
+            Positions = NodesRowPrograms6[ProgramSelect].title;
+            FocusChannelPosition = Positions.split(',')[0];
+            FocusProgramPosition = Positions.split(',')[1];
+            break;
+        case 7:
+            NodesRowPrograms7[ProgramSelect].style.backgroundColor = BackgroundFocus;
+            NodesRowPrograms7[ProgramSelect].style.color = ColorFocus;
+            Positions = NodesRowPrograms7[ProgramSelect].title;
+            FocusChannelPosition = Positions.split(',')[0];
+            FocusProgramPosition = Positions.split(',')[1];
+            break;
     }
     //console.log('================= 3) FocusEpgProgram('+RowSelected+','+ProgramSelect+')');
     ShowInfoEpg();
@@ -709,6 +752,14 @@ function UnfocusEpgProgram(RowSelected,ProgramSelected){
         case 5:
             NodesRowPrograms5[ProgramSelected].style.backgroundColor = BackgroundUnfocus;
             NodesRowPrograms5[ProgramSelected].style.color = ColorUnfocus;
+            break;
+        case 6:
+            NodesRowPrograms6[ProgramSelected].style.backgroundColor = BackgroundUnfocus;
+            NodesRowPrograms6[ProgramSelected].style.color = ColorUnfocus;
+            break;
+        case 7:
+            NodesRowPrograms7[ProgramSelected].style.backgroundColor = BackgroundUnfocus;
+            NodesRowPrograms7[ProgramSelected].style.color = ColorUnfocus;
             break;
     }
 }

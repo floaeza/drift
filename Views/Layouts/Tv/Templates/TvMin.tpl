@@ -53,9 +53,6 @@
         <div class='HourRow'></div>
         <div class='HourRow'></div>
         <div class='HourRow'></div>
-        <div class='HourRow'></div>
-        <div class='HourRow'></div>
-        <div class='HourRow'></div>
     </div>
 
     <!-- Contiene la lista de programas, muestra hora inicio y titulo -->
@@ -65,6 +62,8 @@
         <div id='ProgramRow3'></div>
         <div id='ProgramRow4'></div>
         <div id='ProgramRow5'></div>
+        <div id='ProgramRow6'></div>
+        <div id='ProgramRow7'></div>
     </div>
 
     <!-- Contiene las horas en la guia  -->
