@@ -20,6 +20,10 @@ div#EpgContainer {
     z-index: 0;
 }
 
+#WeatherSummary {
+    display: none;
+}
+
 div#EpgHeader {
     height: 5%;
     width: 98%;
