@@ -426,28 +426,28 @@ function SetRecordings(Direction){
 
             if(IndexRecorded < RecordingsList.length){
                 if(RecordingsList[IndexRecorded].length > 2){
-                    Icon = '\u00A0'+'<i class="fa fa-folder-open"></i>';
+                    Icon = '<i class="fa fa-folder-open"></i>';
                     Title = 'serie';
                 } else {
-                    Icon = '\u00A0'+'<i class="fa fa-file"></i>';
+                    Icon = '<i class="fa fa-file"></i>';
                     Title = 'rec';
 
                     if(RecordingsList[IndexRecorded][1].active === '1'){
                         ActiveRec = ' (recording)';
-                        Icon = '\u00A0'+'<i class="fa fa-circle" id="IconRecording"></i>';
+                        Icon = '<i class="fa fa-circle" id="IconRecording"></i>';
                     } else {
                         LastChr = RecordingsList[IndexRecorded][1].url;
 
                         if(LastChr.substr(LastChr.length - 1) === '0'){
                             ActiveRec = ' (scheduled)';
-                            Icon = '\u00A0'+'<i class="fa fa-chevron-right" id="IconRecording"></i>';
+                            Icon = '<i class="fa fa-chevron-right" id="IconRecording"></i>';
                         } else {
                             ActiveRec = '';
                         }
                     }
                 }
 
-                    PvrListNodes[Row].innerHTML = Icon + ' '+ RecordingsList[IndexRecorded][IndexProgram] + ActiveRec;
+                    PvrListNodes[Row].innerHTML = '\u00A0'+ Icon + ' '+ RecordingsList[IndexRecorded][IndexProgram] + ActiveRec;
                 PvrListNodes[Row].title = Title + ','+IndexRecorded+',1';
 
                 Row++;
@@ -483,12 +483,12 @@ function SetRecordings(Direction){
                 }
 
                 if(RecordingsList[IndexRecordedFocus][IndexProgram].episode !== ''){
-                    PvrListNodes[Row].innerHTML = Icon + ' '+ IndexProgram+ ' - '+ RecordingsList[IndexRecordedFocus][IndexProgram].episode + ActiveRec;
+                    PvrListNodes[Row].innerHTML = '\u00A0'+Icon + ' '+ IndexProgram+ ' - '+ RecordingsList[IndexRecordedFocus][IndexProgram].episode + ActiveRec;
                 } else {
-                    PvrListNodes[Row].innerHTML = Icon + ' '+ IndexProgram+ ' - '+  moment(RecordingsList[IndexRecordedFocus][IndexProgram].date).format('MMMM Do YYYY')  + ActiveRec;
+                    PvrListNodes[Row].innerHTML = '\u00A0'+Icon + ' '+ IndexProgram+ ' - '+  moment(RecordingsList[IndexRecordedFocus][IndexProgram].date).format('MMMM Do YYYY')  + ActiveRec;
                 }
 
-                PvrListNodes[Row].title = Title + ','+IndexRecordedFocus+','+IndexProgram;
+                PvrListNodes[Row].title = '\u00A0'+Title + ','+IndexRecordedFocus+','+IndexProgram;
                 Row++;
             } else {
                 PvrListNodes[Row].innerHTML = '';
