@@ -405,6 +405,8 @@
  *******************************************************************************/  
 
     function NumericChange(Key){
+
+        Debug(Key);
         if(ActiveEpgContainer === false){
             /* Limpiamos el timer */
             clearTimeout(NumericChangeTimer);
@@ -412,7 +414,7 @@
             if(ChannelToChange === 0){
                 /* Asigna el valor ingresado, ya que es el primero */
                 ChannelToChange = Key;
-            } else{
+            } else {
                 /* Multiplica por 10 el digito que se haya ingresado previamente mas el nuevo que se ingreso */
                 ChannelToChange *= 10;
                 ChannelToChange = ChannelToChange + Key;
