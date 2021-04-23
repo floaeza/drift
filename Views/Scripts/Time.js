@@ -26,6 +26,11 @@ Debug('########################### Time() ');
             if(ActiveEpgContainer === true){
                 EpgDate.textContent = FormatDateAndHour;
             }
+
+            if(RecordingPanel === true){
+                PvrDate.textContent = FormatDateAndHour;
+            }
+
         } else if(CurrentModule === 'Menu' || CurrentModule === 'Movies'){
             FormatDate = moment().format('MMM DD ');
             FormatHour = moment().format('h:mm a');

@@ -58,6 +58,8 @@ if(Device['Type'] !== 'NONE'){
         CurrentPvrOption        = document.getElementById('CurrentPvrOption'),
         PvrDiskInfoNodes        = document.getElementById('PvrDiskInfo').childNodes;
 
+    var PvrDate                 = document.getElementById('PvrDate');
+
     var PvrTimer                = '',
         SecondsToClosePvr       = 300,
         TimeoutPvr              = SecondsToClosePvr * 1000;
@@ -2257,6 +2259,9 @@ function DeleteSerie(){
 }
 
 function GetWeatherPvr(){
+
+    PvrDate.textContent = FormatDateAndHour;
+    
     $.ajax({
         type: 'GET',
         url: 'Core/Controllers/Weather.php',
