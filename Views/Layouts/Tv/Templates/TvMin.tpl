@@ -33,9 +33,7 @@
     <!-- -->
     <div id='EpgNowAiring'></div>
     <div id='EpgDays'>
-        <b><i class='fa fa-chevron-left'></i></b>
         <div id='EpgDay'></div>
-        <b><i class='fa fa-chevron-right'></i></b>
     </div>
 
     <!-- Lista de canales -->
