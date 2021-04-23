@@ -401,6 +401,7 @@ div.EpgLogo {
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
+    z-index: 1;
 }
 
 /*Contiene logo empresa*/
