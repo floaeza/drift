@@ -446,7 +446,7 @@ function SetRecordings(Direction){
                             ActiveRec = '';
                         }
                     }
-                    PvrListNodes[Row].innerHTML = '\u00A0'+ Icon + ' '+ RecordingsList[IndexRecorded][IndexProgram] + ActiveRec + '<p class="RowDur">'+TimeConvert( RecordingsList[IndexRecordedFocus][IndexProgram].duration)+'</p>';
+                    PvrListNodes[Row].innerHTML = '\u00A0'+ Icon + ' '+ RecordingsList[IndexRecorded][IndexProgram] + ActiveRec + '<p class="RowDur">'+TimeConvert( RecordingsList[IndexRecorded][IndexProgram].duration)+'</p>';
 
                 }
 
