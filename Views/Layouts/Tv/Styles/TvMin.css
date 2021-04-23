@@ -9,7 +9,9 @@ and open the template in the editor.
 */
 
 /***************************** [CONTENEDORES] *****************************/
-
+#PvrWeatherIcon{
+    
+}
 .Times {
     margin: 0;
     float: left;
@@ -84,7 +86,7 @@ div#EpgChannels {
     position: fixed;
     width: 20%;
     height: 35%;
-    bottom: 15%;
+    bottom: 18%;
     left: 2%;
     border-radius: 6px 0px 0px 6px;
     
@@ -94,7 +96,7 @@ div#EpgPrograms {
     position: fixed;
     width: 76%;
     height: 35%;
-    bottom: 15%;
+    bottom: 18%;
     right: 2%;
     border-radius: 0px 6px 6px 0px;
 }
@@ -117,7 +119,7 @@ div#EpgHours {
     width: 76%;
     height: 5%;
     right: 2%;
-    bottom: 50%;
+    bottom: 53%;
     background-size: 100% 100%;
 }
 
@@ -173,7 +175,7 @@ div#TemperatureGroup {
 div#EpgDays {
     width: 20%;
     height: 5%;
-    bottom: 50%;
+    bottom: 53%;
     position: fixed;
     font-size: 22px;
     font-family: Arial Rounded MT Bold;

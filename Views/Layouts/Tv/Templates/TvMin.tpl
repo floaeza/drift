@@ -139,7 +139,7 @@
                 <span id='PvrWeatherFarenheit'></span><span>&deg; F/</span>
                 <span id='PvrWeatherCelsius'></span><span>&deg; C</span>
             </div>
-            <canvas id='PvrWeatherIcon' width='35' height='35'></canvas>
+            <canvas id='PvrWeatherIcon' width='25' height='25'></canvas>
         </div>
         <div id='PvrDate'></div>
     </div>
