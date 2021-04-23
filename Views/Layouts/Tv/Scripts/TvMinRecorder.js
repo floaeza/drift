@@ -174,7 +174,7 @@ function CloseRecordingOptions(){
         var AllPrograms = document.getElementsByClassName('Program'),
             IndexProgram = 0;
         for(IndexProgram = 0; IndexProgram < AllPrograms.length; IndexProgram++) {
-            AllPrograms[IndexProgram].style.outline = '1px solid '+BackgroundFocus;
+            AllPrograms[IndexProgram].style.outline = '1px solid rgba(24, 46, 58, 0.9)';
         }
 
         RecordingOptions.style.visibility = 'hidden';
