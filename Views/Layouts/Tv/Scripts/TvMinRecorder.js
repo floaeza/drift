@@ -483,7 +483,7 @@ function SetRecordings(Direction){
                 }
 
                 if(RecordingsList[IndexRecordedFocus][IndexProgram].episode !== ''){
-                    PvrListNodes[Row].innerHTML = '\u00A0'+Icon + ' '+ IndexProgram+ ' - '+ RecordingsList[IndexRecordedFocus][IndexProgram].episode + ActiveRec;
+                    PvrListNodes[Row].innerHTML = '\u00A0'+Icon + ' '+ IndexProgram+ ' - '+ RecordingsList[IndexRecordedFocus][IndexProgram].episode + ActiveRec + '<p>'+TimeConvert( RecordingsList[IndexRecordedFocus][IndexProgram].duration)+'</p>';
                 } else {
                     PvrListNodes[Row].innerHTML = '\u00A0'+Icon + ' '+ IndexProgram+ ' - '+  moment(RecordingsList[IndexRecordedFocus][IndexProgram].date).format('MMMM Do YYYY')  + ActiveRec;
                 }
@@ -525,7 +525,7 @@ function SetFocusRecordings(){
             PvrInfoNodes[11].textContent = RecordingsList[IndexRecordedFocus][0];
         } else {
             PvrInfoNodes[1].textContent  = moment(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].date).format('MMMM Do YYYY');
-            PvrInfoNodes[3].textContent  = TimeConvert(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].duration);
+            PvrInfoNodes[3].textContent  = TimeConvert( RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].duration);
             PvrInfoNodes[5].innerHTML    = ShowStars(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].rating);
             PvrInfoNodes[7].textContent  = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].episode;
             PvrInfoNodes[9].textContent  = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].description;
