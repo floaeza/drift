@@ -78,12 +78,16 @@ and open the template in the editor.
 }
 
 @font-face {
-    font-family: Gotham Light;
+    font-family: GothamLight;
     src: url(./Fonts/Gotham-Light.ttf);
 }
 @font-face {
     font-family: Gothic;
     src: url(./Fonts/CenturyGothic.ttf);
+}
+@font-face {
+    font-family: calibri-regular;
+    src: url(./Fonts/calibri-regular.ttf);
 }
 /*
 TITULOS
