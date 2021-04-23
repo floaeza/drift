@@ -383,7 +383,7 @@ function WriteProgramsRow(CurrentProgramPosition, CurrentChannelPosition, Row){
         //console.log('................. FOR ('+CurrentProgramPosition+','+ CurrentChannelPosition+','+ Row+')');
         var ProgramStart    = ChannelsJson[CurrentChannelPosition].PROGRAMS[RowProgramPosition].STRH,
             ProgramFinal    = ChannelsJson[CurrentChannelPosition].PROGRAMS[RowProgramPosition].FNLH,
-            NextStartHour   = EpgHoursNodes[9].title;
+            NextStartHour   = EpgHoursNodes[7].title;
         ++NextStartHour;
         if(NextStartHour >= 47){ NextStartHour = 46; }
 
