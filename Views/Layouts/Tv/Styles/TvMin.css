@@ -227,7 +227,6 @@ div.Date {
  }
 
  div.Description {
-    position: fixed;
      width: 94%;
      height: 30%;
      font-family: calibri-regular;
@@ -645,7 +644,7 @@ div#PvrContainer {
 
 div.PvrHeader {
     width: 62%;
-    height: 5%;
+    height: 4.5%;
     position: fixed;
     right: 5%;
     text-align: center;
@@ -659,7 +658,7 @@ div#CurrentPvrOption {
     width: 70%;
     margin: 0 auto;
     font-family: Arial Rounded MT Bold;
-    font-size: 35px;
+    font-size: 28px;
 }
 
 .PvrChevronLeft {
@@ -678,10 +677,10 @@ div#CurrentPvrOption {
 
 div#PvrList {
     width: 62%;
-    height: 43%;
+    height: 49%;
     position: fixed;
     right: 5%;
-    bottom: 42%;
+    bottom: 37%;
 }
 
 div.PvrProgram {
@@ -693,8 +692,8 @@ div.PvrProgram {
     font-size: 23px;
     margin: 0.2%;
     background: #2f414a;
-    border-radius: 10px;
-    text-align: center;
+    border-radius: 6px;
+    text-align: left;
 }
 
 .PvrProgramFocus {
@@ -708,8 +707,8 @@ div.PvrProgram {
     color:#000;
     font-weight: bold;
     background: #dfbe5e;
-    border-radius: 10px;
-    text-align: center;
+    border-radius: 6px;
+    text-align: left;
 }
 
 div#PvrOptions {

@@ -447,7 +447,7 @@ function SetRecordings(Direction){
                     }
                 }
 
-                PvrListNodes[Row].innerHTML = Icon + ' '+ RecordingsList[IndexRecorded][IndexProgram] + ActiveRec;
+                PvrListNodes[Row].innerHTML = '\u00A0'+ Icon + ' '+ RecordingsList[IndexRecorded][IndexProgram] + ActiveRec;
                 PvrListNodes[Row].title = Title + ','+IndexRecorded+',1';
 
                 Row++;
