@@ -11,8 +11,8 @@ and open the template in the editor.
 /***************************** [CONTENEDORES] *****************************/
 #PvrWeatherIcon{
     position: fixed;
-    bottom: 9.8%;
-    left: 22%;
+    bottom: 9.5%;
+    left: 24%;
 }
 .Times {
     margin: 0;
@@ -661,7 +661,7 @@ div.PvrHeader {
     right: 5%;
     text-align: center;
     top: 9%;
-    font-size: 30px;
+    font-size: 25px;
     background-color: #246681;
     border-radius: 10px;
 }
