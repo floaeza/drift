@@ -39,10 +39,10 @@ div#EpgHeader {
 
 div#EpgChannels {
     position: fixed;
-    width: 16%;
+    width: 19%;
     height: 35%;
     bottom: 15%;
-    left: 4%;
+    left: 2%;
     border-radius: 6px 0px 0px 6px;
     
 }
@@ -52,7 +52,7 @@ div#EpgPrograms {
     width: 76%;
     height: 35%;
     bottom: 15%;
-    right: 4%;
+    right: 2%;
     border-radius: 0px 6px 6px 0px;
 }
 
@@ -277,7 +277,7 @@ p.ChannelNumber  {
     height: 100%;
     float: left;
     margin:0;
-    text-align: right;
+    text-align: center;
     line-height: 50px;
 }
 
