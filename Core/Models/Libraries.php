@@ -3,7 +3,7 @@
 $GetJson    = !empty($_POST['GetJson']) ? $_POST['GetJson'] : true;
 
 if($GetJson == true){
-    ECHO "1<BR>";
+    ECHO "1-<BR>";
     require_once 'Database.php';
     ECHO "2<BR>";
     require_once 'DataAccess/Config.php';
