@@ -134,7 +134,7 @@ div#EpgNowAiring {
     padding-top: 2.5%;
     text-align: left;
     font-size: 20px;
-    font-family: Arial Rounded MT Bold;
+    font-family: arial-rounded;
 }
 
 div#EpgDate {
@@ -145,7 +145,7 @@ div#EpgDate {
     top: 5%;
     text-align: right;
     font-size: 18px;
-    font-family: Arial Rounded MT Bold;
+    font-family: arial-rounded;
 }
 
 div#EpgWeather {
@@ -169,7 +169,7 @@ div#TemperatureGroup {
     width: 100%;
     height: 100%;
     font-size: 18px;
-    font-family: Arial Rounded MT Bold;
+    font-family: arial-rounded;
     color: #0396a6;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
 }
@@ -180,7 +180,7 @@ div#EpgDays {
     bottom: 53%;
     position: fixed;
     font-size: 22px;
-    font-family: Arial Rounded MT Bold;
+    font-family: arial-rounded;
     left: 2%;
     text-shadow: 4px 3px 2px rgba(0,0,0,0.5);
     text-align: center;
@@ -231,7 +231,7 @@ div.Date {
  div.ChannelNumber,
  div.Date{ 
     padding-top: 2%;
-    font-family: Arial Rounded MT Bold;
+    font-family: arial-rounded;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
 
  }  
@@ -251,7 +251,7 @@ div.Date {
     height: 10%;
     bottom: 11.5%;
     left: 36%;
-    font-family: Arial Rounded MT Bold;
+    font-family: arial-rounded;
     font-size: 16px;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
  }
@@ -274,7 +274,7 @@ div.Date {
      bottom: 11.5%;
      left: 56%;
      color: #0396a6;
-     font-family: Arial Rounded MT Bold;
+     font-family: arial-rounded;
      font-size: 16px;
      text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
  }
@@ -369,7 +369,7 @@ div#ProgramRow6,
 div#ProgramRow7 {
     width: 100%;
     height: 20%;
-    font-family: Arial Rounded MT Bold;
+    font-family: arial-rounded;
     font-weight: bold;
     background-color: #246681;
 }
@@ -467,7 +467,7 @@ div#EpgTime{
     text-align: left;
     font-size: 16px;
     font-weight: bold;
-    font-family: Arial Rounded MT Bold;
+    font-family: arial-rounded;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
     text-transform: uppercase;
 }
@@ -579,7 +579,7 @@ div.RecordingOptionsButton {
     min-height: 15%;
     border-radius: 5px;
     margin-top: 2.5%;
-    font-family: Arial Rounded MT Bold;
+    font-family: arial-rounded;
 }
 
 
@@ -609,7 +609,7 @@ div#PvrNow {
     position: fixed;
     margin-left: 3.2%;
     top:5%;
-    font-family: Arial Rounded MT Bold;
+    font-family: arial-rounded;
     font-size: 20px;
     color: #fff;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
@@ -622,7 +622,7 @@ div#PvrWeather{
     position: fixed;
     margin-left: 4.5%;
     top:87%;
-    font-family: Arial Rounded MT Bold;
+    font-family: arial-rounded;
     font-size: 18px;
     color: #0396a6;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
@@ -640,7 +640,7 @@ div#PvrDate{
     left: 4.5%;
     margin-top: 1%;
     top: 90%;
-    font-family: Arial Rounded MT Bold;
+    font-family: arial-rounded;
     font-size: 18px;
     color: #fff;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
@@ -672,7 +672,7 @@ div.PvrHeader {
 div#CurrentPvrOption {
     width: 70%;
     margin: 0 auto;
-    font-family: Arial Rounded MT Bold;
+    font-family: arial-rounded;
     font-size: 28px;
 }
 
@@ -800,7 +800,7 @@ div#PvrProgramDate{
     overflow: hidden;
     color: #fff;
     font-size: 18px;
-    font-family: Arial Rounded MT Bold;
+    font-family: arial-rounded;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
 }
 
