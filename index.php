@@ -7,14 +7,16 @@
     require_once 'Core/Models/Database.php';
     require_once 'Core/Models/Templates.php';
     require_once 'Core/DataAccess/Config.php';
+    $ConfigData  = new Config('system',$CurrentModule);
+    require_once 'Core/Models/Libraries.php';
 
     $CurrentModule = 'IndexController';
+
     // Opcion a mostrar en pantalla
     $Option = !empty($_GET['Option']) ? $_GET['Option'] : 'CHECK';
 
-    $ConfigData  = new Config('system',$CurrentModule);
 
-    require_once 'Core/Models/Libraries.php';
+
     // Carga clases
     $ContentData = new Templates($Libraries['LayoutsPhpPath'].'Initial/Index.tpl');   
 
