@@ -1,7 +1,7 @@
 <?php
 
 if(empty($Client)) {
-    $Client =  '';
+    $Client =  '*--';
 }
 
 echo $Client;
