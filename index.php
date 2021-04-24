@@ -10,9 +10,8 @@
     require_once 'Core/Models/Templates.php';
     require_once 'Core/DataAccess/Config.php';
     $ConfigData  = new Config('system',$CurrentModule);
-    require_once 'Core/Models/Libraries.php';
-
     $Client = $ConfigData->getConfigByName('Identifier').'/';
+    require_once 'Core/Models/Libraries.php';
 
     // Opcion a mostrar en pantalla
     $Option = !empty($_GET['Option']) ? $_GET['Option'] : 'CHECK';
