@@ -92,7 +92,7 @@ $JsonLibraries['EpgDaysPath']   = $Libraries['ControllersPath'].'Epg/'.$Client;
     
     /* Controladores*/
     $Libraries['Index']             = $Libraries['ControllersPath'].'Index.php';
-    
+    print_r($Libraries);
     /* Imprime JSON en caso de ser consultado desde AJAX */
     if($GetJson == true){
         echo json_encode($JsonLibraries);
