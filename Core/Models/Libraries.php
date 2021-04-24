@@ -9,7 +9,7 @@ $ServerIp = !empty($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : '';
         $ServerIp = !empty($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : '';
     }
 
-$JsonLibraries['ServerSource']      = 'http://'.$ServerIp.'/BBINCOTV/TV/';
+$JsonLibraries['ServerSource']      = 'http://'.$ServerIp.'/BBINCO/TV/';
 $JsonLibraries['MultimediaSource']  = 'http://'.$ServerIp.'/Multimedia/';
 $JsonLibraries['MoviesSource']      = 'http://'.$ServerIp.'/vod/mvs/';
 $JsonLibraries['SeriesSource']      = 'http://'.$ServerIp.'/vod/srs/';
