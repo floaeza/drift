@@ -4,8 +4,6 @@ if(empty($Client)) {
     $Client =  'BBN';
 }
 
-echo $Client;
-
 $GetJson    = !empty($_POST['GetJson']) ? $_POST['GetJson'] : false;
 $Libraries  = array();
 $JsonLibraries = array();

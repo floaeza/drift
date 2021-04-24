@@ -12,9 +12,9 @@
     $ConfigData  = new Config('system',$CurrentModule);
 
     $TMP = $ConfigData->getConfig();
-    print_r($TMP);
+
     $Client = $ConfigData->getConfigByName('Identifier').'/';
-    print_r($Client);
+
     require_once 'Core/Models/Libraries.php';
 
     // Opcion a mostrar en pantalla
