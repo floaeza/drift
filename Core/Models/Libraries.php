@@ -7,6 +7,7 @@ if($GetJson == true){
     require_once 'Core/DataAccess/Config.php';
     $ConfigData  = new Config('system','Libraries');
     $Client = $ConfigData->getConfigByName('Identifier').'/';
+    print_r($Client);
 }
 
 
