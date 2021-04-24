@@ -1,6 +1,8 @@
 <?php
 
-$Client = $ConfigData->getConfigByName('Identifier').'/';
+if(empty($Client)) {
+    $Client =  '';
+}
 
 $GetJson    = !empty($_POST['GetJson']) ? $_POST['GetJson'] : false;
 $Libraries  = array();

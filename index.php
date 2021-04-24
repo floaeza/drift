@@ -12,7 +12,7 @@
     $ConfigData  = new Config('system',$CurrentModule);
     require_once 'Core/Models/Libraries.php';
 
-
+    $Client = $ConfigData->getConfigByName('Identifier').'/';
 
     // Opcion a mostrar en pantalla
     $Option = !empty($_GET['Option']) ? $_GET['Option'] : 'CHECK';
