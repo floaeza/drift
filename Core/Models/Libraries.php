@@ -1,18 +1,13 @@
 <?php
 
-$GetJson    = !empty($_POST['GetJson']) ? $_POST['GetJson'] : true;
+$GetJson    = !empty($_POST['GetJson']) ? $_POST['GetJson'] : false;
 
 if($GetJson == true){
-    ECHO "1-<BR>";
+
     require_once 'Database.php';
-    ECHO "2<BR>";
     require_once '../DataAccess/Config.php';
-    ECHO "3<BR>";
     $ConfigData  = new Config('system','Libraries');
-    ECHO "4<BR>";
     $Client = $ConfigData->getConfigByName('Identifier').'/';
-    ECHO "5<BR>";
-    print_r($Client);
 }
 
 
