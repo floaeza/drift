@@ -4,7 +4,6 @@
  * Tipo: Modulo
  */
 
-
     require_once 'Core/Models/Database.php';
     require_once 'Core/Models/Templates.php';
     require_once 'Core/Models/Libraries.php';
