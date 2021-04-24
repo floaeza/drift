@@ -10,7 +10,7 @@
     require_once 'Core/Models/Templates.php';
     require_once 'Core/DataAccess/Config.php';
     $ConfigData  = new Config('system',$CurrentModule);
-    $Client = $ConfigData->getConfigByName('Identifier').'/';
+    $Client = $ConfigData->getConfigByName('ServerIp').'/';
     require_once 'Core/Models/Libraries.php';
 
     // Opcion a mostrar en pantalla
