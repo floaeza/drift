@@ -5,8 +5,9 @@
  * FALTA HACER DINAMICO EL SCRIPT
  */
 
-    date_default_timezone_set('Pacific/Honolulu');
-    
+    // date_default_timezone_set('Pacific/Honolulu');
+       date_default_timezone_set('Pacific/Honolulu');
+
     require_once '../Models/Database.php';
     require_once '../DataAccess/Channels.php';
     
