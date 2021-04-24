@@ -50,9 +50,9 @@
     // Asigna los controladores a usar
     $ContentData->set('Index', $Libraries['Index']);
 
-    print_r($Libraries['LogosPath']);
+    print_r($Libraries['LogosPath'].$ConfigData->getConfigByName('IndexLogo'));
     $ContentData->set('IndexLogo', $Libraries['LogosPath'].$ConfigData->getConfigByName('IndexLogo'));
     
 
     // Imprime en HTML todo lo asignado
-    echo $ContentData->output();
+    //echo $ContentData->output();
