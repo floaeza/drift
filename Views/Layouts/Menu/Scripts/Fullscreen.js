@@ -36,7 +36,7 @@
     GetWeather();
     
     function SetMenuInfo(){
-        MenuContainer.style.backgroundImage = 'url("'+ ImagesUrl + MenuList[MenuIndex].Image+'")';
+        MenuContainer.style.backgroundImage = 'url("'+ Libraries['MenuPath'] + MenuList[MenuIndex].Image+'")';
         MenuSelected.textContent            =  MenuList[MenuIndex].Name;
         MenuDescription.textContent         = MenuList[MenuIndex].Description;
         SetMenuBar();

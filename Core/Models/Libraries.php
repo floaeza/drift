@@ -1,4 +1,12 @@
 <?php
+
+require_once '../Models/Database.php';
+require_once '../DataAccess/Config.php';
+
+$ConfigData   = new Config('system', 'Libraries');
+
+$Client = $ConfigData->getConfigByName('Identifier').'/';
+
 $GetJson    = !empty($_POST['GetJson']) ? $_POST['GetJson'] : false;
 $Libraries  = array();
 $JsonLibraries = array();
@@ -41,12 +49,13 @@ $Libraries['ControllersPath']   = 'Core/Controllers/';
 /* Epg */
 $Libraries['EpgFilesPath']      = '/var/www/html/mnt/nv/epg/';
 /**/
-$Libraries['EpgDaysPath']       = $Libraries['ControllersPath'].'Epg/';
-$JsonLibraries['EpgDaysPath']   = $Libraries['ControllersPath'].'Epg/';
-/* Logos */
-    $Libraries['LogosPath']         = './Media/Logos/';
-    $Libraries['ChannelsPath']      = './Media/Channels/';
-    $JsonLibraries['ChannelsPath']  = './Media/Channels/';
+$Libraries['EpgDaysPath']       = $Libraries['ControllersPath'].'Epg/'.$Client;
+$JsonLibraries['EpgDaysPath']   = $Libraries['ControllersPath'].'Epg/'.$Client;
+/* Imagenes */
+    $Libraries['LogosPath']         = './Media/Logos/'.$Client;
+    $Libraries['ChannelsPath']      = './Media/Channels/'.$Client;
+    $JsonLibraries['ChannelsPath']  = './Media/Channels/'.$Client;
+    $JsonLibraries['MenuPath']      = './Media/Menu/'.$Client;
     
 /* Temas */
      $Libraries['ThemesPath']      = $Libraries['StylesPath'].'Themes/';

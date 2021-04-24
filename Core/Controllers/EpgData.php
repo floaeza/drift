@@ -22,6 +22,13 @@
     $PackageData  = new Packages('system', $CurrentController);
     $ConfigData   = new Config('system', $CurrentController);
     $ChannelsData = new Channels('system', $CurrentController);
+
+    $ExtraHour  = $ConfigData->getConfigByName('ExtraHour');
+    $StartEnd   = $ConfigData->getConfigByName('StartEnd');
+    $OffsetZone = $ConfigData->getConfigByName('OffsetZone');
+
+    $Client = $ConfigData->getConfigByName('Identifier');
+    $ServerIp = $ConfigData->getConfigByName('ServerIp');
     
 //    $CurrentDate = date('Ymd');
 //    $PackageId   = '1';
@@ -41,9 +48,6 @@
     $Symbols    = array('>', '<', '/', '=', '"', '-','&');
     $RemoveAmYesterday = true;
     $RemoveAmToday     = false;
-    
-    /* PONER MANUALMENTE LA IP, YA QUE AL EJECUTAR PHP DESDE LA TERMINAL NO OBTIENE LA IP */
-    $ServerIp = '10.0.3.10';
     
     $EpgFolder = 'http://'.$ServerIp.'/EpgChannels/';
     
@@ -149,10 +153,6 @@
         array_push($arrayCanales, $Channel);
     endforeach;
 
-    $ExtraHour  = $ConfigData->getConfigByName('ExtraHour');
-    $StartEnd   = $ConfigData->getConfigByName('StartEnd');
-    $OffsetZone = $ConfigData->getConfigByName('OffsetZone');
-    
     $arraySchedule = array();
     $Programacion = array();
     
@@ -568,7 +568,7 @@
         $NameDay = 'epg_'.$CurrentDate.'_'.$PackageId.'.json';
         
         if (file_put_contents('Epg/'.$NameDay, $EpgData)) {
-            chmod('Epg/'.$NameDay, 0775);
+            chmod('Epg/'.$Client.'/'.$NameDay, 0775);
             echo ".::: Archivo JSON con la programacion del dia $CurrentDate del paquete $PackageId se ha creado correctamente". PHP_EOL;
         } else {
             echo ".::: Error al crear archivo JSON". PHP_EOL;
