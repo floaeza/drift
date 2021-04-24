@@ -10,6 +10,9 @@
     require_once 'Core/Models/Templates.php';
     require_once 'Core/DataAccess/Config.php';
     $ConfigData  = new Config('system',$CurrentModule);
+
+    $TMP = $ConfigData->getConfig();
+    print_r($TMP);
     $Client = $ConfigData->getConfigByName('Identifier').'/';
     print_r($Client);
     require_once 'Core/Models/Libraries.php';
