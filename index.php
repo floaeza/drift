@@ -17,8 +17,6 @@
     // Opcion a mostrar en pantalla
     $Option = !empty($_GET['Option']) ? $_GET['Option'] : 'CHECK';
 
-
-
     // Carga clases
     $ContentData = new Templates($Libraries['LayoutsPhpPath'].'Initial/Index.tpl');   
 
