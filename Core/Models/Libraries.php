@@ -3,8 +3,8 @@
 $GetJson    = !empty($_POST['GetJson']) ? $_POST['GetJson'] : false;
 
 if($GetJson == true){
-    require_once 'Core/Models/Database.php';
-    require_once 'Core/DataAccess/Config.php';
+    require_once '/Core/Models/Database.php';
+    require_once '/Core/DataAccess/Config.php';
     $ConfigData  = new Config('system','Libraries');
     $Client = $ConfigData->getConfigByName('Identifier').'/';
 }
