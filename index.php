@@ -10,9 +10,6 @@
     require_once 'Core/Models/Templates.php';
     require_once 'Core/DataAccess/Config.php';
     $ConfigData  = new Config('system',$CurrentModule);
-
-    $TMP = $ConfigData->getConfig();
-
     $Client = $ConfigData->getConfigByName('Identifier').'/';
 
     require_once 'Core/Models/Libraries.php';
@@ -52,7 +49,8 @@
     
     // Asigna los controladores a usar
     $ContentData->set('Index', $Libraries['Index']);
-    
+
+    print_r($Libraries['LogosPath']);
     $ContentData->set('IndexLogo', $Libraries['LogosPath'].$ConfigData->getConfigByName('IndexLogo'));
     
 
