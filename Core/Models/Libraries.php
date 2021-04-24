@@ -3,6 +3,7 @@
 $GetJson    = !empty($_POST['GetJson']) ? $_POST['GetJson'] : true;
 
 if($GetJson == true){
+    ECHO "EGEW";
     require_once 'Core/Models/Database.php';
     require_once 'Core/DataAccess/Config.php';
     $ConfigData  = new Config('system','Libraries');
