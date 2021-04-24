@@ -6,7 +6,7 @@ if($GetJson == true){
     ECHO "1-<BR>";
     require_once 'Database.php';
     ECHO "2<BR>";
-    require_once './DataAccess/Config.php';
+    require_once '../DataAccess/Config.php';
     ECHO "3<BR>";
     $ConfigData  = new Config('system','Libraries');
     ECHO "4<BR>";
