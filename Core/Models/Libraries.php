@@ -3,11 +3,15 @@
 $GetJson    = !empty($_POST['GetJson']) ? $_POST['GetJson'] : true;
 
 if($GetJson == true){
-    ECHO "EGEW";
+    ECHO "1<BR>";
     require_once 'Core/Models/Database.php';
+    ECHO "2<BR>";
     require_once 'Core/DataAccess/Config.php';
+    ECHO "3<BR>";
     $ConfigData  = new Config('system','Libraries');
+    ECHO "4<BR>";
     $Client = $ConfigData->getConfigByName('Identifier').'/';
+    ECHO "5<BR>";
     print_r($Client);
 }
 
