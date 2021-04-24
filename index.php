@@ -7,8 +7,9 @@ echo "1<br>";
     require_once 'Core/Models/Database.php';
     require_once 'Core/Models/Templates.php';
 echo "1.1<br>";
-    require_once 'Core/Models/Libraries.php';
+    
     require_once 'Core/DataAccess/Config.php';
+    require_once 'Core/Models/Libraries.php';
 
     $CurrentModule = 'IndexController';
     // Opcion a mostrar en pantalla
