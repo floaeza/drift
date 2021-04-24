@@ -3,21 +3,22 @@
  * Fecha: Noviembre 2019
  * Tipo: Modulo
  */
-echo "1<br>";
+
     require_once 'Core/Models/Database.php';
     require_once 'Core/Models/Templates.php';
-echo "1.2<br>";
-    require_once 'Core/Models/Libraries.php';
     require_once 'Core/DataAccess/Config.php';
 
     $CurrentModule = 'IndexController';
     // Opcion a mostrar en pantalla
     $Option = !empty($_GET['Option']) ? $_GET['Option'] : 'CHECK';
-echo "3<br>";
+
+    $ConfigData  = new Config('system',$CurrentModule);
+
+    require_once 'Core/Models/Libraries.php';
     // Carga clases
     $ContentData = new Templates($Libraries['LayoutsPhpPath'].'Initial/Index.tpl');   
-    $ConfigData  = new Config('system',$CurrentModule);
-    
+
+
     // Asigna el texto a mostrar de acuerdo a la opcion en la que se encuentra
     if($Option == 'LOAD'){
         $Step = 'Loading configuration';

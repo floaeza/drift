@@ -1,9 +1,5 @@
 <?php
 
-require_once '../DataAccess/Config.php';
-
-$ConfigData   = new Config('system', 'Libraries');
-
 $Client = $ConfigData->getConfigByName('Identifier').'/';
 
 $GetJson    = !empty($_POST['GetJson']) ? $_POST['GetJson'] : false;
