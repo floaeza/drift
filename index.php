@@ -8,7 +8,7 @@ echo "1<br>";
     require_once 'Core/Models/Templates.php';
     require_once 'Core/Models/Libraries.php';
     require_once 'Core/DataAccess/Config.php';
-echo "1<br>";
+echo "2<br>";
     $CurrentModule = 'IndexController';
     // Opcion a mostrar en pantalla
     $Option = !empty($_GET['Option']) ? $_GET['Option'] : 'CHECK';
