@@ -1,7 +1,7 @@
 <?php
 
-require_once '../Models/Database.php';
-require_once '../DataAccess/Config.php';
+require_once 'Database.php';
+require_once '/DataAccess/Config.php';
 
 $ConfigData   = new Config('system', 'Libraries');
 
