@@ -4,9 +4,9 @@ $GetJson    = !empty($_POST['GetJson']) ? $_POST['GetJson'] : true;
 
 if($GetJson == true){
     ECHO "1<BR>";
-    require_once 'Core/Models/Database.php';
+    require_once 'Database.php';
     ECHO "2<BR>";
-    require_once 'Core/DataAccess/Config.php';
+    require_once 'DataAccess/Config.php';
     ECHO "3<BR>";
     $ConfigData  = new Config('system','Libraries');
     ECHO "4<BR>";
