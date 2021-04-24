@@ -20,7 +20,8 @@ class Config extends Database {
         
         $this->connect();
         $this->select('parametros');
-        $this->Config = $this->getResult();
+        //$this->Config = $this->getResult();
+        $this->Config = $this->getSql();
         $this->disconnect();
         
         return $this->Config;
