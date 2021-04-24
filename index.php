@@ -3,16 +3,16 @@
  * Fecha: Noviembre 2019
  * Tipo: Modulo
  */
-
+echo "1<br>";
     require_once 'Core/Models/Database.php';
     require_once 'Core/Models/Templates.php';
     require_once 'Core/Models/Libraries.php';
     require_once 'Core/DataAccess/Config.php';
-    
+echo "1<br>";
     $CurrentModule = 'IndexController';
     // Opcion a mostrar en pantalla
     $Option = !empty($_GET['Option']) ? $_GET['Option'] : 'CHECK';
-    
+echo "3<br>";
     // Carga clases
     $ContentData = new Templates($Libraries['LayoutsPhpPath'].'Initial/Index.tpl');   
     $ConfigData  = new Config('system',$CurrentModule);
