@@ -12,6 +12,11 @@ body, html {
     font-family: be;
 }
 
+div#TemperatureGroup {
+    color: #0396a6;
+    font-family: arial-rounded;
+}
+
 /********** EPG FONTS ***********/
 
 p.ChannelNumber,
@@ -43,14 +48,78 @@ div#EpgContainer {
 
 div#EpgNowAiring {
     color: #fff;
+    font-family: arial-rounded;
 }
 
 div#EpgTitle {
     color: #dfbe5e;
+    font-family: Gotham;
+}
+
+div#EpgRating,
+div#EpgTime{
+    font-family: arial-rounded;
+}
+
+div#EpgDescription {
+    font-family: calibri-regular;
+}
+
+div#EpgStars {
+    color: #e3c15a;
+}
+
+div.RecordingOptionsButton {
+    font-family: arial-rounded;
+}
+
+div#PvrDate{
+    font-family: arial-rounded;
+}
+
+div#CurrentPvrOption {
+    font-family: arial-rounded;
 }
 
 div#EpgDays {
     color: #fff;
+    font-family: arial-rounded;
+}
+
+div#PvrProgramTitle {
+    color: #dfbe5e;
+    font-family: Gotham;
+}
+
+div.ChannelName,
+div.ChannelNumber,
+div.Date{
+    font-family: arial-rounded;
+}
+
+div.Time{
+    font-family: arial-rounded;
+}
+
+div#EpgDate {
+    font-family: arial-rounded;
+}
+
+div#EpgProgramInfo {
+    background-color: #246681;
+    border-color: #347080;
+}
+
+div.Description {
+    font-family: calibri-regular;
+}
+
+div.Rating {
+    font-family: arial-rounded;
+}
+
+div.Rating {
+    color: #0396a6;
 }
 
 /* ProgramFocus para poner valores */
@@ -76,6 +145,20 @@ div.HourRow
     font-weight: bold;
 }
 
+div#PvrProgramDate{
+    font-family: arial-rounded;
+    color: #fff;
+}
+
+div#RecorderMessage {
+    color: #e1e1e1;
+}
+
+div#PvrInfo{
+    border: 1px solid rgba(3,150,166);
+    background-color: #246681;
+}
+
 /********** PVR ***********/
 
 div#PvrOptions,
@@ -93,4 +176,90 @@ div.RecordingManualOptionsButton,
 div.RecordingOptionsButton {
     background: #2f414a;
     color: #fff;
+}
+
+div#PvrProgramDescription {
+    color: #fff;
+    font-family: calibri-regular;
+}
+
+div#PvrNow {
+    font-family: arial-rounded;
+    color: #fff;
+}
+
+div#PvrWeather{
+    font-family: arial-rounded;
+    color: #0396a6;
+}
+
+#PvrLogoContainer {
+    background: #2f414a;
+}
+
+.Ttle {
+    color: #dfbe5e;
+}
+
+.Rtg{
+    color: #0396a6;
+}
+
+div#EpgRating {
+    color: #0396a6;
+}
+
+div#ProgramRow1,
+div#ProgramRow2,
+div#ProgramRow3,
+div#ProgramRow4,
+div#ProgramRow5,
+div#ProgramRow6,
+div#ProgramRow7 {
+    font-family: arial-rounded;
+    background-color: #246681;
+}
+
+div#ChannelRow1,
+div#ChannelRow2,
+div#ChannelRow3,
+div#ChannelRow4,
+div#ChannelRow5,
+div#ChannelRow6,
+div#ChannelRow7 {
+    background-color: #2f4142;
+    /*outline: 1px solid rgba(24, 46, 58, 0.9);*/
+}
+
+div#BarPosition {
+    background-color: #0396a6;
+    color: #fff;
+}
+
+div#BarStatus {
+    color: #e3c15a;
+}
+
+div.RecordingOptionFocus {
+    background: rgba(223, 190, 94, 0.9);
+    color: #000;
+    font-weight: bold;
+}
+
+div#BarUsedSize {
+    background: #0396a6;
+    color: #000;
+}
+
+div#BarUsedSize {
+    background: #0396a6;
+    color: #000;
+}
+
+div.BarUsedSize {
+    background: rgba(255,255,255,0.1);
+}
+
+div#RecordingManualOptions {
+    color: #fff
 }

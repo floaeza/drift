@@ -8,7 +8,25 @@ and open the template in the editor.
     Author     : tania
 */
 
+/***************************** [CONTENEDORES OCULTOS] *****************************/
+
+div.Quality,
+div.Duration,
+div#EpgStars
+div#PvrProgramDuration,
+div#PvrProgramEpisode,
+div#PvrProgramStars,
+#WeatherSummary,
+div#EpgRecording
+div#EpgEpisode
+div#EpgDuration
+div#EpgSerie
+{
+    display: none;
+}
+
 /***************************** [CONTENEDORES] *****************************/
+
 #PvrWeatherIcon{
     position: fixed;
     bottom: 9.5%;
@@ -21,14 +39,12 @@ and open the template in the editor.
 
 .Ttle {
     margin: 0;
-    color: #dfbe5e;
     float: left;
 }
 
 .Rtg{
     margin: 0;
     float: left;
-    color: #0396a6;
 }
 
 .RowDur {
@@ -39,7 +55,6 @@ and open the template in the editor.
 }
 
 #PvrLogoContainer {
-    background: #2f414a;
     position: fixed;
     width: 29%;
     height: 40%;
@@ -52,7 +67,6 @@ and open the template in the editor.
 #PvrMainLogo {
     width: 100%;
     height: 100%;
-    background-image: url('/BBINCO/TV/Media/Logos/MainLogo.png');
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -65,10 +79,6 @@ div#EpgContainer {
     background-size: 100% 100%;
     opacity: 1;
     z-index: 0;
-}
-
-#WeatherSummary {
-    display: none;
 }
 
 #WeatherIcon {
@@ -109,12 +119,9 @@ div#EpgProgramInfo {
     height: 26.3%;
     top: 7%;
     left: 28%;
-    background-color: #246681;
     border-radius: 6px;
     border-style: solid;
-    border-color: #347080;
     box-shadow: 2px 2px 7px rgba(0,0,0,0.3);
-    
 }
 
 div#EpgHours {
@@ -135,7 +142,7 @@ div#EpgNowAiring {
     padding-top: 2%;
     text-align: left;
     font-size: 20px;
-    font-family: arial-rounded;
+
 }
 
 div#EpgDate {
@@ -146,7 +153,6 @@ div#EpgDate {
     top: 2.5%;
     text-align: right;
     font-size: 18px;
-    font-family: arial-rounded;
 }
 
 div#EpgWeather {
@@ -170,8 +176,6 @@ div#TemperatureGroup {
     width: 100%;
     height: 100%;
     font-size: 18px;
-    font-family: arial-rounded;
-    color: #0396a6;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
 }
 
@@ -181,7 +185,6 @@ div#EpgDays {
     bottom: 53%;
     position: fixed;
     font-size: 22px;
-    font-family: arial-rounded;
     left: 2%;
     text-shadow: 4px 3px 2px rgba(0,0,0,0.5);
     text-align: center;
@@ -198,11 +201,11 @@ div#EpgDay {
 }
 
 /***************************** Estilo BackgroundInfo *****************************/
+
 div#InfoContainer{
     width: 90%;
     left:5%;
     margin-bottom:2%;
-    color: #fff;
  }
 
  div.ChannelNumber {
@@ -232,9 +235,7 @@ div.Date {
  div.ChannelNumber,
  div.Date{ 
     padding-top: 2%;
-    font-family: arial-rounded;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
-
  }  
 
  div.Title {
@@ -252,7 +253,6 @@ div.Date {
     height: 10%;
     bottom: 11.5%;
     left: 36%;
-    font-family: arial-rounded;
     font-size: 16px;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
  }
@@ -260,7 +260,6 @@ div.Date {
  div.Description {
      width: 94%;
      height: 30%;
-     font-family: calibri-regular;
      font-size: 19px;
      text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
      float: left;
@@ -274,17 +273,10 @@ div.Date {
      height: 10%;
      bottom: 11.5%;
      left: 56%;
-     color: #0396a6;
-     font-family: arial-rounded;
      font-size: 16px;
      text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
  }
 
- div.Quality,
- div.Duration
- {
-     display: none;
- }
 
 /***************************** [FRAME] *****************************/
 
@@ -370,9 +362,7 @@ div#ProgramRow6,
 div#ProgramRow7 {
     width: 100%;
     height: 20%;
-    font-family: arial-rounded;
     font-weight: bold;
-    background-color: #246681;
 }
 
 div#ChannelRow1,
@@ -386,8 +376,6 @@ div#ChannelRow7 {
     text-transform: uppercase;
     height: 20%;
     width: 100%;
-    background-color: #2f4142;
-    outline: 1px solid rgba(24, 46, 58, 0.9);
 }
 
 /***************************** [INFO] *****************************/
@@ -426,7 +414,6 @@ div#EpgTitle {
     white-space: pre-wrap;
     text-align: justify;
     font-size: 23px;
-    font-family: Gotham;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
 }
 
@@ -439,7 +426,6 @@ div#EpgDescription {
     top: 18%;
     overflow: hidden;
     text-align: justify;
-    font-family: calibri-regular;
     font-size: 18px;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
 }
@@ -459,7 +445,6 @@ div#EpgRating {
     position: fixed;
     top: 16%;
     left: 48.5%;
-    color: #0396a6;
 }
 
 div#EpgRating,
@@ -467,7 +452,6 @@ div#EpgTime{
     text-align: left;
     font-size: 16px;
     font-weight: bold;
-    font-family: arial-rounded;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
     text-transform: uppercase;
 }
@@ -477,34 +461,29 @@ div#EpgEpisode{
     height: 15%;
     float: right;
     padding-top: 2%;
-    display: none;
 }
 div#EpgDuration {
     width: 25%;
     height: 9%;
     float: left;
     text-align: center;
-    display: none;
 }
+
 div#EpgStars {
     width: 20%;
     height: 9%;
     float: right;
     text-align: center;
-    color: #e3c15a;
-    display: none;
 }
 
 div#EpgRecording {
     width: 50%;
     float: left;
-    display: none;
 }
 
 div#EpgSerie {
     float: left;
     width: 50%;
-    display: none;
 }
 
 /***************************** [Video/PauseLive Bar] *****************************/
@@ -529,17 +508,14 @@ div#BarPosition {
     border-radius: 6px;
     height: 100%;
     top: 2%;
-    background-color: #0396a6;
     width: 0%;
     z-index: 1;
     text-align: right;
-    color: #fff;
     font-size: 23px;
 }
 
 div#BarStatus {
     right: 0;
-    color: #e3c15a;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
     text-align: center;
     top: 100%;
@@ -579,15 +555,8 @@ div.RecordingOptionsButton {
     min-height: 15%;
     border-radius: 5px;
     margin-top: 2.5%;
-    font-family: arial-rounded;
 }
 
-
-div.RecordingOptionFocus {
-    background: rgba(223, 190, 94, 0.9);
-    color: #000;
-    font-weight: bold;
-}
 
 div#RecorderMessage {
     width: 100%;
@@ -598,7 +567,6 @@ div#RecorderMessage {
     position: fixed;
     top: 0%;
     background: rgba(0,0,0,0.8);
-    color: #e1e1e1;
     display: none;
 }
 
@@ -609,9 +577,7 @@ div#PvrNow {
     position: fixed;
     margin-left: 3.2%;
     top:5%;
-    font-family: arial-rounded;
     font-size: 20px;
-    color: #fff;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
 }
 
@@ -622,9 +588,7 @@ div#PvrWeather{
     position: fixed;
     margin-left: 4.5%;
     top:87%;
-    font-family: arial-rounded;
     font-size: 18px;
-    color: #0396a6;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
     text-align: center;
 }
@@ -640,7 +604,6 @@ div#PvrDate{
     left: 4.5%;
     margin-top: 1%;
     top: 90%;
-    font-family: arial-rounded;
     font-size: 18px;
     color: #fff;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
@@ -672,7 +635,6 @@ div.PvrHeader {
 div#CurrentPvrOption {
     width: 70%;
     margin: 0 auto;
-    font-family: arial-rounded;
     font-size: 28px;
 }
 
@@ -766,16 +728,10 @@ div#PvrInfo{
     position: fixed;
     bottom: 13%;
     left: 33%;
-    border-radius: 10px;
-    border: 1px solid rgba(3,150,166);
-    background-color: #246681;
+    border-radius: 6px;
 }
 
-div#PvrProgramDuration,
-div#PvrProgramEpisode,
-div#PvrProgramStars {
-    display: none;
-}
+
 
 div#PvrProgramTitle {
     width: 60%;
@@ -785,9 +741,7 @@ div#PvrProgramTitle {
     position: fixed;
     overflow: hidden;
     white-space: nowrap;
-    color: #dfbe5e;
     font-size: 23px;
-    font-family: Gotham;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
 }
 
@@ -798,9 +752,7 @@ div#PvrProgramDate{
     margin-left: 1%;
     position: fixed;
     overflow: hidden;
-    color: #fff;
     font-size: 18px;
-    font-family: arial-rounded;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
 }
 
@@ -812,9 +764,7 @@ div#PvrProgramDescription {
     position: fixed;
     overflow: hidden;
     text-align: left;
-    color: #fff;
     font-size: 18px;
-    font-family: calibri-regular;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
 }
 
@@ -841,17 +791,10 @@ div#UsedSize {
 div.BarUsedSize {
     width: 62%;
     height: 4%;
-    background: rgba(255,255,255,0.1);
     border-radius: 6px;
     position: fixed;
 }
 
-div#BarUsedSize {
-    background: #0396a6;
-    color: #000;
-    text-align: left;
-    border-radius: 6px;
-}
 
 div#RecordPlayOptions {
     width: 30%;
@@ -880,7 +823,6 @@ div#RecordingManualOptions {
     text-align: center;
     z-index: 1;
     visibility: hidden;
-    color: #fff
 }
 
 div#RecordingData {
