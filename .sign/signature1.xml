@@ -28,7 +28,7 @@
 </Reference>
 <Reference URI=".idea%2Fworkspace.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>RWD5Cer5ea+97ia2prYPvD8W7SPgWhocRvXiLVbHxg4=</DigestValue>
+<DigestValue>DRsIUJZmL/OPplJGXwKGJr1CtgqCbKInCHWrgNoudSc=</DigestValue>
 </Reference>
 <Reference URI="Core%2F.DS_Store">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -3736,11 +3736,11 @@
 </Reference>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>CWtAuPi2tL83PEJleojqG9PnU5+ydml/keQvHUDnRhI=</DigestValue>
+<DigestValue>X+IxDXpSvVLKyW+e7N1ryf7z1m1DK2q4ts0YRn18s5o=</DigestValue>
 </Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>XyiR3coFLPx5/L0vKDtB1poYrHuWgayPoqYevm2viaA=</DigestValue>
+<DigestValue>u12x1ou5yMWLW6KKDWn2tdQtXzyi8wgf6px5bC9ND2Q=</DigestValue>
 </Reference>
 <Reference URI="content.php">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -3750,6 +3750,10 @@
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>KIoyVa9qYe1HRKruRsYqQkAX9lRk2memyF+hXn1sONA=</DigestValue>
 </Reference>
+<Reference URI="index.html">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>1viER3Bi0GPZgckR1EkS2102yjTyelwG/FnoWcN1GGk=</DigestValue>
+</Reference>
 <Reference URI="index.php">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>b3dwfdtk6SDlmuuq6jZoO3VbqzBGQ5YaL+vtnAZZQ6M=</DigestValue>
@@ -3757,6 +3761,10 @@
 <Reference URI="menu.php">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>+aXF7fixYwOXQnbuPi0T+ejHcjVqrRNNCgy0Mzq33oo=</DigestValue>
+</Reference>
+<Reference URI="sssp_config.xml">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>b0uan9FYC5Lp8S3t7aHDIbJp+27dCQevFf9NVlOipLA=</DigestValue>
 </Reference>
 <Reference URI="tv.php">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -3771,9 +3779,9 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-BREMGtY/K7YaUMp1BK2T2PMaOhab+XZJCHczSGAoerD29JD3HypEs/yXNDAlbOxsIsMQP3MWuSYf
-Y0YXOGgKxJGKR4LMw+hKJe9F8VcvN36lbt4QncuoBe2o/zmqRKgYUqctv57ZVZiryyCxHrMct4Bl
-jLH4ocaOsaaAMWlf4Os=
+rHMy7eUiFTcoLiajXUhPh0JCgQlJQr5VvbZIcks/sMYZ9pUvpXnca8qJzXCTrUUmy8At1Xhev+Va
+aAOGFU9n55ATotJOpOX1l8QlBZNHsrXu3iQl4GrlO5ywn1/8BelRbThSVIx58hf47UyWEBW2W9P0
+mjkrWXDPHOjP7E3XftA=
 </SignatureValue>
 <KeyInfo>
 <X509Data>
