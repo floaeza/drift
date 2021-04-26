@@ -414,7 +414,7 @@ div#EpgTitle {
 }
 
 div#EpgDescription {
-    width: 57%;
+    width: 58%;
     height: 14%;
     padding-top: 1%;
     position: fixed;
@@ -439,13 +439,14 @@ div#EpgRating {
     width: 15%;
     height: 5%;
     position: fixed;
-    top: 15%;
+    top: 16%;
+    left: 44%;
 }
 
 div#EpgRating,
 div#EpgTime{
     text-align: left;
-    font-size: 20px;
+    font-size: 19px;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
     text-transform: uppercase;
 }
