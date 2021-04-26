@@ -177,7 +177,7 @@
     
     function AddDaysFormat(days){
         var nowPlusOneDay = moment().add(days, 'days');
-        var nowPlusOneDayStr = nowPlusOneDay.format('dddd MMMM Do');
+        var nowPlusOneDayStr = nowPlusOneDay.format('MMM, DD');
         return nowPlusOneDayStr;
     }
     

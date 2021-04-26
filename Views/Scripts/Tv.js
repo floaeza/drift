@@ -41,6 +41,7 @@
 
     /* Horas y fechas */
     var FormatDateAndHour    = '',
+        FormatHour           = '',
         StartDateChannel     = '',
         FormatStartDate      = '',
         CurrentHour          = '';
