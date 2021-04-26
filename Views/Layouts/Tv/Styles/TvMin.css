@@ -149,7 +149,7 @@ div#EpgDate {
     width: 20%;
     height: 5%;
     position: fixed;
-    right: 17%;
+    right: 13.5%;
     top: 2.5%;
     text-align: right;
     font-size: 18px;
@@ -159,9 +159,9 @@ div#EpgWeather {
     width: 10%;
     height: 5%;
     top: 2.5%;
-    right:6%;
+    right: 3%;
     position: fixed;
-    text-align: right;
+    text-align: left;
 }
 
 div#Icon{

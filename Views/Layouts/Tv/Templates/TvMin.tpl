@@ -24,7 +24,7 @@
                 <span id='WeatherFarenheit'></span><span>&deg; F/</span>
                 <span id='WeatherCelsius'></span><span>&deg; C</span>
             </div>
-            <canvas id='WeatherIcon' width='35' height='35'></canvas>
+            <canvas id='WeatherIcon' width='25' height='25'></canvas>
             <div id='WeatherSummary'></div>
         </div>
         <div id='EpgDate'></div>
