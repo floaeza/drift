@@ -18,6 +18,8 @@
     $ChannelsData = new Channels('system', $CurrentController);
     
     $Channels   = $ChannelsData->getChannelsList();
+
+    echo '<br><b>'.$Channels.'<br>';
     
     $Today      = date('Y-m-d');
     $Yesterday  = date('Y-m-d',(strtotime ( '-1 day' , strtotime ( $Today) ) ));
