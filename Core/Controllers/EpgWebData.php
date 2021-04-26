@@ -13,13 +13,13 @@
 /* Para crea un dia de programacion es necesario descargar AYER y HOY. */
 
     $CurrentController = 'EpgWebDataController';
-    
+    echo 'Hola mundo';
     $Utilities    = new Utilities();
     $ChannelsData = new Channels('system', $CurrentController);
     
     $Channels   = $ChannelsData->getChannelsList();
 
-    echo '<br><b>'.$Channels.'<br>';
+  
     
     $Today      = date('Y-m-d');
     $Yesterday  = date('Y-m-d',(strtotime ( '-1 day' , strtotime ( $Today) ) ));
