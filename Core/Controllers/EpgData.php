@@ -185,6 +185,7 @@
        // echo 'Yesteday: '. PHP_EOL;
         foreach($SlicesYesterday as $SliceYesterday):  
             $SliceYesterday = str_replace('"', '', $SliceYesterday);
+            echo $SlicesYesterday;
 
             $TitleA       = '';
             $DurationA    = $Utilities->getBetween($SliceYesterday, 'data-duration', 'data-showID');
@@ -300,7 +301,7 @@
        // echo 'Today:'. PHP_EOL;
         foreach($SlicesToday as $SliceToday):  
             $SliceToday = str_replace('"', '', $SliceToday);
-            echo $SliceToday. PHP_EOL;
+            echo $SliceToday;
 
             $TitleA       = '';
             $DurationA    = $Utilities->getBetween($SliceToday, 'data-duration', 'data-showID');
