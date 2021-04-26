@@ -12,14 +12,14 @@ and open the template in the editor.
 
 div.Quality,
 div.Duration,
-div#EpgStars
+div#EpgStars,
 div#PvrProgramDuration,
 div#PvrProgramEpisode,
 div#PvrProgramStars,
 #WeatherSummary,
-div#EpgRecording
-div#EpgEpisode
-div#EpgDuration
+div#EpgRecording,
+div#EpgEpisode,
+div#EpgDuration,
 div#EpgSerie
 {
     display: none;
