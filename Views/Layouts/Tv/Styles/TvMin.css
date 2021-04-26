@@ -105,14 +105,15 @@ div#EpgPrograms {
 
 div#EpgProgramInfo {
     position: fixed;
-    width: 50%;
-    height: 30%;
-    top: 9%;
-    right: 17%;
+    width: 58%;
+    height: 26.3%;
+    top: 7%;
+    left: 28%;
     background-color: #246681;
-    border-radius: 10px;
+    border-radius: 6px;
     border-style: solid;
-    border-color: #0396a6;
+    border-color: #347080;
+    box-shadow: 2px 2px 7px rgba(0,0,0,0.3);
     
 }
 
