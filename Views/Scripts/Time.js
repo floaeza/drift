@@ -16,7 +16,7 @@ Debug('########################### Time() ');
     function SetDate(){
         TimeRunning++;
         
-        FormatDateAndHour = moment().format('MMM DD / h:mm a');
+        FormatDateAndHour = moment().format('MMM, DD / h:mm a');
 
         if(CurrentModule === 'Tv'){
             if(ActiveInfoContainer === true){
