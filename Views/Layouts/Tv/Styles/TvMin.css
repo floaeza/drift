@@ -358,7 +358,7 @@ div.HourRow {
     height: 100%;
     line-height: 50px;
     background-size: 100% 100%;
-    outline: 1px solid rgba(24, 46, 58, 0.9);
+    outline: 1px solid rgb(42, 61, 71);
 }
 
 div#ProgramRow1,
