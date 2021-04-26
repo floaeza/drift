@@ -406,26 +406,22 @@ div#EpgMainLogo {
 }
 
 div#EpgTitle {
-    position: fixed;
-    width: 11%;
-    height: 27%;
-    top: 7%;
-    right: 2%;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 70%;
+    font-size: 28px;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-top: 2%;
+    width: 90%;
 }
 
 div#EpgDescription {
     width: 57%;
     height: 14%;
-    margin-left: 0.5%;
     padding-top: 1%;
     position: fixed;
     top: 18%;
     overflow: hidden;
     text-align: justify;
-    font-size: 18px;
+    font-size: 20px;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
     line-height: 35px;
 }
@@ -443,15 +439,13 @@ div#EpgRating {
     width: 15%;
     height: 5%;
     position: fixed;
-    top: 16%;
-    left: 48.5%;
+    top: 15%;
 }
 
 div#EpgRating,
 div#EpgTime{
     text-align: left;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 20px;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
     text-transform: uppercase;
 }
