@@ -75,11 +75,27 @@ div.RecordingOptionsButton {
 
 div#PvrDate{
     font-family: arial-rounded;
+    color: #fff;
+}
+
+div.PvrHeader {
+    background-color: #246681;
 }
 
 div#CurrentPvrOption {
     font-family: arial-rounded;
 }
+
+.PvrProgramFocus {
+    color:#000;
+    background: #dfbe5e;
+}
+
+.PvrChevronLeft,
+.PvrChevronRight {
+    color: #dfbe5e;
+}
+
 
 div#EpgDays {
     color: #fff;
@@ -116,6 +132,10 @@ div.Description {
 
 div.Rating {
     font-family: arial-rounded;
+}
+
+.PvrSun {
+    color: #fff;
 }
 
 div.Rating {
