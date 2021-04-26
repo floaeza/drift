@@ -40,8 +40,9 @@ var RowSelected             = 1,
 var FocusChannelPosition    = 0;
 FocusProgramPosition    = 0;
 
-var ColorFocus              = '';
-BackgroundFocus         = '';
+var ColorFocus              = '',
+    OutlineColor            = '',
+    BackgroundFocus         = '';
 
 var ProgramsToLeft          = false,
     ProgramsToChange          = false;
@@ -550,9 +551,12 @@ function GetFocusStyle(){
         ProgramFocusStyle   = window.getComputedStyle(ProgramFocus);
     ColorFocus          = ProgramFocusStyle.color;
     BackgroundFocus     = ProgramFocusStyle.backgroundColor;
+    OutlineColor     = ProgramFocusStyle.outline;
 
     ProgramFocus = null;
     ProgramFocusStyle = null;
+
+    document.getElementById('EpgMainLogo').style.backgroundImage	= 'url("'+Libraries['EpgLogo']+'")';
 }
 
 

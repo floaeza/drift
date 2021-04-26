@@ -53,16 +53,17 @@ div#EpgDays {
     color: #fff;
 }
 
-/* ProgramFocus y Program tiene que ser el mismo color */
+/* ProgramFocus  */
 div#ProgramFocus {
-    background: rgba(223, 190, 94, 0.9);
+    background: rgb(223, 190, 94);
     color: #000;
     font-weight: bold;
+    outline: 1px solid rgb(42, 61, 71);
 }
 
 .Program
 {
-    outline: 1px solid rgba(24, 46, 58, 0.9);
+    outline: 1px solid rgb(42, 61, 71);
 }
 
 p.ChannelNumber,
