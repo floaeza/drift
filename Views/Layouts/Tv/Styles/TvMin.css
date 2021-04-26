@@ -72,7 +72,7 @@ div#EpgContainer {
 }
 
 #WeatherIcon {
-    top: 4%;
+    top: 2%;
     position: fixed;
     right: 2%;
 }
@@ -130,8 +130,8 @@ div#EpgNowAiring {
     width: 28%;
     height: 6%;
     position: fixed;
-    padding-left: 3%;
-    padding-top: 2.5%;
+    padding-left: 1.5%;
+    padding-top: 2%;
     text-align: left;
     font-size: 20px;
     font-family: arial-rounded;
@@ -142,7 +142,7 @@ div#EpgDate {
     height: 5%;
     position: fixed;
     right: 17%;
-    top: 5%;
+    top: 2.5%;
     text-align: right;
     font-size: 18px;
     font-family: arial-rounded;
@@ -151,7 +151,7 @@ div#EpgDate {
 div#EpgWeather {
     width: 10%;
     height: 5%;
-    top: 5%;
+    top: 2.5%;
     right:6%;
     position: fixed;
     text-align: right;
