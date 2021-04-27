@@ -112,7 +112,7 @@
 
 <!-- Opciones para grabar un programa manualmente | OnLoadHourPosition  & Hours[(0 - > 47)]  | -->
 <div id='RecordingManualOptions'>
-    <i class='fa fa-caret-left'></i><br>
+    <i class='fa fa-caret-up'></i><br>
     <div class='TimeNewRecording'>00</div>
     <div class='TimeNewRecording'>00</div>
     <div class='TimeNewRecording'>00</div>
@@ -151,9 +151,9 @@
     </div>
 
     <div class='PvrHeader'>
-        <i class='fa fa-chevron-left PvrChevronLeft'></i>
+        <i class='fa fa-caret-left PvrChevronLeft'></i>
         <div id='CurrentPvrOption'></div>
-        <i class='fa fa-chevron-right PvrChevronRight'></i>
+        <i class='fa fa-caret-right PvrChevronRight'></i>
     </div>
 
     <div id='PvrList'>
