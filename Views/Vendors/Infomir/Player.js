@@ -160,9 +160,12 @@ function PlayVideo(Source){
     //
     // } else {
         //Reproduce el video
+
+    src ='rtsp rtsp://10.0.3.11:554/0000000210';
+    Debug(src);
         player.play({
-            uri: Source,
-            solution: 'auto'
+            uri: src,
+            solution: 'rtsp'
         });
     // }
 
