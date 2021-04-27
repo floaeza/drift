@@ -128,7 +128,7 @@ div#EpgHours {
     width: 76%;
     height: 5%;
     right: 2%;
-    top: 38%;
+    top: 37%;
     background-size: 100% 100%;
 }
 
@@ -292,12 +292,12 @@ div.Date {
 /***************************** [CANALES] *****************************/
 
 p.ChannelName {
-    width: 59%;
+    width: 72%;
     height: 100%;
-    float: left;
+    float: right;
     margin: 0;
     white-space: nowrap;
-    line-height: 50px;
+    line-height: 55px;
     text-align: left;
 }
 
@@ -308,7 +308,7 @@ div.HourRow {
     float: left;
     width: 25%;
     height: 100%;
-    font-size: 20px;
+    font-size: 23px;
     text-transform: uppercase;
 }
 
