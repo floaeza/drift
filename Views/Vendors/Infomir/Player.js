@@ -161,11 +161,11 @@ function PlayVideo(Source){
     // } else {
         //Reproduce el video
 
-    src ='rtsp rtsp://10.0.3.11:554/0000000210';
+    src ='udp://10.0.3.11:554/0000000210';
     Debug(src);
         player.play({
             uri: src,
-            solution: 'rtsp'
+            solution: 'auto'
         });
     // }
 
