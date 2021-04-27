@@ -98,7 +98,7 @@ div#EpgChannels {
     position: fixed;
     width: 20%;
     height: 35%;
-    bottom: 18%;
+    bottom: 18.5%;
     left: 2%;
     border-radius: 6px 0px 0px 6px;
     
@@ -107,10 +107,9 @@ div#EpgChannels {
 div#EpgPrograms {
     position: fixed;
     width: 76%;
-    height: 35%;
+    height: 39%;
     bottom: 18%;
     right: 2%;
-    border-radius: 0px 6px 6px 0px;
 }
 
 div#EpgProgramInfo {
@@ -129,7 +128,7 @@ div#EpgHours {
     width: 76%;
     height: 5%;
     right: 2%;
-    bottom: 53%;
+    top: 38%;
     background-size: 100% 100%;
 }
 
@@ -139,7 +138,7 @@ div#EpgNowAiring {
     height: 6%;
     position: fixed;
     padding-left: 1.5%;
-    padding-top: 2%;
+    padding-top: 1.5%;
     text-align: left;
     font-size: 20px;
 
@@ -350,7 +349,7 @@ div.HourRow {
     height: 100%;
     line-height: 50px;
     background-size: 100% 100%;
-    outline: 1px solid rgb(42, 61, 71);
+    text-align: center;
 }
 
 div#ProgramRow1,

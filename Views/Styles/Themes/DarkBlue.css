@@ -57,8 +57,13 @@ div#EpgTitle {
 }
 
 div#EpgRating,
+div.RecordingOptionsButton,
 div#EpgTime{
     font-family: arial-rounded;
+}
+
+.Program {
+    outline: 1px solid rgb(42, 61, 71);
 }
 
 div#EpgDescription {
@@ -69,9 +74,6 @@ div#EpgStars {
     color: #e3c15a;
 }
 
-div.RecordingOptionsButton {
-    font-family: arial-rounded;
-}
 
 div#PvrDate{
     font-family: arial-rounded;
