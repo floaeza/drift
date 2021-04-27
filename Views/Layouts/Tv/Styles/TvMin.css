@@ -208,7 +208,12 @@ div#InfoContainer{
  }
 
 .ChannelImage {
-    width: 8%;
+    width: 25%;
+    height: 100%;
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+    float: left;
 }
 
 div.ChannelName {
