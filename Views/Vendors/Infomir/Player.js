@@ -161,7 +161,7 @@ function PlayVideo(Source){
     // } else {
         //Reproduce el video
 
-    src ='udp://10.0.3.11:554/0000000210';
+    src ='rtsp://10.0.3.11:554/0000000210/';
     Debug(src);
         player.play({
             uri: src,
