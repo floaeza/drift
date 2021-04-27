@@ -107,7 +107,7 @@ div#EpgChannels {
 div#EpgPrograms {
     position: fixed;
     width: 76%;
-    height: 39%;
+    height: 38.8%;
     bottom: 18.5%;
     right: 2%;
     z-index: 1;
@@ -358,7 +358,7 @@ div#ChannelRow6,
 div#ChannelRow7 {
     font-size: 20px;
     text-transform: uppercase;
-    height: 20%;
+    height: 19.3%;
     width: 100%;
 }
 
