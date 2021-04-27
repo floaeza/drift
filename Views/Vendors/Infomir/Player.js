@@ -147,32 +147,31 @@ function PlayVideo(Source){
     // Detiene el proceso de la reproduccion anterior
     StopVideo();
 
-    // if(CurrentModule === 'Tv'){
-    //     GetRaws(Source);
-    //
-    //     LengthPlaylist = Playlist.length;
-    //     Debug('--------------->>> '+Playlist[IndexPlaylist]);
-    //     //Reproduce el video
-    //     player.play({
-    //         uri: Playlist[IndexPlaylist],
-    //         solution: 'auto'
-    //     });
-    //
-    // } else {
+    if(CurrentModule === 'Tv'){
+        GetRaws(Source);
+
+        LengthPlaylist = Playlist.length;
+        Debug('--------------->>> '+Playlist[IndexPlaylist]);
+        //Reproduce el video
+        player.play({
+            uri: Playlist[IndexPlaylist],
+            solution: 'auto'
+        });
+
+    } else {
         //Reproduce el video
 
-    src ='rtsp://10.0.3.11:554/0000000210/';
     Debug(src);
         player.play({
             uri: src,
             solution: 'auto'
         });
-    // }
+     }
 
     player.onPlayEnd = function () {
         if(CurrentModule === 'Tv' && PlayingRecording === true){
             // segmente de la grabacion termino
-            //SetPlaylist('forward');
+            SetPlaylist('forward');
         } else if(CurrentModule === 'Movies'){
             // Termino pelicula
             EndOfMovie();
