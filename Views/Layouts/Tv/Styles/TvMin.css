@@ -201,12 +201,6 @@ div#EpgDay {
 
 /***************************** Estilo BackgroundInfo *****************************/
 
-div#InfoContainer{
-    width: 90%;
-    left:5%;
-    margin-bottom:2%;
- }
-
 .ChannelImage {
     width: 25%;
     height: 100%;
