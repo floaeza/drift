@@ -207,13 +207,8 @@ div#InfoContainer{
     margin-bottom:2%;
  }
 
- div.ChannelNumber {
+.ChannelImage img{
     width: 8%;
-    float: left;
-    text-align: center;
-    font-weight: bold;
-    padding-bottom: 0.5%;
-    white-space: nowrap;
 }
 
 div.ChannelName {
@@ -231,7 +226,6 @@ div.Date {
 }
   
  div.ChannelName,
- div.ChannelNumber,
  div.Date{ 
     padding-top: 2%;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
@@ -307,14 +301,6 @@ p.ChannelName {
     text-align: left;
 }
 
-p.ChannelNumber  {
-    width:25%;
-    height: 100%;
-    float: left;
-    margin:0;
-    text-align: center;
-    line-height: 50px;
-}
 
 /***************************** [HORAS] *****************************/
 

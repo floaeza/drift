@@ -38,18 +38,18 @@
 
     <!-- Lista de canales -->
     <div id='EpgChannels'>
-        <div id='ChannelRow1'><p class='ChannelNumber'></p><p class='ChannelName'></p></div>
-        <div id='ChannelRow2'><p class='ChannelNumber'></p><p class='ChannelName'></p></div>
-        <div id='ChannelRow3'><p class='ChannelNumber'></p><p class='ChannelName'></p></div>
-        <div id='ChannelRow4'><p class='ChannelNumber'></p><p class='ChannelName'></p></div>
-        <div id='ChannelRow5'><p class='ChannelNumber'></p><p class='ChannelName'></p></div>
-        <div id='ChannelRow6'><p class='ChannelNumber'></p><p class='ChannelName'></p></div>
-        <div id='ChannelRow7'><p class='ChannelNumber'></p><p class='ChannelName'></p></div>
+        <div id='ChannelRow1'><img class='ChannelImage'/> <p class='ChannelName'></p></div>
+        <div id='ChannelRow2'><img class='ChannelImage'/> <p class='ChannelName'></p></div>
+        <div id='ChannelRow3'><img class='ChannelImage'/> <p class='ChannelName'></p></div>
+        <div id='ChannelRow4'><img class='ChannelImage'/> <p class='ChannelName'></p></div>
+        <div id='ChannelRow5'><img class='ChannelImage'/> <p class='ChannelName'></p></div>
+        <div id='ChannelRow6'><img class='ChannelImage'/> <p class='ChannelName'></p></div>
+        <div id='ChannelRow7'><img class='ChannelImage'/> <p class='ChannelName'></p></div>
     </div>
 
     <!-- Contiene las horas en la guia  -->
     <div id='EpgHours'>
-        <div class='HourRow'></div>
+        <div class='HourRow'></div>`
         <div class='HourRow'></div>
         <div class='HourRow'></div>
         <div class='HourRow'></div>
