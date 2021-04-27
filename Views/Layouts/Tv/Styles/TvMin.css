@@ -96,11 +96,11 @@ div#EpgHeader {
 
 div#EpgChannels {
     position: fixed;
-    width: 20%;
+    width: 21%;
     height: 39%;
     bottom: 18.5%;
-    left: 2%;
-    border-radius: 6px 0px 0px 6px;
+    left: 1.7%;
+    border-radius: 6px;
     
 }
 
@@ -305,7 +305,6 @@ p.ChannelName {
     white-space: nowrap;
     line-height: 50px;
     text-align: left;
-    padding-left: 1%;
 }
 
 p.ChannelNumber  {
