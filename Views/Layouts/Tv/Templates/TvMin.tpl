@@ -49,7 +49,7 @@
 
     <!-- Contiene las horas en la guia  -->
     <div id='EpgHours'>
-        <div class='HourRow'></div>`
+        <div class='HourRow'></div>
         <div class='HourRow'></div>
         <div class='HourRow'></div>
         <div class='HourRow'></div>
