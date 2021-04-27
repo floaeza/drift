@@ -110,6 +110,7 @@ div#EpgPrograms {
     height: 39%;
     bottom: 18.5%;
     right: 2%;
+    z-index: 1;
 }
 
 div#EpgProgramInfo {
