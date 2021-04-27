@@ -516,7 +516,7 @@ function BuildChannelsRow(CurrentChannelPosition){
 function WriteChannelsRow(CurrentChannelPosition, Row){
 
     var ChannelRowNodes = document.getElementById('ChannelRow'+Row).childNodes;
-        //ChannelRowNodes[0].innerHTML = ;
+        ChannelRowNodes[0].src = Libraries['ChannelsPath'] + ChannelsJson[CurrentChannelPosition].LOGO;
         ChannelRowNodes[1].textContent = ChannelsJson[CurrentChannelPosition].CHNL+' - '+ChannelsJson[CurrentChannelPosition].INDC;
 
 }
