@@ -30,6 +30,8 @@ div.HourRow
 
 div.BackgroundInfo {
     background-image: url('DarkBlue/info.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
 }
 
 
