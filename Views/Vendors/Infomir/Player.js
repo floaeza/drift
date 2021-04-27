@@ -147,29 +147,29 @@ function PlayVideo(Source){
     // Detiene el proceso de la reproduccion anterior
     StopVideo();
 
-    if(CurrentModule === 'Tv'){
-        GetRaws(Source);
-
-        LengthPlaylist = Playlist.length;
-        Debug('--------------->>> '+Playlist[IndexPlaylist]);
-        //Reproduce el video
-        player.play({
-            uri: Playlist[IndexPlaylist],
-            solution: 'auto'
-        });
-
-    } else {
+    // if(CurrentModule === 'Tv'){
+    //     GetRaws(Source);
+    //
+    //     LengthPlaylist = Playlist.length;
+    //     Debug('--------------->>> '+Playlist[IndexPlaylist]);
+    //     //Reproduce el video
+    //     player.play({
+    //         uri: Playlist[IndexPlaylist],
+    //         solution: 'auto'
+    //     });
+    //
+    // } else {
         //Reproduce el video
         player.play({
             uri: Source,
             solution: 'auto'
         });
-    }
+    // }
 
     player.onPlayEnd = function () {
         if(CurrentModule === 'Tv' && PlayingRecording === true){
             // segmente de la grabacion termino
-            SetPlaylist('forward');
+            //SetPlaylist('forward');
         } else if(CurrentModule === 'Movies'){
             // Termino pelicula
             EndOfMovie();
