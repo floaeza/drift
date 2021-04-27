@@ -216,13 +216,11 @@ div#InfoContainer {
 }
 
 div.ChannelNumber {
-    width: 8%;
+    width: 70%;
     float: left;
-    text-align: center;
+    text-align: left;
     font-weight: bold;
-    padding-bottom: 0.5%;
     padding-left: 3%;
-    white-space: nowrap;
 }
 
 div.Quality {
