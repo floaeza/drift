@@ -59,10 +59,10 @@ div.ChannelName
 
 #PvrLogoContainer {
     position: fixed;
-    width: 29%;
-    height: 40%;
-    top: 42%;
-    left: 2.5%;
+    width: 25%;
+    height: 35%;
+    bottom: 20%;
+    left: 2%;
     border-radius: 6px;
     box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
 }

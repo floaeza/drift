@@ -554,6 +554,8 @@ function GetFocusStyle(){
     ProgramFocusStyle = null;
 
     document.getElementById('EpgMainLogo').style.backgroundImage	= 'url("'+Libraries['EpgLogo']+'")';
+
+    document.getElementById('PvrMainLogo').style.backgroundImage	= 'url("'+Libraries['EpgLogo']+'")';
 }
 
 

@@ -112,7 +112,7 @@
 
 <!-- Opciones para grabar un programa manualmente | OnLoadHourPosition  & Hours[(0 - > 47)]  | -->
 <div id='RecordingManualOptions'>
-    <i class='fa fa-chevron-up'></i><br>
+    <i class='fa fa-arrow-right'></i><br>
     <div class='TimeNewRecording'>00</div>
     <div class='TimeNewRecording'>00</div>
     <div class='TimeNewRecording'>00</div>
