@@ -562,7 +562,7 @@
                 InfoContainerNodes[1].textContent  = ChannelsJson[ChannelPosition].CHNL+' - ' +ChannelsJson[ChannelPosition].INDC.toUpperCase();
                 //InfoContainerNodes[3].textContent  = ChannelsJson[ChannelPosition].QLTY;
                 //InfoContainerNodes[5].textContent  = ChannelsJson[ChannelPosition].INDC;
-                InfoContainerNodes[7].textContent  = FormatDateAndHour;
+                InfoContainerNodes[7].textContent  = FormatHour;
                 InfoContainerNodes[9].innerHTML    = Ttle + Times + Rtg;
                 if(RecordingsToCheck !== ''){
                     for(IndexRec = 0; IndexRec < RecordingsToCheck.length; IndexRec++){

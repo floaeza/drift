@@ -204,16 +204,17 @@ div.ContainerIndex {
 /********************* INFO TV *****************************/
 
 div#InfoContainer {
+    background: no-repeat;
     background-size: 100% 100%;
     width: 90%;
-    left:5%;
+    left: 5%;
     bottom: 0;
     position: fixed;
     visibility: hidden;
     font-size: 20px;
-    margin-bottom:2%;
-    opacity: 1;
+    margin-bottom: 2%;
     color: #fff;
+    height: 18%;
 }
 
 div.ChannelNumber {

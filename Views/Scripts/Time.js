@@ -21,7 +21,7 @@ Debug('########################### Time() ');
 
         if(CurrentModule === 'Tv'){
             if(ActiveInfoContainer === true){
-                InfoContainerNodes[7].textContent  = FormatDateAndHour;
+                InfoContainerNodes[7].textContent  = FormatHour;
             }
 
             if(ActiveEpgContainer === true){

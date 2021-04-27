@@ -29,9 +29,7 @@ div.HourRow
 /********** INFO ***********/
 
 div.BackgroundInfo {
-    background: no-repeat;
     background-image: url('DarkBlue/info.png');
-    opacity: 0.8;
 }
 
 
