@@ -184,7 +184,7 @@ div#TemperatureGroup {
 div#EpgDays {
     width: 20%;
     height: 5%;
-    bottom: 53%;
+    top: 37%;
     position: fixed;
     font-size: 22px;
     left: 2%;
@@ -362,6 +362,7 @@ div#ChannelRow7 {
     text-transform: uppercase;
     height: 19%;
     width: 100%;
+    margin: 1%;
 }
 
 /***************************** [INFO] *****************************/
