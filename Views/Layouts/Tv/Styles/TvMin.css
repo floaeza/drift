@@ -98,8 +98,8 @@ div#EpgHeader {
 
 div#EpgChannels {
     position: fixed;
-    width: 21%;
-    height: 39%;
+    width: 22%;
+    height: 38.5%;
     bottom: 18.5%;
     left: 1.7%;
     border-radius: 6px;
@@ -360,7 +360,7 @@ div#ChannelRow6,
 div#ChannelRow7 {
     font-size: 20px;
     text-transform: uppercase;
-    height: 20%;
+    height: 19%;
     width: 100%;
 }
 
