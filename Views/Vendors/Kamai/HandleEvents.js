@@ -258,7 +258,7 @@ if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
 }
 
 function HandlerPvr(){
-
+Debug('---------->>>');
     var assi = ENTONE.recorder.getAssetInfo('217');
     Debug(assi);
 
