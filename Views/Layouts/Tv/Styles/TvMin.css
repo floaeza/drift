@@ -140,7 +140,7 @@ div#EpgNowAiring {
     padding-top: 1.5%;
     text-align: left;
     font-size: 20px;
-
+    font-weight: bold;
 }
 
 div#EpgDate {
@@ -607,13 +607,13 @@ div#PvrContainer {
 }
 
 div.PvrHeader {
-    width: 62%;
-    height: 4.5%;
+    width: 69%;
+    height: 5%;
     position: fixed;
-    right: 5%;
+    right: 2%;
     text-align: center;
-    top: 9%;
-    font-size: 25px;
+    top: 7%;
+    font-size: 36px;
     border-radius: 6px;
 }
 
@@ -621,6 +621,8 @@ div#CurrentPvrOption {
     width: 70%;
     margin: 0 auto;
     font-size: 28px;
+    font-weight: bold;
+    line-height: 35px;
 }
 
 .PvrChevronLeft {
@@ -636,10 +638,10 @@ div#CurrentPvrOption {
 }
 
 div#PvrList {
-    width: 62%;
-    height: 49%;
+    width: 69%;
+    height: 50%;
     position: fixed;
-    right: 5%;
+    right: 2%;
     bottom: 37%;
 }
 
