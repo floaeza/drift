@@ -267,6 +267,9 @@ function HandlerPvr(){
     // Debug(JSON.stringify(AL));
     // ENTONE.recorder.getAssetInfo(assetname)
 
+    var assi = ENTONE.recorder.getAssetInfo('217');
+    Debug(assi);
+
     Debug('-------> HandlerPvr');
 }
 
