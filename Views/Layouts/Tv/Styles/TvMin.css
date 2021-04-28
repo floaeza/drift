@@ -136,8 +136,8 @@ div#EpgNowAiring {
     width: 28%;
     height: 6%;
     position: fixed;
-    padding-left: 1.5%;
-    padding-top: 1.5%;
+    padding-left: 2%;
+    padding-top: 2%;
     text-align: left;
     font-size: 20px;
     font-weight: bold;
@@ -148,7 +148,7 @@ div#EpgDate {
     height: 5%;
     position: fixed;
     right: 13.5%;
-    top: 3%;
+    top: 3.3%;
     text-align: right;
     font-size: 18px;
 }
@@ -741,7 +741,7 @@ div#PvrProgramDescription {
     width: 68%;
     height: 11%;
     margin-top: 5%;
-    margin-left: 1%;
+    margin-left: 0.5%;
     position: fixed;
     overflow: hidden;
     text-align: left;
