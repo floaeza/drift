@@ -714,8 +714,6 @@ div#PvrInfo{
     border-radius: 6px;
 }
 
-
-
 div#PvrProgramTitle {
     width: 68%;
     height: 4%;
@@ -778,7 +776,6 @@ div.BarUsedSize {
     border-radius: 6px;
     position: fixed;
 }
-
 
 div#RecordPlayOptions {
     width: 30%;
