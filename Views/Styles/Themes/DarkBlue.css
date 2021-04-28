@@ -117,11 +117,8 @@ div#PvrProgramTitle {
 }
 
 div.ChannelName,
+div.Time,
 div.Date{
-    font-family: arial-rounded;
-}
-
-div.Time{
     font-family: arial-rounded;
 }
 
