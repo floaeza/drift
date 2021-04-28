@@ -135,11 +135,13 @@
 
     <div id='PvrLateral'>
         <div id='PvrWeather'>
-            <div id='TemperatureGroup'>
+            <div id='Temperatures'>
                 <span id='PvrWeatherFarenheit'></span><span>&deg; F/</span>
                 <span id='PvrWeatherCelsius'></span><span>&deg; C</span>
             </div>
-            <canvas id='PvrWeatherIcon' width='25' height='25'></canvas>
+            <div id='PvrIcon'>
+                <canvas id='PvrWeatherIcon' width='25' height='25'></canvas>
+            </div>
         </div>
         <div id='PvrDate'></div>
     </div>

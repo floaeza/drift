@@ -17,6 +17,15 @@ div#TemperatureGroup {
     font-family: arial-rounded;
 }
 
+div#PvrIcon {
+
+}
+
+div#Temperatures {
+    color: #0396a6;
+    font-family: arial-rounded;
+}
+
 /********** EPG FONTS ***********/
 
 p.ChannelName,
@@ -74,10 +83,7 @@ div#EpgStars {
 }
 
 
-div#PvrLateral {
-    width: 20%;
-    background: #0a6ebd;
-}
+
 
 div#PvrDate{
     font-family: arial-rounded;

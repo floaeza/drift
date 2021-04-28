@@ -565,23 +565,23 @@ div#PvrNow {
 
 
 div#PvrWeather{
-    width: 25%;
-    height: 4%;
-    position: fixed;
-    margin-left: 4.5%;
-    top:87%;
+    width: 60%;
     font-size: 18px;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
-    text-align: center;
+    text-align: right;
+    float: left;
+}
+
+div#PvrLateral {
+    width: 20%;
+    background: #0a6ebd;
+    position: fixed;
+    height: 14%;
+    bottom: 5%;
+    left: 4.5%;
 }
 
 div#PvrDate{
-    width: 25%;
-    height: 4%;
-    position: fixed;
-    left: 4.5%;
-    margin-top: 1%;
-    top: 90%;
     font-size: 18px;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
     text-align: center;
