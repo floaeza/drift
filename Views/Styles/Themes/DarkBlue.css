@@ -290,11 +290,11 @@ div#BarUsedSize {
 
 div#BarUsedSize {
     background: #0396a6;
-    color: #000;
+    color: #2f414a;
 }
 
 div.BarUsedSize {
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.8);
 }
 
 div#RecordingManualOptions {

@@ -531,7 +531,7 @@ function SetFocusRecordings(){
             PvrInfoNodes[9].textContent  = '';
             PvrInfoNodes[11].textContent = RecordingsList[IndexRecordedFocus][0];
         } else {
-            PvrInfoNodes[1].textContent  = moment(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].date).format('MMMM Do YYYY');
+            PvrInfoNodes[1].textContent  = moment(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].date).format('MMM, DD');
             PvrInfoNodes[3].textContent  = TimeConvert( RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].duration);
             PvrInfoNodes[5].innerHTML    = ShowStars(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].rating);
             PvrInfoNodes[7].textContent  = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].episode;
