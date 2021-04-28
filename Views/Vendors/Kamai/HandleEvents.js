@@ -259,6 +259,9 @@ if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
 
 function HandlerPvr(){
 
+    var assi = ENTONE.recorder.getAssetInfo('217');
+    Debug(assi);
+
     GetProgramsToSchedule();
 
     GetSchedulesToDelete();
@@ -266,9 +269,6 @@ function HandlerPvr(){
     // var AL = ENTONE.recorder.getAssetList();
     // Debug(JSON.stringify(AL));
     // ENTONE.recorder.getAssetInfo(assetname)
-
-    var assi = ENTONE.recorder.getAssetInfo('217');
-    Debug(assi);
 
     Debug('-------> HandlerPvr');
 }
