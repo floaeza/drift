@@ -74,6 +74,11 @@ div#EpgStars {
 }
 
 
+div#PvrLateral {
+    width: 20%;
+    background: #0a6ebd;
+}
+
 div#PvrDate{
     font-family: arial-rounded;
     color: #fff;

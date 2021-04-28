@@ -133,7 +133,7 @@
         <div id='PvrMainLogo'></div>
     </div>
 
-    <div id='PvrHeader'>
+    <div id='PvrLateral'>
         <div id='PvrWeather'>
             <div id='TemperatureGroup'>
                 <span id='PvrWeatherFarenheit'></span><span>&deg; F/</span>
