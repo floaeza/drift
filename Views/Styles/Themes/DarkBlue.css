@@ -105,6 +105,10 @@ div#CurrentPvrOption {
     color: #dfbe5e;
 }
 
+div#BarUsedSize {
+    background: #0396a6;
+    color: #2f414a;
+}
 
 div#EpgDays {
     color: #fff;

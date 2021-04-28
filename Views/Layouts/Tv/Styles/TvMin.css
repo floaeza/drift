@@ -771,10 +771,18 @@ div#UsedSize {
 }
 
 div.BarUsedSize {
-    width: 62%;
+    width: 69%;
     height: 4%;
     border-radius: 6px;
     position: fixed;
+    z-index: 0;
+}
+
+div#BarUsedSize {
+    z-index: 1;
+    position: fixed;
+    border-radius: 6px;
+    text-align: center;
 }
 
 div#RecordPlayOptions {
