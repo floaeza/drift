@@ -694,14 +694,14 @@ function ShowPvrInfo(){
         var EpisodeInfo = '';
 
         if(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].episode){
-            EpisodeInfo = ' ('+RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].episode+')';
+            EpisodeInfo = '('+RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].episode+') ';
         }
 
         InfoContainerNodes[1].innerHTML  = '<p class="RecInfo">REC:</p> ' +RecordingsList[IndexRecordedFocus][0];
         InfoContainerNodes[3].textContent  = '';
         InfoContainerNodes[5].textContent  = '';
         InfoContainerNodes[7].textContent  = FormatHour;
-        InfoContainerNodes[9].innerHTML    = moment(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].date).format('MMM, DD') +', '+TimeConvert(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].duration) + ' ' +ShowStars(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].rating);
+        InfoContainerNodes[9].innerHTML    = moment(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].date).format('MMM, DD') +'    ('+TimeConvert(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].duration) + ') ' +ShowStars(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].rating);
         InfoContainerNodes[11].textContent = '';
         InfoContainerNodes[13].textContent = '';
         InfoContainerNodes[15].textContent = EpisodeInfo + RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].description;
