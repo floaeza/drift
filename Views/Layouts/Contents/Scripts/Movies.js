@@ -22,7 +22,7 @@
         StyleFocusMenuHeader              = 'rgb(233, 187, 38)',
         StyleFocusMenuFilter              = 'rgb(233, 187, 38)',
         StyleFocusMenuYearFilter          = 'rgb(233, 187, 38)',
-        StyleFocusMenuLanguage            = '3px solid rgb(255, 255, 255)';
+        StyleFocusMenuLanguage            = '3px solid rgb(233, 187, 38)';
     //Variebles de utilidad
     var y                                 = 0,
         CurrentMovieID                    = -1,
@@ -1623,7 +1623,8 @@ function SetFocusOnMenuLanguage(Direction){
         MenuLanguageChildren[0].style.border = StyleFocusMenuLanguage;
         MenuLanguagePanel.style.visibility = 'visible';
     } else if (Direction == 'right') {
-        var positionFocus = getPositionFocusInMenu(StyleFocusMenuLanguage, MenuLanguageChildren);
+        var positionFocus = getPositionFocusInMovies(StyleFocusMenuLanguage, MenuLanguageChildren);
+        
         if (positionFocus+1 >= MenuLanguageChildren.length) {
             MenuLanguageChildren[positionFocus].style.border = '';
             MenuLanguageChildren[0].style.border = StyleFocusMenuLanguage;
@@ -1632,7 +1633,7 @@ function SetFocusOnMenuLanguage(Direction){
             MenuLanguageChildren[positionFocus+1].style.border = StyleFocusMenuLanguage;
         }
     } else if (Direction == 'left') {
-        var positionFocus = getPositionFocusInMenu(StyleFocusMenuLanguage, MenuLanguageChildren);
+        var positionFocus = getPositionFocusInMovies(StyleFocusMenuLanguage, MenuLanguageChildren);
         if (positionFocus == 0) {
             MenuLanguageChildren[positionFocus].style.border = '';
             MenuLanguageChildren[(MenuLanguageChildren.length)-1].style.border = StyleFocusMenuLanguage;
@@ -1641,12 +1642,12 @@ function SetFocusOnMenuLanguage(Direction){
             MenuLanguageChildren[positionFocus-1].style.border = StyleFocusMenuLanguage;
         } 
     } else if (Direction == 'down'){
-        var positionFocus = getPositionFocusInMenu(StyleFocusMenuLanguage, MenuLanguageChildren);
+        var positionFocus = getPositionFocusInMovies(StyleFocusMenuLanguage, MenuLanguageChildren);
         MenuLanguageChildren[positionFocus].style.border = '';
         MenuLanguagePanel.style.visibility = 'hidden';
         CurrentFocus = 'HiddenMode';
     } else if (Direction == 'ok'){
-        var positionFocus = getPositionFocusInMenu(StyleFocusMenuLanguage, MenuLanguageChildren);
+        var positionFocus = getPositionFocusInMovies(StyleFocusMenuLanguage, MenuLanguageChildren);
         
         if (numberOfLanguages == 0) {
             return;
