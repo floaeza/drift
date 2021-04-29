@@ -1620,8 +1620,10 @@ function SetFocusOnMenuLanguage(Direction){
     MenuLanguageChildren              = MenuLanguagePanel.children;
     if (Direction == 'set') {
         CurrentFocus = 'SelectLanguage';
+        alert('----');
         MenuLanguageChildren[0].style.border = StyleFocusMenuLanguage;
         MenuLanguagePanel.style.visibility = 'visible';
+        alert('----');
     } else if (Direction == 'right') {
         var positionFocus = getPositionFocusInMovies(StyleFocusMenuLanguage, MenuLanguageChildren);
         
