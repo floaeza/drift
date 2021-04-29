@@ -267,14 +267,11 @@ Debug('---------->>>');
 
         Debug('>>>> freeSpace: '+StorageInfo.freeSpace);
         Debug('>>>> freeSpace: '+StorageInfo.totalSpace);
-        //freeSpace
-        //totalSpace
 
     var assi = ENTONE.recorder.getAssetInfo('0000000217');
 
          Debug('>>>> freeSpace: '+StorageInfo.duration);
          Debug('>>>> freeSpace: '+StorageInfo.size);
-//duration
 
     Debug(JSON.stringify(assi));
 
