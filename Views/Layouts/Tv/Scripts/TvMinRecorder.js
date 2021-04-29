@@ -694,7 +694,7 @@ function ShowPvrInfo(){
         var EpisodeInfo = '';
 
         if(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].episode){
-            EpisodeInfo = '('+RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].episode+') ';
+            EpisodeInfo = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].episode+': ';
         }
 
         InfoContainerNodes[1].innerHTML  = '<p class="RecInfo">REC:</p> ' +RecordingsList[IndexRecordedFocus][0];
