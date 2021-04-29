@@ -691,14 +691,19 @@ function ShowPvrInfo(){
         ShowBarStatus();
 
         ActivePvrInfoContainer = true;
+        var EpisodeInfo = '';
 
-        InfoContainerNodes[1].innerHTML  = '<p class="RecInfo">REC:</p>' +moment(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].date).format('MMM, DD');
+        if(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].episode){
+            EpisodeInfo = ' ('+RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].episode+')';
+        }
+
+        InfoContainerNodes[1].innerHTML  = '<p class="RecInfo">REC:</p> ' +moment(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].date).format('MMM, DD');
         InfoContainerNodes[3].textContent  = '';
-        InfoContainerNodes[5].textContent  = RecordingsList[IndexRecordedFocus][0];
-        InfoContainerNodes[7].textContent  = '';
-        InfoContainerNodes[9].textContent  = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].episode;
-        InfoContainerNodes[11].innerHTML   = ShowStars(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].rating);
-        InfoContainerNodes[13].textContent = TimeConvert(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].duration);
+        InfoContainerNodes[5].textContent  = RecordingsList[IndexRecordedFocus][0] + EpisodeInfo;
+        InfoContainerNodes[7].textContent  = FormatHour;
+        InfoContainerNodes[9].innerHTML    = TimeConvert(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].duration) + ' ' +ShowStars(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].rating);
+        InfoContainerNodes[11].textContent = '';
+        InfoContainerNodes[13].textContent = '';
         InfoContainerNodes[15].textContent = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].description;
 
         clearTimeout(InfoTimer);
@@ -720,8 +725,8 @@ function HidePvrInfo(){
         InfoContainerNodes[3].textContent  = '';
         InfoContainerNodes[5].textContent  = '';
         InfoContainerNodes[7].textContent  = '';
-        InfoContainerNodes[9].textContent  = '';
-        InfoContainerNodes[11].innerHTML   = '';
+        InfoContainerNodes[9].innerHTML    = '';
+        InfoContainerNodes[11].textContent = '';
         InfoContainerNodes[13].textContent = '';
         InfoContainerNodes[15].textContent = '';
 
