@@ -265,13 +265,13 @@ Debug('---------->>>');
     var StorageInfo = [];
         StorageInfo = ENTONE.recorder.getStorageInfo();
 
-        Debug('>>>> freeSpace: '+StorageInfo.freeSpace);
-        Debug('>>>> freeSpace: '+StorageInfo.totalSpace);
+        Debug('>>>> HDD freeSpace: '+StorageInfo.freeSpace);
+        Debug('>>>> HDD totalSpace: '+StorageInfo.totalSpace);
 
     var assi = ENTONE.recorder.getAssetInfo('0000000217');
 
-         Debug('>>>> freeSpace: '+assi.duration);
-         Debug('>>>> freeSpace: '+assi.size);
+         Debug('>>>> REC duration: '+assi.duration);
+         Debug('>>>> REC size: '+assi.size);
 
     Debug(JSON.stringify(assi));
 
