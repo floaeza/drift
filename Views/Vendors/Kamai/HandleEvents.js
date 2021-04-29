@@ -270,8 +270,8 @@ Debug('---------->>>');
 
     var assi = ENTONE.recorder.getAssetInfo('0000000217');
 
-         Debug('>>>> freeSpace: '+StorageInfo.duration);
-         Debug('>>>> freeSpace: '+StorageInfo.size);
+         Debug('>>>> freeSpace: '+assi.duration);
+         Debug('>>>> freeSpace: '+assi.size);
 
     Debug(JSON.stringify(assi));
 
