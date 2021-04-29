@@ -762,12 +762,11 @@ div#PvrDiskInfo {
 }
 
 div#UsedSize {
-    width: 62%;
+    width: 69%;
     height: 6%;
-    top:93%;
+    bottom: 4%;
     text-align: right;
     position: fixed;
-    font-weight: bold;
 }
 
 div.BarUsedSize {

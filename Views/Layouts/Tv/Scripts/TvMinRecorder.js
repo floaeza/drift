@@ -692,10 +692,10 @@ function ShowPvrInfo(){
 
         ActivePvrInfoContainer = true;
 
-        InfoContainerNodes[1].innerHTML  = '<p class="RecInfo">REC:</p>';
+        InfoContainerNodes[1].innerHTML  = '<p class="RecInfo">REC:</p>' +moment(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].date).format('MMM, DD');
         InfoContainerNodes[3].textContent  = '';
         InfoContainerNodes[5].textContent  = RecordingsList[IndexRecordedFocus][0];
-        InfoContainerNodes[7].textContent  = moment(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].date).format('MMMM Do YYYY');
+        InfoContainerNodes[7].textContent  = '';
         InfoContainerNodes[9].textContent  = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].episode;
         InfoContainerNodes[11].innerHTML   = ShowStars(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].rating);
         InfoContainerNodes[13].textContent = TimeConvert(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].duration);
