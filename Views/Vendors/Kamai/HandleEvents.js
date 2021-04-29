@@ -261,7 +261,16 @@ function HandlerPvr(){
 Debug('---------->>>');
  //var AL = ENTONE.recorder.getAssetList();
      //Debug(JSON.stringify(AL));
+
+    var StorageInfo = [];
+        StorageInfo = ENTONE.recorder.getStorageInfo();
+
+        //freeSpace
+        //totalSpace
+
     var assi = ENTONE.recorder.getAssetInfo('0000000217');
+
+
     Debug(JSON.stringify(assi));
 
     GetProgramsToSchedule();
