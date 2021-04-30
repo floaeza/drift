@@ -321,6 +321,38 @@ function ClosePvr(){
     clearTimeout(PvrTimer);
 }
 
+function HidePvr(){
+    PvrContainer.style.visibility = 'hidden';
+
+    RecordingPanel = false;
+
+    MaximizeTV();
+
+    HideRecordOption();
+
+    HideDeleteOption();
+
+    clearTimeout(PvrTimer);
+}
+
+function UnhidePvr(){
+    PvrContainer.style.visibility = 'visible';
+
+    MinimizeTV();
+
+    HidePvrInfo();
+
+    RecordingPanel = true;
+
+    SetOptionPanel();
+
+    GetPvrInfo();
+
+    GetWeatherPvr();
+
+    PvrTimer = setTimeout(ClosePvr,TimeoutPvr);
+}
+
 function SetOptionPanel(){
     if(OptionPanel === 'Recordings'){
         SetRecordings('');

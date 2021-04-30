@@ -518,7 +518,7 @@ div#BarStatus {
 
 div#RecordingOptions {
     width: 30%;
-    height: 40%;
+    height: 33%;
     position: fixed;
     text-align: center;
     background-size: 100% 100%;
@@ -539,8 +539,7 @@ div.RecordingOptionsButton {
     display: inline-block;
     vertical-align: middle;
     line-height: normal;
-    margin: 0.5%;
-    min-height: 15%;
+    min-height: 20%;
     border-radius: 5px;
     margin-top: 2.5%;
 }
@@ -711,8 +710,8 @@ div#PvrDeleteOptions {
     display: inline-block;
     vertical-align: middle;
     line-height: normal;
-    margin: 4%;
-    height: 19%;
+    margin-top: 4%;
+    height: 23%;
     border-radius: 5px;
 }
 

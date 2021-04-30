@@ -30,7 +30,7 @@ Debug('########################### Time() ');
 
             if(typeof (RecordingPanel) !== 'undefined'){
                 if(RecordingPanel === true) {
-                    PvrDate.textContent = FormatDateAndHour;
+                    PvrDate.textContent = FormatHour;
                 }
             }
 
