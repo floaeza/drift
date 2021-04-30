@@ -1,5 +1,5 @@
 <!--Contenido canal digital -->
-<img id='ImageDigitalChannel'>
+<img id='Im ageDigitalChannel'>
 
 <iframe id='ContentFrame' src=''></iframe>
 
