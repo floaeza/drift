@@ -1232,10 +1232,7 @@ function SetFocusOnRecommendedMovies(Direction){
             y = y+1;
             var row = matrix[y];
             if (row === undefined ) {
-                y= rows;
-                alert('stop');
-                alert(rows);
-                alert(MoviesList.length);
+                y= y-1;
             }else{
                 scrollRefresh(row, 'RecommendedMoviesList', MoviesList);
                 RecommendedMoviesList           = document.getElementById('RecommendedMoviesList');
