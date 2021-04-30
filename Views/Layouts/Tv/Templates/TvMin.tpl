@@ -94,6 +94,7 @@
     <div id='BarStatus'></div>
     <div class='BarPosition'></div>
     <div id='BarPosition'></div>
+    <div id='BarPosition'></div>
 </div>
 
 <!-- Opciones para grabar un programa -->
