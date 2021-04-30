@@ -594,7 +594,7 @@ function SelectRecordOption(){
 
             PlayVideo(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].url);
 
-            Debug('URL>>>>>> '+RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].url)
+            Debug('URL>>>>>> '+RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].url);
 
             PlayingRecording = true;
 
