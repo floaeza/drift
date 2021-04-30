@@ -1154,6 +1154,8 @@ function UpdateBarStatus(){
 
 function HideBarStatus(){
     BarContainer.style.display = 'none';
+    BarTimes.textContent = '';
+    BarStatus.innerHTML = '';
     clearTimeout(BarTimer);
     clearTimeout(BarUpdate);
 }
