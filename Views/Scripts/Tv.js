@@ -94,7 +94,7 @@
 
 
     if(MacAddress === '00:00:00:00:00:00'){
-        document.getElementsByTagName('GeneralBox')[0].style.backgroundImage = "url('https://1.bp.blogspot.com/-O3QxZuRxQUs/WCZIQtTe7zI/AAAAAAAACz0/HO4bDUyEAlMAVE5PWnX61xyX5jSx_TEmwCLcB/s1600/greys-anatomy-13x08-1.jpg')";
+        document.getElementsByTagName('body')[0].style.backgroundImage = "url('https://1.bp.blogspot.com/-O3QxZuRxQUs/WCZIQtTe7zI/AAAAAAAACz0/HO4bDUyEAlMAVE5PWnX61xyX5jSx_TEmwCLcB/s1600/greys-anatomy-13x08-1.jpg')";
     }
 /*******************************************************************************
  * Obtiene los datos del archivo JSON y empieza la reproduccion de canales
