@@ -1234,6 +1234,8 @@ function SetFocusOnRecommendedMovies(Direction){
             if (row === undefined ) {
                 y= rows;
                 alert('stop');
+                alert(rows);
+                alert(MoviesList.length);
             }else{
                 scrollRefresh(row, 'RecommendedMoviesList', MoviesList);
                 RecommendedMoviesList           = document.getElementById('RecommendedMoviesList');
