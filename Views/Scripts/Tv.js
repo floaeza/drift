@@ -441,6 +441,11 @@
                 Debug('ChannelToChange << ChannelMax '+ChannelToChange);
                 /* Muestra el contener del canal con los numeros recibidos */
                 Debug('ChannelContainer ');
+
+                Debug(typeof (ChannelContainer));
+
+                Debug('ChannelToChange:: '+ChannelToChange);
+
                 ChannelContainer.textContent = ChannelToChange;
                 Debug('ChannelContainer.textContent: '+ChannelToChange);
                 clearTimeout(NumericChangeTimer);
