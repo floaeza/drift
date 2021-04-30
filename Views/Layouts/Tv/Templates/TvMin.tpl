@@ -91,8 +91,9 @@
 <!-- Barra Pause Live Tv y Grabacion en reproduccion -->
 
 <div id='BarContainer'>
-    <div id='BarPosition'></div>
     <div id='BarStatus'></div>
+    <div class='BarPosition'></div>
+    <div id='BarPosition'></div>
 </div>
 
 <!-- Opciones para grabar un programa -->

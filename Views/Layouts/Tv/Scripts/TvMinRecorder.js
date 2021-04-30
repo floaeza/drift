@@ -701,7 +701,7 @@ function ShowPvrInfo(){
         InfoContainerNodes[3].textContent  = '';
         InfoContainerNodes[5].textContent  = '';
         InfoContainerNodes[7].textContent  = FormatHour;
-        InfoContainerNodes[9].innerHTML    = moment(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].date).format('MMM, DD') +'    ('+TimeConvert(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].duration) + ') ' +ShowStars(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].rating);
+        InfoContainerNodes[9].innerHTML    = moment(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].date).format('MMM, DD') +'    ('+TimeConvert(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].duration) + ') ';
         InfoContainerNodes[11].textContent = '';
         InfoContainerNodes[13].textContent = '';
         InfoContainerNodes[15].textContent = EpisodeInfo + RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].description;
