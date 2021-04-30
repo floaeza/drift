@@ -1233,6 +1233,7 @@ function SetFocusOnRecommendedMovies(Direction){
             var row = matrix[y];
             if (row === undefined ) {
                 y= rows;
+                alert('stop');
             }else{
                 scrollRefresh(row, 'RecommendedMoviesList', MoviesList);
                 RecommendedMoviesList           = document.getElementById('RecommendedMoviesList');
