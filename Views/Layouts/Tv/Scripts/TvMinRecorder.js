@@ -104,6 +104,7 @@ if(Device['Type'] !== 'NONE'){
 
     var BarContainer            = document.getElementById('BarContainer'),
         BarPosition             = document.getElementById('BarPosition'),
+        BarTimes                = document.getElementById('BarTimes'),
         BarStatus               = document.getElementById('BarStatus');
 
     var BarTimer                = '',
@@ -1147,8 +1148,8 @@ function UpdateBarStatus(){
     AssetStatus(AssetDuration);
 
     BarPosition.style.width = PercentagePosition +'%';
-    BarPosition.textContent = SecondsToTime(PositionAsset);
-    BarStatus.innerHTML = "<p>"+SecondsToTime(DurationAsset)+"</p><i class='fa fa-"+OptionText+"' ></i><p>"+SpeedText+"</p>";
+    BarTimes.textContent = SecondsToTime(DurationAsset - PositionAsset); //"<p>"+SecondsToTime(DurationAsset)+"</p>
+    BarStatus.innerHTML = "<i class='fa fa-"+OptionText+"' ></i><p>"+SpeedText+"</p>";
 }
 
 function HideBarStatus(){

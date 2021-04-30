@@ -89,12 +89,11 @@
 </div>
 
 <!-- Barra Pause Live Tv y Grabacion en reproduccion -->
-
+<div id='BarStatus'></div>
 <div id='BarContainer'>
-    <div id='BarStatus'></div>
-    <div class='BarPosition'></div>
     <div id='BarPosition'></div>
 </div>
+<div id='BarTimes'></div>
 
 <!-- Opciones para grabar un programa -->
 <div id='RecordingOptions'>
