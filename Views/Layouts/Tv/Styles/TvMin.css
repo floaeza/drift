@@ -493,12 +493,10 @@ div#BarPosition {
 }
 
 div#BarStatus {
-    left: 2%;
+    right: 0;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
     text-align: center;
-    width: 3%;
-    font-size: 25px;
-    top: 1%;
+    top: 100%;
 }
 
 #BarStatus p {
