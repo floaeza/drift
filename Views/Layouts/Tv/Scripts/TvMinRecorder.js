@@ -691,15 +691,20 @@ function ShowPvrInfo(){
         ShowBarStatus();
 
         ActivePvrInfoContainer = true;
+        var EpisodeInfo = '';
 
-        InfoContainerNodes[1].innerHTML  = '<p class="RecInfo">REC:</p>';
+        if(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].episode){
+            EpisodeInfo = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].episode+': ';
+        }
+
+        InfoContainerNodes[1].innerHTML  = '<p class="RecInfo">REC:</p> ' +RecordingsList[IndexRecordedFocus][0];
         InfoContainerNodes[3].textContent  = '';
-        InfoContainerNodes[5].textContent  = RecordingsList[IndexRecordedFocus][0];
-        InfoContainerNodes[7].textContent  = moment(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].date).format('MMMM Do YYYY');
-        InfoContainerNodes[9].textContent  = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].episode;
-        InfoContainerNodes[11].innerHTML   = ShowStars(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].rating);
-        InfoContainerNodes[13].textContent = TimeConvert(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].duration);
-        InfoContainerNodes[15].textContent = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].description;
+        InfoContainerNodes[5].textContent  = '';
+        InfoContainerNodes[7].textContent  = FormatHour;
+        InfoContainerNodes[9].innerHTML    = moment(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].date).format('MMM, DD') +'    ('+TimeConvert(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].duration) + ') ' +ShowStars(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].rating);
+        InfoContainerNodes[11].textContent = '';
+        InfoContainerNodes[13].textContent = '';
+        InfoContainerNodes[15].textContent = EpisodeInfo + RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].description;
 
         clearTimeout(InfoTimer);
 
@@ -720,8 +725,8 @@ function HidePvrInfo(){
         InfoContainerNodes[3].textContent  = '';
         InfoContainerNodes[5].textContent  = '';
         InfoContainerNodes[7].textContent  = '';
-        InfoContainerNodes[9].textContent  = '';
-        InfoContainerNodes[11].innerHTML   = '';
+        InfoContainerNodes[9].innerHTML    = '';
+        InfoContainerNodes[11].textContent = '';
         InfoContainerNodes[13].textContent = '';
         InfoContainerNodes[15].textContent = '';
 
