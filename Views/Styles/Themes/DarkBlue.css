@@ -192,7 +192,7 @@ div#RecorderMessage {
 }
 
 div#PvrInfo{
-    border: 1px solid rgba(3,150,166);
+    border: 1px solid rgba(3,150,166,0.9);
     background-color: #246681;
 }
 

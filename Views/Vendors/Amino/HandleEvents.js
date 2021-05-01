@@ -402,30 +402,6 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
     }
 
 
-function DeleteOldestAssets(){
-    /* Elimina los 6 assets mas viejos cuando llega al 95% el disco duro*/
-    AssetsIdList = PVR.GetAssetIdList();
-
-    if (typeof AssetsIdList !== 'object'){ AssetsCount = 0; } else { AssetsCount = AssetsIdList.count; }
-
-    if (AssetsCount > 0){
-        var Indexal = 1,
-            AssetInfo = [],
-            ActRec    = false;
-
-        for(Indexal = 1;  Indexal <= 6; Indexal++){
-
-            AssetInfo = PVR.GetAssetById(AssetsIdList[Indexal]);
-
-            ActRec = (AssetInfo.activeRecording === 0) ? false : true;
-
-            //Debug(Indexal+'= ######### ProgramId: '+AssetInfo.title +', AssetId: '+ AssetsIdList[Indexal] +', Active:'+  ActRec);
-
-            UpdateProgramAsset(AssetInfo.title, OperationsList.recorded, AssetsIdList[Indexal], ActRec);
-        }
-    }
-}
-
 /*******************************************************************************
  * Carga inicial con funciones para el DVR
  *******************************************************************************/
