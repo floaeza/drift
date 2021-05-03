@@ -207,6 +207,8 @@
         var PositionInfo = [];
         if(PlayingRecording === true || PlayingVod === true){
             PositionInfo = Video.getPlayPositionInfo();
+
+            DurationAsset = parseInt(Duration,10) * 60;
             
             PositionAsset = PositionInfo.playPosition;
 
