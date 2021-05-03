@@ -1082,7 +1082,14 @@ function SelectRecordPlayOption(){
         break;
 
         case 7:
-            CloseRecordPlayOptions();
+            PlayingRecording =  false;
+
+            StopVideo();
+
+            HideBarStatus();
+
+            SetChannel('');
+            
             UnhidePvr();
         break;
     }
