@@ -188,15 +188,15 @@
     }
     
     function PauseVideo(){
-
+        Video.play(0);
     }
     
     function ResumeVideo(){
-
+        Video.play(1);
     }
     
     function SpeedVideo(Speed){
-
+        Video.play(Speed);
     }
     
 /* *****************************************************************************
