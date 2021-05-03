@@ -631,7 +631,9 @@ function SelectRecordOption(){
 
             PlayingRecording = true;
 
-            ClosePvr();
+            //* ClosePvr();
+
+            HidePvr();
 
             ShowPvrInfo();
 
@@ -1076,7 +1078,12 @@ function SelectRecordPlayOption(){
             HideBarStatus();
 
             SetChannel('');
-            break;
+
+        break;
+
+        case 7:
+            UnhidePvr();
+        break;
     }
 
     CloseRecordPlayOptions();
