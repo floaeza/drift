@@ -109,7 +109,7 @@
     <div class='RecordingOptionsButton'>Play again</div>
     <div class='RecordingOptionsButton'>Delete</div>
     <div class='RecordingOptionsButton'>Stop</div>
-    <div class='RecordingOptionsButton'>Close</div>
+    <div class='RecordingOptionsButton'>Return</div>
 </div>
 
 <!-- Opciones para grabar un programa manualmente | OnLoadHourPosition  & Hours[(0 - > 47)]  | -->

@@ -1089,7 +1089,7 @@ function SelectRecordPlayOption(){
             HideBarStatus();
 
             SetChannel('');
-            
+
             UnhidePvr();
         break;
     }
