@@ -1192,6 +1192,8 @@ function UpdateBarStatus(){
     if(PlayingRecording === true){
         AssetDuration = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].duration;
     }
+
+    Debug('AssetDuration: '+AssetDuration);
     AssetStatus(AssetDuration);
 
     BarPosition.style.width = PercentagePosition +'%';

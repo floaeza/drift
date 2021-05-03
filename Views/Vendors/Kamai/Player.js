@@ -204,11 +204,19 @@
  * ****************************************************************************/ 
 
     function AssetStatus(Duration){
+        var PositionInfo = [];
         if(PlayingRecording === true || PlayingVod === true){
+            PositionInfo = Video.getPlayPositionInfo();
             
-            PositionAsset = 0;
+            PositionAsset = PositionInfo.playPosition;
+
+            Debug('PositionAsset: '+PositionAsset);
             DurationAsset = parseInt(Duration,10) * 60;
             
             PercentagePosition = Math.round((PositionAsset * 100) / DurationAsset);
+
+            Debug('PercentagePosition: '+PercentagePosition);
         }
+
+        PositionInfo = null;
     }
