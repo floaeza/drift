@@ -1082,6 +1082,7 @@ function SelectRecordPlayOption(){
         break;
 
         case 7:
+            CloseRecordPlayOptions();
             UnhidePvr();
         break;
     }
