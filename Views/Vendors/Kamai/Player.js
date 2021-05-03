@@ -210,7 +210,7 @@
 
             DurationAsset = parseInt(Duration,10) * 60;
             Debug('>>>>>> DurationAsset: '+DurationAsset);
-            PositionAsset = (PositionInfo.playPosition)/1000;
+            PositionAsset = Math.round((PositionInfo.playPosition)/1000);
 
             Debug('>>>>>> PositionAsset: '+PositionAsset);
             
