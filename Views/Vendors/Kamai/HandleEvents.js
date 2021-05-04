@@ -44,7 +44,12 @@ function HandleVideo(event_type){
         }
     } else if(EventString === 'EN_VIDEOEVENT_EOS'){
         if(CurrentModule === 'Tv'){
-            SetDigitalChannel();
+            if(PlayingRecording === true) {
+                // Termino reproduccion grabacion
+                OpenRecordPlayOptions();
+            } else {
+                SetDigitalChannel();
+            }
         }
     }
 }
