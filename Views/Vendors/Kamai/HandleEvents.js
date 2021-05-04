@@ -31,7 +31,7 @@ EventHdmi = 1;
 
 function HandleVideo(event_type){
 
-    Debug('---> EventType: '+event_type);
+    Debug('---------------------------------------> EventType: '+event_type);
 
     if(EventString === 'EN_VIDEOEVENT_FIRST_PTS'){
         if(Executing === false){
