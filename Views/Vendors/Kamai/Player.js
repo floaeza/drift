@@ -105,7 +105,9 @@
         // Reproduce el video
         Video.open(Source);
         
-        Video.play(1); 
+        Video.play(1);
+
+        Video.setVideoCallback(HandleVideo);
 
         // Maximiza el video en caso de que no este en pantalla completa
         MaximizeTV();
