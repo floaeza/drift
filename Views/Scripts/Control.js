@@ -36,19 +36,19 @@ var CheckInfo = 0;
             switch (PressedKey) {
 
                 case REMOTE_RED:
-                    location.reload(true);
+                    Red();
                 break;
 
                 case REMOTE_BLUE:
-
+                    Blue();
                 break;
 
                 case REMOTE_GREEN:
-
+                    Green();
                 break;
 
                 case REMOTE_YELLOW:
-
+                    Yellow();
                 break;
 
         /********** NAVEGACION **********/
@@ -152,16 +152,11 @@ var CheckInfo = 0;
                 break;
                 
                 case REMOTE_BACK:
+                    Back();
+                break;
+
                 case REMOTE_CLOSE:
-                    if(CurrentModule === 'Tv'){
-                        TvClose();
-                    } else if(CurrentModule === 'Menu'){
-                        //
-                    } else if(CurrentModule === 'Movies'){
-                        VodClose();
-                    } else if(CurrentModule === 'Moods'){
-                        MoodsClose();
-                    } 
+                    Close();
                 break;
                 
                 case PREVIOUS_PROGRAM:
@@ -182,9 +177,7 @@ var CheckInfo = 0;
         /********** MENU **********/
                 
                 case REMOTE_MENU:
-                    if(CurrentModule !== 'Menu' && Device['Services']['ActiveMenu'] === true){             
-                        GoPage('menu.php', Device['MenuId'], 'Menu');
-                    }
+                    Menu();
                 break;
                 
         /********** GRABADOR | PAUSELIVE TV **********/
