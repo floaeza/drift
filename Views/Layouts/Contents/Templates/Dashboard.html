@@ -505,7 +505,9 @@ The above copyright notice and this permission notice shall be included in all c
       yearSelected = $('#SelectYear').val();
       getChannelsHoursList('Month', 'nombre_canal ASC', getMonthString(monthSelected, yearSelected));
       getAll();
-      
+
+
+      var SourceControllers = '/BBINCO/TV/Core/Controllers/';
     //   $('#SelectMonth').change(function(){
     //      MonthSelected  = $(this).val();
     //      getChannelsHoursList('Month', 'nombre_canal ASC', getMonthString());
@@ -658,7 +660,7 @@ The above copyright notice and this permission notice shall be included in all c
     function fillMonthsButton(){
       $.ajax({
                 type: "POST",
-                url: "/BBINCO/TV/Core/Controllers/Charts.php",
+                url: SourceControllers + "Charts.php",
                 data: { 
                     Option    : 'FirstRegisters',
                 }, 
@@ -697,7 +699,7 @@ The above copyright notice and this permission notice shall be included in all c
     function getChannelsHoursList(From, Order, Parameter){
       $.ajax({
                 type: "POST",
-                url: "/BBINCO/TV/Core/Controllers/Charts.php",
+                url: SourceControllers +" Charts.php",
                 data: { 
                     Option    : 'ChannelsViewTime',
                     From      : From,
@@ -712,7 +714,7 @@ The above copyright notice and this permission notice shall be included in all c
             });
             $.ajax({
                 type: "POST",
-                url: "/BBINCO/TV/Core/Controllers/Charts.php",
+                url: SourceControllers +" Charts.php",
                 data: { 
                     Option    : 'LocationsViewTime',
                     From      : From,
@@ -725,7 +727,7 @@ The above copyright notice and this permission notice shall be included in all c
             });
             $.ajax({
                 type: "POST",
-                url: "/BBINCO/TV/Core/Controllers/Charts.php",
+                url: SourceControllers +" Charts.php",
                 data: { 
                     Option    : 'ChannelsTime',
                     From      : From,
@@ -739,7 +741,7 @@ The above copyright notice and this permission notice shall be included in all c
             });
             $.ajax({
                 type: "POST",
-                url: "/BBINCO/TV/Core/Controllers/Charts.php",
+                url: SourceControllers +" Charts.php",
                 data: { 
                     Option    : 'ChannelsAverageTime',
                     From      : From,
