@@ -3,20 +3,24 @@
  * Fecha: Noviembre 2019
  * Tipo: Modulo para tv
  */
+    // Mac address y modulo para funcionamiento y debug
+    $MacAddress     = !empty($_GET['MacAddress']) ? $_GET['MacAddress'] : '';
+    $CurrentModule  = !empty($_GET['CurrentModule']) ? $_GET['CurrentModule'] : '';
+    $ModuleId       = !empty($_GET['ModuleId']) ? $_GET['ModuleId'] : '';
+
     require_once 'Core/Models/Database.php';
     require_once 'Core/Models/Templates.php';
-    require_once 'Core/Models/Libraries.php';
     require_once 'Core/DataAccess/Config.php';
     require_once 'Core/DataAccess/Devices.php';
     require_once 'Core/DataAccess/Modules.php';
-    
-    // Mac address y modulo para funcionamiento y debug
-    $MacAddress     = !empty($_GET['MacAddress']) ? $_GET['MacAddress'] : ''; 
-    $CurrentModule  = !empty($_GET['CurrentModule']) ? $_GET['CurrentModule'] : ''; 
-    $ModuleId       = !empty($_GET['ModuleId']) ? $_GET['ModuleId'] : ''; 
-    
+
+    $ConfigData  = new Config('system',$CurrentModule);
+    $Client = $ConfigData->getConfigByName('Identifier').'/';
+
+    require_once 'Core/Models/Libraries.php';
+
     // Carga clases
-    $ConfigData  = new Config($MacAddress,$CurrentModule);
+
     $DeviceData  = new Devices($MacAddress,$CurrentModule);
     $ModulesData  = new Modules($MacAddress,$CurrentModule);
     
