@@ -7,7 +7,7 @@
     $MacAddress     = !empty($_GET['MacAddress']) ? $_GET['MacAddress'] : '';
     $CurrentModule  = !empty($_GET['CurrentModule']) ? $_GET['CurrentModule'] : '';
     $ModuleId       = !empty($_GET['ModuleId']) ? $_GET['ModuleId'] : '';
-    s
+
     require_once 'Core/Models/Database.php';
     require_once 'Core/Models/Templates.php';
     require_once 'Core/DataAccess/Config.php';
