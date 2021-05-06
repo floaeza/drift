@@ -656,12 +656,12 @@ The above copyright notice and this permission notice shall be included in all c
       });
     }
 
-    var SourceControllers = '/BBINCO/TV/Core/Controllers/';
+    var ChartController = '/BBINCO/TV/Core/Controllers/Charts.php';
 
     function fillMonthsButton(){
       $.ajax({
                 type: "POST",
-                url: SourceControllers + "Charts.php",
+                url: ChartController,
                 data: { 
                     Option    : 'FirstRegisters',
                 }, 
@@ -700,7 +700,7 @@ The above copyright notice and this permission notice shall be included in all c
     function getChannelsHoursList(From, Order, Parameter){
       $.ajax({
                 type: "POST",
-                url: SourceControllers +" Charts.php",
+                url: ChartController,
                 data: { 
                     Option    : 'ChannelsViewTime',
                     From      : From,
@@ -715,7 +715,7 @@ The above copyright notice and this permission notice shall be included in all c
             });
             $.ajax({
                 type: "POST",
-                url: SourceControllers +" Charts.php",
+                url: ChartController,
                 data: { 
                     Option    : 'LocationsViewTime',
                     From      : From,
@@ -728,7 +728,7 @@ The above copyright notice and this permission notice shall be included in all c
             });
             $.ajax({
                 type: "POST",
-                url: SourceControllers +" Charts.php",
+                url: ChartController,
                 data: { 
                     Option    : 'ChannelsTime',
                     From      : From,
@@ -742,7 +742,7 @@ The above copyright notice and this permission notice shall be included in all c
             });
             $.ajax({
                 type: "POST",
-                url: SourceControllers +" Charts.php",
+                url: ChartController,
                 data: { 
                     Option    : 'ChannelsAverageTime',
                     From      : From,
