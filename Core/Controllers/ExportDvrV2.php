@@ -26,7 +26,7 @@ $ProgramsData   = new Programs('system', 'ExportDvr');
 $FirstElement   = 0;
 
 
-$MacAddress  = '00:02:02:6b:91:b6';
+$MacAddress  = '00:02:02:6b:d1:a8';
 
 
 //echo  $MacAddress. PHP_EOL;
@@ -98,13 +98,13 @@ foreach ($RecordInfoArray as $Row=>$RecordRow):
 
         $Response = ' ';
 
-        $AddProgram = $ProgramsData->setProgram($ProgramInfo);
-
-        if(intval($AddProgram) >= 1){
-            $Response = ' === Program added';
-        } else {
-            $Response = ' === There was a problem, try again later';
-        }
+//        $AddProgram = $ProgramsData->setProgram($ProgramInfo);
+//
+//        if(intval($AddProgram) >= 1){
+//            $Response = ' === Program added';
+//        } else {
+//            $Response = ' === There was a problem, try again later';
+//        }
 
         echo $Row. $Response;echo '<br>';
         print_r($ProgramInfo); echo '<br>';
