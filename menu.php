@@ -72,6 +72,7 @@
             // Librerias javascript generales
             $Header->set('General', $Libraries['General']);
             $Header->set('Skycons', $Libraries['Skycons']);
+            $Header->set('Commands', $Libraries['Commands']);
             $Header->set('RemoteControl', $Libraries['RemoteControl']);
 
             // Librerias javascript por marca

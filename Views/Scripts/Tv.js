@@ -936,7 +936,13 @@
         } else if(ActiveEpgContainer === false && Device['Type'] !== 'NONE'){
             if(ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].STTN !== 'CONTENT'){
                 Debug('-----------TvRecord');
-                AddCurrentProgram();
+                if(ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].DRTN !== '24'){
+
+                    REC_CHNL_POS = ChannelPosition;
+                    REC_PROG_POS = ProgramPosition;
+
+                    CheckRecordings();
+                }
             }
         }
     }

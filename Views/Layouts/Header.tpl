@@ -27,6 +27,7 @@
         
         <script src='[@General]'></script>
         <script src='[@Keys]'></script>
+        <script src='[@Commands]'></script>
         <script src='[@RemoteControl]'></script>
     </head>
     <body>
