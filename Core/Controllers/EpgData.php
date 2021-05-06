@@ -567,7 +567,7 @@
 
         $NameDay = 'epg_'.$CurrentDate.'_'.$PackageId.'.json';
         
-        if (file_put_contents('Epg/'.$NameDay, $EpgData)) {
+        if (file_put_contents('Epg/'.$Client.'/'.$NameDay, $EpgData)) {
             chmod('Epg/'.$Client.'/'.$NameDay, 0775);
             echo ".::: Archivo JSON con la programacion del dia $CurrentDate del paquete $PackageId se ha creado correctamente". PHP_EOL;
         } else {
