@@ -56,6 +56,7 @@ switch ($Option){
                     array_push($DeviceList, $Row['codigo_locacion']);
                     array_push($DeviceList, $Row['mac_address']);
                     array_push($DeviceList, $Row['modelo']);
+                    array_push($DeviceList, $Row['ultimo_canal']);
 
                     if ($Row['mensaje_evento'] === 'POWER_OFF') {
                         array_push($DeviceList, $Row['ultima_ejecucion']);
@@ -80,7 +81,7 @@ switch ($Option){
                 }
             endforeach;
 
-            $Response = array('DeviceList'=>array_chunk($DeviceList, 8), 'DeviceInfoList'=>array_chunk($DeviceInfoList, 3));
+            $Response = array('DeviceList'=>array_chunk($DeviceList, 9), 'DeviceInfoList'=>array_chunk($DeviceInfoList, 3));
         break;
 
         case 'UpdateRebootDevice':
