@@ -20,7 +20,6 @@
     require_once 'Core/Models/Libraries.php';
 
     // Carga clases
-
     $DeviceData  = new Devices($MacAddress,$CurrentModule);
     $ModulesData  = new Modules($MacAddress,$CurrentModule);
     

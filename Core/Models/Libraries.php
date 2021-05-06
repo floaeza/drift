@@ -15,7 +15,7 @@ if($GetJson == true){
     $EpgLogo = $ConfigData->getConfigByName('EpgLogo');
 
     $JsonLibraries['EpgLogo'] = '/BBINCO/TV/Media/Logos/'.$Client.$EpgLogo;
-} 
+}
 
 $ServerIp = !empty($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : '';
     
