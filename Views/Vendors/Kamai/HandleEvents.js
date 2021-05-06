@@ -279,6 +279,8 @@ Debug('---------->>>');
          Debug('>>>> REC duration: '+assi.duration);
          Debug('>>>> REC size: '+assi.size);
 
+         Debug('MODEL: '+KamaiModels[ENTONE.stb.getHardwareModel()]);
+
     Debug(JSON.stringify(assi));
 
     GetProgramsToSchedule();

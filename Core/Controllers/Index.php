@@ -15,7 +15,7 @@
     $MacAddress = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '00:00:00:00:00:00'; 
     $IpAddress  = !empty($_POST['IpAddress']) ? $_POST['IpAddress'] : '0.0.0.0'; 
     $Firmware   = !empty($_POST['Firmware']) ? $_POST['Firmware'] : 'x0x'; 
-    $Model      = !empty($_POST['Model']) ? $_POST['Model'] : 'AXX'; 
+    $Model      = !empty($_POST['Model']) ? $_POST['Model'] : '';
     $Hdd        = !empty($_POST['Hdd']) ? $_POST['Hdd'] : 'N'; 
     $Vendor     = !empty($_POST['Vendor']) ? $_POST['Vendor'] : 'Generic'; 
     
