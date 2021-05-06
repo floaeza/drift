@@ -101,9 +101,9 @@ foreach ($RecordInfoArray as $Row=>$RecordRow):
         $AddProgram = $ProgramsData->setProgram($ProgramInfo);
 
         if(intval($AddProgram) >= 1){
-            $Response = ' === Program added'; echo '<br>';
+            $Response = ' === Program added';
         } else {
-            $Response = ' === There was a problem, try again later'; echo '<br>';
+            $Response = ' === There was a problem, try again later';
         }
 
         echo $Row. $Response;echo '<br>';

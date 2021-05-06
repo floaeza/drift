@@ -769,7 +769,7 @@
     function TvInfo(){
         if(PauseLive === true){
             /* Muestra la barra con el detalle de PauseLiveTv */
-            PauseLiveStatus('play');
+            SetSpeed('play');
             ShowInfo();
         } else if(PlayingRecording === true){
             ShowPvrInfo();
