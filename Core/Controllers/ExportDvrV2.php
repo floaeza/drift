@@ -98,13 +98,13 @@ foreach ($RecordInfoArray as $Row=>$RecordRow):
 
         $Response = ' ';
 
-//        $AddProgram = $ProgramsData->setProgram($ProgramInfo);
-//
-//        if(intval($AddProgram) >= 1){
-//            $Response = ' === Program added';
-//        } else {
-//            $Response = ' === There was a problem, try again later';
-//        }
+        $AddProgram = $ProgramsData->setProgram($ProgramInfo);
+
+        if(intval($AddProgram) >= 1){
+            $Response = ' === Program added'; echo '<br>';
+        } else {
+            $Response = ' === There was a problem, try again later'; echo '<br>';
+        }
 
         echo $Row. $Response;echo '<br>';
         print_r($ProgramInfo); echo '<br>';
