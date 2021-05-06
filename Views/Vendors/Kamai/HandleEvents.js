@@ -276,10 +276,10 @@ Debug('---------->>>');
 
     var assi = ENTONE.recorder.getAssetInfo('0000000217');
 
-         Debug('>>>> REC duration: '+assi.duration);
-         Debug('>>>> REC size: '+assi.size);
+         Debug('>>> REC duration: '+assi.duration);
+         Debug('>>> REC size: '+assi.size);
 
-         Debug('MODEL: '+KamaiModels[ENTONE.stb.getHardwareModel()]);
+         Debug('>>MODEL: '+KamaiModels[ENTONE.stb.getHardwareModel()]);
 
     Debug(JSON.stringify(assi));
 
