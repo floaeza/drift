@@ -506,8 +506,6 @@ The above copyright notice and this permission notice shall be included in all c
       getChannelsHoursList('Month', 'nombre_canal ASC', getMonthString(monthSelected, yearSelected));
       getAll();
 
-
-      var SourceControllers = '/BBINCO/TV/Core/Controllers/';
     //   $('#SelectMonth').change(function(){
     //      MonthSelected  = $(this).val();
     //      getChannelsHoursList('Month', 'nombre_canal ASC', getMonthString());
@@ -657,6 +655,9 @@ The above copyright notice and this permission notice shall be included in all c
           }
       });
     }
+
+    var SourceControllers = '/BBINCO/TV/Core/Controllers/';
+
     function fillMonthsButton(){
       $.ajax({
                 type: "POST",
