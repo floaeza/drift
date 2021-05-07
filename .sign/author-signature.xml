@@ -32,7 +32,7 @@
 </Reference>
 <Reference URI=".idea%2Fworkspace.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>RoknabjrcdFUBz8Yf29s8WIcY0KOzdXSblX21NwOQzM=</DigestValue>
+<DigestValue>JcjcPRb50S+MYx2HxcrTPIHeC2CevcyDvci2H/oIxgM=</DigestValue>
 </Reference>
 <Reference URI="Core%2F.DS_Store">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -57,10 +57,6 @@
 <Reference URI="Core%2FControllers%2FDevicesStatus.php">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>v6bjXosLQt3J3d0uTOqssA65F2eEom/BpLVh/kwdfvM=</DigestValue>
-</Reference>
-<Reference URI="Core%2FControllers%2FEpg%2FBBN%2Fepg_20210424_1.json">
-<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>gLxz3jwl7RtsMxuSRDHd4/gMlI4vF2pPGCyzK7Wmzzc=</DigestValue>
 </Reference>
 <Reference URI="Core%2FControllers%2FEpg%2FBBN%2Fepg_20210425_1.json">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -3292,7 +3288,7 @@
 </Reference>
 <Reference URI="Views%2FLayouts%2FTv%2FScripts%2FTvMinRecorder.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>1UCwWqBb96HKM8237w2TXMfsmehN9j7gKs2IAfCPIuE=</DigestValue>
+<DigestValue>vYe4mfrh8VyEhNgFK2oPjIzfRiqXsdBQIgeaRzVdC8s=</DigestValue>
 </Reference>
 <Reference URI="Views%2FLayouts%2FTv%2FScripts%2FTvSquare.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -3780,7 +3776,7 @@
 </Reference>
 <Reference URI="index.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>D7VRdgyeZtkIEaYTUCGIDq8hxcM1V7gHRhevG7Id1t0=</DigestValue>
+<DigestValue>1viER3Bi0GPZgckR1EkS2102yjTyelwG/FnoWcN1GGk=</DigestValue>
 </Reference>
 <Reference URI="index.php">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -3807,9 +3803,9 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-T3hZrhAOAfp06UpwNWFxu0lmn0qS7OnGARclW52ml/y2YiUb7a9b0iGoBNbaD/5SSEZlad3yA1fn
-NFGUuFBrKsXXNC+gwQFwvzRmJ8W0IMoAtH0Ag4yKyN528NoWzJ9M47tpLgtxTzFres0M1+Mw4IG5
-itKR8XTEVGox2Q7y0G8=
+ZM+ewskWd5dujNps3AbtrSTKq7ngWmzOWqv1fSoFulRYvlkcEfBIo62Z9E6mAMGNd1/BPce821/b
+M1wIQMEqVolK7xeJQr5p3aLwHFMFRQGAxwLG6aiSaQzRZiQ8q8koj0LOmC7FqwkwHtLqSXQRgjJt
+yAAuoMKcHqpgGjt+0cQ=
 </SignatureValue>
 <KeyInfo>
 <X509Data>

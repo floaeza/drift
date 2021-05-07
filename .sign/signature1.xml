@@ -32,7 +32,7 @@
 </Reference>
 <Reference URI=".idea%2Fworkspace.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>RoknabjrcdFUBz8Yf29s8WIcY0KOzdXSblX21NwOQzM=</DigestValue>
+<DigestValue>JcjcPRb50S+MYx2HxcrTPIHeC2CevcyDvci2H/oIxgM=</DigestValue>
 </Reference>
 <Reference URI="Core%2F.DS_Store">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -57,10 +57,6 @@
 <Reference URI="Core%2FControllers%2FDevicesStatus.php">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>v6bjXosLQt3J3d0uTOqssA65F2eEom/BpLVh/kwdfvM=</DigestValue>
-</Reference>
-<Reference URI="Core%2FControllers%2FEpg%2FBBN%2Fepg_20210424_1.json">
-<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>gLxz3jwl7RtsMxuSRDHd4/gMlI4vF2pPGCyzK7Wmzzc=</DigestValue>
 </Reference>
 <Reference URI="Core%2FControllers%2FEpg%2FBBN%2Fepg_20210425_1.json">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -3292,7 +3288,7 @@
 </Reference>
 <Reference URI="Views%2FLayouts%2FTv%2FScripts%2FTvMinRecorder.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>1UCwWqBb96HKM8237w2TXMfsmehN9j7gKs2IAfCPIuE=</DigestValue>
+<DigestValue>vYe4mfrh8VyEhNgFK2oPjIzfRiqXsdBQIgeaRzVdC8s=</DigestValue>
 </Reference>
 <Reference URI="Views%2FLayouts%2FTv%2FScripts%2FTvSquare.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -3768,7 +3764,7 @@
 </Reference>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>tDUSEL1q+JHzMbhapjy9HVj68OVMZj6XZvJMSqAPbcI=</DigestValue>
+<DigestValue>2nBKGgtkRjZnkILdylmapNx75Y6Z8T5sPevdq74E4HM=</DigestValue>
 </Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -3784,7 +3780,7 @@
 </Reference>
 <Reference URI="index.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>D7VRdgyeZtkIEaYTUCGIDq8hxcM1V7gHRhevG7Id1t0=</DigestValue>
+<DigestValue>1viER3Bi0GPZgckR1EkS2102yjTyelwG/FnoWcN1GGk=</DigestValue>
 </Reference>
 <Reference URI="index.php">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -3811,9 +3807,9 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-Km4wVqJBmQzjd1X/txfBOXa77sRPFotadjFM6RAdD6xl7Lvd4xN9jyR6f0JnNHRknJDx8G47ixDi
-PMek3fRlcR+xIZDntovadVjEfoAE5RPOqgOsZga3cF7cZWRzjR/7eS35ce09bfpgiYcIhKUXfGXj
-Ix94hILUZk/RQcN86og=
+aKgXoaQ05E5+bEIJOsNitg/z0SmwGoCXetQvxVGhct2NixBkPipOUJiucSo3b5drhPfYT7MLSxGs
+HM5FkQdYbX88N1lTT0YcX8PG46fGQSx5820YPODy7bOI5P/2wqtY/mxxOVtNlaym7sDs+5lghF6v
+Y0SJCI2mxX4/m6+yjbA=
 </SignatureValue>
 <KeyInfo>
 <X509Data>
