@@ -1196,11 +1196,6 @@ function UpdateBarStatus(){
     Debug('AssetDuration: '+AssetDuration);
     AssetStatus(AssetDuration);
 
-    Debug('DurationAsset::: '+DurationAsset);
-    Debug('PositionAsset::: '+PositionAsset);
-    Debug('PercentagePosition::: '+PercentagePosition);
-    Debug('Time::: '+SecondsToTime(DurationAsset - PositionAsset));
-
     BarPosition.style.width = PercentagePosition +'%';
     BarTimes.textContent = SecondsToTime(DurationAsset - PositionAsset); //"<p>"+SecondsToTime(DurationAsset)+"</p>
     BarStatus.innerHTML = "<i class='fa fa-"+OptionText+"' ></i><p>"+SpeedText+"</p>";
