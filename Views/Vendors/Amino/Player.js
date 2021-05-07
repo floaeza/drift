@@ -230,7 +230,7 @@
                 if(DurationAsset !== 0){
                     PercentagePosition = Math.round((PositionAsset * 100) / DurationAsset);
 
-                    DurationAsset = 0;
+                    DurationAsset = DurationAsset * 2;
                 }
             }
         }
