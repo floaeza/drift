@@ -249,6 +249,15 @@ function UpdateDiskInfo(){
     });
 }
 
+function SetMediaRecordings(){
+    var AssetsList = [];
+        AssetsList = ENTONE.recorder.getAssetList();
+
+        Debug(JSON.stringify(AssetsList));
+        Debug(AssetsList.length);
+
+}
+
 /*******************************************************************************
  * Carga inicial con funciones para el DVR
  *******************************************************************************/
