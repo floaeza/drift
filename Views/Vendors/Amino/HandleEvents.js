@@ -27,6 +27,7 @@
     var ProgramsToSchedule          = '',
         ProgramsToDelete            = '',
         AssetsIdList                = [],
+        SizePerSecond           = 0,
         AssetsCount                 = 0;
     
     var NUMBER_EVENT                = 0;
@@ -157,7 +158,8 @@ function UpdateDiskInfo(){
             LocationId : Device['LocationId'],
             MacAddress : MacAddress,
             TotalSize : StorageInfo.totalSize,
-            AvailableSize : StorageInfo.availableSize
+            AvailableSize : StorageInfo.availableSize,
+            SizePerSecond : SizePerSecond
         },
         success: function (response){
             //Debug(response);
@@ -354,9 +356,12 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
 /*******************************************************************************
  * Actualiza el asset id
  *******************************************************************************/
-
+    
+    
     function UpdateAssetsId(){
-
+        var Durations   = 0,
+            Sizes   = 0;
+    
         Debug('-------->> UpdateAssetsId');
         
         AssetsIdList = PVR.GetAssetIdList();
@@ -396,8 +401,16 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
 
                     UpdateProgramAsset(AssetInfo.title, Option, AssetsIdList[Indexal], ActRec);
                 }
+
+                Durations = Durations + parseInt(AssetInfo.duration); // seconds
+                Sizes = Sizes + parseInt(AssetInfo.totalSize); // kb
+                
+                SizePerSecond = Sizes / Durations;
             }
         }
+
+        Durations   = null;
+        Sizes   = null;
     Debug('--------<< UpdateAssetsId');
     }
 

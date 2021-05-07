@@ -254,6 +254,7 @@ switch ($Option){
     case 'SetPvrInfo':
         $TotalSize = !empty($_POST['TotalSize']) ? $_POST['TotalSize'] : '';
         $AvailableSize = !empty($_POST['AvailableSize']) ? $_POST['AvailableSize'] : '';
+        $SizePerSecond = !empty($_POST['SizePerSecond']) ? $_POST['SizePerSecond'] : '';
 
         $CheckInfo = $DiskData->checkPvrInfo($MacAddress);
 
@@ -261,7 +262,8 @@ switch ($Option){
             $InfoDevice =  array ('id_locacion' => $LocationId,
                 'mac_address' => $MacAddress,
                 'espacio_total' => $TotalSize,
-                'espacio_disponible' => $AvailableSize);
+                'espacio_disponible' => $AvailableSize,
+                'tamano_grabaciones' => SizePerSecond);
 
             $Response = $DiskData->setPvrInfo($InfoDevice);
         } else {
