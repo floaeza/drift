@@ -563,7 +563,7 @@
                 var Times = '<p class="Times">\u00A0('+FormatHours(ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].STRH)+' - '+FormatHours(ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].FNLH)+')</p>';
                 var Ttle = '<p class="Ttle">'+ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].TTLE+'\u00A0</p>';
                 var Rtg = '<p class="Rtg">\u00A0'+ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].TVRT+'</p>';
-                
+
                 InfoContainerNodes[1].textContent  = ChannelsJson[ChannelPosition].CHNL+' - ' +ChannelsJson[ChannelPosition].INDC.toUpperCase();
                 //InfoContainerNodes[3].textContent  = ChannelsJson[ChannelPosition].QLTY;
                 //InfoContainerNodes[5].textContent  = ChannelsJson[ChannelPosition].INDC;
@@ -582,10 +582,8 @@
                 InfoContainerNodes[15].textContent = ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].DSCR;
                             
             } else {
-                InfoContainerNodes[1].textContent  = ChannelsJson[ChannelPosition].CHNL;
-                InfoContainerNodes[3].textContent  = ChannelsJson[ChannelPosition].QLTY;
-                InfoContainerNodes[5].textContent  = ChannelsJson[ChannelPosition].INDC;
-                InfoContainerNodes[7].textContent  = FormatDateAndHour;
+                InfoContainerNodes[1].textContent  = ChannelsJson[ChannelPosition].CHNL+' - ' +ChannelsJson[ChannelPosition].INDC.toUpperCase();
+                InfoContainerNodes[7].textContent  = FormatHour;
             }
 
             Times = null;
