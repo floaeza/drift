@@ -32,7 +32,7 @@
 </Reference>
 <Reference URI=".idea%2Fworkspace.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>JcjcPRb50S+MYx2HxcrTPIHeC2CevcyDvci2H/oIxgM=</DigestValue>
+<DigestValue>zEvaDgNLQxmLWBnkkkVRuQgquxe/ycKQT1Ddat2lI+U=</DigestValue>
 </Reference>
 <Reference URI="Core%2F.DS_Store">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -3762,10 +3762,6 @@
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>08SHwJYdcoi5R8IyQ9SnIveXZNPTIHT8oI2IESlsWuQ=</DigestValue>
 </Reference>
-<Reference URI="bbinco1.0.wgt">
-<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>zGfWOCuSFdmd9BVXSWhXo44gGs2S+ycglim8iqVwinc=</DigestValue>
-</Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>jvF3+Fb9zExNMXKqTuxHmat6e4ZIY3z3vd99GLLnK1M=</DigestValue>
@@ -3792,7 +3788,7 @@
 </Reference>
 <Reference URI="sssp_config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>c2a0LDY0gP4MB2SlIrDbXbeqv9u4fRuSJj77R4lTHf4=</DigestValue>
+<DigestValue>b0uan9FYC5Lp8S3t7aHDIbJp+27dCQevFf9NVlOipLA=</DigestValue>
 </Reference>
 <Reference URI="tv.php">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -3807,9 +3803,9 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-T7aummwivCUD7qTY0fxI8V+8y1YaaFHN1gJMrd52VyWUZUIMbF1Ja3owuCD6jqMVY5CUwQHzwL6T
-LB22P1L4CyJLM4le1m8Gi50zZARpQ3D2I0jmbE+i8jvNz3HJSbV42L5yJ5ku4h+E7oQMovEnbHKE
-E9EgSm+P6/oZBDPxBts=
+LFe/HfCBzaFBuIPaQ0QYrcUaorv368s1UQknl5tlFjZkw0OFBA1QHZIUQIUmDTutGUtY6PlItTR2
+jvJFfWKzj/u9+qK5Kz1Vmu+v0Ev0nP1JqzJj+yCQfnjcu/NRE/lFFZgFVW20mowGe0Ge/NptxSsR
+oWSV26HNi7RRvRbKcdM=
 </SignatureValue>
 <KeyInfo>
 <X509Data>

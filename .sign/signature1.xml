@@ -32,7 +32,7 @@
 </Reference>
 <Reference URI=".idea%2Fworkspace.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>JcjcPRb50S+MYx2HxcrTPIHeC2CevcyDvci2H/oIxgM=</DigestValue>
+<DigestValue>zEvaDgNLQxmLWBnkkkVRuQgquxe/ycKQT1Ddat2lI+U=</DigestValue>
 </Reference>
 <Reference URI="Core%2F.DS_Store">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -3764,11 +3764,7 @@
 </Reference>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>Waj0z7v8JURo8nSWC5hgwX5VQyBKRXfFZTSMSn7+EVc=</DigestValue>
-</Reference>
-<Reference URI="bbinco1.0.wgt">
-<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>zGfWOCuSFdmd9BVXSWhXo44gGs2S+ycglim8iqVwinc=</DigestValue>
+<DigestValue>Bd7vmXC5u0+QiH+nzyd8CYUPnTC0G+z8/Gpn9Kr24NI=</DigestValue>
 </Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -3796,7 +3792,7 @@
 </Reference>
 <Reference URI="sssp_config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>c2a0LDY0gP4MB2SlIrDbXbeqv9u4fRuSJj77R4lTHf4=</DigestValue>
+<DigestValue>b0uan9FYC5Lp8S3t7aHDIbJp+27dCQevFf9NVlOipLA=</DigestValue>
 </Reference>
 <Reference URI="tv.php">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -3811,9 +3807,9 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-r9vCjkoAV54rUAYqm1aJgQlNC8RFBkJHiqvGJpe+RxF1hH01o3snoi2xyQs8QsRofiWfOo0J0Aop
-r5VCoDviAvkTQZ779XEOKyUu4EyJJynSqPHG6KsLJFTY0Np/nmpNSeAiUtVWIKwObSQxCtSylulp
-cD7NYN/tRqMgUDyTYCM=
+DnpBgT+uNQJH+J+PlG7c7a31sD06tYvaad9/0pg095CIZal38v4Kx5qlvBIRz7P0Sg56a/r8QZZj
+z7nVT921advKokquOxfcQqzn0m/4EImkaUuqqSwUIp1F4R0QJ+KG200CGBdUi0d/T4zGUivXGz40
+15YNL1Je/imlCGc/IPA=
 </SignatureValue>
 <KeyInfo>
 <X509Data>
