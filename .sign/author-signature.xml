@@ -3762,6 +3762,10 @@
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>08SHwJYdcoi5R8IyQ9SnIveXZNPTIHT8oI2IESlsWuQ=</DigestValue>
 </Reference>
+<Reference URI="bbinco1.0.wgt">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>zGfWOCuSFdmd9BVXSWhXo44gGs2S+ycglim8iqVwinc=</DigestValue>
+</Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>jvF3+Fb9zExNMXKqTuxHmat6e4ZIY3z3vd99GLLnK1M=</DigestValue>
@@ -3788,7 +3792,7 @@
 </Reference>
 <Reference URI="sssp_config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>b0uan9FYC5Lp8S3t7aHDIbJp+27dCQevFf9NVlOipLA=</DigestValue>
+<DigestValue>c2a0LDY0gP4MB2SlIrDbXbeqv9u4fRuSJj77R4lTHf4=</DigestValue>
 </Reference>
 <Reference URI="tv.php">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -3803,9 +3807,9 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-ZM+ewskWd5dujNps3AbtrSTKq7ngWmzOWqv1fSoFulRYvlkcEfBIo62Z9E6mAMGNd1/BPce821/b
-M1wIQMEqVolK7xeJQr5p3aLwHFMFRQGAxwLG6aiSaQzRZiQ8q8koj0LOmC7FqwkwHtLqSXQRgjJt
-yAAuoMKcHqpgGjt+0cQ=
+T7aummwivCUD7qTY0fxI8V+8y1YaaFHN1gJMrd52VyWUZUIMbF1Ja3owuCD6jqMVY5CUwQHzwL6T
+LB22P1L4CyJLM4le1m8Gi50zZARpQ3D2I0jmbE+i8jvNz3HJSbV42L5yJ5ku4h+E7oQMovEnbHKE
+E9EgSm+P6/oZBDPxBts=
 </SignatureValue>
 <KeyInfo>
 <X509Data>
