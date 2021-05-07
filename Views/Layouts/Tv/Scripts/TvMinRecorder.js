@@ -409,13 +409,61 @@ function SetPvrInfo(){
         PercentageSize = (100 - Percentage).toFixed(2);
 
     PvrDiskInfoNodes[1].textContent = AvailableSize + ' GB available of ' + TotalSize + ' GB';
-    PvrDiskInfoNodes[5].textContent = PercentageSize + '%';
+    //PvrDiskInfoNodes[5].textContent = PercentageSize + '%';
     PvrDiskInfoNodes[5].style.width = PercentageSize + '%';
 
     if(PercentageSize > 95){
         PvrDiskInfoNodes[5].style.color = '#e36464';
         if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
-            DeleteOldestAssets();
+            //
+        }
+    }
+
+    TotalSize = null;
+    Percentage = null;
+}
+
+function SetPvrInfoTest(){
+    //Device['MacAddressPvr'].length
+
+    var AvailableSize  = 0,
+        TotalSize = 0;
+
+    if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
+        var StorageInfo = [];
+
+        if(typeof(ASTB) !== 'undefined') {
+            StorageInfo = PVR.GetStorageInfo();
+
+            AvailableSize = (parseInt(StorageInfo.availableSize,10)/ 1024);
+            TotalSize = (parseInt(StorageInfo.totalSize,10)/ 1024);
+
+        } else if(typeof(ENTONE) !== 'undefined'){
+            StorageInfo = ENTONE.recorder.getStorageInfo();
+
+            TotalSize = (StorageInfo.pvrTotalSpace / 1024) / 1024;
+            AvailableSize = (StorageInfo.pvrFreeSpace / 1024) / 1024;
+
+        }
+    } else {
+        AvailableSize  = (parseInt(DiskInfo[DiskInfoIndex].espacio_disponible,10) / 1024);
+        TotalSize = (parseInt(DiskInfo[DiskInfoIndex].espacio_total,10) / 1024);
+    }
+
+    AvailableSize  = (AvailableSize / 1024).toFixed(2);
+    TotalSize = (TotalSize / 1024).toFixed(2);
+
+    var Percentage = (AvailableSize / TotalSize) * 100,
+        PercentageSize = (100 - Percentage).toFixed(2);
+
+    PvrDiskInfoNodes[1].textContent = AvailableSize + ' GB available of ' + TotalSize + ' GB';
+    //PvrDiskInfoNodes[5].textContent = PercentageSize + '%';
+    PvrDiskInfoNodes[5].style.width = PercentageSize + '%';
+
+    if(PercentageSize > 95){
+        PvrDiskInfoNodes[5].style.color = '#e36464';
+        if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
+            //
         }
     }
 
