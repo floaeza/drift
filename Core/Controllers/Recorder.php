@@ -259,8 +259,6 @@ switch ($Option){
 
         $CheckInfo = $DiskData->checkPvrInfo($MacAddress);
 
-        //print_r($CheckInfo); echo '<br>';
-
         if(empty($CheckInfo)){
             $InfoDevice =  array ('id_locacion' => $LocationId,
                 'mac_address' => $MacAddress,
@@ -269,18 +267,12 @@ switch ($Option){
 
             $Response = $DiskData->setPvrInfo($InfoDevice);
         } else {
-            //var_dump(SizePerSecond);echo '<br>';
-
             $InfoUpdate =  array('id_locacion' => $LocationId,
                                  'espacio_total' => $TotalSize,
                                  'espacio_disponible' => $AvailableSize,
-                                 'tamano_grabaciones' => $SizeRecords);
+                                 'tamano_grabaciones_kb' => $SizeRecords);
 
-            $Result = $DiskData->updatePvrInfo($InfoUpdate, $MacAddress);
-
-            $TypeResult = 'SizeRecords = '.SizeRecords;
-
-            $Response = array($Result, $TypeResult);
+            $Response = $DiskData->updatePvrInfo($InfoUpdate, $MacAddress);
         }
         break;
 

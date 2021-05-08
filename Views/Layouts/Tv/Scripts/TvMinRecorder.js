@@ -375,7 +375,7 @@ function SetOptionPanel(){
     }
 }
 
-function SetPvrInfo(){
+function SetPvrInfoBU(){
     //Device['MacAddressPvr'].length
 
     var AvailableSize  = 0,
@@ -423,7 +423,7 @@ function SetPvrInfo(){
     Percentage = null;
 }
 
-function SetPvrInfoTest(){
+function SetPvrInfo(){
     //Device['MacAddressPvr'].length
 
     var AvailableSize  = 0,
@@ -435,29 +435,29 @@ function SetPvrInfoTest(){
         if(typeof(ASTB) !== 'undefined') {
             StorageInfo = PVR.GetStorageInfo();
 
-            AvailableSize = (parseInt(StorageInfo.availableSize,10)/ 1024);
-            TotalSize = (parseInt(StorageInfo.totalSize,10)/ 1024);
+            AvailableSize = parseInt(StorageInfo.availableSize,10);
 
+            TotalSize = (parseInt(StorageInfo.totalSize,10)/ 1024);
         } else if(typeof(ENTONE) !== 'undefined'){
             StorageInfo = ENTONE.recorder.getStorageInfo();
 
-            TotalSize = (StorageInfo.pvrTotalSpace / 1024) / 1024;
-            AvailableSize = (StorageInfo.pvrFreeSpace / 1024) / 1024;
+            AvailableSize = (StorageInfo.pvrFreeSpace / 1000);
 
+            TotalSize = (StorageInfo.pvrTotalSpace / 1000);
         }
     } else {
-        AvailableSize  = (parseInt(DiskInfo[DiskInfoIndex].espacio_disponible,10) / 1024);
-        TotalSize = (parseInt(DiskInfo[DiskInfoIndex].espacio_total,10) / 1024);
+        AvailableSize  = parseInt(DiskInfo[DiskInfoIndex].espacio_disponible,10) ;
+        TotalSize = parseInt(DiskInfo[DiskInfoIndex].espacio_total,10);
     }
 
-    AvailableSize  = (AvailableSize / 1024).toFixed(2);
-    TotalSize = (TotalSize / 1024).toFixed(2);
+    var SizePerSeconds = parseInt(DiskInfo[DiskInfoIndex].tamano_grabaciones);
+
+    var TimeRemaining = AvailableSize / SizePerSeconds;
 
     var Percentage = (AvailableSize / TotalSize) * 100,
         PercentageSize = (100 - Percentage).toFixed(2);
 
-    PvrDiskInfoNodes[1].textContent = AvailableSize + ' GB available of ' + TotalSize + ' GB';
-    //PvrDiskInfoNodes[5].textContent = PercentageSize + '%';
+    PvrDiskInfoNodes[1].textContent = SecondsToTime(TimeRemaining); + ' available';
     PvrDiskInfoNodes[5].style.width = PercentageSize + '%';
 
     if(PercentageSize > 95){
@@ -1888,26 +1888,22 @@ function GetRecordingsToRecord(){
 }
 
 function GetPvrInfo(){
-    if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
-        SetPvrInfo();
-    } else {
-        $.ajax({
-            type: 'POST',
-            url: 'Core/Controllers/Recorder.php',
-            data: {
-                Option     : 'GetPvrInfo',
-                LocationId : Device['LocationId'],
-                MacAddress : MacAddress
-            },
-            success: function (response){
-                DiskInfo = $.parseJSON(response);
+    $.ajax({
+        type: 'POST',
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option     : 'GetPvrInfo',
+            LocationId : Device['LocationId'],
+            MacAddress : MacAddress
+        },
+        success: function (response){
+            DiskInfo = $.parseJSON(response);
 
-                if(DiskInfo.length > 0){
-                    SetPvrInfo();
-                }
+            if(DiskInfo.length > 0){
+                SetPvrInfo();
             }
-        });
-    }
+        }
+    });
 }
 
 function CheckManualRecording(){
