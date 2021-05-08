@@ -406,7 +406,10 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
                 Sizes = Sizes + parseInt(AssetInfo.totalSize); // kb
             }
 
-            SizePerSecond = Sizes / Durations;
+            Debug('--> Sizes: '+Sizes);
+            Debug('--> Durations: '+Durations);
+            Debug('--> AssetsIdList.count: '+AssetsIdList.count);
+            SizePerSecond = (Sizes / Durations) / AssetsIdList.count;
 
             Debug('----> SizePerSecond: '+SizePerSecond);
         }
