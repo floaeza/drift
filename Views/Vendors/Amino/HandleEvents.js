@@ -404,11 +404,11 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
 
                 Durations = Durations + parseInt(AssetInfo.duration); // seconds
                 Sizes = Sizes + parseInt(AssetInfo.totalSize); // kb
-                
-                SizePerSecond = Sizes / Durations;
-
-                Debug('----> SizePerSecond: '+SizePerSecond);
             }
+
+            SizePerSecond = Sizes / Durations;
+
+            Debug('----> SizePerSecond: '+SizePerSecond);
         }
 
         Durations   = null;
