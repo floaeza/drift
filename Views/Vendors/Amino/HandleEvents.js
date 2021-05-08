@@ -19,6 +19,7 @@
 
     var CONNECTION_STOPPED          = 95,
         IGMP_STATUS_END_OF_STREAM   = 11,
+        HDMI_STATUS_UPDATED         = 89,
         STATUS_END_OF_STREAM        = 90,
         STATUS_PLAYING              = 92,
         VIDEO_STARTED               = 84,
@@ -409,7 +410,7 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
             Debug('--> Sizes: '+Sizes);
             Debug('--> Durations: '+Durations);
             Debug('--> AssetsIdList.count: '+AssetsIdList.count);
-            SizePerSecond = (Sizes / Durations) / AssetsIdList.count;
+            SizePerSecond = Math.abs((Sizes / Durations) / AssetsIdList.count);
 
             Debug('----> SizePerSecond: '+SizePerSecond);
         }
