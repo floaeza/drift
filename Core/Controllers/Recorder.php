@@ -270,7 +270,7 @@ switch ($Option){
             $InfoUpdate =  array('id_locacion' => $LocationId,
                                  'espacio_total' => $TotalSize,
                                  'espacio_disponible' => $AvailableSize,
-                                 'tamano_grabaciones_kb' => $SizeRecords);
+                                 'tamano_grabaciones' => $SizeRecords);
 
             $Response = $DiskData->updatePvrInfo($InfoUpdate, $MacAddress);
         }
