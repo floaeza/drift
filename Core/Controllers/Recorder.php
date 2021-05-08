@@ -273,7 +273,11 @@ switch ($Option){
 
             $InfoUpdate =  array('espacio_total' => $TotalSize, 'espacio_disponible' => $AvailableSize, 'tamano_grabaciones' => SizePerSecond);
 
-            $Response = $DiskData->updatePvrInfo($InfoUpdate, $MacAddress);
+            $Result = $DiskData->updatePvrInfo($InfoUpdate, $MacAddress);
+
+            $TypeResult = 'SizePerSecond = '.SizePerSecond;
+
+            $Response = array($Result, $TypeResult);
         }
         break;
 

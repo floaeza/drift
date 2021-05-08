@@ -168,7 +168,7 @@ function UpdateDiskInfo(){
             SizePerSecond : SizePerSecond
         },
         success: function (response){
-            //Debug(response);
+            Debug(response);
         }
     });
 }
