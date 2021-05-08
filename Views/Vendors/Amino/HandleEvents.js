@@ -420,6 +420,9 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
  *******************************************************************************/
 
 if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
+
+    UpdateAssetsId();
+    
     UpdateDiskInfo();
 
     HandlerPvr();
