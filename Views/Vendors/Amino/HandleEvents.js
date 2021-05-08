@@ -151,6 +151,11 @@ function UpdateDiskInfo(){
     var StorageInfo = [];
     StorageInfo = PVR.GetStorageInfo();
 
+    Debug('---------------------------------UpdateDiskInfo');
+    Debug('StorageInfo.availableSize:: '+StorageInfo.availableSize);
+    Debug('SizePerSecond:: '+SizePerSecond);
+
+
     $.ajax({
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
