@@ -469,7 +469,7 @@ function SetPvrInfo(){
     PvrDiskInfoNodes[5].style.width = PercentageSize + '%';
 
     if(PercentageSize > 95){
-        PvrDiskInfoNodes[5].style.color = '#e36464';
+        PvrDiskInfoNodes[5].style.color = '#d97676';
         if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
             //
         }
