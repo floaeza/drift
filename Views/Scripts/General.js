@@ -341,7 +341,7 @@
                 hrs = 0;
         
             if (hr > 0) {
-               sec_min += '' + hrs + 'h' + (min < 10 ? '0' : '');
+               sec_min += '' + hrs + 'h ' + (min < 10 ? '0' : '');
             }
             sec_min += '' + min + ':' + (sec < 10 ? '0' : '');
             sec_min += '' + sec;
