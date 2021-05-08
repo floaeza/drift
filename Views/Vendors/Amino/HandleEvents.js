@@ -415,8 +415,8 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
             Debug('----> SizePerSecond: '+SizePerSecond);
         }
 
-        Durations   = null;
-        Sizes   = null;
+        Durations = null;
+        Sizes = null;
     Debug('--------<< UpdateAssetsId');
     }
 

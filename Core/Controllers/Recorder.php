@@ -262,12 +262,11 @@ switch ($Option){
             $InfoDevice =  array ('id_locacion' => $LocationId,
                 'mac_address' => $MacAddress,
                 'espacio_total' => $TotalSize,
-                'espacio_disponible' => $AvailableSize,
-                'tamano_grabaciones' => SizePerSecond);
+                'espacio_disponible' => $AvailableSize);
 
             $Response = $DiskData->setPvrInfo($InfoDevice);
         } else {
-            $InfoUpdate =  array ('espacio_disponible' => $AvailableSize);
+            $InfoUpdate =  array ('espacio_disponible' => $AvailableSize, 'tamano_grabaciones' => SizePerSecond);
 
             $Response = $DiskData->updatePvrInfo($InfoUpdate, $MacAddress);
         }
