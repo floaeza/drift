@@ -154,7 +154,7 @@ function UpdateDiskInfo(){
     Debug('---------------------------------UpdateDiskInfo');
     Debug('StorageInfo.availableSize:: '+StorageInfo.availableSize);
     Debug('SizePerSecond:: '+SizePerSecond);
-    Debug('LocationId:: '+evice['LocationId']);
+    Debug('LocationId:: '+Device['LocationId']);
 
     $.ajax({
         type: 'POST',
