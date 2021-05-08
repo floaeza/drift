@@ -259,7 +259,7 @@ switch ($Option){
 
         $CheckInfo = $DiskData->checkPvrInfo($MacAddress);
 
-        print_r($CheckInfo); echo '<br>';
+        //print_r($CheckInfo); echo '<br>';
 
         if(empty($CheckInfo)){
             $InfoDevice =  array ('id_locacion' => $LocationId,
@@ -269,7 +269,7 @@ switch ($Option){
 
             $Response = $DiskData->setPvrInfo($InfoDevice);
         } else {
-            var_dump(SizePerSecond);echo '<br>';
+            //var_dump(SizePerSecond);echo '<br>';
 
             $InfoUpdate =  array('espacio_total' => $TotalSize, 'espacio_disponible' => $AvailableSize, 'tamano_grabaciones' => SizePerSecond);
 
