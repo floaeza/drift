@@ -165,7 +165,7 @@ function UpdateDiskInfo(){
             MacAddress : MacAddress,
             TotalSize : StorageInfo.totalSize,
             AvailableSize : StorageInfo.availableSize,
-            //SizePerSecond : SizePerSecond
+            SizeRecords : SizePerSecond
         },
         success: function (response){
             Debug('---------------------------------UpdateDiskInfo RESPONSE');

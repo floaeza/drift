@@ -255,7 +255,7 @@ switch ($Option){
         $TotalSize = !empty($_POST['LocationId']) ? $_POST['LocationId'] : '';
         $TotalSize = !empty($_POST['TotalSize']) ? $_POST['TotalSize'] : '';
         $AvailableSize = !empty($_POST['AvailableSize']) ? $_POST['AvailableSize'] : '';
-        $SizePerSecond = !empty($_POST['SizePerSecond']) ? $_POST['SizePerSecond'] : '';
+        $SizeRecords = !empty($_POST['SizeRecords']) ? $_POST['SizeRecords'] : '';
 
         $CheckInfo = $DiskData->checkPvrInfo($MacAddress);
 
@@ -273,11 +273,12 @@ switch ($Option){
 
             $InfoUpdate =  array('id_locacion' => $LocationId,
                                  'espacio_total' => $TotalSize,
-                                 'espacio_disponible' => $AvailableSize);
+                                 'espacio_disponible' => $AvailableSize,
+                                 'tamano_grabaciones' => $SizeRecords);
 
             $Result = $DiskData->updatePvrInfo($InfoUpdate, $MacAddress);
 
-            $TypeResult = 'SizePerSecond = '.SizePerSecond;
+            $TypeResult = 'SizeRecords = '.SizeRecords;
 
             $Response = array($Result, $TypeResult);
         }
