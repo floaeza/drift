@@ -355,7 +355,7 @@ function secondsToString(seconds) {
     hour = (hour < 10)? '0' + hour : hour;
     var minute = Math.floor((seconds / 60) % 60);
     minute = (minute < 10)? '0' + minute : minute;
-    return hour + 'h ' + minute + ' min';
+    return hour + ' h ' + minute + ' min';
 
     hour = null;
     minute = null;
