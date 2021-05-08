@@ -104,6 +104,7 @@ if(Device['Type'] !== 'NONE'){
 
     var BarContainer            = document.getElementById('BarContainer'),
         BarPosition             = document.getElementById('BarPosition'),
+        BarTimes                = document.getElementById('BarTimes'),
         BarStatus               = document.getElementById('BarStatus');
 
     var BarTimer                = '',
@@ -320,6 +321,38 @@ function ClosePvr(){
     clearTimeout(PvrTimer);
 }
 
+function HidePvr(){
+    PvrContainer.style.visibility = 'hidden';
+
+    RecordingPanel = false;
+
+    MaximizeTV();
+
+    HideRecordOption();
+
+    HideDeleteOption();
+
+    clearTimeout(PvrTimer);
+}
+
+function UnhidePvr(){
+    PvrContainer.style.visibility = 'visible';
+
+    MinimizeTV();
+
+    HidePvrInfo();
+
+    RecordingPanel = true;
+
+    SetOptionPanel();
+
+    GetPvrInfo();
+
+    GetWeatherPvr();
+
+    PvrTimer = setTimeout(ClosePvr,TimeoutPvr);
+}
+
 function SetOptionPanel(){
     if(OptionPanel === 'Recordings'){
         SetRecordings('');
@@ -376,13 +409,61 @@ function SetPvrInfo(){
         PercentageSize = (100 - Percentage).toFixed(2);
 
     PvrDiskInfoNodes[1].textContent = AvailableSize + ' GB available of ' + TotalSize + ' GB';
-    PvrDiskInfoNodes[5].textContent = PercentageSize + '%';
+    //PvrDiskInfoNodes[5].textContent = PercentageSize + '%';
     PvrDiskInfoNodes[5].style.width = PercentageSize + '%';
 
     if(PercentageSize > 95){
         PvrDiskInfoNodes[5].style.color = '#e36464';
         if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
-            DeleteOldestAssets();
+            //
+        }
+    }
+
+    TotalSize = null;
+    Percentage = null;
+}
+
+function SetPvrInfoTest(){
+    //Device['MacAddressPvr'].length
+
+    var AvailableSize  = 0,
+        TotalSize = 0;
+
+    if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
+        var StorageInfo = [];
+
+        if(typeof(ASTB) !== 'undefined') {
+            StorageInfo = PVR.GetStorageInfo();
+
+            AvailableSize = (parseInt(StorageInfo.availableSize,10)/ 1024);
+            TotalSize = (parseInt(StorageInfo.totalSize,10)/ 1024);
+
+        } else if(typeof(ENTONE) !== 'undefined'){
+            StorageInfo = ENTONE.recorder.getStorageInfo();
+
+            TotalSize = (StorageInfo.pvrTotalSpace / 1024) / 1024;
+            AvailableSize = (StorageInfo.pvrFreeSpace / 1024) / 1024;
+
+        }
+    } else {
+        AvailableSize  = (parseInt(DiskInfo[DiskInfoIndex].espacio_disponible,10) / 1024);
+        TotalSize = (parseInt(DiskInfo[DiskInfoIndex].espacio_total,10) / 1024);
+    }
+
+    AvailableSize  = (AvailableSize / 1024).toFixed(2);
+    TotalSize = (TotalSize / 1024).toFixed(2);
+
+    var Percentage = (AvailableSize / TotalSize) * 100,
+        PercentageSize = (100 - Percentage).toFixed(2);
+
+    PvrDiskInfoNodes[1].textContent = AvailableSize + ' GB available of ' + TotalSize + ' GB';
+    //PvrDiskInfoNodes[5].textContent = PercentageSize + '%';
+    PvrDiskInfoNodes[5].style.width = PercentageSize + '%';
+
+    if(PercentageSize > 95){
+        PvrDiskInfoNodes[5].style.color = '#e36464';
+        if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
+            //
         }
     }
 
@@ -594,11 +675,13 @@ function SelectRecordOption(){
 
             PlayVideo(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].url);
 
-            Debug('URL>>>>>> '+RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].url)
+            Debug('URL>>>>>> '+RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].url);
 
             PlayingRecording = true;
 
-            ClosePvr();
+            //* ClosePvr();
+
+            HidePvr();
 
             ShowPvrInfo();
 
@@ -701,7 +784,7 @@ function ShowPvrInfo(){
         InfoContainerNodes[3].textContent  = '';
         InfoContainerNodes[5].textContent  = '';
         InfoContainerNodes[7].textContent  = FormatHour;
-        InfoContainerNodes[9].innerHTML    = moment(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].date).format('MMM, DD') +'    ('+TimeConvert(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].duration) + ') ' +ShowStars(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].rating);
+        InfoContainerNodes[9].innerHTML    = moment(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].date).format('MMM, DD') +'    ('+TimeConvert(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].duration) + ') ';
         InfoContainerNodes[11].textContent = '';
         InfoContainerNodes[13].textContent = '';
         InfoContainerNodes[15].textContent = EpisodeInfo + RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].description;
@@ -1043,7 +1126,20 @@ function SelectRecordPlayOption(){
             HideBarStatus();
 
             SetChannel('');
-            break;
+
+        break;
+
+        case 7:
+            PlayingRecording =  false;
+
+            StopVideo();
+
+            HideBarStatus();
+
+            SetChannel('');
+
+            UnhidePvr();
+        break;
     }
 
     CloseRecordPlayOptions();
@@ -1144,15 +1240,19 @@ function UpdateBarStatus(){
     if(PlayingRecording === true){
         AssetDuration = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].duration;
     }
+
+    Debug('AssetDuration: '+AssetDuration);
     AssetStatus(AssetDuration);
 
     BarPosition.style.width = PercentagePosition +'%';
-    BarPosition.textContent = SecondsToTime(PositionAsset);
-    BarStatus.innerHTML = "<p>"+SecondsToTime(DurationAsset)+"</p><i class='fa fa-"+OptionText+"' ></i><p>"+SpeedText+"</p>";
+    BarTimes.textContent = SecondsToTime(DurationAsset - PositionAsset); //"<p>"+SecondsToTime(DurationAsset)+"</p>
+    BarStatus.innerHTML = "<i class='fa fa-"+OptionText+"' ></i><p>"+SpeedText+"</p>";
 }
 
 function HideBarStatus(){
     BarContainer.style.display = 'none';
+    BarTimes.textContent = '';
+    BarStatus.innerHTML = '';
     clearTimeout(BarTimer);
     clearTimeout(BarUpdate);
 }

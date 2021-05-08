@@ -27,6 +27,7 @@
     var ProgramsToSchedule          = '',
         ProgramsToDelete            = '',
         AssetsIdList                = [],
+        SizePerSecond           = 0,
         AssetsCount                 = 0;
     
     var NUMBER_EVENT                = 0;
@@ -157,7 +158,8 @@ function UpdateDiskInfo(){
             LocationId : Device['LocationId'],
             MacAddress : MacAddress,
             TotalSize : StorageInfo.totalSize,
-            AvailableSize : StorageInfo.availableSize
+            AvailableSize : StorageInfo.availableSize,
+            SizePerSecond : SizePerSecond
         },
         success: function (response){
             //Debug(response);
@@ -354,9 +356,12 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
 /*******************************************************************************
  * Actualiza el asset id
  *******************************************************************************/
-
+    
+    
     function UpdateAssetsId(){
-
+        var Durations   = 0,
+            Sizes   = 0;
+    
         Debug('-------->> UpdateAssetsId');
         
         AssetsIdList = PVR.GetAssetIdList();
@@ -396,41 +401,30 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
 
                     UpdateProgramAsset(AssetInfo.title, Option, AssetsIdList[Indexal], ActRec);
                 }
+
+                Durations = Durations + parseInt(AssetInfo.duration); // seconds
+                Sizes = Sizes + parseInt(AssetInfo.totalSize); // kb
             }
+
+            SizePerSecond = Sizes / Durations;
+
+            Debug('----> SizePerSecond: '+SizePerSecond);
         }
+
+        Durations   = null;
+        Sizes   = null;
     Debug('--------<< UpdateAssetsId');
     }
 
-
-function DeleteOldestAssets(){
-    /* Elimina los 6 assets mas viejos cuando llega al 95% el disco duro*/
-    AssetsIdList = PVR.GetAssetIdList();
-
-    if (typeof AssetsIdList !== 'object'){ AssetsCount = 0; } else { AssetsCount = AssetsIdList.count; }
-
-    if (AssetsCount > 0){
-        var Indexal = 1,
-            AssetInfo = [],
-            ActRec    = false;
-
-        for(Indexal = 1;  Indexal <= 6; Indexal++){
-
-            AssetInfo = PVR.GetAssetById(AssetsIdList[Indexal]);
-
-            ActRec = (AssetInfo.activeRecording === 0) ? false : true;
-
-            //Debug(Indexal+'= ######### ProgramId: '+AssetInfo.title +', AssetId: '+ AssetsIdList[Indexal] +', Active:'+  ActRec);
-
-            UpdateProgramAsset(AssetInfo.title, OperationsList.recorded, AssetsIdList[Indexal], ActRec);
-        }
-    }
-}
 
 /*******************************************************************************
  * Carga inicial con funciones para el DVR
  *******************************************************************************/
 
 if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
+
+    UpdateAssetsId();
+
     UpdateDiskInfo();
 
     HandlerPvr();

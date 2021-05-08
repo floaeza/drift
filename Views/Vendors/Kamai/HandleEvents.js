@@ -31,20 +31,26 @@ EventHdmi = 1;
 
 function HandleVideo(event_type){
 
-    Debug('---> EventType: '+event_type);
+    Debug('---------------------------------------> EventType: '+event_type);
 
-    if(EventString === 'EN_VIDEOEVENT_FIRST_PTS'){
+
+    if(event_type === 'EN_VIDEOEVENT_FIRST_PTS'){
         if(Executing === false){
             UpdateQuickInfoDevice();
         }
-    } else if(EventString === 'EN_VIDEOEVENT_MPEG_TIMEOUT'){
+    } else if(event_type === 'EN_VIDEOEVENT_MPEG_TIMEOUT'){
 
         if(Executing === false){
             UpdateQuickInfoDevice();
         }
-    } else if(EventString === 'EN_VIDEOEVENT_EOS'){
+    } else if(event_type === 'EN_VIDEOEVENT_EOS'){
         if(CurrentModule === 'Tv'){
-            SetDigitalChannel();
+            if(PlayingRecording === true) {
+                // Termino reproduccion grabacion
+                OpenRecordPlayOptions();
+            } else {
+                SetDigitalChannel();
+            }
         }
     }
 }
@@ -243,6 +249,15 @@ function UpdateDiskInfo(){
     });
 }
 
+function SetMediaRecordings(){
+    var AssetsList = [];
+        AssetsList = ENTONE.recorder.getAssetList();
+
+        Debug(JSON.stringify(AssetsList));
+        Debug(AssetsList.length);
+
+}
+
 /*******************************************************************************
  * Carga inicial con funciones para el DVR
  *******************************************************************************/
@@ -270,8 +285,8 @@ Debug('---------->>>');
 
     var assi = ENTONE.recorder.getAssetInfo('0000000217');
 
-         Debug('>>>> REC duration: '+assi.duration);
-         Debug('>>>> REC size: '+assi.size);
+         Debug('>>> REC duration: '+assi.duration);
+         Debug('>>> REC size: '+assi.size);
 
     Debug(JSON.stringify(assi));
 

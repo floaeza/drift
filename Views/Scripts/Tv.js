@@ -91,6 +91,12 @@
 
     var ContentFrame            = document.getElementById('ContentFrame'),
         ActiveFrame             = false;
+
+
+    if(MacAddress === '00:00:00:00:00:00'){
+        Debug('Imagen para test');
+        document.getElementsByClassName('GeneralBox')[0].style.backgroundImage = "url('https://1.bp.blogspot.com/-O3QxZuRxQUs/WCZIQtTe7zI/AAAAAAAACz0/HO4bDUyEAlMAVE5PWnX61xyX5jSx_TEmwCLcB/s1600/greys-anatomy-13x08-1.jpg')";
+    }
 /*******************************************************************************
  * Obtiene los datos del archivo JSON y empieza la reproduccion de canales
  *******************************************************************************/
@@ -432,11 +438,9 @@
 
                 ChannelContainer.textContent = '';
             } else {
-                Debug('ChannelToChange << ChannelMax '+ChannelToChange);
                 /* Muestra el contener del canal con los numeros recibidos */
-                Debug('ChannelContainer '+ChannelContainer);
+
                 ChannelContainer.textContent = ChannelToChange;
-                Debug('ChannelContainer.textContent: '+ChannelToChange);
                 clearTimeout(NumericChangeTimer);
 
                 /* Crea timer para ocultar el canal y hacer el cambio */
@@ -555,10 +559,11 @@
             /* Carga la informacion actual*/
             LoadCurrentData(FindCurrentHour(GetCurrentHour()));
 
-            var Times = '<p class="Times">\u00A0('+FormatHours(ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].STRH)+' - '+FormatHours(ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].FNLH)+')</p>';
-            var Ttle = '<p class="Ttle">'+ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].TTLE+'\u00A0</p>';
-            var Rtg = '<p class="Rtg">\u00A0'+ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].TVRT+'</p>';
             if(EpgDataActive === true){
+                var Times = '<p class="Times">\u00A0('+FormatHours(ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].STRH)+' - '+FormatHours(ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].FNLH)+')</p>';
+                var Ttle = '<p class="Ttle">'+ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].TTLE+'\u00A0</p>';
+                var Rtg = '<p class="Rtg">\u00A0'+ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].TVRT+'</p>';
+
                 InfoContainerNodes[1].textContent  = ChannelsJson[ChannelPosition].CHNL+' - ' +ChannelsJson[ChannelPosition].INDC.toUpperCase();
                 //InfoContainerNodes[3].textContent  = ChannelsJson[ChannelPosition].QLTY;
                 //InfoContainerNodes[5].textContent  = ChannelsJson[ChannelPosition].INDC;
@@ -577,10 +582,8 @@
                 InfoContainerNodes[15].textContent = ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].DSCR;
                             
             } else {
-                InfoContainerNodes[1].textContent  = ChannelsJson[ChannelPosition].CHNL;
-                InfoContainerNodes[3].textContent  = ChannelsJson[ChannelPosition].QLTY;
-                InfoContainerNodes[5].textContent  = ChannelsJson[ChannelPosition].INDC;
-                InfoContainerNodes[7].textContent  = FormatDateAndHour;
+                InfoContainerNodes[1].textContent  = ChannelsJson[ChannelPosition].CHNL+' - ' +ChannelsJson[ChannelPosition].INDC.toUpperCase();
+                InfoContainerNodes[7].textContent  = FormatHour;
             }
 
             Times = null;
@@ -765,7 +768,7 @@
     function TvInfo(){
         if(PauseLive === true){
             /* Muestra la barra con el detalle de PauseLiveTv */
-            PauseLiveStatus('play');
+            SetSpeed('play');
             ShowInfo();
         } else if(PlayingRecording === true){
             ShowPvrInfo();
@@ -932,7 +935,13 @@
         } else if(ActiveEpgContainer === false && Device['Type'] !== 'NONE'){
             if(ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].STTN !== 'CONTENT'){
                 Debug('-----------TvRecord');
-                AddCurrentProgram();
+                if(ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].DRTN !== '24'){
+
+                    REC_CHNL_POS = ChannelPosition;
+                    REC_PROG_POS = ProgramPosition;
+
+                    CheckRecordings();
+                }
             }
         }
     }

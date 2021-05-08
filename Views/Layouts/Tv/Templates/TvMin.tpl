@@ -16,6 +16,8 @@
     <div class='Description'></div>
 </div>
 
+<div id='ChannelNumber'></div><!-- Cuadro con informacion del canal-->
+
 <div id='EpgContainer'>
     <!-- Contiene informacion del programa y el canal, fecha y hora -->
     <div id='EpgHeader'>
@@ -89,11 +91,11 @@
 </div>
 
 <!-- Barra Pause Live Tv y Grabacion en reproduccion -->
-
+<div id='BarStatus'></div>
 <div id='BarContainer'>
     <div id='BarPosition'></div>
-    <div id='BarStatus'></div>
 </div>
+<div id='BarTimes'></div>
 
 <!-- Opciones para grabar un programa -->
 <div id='RecordingOptions'>
@@ -107,7 +109,7 @@
     <div class='RecordingOptionsButton'>Play again</div>
     <div class='RecordingOptionsButton'>Delete</div>
     <div class='RecordingOptionsButton'>Stop</div>
-    <div class='RecordingOptionsButton'>Close</div>
+    <div class='RecordingOptionsButton'>Return</div>
 </div>
 
 <!-- Opciones para grabar un programa manualmente | OnLoadHourPosition  & Hours[(0 - > 47)]  | -->

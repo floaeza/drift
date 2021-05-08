@@ -80,6 +80,7 @@ $JsonLibraries['EpgDaysPath']   = $Libraries['ControllersPath'].'Epg/'.$Client;
     /* Javascripts generales */
     $Libraries['General']           = $Libraries['ScriptsPath'].'General.js';
     $Libraries['RemoteControl']     = $Libraries['ScriptsPath'].'Control.js';
+    $Libraries['Commands']          = $Libraries['ScriptsPath'].$Client.'Commands.js';
     $Libraries['Settings']          = $Libraries['ScriptsPath'].'Settings.js';
     $Libraries['Tv']                = $Libraries['ScriptsPath'].'Tv.js';
     $Libraries['TimeScript']        = $Libraries['ScriptsPath'].'Time.js';

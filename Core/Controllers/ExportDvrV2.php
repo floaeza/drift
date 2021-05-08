@@ -26,7 +26,7 @@ $ProgramsData   = new Programs('system', 'ExportDvr');
 $FirstElement   = 0;
 
 
-$MacAddress  = '00:02:02:6b:91:b6';
+$MacAddress  = '00:02:02:6b:d1:a8';
 
 
 //echo  $MacAddress. PHP_EOL;
@@ -87,7 +87,7 @@ foreach ($RecordInfoArray as $Row=>$RecordRow):
             'id_asset'              => $AssetId,
             'mac_address_pvr'       => $MacAddress,
             'databasekey'           => '',
-            'titulo_programa'       => '',
+            'titulo_programa'       => $RecordPLT,
             'descripcion_programa'  => '',
             'fecha_programa'        => $AssetDate,
             'hora_inicio'           => $StartTime,

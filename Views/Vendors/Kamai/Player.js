@@ -105,7 +105,9 @@
         // Reproduce el video
         Video.open(Source);
         
-        Video.play(1); 
+        Video.play(1);
+
+        Video.setVideoCallback(HandleVideo);
 
         // Maximiza el video en caso de que no este en pantalla completa
         MaximizeTV();
@@ -188,15 +190,15 @@
     }
     
     function PauseVideo(){
-
+        Video.play(0);
     }
     
     function ResumeVideo(){
-
+        Video.play(1);
     }
     
     function SpeedVideo(Speed){
-
+        Video.play(Speed);
     }
     
 /* *****************************************************************************
@@ -204,11 +206,20 @@
  * ****************************************************************************/ 
 
     function AssetStatus(Duration){
+        var PositionInfo = [];
         if(PlayingRecording === true || PlayingVod === true){
-            
-            PositionAsset = 0;
+            PositionInfo = Video.getPlayPositionInfo();
+
             DurationAsset = parseInt(Duration,10) * 60;
+            Debug('>>>>>> DurationAsset: '+DurationAsset);
+            PositionAsset = Math.round((PositionInfo.playPosition)/1000);
+
+            Debug('>>>>>> PositionAsset: '+PositionAsset);
             
             PercentagePosition = Math.round((PositionAsset * 100) / DurationAsset);
+
+            Debug('PercentagePosition: '+PercentagePosition);
         }
+
+        PositionInfo = null;
     }

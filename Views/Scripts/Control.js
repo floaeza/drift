@@ -15,9 +15,6 @@ var PressedKey      = 0,
 
     document.addEventListener('keydown',KeyHandler,false);
     
-var EV_KEY__UP      = 33,
-    EV_KEY__DOWN    = 34;
-    
     var SwapPausePlay = true;
     
 var CheckInfo = 0;
@@ -25,47 +22,38 @@ var CheckInfo = 0;
     function KeyHandler(e) {
         PressedKey = e.which;
         e.preventDefault();
-        //Debug('@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
-        //Debug(PressedKey);
 
         if(typeof(gSTB) !== 'undefined' && PressedKey === 9){
             ShiftKey = e.shiftKey;
-
             if(ShiftKey === true){
                 PressedKey = 7;
             }
         }
         
-        //Debug('=============== PressedKey: '+PressedKey);
+        //Debug('>> PressedKey: '+PressedKey);
         
         if(Clicks <= MaxClicks) {
-            //Debug('=============== SI EJECUTA ---- Clicks: '+Clicks);
             switch (PressedKey) {
 
                 case REMOTE_RED:
-                    location.reload(true);
+                    Red();
                 break;
 
                 case REMOTE_BLUE:
-
-
-                    // if(typeof(ASTB) !== 'undefined'){
-                    //     Sequence++;
-                    //
-                    //     if(Sequence >= 8){
-                    //         Browser.Action(16);
-                    //     }
-                    // }
+                    Blue();
                 break;
 
                 case REMOTE_GREEN:
+                    Green();
+                break;
 
-                    break;
+                case REMOTE_YELLOW:
+                    Yellow();
+                break;
 
         /********** NAVEGACION **********/
 
                 case ARROW_KEY_UP:
-                    //ClearDebugOnScreen();
                     if(CurrentModule === 'Tv'){
                         TvUp();
                     } else if(CurrentModule === 'Menu'){
@@ -123,14 +111,12 @@ var CheckInfo = 0;
                 
         /********** CANAL +/- **********/
 
-                case EV_KEY__UP:
                 case REMOTE_CHANNEL_UP:
                     if(CurrentModule === 'Tv'){
                         TvChannelUp();
                     }
                 break;
 
-                case EV_KEY__DOWN:
                 case REMOTE_CHANNEL_DOWN:
                     if(CurrentModule === 'Tv'){
                         TvChannelDown();
@@ -166,16 +152,11 @@ var CheckInfo = 0;
                 break;
                 
                 case REMOTE_BACK:
+                    Back();
+                break;
+
                 case REMOTE_CLOSE:
-                    if(CurrentModule === 'Tv'){
-                        TvClose();
-                    } else if(CurrentModule === 'Menu'){
-                        //
-                    } else if(CurrentModule === 'Movies'){
-                        VodClose();
-                    } else if(CurrentModule === 'Moods'){
-                        MoodsClose();
-                    } 
+                    Close();
                 break;
                 
                 case PREVIOUS_PROGRAM:
@@ -196,9 +177,7 @@ var CheckInfo = 0;
         /********** MENU **********/
                 
                 case REMOTE_MENU:
-                    if(CurrentModule !== 'Menu' && Device['Services']['ActiveMenu'] === true){             
-                        GoPage('menu.php', Device['MenuId'], 'Menu');
-                    }
+                    Menu();
                 break;
                 
         /********** GRABADOR | PAUSELIVE TV **********/
@@ -260,19 +239,8 @@ var CheckInfo = 0;
                 
                 case REMOTE_FAST_BACKWARD:
                     if(CurrentModule === 'Tv'){
-                        
-                        // PASAR A LAS FUNCIONES DEL PVR Y AGREGAR LOS KEY
-                        // EN LOS ARCHIVOS DE VENDORS
-                        // play again
-                        ClearSpeed();
-
-                        PlayVideo(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].url);
-
-                        PlayingRecording = true;
-
-                        ShowPvrInfo();
-
-                        SetSpeed('play');
+                        // AGREGAR OPCION PARA ADELANTAR CAPITULOS
+                        // CUANDO SE ESTE REPRODUCIENDO UNA SERIE DEL PVR
                     }
                 break;
             

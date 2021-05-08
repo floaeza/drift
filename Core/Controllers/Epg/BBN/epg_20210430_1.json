@@ -11,7 +11,7 @@
         "STTN": "VIDEO",
         "NAME": "Club Info",
         "INDC": "CHILENO TV",
-        "LOGO": "default.png",
+        "LOGO": "default.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -43,7 +43,7 @@
         "STTN": "10145",
         "NAME": "HLN",
         "INDC": "HLN",
-        "LOGO": "HLN.png",
+        "LOGO": "HLN.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -453,7 +453,7 @@
         "STTN": "16374",
         "NAME": "Fox News",
         "INDC": "FOXNEWS",
-        "LOGO": "FOXNEWS.png",
+        "LOGO": "FOXNEWS.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -751,7 +751,7 @@
         "STTN": "16300",
         "NAME": "MSNBC",
         "INDC": "MSNBC",
-        "LOGO": "MSNBC.png",
+        "LOGO": "MSNBC.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -1063,7 +1063,7 @@
         "STTN": "10142",
         "NAME": "CNN",
         "INDC": "CNN",
-        "LOGO": "CNN.png",
+        "LOGO": "CNN.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -1417,7 +1417,7 @@
         "STTN": "10139",
         "NAME": "CNBC",
         "INDC": "CNBC",
-        "LOGO": "CNBC.png",
+        "LOGO": "CNBC.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -1729,7 +1729,7 @@
         "STTN": "58649",
         "NAME": "FOX Business News",
         "INDC": "FOXBN",
-        "LOGO": "FOXBN.png",
+        "LOGO": "FOXBN.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -2097,7 +2097,7 @@
         "STTN": "10093",
         "NAME": "FREEFORM",
         "INDC": "FREEFORM",
-        "LOGO": "FREEFM.png",
+        "LOGO": "FREEFM.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -2703,7 +2703,7 @@
         "STTN": "89542",
         "NAME": "BBC NEWS",
         "INDC": "BBCN",
-        "LOGO": "BBCNEWS.png",
+        "LOGO": "BBCNEWS.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -3421,7 +3421,7 @@
         "STTN": "10057",
         "NAME": "BRAVO",
         "INDC": "BRAVO",
-        "LOGO": "BRAVO.png",
+        "LOGO": "BRAVO.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -3873,7 +3873,7 @@
         "STTN": "10149",
         "NAME": "COMEDY",
         "INDC": "COMEDY",
-        "LOGO": "COMEDY.png",
+        "LOGO": "COMEDY.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -4577,7 +4577,7 @@
         "STTN": "10153",
         "NAME": "TRUTV",
         "INDC": "TRUTV",
-        "LOGO": "TRUTV.png",
+        "LOGO": "TRUTV.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -5099,7 +5099,7 @@
         "STTN": "10989",
         "NAME": "E!",
         "INDC": "E!",
-        "LOGO": "EENT.png",
+        "LOGO": "EENT.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -5537,7 +5537,7 @@
         "STTN": "12574",
         "NAME": "FOOD",
         "INDC": "FOOD",
-        "LOGO": "FOOD.png",
+        "LOGO": "FOOD.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -6129,7 +6129,7 @@
         "STTN": "14321",
         "NAME": "FX",
         "INDC": "FX",
-        "LOGO": "FX.png",
+        "LOGO": "FX.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -6413,7 +6413,7 @@
         "STTN": "10035",
         "NAME": "AETV",
         "INDC": "AETV",
-        "LOGO": "AE.png",
+        "LOGO": "AE.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -6781,7 +6781,7 @@
         "STTN": "14902",
         "NAME": "HGTV",
         "INDC": "HGTV",
-        "LOGO": "HGTV.png",
+        "LOGO": "HGTV.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -7303,7 +7303,7 @@
         "STTN": "10918",
         "NAME": "LIFETIME",
         "INDC": "LIFETIME",
-        "LOGO": "LIFET.png",
+        "LOGO": "LIFET.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -7713,7 +7713,7 @@
         "STTN": "11867",
         "NAME": "TBS",
         "INDC": "TBS",
-        "LOGO": "TBS.png",
+        "LOGO": "TBS.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -8235,7 +8235,7 @@
         "STTN": "11180",
         "NAME": "TRAV",
         "INDC": "TRAV",
-        "LOGO": "TRAVEL.png",
+        "LOGO": "TRAVEL.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -8617,7 +8617,7 @@
         "STTN": "11207",
         "NAME": "USA",
         "INDC": "USA",
-        "LOGO": "USA.png",
+        "LOGO": "USA.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -8915,7 +8915,7 @@
         "STTN": "11158",
         "NAME": "TLC",
         "INDC": "TLC",
-        "LOGO": "TLC.png",
+        "LOGO": "TLC.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -9255,7 +9255,7 @@
         "STTN": "24959",
         "NAME": "NGC",
         "INDC": "NGC",
-        "LOGO": "NGC.png",
+        "LOGO": "NGC.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -9679,7 +9679,7 @@
         "STTN": "16331",
         "NAME": "APL",
         "INDC": "APL",
-        "LOGO": "APL.png",
+        "LOGO": "APL.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -10005,7 +10005,7 @@
         "STTN": "14771",
         "NAME": "HISTORY",
         "INDC": "HISTORY",
-        "LOGO": "HISTORY.png",
+        "LOGO": "HISTORY.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -10387,7 +10387,7 @@
         "STTN": "11150",
         "NAME": "Discovery Channel",
         "INDC": "DSC",
-        "LOGO": "DSC.png",
+        "LOGO": "DSC.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -10699,7 +10699,7 @@
         "STTN": "19635",
         "NAME": "STZK",
         "INDC": "STZK",
-        "LOGO": "STZK.png",
+        "LOGO": "STZK.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -10927,7 +10927,7 @@
         "STTN": "12510",
         "NAME": "DISNP",
         "INDC": "DISNP",
-        "LOGO": "DISNEY.png",
+        "LOGO": "DISNEY.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -11673,7 +11673,7 @@
         "STTN": "16618",
         "NAME": "DISCOVERY FAMILY",
         "INDC": "DSCF",
-        "LOGO": "DSCFA.png",
+        "LOGO": "DSCFA.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -12265,7 +12265,7 @@
         "STTN": "12131",
         "NAME": "TOON",
         "INDC": "TOON",
-        "LOGO": "TOON.png",
+        "LOGO": "TOON.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -13151,7 +13151,7 @@
         "STTN": "11006",
         "NAME": "NIK",
         "INDC": "NIK",
-        "LOGO": "NICK.png",
+        "LOGO": "NICK.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -13813,7 +13813,7 @@
         "STTN": "19211",
         "NAME": "NICJR",
         "INDC": "NICJR",
-        "LOGO": "NICKJR.png",
+        "LOGO": "NICKJR.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -14545,7 +14545,7 @@
         "STTN": "10021",
         "NAME": "AMC",
         "INDC": "AMC",
-        "LOGO": "AMC.png",
+        "LOGO": "AMC.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -14843,7 +14843,7 @@
         "STTN": "11117",
         "NAME": "SHOWP",
         "INDC": "SHOWP",
-        "LOGO": "SHOW.png",
+        "LOGO": "SHOW.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -15057,7 +15057,7 @@
         "STTN": "12719",
         "NAME": "STARZ",
         "INDC": "STARZ",
-        "LOGO": "STARZ.png",
+        "LOGO": "STARZ.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -15327,7 +15327,7 @@
         "STTN": "16311",
         "NAME": "STZE",
         "INDC": "STZE",
-        "LOGO": "STZE.png",
+        "LOGO": "STZE.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -15513,7 +15513,7 @@
         "STTN": "35329",
         "NAME": "The Movie Channel",
         "INDC": "TMC",
-        "LOGO": "TMC.png",
+        "LOGO": "TMC.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -15727,7 +15727,7 @@
         "STTN": "11164",
         "NAME": "TNT",
         "INDC": "TNT",
-        "LOGO": "TNT.png",
+        "LOGO": "TNT.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -16039,7 +16039,7 @@
         "STTN": "19634",
         "NAME": "STZCI",
         "INDC": "STZCI",
-        "LOGO": "STZCI.png",
+        "LOGO": "STZCI.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -16225,7 +16225,7 @@
         "STTN": "18086",
         "NAME": "SHOWX",
         "INDC": "SHOWX",
-        "LOGO": "SHOWX.png",
+        "LOGO": "SHOWX.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -16411,7 +16411,7 @@
         "STTN": "66268",
         "NAME": "HALLMARK",
         "INDC": "HALLMARK",
-        "LOGO": "HALLMARK.png",
+        "LOGO": "HALLMARK.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -16933,7 +16933,7 @@
         "STTN": "10179",
         "NAME": "ESPN",
         "INDC": "ESPN",
-        "LOGO": "ESPN.png",
+        "LOGO": "ESPN.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -17189,7 +17189,7 @@
         "STTN": "12444",
         "NAME": "ESPN2",
         "INDC": "ESPN2",
-        "LOGO": "ESPN2.png",
+        "LOGO": "ESPN2.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -17529,7 +17529,7 @@
         "STTN": "45654",
         "NAME": "ESPNU",
         "INDC": "ESPNU",
-        "LOGO": "ESPNU.png",
+        "LOGO": "ESPNU.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -17799,7 +17799,7 @@
         "STTN": "14899",
         "NAME": "GOLF",
         "INDC": "GOLF",
-        "LOGO": "GOLF.png",
+        "LOGO": "GOLF.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -17943,7 +17943,7 @@
         "STTN": "34710",
         "NAME": "NFLNET",
         "INDC": "NFLNET",
-        "LOGO": "NFLNET.png",
+        "LOGO": "NFLNET.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -18087,7 +18087,7 @@
         "STTN": "76366",
         "NAME": "PACK-12",
         "INDC": "PACK-12",
-        "LOGO": "PAC12.png",
+        "LOGO": "PAC12.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -18343,7 +18343,7 @@
         "STTN": "15952",
         "NAME": "NBCSN",
         "INDC": "NBCSN",
-        "LOGO": "NBCSN.png",
+        "LOGO": "NBCSN.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -18655,7 +18655,7 @@
         "STTN": "82541",
         "NAME": "FS1",
         "INDC": "FS1",
-        "LOGO": "FOXSP.png",
+        "LOGO": "FOXSP.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -18925,7 +18925,7 @@
         "STTN": "33395",
         "NAME": "TENNIS",
         "INDC": "TENNIS",
-        "LOGO": "TENNIS.png",
+        "LOGO": "TENNIS.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -18999,7 +18999,7 @@
         "STTN": "58570",
         "NAME": "NHLNET",
         "INDC": "NHLNET",
-        "LOGO": "NHLNET.png",
+        "LOGO": "NHLNET.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -19311,7 +19311,7 @@
         "STTN": "32281",
         "NAME": "NBATV",
         "INDC": "NBATV",
-        "LOGO": "NBATV.png",
+        "LOGO": "NBATV.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -19679,7 +19679,7 @@
         "STTN": "11363",
         "NAME": "ABC Network(East)",
         "INDC": "ABC EAST",
-        "LOGO": "ABC.png",
+        "LOGO": "ABC.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -20061,7 +20061,7 @@
         "STTN": "11622",
         "NAME": "CBS Network(East)",
         "INDC": "CBS EAST",
-        "LOGO": "CBCNET.png",
+        "LOGO": "CBCNET.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -20485,7 +20485,7 @@
         "STTN": "11746",
         "NAME": "FOX Network(East)",
         "INDC": "FOX EAST",
-        "LOGO": "FOX.png",
+        "LOGO": "FOX.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -20965,7 +20965,7 @@
         "STTN": "10991",
         "NAME": "NBC Network(East)",
         "INDC": "NBC EAST",
-        "LOGO": "NBC.png",
+        "LOGO": "NBC.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -21263,7 +21263,7 @@
         "STTN": "11760",
         "NAME": "PBS",
         "INDC": "PBS",
-        "LOGO": "PBS.png",
+        "LOGO": "PBS.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -21799,7 +21799,7 @@
         "STTN": "107654",
         "NAME": "CBS Network(West)",
         "INDC": "CBS WEST",
-        "LOGO": "CBS.png",
+        "LOGO": "CBS.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -22237,7 +22237,7 @@
         "STTN": "10481",
         "NAME": "ABC Network(West)",
         "INDC": "ABC WEST",
-        "LOGO": "ABC.png",
+        "LOGO": "ABC.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -22605,7 +22605,7 @@
         "STTN": "10743",
         "NAME": "FOX Network(West)",
         "INDC": "FOX WEST",
-        "LOGO": "FOX.png",
+        "LOGO": "FOX.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -23071,7 +23071,7 @@
         "STTN": "10599",
         "NAME": "NBC Network(West)",
         "INDC": "NBC WEST",
-        "LOGO": "NBC.png",
+        "LOGO": "NBC.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -23453,7 +23453,7 @@
         "STTN": "VIDEO",
         "NAME": "Chileno Sports 1",
         "INDC": "CS1",
-        "LOGO": "default.png",
+        "LOGO": "default.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -23485,7 +23485,7 @@
         "STTN": "VIDEO",
         "NAME": "Chileno Sports 2",
         "INDC": "CS2",
-        "LOGO": "default.png",
+        "LOGO": "default.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -23517,7 +23517,7 @@
         "STTN": "VIDEO",
         "NAME": "Chileno Sports 3",
         "INDC": "CS3",
-        "LOGO": "default.png",
+        "LOGO": "default.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -23549,7 +23549,7 @@
         "STTN": "VIDEO",
         "NAME": "Chileno Sports 4",
         "INDC": "CS4",
-        "LOGO": "default.png",
+        "LOGO": "default.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -23581,7 +23581,7 @@
         "STTN": "VIDEO",
         "NAME": "Chileno Sports 5",
         "INDC": "CS5",
-        "LOGO": "default.png",
+        "LOGO": "default.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -23613,7 +23613,7 @@
         "STTN": "VIDEO",
         "NAME": "Chileno Sports 6",
         "INDC": "CS6",
-        "LOGO": "default.png",
+        "LOGO": "default.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
@@ -23645,7 +23645,7 @@
         "STTN": "VIDEO",
         "NAME": "Chileno Sports 7",
         "INDC": "CS7",
-        "LOGO": "default.png",
+        "LOGO": "default.ico",
         "DTNU": "20210430",
         "DATE": "Friday, April 30, 2021",
         "PROGRAMS": {
