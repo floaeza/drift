@@ -266,7 +266,7 @@ switch ($Option){
 
             $Response = $DiskData->setPvrInfo($InfoDevice);
         } else {
-            $InfoUpdate =  array ('espacio_disponible' => $AvailableSize, 'tamano_grabaciones' => SizePerSecond);
+            $InfoUpdate =  array ('espacio_total' => $TotalSize, 'espacio_disponible' => $AvailableSize, 'tamano_grabaciones' => SizePerSecond);
 
             $Response = $DiskData->updatePvrInfo($InfoUpdate, $MacAddress);
         }
