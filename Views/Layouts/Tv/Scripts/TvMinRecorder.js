@@ -464,7 +464,7 @@ function SetPvrInfo(){
     Debug('PercentageSize: '+PercentageSize);
 
     Debug(SecondsToTime(Math.round(TimeRemaining)));
-    PvrDiskInfoNodes[1].textContent = TimeConvert(Math.round(TimeRemaining)); + ' available';
+    PvrDiskInfoNodes[1].textContent = secondsToString(Math.round(TimeRemaining)); + ' available';
     PvrDiskInfoNodes[5].style.width = PercentageSize + '%';
 
     if(PercentageSize > 95){

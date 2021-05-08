@@ -315,7 +315,7 @@
         return ActualHour;
     }
     
-    function TimeConvert(n) {
+                            function TimeConvert(n) {
         var num = n,
             hours = (num / 60),
             rhours = Math.floor(hours),
@@ -349,6 +349,18 @@
          }
     
 ///**/
+
+function secondsToString(seconds) {
+    var hour = Math.floor(seconds / 3600);
+    hour = (hour < 10)? '0' + hour : hour;
+    var minute = Math.floor((seconds / 60) % 60);
+    minute = (minute < 10)? '0' + minute : minute;
+    return hour + 'h ' + minute + ' min';
+
+    hour = null;
+    minute = null;
+}
+
 
 function Time12to24(time12h){
     var time     = time12h.split(' '),
