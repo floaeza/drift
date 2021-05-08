@@ -437,7 +437,7 @@ function SetPvrInfo(){
 
             AvailableSize = parseInt(StorageInfo.availableSize,10);
 
-            TotalSize = (parseInt(StorageInfo.totalSize,10)/ 1024);
+            TotalSize = parseInt(StorageInfo.totalSize,10);
         } else if(typeof(ENTONE) !== 'undefined'){
             StorageInfo = ENTONE.recorder.getStorageInfo();
 

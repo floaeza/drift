@@ -410,7 +410,8 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
             Debug('--> Sizes: '+Sizes);
             Debug('--> Durations: '+Durations);
             Debug('--> AssetsIdList.count: '+AssetsIdList.count);
-            SizePerSecond = Math.round((Sizes / Durations) / AssetsIdList.count);
+            //SizePerSecond = Math.round((Sizes / Durations) / AssetsIdList.count);
+            SizePerSecond = Math.round((Sizes / Durations));
 
             Debug('----> SizePerSecond: '+SizePerSecond);
         }
