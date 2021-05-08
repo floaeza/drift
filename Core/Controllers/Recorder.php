@@ -271,7 +271,9 @@ switch ($Option){
         } else {
             //var_dump(SizePerSecond);echo '<br>';
 
-            $InfoUpdate =  array('espacio_total' => $TotalSize, 'espacio_disponible' => $AvailableSize, 'tamano_grabaciones' => SizePerSecond);
+            $InfoUpdate =  array('id_locacion' => $LocationId,
+                                 'espacio_total' => $TotalSize,
+                                 'espacio_disponible' => $AvailableSize);
 
             $Result = $DiskData->updatePvrInfo($InfoUpdate, $MacAddress);
 
