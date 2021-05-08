@@ -450,13 +450,18 @@ function SetPvrInfo(){
         TotalSize = parseInt(DiskInfo[DiskInfoIndex].espacio_total,10);
     }
 
+    Debug('AvailableSize: '+AvailableSize);
+    Debug('TotalSize: '+TotalSize);
+
     var SizePerSeconds = parseInt(DiskInfo[DiskInfoIndex].tamano_grabaciones);
 
-    var TimeRemaining = AvailableSize / SizePerSeconds;
+    Debug('SizePerSeconds: '+SizePerSeconds);
 
+    var TimeRemaining = AvailableSize / SizePerSeconds;
+    Debug('TimeRemaining: '+TimeRemaining);
     var Percentage = (AvailableSize / TotalSize) * 100,
         PercentageSize = (100 - Percentage).toFixed(2);
-
+    Debug('PercentageSize: '+PercentageSize);
     PvrDiskInfoNodes[1].textContent = SecondsToTime(TimeRemaining); + ' available';
     PvrDiskInfoNodes[5].style.width = PercentageSize + '%';
 
