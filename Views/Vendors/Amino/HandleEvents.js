@@ -406,6 +406,8 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
                 Sizes = Sizes + parseInt(AssetInfo.totalSize); // kb
                 
                 SizePerSecond = Sizes / Durations;
+
+                Debug('----> SizePerSecond: '+SizePerSecond);
             }
         }
 
@@ -422,7 +424,7 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
 if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
 
     UpdateAssetsId();
-    
+
     UpdateDiskInfo();
 
     HandlerPvr();
