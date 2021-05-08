@@ -154,7 +154,7 @@ function UpdateDiskInfo(){
     Debug('---------------------------------UpdateDiskInfo');
     Debug('StorageInfo.availableSize:: '+StorageInfo.availableSize);
     Debug('SizePerSecond:: '+SizePerSecond);
-
+    Debug('LocationId:: '+evice['LocationId']);
 
     $.ajax({
         type: 'POST',
@@ -433,11 +433,9 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
 
 if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
 
-    UpdateAssetsId();
+    HandlerPvr();
 
     UpdateDiskInfo();
-
-    HandlerPvr();
 
     GetProgramsSerie();
 
