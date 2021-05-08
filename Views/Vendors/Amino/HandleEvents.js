@@ -169,7 +169,7 @@ function UpdateDiskInfo(){
         },
         success: function (response){
             Debug('---------------------------------UpdateDiskInfo RESPONSE');
-            Debug(response);
+            Debug($.parseJSON(response));
         }
     });
 }
