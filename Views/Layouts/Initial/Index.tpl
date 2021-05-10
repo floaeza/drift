@@ -224,7 +224,7 @@
                 var Data = $.parseJSON(response);
 
                 if(Data['Option'] === 'RELOAD'){
-                    var DeviceInfo = ' Mac: '+MacAddress+' Ip: '+IpAddress+' Firmware: '+Firmware+' Model: '+Model+' Vendor : '+Vendor;
+                    var DeviceInfo = ' Mac: '+MacAddress+' Ip: '+IpAddress+' <br> Firmware: '+Firmware+' Model: '+Model+' Vendor : '+Vendor;
                     document.getElementById('DebugText').innerHTML = DeviceInfo;
                     
                     window.location.href = Data['ModuleUrl']+'?MacAddress='+MacAddress+'&ModuleId='+Data['ModuleId']+'&CurrentModule='+Data['ModuleName'];
