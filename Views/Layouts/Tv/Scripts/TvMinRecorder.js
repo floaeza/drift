@@ -465,7 +465,7 @@ function SetPvrInfo(){
     var TimeRemaining = Math.round(AvailableSize / SizePerSeconds);
     //Debug('TimeRemaining: '+TimeRemaining);
     var Percentage = (AvailableSize / TotalSize) * 100,
-        PercentageSize = (100 - Percentage).toFixed(2);
+        PercentageSize = parseInt((100 - Percentage).toFixed(2));
     //Debug('PercentageSize: '+PercentageSize);
 
     //Debug(SecondsToTime(Math.round(TimeRemaining)));
@@ -477,7 +477,7 @@ function SetPvrInfo(){
 //#d97676 rojo
 
     Debug('PercentageSize: '+PercentageSize);
-    
+
     if(PercentageSize > 90){
         PvrDiskInfoNodes[5].style.color = '#da784';
     } else if(PercentageSize > 0.20){
