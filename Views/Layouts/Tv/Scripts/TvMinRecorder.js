@@ -237,6 +237,7 @@ function SelectRecordingsOption(){
  *******************************************************************************/
 
 function ShowRecorderMessage(Message){
+    Debug('SR>>0 '+Message);
     Debug('SR>>1');
     if(RecorderMessageActive === false){
         Debug('SR>>2');
