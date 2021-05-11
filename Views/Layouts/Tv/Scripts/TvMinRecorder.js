@@ -1935,6 +1935,8 @@ function GetPvrInfo(){
     });
 }
 
+GetPvrInfo();
+
 function CheckManualRecording(){
     $.ajax({
         type: 'POST',
