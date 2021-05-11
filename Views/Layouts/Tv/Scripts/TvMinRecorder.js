@@ -482,7 +482,7 @@ function SetPvrInfo(){
     //     PvrDiskInfoNodes[5].style.color = '#da784';
     // } else
         if(PercentageSize > 0.20){
-        PvrDiskInfoNodes[5].style.color = '#da784';
+        PvrDiskInfoNodes[5].style.backgroundColor = '#da784';
         FullDisk = true;
     } else {
         FullDisk = false;
