@@ -478,9 +478,10 @@ function SetPvrInfo(){
 
     Debug('PercentageSize: '+PercentageSize);
 
-    if(PercentageSize > 90){
-        PvrDiskInfoNodes[5].style.color = '#da784';
-    } else if(PercentageSize > 0.20){
+    // if(PercentageSize > 90){
+    //     PvrDiskInfoNodes[5].style.color = '#da784';
+    // } else
+        if(PercentageSize > 0.20){
         PvrDiskInfoNodes[5].style.color = '#da784';
         FullDisk = true;
     } else {
