@@ -465,7 +465,7 @@ function SetPvrInfo(){
     var TimeRemaining = Math.round(AvailableSize / SizePerSeconds);
     //Debug('TimeRemaining: '+TimeRemaining);
     var Percentage = (AvailableSize / TotalSize) * 100,
-        PercentageSize = parseInt((100 - Percentage).toFixed(2));
+        PercentageSize = parseFloat((100 - Percentage).toFixed(2));
     //Debug('PercentageSize: '+PercentageSize);
 
     //Debug(SecondsToTime(Math.round(TimeRemaining)));
