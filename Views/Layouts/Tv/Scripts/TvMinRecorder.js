@@ -475,6 +475,9 @@ function SetPvrInfo(){
 
 //#da7848 naranja
 //#d97676 rojo
+
+    Debug('PercentageSize: '+PercentageSize);
+    
     if(PercentageSize > 90){
         PvrDiskInfoNodes[5].style.color = '#da784';
     } else if(PercentageSize > 0.20){
