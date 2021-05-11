@@ -237,7 +237,6 @@ function SelectRecordingsOption(){
  *******************************************************************************/
 
 function ShowRecorderMessage(Message){
-    Debug('SR>>0 '+Message);
     Debug('SR>>1');
     if(RecorderMessageActive === false){
         Debug('SR>>2');
@@ -251,6 +250,7 @@ function ShowRecorderMessage(Message){
 }
 
 function HideRecorderMessage(){
+    Debug('HR>>0');
     RecorderMessageActive = false;
     RecorderMessage.textContent = '';
     RecorderMessage.style.display = 'none';
