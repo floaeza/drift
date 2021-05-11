@@ -416,9 +416,10 @@ function SetPvrInfoGB(){
 //#da7848 naranja
 //#d97676 rojo
     if(PercentageSize > 90){
-        PvrDiskInfoNodes[5].style.color = '#da784';
+        PvrDiskInfoNodes[5].style.backgroundColor = '#da7848';
+        FullDisk = true;
     } else if(PercentageSize > 94){
-        PvrDiskInfoNodes[5].style.color = '#da784';
+        PvrDiskInfoNodes[5].style.backgroundColor = '#d97676';
         FullDisk = true;
     } else {
         FullDisk = false;
@@ -478,11 +479,11 @@ function SetPvrInfo(){
 
     Debug('PercentageSize>  '+typeof PercentageSize);
 
-    // if(PercentageSize > 90){
-    //     PvrDiskInfoNodes[5].style.color = '#da784';
-    // } else
-        if(PercentageSize > 0.20){
+    if(PercentageSize > 90){
         PvrDiskInfoNodes[5].style.backgroundColor = '#da7848';
+        FullDisk = true;
+    } else if(PercentageSize > 94){
+        PvrDiskInfoNodes[5].style.backgroundColor = '#d97676';
         FullDisk = true;
     } else {
         FullDisk = false;
