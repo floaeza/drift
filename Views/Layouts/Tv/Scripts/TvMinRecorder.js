@@ -17,6 +17,7 @@ var PlayingRecording            = false,
     RecordingPanel              = false,
     RecordOptions               = false,
     DeleteOptions               = false,
+    RecorderMessageActive       = false,
     FullDisk                    = false;
 
 /* Variables a utilizar con grabador activo */
@@ -236,19 +237,21 @@ function SelectRecordingsOption(){
  *******************************************************************************/
 
 function ShowRecorderMessage(Message){
-    clearTimeout(RecorderMessageTimer);
+    if(RecorderMessageActive === false){
+        RecorderMessageActive = true;
 
-    RecorderMessageTimer = setTimeout(HideRecorderMessage,5000);
-    RecorderMessage.textContent = '';
-    RecorderMessage.style.display = 'inline';
-    RecorderMessage.textContent = Message;
+        RecorderMessage.textContent = '';
+        RecorderMessage.style.display = 'inline';
+        RecorderMessage.textContent = Message;
+    }
 }
 
 function HideRecorderMessage(){
-    clearTimeout(RecorderMessageTimer);
+    RecorderMessageActive = false;
     RecorderMessage.textContent = '';
     RecorderMessage.style.display = 'none';
 }
+
 
 /*******************************************************************************
  * Muestra lista de graciones, schedules y series

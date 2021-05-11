@@ -751,6 +751,10 @@
             SelectRecordPlayOption();
             
         }
+
+        if(RecorderMessageActive === true){
+            HideRecorderMessage();
+        }
     }
     
     function TvClose(){
@@ -766,6 +770,10 @@
             
         } else if(RecordingPanel === true){
             PvrClose();
+        }
+
+        if(RecorderMessageActive === true){
+            HideRecorderMessage();
         }
     }
     
@@ -975,6 +983,10 @@
         } else {
             OpenRecordPlayOptions();
         }
+
+        if(RecorderMessageActive === true){
+            HideRecorderMessage();
+        }
     }
     
     function TvGuide(){
@@ -1002,6 +1014,10 @@
             OpenEpg();
         } else {
             OpenRecordPlayOptions();
+        }
+
+        if(RecorderMessageActive === true){
+            HideRecorderMessage();
         }
     }
     
