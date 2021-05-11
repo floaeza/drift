@@ -747,13 +747,7 @@
         } else if(RecordingPanel === true){
             PvrOk();
         } else if(RecordPlayOptionsActive === true){
-            
             SelectRecordPlayOption();
-            
-        }
-
-        if(RecorderMessageActive === true){
-            HideRecorderMessage();
         }
     }
     
