@@ -732,22 +732,27 @@
  */
 
     function TvOk(){
-        if(ActiveEpgContainer === true){
-            if(RecordingOptionsActive === false && RecordManualOptionsActive === false){
-                if(Device['Type'] === 'NONE'){
-                    PlayChannelEpg();
-                } else {
-                    OpenRecordingOptions();
+        if(RecorderMessageActive === false) {
+
+            if (ActiveEpgContainer === true) {
+                if (RecordingOptionsActive === false && RecordManualOptionsActive === false) {
+                    if (Device['Type'] === 'NONE') {
+                        PlayChannelEpg();
+                    } else {
+                        OpenRecordingOptions();
+                    }
+                } else if (RecordingOptionsActive === true) {
+                    SelectRecordingsOption();
+                } else if (RecordManualOptionsActive === true) {
+                    SelectManualRecordOption();
                 }
-            } else if(RecordingOptionsActive === true){
-                SelectRecordingsOption();
-            } else if(RecordManualOptionsActive === true){
-                SelectManualRecordOption();
+            } else if (RecordingPanel === true) {
+                PvrOk();
+            } else if (RecordPlayOptionsActive === true) {
+                SelectRecordPlayOption();
             }
-        } else if(RecordingPanel === true){
-            PvrOk();
-        } else if(RecordPlayOptionsActive === true){
-            SelectRecordPlayOption();
+        } else {
+            HideRecorderMessage();
         }
     }
     
@@ -764,10 +769,6 @@
             
         } else if(RecordingPanel === true){
             PvrClose();
-        }
-
-        if(RecorderMessageActive === true){
-            HideRecorderMessage();
         }
     }
     
