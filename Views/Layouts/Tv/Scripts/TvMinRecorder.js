@@ -218,7 +218,7 @@ function SelectRecordingsOption(){
         case 5:
             Debug('--- TvOk - 5');
             if(ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].DRTN !== '24'){
-                AddSerie();
+                    AddSerie();
                 Debug('--- TvOk - AddSerie');
             } else {
                 ShowRecorderMessage('Not available on this channel');
@@ -1782,28 +1782,32 @@ function SetMacAddressPvr(){
 }
 
 function AddSerie(){
-    Debug('---- AddSerie');
-    SetMacAddressPvr();
+    if(FullDisk === false) {
+        Debug('---- AddSerie');
+        SetMacAddressPvr();
 
-    $.ajax({
-        type: 'POST',
-        url: 'Core/Controllers/Recorder.php',
-        data: {
-            Option     : 'AddSerie',
-            LocationId : Device['LocationId'],
-            MacAddressPvr : MacAddressPvr,
-            OperationId : OperationsList['record'],
-            TitleSerie : ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].TTLE,
-            Channel : ChannelsJson[FocusChannelPosition].CHNL + ' - ' +ChannelsJson[FocusChannelPosition].INDC,
-            Position : parseInt(FocusChannelPosition,10)
-        },
-        success: function (response){
-            ShowRecorderMessage($.parseJSON(response));
-            CloseRecordingOptions();
+        $.ajax({
+            type: 'POST',
+            url: 'Core/Controllers/Recorder.php',
+            data: {
+                Option     : 'AddSerie',
+                LocationId : Device['LocationId'],
+                MacAddressPvr : MacAddressPvr,
+                OperationId : OperationsList['record'],
+                TitleSerie : ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].TTLE,
+                Channel : ChannelsJson[FocusChannelPosition].CHNL + ' - ' +ChannelsJson[FocusChannelPosition].INDC,
+                Position : parseInt(FocusChannelPosition,10)
+            },
+            success: function (response){
+                ShowRecorderMessage($.parseJSON(response));
+                CloseRecordingOptions();
 
-            GetProgramsSerie();
-        }
-    });
+                GetProgramsSerie();
+            }
+        });
+    } else {
+        ShowRecorderMessage('Your disk is almost full, delete some recordings');
+    }
 }
 
 /*******************************************************************************
