@@ -16,7 +16,8 @@ var PlayingRecording            = false,
     ActivePvrInfoContainer      = false,
     RecordingPanel              = false,
     RecordOptions               = false,
-    DeleteOptions               = false;
+    DeleteOptions               = false,
+    FullDisk                    = false;
 
 /* Variables a utilizar con grabador activo */
 if(Device['Type'] !== 'NONE'){
@@ -375,7 +376,7 @@ function SetOptionPanel(){
     }
 }
 
-function SetPvrInfoBU(){
+function SetPvrInfoGB(){
     //Device['MacAddressPvr'].length
 
     var AvailableSize  = 0,
@@ -409,14 +410,18 @@ function SetPvrInfoBU(){
         PercentageSize = (100 - Percentage).toFixed(2);
 
     PvrDiskInfoNodes[1].textContent = AvailableSize + ' GB available of ' + TotalSize + ' GB';
-    //PvrDiskInfoNodes[5].textContent = PercentageSize + '%';
+    PvrDiskInfoNodes[5].textContent = PercentageSize + '%';
     PvrDiskInfoNodes[5].style.width = PercentageSize + '%';
 
-    if(PercentageSize > 95){
-        PvrDiskInfoNodes[5].style.color = '#e36464';
-        if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
-            //
-        }
+//#da7848 naranja
+//#d97676 rojo
+    if(PercentageSize > 90){
+        PvrDiskInfoNodes[5].style.color = '#da784';
+    } else if(PercentageSize > 94){
+        PvrDiskInfoNodes[5].style.color = '#da784';
+        FullDisk = true;
+    } else {
+        FullDisk = false;
     }
 
     TotalSize = null;
@@ -455,24 +460,28 @@ function SetPvrInfo(){
 
     var SizePerSeconds = parseInt(DiskInfo[DiskInfoIndex].tamano_grabaciones);
 
-    Debug('SizePerSeconds: '+SizePerSeconds);
+    //Debug('SizePerSeconds: '+SizePerSeconds);
 
     var TimeRemaining = Math.round(AvailableSize / SizePerSeconds);
-    Debug('TimeRemaining: '+TimeRemaining);
+    //Debug('TimeRemaining: '+TimeRemaining);
     var Percentage = (AvailableSize / TotalSize) * 100,
         PercentageSize = (100 - Percentage).toFixed(2);
-    Debug('PercentageSize: '+PercentageSize);
+    //Debug('PercentageSize: '+PercentageSize);
 
-    Debug(SecondsToTime(Math.round(TimeRemaining)));
+    //Debug(SecondsToTime(Math.round(TimeRemaining)));
     PvrDiskInfoNodes[1].textContent = secondsToString(Math.round(TimeRemaining)); + ' available';
     PvrDiskInfoNodes[5].textContent = PercentageSize + '%';
     PvrDiskInfoNodes[5].style.width = PercentageSize + '%';
 
-    if(PercentageSize > 95){
-        PvrDiskInfoNodes[5].style.color = '#d97676';
-        if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
-            //
-        }
+//#da7848 naranja
+//#d97676 rojo
+    if(PercentageSize > 90){
+        PvrDiskInfoNodes[5].style.color = '#da784';
+    } else if(PercentageSize > 94){
+        PvrDiskInfoNodes[5].style.color = '#da784';
+        FullDisk = true;
+    } else {
+        FullDisk = false;
     }
 
     TotalSize = null;
