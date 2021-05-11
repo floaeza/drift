@@ -237,12 +237,15 @@ function SelectRecordingsOption(){
  *******************************************************************************/
 
 function ShowRecorderMessage(Message){
+    Debug('SR>>1');
     if(RecorderMessageActive === false){
+        Debug('SR>>2');
         RecorderMessageActive = true;
 
         RecorderMessage.textContent = '';
         RecorderMessage.style.display = 'inline';
         RecorderMessage.textContent = Message;
+        Debug('SR>>3');
     }
 }
 
