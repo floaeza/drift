@@ -30,7 +30,7 @@ var CheckInfo = 0;
             }
         }
         
-        //Debug('>> PressedKey: '+PressedKey);
+        Debug('>> PressedKey: '+PressedKey);
         
         if(Clicks <= MaxClicks) {
             switch (PressedKey) {
