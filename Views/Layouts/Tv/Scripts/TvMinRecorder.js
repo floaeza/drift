@@ -706,19 +706,29 @@ function SelectRecordOption(){
         case 1:
             ClearSpeed();
 
-            PlayVideo(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].url);
+            GetPvrInfo();
 
-            Debug('URL>>>>>> '+RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].url);
+            if(parseInt(DiskInfo[DiskInfoIndex].rtsp_grabaciones) < 4){
 
-            PlayingRecording = true;
+                UpdateRtspConnections('add');
 
-            //* ClosePvr();
+                PlayVideo(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].url);
 
-            HidePvr();
+                Debug('URL>>>>>> '+RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].url);
 
-            ShowPvrInfo();
+                PlayingRecording = true;
 
-            SetSpeed('play');
+                //* ClosePvr();
+
+                HidePvr();
+
+                ShowPvrInfo();
+
+                SetSpeed('play');
+
+            } else {
+                ShowRecorderMessage('All connections to the recorder are active, please wait or close a connection');
+            }
             break;
 
         case 3:
@@ -732,6 +742,26 @@ function SelectRecordOption(){
             break;
     }
 }
+
+/*******************************************************************************
+ *  Funcion para actualizar el estatus de los RTSP activos
+ *******************************************************************************/
+
+    function UpdateRtspConnections(OprRtsp){
+        $.ajax({
+            type: 'POST',
+            url: 'Core/Controllers/Recorder.php',
+            data: {
+                Option     : 'SetRtsp',
+                LocationId : Device['LocationId'],
+                MacAddress : MacAddressPvr,
+                OptionRtsp : OprRtsp
+            },
+            success: function (response){
+                //Debug(response);
+            }
+        });
+    }
 
 /*******************************************************************************
  *  Opciones para eliminar algun schedule o serie
@@ -1146,6 +1176,8 @@ function SelectRecordPlayOption(){
 
             StopVideo();
 
+            UpdateRtspConnections('substract');
+
             SetChannel('');
 
             break;
@@ -1155,6 +1187,8 @@ function SelectRecordPlayOption(){
             PlayingRecording =  false;
 
             StopVideo();
+
+            UpdateRtspConnections('substract');
 
             HideBarStatus();
 
@@ -1166,6 +1200,8 @@ function SelectRecordPlayOption(){
             PlayingRecording =  false;
 
             StopVideo();
+
+            UpdateRtspConnections('substract');
 
             HideBarStatus();
 
@@ -1949,7 +1985,6 @@ function GetPvrInfo(){
         }
     });
 }
-
 GetPvrInfo();
 
 function CheckManualRecording(){
