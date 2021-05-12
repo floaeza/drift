@@ -467,7 +467,7 @@ function WriteProgramsRow(CurrentProgramPosition, CurrentChannelPosition, Row){
         if(RecordingsToCheck !== ''){
             for(IndexRec = 0; IndexRec < RecordingsToCheck.length; IndexRec++){
                 if(RecordingsToCheck[IndexRec].databasekey === ChannelsJson[CurrentChannelPosition].PROGRAMS[RowProgramPosition].DBKY) {
-                    DivElement.setAttribute('style', 'background:red ');
+                    DivElement.setAttribute('style', 'width:'+ProgramWidth+'%'+'background:red;');
                     IndexRec = RecordingsToCheck.length;
                 }
             }
