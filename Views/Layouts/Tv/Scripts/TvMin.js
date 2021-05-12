@@ -688,7 +688,8 @@ function FocusEpgProgram(RowSelected,ProgramSelect){
 
     switch (RowSelected) {
         case 1:
-            NodesRowPrograms1[ProgramSelect].style.backgroundColor = BackgroundFocus;
+            //NodesRowPrograms1[ProgramSelect].style.backgroundColor = BackgroundFocus;
+            NodesRowPrograms1[ProgramSelect].style.backgroundColor = 'blue';
             NodesRowPrograms1[ProgramSelect].style.color = ColorFocus;
             Positions = NodesRowPrograms1[ProgramSelect].title;
             FocusChannelPosition = Positions.split(',')[0];
