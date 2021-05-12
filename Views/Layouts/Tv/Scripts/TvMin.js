@@ -461,7 +461,7 @@ function WriteProgramsRow(CurrentProgramPosition, CurrentChannelPosition, Row){
         ProgramNode = document.createTextNode('\u00A0'+ChannelsJson[CurrentChannelPosition].PROGRAMS[RowProgramPosition].TTLE);
         DivElement.appendChild(ProgramNode);
         DivElement.setAttribute('class', 'Program');
-        DivElement.setAttribute('accessKey', 'no');
+        DivElement.setAttribute('href', 'no');
         DivElement.setAttribute('title', CurrentChannelPosition+','+RowProgramPosition);
         DivElement.setAttribute('style', 'width:'+ProgramWidth+'%');
 
@@ -469,7 +469,7 @@ function WriteProgramsRow(CurrentProgramPosition, CurrentChannelPosition, Row){
         if(RecordingsToCheck !== ''){
             for(IndexRec = 0; IndexRec < RecordingsToCheck.length; IndexRec++){
                 if(RecordingsToCheck[IndexRec].databasekey === ChannelsJson[CurrentChannelPosition].PROGRAMS[RowProgramPosition].DBKY) {
-                    DivElement.setAttribute('accessKey', 'rec');
+                    DivElement.setAttribute('href', 'rec');
                     DivElement.setAttribute('style', 'width:'+ProgramWidth+'%; '+'background:'+BackgroundRec);
                     IndexRec = RecordingsToCheck.length;
                 }
@@ -754,7 +754,7 @@ function UnfocusEpgProgram(RowSelected,ProgramSelected){
 
     switch (RowSelected) {
         case 1:
-            if(NodesRowPrograms1[ProgramSelected].accessKey === 'rec'){
+            if(NodesRowPrograms1[ProgramSelected].href === 'rec'){
                 NodesRowPrograms1[ProgramSelected].style.backgroundColor = BackgroundRec;
             } else {
                 NodesRowPrograms1[ProgramSelected].style.backgroundColor = BackgroundUnfocus;
@@ -763,7 +763,7 @@ function UnfocusEpgProgram(RowSelected,ProgramSelected){
             break;
 
         case 2:
-            if(NodesRowPrograms2[ProgramSelected].accessKey === 'rec'){
+            if(NodesRowPrograms2[ProgramSelected].href === 'rec'){
                 NodesRowPrograms2[ProgramSelected].style.backgroundColor = BackgroundRec;
             } else {
                 NodesRowPrograms2[ProgramSelected].style.backgroundColor = BackgroundUnfocus;
@@ -772,7 +772,7 @@ function UnfocusEpgProgram(RowSelected,ProgramSelected){
             break;
 
         case 3:
-            if(NodesRowPrograms3[ProgramSelected].accessKey === 'rec'){
+            if(NodesRowPrograms3[ProgramSelected].href === 'rec'){
                 NodesRowPrograms3[ProgramSelected].style.backgroundColor = BackgroundRec;
             } else {
                 NodesRowPrograms3[ProgramSelected].style.backgroundColor = BackgroundUnfocus;
@@ -781,7 +781,7 @@ function UnfocusEpgProgram(RowSelected,ProgramSelected){
             break;
 
         case 4:
-            if(NodesRowPrograms4[ProgramSelected].accessKey === 'rec'){
+            if(NodesRowPrograms4[ProgramSelected].href === 'rec'){
                 NodesRowPrograms4[ProgramSelected].style.backgroundColor = BackgroundRec;
             } else {
                 NodesRowPrograms4[ProgramSelected].style.backgroundColor = BackgroundUnfocus;
@@ -790,7 +790,7 @@ function UnfocusEpgProgram(RowSelected,ProgramSelected){
             break;
 
         case 5:
-            if(NodesRowPrograms5[ProgramSelected].accessKey === 'rec'){
+            if(NodesRowPrograms5[ProgramSelected].href === 'rec'){
                 NodesRowPrograms5[ProgramSelected].style.backgroundColor = BackgroundRec;
             } else {
                 NodesRowPrograms5[ProgramSelected].style.backgroundColor = BackgroundUnfocus;
@@ -798,7 +798,7 @@ function UnfocusEpgProgram(RowSelected,ProgramSelected){
             NodesRowPrograms5[ProgramSelected].style.color = ColorUnfocus;
             break;
         case 6:
-            if(NodesRowPrograms6[ProgramSelected].accessKey === 'rec'){
+            if(NodesRowPrograms6[ProgramSelected].href === 'rec'){
                 NodesRowPrograms6[ProgramSelected].style.backgroundColor = BackgroundRec;
             } else {
                 NodesRowPrograms6[ProgramSelected].style.backgroundColor = BackgroundUnfocus;
@@ -806,7 +806,7 @@ function UnfocusEpgProgram(RowSelected,ProgramSelected){
             NodesRowPrograms6[ProgramSelected].style.color = ColorUnfocus;
             break;
         case 7:
-            if(NodesRowPrograms7[ProgramSelected].accessKey === 'rec'){
+            if(NodesRowPrograms7[ProgramSelected].href === 'rec'){
                 NodesRowPrograms7[ProgramSelected].style.backgroundColor = BackgroundRec;
             } else {
                 NodesRowPrograms7[ProgramSelected].style.backgroundColor = BackgroundUnfocus;
