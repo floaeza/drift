@@ -1260,14 +1260,17 @@ function ShowBarStatus(){
 }
 
 function UpdateBarStatus(){
-    var AssetDuration = 0;
+    var AssetDrt = 0;
 
     if(PlayingRecording === true){
-        AssetDuration = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].duration;
-    }
+        AssetDrt = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].duration;
+    } 
 
-    Debug('AssetDuration: '+AssetDuration);
-    AssetStatus(AssetDuration);
+    Debug('AssetDuration: '+AssetDrt);
+    AssetStatus(AssetDrt);
+
+    Debug('DurationAsset:'+DurationAsset);
+    Debug('PositionAsset:'+PositionAsset);
 
     BarPosition.style.width = PercentagePosition +'%';
     BarTimes.textContent = SecondsToTime(DurationAsset - PositionAsset); //"<p>"+SecondsToTime(DurationAsset)+"</p>
