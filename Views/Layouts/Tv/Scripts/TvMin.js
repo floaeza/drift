@@ -461,6 +461,7 @@ function WriteProgramsRow(CurrentProgramPosition, CurrentChannelPosition, Row){
         ProgramNode = document.createTextNode('\u00A0'+ChannelsJson[CurrentChannelPosition].PROGRAMS[RowProgramPosition].TTLE);
         DivElement.appendChild(ProgramNode);
         DivElement.setAttribute('class', 'Program');
+        DivElement.setAttribute('accessKey', 'no');
         DivElement.setAttribute('title', CurrentChannelPosition+','+RowProgramPosition);
         DivElement.setAttribute('style', 'width:'+ProgramWidth+'%');
 
@@ -468,6 +469,7 @@ function WriteProgramsRow(CurrentProgramPosition, CurrentChannelPosition, Row){
         if(RecordingsToCheck !== ''){
             for(IndexRec = 0; IndexRec < RecordingsToCheck.length; IndexRec++){
                 if(RecordingsToCheck[IndexRec].databasekey === ChannelsJson[CurrentChannelPosition].PROGRAMS[RowProgramPosition].DBKY) {
+                    DivElement.setAttribute('accessKey', 'rec');
                     DivElement.setAttribute('style', 'width:'+ProgramWidth+'%; '+'background:'+BackgroundRec);
                     IndexRec = RecordingsToCheck.length;
                 }
@@ -688,8 +690,7 @@ function FocusEpgProgram(RowSelected,ProgramSelect){
 
     switch (RowSelected) {
         case 1:
-            //NodesRowPrograms1[ProgramSelect].style.backgroundColor = BackgroundFocus;
-            NodesRowPrograms1[ProgramSelect].style.backgroundColor = 'blue';
+            NodesRowPrograms1[ProgramSelect].style.backgroundColor = BackgroundFocus;
             NodesRowPrograms1[ProgramSelect].style.color = ColorFocus;
             Positions = NodesRowPrograms1[ProgramSelect].title;
             FocusChannelPosition = Positions.split(',')[0];
@@ -753,7 +754,11 @@ function UnfocusEpgProgram(RowSelected,ProgramSelected){
 
     switch (RowSelected) {
         case 1:
-            NodesRowPrograms1[ProgramSelected].style.backgroundColor = BackgroundUnfocus;
+            if(NodesRowPrograms1[ProgramSelected].accessKey === 'rec'){
+                NodesRowPrograms1[ProgramSelected].style.backgroundColor = BackgroundRec;
+            } else {
+                NodesRowPrograms1[ProgramSelected].style.backgroundColor = BackgroundUnfocus;
+            }
             NodesRowPrograms1[ProgramSelected].style.color = ColorUnfocus;
             break;
 
