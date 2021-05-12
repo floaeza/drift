@@ -96,6 +96,7 @@
 <div id='BarContainer'>
     <div id='BarPosition'></div>
 </div>
+<div id='BarDuration'></div>
 <div id='BarTimes'></div>
 
 <!-- Opciones para grabar un programa -->

@@ -108,6 +108,7 @@ if(Device['Type'] !== 'NONE'){
     var BarContainer            = document.getElementById('BarContainer'),
         BarPosition             = document.getElementById('BarPosition'),
         BarTimes                = document.getElementById('BarTimes'),
+        BarDuration             = document.getElementById('BarDuration'),
         BarStatus               = document.getElementById('BarStatus');
 
     var BarTimer                = '',
@@ -1264,22 +1265,26 @@ function UpdateBarStatus(){
 
     if(PlayingRecording === true){
         AssetDrt = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].duration;
-    } 
+    }
 
-    Debug('AssetDuration: '+AssetDrt);
     AssetStatus(AssetDrt);
 
-    Debug('DurationAsset:'+DurationAsset);
-    Debug('PositionAsset:'+PositionAsset);
-
     BarPosition.style.width = PercentagePosition +'%';
-    BarTimes.textContent = SecondsToTime(DurationAsset - PositionAsset); //"<p>"+SecondsToTime(DurationAsset)+"</p>
+    BarDuration.textContent = SecondsToTime(DurationAsset);
+
+    if(PlayingRecording === true) {
+        BarTimes.textContent = SecondsToTime(DurationAsset - PositionAsset); //"<p>"+SecondsToTime(DurationAsset)+"</p>
+    } else {
+        BarTimes.textContent = SecondsToTime(PositionAsset);
+    }
+
     BarStatus.innerHTML = "<i class='fa fa-"+OptionText+"' ></i><p>"+SpeedText+"</p>";
 }
 
 function HideBarStatus(){
     BarContainer.style.display = 'none';
     BarTimes.textContent = '';
+    BarDuration.textContent = '';
     BarStatus.innerHTML = '';
     clearTimeout(BarTimer);
     clearTimeout(BarUpdate);
