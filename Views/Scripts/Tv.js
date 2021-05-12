@@ -576,7 +576,7 @@
                 if(RecordingsToCheck !== ''){
                     for(IndexRec = 0; IndexRec < RecordingsToCheck.length; IndexRec++){
                         if(RecordingsToCheck[IndexRec].databasekey === ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].DBKY) {
-                            InfoContainerNodes[9].innerHTML  = Ttle + Times + Rtg + '<p class="RecInfo">  REC</p>';
+                            InfoContainerNodes[9].innerHTML  = Ttle + Times + Rtg + '<p class="RecInfo">\u00A0REC</p>';
                             IndexRec = RecordingsToCheck.length;
                         }
                     }
