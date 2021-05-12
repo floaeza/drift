@@ -905,7 +905,7 @@ function ProgramLeft(){
 
             var NewCurrentHourPosition = CurrentHourPosition;
 
-            NewCurrentHourPosition -= 7;
+            NewCurrentHourPosition -= 4;
 
             BuildProgramsRow(NewCurrentHourPosition, FirstChannelPosition);
 
@@ -936,7 +936,7 @@ function ProgramLeft(){
 
         var NewCurrentHourPosition = CurrentHourPosition;
 
-        NewCurrentHourPosition -= 7;
+        NewCurrentHourPosition -= 4;
 
         BuildProgramsRow(NewCurrentHourPosition, FirstChannelPosition);
 
