@@ -118,9 +118,12 @@
     $EventNetman = !empty($_POST['EventNetman']) ? $_POST['EventNetman'] : '';
     $CurrentDate = !empty($_POST['CurrentDate']) ? $_POST['CurrentDate'] : '2020-12-22 00:00:11';
 
+    $Client = $ConfigData->getConfigByName('Identifier');
+
     $DeviceSettings = array('Licensing' => $Licensing, 
                             'Services' => $ServicesArray,
                             'Debug' => $Debug,
+                            'Client' => $Client,
                             'Type' => $DeviceType,
                             'OffsetZone' => $OffsetZone,
                             'LocationId' => $LocationId,
