@@ -106,10 +106,7 @@ div#CurrentPvrOption {
     font-family: gotham;
 }
 
-.PvrProgramFocus {
-    color:#000;
-    background: #dfbe5e;
-}
+
 
 .PvrChevronLeft,
 .PvrChevronRight {
@@ -169,6 +166,12 @@ div#ProgramFocus {
     color: #000;
     font-weight: bold;
     outline: 1px solid rgb(42, 61, 71);
+    text-decoration-color: #d36363;
+}
+
+.PvrProgramFocus {
+    color:#000;
+    background: #dfbe5e;
 }
 
 .Program

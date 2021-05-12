@@ -42,7 +42,8 @@ FocusProgramPosition    = 0;
 
 var ColorFocus              = '',
     OutlineColor            = '',
-    BackgroundFocus         = '';
+    BackgroundFocus         = '',
+    BackgroundRec           = '';
 
 var ProgramsToLeft          = false,
     ProgramsToChange          = false;
@@ -565,7 +566,8 @@ function GetFocusStyle(){
         ProgramFocusStyle   = window.getComputedStyle(ProgramFocus);
     ColorFocus          = ProgramFocusStyle.color;
     BackgroundFocus     = ProgramFocusStyle.backgroundColor;
-    OutlineColor     = ProgramFocusStyle.outline;
+    BackgroudnRec     = ProgramFocusStyle.textDecorationColor;
+
 
     ProgramFocus = null;
     ProgramFocusStyle = null;
