@@ -763,30 +763,54 @@ function UnfocusEpgProgram(RowSelected,ProgramSelected){
             break;
 
         case 2:
-            NodesRowPrograms2[ProgramSelected].style.backgroundColor = BackgroundUnfocus;
+            if(NodesRowPrograms2[ProgramSelected].accessKey === 'rec'){
+                NodesRowPrograms2[ProgramSelected].style.backgroundColor = BackgroundRec;
+            } else {
+                NodesRowPrograms2[ProgramSelected].style.backgroundColor = BackgroundUnfocus;
+            }
             NodesRowPrograms2[ProgramSelected].style.color = ColorUnfocus;
             break;
 
         case 3:
-            NodesRowPrograms3[ProgramSelected].style.backgroundColor = BackgroundUnfocus;
+            if(NodesRowPrograms3[ProgramSelected].accessKey === 'rec'){
+                NodesRowPrograms3[ProgramSelected].style.backgroundColor = BackgroundRec;
+            } else {
+                NodesRowPrograms3[ProgramSelected].style.backgroundColor = BackgroundUnfocus;
+            }
             NodesRowPrograms3[ProgramSelected].style.color = ColorUnfocus;
             break;
 
         case 4:
-            NodesRowPrograms4[ProgramSelected].style.backgroundColor = BackgroundUnfocus;
+            if(NodesRowPrograms4[ProgramSelected].accessKey === 'rec'){
+                NodesRowPrograms4[ProgramSelected].style.backgroundColor = BackgroundRec;
+            } else {
+                NodesRowPrograms4[ProgramSelected].style.backgroundColor = BackgroundUnfocus;
+            }
             NodesRowPrograms4[ProgramSelected].style.color = ColorUnfocus;
             break;
 
         case 5:
-            NodesRowPrograms5[ProgramSelected].style.backgroundColor = BackgroundUnfocus;
+            if(NodesRowPrograms5[ProgramSelected].accessKey === 'rec'){
+                NodesRowPrograms5[ProgramSelected].style.backgroundColor = BackgroundRec;
+            } else {
+                NodesRowPrograms5[ProgramSelected].style.backgroundColor = BackgroundUnfocus;
+            }
             NodesRowPrograms5[ProgramSelected].style.color = ColorUnfocus;
             break;
         case 6:
-            NodesRowPrograms6[ProgramSelected].style.backgroundColor = BackgroundUnfocus;
+            if(NodesRowPrograms6[ProgramSelected].accessKey === 'rec'){
+                NodesRowPrograms6[ProgramSelected].style.backgroundColor = BackgroundRec;
+            } else {
+                NodesRowPrograms6[ProgramSelected].style.backgroundColor = BackgroundUnfocus;
+            }
             NodesRowPrograms6[ProgramSelected].style.color = ColorUnfocus;
             break;
         case 7:
-            NodesRowPrograms7[ProgramSelected].style.backgroundColor = BackgroundUnfocus;
+            if(NodesRowPrograms7[ProgramSelected].accessKey === 'rec'){
+                NodesRowPrograms7[ProgramSelected].style.backgroundColor = BackgroundRec;
+            } else {
+                NodesRowPrograms7[ProgramSelected].style.backgroundColor = BackgroundUnfocus;
+            }
             NodesRowPrograms7[ProgramSelected].style.color = ColorUnfocus;
             break;
     }
