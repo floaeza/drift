@@ -240,6 +240,13 @@ function SelectRecordingsOption(){
 
 function ShowRecorderMessage(Message){
     if(RecorderMessageActive === false){
+        // Quita las lineas de los programas para que no se vean encima del cuadro de opciones
+        var AllPrograms = document.getElementsByClassName('Program'),
+            IndexProgram = 0;
+        for(IndexProgram = 0; IndexProgram < AllPrograms.length; IndexProgram++) {
+            AllPrograms[IndexProgram].style.outline = 'none'; //1px solid rgb(0, 68, 114)
+        }
+
         RecorderMessageActive = true;
 
         RecorderMessage.textContent = '';
