@@ -566,7 +566,7 @@ function GetFocusStyle(){
         ProgramFocusStyle   = window.getComputedStyle(ProgramFocus);
     ColorFocus          = ProgramFocusStyle.color;
     BackgroundFocus     = ProgramFocusStyle.backgroundColor;
-    BackgroudnRec     = ProgramFocusStyle.textDecorationColor;
+    BackgroundRec     = ProgramFocusStyle.textDecorationColor;
 
 
     ProgramFocus = null;
