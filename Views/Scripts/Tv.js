@@ -791,94 +791,108 @@
     }
 
     function TvRight(){
-        if(ActiveEpgContainer === true){
-            if(RecordingOptionsActive === false && RecordManualOptionsActive === false){
-                ProgramRight();
-            } if(RecordManualOptionsActive === true){
-                SetFocusManualOption('down');
-            } 
-            
-            clearTimeout(EpgTimer);
-            EpgTimer = setTimeout(CloseEpg,TimeoutEpg);
-        } else if(RecordingPanel === true){
-            PvrRight();
+        if(RecorderMessageActive === false) {
+            if (ActiveEpgContainer === true) {
+                if (RecordingOptionsActive === false && RecordManualOptionsActive === false) {
+                    ProgramRight();
+                }
+                if (RecordManualOptionsActive === true) {
+                    SetFocusManualOption('down');
+                }
+
+                clearTimeout(EpgTimer);
+                EpgTimer = setTimeout(CloseEpg, TimeoutEpg);
+            } else if (RecordingPanel === true) {
+                PvrRight();
+            }
         }
     }
     
     function TvLeft(){
-        if(ActiveEpgContainer === true){
-            if(RecordingOptionsActive === false && RecordManualOptionsActive === false){
-                ProgramLeft();
-            } if(RecordManualOptionsActive === true){
-                SetFocusManualOption('up');
-            } 
-            
-            clearTimeout(EpgTimer);
-            EpgTimer = setTimeout(CloseEpg,TimeoutEpg);
-        } else if(RecordingPanel === true){
-            PvrLeft();
+        if(RecorderMessageActive === false) {
+            if (ActiveEpgContainer === true) {
+                if (RecordingOptionsActive === false && RecordManualOptionsActive === false) {
+                    ProgramLeft();
+                }
+                if (RecordManualOptionsActive === true) {
+                    SetFocusManualOption('up');
+                }
+
+                clearTimeout(EpgTimer);
+                EpgTimer = setTimeout(CloseEpg, TimeoutEpg);
+            } else if (RecordingPanel === true) {
+                PvrLeft();
+            }
         }
     }
     
     function TvDown(){
-        if(ActiveEpgContainer === true){
-            if(RecordingOptionsActive === false && RecordManualOptionsActive === false){
-                ProgramDown();
-            } else if(RecordingOptionsActive === true){
-                SetFocusOptionRecording('down');
-            } else if(RecordManualOptionsActive === true){
-                SetManualTime('down');
-            } 
-            
-            clearTimeout(EpgTimer);
-            EpgTimer = setTimeout(CloseEpg,TimeoutEpg);
-        } else if(RecordingPanel === true){
-            PvrDown();
-        } else if(RecordPlayOptionsActive === true){
-            SetFocusOptionRecordPlay('down');
+        if(RecorderMessageActive === false) {
+            if (ActiveEpgContainer === true) {
+                if (RecordingOptionsActive === false && RecordManualOptionsActive === false) {
+                    ProgramDown();
+                } else if (RecordingOptionsActive === true) {
+                    SetFocusOptionRecording('down');
+                } else if (RecordManualOptionsActive === true) {
+                    SetManualTime('down');
+                }
+
+                clearTimeout(EpgTimer);
+                EpgTimer = setTimeout(CloseEpg, TimeoutEpg);
+            } else if (RecordingPanel === true) {
+                PvrDown();
+            } else if (RecordPlayOptionsActive === true) {
+                SetFocusOptionRecordPlay('down');
+            }
         }
     }
     
     function TvPageDown(){
-        if(ActiveEpgContainer === true){
-            if(RecordingOptionsActive === false && RecordManualOptionsActive === false){
-                PageDown();
+        if(RecorderMessageActive === false) {
+            if (ActiveEpgContainer === true) {
+                if (RecordingOptionsActive === false && RecordManualOptionsActive === false) {
+                    PageDown();
+                }
+
+                clearTimeout(EpgTimer);
+                EpgTimer = setTimeout(CloseEpg, TimeoutEpg);
             }
-            
-            clearTimeout(EpgTimer);
-            EpgTimer = setTimeout(CloseEpg,TimeoutEpg);
         }
     }
     
     function TvUp(){
-        if(ActiveEpgContainer === true){
-            if(RecordingOptionsActive === false && RecordManualOptionsActive === false){
-                ProgramUp();
-            } else if(RecordingOptionsActive === true){
-                SetFocusOptionRecording('up');
-            } else if(RecordManualOptionsActive === true){
-                SetManualTime('up');
-            } 
-            
-            clearTimeout(EpgTimer);
-            EpgTimer = setTimeout(CloseEpg,TimeoutEpg);
-        } else if(RecordingPanel === true){ 
-            PvrUp();
-        } else if(RecordPlayOptionsActive === true){
-            
-            SetFocusOptionRecordPlay('up');
-            
+        if(RecorderMessageActive === false) {
+            if (ActiveEpgContainer === true) {
+                if (RecordingOptionsActive === false && RecordManualOptionsActive === false) {
+                    ProgramUp();
+                } else if (RecordingOptionsActive === true) {
+                    SetFocusOptionRecording('up');
+                } else if (RecordManualOptionsActive === true) {
+                    SetManualTime('up');
+                }
+
+                clearTimeout(EpgTimer);
+                EpgTimer = setTimeout(CloseEpg, TimeoutEpg);
+            } else if (RecordingPanel === true) {
+                PvrUp();
+            } else if (RecordPlayOptionsActive === true) {
+
+                SetFocusOptionRecordPlay('up');
+
+            }
         }
     }
     
     function TvPageUp(){
-        if(ActiveEpgContainer === true){
-            if(RecordingOptionsActive === false && RecordManualOptionsActive === false){
-                PageUp();
+        if(RecorderMessageActive === false) {
+            if (ActiveEpgContainer === true) {
+                if (RecordingOptionsActive === false && RecordManualOptionsActive === false) {
+                    PageUp();
+                }
+
+                clearTimeout(EpgTimer);
+                EpgTimer = setTimeout(CloseEpg, TimeoutEpg);
             }
-            
-            clearTimeout(EpgTimer);
-            EpgTimer = setTimeout(CloseEpg,TimeoutEpg);
         }
     }
     
