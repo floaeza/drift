@@ -547,15 +547,22 @@ div.RecordingOptionsButton {
 
 
 div#RecorderMessage {
+    text-align: center;
+    font-size: 35px;
+}
+
+div#PanelMessage {
     width: 100%;
     height: 7%;
     text-align: center;
-    font-size: 35px;
     z-index: 1;
     position: fixed;
     top: 0%;
-    background: rgba(0,0,0,0.8);
     display: none;
+}
+
+div#MessageClose  {
+    font-size: 20px;
 }
 
 /***************************** [ PVR DESIGN ] *****************************/

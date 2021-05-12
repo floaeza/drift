@@ -91,6 +91,10 @@ div.PvrHeader {
     background-color: #246681;
 }
 
+div#PanelMessage {
+    background-color: #246681;
+}
+
 div#CurrentPvrOption {
     font-family: gotham;
 }

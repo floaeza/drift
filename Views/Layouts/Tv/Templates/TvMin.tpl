@@ -88,6 +88,7 @@
     <div id='EpgMainLogo'></div>
 
     <div id='Message'></div>
+
 </div>
 
 <!-- Barra Pause Live Tv y Grabacion en reproduccion -->
@@ -126,7 +127,10 @@
 </div>
 
 <!-- Mensaje para grabaciones -->
-<div id='RecorderMessage'></div>
+<div id='PanelMessage'>
+    <div id='RecorderMessage'></div>
+    <div id='MessageClose'>OK</div>
+</div>
 
 
 <!-- Panel grabador -->
