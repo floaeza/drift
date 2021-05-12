@@ -92,7 +92,9 @@ div.PvrHeader {
 }
 
 div#PanelMessage {
-    background-color: #246681;
+    background-image: url('DarkBlue/info.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 div#CurrentPvrOption {
