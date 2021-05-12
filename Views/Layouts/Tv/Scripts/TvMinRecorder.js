@@ -253,7 +253,6 @@ function HideRecorderMessage(){
     PanelMessage.style.display = 'none';
 }
 
-
 /*******************************************************************************
  * Muestra lista de graciones, schedules y series
  *******************************************************************************/

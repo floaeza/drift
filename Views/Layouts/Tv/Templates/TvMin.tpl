@@ -126,7 +126,7 @@
     <div class='RecordingOptionsButton'>Close</div>
 </div>
 
-<!-- Mensaje para grabaciones -->
+<!-- Mensajes para grabaciones -->
 <div id='PanelMessage'>
     <div id='RecorderMessage'></div>
     <div id='MessageClose'>OK</div>

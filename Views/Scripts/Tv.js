@@ -946,7 +946,6 @@
         }
     }
     
-    
     function TvRecord(){
         if(ActiveEpgContainer === true && Device['Type'] !== 'NONE'){
             if(ActiveEpgContainer === true ){
