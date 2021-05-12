@@ -114,7 +114,7 @@
         
         /* Si tiene activa EPG actualiza la variable que por defecto tiene el valor de general */
         if(Device['Services']['ActiveEpg'] === true){
-            if(MacAddress === '00:00:00:00:00:01' || Device['Client'] === 'BBN') {
+            if(MacAddress === '00:00:00:00:00:00' || Device['Client'] === 'BBN') {
                 SourceEpgFile = Libraries['EpgDaysPath'] + 'epg_demo_1.json';
             } else {
                 Debug('MacAddress !==');
