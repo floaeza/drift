@@ -569,7 +569,7 @@ function GetFocusStyle(){
     ColorFocus      = ProgramFocusStyle.color;
     BackgroundFocus = ProgramFocusStyle.backgroundColor;
     //BackgroundRec   = ProgramFocusStyle.border;
-    BackgroundRec   = '';
+    BackgroundRec   = '#d36363';
 
     ProgramFocus = null;
     ProgramFocusStyle = null;
