@@ -922,13 +922,14 @@
     }
     
     function TvBackward(){
+        Debug('TvBackward');
         if(PlayingRecording === true){
             SetSpeed('backward');
         } else {
-            if(Device['Type'] === 'PVR_ONLY' || Device['Type'] === 'WHP_HDDY'){
+            //if(Device['Type'] === 'PVR_ONLY' || Device['Type'] === 'WHP_HDDY'){
                 PauseLive = true;
                 SetSpeed('backward');
-            }
+            //}
         }
     }
     
