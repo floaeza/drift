@@ -463,6 +463,17 @@ function WriteProgramsRow(CurrentProgramPosition, CurrentChannelPosition, Row){
         DivElement.setAttribute('title', CurrentChannelPosition+','+RowProgramPosition);
         DivElement.setAttribute('style', 'width:'+ProgramWidth+'%');
 
+        var IndexRec = 0;
+        if(RecordingsToCheck !== ''){
+            for(IndexRec = 0; IndexRec < RecordingsToCheck.length; IndexRec++){
+                if(RecordingsToCheck[IndexRec].databasekey === ChannelsJson[CurrentChannelPosition].PROGRAMS[RowProgramPosition].DBKY) {
+                    DivElement.setAttribute('style', 'background:red; ');
+                    IndexRec = RecordingsToCheck.length;
+                }
+            }
+        }
+        IndexRec = null;
+
         ProgramRow.appendChild(DivElement);
 
 
