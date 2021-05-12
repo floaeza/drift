@@ -287,6 +287,9 @@ switch ($Option){
             $RtspActive = $RtspActive + 1;
         } else {
             $RtspActive = $RtspActive - 1;
+            if($RtspActive < 0) {
+                $RtspActive = 0;
+            }
         }
 
         $InfoUpdate =  array('rtsp_conexiones' => $RtspActive);
