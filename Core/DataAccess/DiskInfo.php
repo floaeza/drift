@@ -48,8 +48,26 @@ class DiskInfo extends Database {
         $this->disconnect();
 
         return $this->DiskInfoList;
-    } 
-    
+    }
+
+    function getRtspActive($MacAddress) {
+        $this->Function = 'getRtspActive';
+
+        $this->connect();
+        $this->select("pvr_info", "rtsp_conexiones",
+            "", "", "", "",
+            "mac_address = '".$MacAddress."'");
+
+        $result = $this->getResult();
+        foreach($result as $row):
+            $this->DiskInfoList = $row['rtsp_conexiones'];
+        endforeach;
+
+        $this->disconnect();
+
+        return $this->DiskInfoList;
+    }
+
     function setPvrInfo($InfoDevice) {
         $this->Function = 'setPvrInfo';
         

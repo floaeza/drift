@@ -581,7 +581,7 @@ if(MoviePanelFocus === 'Play'){
 } else {
     CurrentFocus = 'Playing';
     
-    PlayVideo(Libraries['MoviesSource'] + MoviesList[MovieBox.id].FLDR + MoviesList[MovieBox.id].FILE);
+    PlayMovie(Libraries['MoviesSource'] + MoviesList[MovieBox.id].FLDR + MoviesList[MovieBox.id].FILE);
     
     PlayingVod = true;
     
@@ -1717,7 +1717,7 @@ function ExitMoviePanel(){
 }
 function PlayingMovie(){
     CurrentFocus = 'Playing';
-    PlayVideo(Libraries['MoviesSource'] + MoviesList[CurrentMovieID].FLDR + MoviesList[CurrentMovieID].FILE);
+    PlayMovie(Libraries['MoviesSource'] + MoviesList[CurrentMovieID].FLDR + MoviesList[CurrentMovieID].FILE);
     PlayingVod = true;
     ClearMoviePanel();
     ShowPlayingPanel();

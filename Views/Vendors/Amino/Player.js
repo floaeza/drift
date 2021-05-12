@@ -98,10 +98,21 @@
 
         // Reproduce el video
         AVMedia.Play('src='+ Source);
+
+        // Maximiza el video en caso de que no este en pantalla completa
+        MaximizeTV();
+    }
+
+    function PlayMovie(Source){
+        // Guarda la estadistica
+        StopVideo();
+
+        // Reproduce el video
+        AVMedia.Play('src='+ Source);
+
         setTimeout(getPIDSInfo, 15000);
         // Maximiza el video en caso de que no este en pantalla completa
-           MaximizeTV();
-       
+        MaximizeTV();
     }
     function getPIDSInfo(){
         var PIDObject = AVMedia.GetAudioPIDs();

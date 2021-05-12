@@ -13,7 +13,7 @@ require_once './../DataAccess/DiskInfo.php';
 
 $CurrentController = 'RecorderController';
 
-$Option         = !empty($_POST['Option']) ? $_POST['Option'] : 'SetPvrInfo';
+$Option         = !empty($_POST['Option']) ? $_POST['Option'] : 'SetRtsp';
 $MacAddress     = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '00:02:02:4f:9b:af'; // 00:00:00:00:00:00
 $OperationId     = !empty($_POST['OperationId']) ? $_POST['OperationId'] : '';
 $LocationId     = !empty($_POST['LocationId']) ? $_POST['LocationId'] : '190';
@@ -252,7 +252,7 @@ switch ($Option){
         break;
 
     case 'SetPvrInfo':
-        $TotalSize = !empty($_POST['LocationId']) ? $_POST['LocationId'] : '';
+        $LocationId = !empty($_POST['LocationId']) ? $_POST['LocationId'] : '';
         $TotalSize = !empty($_POST['TotalSize']) ? $_POST['TotalSize'] : '';
         $AvailableSize = !empty($_POST['AvailableSize']) ? $_POST['AvailableSize'] : '';
         $SizeRecords = !empty($_POST['SizeRecords']) ? $_POST['SizeRecords'] : '';
@@ -275,6 +275,25 @@ switch ($Option){
             $Response = $DiskData->updatePvrInfo($InfoUpdate, $MacAddress);
         }
         break;
+
+    case 'SetRtsp':
+        $LocationId = !empty($_POST['LocationId']) ? $_POST['LocationId'] : '2';
+        $MacAddress = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '00:02:02:4f:9b:af';
+        $OptionRtsp = !empty($_POST['OptionRtsp']) ? $_POST['OptionRtsp'] : 'add';
+
+        $RtspActive = intval($DiskData->getRtspActive($MacAddress));
+
+        if($OptionRtsp === 'add'){
+            $RtspActive = $RtspActive + 1;
+        } else {
+            $RtspActive = $RtspActive - 1;
+        }
+
+        $InfoUpdate =  array('rtsp_conexiones' => $RtspActive);
+
+        $Response = $DiskData->updatePvrInfo($InfoUpdate, $MacAddress);
+
+    break;
 
     case 'CheckProgramsToSchedule':
         $Response = $ProgramsData->getProgramsToSchedule($MacAddress);
