@@ -166,7 +166,7 @@ div#ProgramFocus {
     color: #000;
     font-weight: bold;
     outline: 1px solid rgb(42, 61, 71);
-    text-decoration-color: #d36363;
+    border: #d36363;
 }
 
 .PvrProgramFocus {

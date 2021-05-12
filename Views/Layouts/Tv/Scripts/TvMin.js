@@ -566,10 +566,10 @@ function GetRowsPrograms(){
 function GetFocusStyle(){
     var ProgramFocus        = document.getElementById('ProgramFocus'),
         ProgramFocusStyle   = window.getComputedStyle(ProgramFocus);
-    ColorFocus          = ProgramFocusStyle.color;
-    BackgroundFocus     = ProgramFocusStyle.backgroundColor;
-    BackgroundRec     = ProgramFocusStyle.textDecorationColor;
-
+    ColorFocus      = ProgramFocusStyle.color;
+    BackgroundFocus = ProgramFocusStyle.backgroundColor;
+    //BackgroundRec   = ProgramFocusStyle.border;
+    BackgroundRec   = '';
 
     ProgramFocus = null;
     ProgramFocusStyle = null;
