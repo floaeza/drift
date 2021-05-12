@@ -28,7 +28,8 @@ if(Device['Type'] !== 'NONE'){
         RecordingOptionsNodes   = RecordingOptions.childNodes,
         RecordManualOptions     = document.getElementById('RecordingManualOptions'),
         RecordManualOptionsNodes= RecordManualOptions.childNodes,
-        RecorderMessage         = document.getElementById('RecorderMessage');
+        RecorderMessage         = document.getElementById('RecorderMessage'),
+        PanelMessage            = document.getElementById('PanelMessage');
 
     var OptionsNodesArray       = [1,3,5,7],
         ManualNodesArray        = [4,6,8,10,15,17],
@@ -241,7 +242,7 @@ function ShowRecorderMessage(Message){
         RecorderMessageActive = true;
 
         RecorderMessage.textContent = '';
-        RecorderMessage.style.display = 'inline';
+        PanelMessage.style.display = 'inline';
         RecorderMessage.textContent = Message;
     }
 }
@@ -249,7 +250,7 @@ function ShowRecorderMessage(Message){
 function HideRecorderMessage(){
     RecorderMessageActive = false;
     RecorderMessage.textContent = '';
-    RecorderMessage.style.display = 'none';
+    PanelMessage.style.display = 'none';
 }
 
 
