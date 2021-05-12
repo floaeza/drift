@@ -733,7 +733,6 @@
 
     function TvOk(){
         if(RecorderMessageActive === false) {
-
             if (ActiveEpgContainer === true) {
                 if (RecordingOptionsActive === false && RecordManualOptionsActive === false) {
                     if (Device['Type'] === 'NONE') {
@@ -757,18 +756,22 @@
     }
     
     function TvClose(){
-        if(ActiveEpgContainer === true){
-            if(RecordingOptionsActive === false && RecordManualOptionsActive === false){
-                HideInfo();       
-                CloseEpg();
-            } else if(RecordingOptionsActive === true){
-                CloseRecordingOptions();
-            } else if(RecordManualOptionsActive === true){
-                CloseManualRecord();
+        if(RecorderMessageActive === false) {
+            if (ActiveEpgContainer === true) {
+                if (RecordingOptionsActive === false && RecordManualOptionsActive === false) {
+                    HideInfo();
+                    CloseEpg();
+                } else if (RecordingOptionsActive === true) {
+                    CloseRecordingOptions();
+                } else if (RecordManualOptionsActive === true) {
+                    CloseManualRecord();
+                }
+
+            } else if (RecordingPanel === true) {
+                PvrClose();
             }
-            
-        } else if(RecordingPanel === true){
-            PvrClose();
+        } else {
+            HideRecorderMessage();
         }
     }
     
@@ -954,64 +957,64 @@
     }
     
     function TvRecorder(){
-        if(PlayingRecording === false){
-            if(Device['Type'] !== 'NONE'){
-                if(RecordingOptionsActive === true){
-                    CloseRecordingOptions();
-                }
+        if(RecorderMessageActive === false) {
+            if (PlayingRecording === false) {
+                if (Device['Type'] !== 'NONE') {
+                    if (RecordingOptionsActive === true) {
+                        CloseRecordingOptions();
+                    }
 
-                if(ActiveEpgContainer === true){     
-                    CloseEpg();
-                }
-                
-                if(RecordManualOptionsActive === true){
-                    CloseManualRecord();
-                }
+                    if (ActiveEpgContainer === true) {
+                        CloseEpg();
+                    }
 
-                if(ActiveInfoContainer === true){
-                    Debug('ActiveInfoContainer'+ActiveInfoContainer);
-                    HideInfo(); 
-                }
+                    if (RecordManualOptionsActive === true) {
+                        CloseManualRecord();
+                    }
 
-                OpenPvr();
+                    if (ActiveInfoContainer === true) {
+                        Debug('ActiveInfoContainer' + ActiveInfoContainer);
+                        HideInfo();
+                    }
+
+                    OpenPvr();
+                }
+            } else {
+                OpenRecordPlayOptions();
             }
         } else {
-            OpenRecordPlayOptions();
-        }
-
-        if(RecorderMessageActive === true){
             HideRecorderMessage();
         }
     }
     
     function TvGuide(){
-        if(PlayingRecording === false){
-            if(RecordingOptionsActive === true){
-                CloseRecordingOptions();
-            }
+        if(RecorderMessageActive === false) {
+            if (PlayingRecording === false) {
+                if (RecordingOptionsActive === true) {
+                    CloseRecordingOptions();
+                }
 
-            if(RecordingPanel === true){
-                ClosePvr();
-            }
-            
-            if(RecordManualOptionsActive === true){
-                CloseManualRecord();
-            }
+                if (RecordingPanel === true) {
+                    ClosePvr();
+                }
 
-            if(ActiveInfoContainer === true){
-                HideInfo(); 
+                if (RecordManualOptionsActive === true) {
+                    CloseManualRecord();
+                }
+
+                if (ActiveInfoContainer === true) {
+                    HideInfo();
+                }
+
+                if (Device['Type'] !== 'NONE') {
+                    GetRecordingsToRecord();
+                }
+
+                OpenEpg();
+            } else {
+                OpenRecordPlayOptions();
             }
-
-            if(Device['Type'] !== 'NONE'){
-                GetRecordingsToRecord();
-            }
-
-            OpenEpg();
-        } else {
-            OpenRecordPlayOptions();
-        }
-
-        if(RecorderMessageActive === true){
+        }  else {
             HideRecorderMessage();
         }
     }
