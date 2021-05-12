@@ -226,9 +226,7 @@ var CheckInfo = 0;
                 break;
                 
                 case REMOTE_BACKWARD:
-                    Debug('REMOTE_BACKWARD');
                     if(CurrentModule === 'Tv'){
-                        Debug('CurrentModule: '+CurrentModule);
                         TvBackward();
 
                     }
