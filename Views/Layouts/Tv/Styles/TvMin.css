@@ -494,7 +494,6 @@ div#BarPosition {
 }
 
 div#BarTimes {
-    right: 3%;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
     top: 5%;
     color: #fff;
@@ -504,9 +503,8 @@ div#BarTimes {
 }
 
 div#BarDuration{
-    right: 3%;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
-    top: 2.5%;
+    top: 1%;
     color: #000;
     font-size: 21px;
     text-align: left;
