@@ -13,7 +13,7 @@
         "INDC": "CHILENO TV",
         "LOGO": "default.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "VIDEO",
@@ -45,7 +45,7 @@
         "INDC": "HLN",
         "LOGO": "HLN.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "10145",
@@ -483,7 +483,7 @@
         "INDC": "FOXNEWS",
         "LOGO": "FOXNEWS.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "16374",
@@ -767,7 +767,7 @@
         "INDC": "MSNBC",
         "LOGO": "MSNBC.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "16300",
@@ -1093,7 +1093,7 @@
         "INDC": "CNN",
         "LOGO": "CNN.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "10142",
@@ -1447,7 +1447,7 @@
         "INDC": "CNBC",
         "LOGO": "CNBC.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "10139",
@@ -1941,7 +1941,7 @@
         "INDC": "FOXBN",
         "LOGO": "FOXBN.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "58649",
@@ -2463,7 +2463,7 @@
         "INDC": "FREEFORM",
         "LOGO": "FREEFM.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "10093",
@@ -2719,7 +2719,7 @@
         "INDC": "BBCN",
         "LOGO": "BBCNEWS.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "89542",
@@ -3479,7 +3479,7 @@
         "INDC": "BRAVO",
         "LOGO": "BRAVO.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "10057",
@@ -3707,7 +3707,7 @@
         "INDC": "COMEDY",
         "LOGO": "COMEDY.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "10149",
@@ -4159,7 +4159,7 @@
         "INDC": "TRUTV",
         "LOGO": "TRUTV.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "10153",
@@ -4807,7 +4807,7 @@
         "INDC": "E!",
         "LOGO": "EENT.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "10989",
@@ -5049,7 +5049,7 @@
         "INDC": "FOOD",
         "LOGO": "FOOD.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "12574",
@@ -5641,7 +5641,7 @@
         "INDC": "FX",
         "LOGO": "FX.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "14321",
@@ -5911,7 +5911,7 @@
         "INDC": "AETV",
         "LOGO": "AE.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "10035",
@@ -6265,7 +6265,7 @@
         "INDC": "HGTV",
         "LOGO": "HGTV.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "14902",
@@ -6759,7 +6759,7 @@
         "INDC": "LIFETIME",
         "LOGO": "LIFET.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "10918",
@@ -7099,7 +7099,7 @@
         "INDC": "TBS",
         "LOGO": "TBS.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "11867",
@@ -7467,7 +7467,7 @@
         "INDC": "TRAV",
         "LOGO": "TRAVEL.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "11180",
@@ -7863,7 +7863,7 @@
         "INDC": "USA",
         "LOGO": "USA.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "11207",
@@ -8245,7 +8245,7 @@
         "INDC": "TLC",
         "LOGO": "TLC.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "11158",
@@ -8599,7 +8599,7 @@
         "INDC": "NGC",
         "LOGO": "NGC.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "24959",
@@ -8995,7 +8995,7 @@
         "INDC": "APL",
         "LOGO": "APL.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "16331",
@@ -9265,7 +9265,7 @@
         "INDC": "HISTORY",
         "LOGO": "HISTORY.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "14771",
@@ -9647,7 +9647,7 @@
         "INDC": "DSC",
         "LOGO": "DSC.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "11150",
@@ -10057,7 +10057,7 @@
         "INDC": "STZK",
         "LOGO": "STZK.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "19635",
@@ -10257,7 +10257,7 @@
         "INDC": "DISNP",
         "LOGO": "DISNEY.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "12510",
@@ -10947,7 +10947,7 @@
         "INDC": "DSCF",
         "LOGO": "DSCFA.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "16618",
@@ -11609,7 +11609,7 @@
         "INDC": "TOON",
         "LOGO": "TOON.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "12131",
@@ -12537,7 +12537,7 @@
         "INDC": "NIK",
         "LOGO": "NICK.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "11006",
@@ -13143,7 +13143,7 @@
         "INDC": "NICJR",
         "LOGO": "NICKJR.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "19211",
@@ -13875,7 +13875,7 @@
         "INDC": "AMC",
         "LOGO": "AMC.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "10021",
@@ -14131,7 +14131,7 @@
         "INDC": "SHOWP",
         "LOGO": "SHOW.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "11117",
@@ -14429,7 +14429,7 @@
         "INDC": "STARZ",
         "LOGO": "STARZ.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "12719",
@@ -14657,7 +14657,7 @@
         "INDC": "STZE",
         "LOGO": "STZE.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "16311",
@@ -14969,7 +14969,7 @@
         "INDC": "TMC",
         "LOGO": "TMC.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "35329",
@@ -15183,7 +15183,7 @@
         "INDC": "TNT",
         "LOGO": "TNT.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "11164",
@@ -15425,7 +15425,7 @@
         "INDC": "STZCI",
         "LOGO": "STZCI.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "19634",
@@ -15611,7 +15611,7 @@
         "INDC": "SHOWX",
         "LOGO": "SHOWX.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "18086",
@@ -15797,7 +15797,7 @@
         "INDC": "HALLMARK",
         "LOGO": "HALLMARK.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "66268",
@@ -16151,7 +16151,7 @@
         "INDC": "ESPN",
         "LOGO": "ESPN.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "10179",
@@ -16407,7 +16407,7 @@
         "INDC": "ESPN2",
         "LOGO": "ESPN2.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "12444",
@@ -16705,7 +16705,7 @@
         "INDC": "ESPNU",
         "LOGO": "ESPNU.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "45654",
@@ -16905,7 +16905,7 @@
         "INDC": "GOLF",
         "LOGO": "GOLF.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "14899",
@@ -17091,7 +17091,7 @@
         "INDC": "NFLNET",
         "LOGO": "NFLNET.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "34710",
@@ -17291,7 +17291,7 @@
         "INDC": "PACK-12",
         "LOGO": "PAC12.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "76366",
@@ -17505,7 +17505,7 @@
         "INDC": "NBCSN",
         "LOGO": "NBCSN.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "15952",
@@ -17747,7 +17747,7 @@
         "INDC": "FS1",
         "LOGO": "FOXSP.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "82541",
@@ -17961,7 +17961,7 @@
         "INDC": "TENNIS",
         "LOGO": "TENNIS.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "33395",
@@ -18063,7 +18063,7 @@
         "INDC": "NHLNET",
         "LOGO": "NHLNET.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "58570",
@@ -18417,7 +18417,7 @@
         "INDC": "NBATV",
         "LOGO": "NBATV.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "32281",
@@ -18813,7 +18813,7 @@
         "INDC": "ABC EAST",
         "LOGO": "ABC.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "11363",
@@ -19293,7 +19293,7 @@
         "INDC": "CBS EAST",
         "LOGO": "CBCNET.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "11622",
@@ -19717,7 +19717,7 @@
         "INDC": "FOX EAST",
         "LOGO": "FOX.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "11746",
@@ -20253,7 +20253,7 @@
         "INDC": "NBC EAST",
         "LOGO": "NBC.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "10991",
@@ -20649,7 +20649,7 @@
         "INDC": "PBS",
         "LOGO": "PBS.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "11760",
@@ -21269,7 +21269,7 @@
         "INDC": "CBS WEST",
         "LOGO": "CBS.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "107654",
@@ -21763,7 +21763,7 @@
         "INDC": "ABC WEST",
         "LOGO": "ABC.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "10481",
@@ -22215,7 +22215,7 @@
         "INDC": "FOX WEST",
         "LOGO": "FOX.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "10743",
@@ -22751,7 +22751,7 @@
         "INDC": "NBC WEST",
         "LOGO": "NBC.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "10599",
@@ -23203,7 +23203,7 @@
         "INDC": "CS1",
         "LOGO": "default.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "VIDEO",
@@ -23235,7 +23235,7 @@
         "INDC": "CS2",
         "LOGO": "default.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "VIDEO",
@@ -23267,7 +23267,7 @@
         "INDC": "CS3",
         "LOGO": "default.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "VIDEO",
@@ -23299,7 +23299,7 @@
         "INDC": "CS4",
         "LOGO": "default.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "VIDEO",
@@ -23331,7 +23331,7 @@
         "INDC": "CS5",
         "LOGO": "default.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "VIDEO",
@@ -23363,7 +23363,7 @@
         "INDC": "CS6",
         "LOGO": "default.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "VIDEO",
@@ -23395,7 +23395,7 @@
         "INDC": "CS7",
         "LOGO": "default.png",
         "DTNU": "20210513",
-        "DATE": "Saturday, April 24, 2021",
+        
         "PROGRAMS": {
             "0": {
                 "STTN": "VIDEO",
