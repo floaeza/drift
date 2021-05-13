@@ -28,7 +28,7 @@
     var ProgramsToSchedule          = '',
         ProgramsToDelete            = '',
         AssetsIdList                = [],
-        SizePerSecond           = 0,
+        SizePerSecond               = 0,
         AssetsCount                 = 0;
     
     var NUMBER_EVENT                = 0;
