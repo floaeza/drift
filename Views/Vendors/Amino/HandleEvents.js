@@ -380,7 +380,7 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
                 AssetInfo = [],
                 ActRec    = false,
                 Option = '';
-        
+            Debug('****************************************************>>>');
             for(Indexal = 1;  Indexal <= AssetsIdList.count; Indexal++){
                 
                 //Debug('::::::::= '+AssetsIdList.count);
@@ -403,13 +403,18 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
                     UpdateProgramAsset(AssetInfo.title, Option, AssetsIdList[Indexal], ActRec);
                 }
 
+
+                Debug('--> AssetInfo.duration: '+parseInt(AssetInfo.duration));
+                Debug('--> AssetInfo.totalSize: '+parseInt(AssetInfo.totalSize));
+
                 Durations = Durations + parseInt(AssetInfo.duration); // seconds
                 Sizes = Sizes + parseInt(AssetInfo.totalSize); // kb
             }
 
-            Debug('--> Sizes: '+Sizes);
-            Debug('--> Durations: '+Durations);
-            Debug('--> AssetsIdList.count: '+AssetsIdList.count);
+            Debug('****************************************************<<<');
+            Debug('-----> Sizes: '+Sizes);
+            Debug('-----> Durations: '+Durations);
+            Debug('-----> AssetsIdList.count: '+AssetsIdList.count);
             SizePerSecond = Math.round((Sizes / Durations));
 
             Debug('----> SizePerSecond: '+SizePerSecond);
