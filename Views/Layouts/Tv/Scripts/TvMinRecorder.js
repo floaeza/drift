@@ -271,8 +271,6 @@ function OpenPvr(){
         IndexRecordedFocus  = -1;
         IndexRecordedProgFocus = 0;
 
-        MinimizeTV();
-
         GetRecordings();
 
         HidePvrInfo();
@@ -292,6 +290,8 @@ function OpenPvr(){
         GetWeatherPvr();
 
         PvrTimer = setTimeout(ClosePvr,TimeoutPvr);
+
+        MinimizeTV();
     }
 }
 
