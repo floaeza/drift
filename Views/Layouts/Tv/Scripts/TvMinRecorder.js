@@ -756,8 +756,8 @@ function SelectRecordOption(){
                 OptionRtsp : OprRtsp
             },
             success: function (response){
-                Debug('---------->> UpdateRtspConnections');
-                Debug($.parseJSON(response));
+                //Debug('---------->> UpdateRtspConnections');
+                //Debug($.parseJSON(response));
             }
         });
     }
@@ -1175,9 +1175,9 @@ function SelectRecordPlayOption(){
 
             StopVideo();
 
-            UpdateRtspConnections('substract');
-
             SetChannel('');
+
+            UpdateRtspConnections('substract');
 
             break;
 
@@ -1187,11 +1187,11 @@ function SelectRecordPlayOption(){
 
             StopVideo();
 
-            UpdateRtspConnections('substract');
-
             HideBarStatus();
 
             SetChannel('');
+
+            UpdateRtspConnections('substract');
 
         break;
 
