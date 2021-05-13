@@ -170,7 +170,7 @@ switch ($Option){
         $Result = $UpdateOperation[$FirstElement];
 
         if(intval($Result) >= 1){
-            $Response = array('Update' => true, 'Message' => 'Program deleted');
+            $Response = array('Update' => true, 'Message' => 'Recording deleted');
         } else {
             $Response = array('Update' => false, 'Message' => 'There was a problem, try again later');
         }

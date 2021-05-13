@@ -566,7 +566,7 @@ div#RecorderMessage {
 
 div#PanelMessage {
     width: 50%;
-    height: 25%;
+    height: 30%;
     text-align: center;
     z-index: 1;
     position: fixed;

@@ -709,7 +709,7 @@ function SelectRecordOption(){
             GetPvrInfo();
 
             if(parseInt(DiskInfo[DiskInfoIndex].rtsp_conexiones) >= 4){
-                ShowRecorderMessage('All connections to the recorder are active, please wait or close a connection');
+                ShowRecorderMessage('All connections to your recorder are active, please wait or close a connection');
             } else {
                 UpdateRtspConnections('add');
 
@@ -2097,7 +2097,7 @@ function CheckManualRecording(){
 
                 if(Coincidences >= 2){
                     if(ADD_SERIE_BCKG === false){
-                        ShowRecorderMessage('Reached the limit of schedules at the same time');
+                        ShowRecorderMessage('Reached the limit of recordings at the same time');
                     }
                 } else {
                     AddRecord();
@@ -2290,7 +2290,7 @@ function CheckRecordings() {
                         } else {
                             if (Coincidences >= 2) {
                                 if (ADD_SERIE_BCKG === false) {
-                                    ShowRecorderMessage('Reached the limit of schedules at the same time');
+                                    ShowRecorderMessage('Reached the limit of recordings at the same time');
                                 }
                             } else {
                                 AddRecord();
