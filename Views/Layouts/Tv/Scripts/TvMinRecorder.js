@@ -1971,6 +1971,7 @@ function GetRecordingsToRecord(){
 function GetPvrInfo(){
     $.ajax({
         type: 'POST',
+        async: false,
         url: 'Core/Controllers/Recorder.php',
         data: {
             Option     : 'GetPvrInfo',
