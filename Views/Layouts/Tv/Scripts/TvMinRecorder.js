@@ -1834,6 +1834,8 @@ function SetMacAddressPvr(){
     }
 }
 
+SetMacAddressPvr();
+
 function AddSerie(){
     if(FullDisk === false) {
         Debug('---- AddSerie');
