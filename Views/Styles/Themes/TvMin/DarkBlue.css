@@ -8,48 +8,17 @@ and open the template in the editor.
     Author     : tania
 */
 
+/********** TIPOGRAFIA y COLORES ***********/
 body, html {
     font-family: be;
 }
 
+
+div#Temperatures,
 div#TemperatureGroup {
     color: #0396a6;
     font-family: arial-rounded;
 }
-
-
-div#Temperatures {
-    color: #0396a6;
-    font-family: arial-rounded;
-}
-
-/********** EPG FONTS ***********/
-
-p.ChannelName,
-div.HourRow 
-{
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-}
-
-/********** INFO ***********/
-
-div.BackgroundInfo {
-    background-image: url('DarkBlue/info.png');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-}
-
-
-/********** CONTENEDORES EPG Y PVR***********/
-
-div#PvrContainer,
-div#EpgContainer {
-    color: #fff;
-    background-image: url('DarkBlue/epg.png');
-}
-
-/********** COLORES EN EPG ***********/
 
 div#EpgNowAiring {
     color: #fff;
@@ -67,28 +36,44 @@ div#EpgTime{
     font-family: arial-rounded;
 }
 
-.Program {
-    outline: 1px solid rgb(42, 61, 71);
-}
-
 div#EpgDescription {
     font-family: calibri-regular;
 }
+
+
+/********** BACKGROUNDS ***********/
+
+div.BackgroundInfo {
+    background-image: url('DarkBlue/info.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+div#PvrContainer,
+div#EpgContainer {
+    color: #fff;
+    background-image: url('DarkBlue/epg.png');
+}
+
+/********** COLORES EN ELEMENTOS ***********/
+
+
 
 div#EpgStars {
     color: #e3c15a;
 }
 
-
-
-
-div#PvrDate{
-    font-family: gotham;
-    color: #fff;
+.Program {
+    outline: 1px solid rgb(42, 61, 71);
 }
 
 div.PvrHeader {
     background-color: #246681;
+}
+
+div#PvrDate{
+    font-family: gotham;
+    color: #fff;
 }
 
 div#PanelMessage {
