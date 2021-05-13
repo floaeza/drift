@@ -377,7 +377,7 @@ function SetOptionPanel(){
 
         SetFocusSchedules();
 
-        CurrentPvrOption.textContent = OptionPanel;
+        CurrentPvrOption.textContent = 'To be recorded';
     } else if(OptionPanel === 'Series'){
         SetSeries('');
 
