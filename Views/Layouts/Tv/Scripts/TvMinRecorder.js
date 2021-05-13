@@ -756,6 +756,7 @@ function SelectRecordOption(){
                 OptionRtsp : OprRtsp
             },
             success: function (response){
+                Debug('---------->> UpdateRtspConnections');
                 Debug($.parseJSON(response));
             }
         });
