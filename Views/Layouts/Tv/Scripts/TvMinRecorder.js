@@ -708,6 +708,8 @@ function SelectRecordOption(){
 
             GetPvrInfo();
 
+            Debug('------------------*rtsp_grabaciones*');
+            Debug(parseInt(DiskInfo[DiskInfoIndex].rtsp_grabaciones));
             if(parseInt(DiskInfo[DiskInfoIndex].rtsp_grabaciones) >= 4){
                 ShowRecorderMessage('All connections to the recorder are active, please wait or close a connection');
             } else {
