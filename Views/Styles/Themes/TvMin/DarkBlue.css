@@ -13,59 +13,37 @@ body, html {
     font-family: be;
 }
 
-
+div#PvrProgramDate
+div.HourRow,
 div#Temperatures,
-div#TemperatureGroup {
-    font-family: arial-rounded;
-}
-
-div#EpgNowAiring,
-div#EpgTitle {
-    font-family: gotham;
-}
-
+div#PanelMessage,
+div#TemperatureGroup,
 div#EpgRating,
 div.RecordingOptionsButton,
+div#EpgDays,
+div.ChannelName,
+div.Time,
+div.Date,
+div.Rating,
 div#EpgTime{
     font-family: arial-rounded;
 }
 
+div#EpgNowAiring,
+div#CurrentPvrOption,
+div#PvrProgramTitle,
+div#PvrDate,
+div.ChannelNumber,
+p.ChannelNumber,
+p.ChannelName,
+div#EpgDate,
+div#EpgTitle {
+    font-family: gotham;
+}
+
+div.Description,
 div#EpgDescription {
     font-family: calibri-regular;
-}
-
-div#PvrDate{
-    font-family: gotham;
-    color: #fff;
-}
-
-div#PanelMessage {
-    background-color: #128ba6;
-    font-family: arial-rounded;
-}
-
-div#CurrentPvrOption {
-    font-family: gotham;
-}
-
-div#EpgDays {
-    color: #fff;
-    font-family: arial-rounded;
-}
-
-div#PvrProgramTitle {
-    font-family: gotham;
-}
-
-div.ChannelName,
-div.Time,
-div.Date{
-    font-family: arial-rounded;
-}
-
-div.ChannelNumber,
-div#EpgDate {
-    font-family: gotham;
 }
 
 
@@ -87,6 +65,8 @@ div#EpgContainer {
 
 div#EpgStars,
 div#PvrProgramTitle,
+.PvrChevronLeft,
+.PvrChevronRight,
 div#EpgTitle {
     color: #dfbe5e;
 }
@@ -100,15 +80,15 @@ div.PvrHeader {
     background-color: #246681;
 }
 
+div#PanelMessage {
+    background-color: #128ba6;
+}
+
 div#MessageClose {
     background: #dfbe5e;
     color: #fff;
 }
 
-.PvrChevronLeft,
-.PvrChevronRight {
-    color: #dfbe5e;
-}
 
 div#BarUsedSize {
     background: #0396a6;
@@ -120,27 +100,16 @@ div#EpgProgramInfo {
     border-color: #347080;
 }
 
+div.Rating,
 div#Temperatures,
 div#TemperatureGroup {
     color: #0396a6;
-}
-
-
-div.Description {
-    font-family: calibri-regular;
-}
-
-div.Rating {
-    font-family: arial-rounded;
 }
 
 .PvrSun {
     color: #fff;
 }
 
-div.Rating {
-    color: #0396a6;
-}
 
 /* ProgramFocus para poner valores */
 div#ProgramFocus {
@@ -166,7 +135,6 @@ p.ChannelName
 {
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
     font-size: 20px;
-    font-family: gotham;
     font-weight: bold;
 }
 
@@ -174,13 +142,7 @@ div.HourRow
 {
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
     font-size: 20px;
-    font-family: arial-rounded;
     font-weight: bold;
-}
-
-div#PvrProgramDate{
-    font-family: arial-rounded;
-    color: #fff;
 }
 
 div#RecorderMessage {
