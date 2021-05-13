@@ -21,10 +21,18 @@ div#TemperatureGroup,
 div#EpgRating,
 div.RecordingOptionsButton,
 div#EpgDays,
+div#PvrWeather,
 div.ChannelName,
 div.Time,
 div.Date,
 div.Rating,
+div#ProgramRow1,
+div#ProgramRow2,
+div#ProgramRow3,
+div#ProgramRow4,
+div#ProgramRow5,
+div#ProgramRow6,
+div#ProgramRow7,
 div#EpgTime{
     font-family: arial-rounded;
 }
@@ -42,6 +50,7 @@ div#EpgTitle {
 }
 
 div.Description,
+div#PvrProgramDescription,
 div#EpgDescription {
     font-family: calibri-regular;
 }
@@ -61,23 +70,39 @@ div#EpgContainer {
     background-image: url('DarkBlue/epg.png');
 }
 
+div#PvrOptions,
+div#PvrDeleteOptions,
+div#RecordPlayOptions,
+div#RecordingManualOptions,
+div#RecordingOptions {
+    background-image: url('DarkBlue/square.png');
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+    background-size: 100% 100%;
+}
+
+/********** ASIGNA LOS VALORES EN JS PARA CAMBIAR EL FOCUS ***********/
+div#ProgramFocus {
+    background: rgb(223, 190, 94);
+    color: #000;
+    font-weight: bold;
+    outline: 1px solid rgb(42, 61, 71);
+    border: #d36363;
+}
+
 /********** COLORES EN ELEMENTOS ***********/
 
 div#EpgStars,
 div#PvrProgramTitle,
 .PvrChevronLeft,
 .PvrChevronRight,
+.Ttle,
+div#BarStatus,
 div#EpgTitle {
     color: #dfbe5e;
 }
 
-
 .Program {
     outline: 1px solid rgb(42, 61, 71);
-}
-
-div.PvrHeader {
-    background-color: #246681;
 }
 
 div#PanelMessage {
@@ -100,6 +125,9 @@ div#EpgProgramInfo {
     border-color: #347080;
 }
 
+.Rtg,
+div#PvrWeather,
+div#EpgRating,
 div.Rating,
 div#Temperatures,
 div#TemperatureGroup {
@@ -108,16 +136,6 @@ div#TemperatureGroup {
 
 .PvrSun {
     color: #fff;
-}
-
-
-/* ProgramFocus para poner valores */
-div#ProgramFocus {
-    background: rgb(223, 190, 94);
-    color: #000;
-    font-weight: bold;
-    outline: 1px solid rgb(42, 61, 71);
-    border: #d36363;
 }
 
 .PvrProgramFocus {
@@ -156,16 +174,6 @@ div#PvrInfo{
 
 /********** PVR ***********/
 
-div#PvrOptions,
-div#PvrDeleteOptions,
-div#RecordPlayOptions,
-div#RecordingManualOptions,
-div#RecordingOptions {
-    background-image: url('DarkBlue/square.png');
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
-    background-size: 100% 100%;
-}
-
 div.PvrOptionsButton,
 div.RecordingManualOptionsButton,
 div.RecordingOptionsButton {
@@ -173,37 +181,12 @@ div.RecordingOptionsButton {
     color: #fff;
 }
 
-div#PvrProgramDescription {
-    color: #fff;
-    font-family: calibri-regular;
-}
-
-div#PvrNow {
-    font-family: arial-rounded;
-    color: #fff;
-}
-
-div#PvrWeather{
-    font-family: arial-rounded;
-    color: #0396a6;
-}
 
 #PvrLogoContainer {
     background: #2f414a;
 }
 
-.Ttle {
-    color: #dfbe5e;
-}
-
-.Rtg{
-    color: #0396a6;
-}
-
-div#EpgRating {
-    color: #0396a6;
-}
-
+div.PvrHeader,
 div#ProgramRow1,
 div#ProgramRow2,
 div#ProgramRow3,
@@ -211,7 +194,6 @@ div#ProgramRow4,
 div#ProgramRow5,
 div#ProgramRow6,
 div#ProgramRow7 {
-    font-family: arial-rounded;
     background-color: #246681;
 }
 
@@ -235,9 +217,6 @@ div.BarPosition {
     background: rgba(255, 255, 255, 0.6);
 }
 
-div#BarStatus {
-    color: #e3c15a;
-}
 
 div.RecordingOptionFocus {
     background: rgba(223, 190, 94, 0.9);
@@ -250,10 +229,7 @@ div#BarUsedSize {
     color: #000;
 }
 
-div#BarUsedSize {
-    background: #0396a6;
-    color: #2f414a;
-}
+
 
 div.BarUsedSize {
     background: rgba(255, 255, 255, 0.8);
