@@ -756,7 +756,7 @@ function SelectRecordOption(){
                 OptionRtsp : OprRtsp
             },
             success: function (response){
-                //Debug(response);
+                Debug($.parseJSON(response));
             }
         });
     }

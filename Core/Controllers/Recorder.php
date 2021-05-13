@@ -277,9 +277,9 @@ switch ($Option){
         break;
 
     case 'SetRtsp':
-        $LocationId = !empty($_POST['LocationId']) ? $_POST['LocationId'] : '2';
-        $MacAddress = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '00:02:02:4f:9b:af';
-        $OptionRtsp = !empty($_POST['OptionRtsp']) ? $_POST['OptionRtsp'] : 'subtract';
+        $LocationId = !empty($_POST['LocationId']) ? $_POST['LocationId'] : '';
+        $MacAddress = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '';
+        $OptionRtsp = !empty($_POST['OptionRtsp']) ? $_POST['OptionRtsp'] : '';
 
         $RtspActive = intval($DiskData->getRtspActive($MacAddress));
 
