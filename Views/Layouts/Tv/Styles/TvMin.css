@@ -96,7 +96,7 @@ div#EpgChannels {
     position: fixed;
     width: 22%;
     height: 40%;
-    bottom: 18%;
+    bottom: 19.5%;
     left: 1.7%;
     border-radius: 6px;
     
@@ -106,7 +106,7 @@ div#EpgPrograms {
     position: fixed;
     width: 76%;
     height: 40%;
-    bottom: 18%;
+    bottom: 19.5%;
     right: 2%;
     z-index: 1;
 }
