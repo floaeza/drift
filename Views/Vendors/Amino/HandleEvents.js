@@ -151,6 +151,10 @@ function UpdateDiskInfo(){
     var StorageInfo = [];
     StorageInfo = PVR.GetStorageInfo();
 
+
+    Debug('StorageInfo.totalSize:: '+StorageInfo.totalSize);
+    Debug('StorageInfo.availableSize:: '+StorageInfo.availableSize);
+
     $.ajax({
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
@@ -372,7 +376,7 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
         var YesterdayUtcDate = Date.UTC(moment().format('Y'), (moment().format('MM') -2), moment().format('DD'), moment().format('HH'), moment().format('mm'));
                     YesterdayUtcDate = YesterdayUtcDate / 1000;
                     
-        Debug('>>>>>>>>>>> YesterdayUtcDate '+YesterdayUtcDate);
+        //Debug('>>>>>>>>>>> YesterdayUtcDate '+YesterdayUtcDate);
 
         if (AssetsCount > 0){
             
@@ -380,7 +384,7 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
                 AssetInfo = [],
                 ActRec    = false,
                 Option = '';
-            Debug('****************************************************>>>');
+            //Debug('****************************************************>>>');
             for(Indexal = 1;  Indexal <= AssetsIdList.count; Indexal++){
                 
                 //Debug('::::::::= '+AssetsIdList.count);
@@ -388,17 +392,17 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
                 AssetInfo = PVR.GetAssetById(AssetsIdList[Indexal]);
                 
                 if(AssetInfo.startTime < YesterdayUtcDate){
-                    Debug('<<<<<<<<<< startTime <<<<'+AssetInfo.startTime);
+                    //Debug('<<<<<<<<<< startTime <<<<'+AssetInfo.startTime);
                 } else {
-                    Debug('>>>>>>>>>>> startTime >>>>'+AssetInfo.startTime);
+                    //Debug('>>>>>>>>>>> startTime >>>>'+AssetInfo.startTime);
 
-                    Debug(JSON.stringify(AssetInfo));
+                    //Debug(JSON.stringify(AssetInfo));
 
                     ActRec = (AssetInfo.activeRecording === 0) ? false : true;
 
                     Option = (AssetInfo.activeRecording === 0) ? OperationsList.recorded : OperationsList.recording;
 
-                    Debug(AssetInfo.title +', '+ OperationsList.recorded +', '+  Option +', '+ AssetsIdList[Indexal] +', '+  ActRec);
+                    //Debug(AssetInfo.title +', '+ OperationsList.recorded +', '+  Option +', '+ AssetsIdList[Indexal] +', '+  ActRec);
 
                     UpdateProgramAsset(AssetInfo.title, Option, AssetsIdList[Indexal], ActRec);
                 }
