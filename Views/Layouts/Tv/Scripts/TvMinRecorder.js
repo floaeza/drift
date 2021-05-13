@@ -1980,7 +1980,7 @@ function GetPvrInfo(){
         },
         success: function (response){
             DiskInfo = $.parseJSON(response);
-
+            Debug(DiskInfo);
             if(DiskInfo.length > 0){
                 SetPvrInfo();
             }
