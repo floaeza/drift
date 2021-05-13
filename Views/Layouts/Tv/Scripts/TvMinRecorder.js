@@ -708,8 +708,9 @@ function SelectRecordOption(){
 
             GetPvrInfo();
 
-            if(parseInt(DiskInfo[DiskInfoIndex].rtsp_grabaciones) < 4){
-
+            if(parseInt(DiskInfo[DiskInfoIndex].rtsp_grabaciones) >= 4){
+                ShowRecorderMessage('All connections to the recorder are active, please wait or close a connection');
+            } else {
                 UpdateRtspConnections('add');
 
                 PlayVideo(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].url);
@@ -725,9 +726,6 @@ function SelectRecordOption(){
                 ShowPvrInfo();
 
                 SetSpeed('play');
-
-            } else {
-                ShowRecorderMessage('All connections to the recorder are active, please wait or close a connection');
             }
             break;
 
