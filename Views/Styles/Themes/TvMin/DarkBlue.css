@@ -16,17 +16,11 @@ body, html {
 
 div#Temperatures,
 div#TemperatureGroup {
-    color: #0396a6;
     font-family: arial-rounded;
 }
 
-div#EpgNowAiring {
-    color: #fff;
-    font-family: gotham;
-}
-
+div#EpgNowAiring,
 div#EpgTitle {
-    color: #dfbe5e;
     font-family: gotham;
 }
 
@@ -38,6 +32,40 @@ div#EpgTime{
 
 div#EpgDescription {
     font-family: calibri-regular;
+}
+
+div#PvrDate{
+    font-family: gotham;
+    color: #fff;
+}
+
+div#PanelMessage {
+    background-color: #128ba6;
+    font-family: arial-rounded;
+}
+
+div#CurrentPvrOption {
+    font-family: gotham;
+}
+
+div#EpgDays {
+    color: #fff;
+    font-family: arial-rounded;
+}
+
+div#PvrProgramTitle {
+    font-family: gotham;
+}
+
+div.ChannelName,
+div.Time,
+div.Date{
+    font-family: arial-rounded;
+}
+
+div.ChannelNumber,
+div#EpgDate {
+    font-family: gotham;
 }
 
 
@@ -57,11 +85,12 @@ div#EpgContainer {
 
 /********** COLORES EN ELEMENTOS ***********/
 
-
-
-div#EpgStars {
-    color: #e3c15a;
+div#EpgStars,
+div#PvrProgramTitle,
+div#EpgTitle {
+    color: #dfbe5e;
 }
+
 
 .Program {
     outline: 1px solid rgb(42, 61, 71);
@@ -71,27 +100,10 @@ div.PvrHeader {
     background-color: #246681;
 }
 
-div#PvrDate{
-    font-family: gotham;
-    color: #fff;
-}
-
-div#PanelMessage {
-    background-color: #128ba6;
-    font-family: arial-rounded;
-}
-
-
 div#MessageClose {
     background: #dfbe5e;
     color: #fff;
 }
-
-div#CurrentPvrOption {
-    font-family: gotham;
-}
-
-
 
 .PvrChevronLeft,
 .PvrChevronRight {
@@ -103,31 +115,16 @@ div#BarUsedSize {
     color: #2f414a;
 }
 
-div#EpgDays {
-    color: #fff;
-    font-family: arial-rounded;
-}
-
-div#PvrProgramTitle {
-    color: #dfbe5e;
-    font-family: gotham;
-}
-
-div.ChannelName,
-div.Time,
-div.Date{
-    font-family: arial-rounded;
-}
-
-div.ChannelNumber,
-div#EpgDate {
-    font-family: gotham;
-}
-
 div#EpgProgramInfo {
     background-color: #246681;
     border-color: #347080;
 }
+
+div#Temperatures,
+div#TemperatureGroup {
+    color: #0396a6;
+}
+
 
 div.Description {
     font-family: calibri-regular;
