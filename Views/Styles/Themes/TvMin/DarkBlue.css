@@ -109,11 +109,14 @@ div#PanelMessage {
     background-color: #128ba6;
 }
 
-div#MessageClose {
+div#MessageClose,
+.PvrProgramFocus {
     background: #dfbe5e;
-    color: #fff;
 }
 
+.PvrProgramFocus {
+    color:#000;
+}
 
 div#BarUsedSize {
     background: #0396a6;
@@ -121,7 +124,6 @@ div#BarUsedSize {
 }
 
 div#EpgProgramInfo {
-    background-color: #246681;
     border-color: #347080;
 }
 
@@ -134,14 +136,7 @@ div#TemperatureGroup {
     color: #0396a6;
 }
 
-.PvrSun {
-    color: #fff;
-}
 
-.PvrProgramFocus {
-    color:#000;
-    background: #dfbe5e;
-}
 
 .Program
 {
@@ -163,30 +158,29 @@ div.HourRow
     font-weight: bold;
 }
 
-div#RecorderMessage {
-    color: #e1e1e1;
-}
-
-div#PvrInfo{
-    border: 1px solid rgba(3,150,166,0.9);
-    background-color: #246681;
-}
-
 /********** PVR ***********/
 
 div.PvrOptionsButton,
+#PvrLogoContainer,
 div.RecordingManualOptionsButton,
 div.RecordingOptionsButton {
     background: #2f414a;
+}
+
+
+div.PvrOptionsButton,
+div.RecordingManualOptionsButton,
+div.RecordingOptionsButton,
+div#RecordingManualOptions,
+div#BarPosition,
+div#RecorderMessage,
+div#MessageClose,
+.PvrSun {
     color: #fff;
 }
 
-
-#PvrLogoContainer {
-    background: #2f414a;
-}
-
 div.PvrHeader,
+div#EpgProgramInfo,
 div#ProgramRow1,
 div#ProgramRow2,
 div#ProgramRow3,
@@ -210,7 +204,6 @@ div#ChannelRow7 {
 
 div#BarPosition {
     background-color: #0396a6;
-    color: #fff;
 }
 
 div.BarPosition {
@@ -224,17 +217,6 @@ div.RecordingOptionFocus {
     font-weight: bold;
 }
 
-div#BarUsedSize {
-    background: #0396a6;
-    color: #000;
-}
-
-
-
 div.BarUsedSize {
     background: rgba(255, 255, 255, 0.8);
-}
-
-div#RecordingManualOptions {
-    color: #fff
 }
