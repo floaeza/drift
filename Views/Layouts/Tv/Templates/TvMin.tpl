@@ -70,6 +70,7 @@
 
     <!-- Contiene las horas en la guia  -->
     <div id='ProgramFocus'></div>
+    <div id='Extras'></div>
 
     <div id='EpgChannelLogo' class='EpgLogo'></div>
 

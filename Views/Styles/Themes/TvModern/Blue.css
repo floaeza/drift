@@ -80,13 +80,18 @@ div#RecordingOptions {
     background-size: 100% 100%;
 }
 
-/********** ASIGNA LOS VALORES EN JS PARA CAMBIAR EL FOCUS ***********/
+/********** ASIGNA LOS VALORES EN JS PARA CAMBIAR EL FOCUS, GRABACIONES Y POSICION Y PORCENTAJE PANTALLA MINIMIZADA ***********/
 div#ProgramFocus {
-    background: rgb(223, 190, 94);
-    color: #000;
-    font-weight: bold;
-    outline: 1px solid rgb(42, 61, 71);
-    border: #d36363;
+    background: rgb(223, 190, 94); /* background focus*/
+    color: #000; /* letra focus*/
+    outline: 1px solid rgb(42, 61, 71); /* Color linea grid programas en la guia */
+}
+
+div#Extras {
+    background: #d36363; /* background grabacion */
+    font-size: 33px; /* Porcentaje tv minimizada */
+    line-height: 0px; /* Posicion izquierda tv */
+    padding: 0px; /* Posicion derecha tv */
 }
 
 /********** SOMBRAS ***********/

@@ -43,7 +43,11 @@ FocusProgramPosition    = 0;
 var ColorFocus              = '',
     OutlineColor            = '',
     BackgroundFocus         = '',
-    BackgroundRec           = '';
+    BackgroundRec           = '',
+    TvPercentageSize        = '',
+    TvPositionLeft          = '',
+    TvPositionTop           = '';
+
 
 var ProgramsToLeft          = false,
     ProgramsToChange          = false;
@@ -566,17 +570,25 @@ function GetRowsPrograms(){
 function GetFocusStyle(){
     var ProgramFocus        = document.getElementById('ProgramFocus'),
         ProgramFocusStyle   = window.getComputedStyle(ProgramFocus);
+
+    var Extras        = document.getElementById('Extras'),
+        ExtrasStyle   = window.getComputedStyle(Extras);
+
     ColorFocus      = ProgramFocusStyle.color;
     BackgroundFocus = ProgramFocusStyle.backgroundColor;
-    //BackgroundRec   = ProgramFocusStyle.border;
-    BackgroundRec   = '#d36363';
+
+    BackgroundRec   = ExtrasStyle.backgroundColor;
+    TvPercentageSize = ExtrasStyle.fontSize.replace('px','');
+    TvPositionLeft  = ExtrasStyle.lineHeight.replace('px','');
+    TvPositionTop   = ExtrasStyle.padding.replace('px','');
+
+    document.getElementById('EpgMainLogo').style.backgroundImage	= 'url("'+Libraries['EpgLogo']+'")';
+    document.getElementById('PvrMainLogo').style.backgroundImage	= 'url("'+Libraries['EpgLogo']+'")';
 
     ProgramFocus = null;
     ProgramFocusStyle = null;
-
-    document.getElementById('EpgMainLogo').style.backgroundImage	= 'url("'+Libraries['EpgLogo']+'")';
-
-    document.getElementById('PvrMainLogo').style.backgroundImage	= 'url("'+Libraries['EpgLogo']+'")';
+    Extras = null;
+    ExtrasStyle = null;
 }
 
 

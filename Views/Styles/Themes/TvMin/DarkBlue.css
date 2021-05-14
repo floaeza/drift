@@ -82,11 +82,16 @@ div#RecordingOptions {
 
 /********** ASIGNA LOS VALORES EN JS PARA CAMBIAR EL FOCUS ***********/
 div#ProgramFocus {
-    background: rgb(223, 190, 94);
-    color: #000;
-    font-weight: bold;
-    outline: 1px solid rgb(42, 61, 71);
-    border: #d36363;
+    background: rgb(223, 190, 94); /* background focus*/
+    color: #000; /* letra focus*/
+    outline: 1px solid rgb(42, 61, 71); /* Color linea grid programas en la guia */
+}
+
+div#Extras {
+    background: #d36363; /* background grabacion */
+    font-size: 33px; /* Porcentaje tv minimizada */
+    line-height: 15px; /* Posicion izquierda tv */
+    padding: 60px; /* Posicion derecha tv */
 }
 
 /********** SOMBRAS ***********/
