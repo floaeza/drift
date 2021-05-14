@@ -29,6 +29,8 @@
         ProgramsToDelete            = '',
         AssetsIdList                = [],
         SizePerSecond               = 0,
+        SizeAvailable               = 0,
+        SizeTotal                   = 0,
         AssetsCount                 = 0;
     
     var NUMBER_EVENT                = 0;
@@ -64,9 +66,9 @@ Debug('########################### HandleEvent() ');
 
         if(NUMBER_EVENT === PVR_REC_RECORDING_STARTED || NUMBER_EVENT === PVR_REC_END_OF_STREAM){
             // Actualiza el estado del disco en el grabador y actualiza
-            UpdateDiskInfo();
-            
             UpdateAssetsId();
+
+            UpdateDiskInfo();
         } else if(NUMBER_EVENT === RTSP_STATUS_END_OF_STREAM || NUMBER_EVENT === PVR_PLAY_END_OF_FILE){
             // Termino reproduccion grabacion
             OpenRecordPlayOptions();
@@ -147,14 +149,6 @@ Debug('########################### HandleEvent() ');
  *******************************************************************************/
 
 function UpdateDiskInfo(){
-
-    var StorageInfo = [];
-    StorageInfo = PVR.GetStorageInfo();
-
-
-    Debug('StorageInfo.totalSize:: '+StorageInfo.totalSize);
-    Debug('StorageInfo.availableSize:: '+StorageInfo.availableSize);
-
     $.ajax({
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
@@ -162,8 +156,8 @@ function UpdateDiskInfo(){
             Option     : 'SetPvrInfo',
             LocationId : Device['LocationId'],
             MacAddress : MacAddress,
-            TotalSize : StorageInfo.totalSize,
-            AvailableSize : StorageInfo.availableSize,
+            TotalSize : SizeTotal,
+            AvailableSize : SizeAvailable,
             SizeRecords : SizePerSecond
         },
         success: function (response){
@@ -415,15 +409,21 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
                 Sizes = Sizes + parseInt(AssetInfo.totalSize); // kb
             }
 
+            var StorageInfo = [];
+            StorageInfo = PVR.GetStorageInfo();
+
             Debug('****************************************************<<<');
             Debug('-----> Sizes: '+Sizes);
             Debug('-----> Durations: '+Durations);
             Debug('-----> AssetsIdList.count: '+AssetsIdList.count);
+            SizeAvailable = StorageInfo.totalSize - Sizes;
+            SizeTotal = StorageInfo.totalSize;
             SizePerSecond = Math.round((Sizes / Durations));
 
             Debug('----> SizePerSecond: '+SizePerSecond);
         }
 
+        StorageInfo = null;
         Durations = null;
         Sizes = null;
     Debug('--------<< UpdateAssetsId');
