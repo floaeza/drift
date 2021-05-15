@@ -90,7 +90,6 @@ div#EpgHeader {
     width: 98%;
     position: fixed;
     padding: 0.5% 1% 0% 1%;
-    display: none;
 }
 
 div#EpgChannels {
