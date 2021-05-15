@@ -337,8 +337,8 @@ function GetWindowFullSize(){
 
 function GetWindowMinSize(){
 
-    WindowMinWidth   = (WindowMaxWidth*33)/100;
-    WindowMinHeight  = (WindowMaxHeight*33)/100;
+    WindowMinWidth   = (WindowMaxWidth*TvPercentageSize)/100;
+    WindowMinHeight  = (WindowMaxHeight*TvPercentageSize)/100;
 
     Debug(WindowMinWidth);
     Debug(WindowMinHeight);
@@ -373,7 +373,7 @@ function MinimizeTV(){
 //            gSTB.SetViewport(WindowMinWidth, WindowMinHeight, 15, 60);
 //        }
 
-    player.setViewport({x: 40, y: 80, width: WindowMinWidth, height: WindowMinHeight,save: true});
+    player.setViewport({x: TvPositionLeft, y: TvPositionTop, width: WindowMinWidth, height: WindowMinHeight,save: true});
 
 }
 

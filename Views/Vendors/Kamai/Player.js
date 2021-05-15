@@ -144,8 +144,8 @@
     }
     
     function GetWindowMinSize(){
-        WindowMinWidth   = ((window.screen.width)*33)/100;
-        WindowMinHeight  = ((window.screen.height)*33)/100;
+        WindowMinWidth   = ((window.screen.width)*TvPercentageSize)/100;
+        WindowMinHeight  = ((window.screen.height)*TvPercentageSize)/100;
     }
 
 
@@ -162,7 +162,7 @@
  * ****************************************************************************/
 
     function MinimizeTV(){
-            Video.setVideoPosition('15', '60', WindowMinWidth, WindowMinHeight, 0);
+            Video.setVideoPosition(TvPositionLeft, TvPositionTop, WindowMinWidth, WindowMinHeight, 0);
     }
 
 /* *****************************************************************************

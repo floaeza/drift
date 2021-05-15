@@ -578,9 +578,9 @@ function GetFocusStyle(){
     BackgroundFocus = ProgramFocusStyle.backgroundColor;
 
     BackgroundRec   = ExtrasStyle.backgroundColor;
-    TvPercentageSize = ExtrasStyle.fontSize.replace('px','');
-    TvPositionLeft  = ExtrasStyle.lineHeight.replace('px','');
-    TvPositionTop   = ExtrasStyle.padding.replace('px','');
+    TvPercentageSize = parseInt(ExtrasStyle.fontSize.replace('px',''));
+    TvPositionLeft  = parseInt(ExtrasStyle.lineHeight.replace('px',''));
+    TvPositionTop   = parseInt(ExtrasStyle.padding.replace('px',''));
 
     document.getElementById('EpgMainLogo').style.backgroundImage	= 'url("'+Libraries['EpgLogo']+'")';
     document.getElementById('PvrMainLogo').style.backgroundImage	= 'url("'+Libraries['EpgLogo']+'")';
