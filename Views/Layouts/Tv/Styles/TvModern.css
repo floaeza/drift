@@ -96,17 +96,16 @@ div#EpgChannels {
     position: fixed;
     width: 22%;
     height: 40%;
-    bottom: 19.5%;
+    bottom: 16%;
     left: 1.7%;
     border-radius: 6px;
-
 }
 
 div#EpgPrograms {
     position: fixed;
     width: 76%;
     height: 40%;
-    bottom: 19.5%;
+    bottom: 16%;
     right: 2%;
     z-index: 1;
 }
@@ -332,7 +331,7 @@ div.HourRow {
     height: 100%;
     line-height: 50px;
     background-size: 100% 100%;
-    text-align: center;
+    text-align: left;
 }
 
 div#ProgramRow1,
@@ -343,7 +342,7 @@ div#ProgramRow5,
 div#ProgramRow6,
 div#ProgramRow7 {
     width: 100%;
-    height: 19.3%;
+    height: 18%;
     font-weight: bold;
     margin-bottom: .3%;
 }
@@ -357,7 +356,7 @@ div#ChannelRow6,
 div#ChannelRow7 {
     font-size: 20px;
     text-transform: uppercase;
-    height: 19.3%;
+    height: 18%;
     width: 100%;
     margin-bottom: 1%;
 }
