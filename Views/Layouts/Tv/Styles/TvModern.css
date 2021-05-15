@@ -126,7 +126,7 @@ div#EpgHours {
     width: 76%;
     height: 5%;
     right: 2%;
-    top: 36%;
+    top: 38%;
     background-size: 100% 100%;
 }
 
@@ -179,7 +179,7 @@ div#TemperatureGroup {
 div#EpgDays {
     width: 20%;
     height: 5%;
-    top: 36%;
+    top: 39%;
     position: fixed;
     font-size: 22px;
     left: 2%;

@@ -52,7 +52,7 @@ div#EpgTitle {
 div.Description,
 div#PvrProgramDescription,
 div#EpgDescription {
-    font-family: calibri-regular;
+    font-family: helvetica;
 }
 
 
@@ -198,7 +198,7 @@ div#ChannelRow4,
 div#ChannelRow5,
 div#ChannelRow6,
 div#ChannelRow7 {
-    background-color: #2f4142;
+    background-color: rgba(0, 0, 0, 0.15);
     border-radius: 6px;
 }
 
