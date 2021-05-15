@@ -118,7 +118,7 @@ div#PvrProgramTitle,
 .Ttle,
 div#BarStatus,
 div#EpgTitle {
-    color: #dfbe5e;
+    color: #84d8f1;
 }
 
 .Program {
@@ -131,7 +131,7 @@ div#PanelMessage {
 
 div#MessageClose,
 .PvrProgramFocus {
-    background: #dfbe5e;
+    background: #84d8f1;
 }
 
 .PvrProgramFocus {
@@ -150,7 +150,7 @@ div#EpgRating,
 div.Rating,
 div#Temperatures,
 div#TemperatureGroup {
-    color: #0396a6;
+    color: #cbd3e5;
 }
 
 .Program
