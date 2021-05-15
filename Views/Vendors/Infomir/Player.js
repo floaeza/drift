@@ -28,7 +28,7 @@ player2.aspectConversion = 5;
 var Swap            = false,
     Playlist        = '',
     IndexPlaylist   = -1;
-LengthPlaylist  = 0;
+    LengthPlaylist  = 0;
 
 GetWindowFullSize();
 GetWindowMinSize();
