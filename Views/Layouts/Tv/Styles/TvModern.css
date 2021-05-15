@@ -146,9 +146,9 @@ div#EpgDate {
     width: 20%;
     height: 5%;
     position: fixed;
-    right: 13.5%;
-    top: 3.3%;
-    text-align: right;
+    left: 2%;
+    top: 6.5%;
+    text-align: left;
     font-size: 18px;
 }
 
@@ -386,6 +386,7 @@ div#EpgMainLogo {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 70%;
+    display: none;
 }
 
 div#EpgTitle {
