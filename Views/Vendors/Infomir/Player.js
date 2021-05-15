@@ -28,7 +28,7 @@ player2.aspectConversion = 5;
 var Swap            = false,
     Playlist        = '',
     IndexPlaylist   = -1;
-    LengthPlaylist  = 0;
+LengthPlaylist  = 0;
 
 GetWindowFullSize();
 GetWindowMinSize();
@@ -161,12 +161,12 @@ function PlayVideo(Source){
     } else {
         //Reproduce el video
 
-    Debug(src);
+        Debug(src);
         player.play({
             uri: src,
             solution: 'auto'
         });
-     }
+    }
 
     player.onPlayEnd = function () {
         if(CurrentModule === 'Tv' && PlayingRecording === true){
@@ -374,7 +374,6 @@ function MinimizeTV(){
 //        }
 
     player.setViewport({x: TvPositionLeft, y: TvPositionTop, width: WindowMinWidth, height: WindowMinHeight,save: true});
-
 }
 
 /* *****************************************************************************
