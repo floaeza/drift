@@ -82,8 +82,8 @@ div#RecordingOptions {
 
 /********** ASIGNA LOS VALORES EN JS PARA CAMBIAR EL FOCUS, GRABACIONES Y POSICION Y PORCENTAJE PANTALLA MINIMIZADA ***********/
 div#ProgramFocus {
-    background: rgb(223, 190, 94); /* background focus*/
-    color: #000; /* letra focus*/
+    background-color: rgb(5, 43, 62);/* background focus*/
+    color: #84d8f1; /* letra focus*/
     outline: 1px solid rgb(42, 61, 71); /* Color linea grid programas en la guia */
 }
 
@@ -154,7 +154,7 @@ div#TemperatureGroup {
 
 .Program
 {
-    outline: 1px solid rgb(42, 61, 71);
+    outline: 1px solid rgb(5, 43, 62);
 }
 
 /********** PVR ***********/
@@ -187,7 +187,7 @@ div#ProgramRow4,
 div#ProgramRow5,
 div#ProgramRow6,
 div#ProgramRow7 {
-    background-color: #246681;
+    background-color: rgba(255,255,255,0.1);
 }
 
 div#ChannelRow1,
