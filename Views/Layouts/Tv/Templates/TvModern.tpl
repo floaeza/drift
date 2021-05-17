@@ -155,7 +155,7 @@
 
         <div id='BarCircle'>
             <div class="c100 p34 center">
-                <span id='BarUsedSize'>34%</span>
+                <span>34%</span>
                 <div class="slice">
                     <div class="bar"></div>
                     <div class="fill"></div>
@@ -167,6 +167,8 @@
 
     <div id='PvrDiskInfo'>
         <div id='UsedSize'></div>
+        <div class='BarUsedSize'></div>
+        <div id='BarUsedSize'></div>
     </div>
 
     <div class='PvrHeader'>
