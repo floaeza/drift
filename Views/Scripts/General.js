@@ -413,7 +413,7 @@ function ConvertToHourEpoch(time24){
     
     function SetIcon(){
         var skycons = new Skycons({
-            'color': 'white'
+            'color': '#EEB462'
         });
           
         skycons.add('WeatherIcon', ObjectWeather.Icon);
