@@ -155,7 +155,7 @@ div#EpgWeather {
     width: 10%;
     height: 5%;
     top: 3.5%;
-    right: 4.5%;
+    right: 5%;
     position: fixed;
     text-align: left;
 }
@@ -364,10 +364,10 @@ div#ChannelRow7 {
 
 div.EpgLogo {
     position: fixed;
-    width: 6%;
-    height: 8%;
+    width: 5%;
+    height: 7%;
     top: 7%;
-    right: 3%;
+    right: 3.5%;
     overflow: hidden;
     background-position: center;
     background-size: contain;
@@ -396,7 +396,7 @@ div#EpgTitle {
 }
 
 div#EpgDescription {
-    width: 58%;
+    width: 64.5%;
     height: 20%;
     padding-top: 1%;
     position: fixed;
