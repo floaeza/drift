@@ -153,6 +153,14 @@
         </div>
         <div id='PvrDate'></div>
     </div>
+    
+    <div class="c100 p34 center">
+        <span>34%</span>
+        <div class="slice">
+            <div class="bar"></div>
+            <div class="fill"></div>
+        </div>
+    </div>
 
     <div id='PvrDiskInfo'>
         <div id='UsedSize'></div>
