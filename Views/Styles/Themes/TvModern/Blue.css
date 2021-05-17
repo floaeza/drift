@@ -34,7 +34,7 @@ div#ProgramRow5,
 div#ProgramRow6,
 div#ProgramRow7,
 div#EpgTime{
-    font-family: arial-rounded;
+    font-family: gotham;
 }
 
 div#EpgNowAiring,
@@ -52,7 +52,7 @@ div#EpgTitle {
 div.Description,
 div#PvrProgramDescription,
 div#EpgDescription {
-    font-family: helvetica;
+    font-family: GothamLight;
 }
 
 
@@ -82,8 +82,8 @@ div#RecordingOptions {
 
 /********** ASIGNA LOS VALORES EN JS PARA CAMBIAR EL FOCUS, GRABACIONES Y POSICION Y PORCENTAJE PANTALLA MINIMIZADA ***********/
 div#ProgramFocus {
-    background-color: rgba(0, 0, 0, 0.3);/* background focus*/
-    color: #84d8f1; /* letra focus*/
+    background-color: #63BCC9; /* background focus*/
+    color: rgb(33, 32, 32); /* letra focus*/
     outline: 1px solid rgb(42, 61, 71); /* Color linea grid programas en la guia */
 }
 
@@ -118,7 +118,7 @@ div#PvrProgramTitle,
 .Ttle,
 div#BarStatus,
 div#EpgTitle {
-    color: #84d8f1;
+    color: #63BCC9;
 }
 
 .Program {

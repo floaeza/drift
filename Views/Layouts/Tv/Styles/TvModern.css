@@ -82,7 +82,7 @@ div#EpgContainer {
 #WeatherIcon {
     top: 3%;
     position: fixed;
-    right: 3%;
+    right: 4%;
 }
 
 div#EpgHeader {
@@ -103,16 +103,16 @@ div#EpgChannels {
 
 div#EpgPrograms {
     position: fixed;
-    width: 76%;
+    width: 75%;
     height: 40%;
     bottom: 16%;
-    right: 2%;
+    right: 3%;
     z-index: 1;
 }
 
 div#EpgProgramInfo {
     position: fixed;
-    width: 65.5%;
+    width: 64.5%;
     height: 29%;
     top: 3%;
     left: 31%;
@@ -135,7 +135,7 @@ div#EpgNowAiring {
     height: 6%;
     position: fixed;
     padding-left: 2%;
-    padding-top: 2%;
+    padding-top: 3%;
     text-align: left;
     font-size: 20px;
     font-weight: bold;
@@ -145,7 +145,7 @@ div#EpgDate {
     width: 20%;
     height: 5%;
     position: fixed;
-    left: 2%;
+    left: 3%;
     top: 6.5%;
     text-align: left;
     font-size: 18px;
@@ -155,7 +155,7 @@ div#EpgWeather {
     width: 10%;
     height: 5%;
     top: 3.5%;
-    right: 3.5%;
+    right: 4.5%;
     position: fixed;
     text-align: left;
 }
@@ -330,7 +330,6 @@ div.HourRow {
     height: 100%;
     line-height: 50px;
     background-size: 100% 100%;
-    text-align: center;
     text-align: center;
 }
 
