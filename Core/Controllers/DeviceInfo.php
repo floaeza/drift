@@ -22,7 +22,6 @@ $DeviceId    = !empty($_POST['DeviceId']) ? $_POST['DeviceId'] : '';
 
 
 $DeviceUpdate =  array (
-    'ultima_ejecucion' => $CurrentDate,
     'mensaje_evento'   => $EventString,
     'hdmi'             => $EventHdmi,
     'ultimo_canal'           => $LastChannel);
