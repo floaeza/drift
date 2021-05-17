@@ -1023,7 +1023,7 @@ function SetFocusSchedules(){
 function SetSeries(Direction){
 
     var Row  = 1,
-        Icon = '<i class="fa fa-bookmark"></i>',
+        Icon = '<i class="fa fa-Bluerk"></i>',
         Title = 'series';
 
     var IndexSerie = 0;
