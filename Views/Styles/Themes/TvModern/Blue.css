@@ -82,7 +82,7 @@ div#RecordingOptions {
 
 /********** ASIGNA LOS VALORES EN JS PARA CAMBIAR EL FOCUS, GRABACIONES Y POSICION Y PORCENTAJE PANTALLA MINIMIZADA ***********/
 div#ProgramFocus {
-    background-color: rgb(5, 43, 62);/* background focus*/
+    background-color: rgba(0, 0, 0, 0.3);/* background focus*/
     color: #84d8f1; /* letra focus*/
     outline: 1px solid rgb(42, 61, 71); /* Color linea grid programas en la guia */
 }
