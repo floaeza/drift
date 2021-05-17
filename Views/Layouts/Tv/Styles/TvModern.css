@@ -116,7 +116,7 @@ div#EpgProgramInfo {
     height: 29%;
     top: 3%;
     left: 31%;
-    box-shadow: 6px 6px 4px rgba(0,0,0,0.3);
+    box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.6);
     padding: 0.5%;
 }
 
@@ -134,8 +134,8 @@ div#EpgNowAiring {
     width: 28%;
     height: 6%;
     position: fixed;
-    padding-left: 2%;
-    padding-top: 3%;
+    padding-left: 3%;
+    padding-top: 2%;
     text-align: left;
     font-size: 20px;
     font-weight: bold;
