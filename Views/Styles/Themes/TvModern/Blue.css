@@ -117,10 +117,6 @@ div#EpgTitle {
     color: #63BCC9;
 }
 
-.Program {
-    outline: 1px solid rgb(42, 61, 71);
-}
-
 div#PanelMessage {
     background-color: #128ba6;
 }
@@ -150,7 +146,7 @@ div#TemperatureGroup {
 
 .Program
 {
-    outline: 1px solid rgb(5, 43, 62);
+    outline: 1px solid rgb(46, 59, 77);
 }
 
 /********** PVR ***********/
