@@ -82,8 +82,9 @@ div#RecordingOptions {
 
 /********** ASIGNA LOS VALORES EN JS PARA CAMBIAR EL FOCUS, GRABACIONES Y POSICION Y PORCENTAJE PANTALLA MINIMIZADA ***********/
 div#ProgramFocus {
-    background-color: #63BCC9; /* background focus*/
-    color: rgb(33, 32, 32); /* letra focus*/
+    /* background focus*/
+    background-color: rgb(47, 101, 122);
+    color: #FBAD17;
     outline: 1px solid rgb(42, 61, 71); /* Color linea grid programas en la guia */
 }
 
@@ -114,7 +115,7 @@ div#PvrProgramTitle,
 .Ttle,
 div#BarStatus,
 div#EpgTitle {
-    color: #63BCC9;
+    color: #FBAD17;
 }
 
 div#PanelMessage {
@@ -179,7 +180,7 @@ div#ProgramRow4,
 div#ProgramRow5,
 div#ProgramRow6,
 div#ProgramRow7 {
-    background-color: rgba(255,255,255,0.1);
+    background-color: rgba(0, 0, 0, 0.15);
 }
 
 div#ChannelRow1,

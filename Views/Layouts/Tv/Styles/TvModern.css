@@ -188,7 +188,7 @@ div#TemperatureGroup {
 div#EpgDays {
     width: 19%;
     height: 5%;
-    top: 43%;
+    top: 44%;
     position: fixed;
     font-size: 22px;
     left: 3%;
@@ -197,7 +197,7 @@ div#EpgDays {
 }
 
 div#EpgDay {
-    width: 90%;
+    width: 100%;
     float: left;
 
 }
@@ -352,8 +352,8 @@ div#ProgramRow6,
 div#ProgramRow7 {
     width: 100%;
     font-weight: bold;
-    /*height: 18%;*/
-    /*margin-bottom: .3%;*/
+    height: 18%;
+    margin-bottom: .3%;
 }
 
 div#ChannelRow1,
