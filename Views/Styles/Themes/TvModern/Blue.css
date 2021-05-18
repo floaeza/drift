@@ -107,10 +107,6 @@ div.HourRow
 
 /********** COLORES EN ELEMENTOS ***********/
 
-div#EpgProgramInfo {
-    background: rgba(0,0,0,0.1);
-}
-
 div#EpgStars,
 div#PvrProgramTitle,
 .PvrChevronLeft,
