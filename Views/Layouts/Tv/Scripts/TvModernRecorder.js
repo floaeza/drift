@@ -64,7 +64,7 @@ if(Device['Type'] !== 'NONE'){
     var PvrDate                 = document.getElementById('PvrDate');
 
     var PvrTimer                = '',
-        SecondsToClosePvr       = 300,
+        SecondsToClosePvr       = 3000,
         TimeoutPvr              = SecondsToClosePvr * 1000;
 
     var OptionPanel             = '',
