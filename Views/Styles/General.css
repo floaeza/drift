@@ -213,6 +213,7 @@ div#InfoContainer {
     margin-bottom: 2%;
     color: #fff;
     height: 20%;
+    border-radius: 6px;
 }
 
 div.ChannelNumber {
