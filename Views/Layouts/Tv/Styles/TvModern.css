@@ -90,7 +90,7 @@ div#EpgContainer {
 }
 
 #WeatherIcon {
-    top: 19%;
+    top: 16%;
     position: fixed;
     left: 3%;
 }
@@ -164,7 +164,7 @@ div#EpgDate {
 div#EpgWeather {
     width: 10%;
     height: 5%;
-    top: 15%;
+    top: 12%;
     left: 3%;
     position: fixed;
     text-align: left;
@@ -389,13 +389,12 @@ div.EpgLogo {
 div#EpgMainLogo {
     position: fixed;
     width: 11%;
-    height: 27%;
-    top: 7%;
-    right: 2%;
+    height: 15%;
+    top: 22%;
+    left: 3%;
     background-repeat: no-repeat;
     background-position: center;
     background-size: 70%;
-    display: none;
 }
 
 div#EpgTitle {
