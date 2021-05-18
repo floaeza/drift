@@ -658,12 +658,12 @@ div#PvrContainer {
 }
 
 div.PvrHeader {
-    width: 69%;
+    width: 90%;
     height: 5%;
     position: fixed;
-    right: 2%;
+    right: 5%;
     text-align: center;
-    top: 7%;
+    top: 5%;
     font-size: 36px;
     border-radius: 6px;
 }
@@ -693,7 +693,7 @@ div#PvrList {
     height: 50%;
     position: fixed;
     right: 2%;
-    bottom: 37%;
+    bottom: 6%;
 }
 
 div.PvrProgram {
@@ -757,10 +757,10 @@ div#PvrDeleteOptions {
 }
 
 div#PvrInfo{
-    width: 69%;
-    height: 21%;
+    width: 51.5%;
+    height: 27%;
     position: fixed;
-    bottom: 15%;
+    top: 12%;
     right: 2%;
     border-radius: 6px;
 }
