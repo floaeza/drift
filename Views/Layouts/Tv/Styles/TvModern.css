@@ -90,9 +90,9 @@ div#EpgContainer {
 }
 
 #WeatherIcon {
-    top: 3%;
+    top: 19%;
     position: fixed;
-    right: 4%;
+    left: 3%;
 }
 
 div#EpgHeader {
@@ -122,11 +122,10 @@ div#EpgPrograms {
 
 div#EpgProgramInfo {
     position: fixed;
-    width: 64.5%;
-    height: 29%;
-    top: 3%;
-    left: 31%;
-    box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.6);
+    width: 51%;
+    height: 26%;
+    top: 11%;
+    right: 2%;
     padding: 0.5%;
 }
 
@@ -145,7 +144,7 @@ div#EpgNowAiring {
     height: 6%;
     position: fixed;
     padding-left: 3%;
-    padding-top: 3%;
+    padding-top: 2%;
     text-align: left;
     font-size: 20px;
     font-weight: bold;
@@ -156,7 +155,7 @@ div#EpgDate {
     height: 5%;
     position: fixed;
     left: 3%;
-    top: 8.5%;
+    top: 6.5%;
     text-align: left;
     font-size: 18px;
     font-weight: bold;
@@ -165,8 +164,8 @@ div#EpgDate {
 div#EpgWeather {
     width: 10%;
     height: 5%;
-    top: 3.5%;
-    right: 5%;
+    top: 15%;
+    left: 3%;
     position: fixed;
     text-align: left;
 }
@@ -377,8 +376,8 @@ div.EpgLogo {
     position: fixed;
     width: 5%;
     height: 7%;
-    top: 7%;
-    right: 4%;
+    top: 11%;
+    right: 3%;
     overflow: hidden;
     background-position: center;
     background-size: contain;
@@ -403,19 +402,20 @@ div#EpgTitle {
     font-size: 25px;
     overflow: hidden;
     white-space: nowrap;
-    width: 82%;
+    width: 88%;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
 }
 
 div#EpgDescription {
-    width: 64.5%;
-    height: 20%;
+    width: 50.5%;
+    height: 17%;
     padding-top: 1%;
     position: fixed;
-    top: 12%;
+    top: 20%;
     overflow: hidden;
     text-align: justify;
     font-size: 20px;
-    line-height: 35px;
+    line-height: 31px;
     font-weight: bold;
 }
 
@@ -423,15 +423,15 @@ div#EpgTime {
     width: 15%;
     height: 5%;
     position: fixed;
-    top: 9%;
+    top: 17%;
 }
 
 div#EpgRating {
     width: 15%;
     height: 5%;
     position: fixed;
-    top: 9%;
-    left: 46%;
+    top: 17%;
+    left: 62%;
 }
 
 div#EpgRating,
