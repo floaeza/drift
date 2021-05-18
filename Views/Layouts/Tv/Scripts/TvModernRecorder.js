@@ -64,7 +64,7 @@ if(Device['Type'] !== 'NONE'){
     var PvrDate                 = document.getElementById('PvrDate');
 
     var PvrTimer                = '',
-        SecondsToClosePvr       = 3000,
+        SecondsToClosePvr       = 180,
         TimeoutPvr              = SecondsToClosePvr * 1000;
 
     var OptionPanel             = '',
@@ -1023,7 +1023,7 @@ function SetFocusSchedules(){
 function SetSeries(Direction){
 
     var Row  = 1,
-        Icon = '<i class="fa fa-Bluerk"></i>',
+        Icon = '<i class="fa fa-bookmark"></i>',
         Title = 'series';
 
     var IndexSerie = 0;
