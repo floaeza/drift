@@ -156,7 +156,7 @@ div.PvrOptionsButton,
 #PvrLogoContainer,
 div.RecordingManualOptionsButton,
 div.RecordingOptionsButton {
-    background: #2f414a;
+    background: #245669;
 }
 
 
@@ -203,7 +203,7 @@ div.BarPosition {
 }
 
 div.RecordingOptionFocus {
-    background: rgba(223, 190, 94, 0.9);
+    background: rgba(251,173,23, 0.9);
     color: #000;
     font-weight: bold;
 }
