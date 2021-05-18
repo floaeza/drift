@@ -105,7 +105,7 @@ div#EpgHeader {
 div#EpgChannels {
     position: fixed;
     width: 19%;
-    height: 38%;
+    height: 37%;
     bottom: 15%;
     left: 3%;
     border-radius: 6px;
@@ -114,8 +114,8 @@ div#EpgChannels {
 div#EpgPrograms {
     position: fixed;
     width: 75%;
-    height: 40%;
-    bottom: 16%;
+    height: 37%;
+    bottom: 15%;
     right: 3%;
     z-index: 1;
 }
@@ -131,10 +131,10 @@ div#EpgProgramInfo {
 
 div#EpgHours {
     position: fixed;
-    width: 76%;
+    width: 75%;
     height: 5%;
-    right: 2%;
-    top: 38%;
+    right: 3%;
+    top: 43%;
     background-size: 100% 100%;
 }
 
@@ -188,7 +188,7 @@ div#TemperatureGroup {
 div#EpgDays {
     width: 19%;
     height: 5%;
-    top: 42%;
+    top: 43%;
     position: fixed;
     font-size: 22px;
     left: 3%;
@@ -351,9 +351,9 @@ div#ProgramRow5,
 div#ProgramRow6,
 div#ProgramRow7 {
     width: 100%;
-    height: 18%;
     font-weight: bold;
-    margin-bottom: .3%;
+    /*height: 18%;*/
+    /*margin-bottom: .3%;*/
 }
 
 div#ChannelRow1,
