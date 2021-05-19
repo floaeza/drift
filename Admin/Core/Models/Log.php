@@ -5,7 +5,7 @@
  * CREADO POR: Tania Maldonado
  * FECHA: Marzo 2017
  * ****************************************************************************/
-require_once __DIR__.'/Database.php';
+require_once __DIR__ . '/Database.php';
 class Log extends Database{    
     private $Log;
     

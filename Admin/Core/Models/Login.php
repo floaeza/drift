@@ -6,7 +6,7 @@
  * FECHA: Marzo 2017
  * ****************************************************************************/
 date_default_timezone_set("America/Mazatlan");
-require __DIR__.'/Database.php';
+require __DIR__ . '/Database.php';
 class Login extends Database {    
     
     private $UserLogin;

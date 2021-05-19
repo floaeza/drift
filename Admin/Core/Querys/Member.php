@@ -116,7 +116,7 @@ echo "test</br>";
         case "InsertMember":
             if(isset($_POST['CodeLocation'])){
               $MemberArray = array('codigo_locacion'          =>strtoupper($_POST['CodeLocation']),
-				'codigo_miembro'=> strtoupper($_POST['CodeLocation'])
+				'codigo_miembro'=> strtoupper($_POST['CodeLocation']),
                                 'descripcion_locacion'             =>$_POST['DescriptionLocation'],
                                 'id_paquete'             =>$_POST['ProgrammingMember']);
                 $Member = $DAOMembers->setMember($MemberArray);
