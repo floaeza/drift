@@ -154,8 +154,8 @@
         <div id='PvrDate'></div>
 
         <div id='BarCircle'>
-            <div class="c100 p34 center">
-                <span>34%</span>
+            <div id='PercentageCircle' class="c100 p34 center">
+                <span id='PercentageText'>34%</span>
                 <div class="slice">
                     <div class="bar"></div>
                     <div class="fill"></div>

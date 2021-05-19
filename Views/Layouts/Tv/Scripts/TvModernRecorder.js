@@ -59,7 +59,10 @@ if(Device['Type'] !== 'NONE'){
         PvrListNodes            = document.getElementById('PvrList').childNodes,
         PvrInfoNodes            = document.getElementById('PvrInfo').childNodes,
         CurrentPvrOption        = document.getElementById('CurrentPvrOption'),
-        PvrDiskInfoNodes        = document.getElementById('PvrDiskInfo').childNodes;
+        PvrDiskInfoNodes        = document.getElementById('PvrDiskInfo').childNodes,
+        PercentageCircle        = document.getElementById('PercentageCircle'),
+        PercentageText          = document.getElementById('PercentageText');
+
 
     var PvrDate                 = document.getElementById('PvrDate');
 
@@ -423,6 +426,8 @@ function SetPvrInfoGB(){
     PvrDiskInfoNodes[1].textContent = AvailableSize + ' GB available of ' + TotalSize + ' GB';
     PvrDiskInfoNodes[5].textContent = PercentageSize + '%';
     PvrDiskInfoNodes[5].style.width = PercentageSize + '%';
+
+    PercentageText.textContent = PercentageSize + '%';
 
 //#da7848 naranja
 //#d97676 rojo
