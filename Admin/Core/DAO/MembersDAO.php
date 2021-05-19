@@ -41,10 +41,12 @@ class MembersDAO extends Database{
         }
     }
     
-    function setMember($Miembro) {
+    function setMember($Locaciones, $Miembros) {
         try{
             $this->connect();
-            $this->insert("locaciones",$Miembro);
+            $this->insert("miembros",$Miembros);
+            $res = $this->getResult();
+            $this->insert("locaciones",$Locaciones);
             $this->Member = $this->getResult();
             $this->disconnect();
             return $this->Member;
