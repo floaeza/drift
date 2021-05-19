@@ -177,7 +177,7 @@
  * ****************************************************************************/ 
    
     function StopVideo(){
-        //Verificar si se está reproduciento ya algo antes de poner una nueva fuente
+        //Verificar si se está reproduciento ya algo antes de poner una nueva fuente   
         if(Video !== 'undefined' && Video.getPlayingUrl() !== null){
             Video.stop();
             Video.close();
