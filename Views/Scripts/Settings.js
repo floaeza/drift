@@ -101,6 +101,7 @@
             CurrentDateStb : CurrentStbDate
         },
         success: function (response){
+            Debug(CurrentStbDate);
             Device = $.parseJSON(response);
 
               if(Device['Debug'] === '1'){
