@@ -22,9 +22,6 @@ session_start();
     $DAOMembers = new MembersDAO($DirectoryLog);
     $DAODevices = new DevicesDAO($DirectoryLog);
 
-$LocationList = $DAOLocations->getLocationsList();
-print_r($LocationList);
-
     if(isset($_GET['Option'])){
         $Option = $_GET['Option'];
     } else {
