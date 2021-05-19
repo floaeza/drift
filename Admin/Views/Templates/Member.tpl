@@ -1105,6 +1105,8 @@
 
     $('#DeleteDevice').click(function (event) {
         var selection = $('#DevicesList').puidatatable('getSelection');
+
+        console.log(selection);
         if (selection[0]) {
             $.ajax({
                 type: "POST",
