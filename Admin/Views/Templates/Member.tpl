@@ -622,8 +622,6 @@
             dataType: "json",
                 context: this,
                 success: function(response) {
-                    console.log('selectLocations!');
-		console.log(response);
                     callback.call(this, response);
                 }
             });
