@@ -74,8 +74,7 @@
                  ['20:00','8:00 pm'],['20:30','8:30 pm'],['21:00','9:00 pm'],['21:30','9:30 pm'],['22:00','10:00 pm'],['22:30','10:30 pm'],['23:00','11:00 pm'],['23:30','11:30 pm']];
 
     /* Validacion para reinicar dispositivo y buscar actualizaciones de la epg */
-    var LastUpdatedTime     = '',
-        CurrentStbDate      = '';
+    var LastUpdatedTime     = '';
 
     /* Variable grabador */
     var RecordingsToCheck   = '',

@@ -8,7 +8,8 @@
         Executing   = false,
         EventString = '',
         EventHdmi   = 0,
-        EventNetman = '';
+        EventNetman = '',
+        CurrentStbDate = '';
 
     var DivDebug  = document.getElementById('DebugText'),
         DebugText = '';
