@@ -92,6 +92,7 @@ div#Extras {
     font-size: 33px; /* Porcentaje tv minimizada */
     line-height: 15px; /* Posicion izquierda tv */
     padding: 60px; /* Posicion derecha tv */
+    display: none;
 }
 
 /********** SOMBRAS ***********/
