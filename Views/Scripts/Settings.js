@@ -11,7 +11,7 @@
         EventNetman = '',
         CurrentStbDate = moment().format('Y-MM-DD h:mm:ss');
 
-        console.log('CSD:::::: '+CurrentStbDate);
+        console.log('CSD :::::: '+CurrentStbDate);
     var DivDebug  = document.getElementById('DebugText'),
         DebugText = '';
     
