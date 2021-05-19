@@ -826,6 +826,8 @@ div.BarUsedSize {
     border-radius: 6px;
     position: absolute;
     z-index: 0;
+
+    display: none;
 }
 
 div#BarUsedSize {
