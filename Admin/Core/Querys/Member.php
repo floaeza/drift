@@ -8,7 +8,6 @@
  * FECHA: Abril 2017
  * ****************************************************************************/
 //modificar los casos use of undefined constant se le agrego "" a todos
-echo "menberlocation";
 
     require '../Models/Log.php';
     require '../DAO/LocationsDAO.php';
@@ -29,7 +28,6 @@ echo "menberlocation";
         $Option = $_POST['Option'];
     }
 
-    echo $Option;
 	switch ($Option){
 
         case "SelectLocations":
