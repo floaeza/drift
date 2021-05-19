@@ -14,8 +14,8 @@ and open the template in the editor.
 
 div#BarCircle {
     position: fixed;
-    bottom: 20%;
-    left: 6%;
+    bottom: 28%;
+    left: 10%;
 }
 /***************************** [CONTENEDORES OCULTOS EN MIN] *****************************/
 
@@ -622,7 +622,7 @@ div#PvrLateral {
     width: 20%;
     position: fixed;
     height: 12%;
-    bottom: 3%;
+    bottom: 10%;
     left: 4.5%;
 }
 
@@ -804,19 +804,16 @@ div#PvrProgramDescription {
 /* Info grabador (disco) */
 
 div#PvrDiskInfo {
-    width: 69%;
+    width: 25%;
     height: 6%;
     position: fixed;
-    right: 2%;
-    bottom: 8%;
+    left: 2%;
+    bottom: 45%;
     font-size: 20px;
 }
 
 div#UsedSize {
-    width: 69%;
-    height: 6%;
-    bottom: 4%;
-    text-align: right;
+    text-align: center;
     position: fixed;
 }
 
