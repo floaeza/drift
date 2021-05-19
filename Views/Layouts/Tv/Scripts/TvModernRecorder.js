@@ -1194,9 +1194,9 @@ function SelectRecordPlayOption(){
 
             StopVideo();
 
-            HideBarStatus();
-
             SetChannel('');
+
+            HideBarStatus();
 
             UpdateRtspConnections('substract');
 
