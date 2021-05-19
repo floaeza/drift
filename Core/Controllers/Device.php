@@ -116,7 +116,7 @@
     $EventString = !empty($_POST['EventString']) ? $_POST['EventString'] : '';
     $EventHdmi = !empty($_POST['EventHdmi']) ? $_POST['EventHdmi'] : 0;
     $EventNetman = !empty($_POST['EventNetman']) ? $_POST['EventNetman'] : '';
-    $CurrentStbDate = !empty($_POST['CurrentStbDate']) ? $_POST['CurrentStbDate'] : '0000-00-00 00:00:00';
+    $CurrentDateStb = !empty($_POST['CurrentDateStb']) ? $_POST['CurrentDateStb'] : '0000-00-00 00:00:00';
 
     $Client = $ConfigData->getConfigByName('Identifier');
 
@@ -133,7 +133,7 @@
                             'EpgModificationTime' => $LastModificationTime);
 
     $DeviceUpdate =  array (
-                            'ultima_ejecucion' => $CurrentStbDate,
+                            'ultima_ejecucion' => $CurrentDateStb,
                             'mensaje_evento'   => $EventString,
                             'netman'           => $EventNetman,
                             'hdmi'             => $EventHdmi,
