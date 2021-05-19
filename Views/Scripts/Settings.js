@@ -9,7 +9,7 @@
         EventString = '',
         EventHdmi   = 0,
         EventNetman = '',
-        CurrentStbDate = '';
+        CurrentStbDate = moment().format('Y-MM-DD h:mm:ss');
 
     var DivDebug  = document.getElementById('DebugText'),
         DebugText = '';
