@@ -17,7 +17,7 @@ $EventString = !empty($_POST['EventString']) ? $_POST['EventString'] : '';
 $EventHdmi   = !empty($_POST['EventHdmi']) ? $_POST['EventHdmi'] : '';
 //$EventNetman = !empty($_POST['EventNetman']) ? $_POST['EventNetman'] : '';
 $LastChannel = !empty($_POST['LastChannel']) ? $_POST['LastChannel'] : '';
-$CurrentDate = !empty($_POST['CurrentDate']) ? $_POST['CurrentDate'] : '';
+$CurrentDate = !empty($_POST['CurrentDateStb']) ? $_POST['CurrentDateStb'] : '';
 $DeviceId    = !empty($_POST['DeviceId']) ? $_POST['DeviceId'] : '';
 
 
