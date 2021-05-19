@@ -428,6 +428,7 @@ function SetPvrInfoGB(){
     PvrDiskInfoNodes[5].style.width = PercentageSize + '%';
 
     PercentageText.textContent = PercentageSize + '%';
+    Debug('PercentageText= '+PercentageSize + '%');
 
 //#da7848 naranja
 //#d97676 rojo
