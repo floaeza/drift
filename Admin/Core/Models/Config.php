@@ -28,7 +28,7 @@ $VersionProyect             = "";
 // NOMBRE DEL PROYECTO (MAX 3)
 $ProyectName                = "CBC";
 // DIRECTORIO RAIZ PROYECTO
-$RootProyect                = "/BBINCO/";
+$RootProyect                = "/BBINCO/TV/";
 // DIRECTORIO PROYECTO BACK
 $ProyectDirectory           = "/Admin";
 // DIRECTORIO PROYECTO FRONT 
