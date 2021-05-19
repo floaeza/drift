@@ -11,7 +11,6 @@
         EventNetman = '',
         CurrentStbDate = moment().format('Y-MM-DD h:mm:ss');
 
-        console.log('CSD :::::: '+CurrentStbDate);
     var DivDebug  = document.getElementById('DebugText'),
         DebugText = '';
     
@@ -135,7 +134,7 @@
                 MacAddress: MacAddress,
                 EventString: EventString,
                 EventHdmi: EventHdmi,
-                EventNetman: EventNetman,
+                //EventNetman: EventNetman,
                 CurrentDate: moment().format('Y-MM-DD h:mm:ss')
             },
             beforeSend: function (){
