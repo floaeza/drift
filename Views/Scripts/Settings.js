@@ -97,7 +97,7 @@
         data: { 
             MacAddress : MacAddress,
             EventString : 'Boot successful',
-            CurrentDate : moment().format('Y-MM-DD h:mm:ss')
+            CurrentDateStb : CurrentStbDate
         },
         success: function (response){
             Device = $.parseJSON(response);
@@ -187,7 +187,7 @@ function UpdateQuickInfoDevice(){
             EventHdmi: EventHdmi,
             //EventNetman: EventNetman,
             LastChannel: ChannelsJson[ChannelPosition].CHNL + ' - ' +ChannelsJson[ChannelPosition].NAME,
-            CurrentDate: moment().format('Y-MM-DD h:mm:ss')
+            CurrentDateStb: CurrentStbDate
         },
         beforeSend: function (){
             Executing = true;

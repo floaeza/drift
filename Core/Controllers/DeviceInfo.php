@@ -24,7 +24,7 @@ $DeviceId    = !empty($_POST['DeviceId']) ? $_POST['DeviceId'] : '';
 $DeviceUpdate =  array (
     'mensaje_evento'   => $EventString,
     'hdmi'             => $EventHdmi,
-    'ultimo_canal'           => $LastChannel);
+    'ultimo_canal'     => $LastChannel);
 
 $UpdateDevice = $DevicesData->updateGetDevice($DeviceId, $DeviceUpdate,$MacAddress);
 

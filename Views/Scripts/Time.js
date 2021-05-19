@@ -17,6 +17,7 @@ Debug('########################### Time() ');
         TimeRunning++;
         
         FormatDateAndHour = moment().format('MMM, DD / h:mm A');
+        CurrentStbDate = moment().format('Y-MM-DD h:mm:ss');
         FormatHour = moment().format('h:mm A');
 
         if(CurrentModule === 'Tv'){
