@@ -22,6 +22,9 @@
     $DAOMembers = new MembersDAO($DirectoryLog);
     $DAODevices = new DevicesDAO($DirectoryLog);
 
+$LocationList = $DAOLocations->getLocationsList();
+echo json_encode($LocationList);
+
     if(isset($_GET['Option'])){
         $Option = $_GET['Option'];
     } else {
