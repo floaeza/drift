@@ -424,8 +424,9 @@ function SetPvrInfo(){
         PercentageSize = (100 - Percentage).toFixed(2);
 
     PvrDiskInfoNodes[1].textContent = AvailableSize + ' GB available of ' + TotalSize + ' GB';
-    PvrDiskInfoNodes[5].textContent = PercentageSize + '%';
-    PvrDiskInfoNodes[5].style.width = PercentageSize + '%';
+    //PvrDiskInfoNodes[5].textContent = PercentageSize + '%';
+    //PvrDiskInfoNodes[5].style.width = PercentageSize + '%';
+    PercentageText.textContent = PercentageSize + '%';
 
 //#da7848 naranja
 //#d97676 rojo
@@ -485,9 +486,9 @@ function SetPvrInfoHours(){
 
     //Debug(SecondsToTime(Math.round(TimeRemaining)));
     PvrDiskInfoNodes[1].textContent = secondsToString(Math.round(TimeRemaining)); + ' available';
-    //PvrDiskInfoNodes[5].textContent = PercentageSize + '%';
-    //PvrDiskInfoNodes[5].style.width = PercentageSize + '%';
-    PercentageText.textContent = PercentageSize + '%';
+    PvrDiskInfoNodes[5].textContent = PercentageSize + '%';
+    PvrDiskInfoNodes[5].style.width = PercentageSize + '%';
+
 
 //#da7848 naranja
 //#d97676 rojo
