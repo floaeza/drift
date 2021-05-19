@@ -133,7 +133,7 @@
                             'EpgModificationTime' => $LastModificationTime);
 
     $DeviceUpdate =  array (
-                            'ultima_ejecucion' => $CurrentDate,
+                            'ultima_ejecucion' => $CurrentStbDate,
                             'mensaje_evento'   => $EventString,
                             'netman'           => $EventNetman,
                             'hdmi'             => $EventHdmi,
