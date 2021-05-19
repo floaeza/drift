@@ -31,8 +31,7 @@ if(isset($_GET['Option'])){
 switch ($Option){
 
     case "SelectLocations":
-        //$LocationList = $DAOLocations->getLocationsList();
-        $LocationList = array('1d','2d');
+        $LocationList = $DAOLocations->getLocationsList();
         echo json_encode($LocationList);
         break;
 
