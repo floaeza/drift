@@ -33,7 +33,6 @@ echo "menberlocation";
 	switch ($Option){
 
         case "SelectLocations":
-echo "test</br>";
             $LocationList = $DAOLocations->getLocationsList();
             echo json_encode($LocationList);
         break;
