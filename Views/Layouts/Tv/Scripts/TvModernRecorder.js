@@ -428,7 +428,7 @@ function SetPvrInfo(){
     //PvrDiskInfoNodes[5].style.width = PercentageSize + '%';
     PercentageText.textContent = PercentageSize + '%';
 
-    PercentageCircle.className = 'c100 center p'+PercentageSize;
+    PercentageCircle.className = 'c100 center p'+Math.round(PercentageSize);
 
 //#da7848 naranja
 //#d97676 rojo
