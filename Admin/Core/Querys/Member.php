@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 /* *****************************************************************************
  * OBJETIVO: Recibe del controlador de locaciones la opcion a ejecutar [Select, Insert, Update,
  * Delete] y regresa un mensaje dependiendo de la accion
