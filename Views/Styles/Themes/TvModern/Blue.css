@@ -128,17 +128,12 @@ div#PanelMessage {
     background-color: #128ba6;
 }
 
-.PvrProgramFocus {
-    color:#000;
-}
-
 div#BarUsedSize {
     background: #0396a6;
     color: #2f414a;
 }
 
 .Rtg,
-div#PvrWeather,
 div#EpgRating,
 div.Rating,
 div#Temperatures,
