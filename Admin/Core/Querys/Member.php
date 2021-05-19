@@ -1,4 +1,4 @@
-<?php
+<?php ECHO "EGRHR";
 session_start();
 /* *****************************************************************************
  * OBJETIVO: Recibe del controlador de locaciones la opcion a ejecutar [Select, Insert, Update,
