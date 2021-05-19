@@ -81,10 +81,16 @@ div#RecordingOptions {
 }
 
 /********** ASIGNA LOS VALORES EN JS PARA CAMBIAR EL FOCUS, GRABACIONES Y POSICION Y PORCENTAJE PANTALLA MINIMIZADA ***********/
+
+div#MessageClose,
+.PvrProgramFocus,
+div#ProgramFocus {
+    background-color: rgb(32, 92, 114);
+    color: #FBAD17;
+}
+
 div#ProgramFocus {
     /* background focus*/
-    background-color: rgb(47, 101, 122);
-    color: #FBAD17;
     outline: 1px solid rgb(42, 61, 71); /* Color linea grid programas en la guia */
 }
 
@@ -120,11 +126,6 @@ div#EpgTitle {
 
 div#PanelMessage {
     background-color: #128ba6;
-}
-
-div#MessageClose,
-.PvrProgramFocus {
-    background: #84d8f1;
 }
 
 .PvrProgramFocus {
@@ -172,6 +173,7 @@ div#MessageClose,
 }
 
 
+div.PvrProgram,
 div#ProgramRow1,
 div#ProgramRow2,
 div#ProgramRow3,
