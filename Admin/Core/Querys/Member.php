@@ -435,9 +435,9 @@ switch ($Option){
 //                                       'id_paquete'  => $Package);
 //                    $Dispositivos=$DAOLocations->ChangeStatusDispDev($DispArray, $_POST['id']);
 //                    if($Dispositivos[0] > 0){
-//                        $Response = array('MessageOption'   => $Language['OptionMessageType'][0],
-//                                          'MessageSummary'  => $Language['SummaryMessageType'][0],
-//                                          'MessageDetail'   => $Language['MessageInsertCorrect']);
+                        $Response = array('MessageOption'   => $Language['OptionMessageType'][0],
+                                          'MessageSummary'  => $Language['SummaryMessageType'][0],
+                                          'MessageDetail'   => $Language['MessageInsertCorrect']);
 //
 //                    // Log creacion usuario incorrectamente correctamente
 //                    $LogModel = new Log($DirectoryLog);
