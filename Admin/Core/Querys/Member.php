@@ -23,7 +23,7 @@
     $DAODevices = new DevicesDAO($DirectoryLog);
 
 $LocationList = $DAOLocations->getLocationsList();
-echo json_encode($LocationList);
+print_r($LocationList);
 
     if(isset($_GET['Option'])){
         $Option = $_GET['Option'];
