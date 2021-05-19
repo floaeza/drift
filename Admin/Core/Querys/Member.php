@@ -499,6 +499,9 @@ switch ($Option){
             $locationUP = array('id_locacion' => $_POST['IdLocation']);
             $Relation = $DAODevices->updateDeviceLocation($locationUP, $_POST['id']);
             if($Relation[0] > 0){
+                $Response = array('MessageOption'   => $Language['OptionMessageType'][0],
+                    'MessageSummary'  => $Language['SummaryMessageType'][0],
+                    'MessageDetail'   => $Language['MessageInsertCorrect']);
 //                    $DispArray = array('id_estatus_disponibilidad'   => 2,
 //                                       'id_paquete'                  =>$Package);
 //                    $Dispositivos=$DAOLocations->ChangeStatusDispDev($DispArray, $_POST['id']);
