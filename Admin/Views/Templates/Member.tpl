@@ -407,7 +407,7 @@
                                     <div class="ui form">
                                         <form id="EditFormLocationDevice" method="post" name="EditForm" action="">
                                             <input type="text" hidden name="EditDeviceId"/>
-                                            <h3 class="ui center aligned icon header">
+                                            <h2 class="ui center aligned icon header">
                                                 <i class="marker green icon"></i>
                                                 <div class="content">
                                                     Especifique la ubicacion del dispositivo para localizarlo con mayor facilidad.
