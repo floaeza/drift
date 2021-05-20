@@ -49,8 +49,6 @@
 
         Video.play(1);
 
-        Video.setVideoCallback(HandleVideo);
-
         // Maximiza el video en caso de que no este en pantalla completa
         MaximizeTV();
         
@@ -67,6 +65,8 @@
            
         // Actualiza la fecha inicio de la reproduccion del canal */
         StartDateChannel = new Date();
+
+        //Video.setVideoCallback(HandleVideo);
     }
     
 /* *****************************************************************************
