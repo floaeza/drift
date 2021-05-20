@@ -171,28 +171,28 @@
                                             <input type="text" hidden name="IdLocation"/>
 
                                             <div class="fields">
-                                               <div class=" six wide field">
+                                               <div class=" nine wide field">
                                                    <label>Cuenta</label>
                                                </div>
-                                               <div class="field">
+                                               <div class="nine wide field">
                                                    <div class="ui disabled input"><input type="text" name="EditCodeLocation"/></div>
                                                </div>
                                            </div>
 
                                            <div class="fields">
-                                               <div class=" six wide field">
+                                               <div class=" nine wide field">
                                                    <label>Descripción</label>
                                                </div>
-                                               <div class="field">
+                                               <div class="nine wide field">
                                                    <div class="ui input"><input type="text" name="EditDescriptionLocation"/></div>
                                                </div>
                                            </div>
 
-                                            <div class="field">
-                                                <div class=" six wide field">
+                                            <div class="fields">
+                                                <div class="nine wide field">
                                                     <label>Paquete de canales</label>
                                                 </div>
-                                                <div class="six wide field">
+                                                <div class="nine wide field">
                                                     <select class="ui search dropdown" name="EditProgrammingMember">
                                                         <option value="">[@LabelPackageOptionList]</option>
                                                         [@PackageMemberOptionList]
