@@ -608,12 +608,8 @@
                 data: Editdatas,
                 success: function (response) {
                     var data_array = $.parseJSON(response);
-                    console.log(data_array);
-                    if(data_array['Response'] >= 0){
-                        addMessage('info', { summary: '[@SummaryMessageType]', detail: '[@MessageInsertCorrect]' });
-                    }else{
-                        addMessage('warn', { summary: '[@SummaryMessageType]', detail: '[@MessageInsertIncorrect]' });
-                    }
+                        addMessage(data_array['MessageOption'], { summary: '[@SummaryMessageType]', detail: '[@MessageInsertIncorrect]' });
+
 
                 }
             });
