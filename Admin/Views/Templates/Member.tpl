@@ -160,40 +160,7 @@
                         <div class="ui form">
                             <h4 class="ui dividing header">[@LabelHeaderFormEditMember]</h4>
                             <div class="ui centered grid" style="height: 500px;">
-                                <div class="BoxEdition">
-                                    <br>
-                                    <div class="ui card teal">
-                                        <div class="image">
-                                            <img id="UsersAvatar">
-                                        </div>
-                                        <div class="content">
-                                            <a class="ui teal huge ribbon label">
-                                                <span class="header" id="Title">title</span>
-                                                <span class="header" id="Name"></span>
-                                                <span class="header" id="LastName"></span>
-                                            </a>
-                                            <span>&nbsp;</span>
-                                            <span class="header" id="CodeMember">[@LabelMemberCode]</span>
-                                          <div class="description">
-                                              <span id="Description"></span>
-                                              <span id="LocationCode"></span>
-                                          </div>
-                                        </div>
-                                        <div class="extra content CamelCase">
-                                          <span>
-                                            [@LabelEditMailMermber]
-                                            <span id="Mail"></span>
-                                            <br>
-                                            [@LabelEditStatusLocation]
-                                            <span id="Status"></span>
-                                            <br>
-                                            [@LabelEditModule]
-                                            <span id="Module"></span>
-                                          </span>
-                                        </div>
-                                    </div>
-                                </div>
-
+                                
                                 <div class="six wide column" id="EditPanel2">
                                     <h4 class="ui horizontal divider header">
                                         <i class="location arrow icon"></i>
