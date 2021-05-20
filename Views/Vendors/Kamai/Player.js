@@ -44,9 +44,9 @@
 
         //ret = video.open(url, null, {pltbuf: 3600});
 
-        Video.open(Source, null, {sync:0,seek_to_start:1});
-
-        Debug('----> Video.play( Source, null, {sync:0, seek_to_start:1} )');
+        Video.open(Source);
+//, null, {sync:0,seek_to_start:1}
+        Debug('----> Video.play( Source )');
 
         Video.play(1);
 
