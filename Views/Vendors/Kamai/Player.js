@@ -23,6 +23,11 @@
     // Variables kamai
     var Video   = new ENTONE.video(1,0);
 
+    gSTB.SetTopWin(0);
+    player.aspectConversion = 0;
+    player.videoWindowMode = 0;
+
+
 /* *****************************************************************************
  * Reproductor de canal
  * ****************************************************************************/
