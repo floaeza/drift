@@ -175,7 +175,7 @@
                                                    <label>Cuenta</label>
                                                </div>
                                                <div class="eleven wide field">
-                                                   <div class="ui disabled input"><input type="text" name="EditCodeLocation"/></div>
+                                                   <div class="ui input"><input type="text" name="EditCodeLocation"/></div>
                                                </div>
                                            </div>
 
@@ -608,6 +608,7 @@
                 data: Editdatas,
                 success: function (response) {
                     var data_array = $.parseJSON(response);
+                    console.log(data_array);
                     if(data_array['Response'] >= 0){
                         addMessage('[@MessageOption]', { summary: '[@SummaryMessageType]', detail: '[@MessageInsertCorrect]' });
                     }else{
