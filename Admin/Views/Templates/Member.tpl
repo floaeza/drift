@@ -640,6 +640,8 @@
                 $("select[name='EditProgrammingId']").dropdown("refresh");
                 $("select[name='EditProgrammingId']").dropdown("set selected", selection[0].id_paquete);
 
+                $("input[name='EditDescriptionLocation']").val(selection[0].descripcion_locacion);
+
                 //Locación
                 $("input[name='IdLocation']").val(selection[0].id_locacion);
                 $("input[name='EditCodeLocation']").val(selection[0].codigo_locacion);
@@ -649,7 +651,6 @@
 
                 $("input[name='EditKeyLocation']").val(Base64.decode(selection[0].clave_locacion));
                 $("input[name='EditDirectionLocation']").val(selection[0].direccion_locacion);
-                $("input[name='EditDescriptionLocation']").val(selection[0].descripcion_locacion);
 
                 $("select[name='EditIdModuleLocation']").dropdown("refresh");
                 $("select[name='EditIdModuleLocation']").dropdown("set selected", selection[0].id_modulo);
