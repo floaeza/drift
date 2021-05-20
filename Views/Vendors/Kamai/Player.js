@@ -43,7 +43,11 @@
         Video.open(Source + CheckPort);
 
         //ret = video.open(url, null, {pltbuf: 3600});
-        
+
+        Video.open(Source, ENTONE.video.SERVER_TYPE_GENERIC, {sync:1});
+
+        Debug('----> Video.play(1, ENTONE.video.SERVER_TYPE_GENERIC, {sync:1})');
+
         Video.play(1);
 
         Video.setVideoCallback(HandleVideo);
@@ -75,9 +79,8 @@
         StopVideo();
 
         // Reproduce el video
-        Video.open(Source, ENTONE.video.SERVER_TYPE_GENERIC, {sync:1});
+        Video.open(Source);
 
-        Debug('----> Video.play(1, ENTONE.video.SERVER_TYPE_GENERIC, {sync:1})');
         Video.play(1);
 
         // Maximiza el video en caso de que no este en pantalla completa
