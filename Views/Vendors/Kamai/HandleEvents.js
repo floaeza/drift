@@ -27,21 +27,6 @@
 // {"status":28675}
 // {"status":28677}
 
-window.stbEvent = {
-    onEvent: function ( event ) {
-
-        Debug(event)
-        switch ( Number(event) ) {
-            case 2:
-                Debug('Information on audio and video tracks of the media content is received.');
-                break;
-            case 4:
-                Debug('Video playback has begun.');
-                break;
-        }
-    }
-};
-
 EventHdmi = 1;
 
 function HandleVideo(event_type){

@@ -23,11 +23,6 @@
     // Variables kamai
     var Video   = new ENTONE.video(1,0);
 
-    gSTB.SetTopWin(0);
-    player.aspectConversion = 0;
-    player.videoWindowMode = 0;
-
-
 /* *****************************************************************************
  * Reproductor de canal
  * ****************************************************************************/
@@ -109,8 +104,8 @@
 
         // Reproduce el video
         Video.open(Source);
-        
-        Video.play(1);
+        Debug('----> Video.play(1, ENTONE.video.SERVER_TYPE_GENERIC, {sync:1})');
+        Video.play(1, ENTONE.video.SERVER_TYPE_GENERIC, {sync:1});
 
         Video.setVideoCallback(HandleVideo);
 
