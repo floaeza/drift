@@ -172,7 +172,7 @@
 
                                             <div class="fields">
                                                <div class=" six wide field">
-                                                   <label>[@LabelEditCodeLocation]</label>
+                                                   <label>Cuenta</label>
                                                </div>
                                                <div class="field">
                                                    <div class="ui disabled input"><input type="text" name="EditCodeLocation"/></div>
@@ -192,8 +192,7 @@
                                                 <div class=" six wide field">
                                                     <label>Paquete de canales</label>
                                                 </div>
-
-                                                <div class="field">
+                                                <div class="six wide field">
                                                     <select class="ui search dropdown" name="EditProgrammingMember">
                                                         <option value="">[@LabelPackageOptionList]</option>
                                                         [@PackageMemberOptionList]
