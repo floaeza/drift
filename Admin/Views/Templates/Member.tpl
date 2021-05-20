@@ -174,7 +174,7 @@
                                                <div class=" nine wide field">
                                                    <label>Cuenta</label>
                                                </div>
-                                               <div class="nine wide field">
+                                               <div class="eleven wide field">
                                                    <div class="ui disabled input"><input type="text" name="EditCodeLocation"/></div>
                                                </div>
                                            </div>
@@ -183,7 +183,7 @@
                                                <div class=" nine wide field">
                                                    <label>Descripción</label>
                                                </div>
-                                               <div class="nine wide field">
+                                               <div class="eleven wide field">
                                                    <div class="ui input"><input type="text" name="EditDescriptionLocation"/></div>
                                                </div>
                                            </div>
@@ -193,29 +193,12 @@
                                                     <label>Paquete de canales</label>
                                                 </div>
                                                 <div class="nine wide field">
-                                                    <select class="ui search dropdown" name="EditProgrammingMember">
+                                                    <select class="ui search dropdown" name="EditProgrammingId">
                                                         <option value="">[@LabelPackageOptionList]</option>
                                                         [@PackageMemberOptionList]
                                                     </select>
                                                 </div>
                                             </div>
-                                            <!--div class="fields">
-                                                <div class="six wide field">
-                                                    <label>Servicios:</label>
-                                                </div>
-                                                <div class="ten wide field">
-                                                    <div class="ui toggle checkbox" style="right: 53%">
-                                                        <input type="checkbox" name="service1">
-                                                        <label><b>TV</b></label>
-                                                    </div>
-                                                    <br>
-                                                    <br>
-                                                    <div class="ui toggle checkbox" style="right: 31%">
-                                                        <input type="checkbox" name="service2">
-                                                        <label><b>Mensajes</b></label>
-                                                    </div>
-                                                </div>
-                                            </div-->
                                             </div>
                                         </form>
                                 </div>
@@ -617,89 +600,23 @@
 
     /* TAB 3: EDITAR REGISTRO SELECCIONADO */
     $('#EditSaveMemberLocation').click(function (event) {
-        var Editdata = $('#EditNewForm1').serializeArray();
         var Editdatas = $('#EditNewForm2').serializeArray();
-        if(Editdata[0]['value']!=="" && Editdata[4]['value']!=="" && Editdata[5]['value']!=="" && Editdatas[0]['value']!=="" && Editdatas[1]['value']!=="" && Editdatas[2]['value']!=="" && Editdatas[5]['value']!=="" && advanced === 0){
+
             $.ajax({
                 type: "POST",
-                url: "../Querys/Member.php?Option=EditMember",
-                data: Editdata,
+                url: "../Querys/Member.php?Option=EditLocation",
+                data: Editdatas,
                 success: function (response) {
                     var data_array = $.parseJSON(response);
                     if(data_array['Response'] >= 0){
-                        if(Editdatas[0]['value']!=="" && Editdatas[1]['value']!=="" && Editdatas[2]['value']!=="" && Editdatas[5]['value']!==""){
-                            $.ajax({
-                                type: "POST",
-                                url: "../Querys/Member.php?Option=EditLocation",
-                                data: { IdLocation: Editdatas[0]['value'], EditCodeLocation: Editdatas[1]['value'], EditStatusLocation: Editdatas[2]['value'], EditKeyLocation: Editdatas[3]['value'], EditDirectionLocation: Editdatas[4]['value'], EditDescriptionLocation: Editdatas[5]['value'], EditIdModuleLocation: Editdatas[6]['value'], EditMemberId: Editdata[1]['value'] },
-                                success: function (response) {
-                                    var data_array = $.parseJSON(response);
-                                    var MessageOption  = data_array['MessageOption'];
-                                    var MessageSummary = data_array['MessageSummary'];
-                                    var MessageDetail  = data_array['MessageDetail'];
-                                    addMessage(MessageOption, { summary: MessageSummary, detail: MessageDetail });
-
-                                }
-                            });
-                        } else {
-                            addMessage('[@OptionMessageType]', { summary: '[@SummaryMessageType]', detail: '[@MessageInputsValidate]' });
-                        }
+                        addMessage('[@MessageOption]', { summary: '[@SummaryMessageType]', detail: '[@MessageInsertCorrect]' });
                     }else{
-                        addMessage('[@OptionMessageType]', { summary: '[@SummaryMessageType]', detail: '[@MessageInputsValidate]' });
+                        addMessage('[@MessageOption]', { summary: '[@SummaryMessageType]', detail: '[@MessageInsertIncorrect]' });
                     }
 
                 }
             });
-        }else if(advanced === 1){
-            var Editdata = $('#EditNewForm1').serializeArray();
-            var Editdatas = $('#EditNewForm2').serializeArray();
-            //console.log(Editdata);
-            //console.log(Editdatas);
-            $.ajax({
-                type: "POST",
-                url: "../Querys/Member.php?Option=EditMemberOfLocation",
-                data: { IdLocation: Editdatas[0]['value'], EditMemberId: 'DEFAULT' }, /* HARDCORE DETECTED !!! */
-                success: function (response) {
-                    var data_array = $.parseJSON(response);
-                    if(Editdata[0]['value']!=="" && Editdata[4]['value']!=="" && Editdata[5]['value']!=="" && Editdatas[0]['value']!=="" && Editdatas[1]['value']!=="" && Editdatas[2]['value']!=="" && Editdatas[5]['value']!=="" && data_array['Response']===1){
-                        $.ajax({
-                            type: "POST",
-                            url: "../Querys/Member.php?Option=EditMember",
-                            data: Editdata,
-                            success: function (response) {
-                                var data_array = $.parseJSON(response);
-                                if(data_array['Response'] >= 0){
-                                    if(Editdatas[0]['value']!=="" && Editdatas[1]['value']!=="" && Editdatas[2]['value']!=="" && Editdatas[5]['value']!==""){
-                                        $.ajax({
-                                            type: "POST",
-                                            url: "../Querys/Member.php?Option=EditLocation",
-                                            data: { IdLocation: Editdatas[0]['value'], EditCodeLocation: Editdatas[1]['value'], EditStatusLocation: Editdatas[2]['value'], EditKeyLocation: Editdatas[3]['value'], EditDirectionLocation: Editdatas[4]['value'], EditDescriptionLocation: Editdatas[5]['value'], EditIdModuleLocation: Editdatas[6]['value'], EditMemberId: Editdata[1]['value'] },
-                                            success: function (response) {
-                                                var data_array = $.parseJSON(response);
-                                                var MessageOption  = data_array['MessageOption'];
-                                                var MessageSummary = data_array['MessageSummary'];
-                                                var MessageDetail  = data_array['MessageDetail'];
-                                                addMessage(MessageOption, { summary: MessageSummary, detail: MessageDetail });
-                                                advanced = 0;
-                                            }
-                                        });
-                                    } else {
-                                        addMessage('[@OptionMessageType]', { summary: '[@SummaryMessageType]', detail: '[@MessageInputsValidate]' });
-                                    }
-                                }else{
-                                    addMessage('[@OptionMessageType]', { summary: '[@SummaryMessageType]', detail: '[@MessageInputsValidate]' });
-                                }
 
-                            }
-                        });
-                    }else{
-                        addMessage('[@OptionMessageType]', { summary: '[@SummaryMessageType]', detail: '[@MessageInputsValidate]' });
-                    }
-                }
-            });
-        }else{
-            addMessage('[@OptionMessageType]', { summary: '[@SummaryMessageType]', detail: '[@MessageInputsValidate]' });
-        }
         $('.Tabs').form('clear');
         $('#LocationList').puidatatable('reload');
         $('.Tabs').puitabview('disable', 2);

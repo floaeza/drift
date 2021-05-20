@@ -188,7 +188,7 @@ class Locations extends Database{
     function EditLocation($Location, $IdLocation) {
         try {
             $this->connect();
-            $this->update("cat_locacion",$Location,"id_locacion=".$IdLocation);
+            $this->update("locaciones",$Location,"id_locacion=".$IdLocation);
             $this->Location = $this->getResult();
             //echo $this->getSql();
             $this->disconnect();

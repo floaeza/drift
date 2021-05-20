@@ -210,16 +210,11 @@ switch ($Option){
         break;
 
     case "EditLocation":
-        if(isset($_POST['EditCodeLocation']) && isset($_POST['EditStatusLocation']) && isset($_POST['EditKeyLocation']) && isset($_POST['EditDirectionLocation']) && isset($_POST['EditDescriptionLocation']) && isset($_POST['EditIdModuleLocation'])){
-            //$MemberId = $DAOMembers->getLastMemberId();
+
             $Location = array
             ('codigo_locacion'       =>$_POST['EditCodeLocation'],
-                'id_estatus_locacion'   =>$_POST['EditStatusLocation'],
-                'clave_locacion'        => base64_encode($_POST['EditKeyLocation']),
-                'direccion_locacion'    =>$_POST['EditDirectionLocation'],
                 'descripcion_locacion'  =>$_POST['EditDescriptionLocation'],
-                'id_modulo'             =>$_POST['EditIdModuleLocation'],
-                'codigo_miembro'        =>$_POST['EditMemberId']);
+                'id_paquete'             =>$_POST['EditProgrammingId']);
 
             $NewLocation = $DAOLocations->EditLocation($Location, $_POST['IdLocation']);
 
@@ -236,42 +231,10 @@ switch ($Option){
                     'MessageDetail'   => $Language['MessageInsertIncorrect']);
 
             }
-        }else{
-            $Response = array('MessageOption'   => $Language['OptionMessageType'][2],
-                'MessageSummary'  => $Language['SummaryMessageType'][2],
-                'MessageDetail'   => $Language['MessageInsertIncorrect']);
 
-        }
         echo json_encode($Response);
         break;
 
-    case "EditMemberOfLocation":
-        if(isset($_POST['IdLocation']) && isset($_POST['EditMemberId'])){
-            //$MemberId = $DAOMembers->getLastMemberId();
-            $Location = array
-            ('codigo_miembro'        =>$_POST['EditMemberId']);
-
-            $NewLocation = $DAOLocations->EditLocation($Location, $_POST['IdLocation']);
-
-            if($NewLocation[0] >= 0){
-
-                $Response = array('Response'   => 1);
-
-
-            }else {
-                $Response = array('MessageOption'   => $Language['OptionMessageType'][2],
-                    'MessageSummary'  => $Language['SummaryMessageType'][2],
-                    'MessageDetail'   => $Language['MessageInsertIncorrect']);
-
-            }
-        }else{
-            $Response = array('MessageOption'   => $Language['OptionMessageType'][2],
-                'MessageSummary'  => $Language['SummaryMessageType'][2],
-                'MessageDetail'   => $Language['MessageInsertIncorrect']);
-
-        }
-        echo json_encode($Response);
-        break;
 
     case "UpdateLocation":
         $LocationId = $_POST['EditLocationId'];
