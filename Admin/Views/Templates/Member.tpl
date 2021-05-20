@@ -411,8 +411,8 @@
         $("input[name='EditNameMemberLocation']").val(form[3]['value']);
         $("input[name='EditLastNameLocation']").val(form[4]['value']);
         $("input[name='EditMailMemberLocation']").val(form[5]['value']);
-        $("select[name='EditProgrammingMember']").dropdown("refresh");
-        $("select[name='EditProgrammingMember']").dropdown("set selected", form[6]['value']);
+        $("select[name='EditProgrammingId']").dropdown("refresh");
+        $("select[name='EditProgrammingId']").dropdown("set selected", form[6]['value']);
         $('#EditCodeMemberLocation').addClass('disabled');
         $(this).addClass('disabled');
         $('#EditCodeMemberAdvanced').removeClass('disabled');
@@ -610,9 +610,9 @@
                     var data_array = $.parseJSON(response);
                     console.log(data_array);
                     if(data_array['Response'] >= 0){
-                        addMessage('[@MessageOption]', { summary: '[@SummaryMessageType]', detail: '[@MessageInsertCorrect]' });
+                        addMessage('[@OptionMessageType]', { summary: '[@SummaryMessageType]', detail: '[@MessageInsertCorrect]' });
                     }else{
-                        addMessage('[@MessageOption]', { summary: '[@SummaryMessageType]', detail: '[@MessageInsertIncorrect]' });
+                        addMessage('[@OptionMessageType]', { summary: '[@SummaryMessageType]', detail: '[@MessageInsertIncorrect]' });
                     }
 
                 }
@@ -637,8 +637,8 @@
                 $("input[name='EditLastNameLocation']").val(selection[0].apellido_miembro);
                 $("input[name='EditMailMemberLocation']").val(selection[0].correo_miembro);
 
-                $("select[name='EditProgrammingMember']").dropdown("refresh");
-                $("select[name='EditProgrammingMember']").dropdown("set selected", selection[0].id_paquete);
+                $("select[name='EditProgrammingId']").dropdown("refresh");
+                $("select[name='EditProgrammingId']").dropdown("set selected", selection[0].id_paquete);
 
                 //Locación
                 $("input[name='IdLocation']").val(selection[0].id_locacion);
