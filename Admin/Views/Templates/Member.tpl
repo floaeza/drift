@@ -192,10 +192,13 @@
                                                 <div class=" six wide field">
                                                     <label>Paquete de canales</label>
                                                 </div>
-                                                <select class="ui search dropdown" name="EditProgrammingMember">
-                                                    <option value="">[@LabelPackageOptionList]</option>
-                                                    [@PackageMemberOptionList]
-                                                </select>
+
+                                                <div class="field">
+                                                    <select class="ui search dropdown" name="EditProgrammingMember">
+                                                        <option value="">[@LabelPackageOptionList]</option>
+                                                        [@PackageMemberOptionList]
+                                                    </select>
+                                                </div>
                                             </div>
                                             <!--div class="fields">
                                                 <div class="six wide field">
