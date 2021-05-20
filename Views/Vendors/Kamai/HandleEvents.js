@@ -287,7 +287,9 @@ Debug('---------->>>');
          Debug('>>> REC duration: '+assi.duration);
          Debug('>>> REC size: '+assi.size);
 
-    Debug(JSON.stringify(assi));
+    var HDST = ENTONE.stb.getHdmiSettings();
+
+    Debug(JSON.stringify(HDST));
 
     GetProgramsToSchedule();
 
