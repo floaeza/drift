@@ -44,7 +44,7 @@
 
         //ret = video.open(url, null, {pltbuf: 3600});
 
-        Video.open(Source, ENTONE.video.SERVER_TYPE_GENERIC, {sync:1});
+        Video.open(Source, null, {'sync':1, 'seek_to_start':1});
 
         Debug('----> Video.play(1, ENTONE.video.SERVER_TYPE_GENERIC, {sync:1})');
 
