@@ -97,7 +97,6 @@
 
                                     <h4 class="ui horizontal divider header">
                                         <i class="location arrow icon"></i>
-                                        
                                     </h4>
                                         <form id="NewForm2">
                                             <div class="fields">
@@ -194,88 +193,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="six wide column" id="EditPanel1">
-                                    <div title="[@LabelHeaderFormLocation]">
-
-                                        <div class="ui form">
-                                            <h4 class="ui horizontal divider header">
-                                                <i class="male icon"></i>
-                                                [@LabelMember]
-                                            </h4>
-                                            <form id="EditNewForm1">
-                                            <input type="text" hidden name="IdMember"/>
-
-                                                <div class="fields">
-                                                    <div class="six wide field">
-                                                        <label>[@LabelLocationCode]</label>
-                                                    </div>
-                                                    <div class="field">
-                                                        <div class="ui disabled input" id="EditCodeMemberLocation">
-                                                           <input type="text" name="EditCodeMemberLocation"/>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="fields">
-                                                    <div class=" six wide field">
-                                                        <label>[@LabelEditTitleMember]</label>
-                                                    </div>
-                                                    <div class="field">
-                                                        <div class="ui input">
-                                                            <input type="text" name="EditTitleMemberLocation"/>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="fields">
-                                                    <div class=" six wide field">
-                                                        <label>[@LabelEditNameMember]</label>
-                                                    </div>
-                                                    <div class="field">
-                                                        <div class="ui input"><input type="text"  name="EditNameMemberLocation"/></div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="fields">
-                                                    <div class=" six wide field">
-                                                        <label>[@LabelLastName]</label>
-                                                    </div>
-                                                    <div class="field">
-                                                        <div class="ui input"><input type="text" name="EditLastNameLocation"/></div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="fields">
-                                                    <div class=" six wide field">
-                                                        <label>[@LabelEditMailMermber]</label>
-                                                    </div>
-                                                    <div class="field">
-                                                        <div class="ui input"><input type="text" name="EditMailMemberLocation" id="EditMailMemberLocation" value="info@vdm.com"/></div>
-                                                    </div>
-                                                </div>
-                                                <div class="fields">
-                                                    <div class="six wide field">
-                                                        <label>[@LabelPackageMember]</label>
-                                                    </div>
-                                                    <div class="field">
-                                                        <select class="ui search dropdown" name="EditProgrammingMember">
-                                                            <option value="">[@LabelPackageOptionList]</option>
-                                                            [@PackageMemberOptionList]
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="fields">
-                                                    <div class="thirteen wide field">
-                                                        <button type="button" class="SubmitAdvanced mini orange ui button" id="EditCodeMemberAdvanced" title="[@LabelButtonAdvancedDescribe]">[@LabelButtonAdvanced]</button>
-                                                        <button type="button" class="SubmitCancelAdvanced mini grey ui disabled button" id="EditCodeMemberCancelAdvanced" title="[@LabelButtonAdvancedCancelDescribe]">[@LabelButtonCancel]</button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-
-
 
                                 <div class="six wide column" id="EditPanel2">
                                     <h4 class="ui horizontal divider header">
@@ -297,51 +214,19 @@
 
                                            <div class="fields">
                                                <div class=" six wide field">
-                                                   <label>[@LabelEditStatusLocation]</label>
-                                               </div>
-                                               <div class="field">
-                                                   <select class="ui search dropdown" name="EditStatusLocation">
-                                                       <option value="">[@LabelStatusOptionList]</option>
-                                                       [@OptionLocationStatus]
-                                                   </select>
-                                               </div>
-                                           </div>
-                                           <div class="fields">
-                                               <div class=" six wide field">
-                                                   <label>[@LabelKeyLocation]</label>
-                                               </div>
-                                               <div class="field">
-                                                   <div class="ui input"><input type="password" name="EditKeyLocation"/></div>
-                                               </div>
-                                           </div>
-                                            <div class="fields">
-                                               <div class=" six wide field">
-                                                   <label>[@LabelDirectionLocation]</label>
-                                               </div>
-                                               <div class="field">
-                                                   <div class="ui input"><input type="text" name="EditDirectionLocation"/></div>
-                                               </div>
-                                           </div>
-
-                                           <div class="fields">
-                                               <div class=" six wide field">
-                                                   <label>[@LabelDescriptionLocation]</label>
+                                                   <label>Descripción</label>
                                                </div>
                                                <div class="field">
                                                    <div class="ui input"><input type="text" name="EditDescriptionLocation"/></div>
                                                </div>
                                            </div>
-                                           <div class="fields">
-                                               <div class=" six wide field">
-                                                   <label>[@LabelEditModule]</label>
-                                               </div>
-                                               <div class="field">
-                                                   <select class="ui search dropdown" name="EditIdModuleLocation">
-                                                       <option value="">[@LabelModuleOptionList]</option>
-                                                       [@OptionModuleLocation]
-                                                   </select>
-                                               </div>
-                                           </div>
+
+                                            <div class="field">
+                                                <select class="ui search dropdown" name="EditProgrammingMember">
+                                                    <option value="">[@LabelPackageOptionList]</option>
+                                                    [@PackageMemberOptionList]
+                                                </select>
+                                            </div>
                                             <!--div class="fields">
                                                 <div class="six wide field">
                                                     <label>Servicios:</label>
