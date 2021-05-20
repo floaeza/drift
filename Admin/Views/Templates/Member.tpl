@@ -39,7 +39,7 @@
                             </h5>
                         </a>
                     </li>
-                    <li style="display: none;">
+                    <li>
                         <a class="ui card" href="#Tab3" id="EditLocation">
                             <h5 class="ui header">
                                 <i class="big icons">
