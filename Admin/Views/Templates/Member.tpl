@@ -158,7 +158,7 @@
 
                     <div id="Tab3">
                         <div class="ui form">
-                            <h4 class="ui dividing header">[@LabelHeaderFormEditMember]</h4>
+                            <h4 class="ui dividing header"></h4>
                             <div class="ui centered grid" style="height: 500px;">
 
                                 <div class="six wide column" id="EditPanel2">
@@ -190,11 +190,12 @@
 
                                             <div class="field">
                                                 <div class=" six wide field">
+                                                    <label>Paquete de canales</label>
+                                                </div>
                                                 <select class="ui search dropdown" name="EditProgrammingMember">
                                                     <option value="">[@LabelPackageOptionList]</option>
                                                     [@PackageMemberOptionList]
                                                 </select>
-                                                </div>
                                             </div>
                                             <!--div class="fields">
                                                 <div class="six wide field">
