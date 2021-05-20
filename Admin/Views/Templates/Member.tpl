@@ -608,9 +608,7 @@
                 data: Editdatas,
                 success: function (response) {
                     var data_array = $.parseJSON(response);
-                        addMessage(data_array['MessageOption'], { summary: '[@SummaryMessageType]', detail: '[@MessageInsertIncorrect]' });
-
-
+                        addMessage(data_array['MessageOption'], { summary: data_array['MessageSummary'], detail: data_array['MessageDetail'] });
                 }
             });
 
