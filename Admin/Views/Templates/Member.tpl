@@ -5,7 +5,7 @@
                 <i class="fa-user-circle grey icon"></i>
                 <div class="content">
                   [@LabelTitleSubmenu2]
-                  <div class="sub header">[@LabelSubTitleSubmenuMember]</div>
+                  <div class="sub header"></div>
                 </div>
             </h2>
 
@@ -20,7 +20,7 @@
                                 </i>
                                 <div class="content">
                                 [@LabelTabLocationList]
-                                <div class="sub header">[@LabelSubListLocations]</div>
+                                <div class="sub header"></div>
                                 </div>
                             </h5>
                         </a>
@@ -34,7 +34,7 @@
                                 </i>
                                 <div class="content">
                                 [@LabelTabChargeLocations]
-                                <div class="sub header">[@LabelSubChargeLocations]</div>
+                                <div class="sub header"></div>
                                 </div>
                             </h5>
                         </a>
@@ -48,7 +48,7 @@
                                 </i>
                                 <div class="content">
                                 [@LabelTabEditLocation]
-                                <div class="sub header">[@LabelSubEditLocation]</div>
+                                <div class="sub header"></div>
                                 </div>
                             </h5>
                         </a>
@@ -160,11 +160,11 @@
                         <div class="ui form">
                             <h4 class="ui dividing header">[@LabelHeaderFormEditMember]</h4>
                             <div class="ui centered grid" style="height: 500px;">
-                                
+
                                 <div class="six wide column" id="EditPanel2">
                                     <h4 class="ui horizontal divider header">
                                         <i class="location arrow icon"></i>
-                                        [@LabelLocation]
+                                        RESIDENCIA
                                     </h4>
                                         <form id="EditNewForm2">
 
@@ -189,10 +189,12 @@
                                            </div>
 
                                             <div class="field">
+                                                <div class=" six wide field">
                                                 <select class="ui search dropdown" name="EditProgrammingMember">
                                                     <option value="">[@LabelPackageOptionList]</option>
                                                     [@PackageMemberOptionList]
                                                 </select>
+                                                </div>
                                             </div>
                                             <!--div class="fields">
                                                 <div class="six wide field">
