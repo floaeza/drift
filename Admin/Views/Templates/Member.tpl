@@ -610,9 +610,9 @@
                     var data_array = $.parseJSON(response);
                     console.log(data_array);
                     if(data_array['Response'] >= 0){
-                        addMessage('[@OptionMessageType]', { summary: '[@SummaryMessageType]', detail: '[@MessageInsertCorrect]' });
+                        addMessage('info', { summary: '[@SummaryMessageType]', detail: '[@MessageInsertCorrect]' });
                     }else{
-                        addMessage('[@OptionMessageType]', { summary: '[@SummaryMessageType]', detail: '[@MessageInsertIncorrect]' });
+                        addMessage('warn', { summary: '[@SummaryMessageType]', detail: '[@MessageInsertIncorrect]' });
                     }
 
                 }
@@ -625,6 +625,7 @@
         event.preventDefault();
         $('.Tabs').puitabview('select', 0);
     });
+
     var AvatarsURL = "[@AvatarsURL]";
      $('#EditLocation').click(function (event) {
         var selection = $('#LocationList').puidatatable('getSelection');
