@@ -218,7 +218,7 @@
                             <div class="ButtonPanel" id="DivPadre">
                                 <h4 class="ui header">
                                     <div class="content">
-                                      <div class="sub header">[@LabelInstructionsPrincipalPanel]</div>
+                                      <div class="sub header">Dispositivos asociados a la cuenta</div>
                                     </div>
                                   </h4>
 
