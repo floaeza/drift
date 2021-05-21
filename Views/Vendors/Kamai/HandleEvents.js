@@ -289,7 +289,10 @@ Debug('---------->>>');
 
     var HDST = ENTONE.stb.getHdmiSettings();
 
-    Debug(JSON.stringify(HDST));
+
+    var Rs = ENTONE.stb.getResolution();
+
+    Debug(JSON.stringify(Rs));
 
     GetProgramsToSchedule();
 
