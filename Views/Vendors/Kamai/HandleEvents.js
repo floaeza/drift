@@ -290,11 +290,11 @@ Debug('---------->>>');
     var HDST = ENTONE.stb.getHdmiSettings();
 
 
-    var Rs = ENTONE.stb.getResolution();
+    var Rs = getOsdResolution() ;
 
-    var seres = ENTONE.stb.setResolution(ENTONE.stb.RES_1080I);
+    //var seres = ENTONE.stb.setResolution(ENTONE.stb.RES_1080I);
 
-    Debug(JSON.stringify(seres));
+    Debug(JSON.stringify(Rs));
 
 
 
