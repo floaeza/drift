@@ -33,7 +33,7 @@ function HandleVideo(event_type){
 
     Debug('------------------------------------->>> EventType: '+event_type);
 
-
+    EventString = event_type;
     if(event_type === 'EN_VIDEOEVENT_FIRST_PTS'){
         if(Executing === false){
             UpdateQuickInfoDevice();
