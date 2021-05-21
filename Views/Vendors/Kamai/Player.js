@@ -38,20 +38,16 @@
         Source = Source.replace('igmp','udp');
         Debug(Source + ' ' + CheckPort);
 
-        videoControl.open("udp://225.1.1.30:2000?SetupAsPlay=1");
+        StopVideo();
 
-        videoControl.play(1);
-
-       // StopVideo();
-
-        //Video.open(Source + CheckPort);
+        Video.open(Source + CheckPort);
 
         //ret = video.open(url, null, {pltbuf: 3600});
         //, null, {sync:0,seek_to_start:1}
 
-        Debug('----> url:Source + CheckPort, playnow:true');
+        Debug('----> url:Source + CheckPort');
 
-       // Video.play(1);
+        Video.play(1);
 
         // Maximiza el video en caso de que no este en pantalla completa
         MaximizeTV();
