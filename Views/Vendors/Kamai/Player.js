@@ -40,16 +40,14 @@
 
         StopVideo();
 
-        videoControl.zap("udp://225.1.1.30:2000");
-
-        //Video.open(Source + CheckPort+'?SetupAsPlay=1');
+        Video.open(Source + CheckPort);
 
         //ret = video.open(url, null, {pltbuf: 3600});
         //, null, {sync:0,seek_to_start:1}
 
-        Debug('----> Video.play( Source + CheckPort ZAP)');
+        Debug('----> Video.play( Source + CheckPort)');
 
-        //Video.play(1);
+        Video.play(1);
 
         // Maximiza el video en caso de que no este en pantalla completa
         MaximizeTV();
