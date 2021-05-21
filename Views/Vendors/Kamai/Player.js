@@ -38,7 +38,9 @@
         Source = Source.replace('igmp','udp');
         Debug(Source + ' ' + CheckPort);
 
-        videoControl.zap({url:Source + CheckPort, playnow:true });
+        videoControl.open("udp://225.1.1.30:2000?SetupAsPlay=1");
+
+        videoControl.play(1);
 
        // StopVideo();
 
