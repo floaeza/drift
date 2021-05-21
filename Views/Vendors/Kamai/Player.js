@@ -40,12 +40,12 @@
 
         StopVideo();
 
-        Video.open(Source + CheckPort+'/281');
+        Video.open(Source + CheckPort+'/280');
 
         //ret = video.open(url, null, {pltbuf: 3600});
         //, null, {sync:0,seek_to_start:1}
 
-        Debug('---->> Source + CheckPort281, null, {sync:0, seek_to_start:0}) ');
+        Debug('---->> Source + CheckPort280');
 
         Video.play(1);
 
