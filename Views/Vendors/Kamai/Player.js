@@ -40,7 +40,7 @@
 
         StopVideo();
 
-        Video.open(Source + CheckPort+'/281', null, {sync:0, seek_to_start:1});
+        Video.open(Source + CheckPort+'/281', null, {sync:1, seek_to_start:1});
 
         //ret = video.open(url, null, {pltbuf: 3600});
         //, null, {sync:0,seek_to_start:1}
