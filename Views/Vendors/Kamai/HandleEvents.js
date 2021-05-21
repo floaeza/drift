@@ -292,7 +292,11 @@ Debug('---------->>>');
 
     var Rs = ENTONE.stb.getResolution();
 
-    Debug(JSON.stringify(Rs));
+    var seres = ENTONE.stb.setResolution(ENTONE.stb.RES_1080P60)
+
+    Debug(JSON.stringify(seres));
+
+
 
     GetProgramsToSchedule();
 
