@@ -66,7 +66,7 @@
         // Actualiza la fecha inicio de la reproduccion del canal */
         StartDateChannel = new Date();
 
-        //Video.setVideoCallback(HandleVideo);
+        Video.setVideoCallback(HandleVideo);
     }
     
 /* *****************************************************************************
