@@ -290,7 +290,7 @@ Debug('---------->>>');
     var HDST = ENTONE.stb.getHdmiSettings();
 
 
-    var Rs = getOsdResolution() ;
+    var Rs = Video.getOsdResolution() ;
 
     //var seres = ENTONE.stb.setResolution(ENTONE.stb.RES_1080I);
 
