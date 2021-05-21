@@ -40,9 +40,9 @@
 
         videoControl.zap({url:Source + CheckPort, playnow:true });
 
-        StopVideo();
+       // StopVideo();
 
-        V//ideo.open(Source + CheckPort);
+        //Video.open(Source + CheckPort);
 
         //ret = video.open(url, null, {pltbuf: 3600});
         //, null, {sync:0,seek_to_start:1}
