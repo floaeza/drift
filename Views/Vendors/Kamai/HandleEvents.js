@@ -292,7 +292,7 @@ Debug('---------->>>');
 
     var Rs = ENTONE.stb.getResolution();
 
-    var seres = ENTONE.stb.setResolution(ENTONE.stb.RES_1080P60)
+    var seres = ENTONE.stb.setResolution(ENTONE.stb.RES_1080I);
 
     Debug(JSON.stringify(seres));
 
