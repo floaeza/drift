@@ -11,7 +11,10 @@ and open the template in the editor.
 /***************************** [CONTENEDORES] *****************************/
 
 #MainLogo {
-    max-height: 30%;
+    max-height: 20%;
+    left: 5%;
+    position: fixed;
+    top: 5%;
 }
 
 div#MenuContainer {
@@ -77,6 +80,7 @@ div#WeatherSummary {
     width: 40%;
     text-align: left;
     white-space: nowrap;
+    display: none;
 }
 
 div#TemperatureGroup {

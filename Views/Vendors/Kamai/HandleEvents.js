@@ -243,7 +243,7 @@ function UpdateDiskInfo(){
             AvailableSize : StorageInfo.pvrFreeSpace / 1024
         },
         success: function (response){
-            //Debug(response);
+            Debug(response);
         }
     });
 }
