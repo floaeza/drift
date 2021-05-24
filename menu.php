@@ -87,13 +87,15 @@
             // Aigna variable general del modulo
             $Header->set('CurrentModule', $CurrentModule);
             $Header->set('ModuleId', $ModuleId);
-            $Header->set('IndexLogo', $Libraries['LogosPath'].$ConfigData->getConfigByName('IndexLogo'));
+
 
         // Imprime en HTML todo lo asignado en la cabecera
         echo $Header->output();
 
         /** CONTENIDO **/
-        $MenuContent = new Templates($Libraries['MenuTemplates'].$ModuleInfo['opcion_template'].'.tpl'); 
+        $MenuContent = new Templates($Libraries['MenuTemplates'].$ModuleInfo['opcion_template'].'.tpl');
+
+        $MenuContent->set('IndexLogo', $Libraries['LogosPath'].$ConfigData->getConfigByName('IndexLogo'));
 
         // Imprime en HTML todo el contenido del template seleccionado
         echo $MenuContent->output();   

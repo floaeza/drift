@@ -2,8 +2,10 @@
 
 <div id='MenuContainer'>
 
+    <img src='[@IndexLogo]'>
+
     <div id='MenuWeather'>
-        <canvas id='WeatherIcon' width='60' height='60'></canvas>
+        <canvas id='WeatherIcon' width='50' height='50'></canvas>
         <div id='WeatherSummary'></div>
 
         <div id='TemperatureGroup'>
