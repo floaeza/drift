@@ -294,7 +294,8 @@ Debug('---------->>>');
 
     //var seres = ENTONE.stb.setResolution(ENTONE.stb.RES_1080I);
 
-    Debug(JSON.stringify(Rs));
+    var GRI = ENTONE.resource.getRecorderId();
+    Debug(JSON.stringify(GRI));
 
 
 
