@@ -151,6 +151,10 @@
             Model       = KamaiModels[ENTONE.stb.getHardwareModel()]; // En Integer (49 para Kamai 500x)
             Hdd         = 'N';
             Vendor      = 'Kamai';
+
+            if(Model === '7XM') {
+                Hdd         = 'Y';
+            }
         } else {
             InfomirDevice();
         }
