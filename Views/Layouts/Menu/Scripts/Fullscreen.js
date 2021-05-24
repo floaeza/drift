@@ -37,43 +37,41 @@
     
     function SetMenuInfo(){
         MenuContainer.style.backgroundImage = 'url("'+ Libraries['MenuPath'] + MenuList[MenuIndex].Image+'")';
-        MenuSelected.textContent            =  MenuList[MenuIndex].Name;
-        MenuDescription.textContent         = MenuList[MenuIndex].Description;
-        SetMenuBar();
-    }
-    
-    function SetMenuBar(){
+        //MenuSelected.textContent            =  MenuList[MenuIndex].Name;
+        //MenuDescription.textContent         = MenuList[MenuIndex].Description;
 
         var IndexM = MenuIndex - 2,
-            Index = 1,
-            Name = '';
-        
+            Index = 1;
+
         for(Index = 0; Index < 10; Index++){
-            console.log(IndexM);
+            //console.log(IndexM);
             Index++;
-            
+
             if(MenuIndex === 0){
                 if(IndexM < 0){
                     IndexM = MenuList.length - 2;
-                } 
+                }
             }
-            
+
             if(MenuIndex === 1){
                 if(IndexM < 0){
                     IndexM = MenuList.length - 1;
-                } 
+                }
             }
-            
+
             if(IndexM >= MenuList.length){
                 IndexM = 0;
             }
-            Name = MenuList[IndexM].Name;
-            MenuListNodes[Index].textContent = Name;
-            
+
+            MenuListNodes[Index].textContent = MenuList[IndexM].Name;
+
             IndexM++;
         }
+
+            IndexM = null;
+            Index = null;
     }
-    
+
     function MenuSelect(Direction){
 
        (Direction === 'RIGHT') ? MenuIndex++: MenuIndex--;
