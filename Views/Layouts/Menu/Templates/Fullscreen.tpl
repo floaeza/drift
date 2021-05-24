@@ -2,7 +2,7 @@
 
 <div id='MenuContainer'>
 
-    <img src='[@MainLogo]'>
+    <img id='MainLogo' src='[@MainLogo]'>
 
     <div id='MenuWeather'>
         <canvas id='WeatherIcon' width='50' height='50'></canvas>
