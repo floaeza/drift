@@ -95,7 +95,7 @@
         /** CONTENIDO **/
         $MenuContent = new Templates($Libraries['MenuTemplates'].$ModuleInfo['opcion_template'].'.tpl');
 
-        //$MenuContent->set('MainLogo', $Libraries['LogosPath'].$ConfigData->getConfigByName('EpgLogo'));
+        $MenuContent->set('MainLogo', $Libraries['LogosPath'].$ConfigData->getConfigByName('EpgLogo'));
 
         // Imprime en HTML todo el contenido del template seleccionado
         echo $MenuContent->output();   
