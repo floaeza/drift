@@ -412,10 +412,16 @@ function ConvertToHourEpoch(time24){
     }
     
     function SetIcon(){
-        var skycons = new Skycons({
-            'color': '#EEB462'
-        });
-          
+        if(CurrentModule === 'Menu'){
+            var skycons = new Skycons({
+                'color': '#fff'
+            });
+        } else {
+            var skycons = new Skycons({
+                'color': '#EEB462'
+            });
+        }
+
         skycons.add('WeatherIcon', ObjectWeather.Icon);
         $('#WeatherSummary').text(ObjectWeather.Summary);
         $('#WeatherFarenheit').html(String(Math.round(ObjectWeather.Temperature)));
