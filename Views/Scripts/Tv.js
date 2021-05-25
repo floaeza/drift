@@ -266,7 +266,7 @@
             async: false,
             url: 'Core/Controllers/Template.php',
             data: { 
-                Option : 'getMultimediaFolder',
+                Option : 'getDigitalChannel',
                 ModuleName : GetModule
             },
             success: function (response){
@@ -287,7 +287,7 @@
             if(DigitalContent.length > 0){
                 var FileType = DigitalContent[IndexDigital].split('.')[1];
 
-                if(FileType === 'mp4' || FileType === 'mov'){
+                if(FileType === 'mp4'){
                     clearTimeout(IntervalDigital);
 
                     ImageDigital.src = '';

@@ -47,6 +47,30 @@
 
         break;
 
+        case 'getDigitalChannel':
+            $list = array();
+            $ImagesList='';
+            $id = 0;
+            $filehandle = opendir('/var/www/html/Multimedia/'.$ModuleName.'/');
+            while ($file = readdir($filehandle)) {
+                if ($file != "." && $file != "..") {
+                    $list[$file] = $file;
+                }
+            }
+            closedir($filehandle); // Fin lectura archivos
+            natcasesort($list);
+
+            $Result = array();
+
+            foreach ($list as $fileName){
+                $Ext = explode('.', $fileName);
+
+                if($Ext[1] === 'm3u8'){
+                    array_push($Result, $fileName);
+                }
+            }
+        break;
+
         case 'getMultimediaFolderCH':
 
             $CurrentCH = !empty($_POST['CurrentCH']) ? $_POST['CurrentCH'] : '';
