@@ -34,9 +34,22 @@
      
     SetMenuList();
     GetWeather();
-    
-    function SetMenuInfo(){
-        MenuContainer.style.backgroundImage = 'url("'+ Libraries['MenuPath'] + MenuList[MenuIndex].Image+'")';
+
+
+    function GFG_Fun() {
+
+        var IndexM = 0;
+
+        for(IndexM = 0; IndexM < MenuList.length - 1; IndexM++) {
+            var img = document.createElement('img');
+                img.src = Libraries['MenuPath'] + MenuList[IndexM].Image;
+
+            document.getElementById('MenuBackgrounds').appendChild(img);
+        }
+    }
+
+function SetMenuInfo(){
+        //MenuContainer.style.backgroundImage = 'url("'+ Libraries['MenuPath'] + MenuList[MenuIndex].Image+'")';
         //MenuSelected.textContent            =  MenuList[MenuIndex].Name;
         //MenuDescription.textContent         = MenuList[MenuIndex].Description;
 

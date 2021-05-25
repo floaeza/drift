@@ -2,6 +2,8 @@
 
 <div id='MenuContainer'>
 
+    <div id='MenuBackgrounds'></div>
+
     <img id='MainLogo' src='[@MainLogo]'>
 
     <div id='MenuWeather'>
