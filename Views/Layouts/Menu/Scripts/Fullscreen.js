@@ -41,6 +41,7 @@
         for(IndexM = 0; IndexM < MenuList.length; IndexM++) {
             var img = document.createElement('img');
                 img.src = Libraries['MenuPath'] + MenuList[IndexM].Image;
+                img.style.visibility = 'hidden';
 
             MenuBackgrounds.appendChild(img);
         }
@@ -61,6 +62,8 @@ function SetMenuInfo(){
         //MenuSelected.textContent            =  MenuList[MenuIndex].Name;
         //MenuDescription.textContent         = MenuList[MenuIndex].Description;
 
+        BackgroundsNodes[MenuIndex].style.visibility = 'visible';
+
         var IndexM = MenuIndex - 2,
             Index = 1;
 
@@ -71,12 +74,14 @@ function SetMenuInfo(){
             if(MenuIndex === 0){
                 if(IndexM < 0){
                     IndexM = MenuList.length - 2;
+                    BackgroundsNodes[IndexM].style.visibility = 'hidden';
                 }
             }
 
             if(MenuIndex === 1){
                 if(IndexM < 0){
                     IndexM = MenuList.length - 1;
+                    BackgroundsNodes[IndexM].style.visibility = 'hidden';
                 }
             }
 
