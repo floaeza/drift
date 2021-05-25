@@ -25,7 +25,8 @@ $Reboot = '';
 $DeviceUpdate =  array (
     'mensaje_evento'   => $EventString,
     'hdmi'             => $EventHdmi,
-    'ultimo_canal'     => $LastChannel);
+    'ultimo_canal'     => $LastChannel,
+    'ultima_ejecucion' => $CurrentDate);
 
 $UpdateDevice = $DevicesData->updateGetDevice($DeviceId, $DeviceUpdate,$MacAddress);
 
