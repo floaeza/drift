@@ -27,6 +27,8 @@
             },
             success: function (response){
                 MenuList = $.parseJSON(response);
+
+                SetBackgrounds();
             }
         });
        
@@ -55,7 +57,7 @@
 
     SetMenuList();
     GetWeather();
-    SetBackgrounds();
+
 
 function SetMenuInfo(){
         //MenuContainer.style.backgroundImage = 'url("'+ Libraries['MenuPath'] + MenuList[MenuIndex].Image+'")';
