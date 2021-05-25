@@ -81,8 +81,8 @@
             $Header->set('Keys', $VendorFolder.$Libraries['Keys']);
 
             // Libreria y estilo del tema asignado al dispositivo
-            $Header->set('LayoutStyle', $Libraries['TvStyles'].$ModuleInfo['opcion_template'].'.css' );
-            $Header->set('ThemeStyle', $Libraries['ThemesPath'].$ModuleInfo['opcion_template'].'/'.$TvTheme);
+            $Header->set('LayoutStyle', $Libraries['MenuStyles'].$ModuleInfo['opcion_template'].'.css' );
+            $Header->set('ThemeStyle', $Libraries['ThemesPath'].$TvTheme);
 
             // Aigna variable general del modulo
             $Header->set('CurrentModule', $CurrentModule);
