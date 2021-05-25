@@ -67,7 +67,11 @@ Debug('########################### Time() ');
             TimeRunning = 0;
 
             if(Executing === false){
-                UpdateInfoDevice();
+                if(CurrentModule === 'Tv') {
+                    UpdateInfoDevice();
+                } else {
+                    UpdateQuickInfoDevice();
+                }
             }
         }
         Debug('------------- FormatDateAndHour: '+FormatDateAndHour);

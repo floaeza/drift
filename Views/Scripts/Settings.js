@@ -131,7 +131,7 @@
         Debug('----------------> MacAddress '+MacAddress);
         Debug('----------------> EventString '+EventString);
         Debug('----------------> EventHdmi '+EventHdmi);
-        Debug('----------------> Date '+moment().format('Y-MM-DD h:mm:ss'));
+        Debug('----------------> Date '+CurrentStbDate);
         $.ajax({
             type: 'POST',
             url: 'Core/Controllers/Device.php',
@@ -140,7 +140,7 @@
                 EventString: EventString,
                 EventHdmi: EventHdmi,
                 //EventNetman: EventNetman,
-                CurrentDate: moment().format('Y-MM-DD h:mm:ss')
+                CurrentDate: CurrentStbDate
             },
             beforeSend: function (){
                 Executing = true;
@@ -186,6 +186,14 @@
     }
 
 function UpdateQuickInfoDevice(){
+
+    var OnScreen = '';
+    if (CurrentModule === 'Tv') {
+        OnScreen = ChannelsJson[ChannelPosition].CHNL + ' - ' +ChannelsJson[ChannelPosition].NAME;
+    } else {
+        OnScreen =  CurrentModule;
+    }
+
     $.ajax({
         type: 'POST',
         url: 'Core/Controllers/DeviceInfo.php',
@@ -195,7 +203,7 @@ function UpdateQuickInfoDevice(){
             EventString: EventString,
             EventHdmi: EventHdmi,
             //EventNetman: EventNetman,
-            LastChannel: ChannelsJson[ChannelPosition].CHNL + ' - ' +ChannelsJson[ChannelPosition].NAME,
+            LastChannel: OnScreen,
             CurrentDateStb: CurrentStbDate
         },
         beforeSend: function (){
