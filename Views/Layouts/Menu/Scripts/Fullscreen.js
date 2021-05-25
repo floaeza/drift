@@ -6,7 +6,6 @@
         MenuHour        = document.getElementById('MenuHour'),
         MenuContainer   = document.getElementById('MenuContainer'),
         MenuSelected    = document.getElementById('MenuSelected'),
-        MenuDescription = document.getElementById('MenuDescription'),
         MenuListNodes   = document.getElementById('MenuBar').childNodes;
         BackgroundsNodes = '';
         ImagesUrl       = './Media/Menu/',
@@ -65,7 +64,6 @@ function SetMenuInfo(){
             Index = 1;
 
         for(Index = 0; Index < 10; Index++){
-            //console.log(IndexM);
             Index++;
 
             if(MenuIndex === 0){
