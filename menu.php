@@ -82,7 +82,7 @@
 
             // Libreria y estilo del tema asignado al dispositivo
             $Header->set('LayoutStyle', $Libraries['MenuStyles'].$ModuleInfo['opcion_template'].'.css' );
-            $Header->set('ThemeStyle', $Libraries['ThemesPath'].$TvTheme);
+        $Header->set('ThemeStyle', $Libraries['ThemesPath'].$ModuleInfo['opcion_template'].'/'.$TvTheme);
 
             // Aigna variable general del modulo
             $Header->set('CurrentModule', $CurrentModule);
