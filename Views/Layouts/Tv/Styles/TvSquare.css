@@ -129,24 +129,6 @@ div#EpgDay {
     float: left;
 }
 
-/***************************** [FRAME] *****************************/
-
-#ContentFrame {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    display: none;
-    position: fixed;
-}
-
-#ImageDigitalChannel{
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    display: none;
-}
-
 /***************************** [CANALES] *****************************/
 
 p.ChannelName {

@@ -295,14 +295,14 @@
                     if(FileType === 'mp4' || FileType === 'mov'){
                         var vid = document.createElement('video');
                             vid.src = DigitalSource+DigitalContent[IndexD];
-                            vid.className = 'VidDigital';
+                            vid.className = 'VideoDigital';
                             vid.style.visibility = 'hidden';
 
                             DigitalChannel.appendChild(vid);
                     } else {
                         var img = document.createElement('img');
                             img.src = DigitalSource+DigitalContent[IndexD];
-                            img.className = 'ImgDigital';
+                            img.className = 'ImageDigital';
                             img.style.visibility = 'hidden';
 
                             DigitalChannel.appendChild(img);
