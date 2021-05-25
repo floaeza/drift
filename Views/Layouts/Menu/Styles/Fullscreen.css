@@ -29,6 +29,10 @@ div#MenuContainer {
     font-size: 36px;
 }
 
+.BackgroundsMenu {
+    float: left;
+}
+
 div#MenuDate {
     width: 25%;
     height: 9%;
