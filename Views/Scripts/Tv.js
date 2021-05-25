@@ -293,7 +293,7 @@
                     var FileType = DigitalContent[IndexD].split('.')[1];
 
                     if(FileType === 'mp4' || FileType === 'mov'){
-                        var vid = document.createElement('img');
+                        var vid = document.createElement('video');
                             vid.src = DigitalSource+DigitalContent[IndexD];
                             vid.className = 'VidDigital';
                             vid.style.visibility = 'hidden';
