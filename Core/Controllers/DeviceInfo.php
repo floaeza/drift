@@ -20,6 +20,7 @@ $LastChannel = !empty($_POST['LastChannel']) ? $_POST['LastChannel'] : '';
 $CurrentDate = !empty($_POST['CurrentDateStb']) ? $_POST['CurrentDateStb'] : '';
 $DeviceId    = !empty($_POST['DeviceId']) ? $_POST['DeviceId'] : '';
 
+$Reboot = 'false';
 
 $DeviceUpdate =  array (
     'mensaje_evento'   => $EventString,
