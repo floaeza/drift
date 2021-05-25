@@ -127,6 +127,11 @@
     
     function UpdateInfoDevice(){
         Debug('----------------> UpdateInfoDevice');
+
+        Debug('----------------> MacAddress '+MacAddress);
+        Debug('----------------> EventString '+EventString);
+        Debug('----------------> EventHdmi '+EventHdmi);
+        Debug('----------------> Date '+moment().format('Y-MM-DD h:mm:ss'));
         $.ajax({
             type: 'POST',
             url: 'Core/Controllers/Device.php',
@@ -142,6 +147,8 @@
             },
             success: function (response) {
                 Device = $.parseJSON(response);
+
+                Debug('----------------> Device'+Device);
 
                 if (Device['Services']['Reboot'] === true) {
                     RebootDevice();
