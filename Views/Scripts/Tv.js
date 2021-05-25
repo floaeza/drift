@@ -297,14 +297,16 @@
                             vid.src = DigitalSource+DigitalContent[IndexD];
                             vid.className = 'VidDigital';
                             vid.style.visibility = 'hidden';
+
+                            DigitalChannel.appendChild(vid);
                     } else {
                         var img = document.createElement('img');
                             img.src = DigitalSource+DigitalContent[IndexD];
                             img.className = 'ImgDigital';
                             img.style.visibility = 'hidden';
-                    }
 
-                    DigitalChannel.appendChild(img);
+                            DigitalChannel.appendChild(img);
+                    }
                 }
 
                 // var FileType = DigitalContent[IndexDigital].split('.')[1];
