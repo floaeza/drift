@@ -8,6 +8,7 @@
         MenuSelected    = document.getElementById('MenuSelected'),
         MenuDescription = document.getElementById('MenuDescription'),
         MenuListNodes   = document.getElementById('MenuBar').childNodes;
+        BackgroundsNodes = '';
         ImagesUrl       = './Media/Menu/',
         FormatDate      = '',
         FormatHour      = '',
@@ -35,18 +36,20 @@
     function SetBackgrounds(){
 
         var IndexM = 0;
-        var MenuBk = document.getElementById('MenuBackgrounds');
+        var MenuBackgrounds = document.getElementById('MenuBackgrounds');
 
         for(IndexM = 0; IndexM < MenuList.length; IndexM++) {
             var img = document.createElement('img');
                 img.src = Libraries['MenuPath'] + MenuList[IndexM].Image;
 
-            MenuBk.appendChild(img);
+            MenuBackgrounds.appendChild(img);
         }
+
+        BackgroundsNodes = MenuBackgrounds.childNodes;
 
         img = null;
         IndexM = null;
-        MenuBk = null;
+        MenuBackgrounds = null;
     }
 
     SetMenuList();
