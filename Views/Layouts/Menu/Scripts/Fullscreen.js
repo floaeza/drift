@@ -31,12 +31,8 @@
        
         SetMenuInfo();
     }
-     
-    SetMenuList();
-    GetWeather();
 
-
-    function GFG_Fun() {
+    function SetBackgrounds(){
 
         var IndexM = 0;
 
@@ -47,6 +43,10 @@
             document.getElementById('MenuBackgrounds').appendChild(img);
         }
     }
+
+    SetMenuList();
+    GetWeather();
+    SetBackgrounds();
 
 function SetMenuInfo(){
         //MenuContainer.style.backgroundImage = 'url("'+ Libraries['MenuPath'] + MenuList[MenuIndex].Image+'")';
