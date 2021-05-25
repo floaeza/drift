@@ -109,7 +109,7 @@ div#MenuDescription {
 
 #MenuChevronLeft,
 #MenuChevronRight {
-    top: 45%;
+    bottom: 10%;
     position: fixed;
     font-size: 50px;
 }
