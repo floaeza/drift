@@ -45,10 +45,16 @@
             Model       = ASTB.GetConfig('SYSTEM.STB_MODEL');
             Hdd         = ASTB.GetConfig('SYSTEM.INTERNAL_HDD_PRESENT');
             Vendor      = 'Amino';
-            
-            ASTB.SetConfig('snake', 'SETTINGS.PLT_START_DELAY', '1');
-            ASTB.SetConfig('snake', 'SETTINGS.PLT_SPOOLTIME', '1440');
-            ASTB.CommitConfig();
+
+            var Spool = parseInt(ASTB.GetConfig('SETTINGS.PLT_SPOOLTIME'));
+
+            if(Spool < 1000) {
+                ASTB.SetConfig('snake', 'SETTINGS.PLT_START_DELAY', '1');
+                ASTB.SetConfig('snake', 'SETTINGS.PLT_SPOOLTIME', '1440');
+                ASTB.CommitConfig();
+
+                ASTB.Reboot();
+            }
         } else {
             KamaiDevice();
         }
