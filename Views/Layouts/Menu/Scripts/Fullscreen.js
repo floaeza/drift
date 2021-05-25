@@ -36,7 +36,7 @@
 
         var IndexM = 0;
 
-        for(IndexM = 0; IndexM < MenuList.length - 1; IndexM++) {
+        for(IndexM = 0; IndexM < MenuList.length; IndexM++) {
             var img = document.createElement('img');
                 img.src = Libraries['MenuPath'] + MenuList[IndexM].Image;
 
