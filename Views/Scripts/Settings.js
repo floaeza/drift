@@ -208,6 +208,7 @@ function UpdateQuickInfoDevice(){
         },
         beforeSend: function (){
             Executing = true;
+            Debug('beeeefoooooore');
         },
         success: function (response) {
 
