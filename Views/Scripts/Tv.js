@@ -285,54 +285,30 @@
     function SetDigitalChannel(){
         if(ActiveDigitalChannel === true){
             if(DigitalContent.length > 0){
+                var FileType = DigitalContent[IndexDigital].split('.')[1];
 
-                var IndexD = 0;
+                if(FileType === 'mp4' || FileType === 'mov'){
+                    clearTimeout(IntervalDigital);
 
-                for(IndexD = 0; IndexD < DigitalContent.length; IndexD++) {
+                    ImageDigital.src = '';
+                    ImageDigital.style.display = 'none';
 
-                    var FileType = DigitalContent[IndexD].split('.')[1];
+                    PlayDigitalChannel(DigitalSource+DigitalContent[IndexDigital]);
+                } else {
 
-                    if(FileType === 'mp4' || FileType === 'mov'){
-                        var vid = document.createElement('video');
-                            vid.src = DigitalSource+DigitalContent[IndexD];
-                            vid.className = 'VideoDigital';
-                            vid.style.visibility = 'hidden';
+                    ImageDigital.src = DigitalSource+DigitalContent[IndexDigital];
+                    ImageDigital.style.display = 'inline';
 
-                            DigitalChannel.appendChild(vid);
-                    } else {
-                        var img = document.createElement('img');
-                            img.src = DigitalSource+DigitalContent[IndexD];
-                            img.className = 'ImageDigital';
-                            img.style.visibility = 'hidden';
-
-                            DigitalChannel.appendChild(img);
-                    }
+                    IntervalDigital = setInterval(SetDigitalChannel,9000);
                 }
 
-                // var FileType = DigitalContent[IndexDigital].split('.')[1];
-                //
-                // if(FileType === 'mp4' || FileType === 'mov'){
-                //     clearTimeout(IntervalDigital);
-                //
-                //     ImageDigital.src = '';
-                //     ImageDigital.style.display = 'none';
-                //
-                //     PlayDigitalChannel(DigitalSource+DigitalContent[IndexDigital]);
-                // } else {
-                //
-                //     ImageDigital.src = DigitalSource+DigitalContent[IndexDigital];
-                //     ImageDigital.style.display = 'inline';
-                //
-                //     IntervalDigital = setInterval(SetDigitalChannel,9000);
-                // }
-                //
-                // Debug(DigitalSource+DigitalContent[IndexDigital]);
-                //
-                // IndexDigital++;
-                //
-                // if(IndexDigital > DigitalContent.length - 1){
-                //     IndexDigital = 0;
-                // }
+                Debug(DigitalSource+DigitalContent[IndexDigital]);
+
+                IndexDigital++;
+
+                if(IndexDigital > DigitalContent.length - 1){
+                    IndexDigital = 0;
+                }
             } else {
                 TvChannelUp();
             }
