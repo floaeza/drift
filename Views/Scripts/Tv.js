@@ -279,35 +279,58 @@
         // Si la guia esta cerrada muestra cuadro con informacion del canal en reproduccion
         ShowInfo();
     }
+
+ var DigitalChannel = document.getElementById('DigitalChannel');
     
     function SetDigitalChannel(){
         if(ActiveDigitalChannel === true){
             if(DigitalContent.length > 0){
 
-                var FileType = DigitalContent[IndexDigital].split('.')[1];
+                var IndexD = 0;
 
-                if(FileType === 'mp4' || FileType === 'mov'){
-                    clearTimeout(IntervalDigital);
+                for(IndexD = 0; IndexD < DigitalContent.length; IndexD++) {
 
-                    ImageDigital.src = '';
-                    ImageDigital.style.display = 'none';
+                    var FileType = DigitalContent[IndexD].split('.')[1];
 
-                    PlayDigitalChannel(DigitalSource+DigitalContent[IndexDigital]);
-                } else {
+                    if(FileType === 'mp4' || FileType === 'mov'){
+                        var vid = document.createElement('img');
+                            vid.src = DigitalSource+DigitalContent[IndexD];
+                            vid.className = 'VidDigital';
+                            vid.style.visibility = 'hidden';
+                    } else {
+                        var img = document.createElement('img');
+                            img.src = DigitalSource+DigitalContent[IndexD];
+                            img.className = 'ImgDigital';
+                            img.style.visibility = 'hidden';
+                    }
 
-                    ImageDigital.src = DigitalSource+DigitalContent[IndexDigital];
-                    ImageDigital.style.display = 'inline';
-
-                    IntervalDigital = setInterval(SetDigitalChannel,9000);
+                    DigitalChannel.appendChild(img);
                 }
 
-                Debug(DigitalSource+DigitalContent[IndexDigital]);
-
-                IndexDigital++;
-
-                if(IndexDigital > DigitalContent.length - 1){ 
-                    IndexDigital = 0;
-                }
+                // var FileType = DigitalContent[IndexDigital].split('.')[1];
+                //
+                // if(FileType === 'mp4' || FileType === 'mov'){
+                //     clearTimeout(IntervalDigital);
+                //
+                //     ImageDigital.src = '';
+                //     ImageDigital.style.display = 'none';
+                //
+                //     PlayDigitalChannel(DigitalSource+DigitalContent[IndexDigital]);
+                // } else {
+                //
+                //     ImageDigital.src = DigitalSource+DigitalContent[IndexDigital];
+                //     ImageDigital.style.display = 'inline';
+                //
+                //     IntervalDigital = setInterval(SetDigitalChannel,9000);
+                // }
+                //
+                // Debug(DigitalSource+DigitalContent[IndexDigital]);
+                //
+                // IndexDigital++;
+                //
+                // if(IndexDigital > DigitalContent.length - 1){
+                //     IndexDigital = 0;
+                // }
             } else {
                 TvChannelUp();
             }
