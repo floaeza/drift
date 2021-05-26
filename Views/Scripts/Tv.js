@@ -287,7 +287,7 @@
             if(DigitalContent.length > 0){
                 var FileType = DigitalContent[IndexDigital].split('.')[1];
 
-                if(FileType === 'mp4'){
+                if(FileType === 'm3u8'){
                     clearTimeout(IntervalDigital);
 
                     ImageDigital.src = '';
