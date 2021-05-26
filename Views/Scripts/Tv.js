@@ -120,7 +120,7 @@
             //     Debug('MacAddress !==');
                 SourceEpgFile = Libraries['EpgDaysPath'] + 'epg_' + CurrentDate + '_' + Device['Services']['PackageId'] + '.json';
             //}
-            Debug('------- SetEpgFile -> SourceEpgFile: ' + SourceEpgFile);
+            Debug('------- SetEpgFile ->>> SourceEpgFile: ' + SourceEpgFile);
             GetJsonEpg();
         } else {
             EpgDataActive = false;
