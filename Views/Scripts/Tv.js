@@ -114,12 +114,12 @@
         
         /* Si tiene activa EPG actualiza la variable que por defecto tiene el valor de general */
         if(Device['Services']['ActiveEpg'] === true){
-            if(Device['Client'] === 'BBN') {
-                SourceEpgFile = Libraries['EpgDaysPath'] + 'epg_demo_1.json';
-            } else {
-                Debug('MacAddress !==');
+            // if(Device['Client'] === 'BBN') {
+            //     SourceEpgFile = Libraries['EpgDaysPath'] + 'epg_demo_1.json';
+            // } else {
+            //     Debug('MacAddress !==');
                 SourceEpgFile = Libraries['EpgDaysPath'] + 'epg_' + CurrentDate + '_' + Device['Services']['PackageId'] + '.json';
-            }
+            //}
             Debug('------- SetEpgFile -> SourceEpgFile: ' + SourceEpgFile);
             GetJsonEpg();
         } else {
