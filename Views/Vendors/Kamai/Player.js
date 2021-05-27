@@ -187,9 +187,9 @@
             Video.cleanup();
             //ENTONE.video.cleanupAll();
             Video = new ENTONE.video(1,0);
+
+            PlayingRecording = false;
         }
-        
-        PlayingRecording = false;
     }
     
     function PauseVideo(){

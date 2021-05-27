@@ -35,7 +35,9 @@
         if(CurrentModule === 'Tv' && StartDateChannel !== ''){
             SetChannelStatistics();
         }
-        
+
+        Debug('GoPage ---> '+Page);
+
         StopVideo();
 
         SetModuleStatistics();
