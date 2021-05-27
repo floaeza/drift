@@ -194,6 +194,11 @@ function UpdateQuickInfoDevice(){
         OnScreen =  CurrentModule;
     }
 
+    Debug('CurrentModule:: '+CurrentModule);
+    Debug('OnScreen:: '+OnScreen);
+
+
+
     $.ajax({
         type: 'POST',
         url: 'Core/Controllers/DeviceInfo.php',
@@ -208,10 +213,9 @@ function UpdateQuickInfoDevice(){
         },
         beforeSend: function (){
             Executing = true;
-            Debug('beeeefoooooore');
+            Debug('BD > Executing:: '+Executing);
         },
         success: function (response) {
-
             var RebootResponse = $.parseJSON(response);
 
             if(RebootResponse === '1'){
@@ -222,6 +226,7 @@ function UpdateQuickInfoDevice(){
         },
         complete: function (data){
             Executing = false;
+            Debug('CT > Executing:: '+Executing);
         }
     });
 }
