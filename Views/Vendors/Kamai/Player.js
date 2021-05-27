@@ -181,6 +181,7 @@
    
     function StopVideo(){
         Debug('StopVideo 1 ');
+        Debug(typeof (Video));
         //Verificar si se está reproduciento ya algo antes de poner una nueva fuente   
         if(Video !== 'undefined' && Video.getPlayingUrl() !== null){
             Debug('StopVideo !== undefined ');
