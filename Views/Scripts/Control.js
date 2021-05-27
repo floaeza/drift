@@ -126,8 +126,10 @@ var CheckInfo = 0;
         /********** OPERACIONES **********/
         
                 case REMOTE_OK:
+                    Debug('REMOTE_OK');
                     CheckInfo++;
                     if(CurrentModule === 'Tv'){
+                        Debug('REMOTE_OK > CurrentModule '+CurrentModule);
                         TvOk();
                         
                         if(CheckInfo === 2){
@@ -135,6 +137,7 @@ var CheckInfo = 0;
                             TvInfo();
                         }
                     } else if(CurrentModule === 'Menu'){
+                        Debug('REMOTE_OK > MenuOk '+CurrentModule);
                         MenuOk();
                     } else if(CurrentModule === 'Movies'){
                         VodOk();

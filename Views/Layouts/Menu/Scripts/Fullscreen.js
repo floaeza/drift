@@ -115,6 +115,7 @@ function SetMenuInfo(){
         
         if(MenuList[MenuIndex].Url !== 'menu.php'){
             //Page, ModuleId, ChangeModule
+
             GoPage(MenuList[MenuIndex].Url, MenuList[MenuIndex].Id, MenuList[MenuIndex].Name);
         }
     }

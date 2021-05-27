@@ -309,7 +309,6 @@ Debug('---------->>>');
     Debug('-------> HandlerPvr');
 }
 
-HandlerPvr();
 
 function pad(number, length) {
     var str = '' + number;
