@@ -97,8 +97,8 @@ div#ProgramFocus {
 div#Extras {
     background: #d36363; /* background grabacion */
     font-size: 38px; /* Porcentaje tv minimizada */
-    line-height: 20px; /* Posicion izquierda tv */
-    padding: 50px; /* Posicion derecha tv */
+    line-height: 60px; /* Posicion izquierda tv */
+    padding: 60px; /* Posicion derecha tv */
     display: none;
 }
 
