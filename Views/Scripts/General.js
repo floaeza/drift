@@ -40,7 +40,11 @@
 
         StopVideo();
 
+        Debug('StopVideo ---> ');
+
         SetModuleStatistics();
+
+        Debug('SetModuleStatistics ---> ');
         
         Debug(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
         
