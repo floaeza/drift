@@ -181,17 +181,18 @@
    
     function StopVideo(){
         Debug('StopVideo 1 ');
-        Debug(typeof (Video));
+        if(typeof (Video) !== 'undefined'){
         //Verificar si se está reproduciento ya algo antes de poner una nueva fuente   
-        if(Video !== 'undefined' && Video.getPlayingUrl() !== null){
-            Debug('StopVideo !== undefined ');
-            Video.stop();
-            Video.close();
-            Video.cleanup();
-            //ENTONE.video.cleanupAll();
-            Video = new ENTONE.video(1,0);
+            if(Video.getPlayingUrl() !== null) {
+                Debug('StopVideo !== undefined ');
+                Video.stop();
+                Video.close();
+                Video.cleanup();
+                //ENTONE.video.cleanupAll();
+                Video = new ENTONE.video(1, 0);
 
-            PlayingRecording = false;
+                PlayingRecording = false;
+            }
         }
         Debug('StopVideo 2 ');
     }
