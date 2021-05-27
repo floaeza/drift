@@ -180,8 +180,10 @@
  * ****************************************************************************/ 
    
     function StopVideo(){
+        Debug('StopVideo 1 ');
         //Verificar si se está reproduciento ya algo antes de poner una nueva fuente   
         if(Video !== 'undefined' && Video.getPlayingUrl() !== null){
+            Debug('StopVideo !== undefined ');
             Video.stop();
             Video.close();
             Video.cleanup();
@@ -190,6 +192,7 @@
 
             PlayingRecording = false;
         }
+        Debug('StopVideo 2 ');
     }
     
     function PauseVideo(){
