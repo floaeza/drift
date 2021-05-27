@@ -161,7 +161,15 @@
  * ****************************************************************************/
     
     function MaximizeTV(){
-        windowTV.SetRectangle('0', '0', WindowMaxWidth, WindowMaxHeight);
+        if(CurrentModule === 'Tv'){
+            if(ActiveEpgContainer === true){
+                // do nothing
+            } else if(RecordingPanel === true){
+                // do nothing
+            } else  {
+                windowTV.SetRectangle('0', '0', WindowMaxWidth, WindowMaxHeight);
+            }
+        }
     }
 
 /* *****************************************************************************
