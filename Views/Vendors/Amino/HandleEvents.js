@@ -99,12 +99,9 @@ Debug('########################### HandleEvent() ');
             //
             EventString = 'STATUS_PLAYING';
 
-            if(CurrentModule === 'Tv'){
-                Debug('----> HANDLE EVENTS ActiveDigitalChannel: '+ActiveDigitalChannel);
-                if (ActiveDigitalChannel === true) {
-                    ImageDigital.src = '';
-                    ImageDigital.style.display = 'none';
-                }
+            Debug('----> HANDLE EVENTS STATUS_PLAYING');
+            if(Executing === false){
+                UpdateQuickInfoDevice();
             }
         }
         // else if(NUMBER_EVENT === IGMP_STATUS_PLAYING || NUMBER_EVENT === STATUS_PLAYING){

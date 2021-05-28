@@ -56,6 +56,10 @@ function HandleVideo(event_type){
                 SetDigitalChannel();
             }
         }
+
+        if(Executing === false){
+            UpdateQuickInfoDevice();
+        }
     }
 }
 
