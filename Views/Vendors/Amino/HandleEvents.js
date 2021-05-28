@@ -97,7 +97,7 @@ Debug('########################### HandleEvent() ');
             Browser.CacheFlush();
         }  else if(NUMBER_EVENT === VIDEO_STARTED){
             //
-            EventString = 'VIDEO_STARTED';
+            EventString = 'STATUS_PLAYING';
 
             if(CurrentModule === 'Tv'){
                 Debug('----> HANDLE EVENTS ActiveDigitalChannel: '+ActiveDigitalChannel);
@@ -106,20 +106,22 @@ Debug('########################### HandleEvent() ');
                     ImageDigital.style.display = 'none';
                 }
             }
-        } else if(NUMBER_EVENT === IGMP_STATUS_PLAYING || NUMBER_EVENT === STATUS_PLAYING){
-            //
-            Debug('----> HANDLE EVENTS STATUS_PLAYING');
-            EventString = 'STATUS_PLAYING';
-
-
-
-            Debug('----> HANDLE EVENTS Executing: '+Executing);
-            if(Executing === false){
-                UpdateQuickInfoDevice();
-            }
-
-            Debug('----> HANDLE EVENTS STATUS_PLAYING <');
-        } else if(NUMBER_EVENT === STATUS_END_OF_STREAM){ 
+        }
+        // else if(NUMBER_EVENT === IGMP_STATUS_PLAYING || NUMBER_EVENT === STATUS_PLAYING){
+        //     //
+        //     Debug('----> HANDLE EVENTS STATUS_PLAYING');
+        //     EventString = 'STATUS_PLAYING';
+        //
+        //
+        //
+        //     Debug('----> HANDLE EVENTS Executing: '+Executing);
+        //     if(Executing === false){
+        //         UpdateQuickInfoDevice();
+        //     }
+        //
+        //     Debug('----> HANDLE EVENTS STATUS_PLAYING <');
+        // }
+        else if(NUMBER_EVENT === STATUS_END_OF_STREAM){
             if(CurrentModule === 'Tv'){
                 SetDigitalChannel();
             } else if(CurrentModule === 'Movies'){
