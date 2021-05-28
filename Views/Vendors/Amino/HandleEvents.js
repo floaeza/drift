@@ -393,9 +393,9 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
                 AssetInfo = PVR.GetAssetById(AssetsIdList[Indexal]);
                 
                 if(AssetInfo.startTime < YesterdayUtcDate){
-                    //Debug('<<<<<<<<<< startTime <<<<'+AssetInfo.startTime);
+                    Debug('<<<<<<<<<< startTime <<<<'+AssetInfo.startTime);
                 } else {
-                    //Debug('>>>>>>>>>>> startTime >>>>'+AssetInfo.startTime);
+                    Debug('>>>>>>>>>>> startTime >>>>'+AssetInfo.startTime);
 
                     //Debug(JSON.stringify(AssetInfo));
 
@@ -409,8 +409,8 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
                 }
 
 
-                Debug('--> AssetInfo.duration: '+parseInt(AssetInfo.duration));
-                Debug('--> AssetInfo.totalSize: '+parseInt(AssetInfo.totalSize));
+                // Debug('--> AssetInfo.duration: '+parseInt(AssetInfo.duration));
+                // Debug('--> AssetInfo.totalSize: '+parseInt(AssetInfo.totalSize));
 
                 Durations = Durations + parseInt(AssetInfo.duration); // seconds
                 Sizes = Sizes + parseInt(AssetInfo.totalSize); // kb
@@ -419,15 +419,15 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
             var StorageInfo = [];
             StorageInfo = PVR.GetStorageInfo();
 
-            Debug('****************************************************<<<');
-            Debug('-----> Sizes: '+Sizes);
-            Debug('-----> Durations: '+Durations);
-            Debug('-----> AssetsIdList.count: '+AssetsIdList.count);
+            // Debug('****************************************************<<<');
+            // Debug('-----> Sizes: '+Sizes);
+            // Debug('-----> Durations: '+Durations);
+            // Debug('-----> AssetsIdList.count: '+AssetsIdList.count);
             SizeAvailable = StorageInfo.totalSize - Sizes;
             SizeTotal = StorageInfo.totalSize;
             SizePerSecond = Math.round((Sizes / Durations));
 
-            Debug('----> SizePerSecond: '+SizePerSecond);
+            // Debug('----> SizePerSecond: '+SizePerSecond);
         }
 
         StorageInfo = null;
