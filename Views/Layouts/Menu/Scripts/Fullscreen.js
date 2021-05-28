@@ -28,10 +28,10 @@
                 MenuList = $.parseJSON(response);
 
                 SetBackgrounds();
+
+                SetMenuInfo();
             }
         });
-       
-        SetMenuInfo();
     }
 
     function SetBackgrounds(){
@@ -89,6 +89,8 @@ function SetMenuInfo(){
         }
 
         BackgroundsNodes[MenuIndex].style.visibility = 'visible';
+
+        Debug(BackgroundsNodes[MenuIndex]);
 
             IndexM = null;
             Index = null;
