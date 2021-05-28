@@ -88,7 +88,7 @@ Debug('########################### HandleEvent() ');
             Browser.CacheFlush();
         } else if(NUMBER_EVENT === IGMP_STATUS_END_OF_STREAM){ 
             //
-            EventString = 'IGMP_STATUS_END_OF_STREAM';
+            EventString = 'STATUS_ERROR_STREAM';
 
             if(Executing === false){
                 UpdateQuickInfoDevice();

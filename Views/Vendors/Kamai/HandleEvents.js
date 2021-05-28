@@ -33,16 +33,21 @@ function HandleVideo(event_type){
 
     Debug('------------------------------------->>> EventType: '+event_type);
 
-    EventString = event_type;
+
     if(event_type === 'EN_VIDEOEVENT_FIRST_PTS'){
+        EventString = 'STATUS_PLAYING';
         if(Executing === false){
             UpdateQuickInfoDevice();
         }
     } else if(event_type === 'EN_VIDEOEVENT_MPEG_TIMEOUT'){
+        EventString = 'STATUS_ERROR_STREAM';
         if(Executing === false){
             UpdateQuickInfoDevice();
         }
     } else if(event_type === 'EN_VIDEOEVENT_EOS'){
+
+        EventString = 'STATUS_END_OF_STREAM';
+
         if(CurrentModule === 'Tv'){
             if(PlayingRecording === true) {
                 // Termino reproduccion grabacion

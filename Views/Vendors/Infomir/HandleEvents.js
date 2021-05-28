@@ -14,12 +14,12 @@ window.stbEvent = {
 
             case 2:
                 //Information on audio and video tracks of the media content is received
-                EventString = 'IGMP_STATUS_PLAYING';
+                EventString = 'STATUS_PLAYING';
             break;
 
             case 4:
                 //Video and/or audio playback has begun
-                EventString = 'IGMP_STATUS_PLAYING';
+                EventString = 'STATUS_PLAYING';
             break;
 
             case 5:
