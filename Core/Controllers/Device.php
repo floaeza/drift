@@ -9,6 +9,7 @@
     require_once './../DataAccess/Devices.php';
     require_once './../DataAccess/Locations.php';
     require_once './../DataAccess/Modules.php';
+    require_once './../DataAccess/DiskInfo.php';
     
     $CurrentController = 'DeviceController';
     
@@ -24,6 +25,7 @@
     $DevicesData  = new Devices($MacAddress, $CurrentController);
     $LocationData = new Locations($MacAddress, $CurrentController);
     $ModulesData  = new Modules($MacAddress, $CurrentController);
+    $DiskData     = new DiskInfo($MacAddress, $CurrentController);
 
     // Obtiene la informacion del dispositivo por su mac address
     $Device = $DevicesData->getDevice($MacAddress);
@@ -141,5 +143,9 @@
     );
 
     $UpdateDevice = $DevicesData->updateDevice($DeviceId, $DeviceUpdate);
+
+    $Rtsp =  array('rtsp_conexiones' => '0');
+
+    $DiskData->updatePvrInfo($Rtsp, $MacAddress);
     
     echo json_encode($DeviceSettings);
