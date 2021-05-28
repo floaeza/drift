@@ -72,9 +72,11 @@ Debug('########################### HandleEvent() ');
         } else if(NUMBER_EVENT === RTSP_STATUS_END_OF_STREAM || NUMBER_EVENT === PVR_PLAY_END_OF_FILE){
             // Termino reproduccion grabacion
             OpenRecordPlayOptions();
+            Browser.CacheFlush();
         } else if(NUMBER_EVENT === RTSP_CONNECTION_STOPPED || NUMBER_EVENT === RTSP_CONNECTION_DIED || NUMBER_EVENT === RTSP_CONNECT_FAILED){ 
             // No encuentra la grabacion (Reinicio del PVR o no encuentra la grabacion)
             OpenRecordPlayOptions();
+            Browser.CacheFlush();
         } else if(NUMBER_EVENT === CONNECTION_STOPPED){ 
             //
             EventString = 'CONNECTION_STOPPED';
@@ -82,6 +84,8 @@ Debug('########################### HandleEvent() ');
             if(Executing === false){
                 UpdateQuickInfoDevice();
             }
+
+            Browser.CacheFlush();
         } else if(NUMBER_EVENT === IGMP_STATUS_END_OF_STREAM){ 
             //
             EventString = 'IGMP_STATUS_END_OF_STREAM';
@@ -89,6 +93,8 @@ Debug('########################### HandleEvent() ');
             if(Executing === false){
                 UpdateQuickInfoDevice();
             }
+
+            Browser.CacheFlush();
         }  else if(NUMBER_EVENT === VIDEO_STARTED){
             //
             EventString = 'VIDEO_STARTED';
