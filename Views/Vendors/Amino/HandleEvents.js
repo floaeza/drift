@@ -146,6 +146,8 @@ Debug('########################### HandleEvent() ');
                 UpdateQuickInfoDevice();
             }
         }
+
+        NUMBER_EVENT = null;
     }
 
 
