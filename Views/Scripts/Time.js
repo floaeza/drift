@@ -23,15 +23,22 @@ Debug('########################### Time() ');
         if(CurrentModule === 'Tv'){
             if(ActiveInfoContainer === true){
                 InfoContainerNodes[7].textContent  = FormatHour;
-            }
-
-            if(ActiveEpgContainer === true){
+            } else if(ActiveEpgContainer === true){
                 EpgDate.textContent = FormatDateAndHour;
-            }
-
-            if(typeof (RecordingPanel) !== 'undefined'){
+            } else if(typeof (RecordingPanel) !== 'undefined'){
                 if(RecordingPanel === true) {
                     PvrDate.textContent = FormatHour;
+                }
+            }
+
+            if(FormatHour === '12:01 AM'){
+                SetEpgFile();
+                Debug('------------- SetEpgFile -> FormatHour: '+FormatHour);
+
+                if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
+                    if(EpgDataActive === true){
+                        GetProgramsSerie();
+                    }
                 }
             }
 
@@ -43,18 +50,6 @@ Debug('########################### Time() ');
             MenuHour.textContent = FormatHour;
         }
 
-        /* */
-        if(CurrentModule === 'Tv'){
-            if(FormatHour === '12:01 AM'){
-                SetEpgFile();
-                Debug('------------- SetEpgFile -> FormatHour: '+FormatHour);
-                
-                if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
-                    GetProgramsSerie();
-                }
-            }
-        } 
-        
         
         /* */
         if(TimeRunning > MaxMinutesRunning){
