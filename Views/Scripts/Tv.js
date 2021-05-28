@@ -44,7 +44,7 @@
         FormatHour           = '',
         StartDateChannel     = '',
         FormatStartDate      = '',
-        CurrentHour          = '';
+        CurrentStbDate       = '';
         
     /* Epg */
     var ActiveEpgContainer   = false,

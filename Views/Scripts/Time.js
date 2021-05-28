@@ -43,16 +43,11 @@ Debug('########################### Time() ');
             MenuHour.textContent = FormatHour;
         }
 
-        
-        CurrentHour = moment().format('HHmm');
-        
-        //Debug('------------- SetDate -> CurrentHour: '+CurrentHour);
-
         /* */
-        if(CurrentHour === '0001'){
-            if(CurrentModule === 'Tv'){
+        if(CurrentModule === 'Tv'){
+            if(FormatHour === '12:01 AM'){
                 SetEpgFile();
-                Debug('------------- SetEpgFile -> CurrentHour: '+CurrentHour);
+                Debug('------------- SetEpgFile -> FormatHour: '+FormatHour);
                 
                 if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
                     GetProgramsSerie();
