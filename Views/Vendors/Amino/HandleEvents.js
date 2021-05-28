@@ -397,7 +397,7 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
                 } else {
                     Debug('>>>>>>>>>>> startTime >>>>'+AssetInfo.startTime);
 
-                    //Debug(JSON.stringify(AssetInfo));
+                    Debug(JSON.stringify(AssetInfo));
 
                     ActRec = (AssetInfo.activeRecording === 0) ? false : true;
 
@@ -417,7 +417,7 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
             }
 
             var StorageInfo = [];
-            StorageInfo = PVR.GetStorageInfo();
+                StorageInfo = PVR.GetStorageInfo();
 
             // Debug('****************************************************<<<');
             // Debug('-----> Sizes: '+Sizes);
@@ -427,7 +427,7 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
             SizeTotal = StorageInfo.totalSize;
             SizePerSecond = Math.round((Sizes / Durations));
 
-            // Debug('----> SizePerSecond: '+SizePerSecond);
+             Debug('----> SizePerSecond: '+SizePerSecond);
         }
 
         StorageInfo = null;
