@@ -6,7 +6,8 @@
 Debug('########################### Time() ');
 /* Validacion para reinicar dispositivo y buscar actualizaciones de la epg */
     var TimeRunning       = 0,
-        MaxMinutesRunning = 15;
+        MaxMinutesRunning = 15,
+        TimerDate         = 0;
 
 /*******************************************************************************
  * Funcion que escribe la fecha actual en la EPG, esta funcion tiene un timer
@@ -32,6 +33,9 @@ Debug('########################### Time() ');
             }
 
             if(FormatHour === '12:01 AM'){
+
+                clearInterval(TimerDate);
+
                 SetEpgFile();
                 Debug('------------- SetEpgFile -> FormatHour: '+FormatHour);
 
@@ -55,6 +59,7 @@ Debug('########################### Time() ');
         if(TimeRunning > MaxMinutesRunning){
             
             TimeRunning = 0;
+            TimerDate = setInterval(SetDate, 50000);
 
             if(Executing === false){
                 if(CurrentModule === 'Tv') {
@@ -74,4 +79,4 @@ Debug('########################### Time() ');
     SetDate();
     
     /* Agrega intervalo 50000 = 50 segundos*/
-    setInterval(SetDate,50000);
+    TimerDate = setInterval(SetDate, 50000);

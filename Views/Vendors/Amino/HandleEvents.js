@@ -99,7 +99,7 @@ Debug('########################### HandleEvent() ');
             //
             EventString = 'STATUS_PLAYING';
 
-            Debug('----> HANDLE EVENTS STATUS_PLAYING');
+            Debug('----> HANDLE EVENTS VIDEO_STARTED');
             if(Executing === false){
                 UpdateQuickInfoDevice();
             }
