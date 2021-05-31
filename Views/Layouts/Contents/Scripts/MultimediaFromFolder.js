@@ -14,7 +14,7 @@
         Images          = '',
         Images3         = [],
         Index3          = 0,
-        MediaSource     = '../../Multimedia/' + CurrentModule + '/';
+        MediaSource     = '../../Multimedia/' + CurrentModule.replace(/\s/g, '') + '/';
 
 /*******************************************************************************
  * Contenido multimedia
