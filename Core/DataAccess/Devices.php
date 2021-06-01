@@ -99,12 +99,7 @@ class Devices extends Database {
         
         $this->connect();
         $this->update("dispositivos", $DeviceUpdate, "id_dispositivo = '$DeviceId'");
-        $res = $this->getResult();
-
-        foreach ($res as $row):
-            $this->Device =$row;
-        endforeach;
-
+        $this->Device = $this->getResult();
         $this->disconnect();
 
         return $this->Device;
