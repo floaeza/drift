@@ -35,6 +35,8 @@
         PlayingChannel = true;
 
         Debug('Playing DC: '+Source);
+
+        document.getElementById('DigitalChannel').innerHTML = '<video id="VideoPlaying" autoplay loop><source src='+Source+' type="video/mp4"></video>';
         
         // Si la guia esta cerrada muestra cuadro con informacion del canal en reproduccion
         ShowInfo();

@@ -290,13 +290,13 @@
                     clearTimeout(IntervalDigital);
 
                     ImageDigital.src = '';
-                    ImageDigital.style.display = 'inline';
+                    ImageDigital.style.display = 'none';
 
                     PlayDigitalChannel(DigitalSource+DigitalContent[IndexDigital]);
                 } else {
 
                     ImageDigital.src = DigitalSource+DigitalContent[IndexDigital];
-                    ImageDigital.style.display = 'none';
+                    ImageDigital.style.display = 'inline';
 
                     IntervalDigital = setInterval(SetDigitalChannel,9000);
                 }
