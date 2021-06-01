@@ -131,6 +131,8 @@
 
     $Client = $ConfigData->getConfigByName('Identifier');
 
+    print_r($Client);
+
     $DeviceSettings = array('Licensing' => $Licensing, 
                             'Services' => $ServicesArray,
                             'Debug' => $Debug,
@@ -150,8 +152,6 @@
                             'hdmi'             => $EventHdmi,
                             'reiniciar'        => '0'
     );
-
-    print_r($DeviceUpdate);
 
     $UpdateDevice = $DevicesData->updateDevice($DeviceId, $DeviceUpdate);
 
