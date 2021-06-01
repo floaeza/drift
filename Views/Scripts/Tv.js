@@ -95,7 +95,7 @@
 
     if(MacAddress === '00:00:00:00:00:00'){
         Debug('Imagen para test');
-        document.getElementsByClassName('GeneralBox')[0].style.backgroundImage = "url('/Media/General/tv.jpg')";
+        document.getElementsByClassName('GeneralBox')[0].style.backgroundImage = "url('./Media/General/tv.jpg')";
     }
 /*******************************************************************************
  * Obtiene los datos del archivo JSON y empieza la reproduccion de canales
