@@ -314,5 +314,7 @@ div#ChannelNumber {
 }
 
 div#DigitalChannel {
+    z-index: 0;
+    position: fixed;
     display: none;
 }
