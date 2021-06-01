@@ -131,8 +131,6 @@
 
     $Client = $ConfigData->getConfigByName('Identifier');
 
-    print_r($Client);
-
     $DeviceSettings = array('Licensing' => $Licensing, 
                             'Services' => $ServicesArray,
                             'Debug' => $Debug,
