@@ -83,7 +83,7 @@
         $Rtsp =  array('rtsp_conexiones' => '0');
 
         $DiskData->updatePvrInfo($Rtsp, $MacAddress);
-        
+
     } else {
         // Valida si esta asignado en la locacion por defecto
         if($LocationCode == 'DEFAULT'){
@@ -119,6 +119,8 @@
     $OffsetZone = $ConfigData->getConfigByName('OffsetZone');
 
     $LastModificationTime = date('H', filemtime('./Epg/epg_'.date('Ymd').'_'.$LocationRow['id_paquete'].'.json'));
+
+    print_r($LastModificationTime);
 
     $EventString = !empty($_POST['EventString']) ? $_POST['EventString'] : '';
     $EventHdmi = !empty($_POST['EventHdmi']) ? $_POST['EventHdmi'] : 0;
