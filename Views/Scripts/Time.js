@@ -56,6 +56,8 @@ Debug('########################### Time() ');
 
         
         /* */
+
+        Debug('TimeRunning: '+TimeRunning);
         if(TimeRunning > MaxMinutesRunning){
             
             TimeRunning = 0;
