@@ -291,7 +291,7 @@
                     clearTimeout(IntervalDigital);
 
                     ImageDigital.src = '';
-                    ImageDigital.style.display = 'none';
+                    ImageDigital.style.display = 'inline';
 
                     PlayDigitalChannel(DigitalSource+DigitalContent[IndexDigital]);
                 } else {
