@@ -124,8 +124,6 @@
         $LastModificationTime = '';
     }
 
-    print_r($LastModificationTime);
-
     $EventString = !empty($_POST['EventString']) ? $_POST['EventString'] : '';
     $EventHdmi = !empty($_POST['EventHdmi']) ? $_POST['EventHdmi'] : 0;
     $EventNetman = !empty($_POST['EventNetman']) ? $_POST['EventNetman'] : '';
@@ -152,6 +150,8 @@
                             'hdmi'             => $EventHdmi,
                             'reiniciar'        => '0'
     );
+
+    print_r($DeviceUpdate);
 
     $UpdateDevice = $DevicesData->updateDevice($DeviceId, $DeviceUpdate);
 
