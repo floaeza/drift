@@ -95,7 +95,7 @@
 
     if(MacAddress === '00:00:00:00:00:00'){
         Debug('Imagen para test');
-        document.getElementsByClassName('GeneralBox')[0].style.backgroundImage = "url('https://1.bp.blogspot.com/-O3QxZuRxQUs/WCZIQtTe7zI/AAAAAAAACz0/HO4bDUyEAlMAVE5PWnX61xyX5jSx_TEmwCLcB/s1600/greys-anatomy-13x08-1.jpg')";
+        document.getElementsByClassName('GeneralBox')[0].style.backgroundImage = "url('/Media/General/tv.jpg')";
     }
 /*******************************************************************************
  * Obtiene los datos del archivo JSON y empieza la reproduccion de canales
