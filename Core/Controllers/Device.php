@@ -79,6 +79,11 @@
             // Carga sus funciones de grabador y agrega funcionalidad de WholeHomePvr
             $DeviceType = 'WHP_HDDY';
         }
+
+        $Rtsp =  array('rtsp_conexiones' => '0');
+
+        $DiskData->updatePvrInfo($Rtsp, $MacAddress);
+        
     } else {
         // Valida si esta asignado en la locacion por defecto
         if($LocationCode == 'DEFAULT'){
@@ -144,8 +149,4 @@
 
     $UpdateDevice = $DevicesData->updateDevice($DeviceId, $DeviceUpdate);
 
-    $Rtsp =  array('rtsp_conexiones' => '0');
-
-    $DiskData->updatePvrInfo($Rtsp, $MacAddress);
-    
     echo json_encode($DeviceSettings);
