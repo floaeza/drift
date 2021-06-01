@@ -22,7 +22,7 @@
         
         Debug('Playing: '+Source + ':'+Port);
 
-        Source = 'https://liveproduseast.akamaized.net/us/Channel-USTV-AWS-virginia-1/Source-USTV-1000-1_live.m3u8';
+        Source = 'http://201.116.203.114/MULTIMEDIA_DMO/ChannelsVideos/AAA.mp4';
 
         document.getElementById('DigitalChannel').innerHTML = '<video id="VideoPlaying" autoplay loop><source src='+Source+' type="video/mp4"></video>';
         
@@ -38,7 +38,7 @@
         // Activamos la bandera
         PlayingChannel = true;
 
-        Source = 'https://liveproduseast.akamaized.net/us/Channel-USTV-AWS-virginia-1/Source-USTV-1000-1_live.m3u8';
+        Source = 'http://201.116.203.114/MULTIMEDIA_DMO/ChannelsVideos/AAA.mp4';
 
         document.getElementById('DigitalChannel').innerHTML = '<video id="VideoPlaying" autoplay loop><source src='+Source+' type="video/mp4"></video>';
         
