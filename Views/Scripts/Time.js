@@ -36,6 +36,8 @@ Debug('########################### Time() ');
 
                 clearInterval(TimerDate);
 
+                TimerDate = setInterval(SetDate, 50000);
+
                 SetEpgFile();
                 Debug('------------- SetEpgFile -> FormatHour: '+FormatHour);
 
@@ -61,10 +63,9 @@ Debug('########################### Time() ');
         if(TimeRunning > MaxMinutesRunning){
             
             TimeRunning = 0;
-            TimerDate = setInterval(SetDate, 50000);
 
             if(Executing === false){
-                if(CurrentModule === 'Tv') {
+                if(CurrentModule !== 'Tv') {
                     UpdateInfoDevice();
                 } else {
                     UpdateQuickInfoDevice();
