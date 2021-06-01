@@ -43,7 +43,7 @@
 
         document.getElementById('DigitalChannel').innerHTML = '<video id="VideoPlaying" autoplay loop><source src='+Source+' type="video/mp4"></video>';
         document.getElementById('DigitalChannel').style.display = 'inline';
-        
+
         // Si la guia esta cerrada muestra cuadro con informacion del canal en reproduccion
         ShowInfo();
     }
