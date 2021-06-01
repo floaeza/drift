@@ -297,7 +297,7 @@
                 } else {
 
                     ImageDigital.src = DigitalSource+DigitalContent[IndexDigital];
-                    ImageDigital.style.display = 'inline';
+                    ImageDigital.style.display = 'none';
 
                     IntervalDigital = setInterval(SetDigitalChannel,9000);
                 }
