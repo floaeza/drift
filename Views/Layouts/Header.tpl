@@ -18,7 +18,7 @@
         <link rel='stylesheet' href='[@ThemeStyle]' type='text/css'>
         <link rel='stylesheet' href='[@FontAwesome]'>
         
-        <link rel='stylesheet' href='[@LayoutStyle]' type='text/css'>
+        <link rel='stylesheet' href='[@LayoutStyle]' type='text/css'> 
         
         <script src='[@Jquery]'></script>
         <script src='[@Skycons]'></script>
