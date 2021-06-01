@@ -118,7 +118,7 @@
     
     $OffsetZone = $ConfigData->getConfigByName('OffsetZone');
 
-    $LastModificationTime = date('H', filemtime('./Epg/epg_'.date('Ymd').'_'.$LocationRow['id_paquete'].'.json'));
+    $LastModificationTime = date('H', filemtime('./Epg/epg_'.date('Ymd').'_'.$LocationRow['id_paquete'].'.json',false));
 
     print_r($LastModificationTime);
 
