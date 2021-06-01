@@ -21,6 +21,10 @@
         PlayingChannel = true;
         
         Debug('Playing: '+Source + ':'+Port);
+
+        Source = 'https://liveproduseast.akamaized.net/us/Channel-USTV-AWS-virginia-1/Source-USTV-1000-1_live.m3u8';
+
+        document.getElementById('DigitalChannel').innerHTML = '<video id="VideoPlaying" autoplay loop><source src='+Source+' type="video/mp4"></video>';
         
         // Si la guia esta cerrada muestra cuadro con informacion del canal en reproduccion
         ShowInfo();
