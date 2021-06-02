@@ -44,9 +44,6 @@
             display: none;
         }
 
-        #Control:hover + #Info {
-            display: inline;
-        }
     </style>
 </head>
 <body>
@@ -56,11 +53,16 @@
     <div id='Container'>
         <iframe src="http://201.116.203.114/BBINCO/TV/index.php" width="1280" height="720"  title="BbincoTV" id="BbincoTV"></iframe>
 
-        <div id='Control' onclick="this alert('cpmtr');">
+        <div id='Control' onclick='ShowInfo'>
             <img src='Media/Logos/BBN/control.png'>
         </div>
     </div>
 
     <img id='Info' src='Media/Logos/BBN/info.png'>
 </body>
+<script>
+    function ShowInfo(){
+        document.getElementById('Info').style.display = 'inline';
+    }
+</script>
 </html>
