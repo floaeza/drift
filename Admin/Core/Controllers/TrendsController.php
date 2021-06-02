@@ -76,8 +76,9 @@ if(isset($_SESSION['UserId'])){
 
         /* TEXTO DE LAS ETIQUETAS */
         $Content->set('ServerIp', $ServerIp);
-        
-        echo $Content->output();
+
+        //echo $Content->output();
+    
         // Carga pie de pagina donde se muestran y cargan los mensajes
         $Footer = new Templates($Directory.'/Views/Layouts/Footer.tpl');
         echo $Footer->output();
