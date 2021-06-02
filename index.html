@@ -3,9 +3,15 @@
 <head>
     <title></title>
     <style>
+        
         #BbincoTV {
             border: 8px solid #797777;
             box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.88);
+        }
+
+        #Container {
+            width: 100%;
+            position: fixed;
         }
 
         #Bbinco {
@@ -21,10 +27,12 @@
     <div id="Bbinco">
         <img src='Media/Logos/BBN/main_logo.png'>
     </div>
-    <iframe src="http://201.116.203.114/BBINCO/TV/index.php" width="960" height="540"  title="BbincoTV" id="BbincoTV"></iframe>
+    <div id="Container">
+        <iframe src="http://201.116.203.114/BBINCO/TV/index.php" width="960" height="540"  title="BbincoTV" id="BbincoTV"></iframe>
 
-    <div id="Control">
-        <img src='Media/Logos/BBN/control.png'>
+        <div id="Control">
+            <img src='Media/Logos/BBN/control.png'>
+        </div>
     </div>
 </body>
 </html>
