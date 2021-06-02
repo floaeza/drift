@@ -68,10 +68,10 @@ if(isset($_SESSION['UserId'])){
         $Content->set('ProyectURL', $ProyectURL);
 
 
-    $ServerIp = !empty($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : '';
+    $ServerIp = !empty($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : '-';
 
     if(empty($ServerIp)){
-        $ServerIp = !empty($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : '';
+        $ServerIp = !empty($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : '-';
     }
 
         /* TEXTO DE LAS ETIQUETAS */
