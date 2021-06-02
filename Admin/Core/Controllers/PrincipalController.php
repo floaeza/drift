@@ -72,7 +72,7 @@ if(isset($_SESSION['UserId'])){
     if(empty($ServerIp)){
         $ServerIp = !empty($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : '-';
     }
-    $Content->set('ServerIp', $ServerIp);
+        $Content->set('ServerIp', $ServerIp);
         /* TEXTO DE LAS ETIQUETAS */
         $Content->set('TitleMemberList', $Language['TitleMemberList']);
         $Content->set('TitleCodeList', $Language['TitleCodeList']);
