@@ -45,7 +45,10 @@
         }
 
         #Help{
-            width: 20px;
+            width: 35px;
+            top: 1%;
+            position: fixed;
+            right: 3%;
         }
 
     </style>
@@ -62,8 +65,20 @@
         </div>
     </div>
 
-    <img id='Help' src='Media/Logos/BBN/help.png'>
+    <img id='Help' src='Media/Logos/BBN/help.png' onclick="ShowInfo()">
 
-    <img id='Info' src='Media/Logos/BBN/info.png'>
+    <img id='Info' src='Media/Logos/BBN/info.png' onclick="CloseInfo()">
 </body>
+<script>
+    var Help = document.getElementById('Help');
+    var Info = document.getElementById('Info');
+
+    function ShowInfo() {
+        Info.style.display = 'inline';
+    }
+
+    function CloseInfo() {
+        Info.style.display = 'none';
+    }
+</script>
 </html>
