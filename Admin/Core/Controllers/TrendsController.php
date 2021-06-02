@@ -78,7 +78,7 @@ if(isset($_SESSION['UserId'])){
         $Content->set('ServerIp', $ServerIp);
 
         //echo $Content->output();
-    
+
         // Carga pie de pagina donde se muestran y cargan los mensajes
         $Footer = new Templates($Directory.'/Views/Layouts/Footer.tpl');
         echo $Footer->output();
