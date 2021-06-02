@@ -76,19 +76,7 @@ if(isset($_SESSION['UserId'])){
 
         /* TEXTO DE LAS ETIQUETAS */
         $Content->set('ServerIp', $ServerIp);
-
-        $Content->set('TitleMemberList', $Language['TitleMemberList']);
-        $Content->set('TitleCodeList', $Language['TitleCodeList']);
-        $Content->set('TitleLastActivity', $Language['TitleLastActivity']);
-        $Content->set('TitleModuleList', $Language['TitleModuleList']);
-        $Content->set('LabelTitleTopMembersInactive', $Language['LabelTitleTopMembersInactive']);
-        $Content->set('LabelsubtitleStadisticsMemberInactive', $Language['LabelsubtitleStadisticsMemberInactive']);
-        $Content->set('LabelTitleTopMembersActive', $Language['LabelTitleTopMembersActive']);
-        $Content->set('LabelSubTitleStadisticsMemberActive', $Language['LabelSubTitleStadisticsMemberActive']);
-        $Content->set('LabelTitleTopTenChannels', $Language['LabelTitleTopTenChannels']);
-        $Content->set('LabelSubtitleTopTenChannels', $Language['LabelSubtitleTopTenChannels']);
-        $Content->set('LabelButtonAccept', $Language['LabelButtonAccept']);
-        $Content->set('LabelButtonCancel', $Language['LabelButtonCancel']);
+        
         echo $Content->output();
         // Carga pie de pagina donde se muestran y cargan los mensajes
         $Footer = new Templates($Directory.'/Views/Layouts/Footer.tpl');
