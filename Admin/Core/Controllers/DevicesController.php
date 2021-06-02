@@ -88,6 +88,15 @@ if(isset($_SESSION['UserId'])){
         endforeach;
         $DevicesOptionList .= "";
         $Content->set('DevicesOptionList', $DevicesOptionList);
+
+    $ServerIp = !empty($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : '-';
+
+    if(empty($ServerIp)){
+        $ServerIp = !empty($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : '-';
+    }
+
+    /* TEXTO DE LAS ETIQUETAS */
+    $Content->set('ServerIp', $ServerIp);
         
         /* TEXTO DE LAS ETIQUETAS */
         $Content->set('LabelHeaderDevices', $Language['LabelHeaderDevices']);
