@@ -41,7 +41,7 @@ class Packages extends Database {
                                       "canales ON paquete_canal.id_canal = canales.id_canal",
                                       "estaciones ON canales.id_estacion = estaciones.id_estacion",
                                       "",
-                                      "","id_paquete = '$PackageId'  AND canal_activo = '1' ","","","paquete_canal.numero_canal DESC");
+                                      "","id_paquete = '$PackageId'  AND canal_activo = '1' ","","","paquete_canal.numero_canal ASC");
         $this->PackageListById = $this->getResult();
 
         $this->disconnect();
