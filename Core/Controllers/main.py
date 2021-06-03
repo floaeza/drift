@@ -10,6 +10,7 @@ import requests
 
 urls = ['https://www.gatotv.com/canal/', 'https://www.tvpassport.com/tv-listings/stations/']
 today = datetime.today()
+today = today
 
 listDays = ["", "", "", "", "", "", "", "", "", "", ""]
 
@@ -58,6 +59,7 @@ def start(day):
         #print(OffSetZone)
         for channel in channels:
             if 'GATO' in channel['STTN']:
+                dataProgram = {}
                 print('GATO TV')
                 P_Length = 0
                 try:
@@ -83,9 +85,15 @@ def start(day):
                         else:
                             if strh2[1] == 'AM' and (strh2[0][0]+strh2[0][1]) == '12':
                                 fnlh = fnlh - timedelta(hours=12)
-
                         minuinicio = (int(strh.hour) * 60) + int(strh.minute)
                         minufin = (int(fnlh.hour) * 60) + int(fnlh.minute)
+                        if p == 0:
+                            strh = strh.strftime('00:00')
+                            minuinicio = 0
+
+                        if p == len(JSONGato)-1:
+                            fnlh = fnlh.strftime('23:59')
+                            minufin = 1440
 
                         if minuinicio <= minufin:
                             dur = minufin - minuinicio
@@ -93,30 +101,60 @@ def start(day):
                             dur = minufin - minuinicio
                             dur = dur + 1440
 
-                        print(strh.strftime('%H:%M'))
-                        print(fnlh.strftime('%H:%M'))
+                        strhh = ''
+                        fnlhh = ''
+                        if type(strh) == str:
+                            strhh = strh
+                        else:
+                            strhh = strh.strftime( '%H:%M')
+
+                        if type(fnlh) == str:
+                            fnlhh = fnlh
+                        else:
+                            fnlhh = fnlh.strftime('%H:%M')
+
+                        print(strh)
+                        print(fnlh)
                         print('Canal    ', channel['NAME'],'   ',JSONGato[p])
+                        print(channel)
                         print(dur)
                         print('--------------------------')
-
+                  
                         dataProgram[str(p)] = []
                         dataProgram[str(p)].append({
                             "STTN": channel['STTN'],
                             "DBKY": '',
                             "TTLE": JSONGato[p][2],
                             "DSCR": JSONGato[p][3],
-                            "DRTN": str(round(dur/60)),
-                            "MNTS": str(dur),
+                            "DRTN": float(float("{:.2f}".format(dur/60))),
+                            "MNTS": dur,
                             "DATE": day.strftime("%Y%m%d"),
-                            "STRH": strh.strftime('%H:%M'),
-                            "FNLH": fnlh.strftime('%H:%M'),
+                            "STRH": strhh,
+                            "FNLH": fnlhh,
                             "TVRT": '',
                             "STRS": '',
                             "EPSD": ''
                         })
                         P_Length += 1
                 except:
-                    print(channel['NAME'] + "   No encontrado")
+                    dataProgram = {}
+                    dataProgram['0'] = []
+                    dataProgram['0'].append({
+                        "STTN": channel['STTN'],
+                        "DBKY": '',
+                        "TTLE": channel['NAME'],
+                        "DSCR": '',
+                        "DRTN": 24,
+                        "MNTS": 1440,
+                        "DATE": day.strftime("%Y%m%d"),
+                        "STRH": "00:00",
+                        "FNLH": "23:59",
+                        "TVRT": '',
+                        "STRS": '',
+                        "EPSD": ''
+                    })
+                    P_Length += 1
+                    print(channel['NAME'] + "   No encontrado (GATO)")
 
                 data[str(contadorCanal)] = []
                 data[str(contadorCanal)].append({
@@ -131,8 +169,7 @@ def start(day):
                     'NAME': channel['NAME'],
                     'INDC': channel['INDC'],
                     'LOGO': channel['LOGO'],
-                    'DTNU': day.strftime("%Y%m%d"),
-                    'DATE': day.strftime("%c"),
+                    'DATE': day.strftime("%Y%m%d"),
                     'PROGRAMS': dataProgram,
                     'P_Length': P_Length
                 })
@@ -140,39 +177,133 @@ def start(day):
             else:
                 ##############  TV PASSPORT ##############
                 if 'PASS' in channel['STTN']:
+                    dataProgram = {}
                     P_Length = 0
+                    PASS = False
                     print('TV PASS')
                     dataProgram = {}
+                    daytwo = day - timedelta(days=1)
                     raw_html = urllib.request.urlopen(
                         'https://www.tvpassport.com/tv-listings/stations/' + channel['NAME'] + day.strftime(
                             "%Y-%m-%d")).read().decode()
                     raw_html.encode('utf-8')
                     soup = BeautifulSoup(raw_html, 'html.parser')
-                    for i in range(1, 100):
-                        P_Length += 1
-                        table = soup.find(id="itemheader" + str(i))
 
-                        if table == None:
-                            break
-                        ini = datetime.strptime(table['data-listdatetime'], '%Y-%m-%d %H:%M:%S')
-                        end = datetime.strptime(table['data-listdatetime'], '%Y-%m-%d %H:%M:%S') + timedelta(minutes=int(table['data-duration']))
+                    #################   UN DIA ATRAS    #################
+                    raw_html2 = urllib.request.urlopen(
+                        'https://www.tvpassport.com/tv-listings/stations/' + channel['NAME'] + daytwo.strftime(
+                            "%Y-%m-%d")).read().decode()
+                    raw_html2.encode('utf-8')
+                    soup2 = BeautifulSoup(raw_html2, 'html.parser')
+                    #################   UN DIA ATRAS    #################
+                    try:
+                        conta = 0
+                        for i in range(1, 100):
+                            P_Length += 1
 
-                        dataProgram[str(i - 1)] = []
-                        dataProgram[str(i - 1)].append({
+                            table = soup2.find(id="itemheader" + str(i))\
+
+                            if table == None:
+                                break
+                            ini = datetime.strptime(table['data-listdatetime'], '%Y-%m-%d %H:%M:%S') + timedelta(hours=1)
+                            end = datetime.strptime(table['data-listdatetime'], '%Y-%m-%d %H:%M:%S') + timedelta(hours=1 ,minutes=int(table['data-duration']))
+
+                            inimin = (int(end.hour)*60)+int(end.minute)
+                            endmin = (int(end.hour)*60)+int(end.minute)
+                            
+                            if end < datetime.strptime(day.strftime("%Y-%m-%d")+' 00:00:00', '%Y-%m-%d %H:%M:%S'):
+                                table['data-duration'] = str(endmin)
+                                ini = datetime.strptime(day.strftime("%Y-%m-%d")+' 00:00:00', '%Y-%m-%d %H:%M:%S')
+                                continue
+                            dataProgram[str(conta)] = []
+                            dataProgram[str(conta)].append({
+                                "STTN": channel['STTN'],
+                                "DBKY": '',
+                                "TTLE": table['data-showname'],
+                                "DSCR": table['data-description'],
+                                "DRTN": float("{:.2f}".format(int(table['data-duration']) / 60)),
+                                "MNTS": int(table['data-duration']),
+                                "DATE": day.strftime("%Y%m%d"),
+                                "STRH": ini.strftime("%H:%M"),
+                                "FNLH": end.strftime("%H:%M"),
+                                "TVRT": table['data-rating'],
+                                "STRS": '',
+                                "EPSD": table['data-episodetitle']
+                            })
+                            P_Length += 1
+                            conta += 1
+                            PASS = True
+                    except:
+                        dataProgram = {}
+                        dataProgram['0'] = []
+                        dataProgram['0'].append({
                             "STTN": channel['STTN'],
                             "DBKY": '',
-                            "TTLE": table['data-showname'],
-                            "DSCR": table['data-description'],
-                            "DRTN": str(round(int(table['data-duration'])//60)),
-                            "MNTS": table['data-duration'],
+                            "TTLE": channel['NAME'],
+                            "DSCR": '',
+                            "DRTN": 24,
+                            "MNTS": 1440,
                             "DATE": day.strftime("%Y%m%d"),
-                            "STRH": ini.strftime("%H:%M"),
-                            "FNLH": end.strftime("%H:%M"),
-                            "TVRT": table['data-rating'],
+                            "STRH": "00:00",
+                            "FNLH": "23:59",
+                            "TVRT": '',
                             "STRS": '',
-                            "EPSD": table['data-episodetitle']
+                            "EPSD": ''
                         })
                         P_Length += 1
+                        print(channel['STTN'], '    No Encontrado (PASS)')
+
+                    if PASS:
+                        try:
+                            for i in range(1, 100):
+                                P_Length += 1
+
+                                table = soup.find(id="itemheader" + str(i))
+
+                                if table == None:
+                                    break
+                                ini = datetime.strptime(table['data-listdatetime'], '%Y-%m-%d %H:%M:%S') + timedelta(hours=1)
+                                end = datetime.strptime(table['data-listdatetime'], '%Y-%m-%d %H:%M:%S') + timedelta(hours=1, minutes=int(table['data-duration']))
+
+                                if ini > datetime.strptime(day.strftime("%Y-%m-%d")+' 23:59:50', '%Y-%m-%d %H:%M:%S'):
+                                    break
+                                
+                                dataProgram[str(conta)] = []
+                                dataProgram[str(conta)].append({
+                                    "STTN": channel['STTN'],
+                                    "DBKY": '',
+                                    "TTLE": table['data-showname'],
+                                    "DSCR": table['data-description'],
+                                    "DRTN": float("{:.20f}".format(int(table['data-duration']) / 60)),
+                                    "MNTS": int(table['data-duration']),
+                                    "DATE": day.strftime("%Y%m%d"),
+                                    "STRH": ini.strftime("%H:%M"),
+                                    "FNLH": end.strftime("%H:%M"),
+                                    "TVRT": table['data-rating'],
+                                    "STRS": '',
+                                    "EPSD": table['data-episodetitle']
+                                })
+                                P_Length += 1
+                                conta += 1
+                        except:
+                            dataProgram = {}
+                            dataProgram['0'] = []
+                            dataProgram['0'].append({
+                                "STTN": channel['STTN'],
+                                "DBKY": '',
+                                "TTLE": channel['NAME'],
+                                "DSCR": '',
+                                "DRTN": 24,
+                                "MNTS": 1440,
+                                "DATE": day.strftime("%Y%m%d"),
+                                "STRH": "00:00",
+                                "FNLH": "23:59",
+                                "TVRT": '',
+                                "STRS": '',
+                                "EPSD": ''
+                            })
+                            P_Length += 1
+                            print(channel['STTN'], '    No Encontrado (PASS)')
 
                     data[str(contadorCanal)] = []
                     data[str(contadorCanal)].append({
@@ -187,12 +318,13 @@ def start(day):
                         'NAME': channel['NAME'],
                         'INDC': channel['INDC'],
                         'LOGO': channel['LOGO'],
-                        'DTNU': day.strftime("%Y%m%d"),
+                        'DATE': day.strftime("%Y%m%d"),
                         'DATE': day.strftime("%c"),
                         'PROGRAMS': dataProgram,
                         "P_Length": P_Length
                     })
                     contadorCanal = contadorCanal + 1
+                    dataProgram.clear()
                 else:
                     if 'VIDEO' in channel['STTN'] or 'AUDIO' in channel['STTN'] or 'LOCAL' in channel[
                         'STTN'] or 'CONTENT' in channel['STTN']:
@@ -204,8 +336,8 @@ def start(day):
                             "DBKY": '',
                             "TTLE": channel['NAME'],
                             "DSCR": '',
-                            "DRTN": '24',
-                            "MNTS": '',
+                            "DRTN": 24,
+                            "MNTS": 1440,
                             "DATE": day.strftime("%Y%m%d"),
                             "STRH": "00:00",
                             "FNLH": "24:00",
@@ -227,14 +359,15 @@ def start(day):
                             'NAME': channel['NAME'],
                             'INDC': channel['INDC'],
                             'LOGO': channel['LOGO'],
-                            'DTNU': day.strftime("%Y%m%d"),
-                            'DATE': day.strftime("%c"),
+                            'DATE': day.strftime("%Y%m%d"),
                             'PROGRAMS': dataProgram,
                             'P_Length': 1
                         })
                         contadorCanal = contadorCanal + 1
+                        dataProgram.clear()
                     else:
                         print('TRIBIUNE     ', channel['STTN'])
+                        dataProgram = {}
                         contadorPrograma = 0
                         deleteline(channel['STTN'])
                         statrec = open("/var/www/html/mnt/nv/epg/statrec.txt", "r", errors="ignore", encoding='ascii')
@@ -258,7 +391,8 @@ def start(day):
                             hfin = hfin + timedelta(hours=int(OffSetZone['OZN']))
                             hinicio = hinicio + timedelta(hours=int(OffSetZone['OZN']))
                             ahora = datetime.strptime((day.strftime("%Y%m%d") + " 00:00"), '%Y%m%d %H:%M')
-
+                            duration = (int(duracionh) * 60) + int(duracionm)
+                            durationh = duration/60
                             if listSkedrec[0] == channel['STTN'] \
                                     and hinicio <= (ahora + timedelta(hours=23, minutes=59)) \
                                     and (hfin >= ahora):
@@ -266,14 +400,15 @@ def start(day):
                                 for linea2 in lineasProgrec:
                                     listProgrec = linea2.split('|')
                                     if listProgrec[0] == listSkedrec[1]:
+                                        
                                         dataProgram[str(contadorPrograma)] = []
                                         dataProgram[str(contadorPrograma)].append({
                                             "STTN": channel['STTN'],
                                             "DBKY": listProgrec[0],
                                             "TTLE": listProgrec[1],
                                             "DSCR": listProgrec[159],
-                                            "DRTN": '',
-                                            "MNTS": '',
+                                            "DRTN": float("{:.2f}".format(durationh)),
+                                            "MNTS": duration,
                                             "DATE": day.strftime("%Y%m%d"),
                                             "STRH": hinicio.strftime("%H:%M"),
                                             "FNLH": hfin.strftime("%H:%M"),
@@ -298,14 +433,14 @@ def start(day):
                             'NAME': channel['NAME'],
                             'INDC': channel['INDC'],
                             'LOGO': channel['LOGO'],
-                            'DTNU': day.strftime("%Y%m%d"),
-                            'DATE': day.strftime("%c"),
+                            'DATE': day.strftime("%Y%m%d"),
                             'PROGRAMS': dataProgram,
                             'P_Length' : contadorPrograma+1
                         })
                         contadorCanal = contadorCanal + 1
+                        dataProgram.clear()
 
-        data["C_Length"] = contadorCanal+1
+        data["C_Length"] = contadorCanal
         with open('/var/www/html/BBINCO/TV/Core/Controllers/Epg/VPL/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'w', encoding='ascii') as file:
             json.dump(data, file, indent=4)
 
