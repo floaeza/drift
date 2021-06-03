@@ -10,16 +10,16 @@ import requests
 
 urls = ['https://www.gatotv.com/canal/', 'https://www.tvpassport.com/tv-listings/stations/']
 today = datetime.today()
-today = today
+today = today + timedelta(days=1)
 
 listDays = ["", "", "", "", "", "", "", "", "", "", ""]
 
-for n in range(11):
+for n in range(1):
     listDays[n] = today.strftime("%Y-%m-%d")
     today = today + timedelta(days=1)
 
 ####Numero de paquetes + 1#########
-paquetes = 7
+paquetes = 2
 
 
 def tableDataText(table):
@@ -44,7 +44,7 @@ def start(day):
     dataProgram = {}
     day = datetime.strptime(day, '%Y-%m-%d')
 
-    for ids in range(6, paquetes):
+    for ids in range(1, paquetes):
         contadorCanal = 0
         data = {}
         data["C_Length"]=0
@@ -141,7 +141,7 @@ def start(day):
                     cana = False
                     print(channel['NAME'] + "   No encontrado (GATO)")
 
-                if cana:
+                if dataProgramGato != {}:
                     data[str(contadorCanal)] = []
                     data[str(contadorCanal)].append({
                         'PSCN': channel['PSCN'],
@@ -197,7 +197,7 @@ def start(day):
             else:
                 ##############  TV PASSPORT ##############
                 if 'PASS' in channel['STTN']:
-                    dataProgram = {}
+                    dataProgramPass = {}
                     P_Length = 0
                     PASS = False
                     print('TV PASS')
@@ -234,8 +234,8 @@ def start(day):
                                 table['data-duration'] = str(endmin)
                                 ini = datetime.strptime(day.strftime("%Y-%m-%d")+' 00:00:00', '%Y-%m-%d %H:%M:%S')
                                 continue
-                            dataProgram[str(conta)] = []
-                            dataProgram[str(conta)].append({
+                            dataProgramPass[str(conta)] = []
+                            dataProgramPass[str(conta)].append({
                                 "STTN": channel['STTN'],
                                 "DBKY": '',
                                 "TTLE": table['data-showname'],
@@ -251,24 +251,8 @@ def start(day):
                             })
                             P_Length += 1
                             conta += 1
-                            PASS = True
+                        PASS = True
                     except:
-                        dataProgram['0'] = []
-                        dataProgram['0'].append({
-                            "STTN": channel['STTN'],
-                            "DBKY": '',
-                            "TTLE": channel['NAME'],
-                            "DSCR": '',
-                            "DRTN": 24,
-                            "MNTS": 1440,
-                            "DATE": day.strftime("%Y%m%d"),
-                            "STRH": "00:00",
-                            "FNLH": "23:59",
-                            "TVRT": '',
-                            "STRS": '',
-                            "EPSD": ''
-                        })
-                        P_Length += 1
                         print(channel['STTN'], '    No Encontrado (PASS)')
 
                     if PASS:
@@ -286,8 +270,8 @@ def start(day):
                                 if ini > datetime.strptime(day.strftime("%Y-%m-%d")+' 23:59:50', '%Y-%m-%d %H:%M:%S'):
                                     break
                                 
-                                dataProgram[str(conta)] = []
-                                dataProgram[str(conta)].append({
+                                dataProgramPass[str(conta)] = []
+                                dataProgramPass[str(conta)].append({
                                     "STTN": channel['STTN'],
                                     "DBKY": '',
                                     "TTLE": table['data-showname'],
@@ -304,43 +288,61 @@ def start(day):
                                 P_Length += 1
                                 conta += 1
                         except:
-                            dataProgram['0'] = []
-                            dataProgram['0'].append({
-                                "STTN": channel['STTN'],
-                                "DBKY": '',
-                                "TTLE": channel['NAME'],
-                                "DSCR": '',
-                                "DRTN": 24,
-                                "MNTS": 1440,
-                                "DATE": day.strftime("%Y%m%d"),
-                                "STRH": "00:00",
-                                "FNLH": "23:59",
-                                "TVRT": '',
-                                "STRS": '',
-                                "EPSD": ''
-                            })
-                            P_Length += 1
                             print(channel['STTN'], '    No Encontrado (PASS)')
 
-                    data[str(contadorCanal)] = []
-                    data[str(contadorCanal)].append({
-                        'PSCN': channel['PSCN'],
-                        'ADIO': channel['ADIO'],
-                        'PRGM': channel['PRGM'],
-                        'SRCE': channel['SRCE'],
-                        'QLTY': channel['QLTY'],
-                        'PORT': channel['PORT'],
-                        'CHNL': channel['CHNL'],
-                        'STTN': channel['STTN'],
-                        'NAME': channel['NAME'],
-                        'INDC': channel['INDC'],
-                        'LOGO': channel['LOGO'],
-                        'DATE': day.strftime("%Y%m%d"),
-                        'PROGRAMS': dataProgram,
-                        "P_Length": P_Length
-                    })
+                    if dataProgramPass != {}:
+                        data[str(contadorCanal)] = []
+                        data[str(contadorCanal)].append({
+                            'PSCN': channel['PSCN'],
+                            'ADIO': channel['ADIO'],
+                            'PRGM': channel['PRGM'],
+                            'SRCE': channel['SRCE'],
+                            'QLTY': channel['QLTY'],
+                            'PORT': channel['PORT'],
+                            'CHNL': channel['CHNL'],
+                            'STTN': channel['STTN'],
+                            'NAME': channel['NAME'],
+                            'INDC': channel['INDC'],
+                            'LOGO': channel['LOGO'],
+                            'DATE': day.strftime("%Y%m%d"),
+                            'PROGRAMS': dataProgramPass,
+                            'P_Length': P_Length
+                        })
+                    else:
+                        dataProgradm = {}
+                        dataProgradm['0'] = []
+                        dataProgradm['0'].append({
+                            "STTN": channel['STTN'],
+                            "DBKY": '',
+                            "TTLE": channel['NAME'],
+                            "DSCR": '',
+                            "DRTN": 24,
+                            "MNTS": 1440,
+                            "DATE": day.strftime("%Y%m%d"),
+                            "STRH": "00:00",
+                            "FNLH": "23:59",
+                            "TVRT": '',
+                            "STRS": '',
+                            "EPSD": ''
+                        })
+                        data[str(contadorCanal)] = []
+                        data[str(contadorCanal)].append({
+                            'PSCN': channel['PSCN'],
+                            'ADIO': channel['ADIO'],
+                            'PRGM': channel['PRGM'],
+                            'SRCE': channel['SRCE'],
+                            'QLTY': channel['QLTY'],
+                            'PORT': channel['PORT'],
+                            'CHNL': channel['CHNL'],
+                            'STTN': channel['STTN'],
+                            'NAME': channel['NAME'],
+                            'INDC': channel['INDC'],
+                            'LOGO': channel['LOGO'],
+                            'DATE': day.strftime("%Y%m%d"),
+                            'PROGRAMS': dataProgradm,
+                            'P_Length': 1
+                        })
                     contadorCanal = contadorCanal + 1
-                    dataProgram.clear()
                 else:
                     if 'VIDEO' in channel['STTN'] or 'AUDIO' in channel['STTN'] or 'LOCAL' in channel[
                         'STTN'] or 'CONTENT' in channel['STTN']:
