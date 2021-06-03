@@ -56,10 +56,10 @@ def start(day):
         Zone = requests.post('http://bbinco.fortiddns.com:669/BBINCO/TV/Core/Controllers/PY.php', data=payload)
         OffSetZone = json.loads(Zone.content)
         OffSetZone = OffSetZone[0]
-        #print(OffSetZone)
         for channel in channels:
             if 'GATO' in channel['STTN']:
-                dataProgram = {}
+                dataProgramGato = {}
+                cana = False
                 print('GATO TV')
                 P_Length = 0
                 try:
@@ -70,6 +70,7 @@ def start(day):
                     JSONGato = tableDataText(table)
                     JSONGato = separarGato(JSONGato)
                     print(JSONGato)
+                    cana = True
                     for p in range(len(JSONGato)):
                         strh = datetime.strptime(JSONGato[p][0], '%H:%M %p')
                         fnlh = datetime.strptime(JSONGato[p][1], '%H:%M %p')
@@ -120,8 +121,8 @@ def start(day):
                         print(dur)
                         print('--------------------------')
                   
-                        dataProgram[str(p)] = []
-                        dataProgram[str(p)].append({
+                        dataProgramGato[str(p)] = []
+                        dataProgramGato[str(p)].append({
                             "STTN": channel['STTN'],
                             "DBKY": '',
                             "TTLE": JSONGato[p][2],
@@ -137,9 +138,31 @@ def start(day):
                         })
                         P_Length += 1
                 except:
-                    dataProgram = {}
-                    dataProgram['0'] = []
-                    dataProgram['0'].append({
+                    cana = False
+                    print(channel['NAME'] + "   No encontrado (GATO)")
+
+                if cana:
+                    data[str(contadorCanal)] = []
+                    data[str(contadorCanal)].append({
+                        'PSCN': channel['PSCN'],
+                        'ADIO': channel['ADIO'],
+                        'PRGM': channel['PRGM'],
+                        'SRCE': channel['SRCE'],
+                        'QLTY': channel['QLTY'],
+                        'PORT': channel['PORT'],
+                        'CHNL': channel['CHNL'],
+                        'STTN': channel['STTN'],
+                        'NAME': channel['NAME'],
+                        'INDC': channel['INDC'],
+                        'LOGO': channel['LOGO'],
+                        'DATE': day.strftime("%Y%m%d"),
+                        'PROGRAMS': dataProgramGato,
+                        'P_Length': P_Length
+                    })
+                else:
+                    dataProgradm = {}
+                    dataProgradm['0'] = []
+                    dataProgradm['0'].append({
                         "STTN": channel['STTN'],
                         "DBKY": '',
                         "TTLE": channel['NAME'],
@@ -153,26 +176,23 @@ def start(day):
                         "STRS": '',
                         "EPSD": ''
                     })
-                    P_Length += 1
-                    print(channel['NAME'] + "   No encontrado (GATO)")
-
-                data[str(contadorCanal)] = []
-                data[str(contadorCanal)].append({
-                    'PSCN': channel['PSCN'],
-                    'ADIO': channel['ADIO'],
-                    'PRGM': channel['PRGM'],
-                    'SRCE': channel['SRCE'],
-                    'QLTY': channel['QLTY'],
-                    'PORT': channel['PORT'],
-                    'CHNL': channel['CHNL'],
-                    'STTN': channel['STTN'],
-                    'NAME': channel['NAME'],
-                    'INDC': channel['INDC'],
-                    'LOGO': channel['LOGO'],
-                    'DATE': day.strftime("%Y%m%d"),
-                    'PROGRAMS': dataProgram,
-                    'P_Length': P_Length
-                })
+                    data[str(contadorCanal)] = []
+                    data[str(contadorCanal)].append({
+                        'PSCN': channel['PSCN'],
+                        'ADIO': channel['ADIO'],
+                        'PRGM': channel['PRGM'],
+                        'SRCE': channel['SRCE'],
+                        'QLTY': channel['QLTY'],
+                        'PORT': channel['PORT'],
+                        'CHNL': channel['CHNL'],
+                        'STTN': channel['STTN'],
+                        'NAME': channel['NAME'],
+                        'INDC': channel['INDC'],
+                        'LOGO': channel['LOGO'],
+                        'DATE': day.strftime("%Y%m%d"),
+                        'PROGRAMS': dataProgradm,
+                        'P_Length': 1
+                    })
                 contadorCanal = contadorCanal + 1
             else:
                 ##############  TV PASSPORT ##############
@@ -181,7 +201,6 @@ def start(day):
                     P_Length = 0
                     PASS = False
                     print('TV PASS')
-                    dataProgram = {}
                     daytwo = day - timedelta(days=1)
                     raw_html = urllib.request.urlopen(
                         'https://www.tvpassport.com/tv-listings/stations/' + channel['NAME'] + day.strftime(
@@ -201,7 +220,7 @@ def start(day):
                         for i in range(1, 100):
                             P_Length += 1
 
-                            table = soup2.find(id="itemheader" + str(i))\
+                            table = soup2.find(id="itemheader" + str(i))
 
                             if table == None:
                                 break
@@ -234,7 +253,6 @@ def start(day):
                             conta += 1
                             PASS = True
                     except:
-                        dataProgram = {}
                         dataProgram['0'] = []
                         dataProgram['0'].append({
                             "STTN": channel['STTN'],
@@ -274,7 +292,7 @@ def start(day):
                                     "DBKY": '',
                                     "TTLE": table['data-showname'],
                                     "DSCR": table['data-description'],
-                                    "DRTN": float("{:.20f}".format(int(table['data-duration']) / 60)),
+                                    "DRTN": float("{:.2f}".format(int(table['data-duration']) / 60)),
                                     "MNTS": int(table['data-duration']),
                                     "DATE": day.strftime("%Y%m%d"),
                                     "STRH": ini.strftime("%H:%M"),
@@ -286,7 +304,6 @@ def start(day):
                                 P_Length += 1
                                 conta += 1
                         except:
-                            dataProgram = {}
                             dataProgram['0'] = []
                             dataProgram['0'].append({
                                 "STTN": channel['STTN'],
@@ -319,7 +336,6 @@ def start(day):
                         'INDC': channel['INDC'],
                         'LOGO': channel['LOGO'],
                         'DATE': day.strftime("%Y%m%d"),
-                        'DATE': day.strftime("%c"),
                         'PROGRAMS': dataProgram,
                         "P_Length": P_Length
                     })
@@ -329,9 +345,9 @@ def start(day):
                     if 'VIDEO' in channel['STTN'] or 'AUDIO' in channel['STTN'] or 'LOCAL' in channel[
                         'STTN'] or 'CONTENT' in channel['STTN']:
                         print('VIDEO/AUDIO/LOCAL/CONTENT')
-                        dataProgram = {}
-                        dataProgram['0'] = []
-                        dataProgram['0'].append({
+                        dataProgradm = {}
+                        dataProgradm['0'] = []
+                        dataProgradm['0'].append({
                             "STTN": channel['STTN'],
                             "DBKY": '',
                             "TTLE": channel['NAME'],
@@ -345,7 +361,6 @@ def start(day):
                             "STRS": '',
                             "EPSD": ''
                         })
-
                         data[str(contadorCanal)] = []
                         data[str(contadorCanal)].append({
                             'PSCN': channel['PSCN'],
@@ -360,7 +375,7 @@ def start(day):
                             'INDC': channel['INDC'],
                             'LOGO': channel['LOGO'],
                             'DATE': day.strftime("%Y%m%d"),
-                            'PROGRAMS': dataProgram,
+                            'PROGRAMS': dataProgradm,
                             'P_Length': 1
                         })
                         contadorCanal = contadorCanal + 1
