@@ -318,7 +318,7 @@ function LoadCurrentDataPosition(HourPosition, CurrentChannelPosition){
 
     for(IndexProgram = 0; IndexProgram < ChannelsJson[CurrentChannelPosition].P_Length; IndexProgram++){
         /*Obtiene las horas inicio y fin de cada programa*/
-        console.log(ChannelsJson[0].PROGRAMS);
+        console.log(ChannelsJson[0].PROGRAMS[0].STRH);
         StartHour = ChannelsJson[CurrentChannelPosition].PROGRAMS[IndexProgram].STRH;
         EndHour   = ChannelsJson[CurrentChannelPosition].PROGRAMS[IndexProgram].FNLH;
 
