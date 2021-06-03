@@ -31,10 +31,12 @@
         
         Debug('Playing: '+Source + ':'+Port);
 
-        IndexChannel++;
+
 
         document.getElementById('DigitalChannel').innerHTML = '<video id="VideoPlaying" autoplay loop><source src='+Sources[IndexChannel]+' type="video/mp4"></video>';
         document.getElementById('DigitalChannel').style.display = 'inline';
+
+        IndexChannel++;
 
         if(IndexChannel > Sources.length - 1){
             IndexChannel = 0;
@@ -52,10 +54,10 @@
         // Activamos la bandera
         PlayingChannel = true;
 
-        IndexChannel++;
-
-        document.getElementById('DigitalChannel').innerHTML = '<video id="VideoPlaying" autoplay loop><source src='+Source[IndexChannel]+' type="video/mp4"></video>';
+        document.getElementById('DigitalChannel').innerHTML = '<video id="VideoPlaying" autoplay loop><source src='+Sources[IndexChannel]+' type="video/mp4"></video>';
         document.getElementById('DigitalChannel').style.display = 'inline';
+
+        IndexChannel++;
 
         if(IndexChannel > Sources.length - 1){
             IndexChannel = 0;
