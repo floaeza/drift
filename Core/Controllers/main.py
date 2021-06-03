@@ -10,7 +10,7 @@ import requests
 
 urls = ['https://www.gatotv.com/canal/', 'https://www.tvpassport.com/tv-listings/stations/']
 today = datetime.today()
-today = today + timedelta(days=1)
+today = today
 
 listDays = ["", "", "", "", "", "", "", "", "", "", ""]
 
@@ -19,7 +19,7 @@ for n in range(1):
     today = today + timedelta(days=1)
 
 ####Numero de paquetes + 1#########
-paquetes = 2
+paquetes = 7
 
 
 def tableDataText(table):
@@ -199,6 +199,7 @@ def start(day):
                 if 'PASS' in channel['STTN']:
                     dataProgramPass = {}
                     P_Length = 0
+                    dur=0
                     PASS = False
                     print('TV PASS')
                     daytwo = day - timedelta(days=1)
@@ -218,30 +219,40 @@ def start(day):
                     try:
                         conta = 0
                         for i in range(1, 100):
-                            P_Length += 1
+                           
 
                             table = soup2.find(id="itemheader" + str(i))
 
                             if table == None:
                                 break
-                            ini = datetime.strptime(table['data-listdatetime'], '%Y-%m-%d %H:%M:%S') + timedelta(hours=1)
-                            end = datetime.strptime(table['data-listdatetime'], '%Y-%m-%d %H:%M:%S') + timedelta(hours=1 ,minutes=int(table['data-duration']))
-
-                            inimin = (int(end.hour)*60)+int(end.minute)
+                            ini = datetime.strptime(table['data-listdatetime'], '%Y-%m-%d %H:%M:%S')
+                            end = datetime.strptime(table['data-listdatetime'], '%Y-%m-%d %H:%M:%S') + timedelta(minutes=int(table['data-duration']))
+                            
+                            inimin = (int(ini.hour)*60)+int(ini.minute)
                             endmin = (int(end.hour)*60)+int(end.minute)
                             
-                            if end < datetime.strptime(day.strftime("%Y-%m-%d")+' 00:00:00', '%Y-%m-%d %H:%M:%S'):
-                                table['data-duration'] = str(endmin)
-                                ini = datetime.strptime(day.strftime("%Y-%m-%d")+' 00:00:00', '%Y-%m-%d %H:%M:%S')
+                            if end <= datetime.strptime(day.strftime("%Y-%m-%d")+' 00:00:00', '%Y-%m-%d %H:%M:%S'):
                                 continue
+                            if ini < datetime.strptime(day.strftime("%Y-%m-%d")+' 00:00:00', '%Y-%m-%d %H:%M:%S'):
+                                ini = datetime.strptime(day.strftime("%Y-%m-%d")+' 00:00:00', '%Y-%m-%d %H:%M:%S')
+
+                            inimin = (int(ini.hour)*60)+int(ini.minute)
+                            endmin = (int(end.hour)*60)+int(end.minute)
+
+                            if inimin <= endmin:
+                                dur = endmin - inimin
+                            else:
+                                dur = endmin - inimin
+                                dur = dur + 1440
+
                             dataProgramPass[str(conta)] = []
                             dataProgramPass[str(conta)].append({
                                 "STTN": channel['STTN'],
                                 "DBKY": '',
                                 "TTLE": table['data-showname'],
                                 "DSCR": table['data-description'],
-                                "DRTN": float("{:.2f}".format(int(table['data-duration']) / 60)),
-                                "MNTS": int(table['data-duration']),
+                                "DRTN": float("{:.2f}".format(dur / 60)),
+                                "MNTS": dur,
                                 "DATE": day.strftime("%Y%m%d"),
                                 "STRH": ini.strftime("%H:%M"),
                                 "FNLH": end.strftime("%H:%M"),
@@ -253,31 +264,40 @@ def start(day):
                             conta += 1
                         PASS = True
                     except:
-                        print(channel['STTN'], '    No Encontrado (PASS)')
+                        print(channel['STTN'], '    No Encontrado (PASS1)')
 
                     if PASS:
                         try:
                             for i in range(1, 100):
-                                P_Length += 1
-
+                                
                                 table = soup.find(id="itemheader" + str(i))
-
                                 if table == None:
                                     break
-                                ini = datetime.strptime(table['data-listdatetime'], '%Y-%m-%d %H:%M:%S') + timedelta(hours=1)
-                                end = datetime.strptime(table['data-listdatetime'], '%Y-%m-%d %H:%M:%S') + timedelta(hours=1, minutes=int(table['data-duration']))
-
-                                if ini > datetime.strptime(day.strftime("%Y-%m-%d")+' 23:59:50', '%Y-%m-%d %H:%M:%S'):
+                                ini = datetime.strptime(table['data-listdatetime'], '%Y-%m-%d %H:%M:%S')
+                                end = datetime.strptime(table['data-listdatetime'], '%Y-%m-%d %H:%M:%S') + timedelta(minutes=int(table['data-duration']))
+                                if ini > datetime.strptime(day.strftime("%Y-%m-%d")+' 23:59:59', '%Y-%m-%d %H:%M:%S'):
                                     break
                                 
+                                inimin = (int(ini.hour)*60)+int(ini.minute)
+                                endmin = (int(end.hour)*60)+int(end.minute)
+
+                                if end > datetime.strptime(day.strftime("%Y-%m-%d")+' 23:59:59', '%Y-%m-%d %H:%M:%S'):
+                                    end = datetime.strptime(day.strftime("%Y-%m-%d")+' 23:59:59', '%Y-%m-%d %H:%M:%S')
+                                    endmin = (int(end.hour)*60)+int(end.minute)
+
+                                if inimin <= endmin:
+                                    dur = endmin - inimin
+                                else:
+                                    dur = endmin - inimin
+                                    dur = dur + 1440
                                 dataProgramPass[str(conta)] = []
                                 dataProgramPass[str(conta)].append({
                                     "STTN": channel['STTN'],
                                     "DBKY": '',
                                     "TTLE": table['data-showname'],
                                     "DSCR": table['data-description'],
-                                    "DRTN": float("{:.2f}".format(int(table['data-duration']) / 60)),
-                                    "MNTS": int(table['data-duration']),
+                                    "DRTN": float("{:.2f}".format(dur / 60)),
+                                    "MNTS": dur,
                                     "DATE": day.strftime("%Y%m%d"),
                                     "STRH": ini.strftime("%H:%M"),
                                     "FNLH": end.strftime("%H:%M"),
@@ -288,9 +308,9 @@ def start(day):
                                 P_Length += 1
                                 conta += 1
                         except:
-                            print(channel['STTN'], '    No Encontrado (PASS)')
+                            print(channel['STTN'], '    No Encontrado (PASS2)')
 
-                    if dataProgramPass != {}:
+                    if dataProgramPass != {} and PASS:
                         data[str(contadorCanal)] = []
                         data[str(contadorCanal)].append({
                             'PSCN': channel['PSCN'],
@@ -309,39 +329,56 @@ def start(day):
                             'P_Length': P_Length
                         })
                     else:
-                        dataProgradm = {}
-                        dataProgradm['0'] = []
-                        dataProgradm['0'].append({
-                            "STTN": channel['STTN'],
-                            "DBKY": '',
-                            "TTLE": channel['NAME'],
-                            "DSCR": '',
-                            "DRTN": 24,
-                            "MNTS": 1440,
-                            "DATE": day.strftime("%Y%m%d"),
-                            "STRH": "00:00",
-                            "FNLH": "23:59",
-                            "TVRT": '',
-                            "STRS": '',
-                            "EPSD": ''
-                        })
-                        data[str(contadorCanal)] = []
-                        data[str(contadorCanal)].append({
-                            'PSCN': channel['PSCN'],
-                            'ADIO': channel['ADIO'],
-                            'PRGM': channel['PRGM'],
-                            'SRCE': channel['SRCE'],
-                            'QLTY': channel['QLTY'],
-                            'PORT': channel['PORT'],
-                            'CHNL': channel['CHNL'],
-                            'STTN': channel['STTN'],
-                            'NAME': channel['NAME'],
-                            'INDC': channel['INDC'],
-                            'LOGO': channel['LOGO'],
-                            'DATE': day.strftime("%Y%m%d"),
-                            'PROGRAMS': dataProgradm,
-                            'P_Length': 1
-                        })
+                        if PASS:
+                            dataProgramPass[str(conta)] = []
+                            dataProgramPass[str(conta)].append({
+                                "STTN": channel['STTN'],
+                                "DBKY": '',
+                                "TTLE": table['data-showname'],
+                                "DSCR": table['data-description'],
+                                "DRTN": float("{:.2f}".format(dur / 60)),
+                                "MNTS": dur,
+                                "DATE": day.strftime("%Y%m%d"),
+                                "STRH": dataProgramPass[str(conta-1):"STRH"],
+                                "FNLH": '23:59',
+                                "TVRT": table['data-rating'],
+                                "STRS": '',
+                                "EPSD": table['data-episodetitle']
+                            })
+                        else:
+                            dataProgradm = {}
+                            dataProgradm['0'] = []
+                            dataProgradm['0'].append({
+                                "STTN": channel['STTN'],
+                                "DBKY": '',
+                                "TTLE": channel['NAME'],
+                                "DSCR": '',
+                                "DRTN": 24,
+                                "MNTS": 1440,
+                                "DATE": day.strftime("%Y%m%d"),
+                                "STRH": "00:00",
+                                "FNLH": "23:59",
+                                "TVRT": '',
+                                "STRS": '',
+                                "EPSD": ''
+                            })
+                            data[str(contadorCanal)] = []
+                            data[str(contadorCanal)].append({
+                                'PSCN': channel['PSCN'],
+                                'ADIO': channel['ADIO'],
+                                'PRGM': channel['PRGM'],
+                                'SRCE': channel['SRCE'],
+                                'QLTY': channel['QLTY'],
+                                'PORT': channel['PORT'],
+                                'CHNL': channel['CHNL'],
+                                'STTN': channel['STTN'],
+                                'NAME': channel['NAME'],
+                                'INDC': channel['INDC'],
+                                'LOGO': channel['LOGO'],
+                                'DATE': day.strftime("%Y%m%d"),
+                                'PROGRAMS': dataProgradm,
+                                'P_Length': 1
+                            })
                     contadorCanal = contadorCanal + 1
                 else:
                     if 'VIDEO' in channel['STTN'] or 'AUDIO' in channel['STTN'] or 'LOCAL' in channel[
@@ -384,7 +421,7 @@ def start(day):
                         dataProgram.clear()
                     else:
                         print('TRIBIUNE     ', channel['STTN'])
-                        dataProgram = {}
+                        dataProgramTri = {}
                         contadorPrograma = 0
                         deleteline(channel['STTN'])
                         statrec = open("/var/www/html/mnt/nv/epg/statrec.txt", "r", errors="ignore", encoding='ascii')
@@ -402,24 +439,38 @@ def start(day):
 
                             hinicio = datetime.strptime((listSkedrec[2] + " " + listSkedrec[3][0] + listSkedrec[3][1] + ":" + listSkedrec[3][2] + listSkedrec[3][3]), '%Y%m%d %H:%M')
                             duracion = datetime.strptime(listSkedrec[4][0] + listSkedrec[4][1]+':'+listSkedrec[4][2] + listSkedrec[4][3], '%H:%M')
+                            
                             duracionh = duracion.strftime('%H')
                             duracionm = duracion.strftime('%M')
+                            
                             hfin = hinicio + timedelta(hours=int(duracionh), minutes=int(duracionm))
                             hfin = hfin + timedelta(hours=int(OffSetZone['OZN']))
                             hinicio = hinicio + timedelta(hours=int(OffSetZone['OZN']))
                             ahora = datetime.strptime((day.strftime("%Y%m%d") + " 00:00"), '%Y%m%d %H:%M')
+                            
                             duration = (int(duracionh) * 60) + int(duracionm)
                             durationh = duration/60
+                            
                             if listSkedrec[0] == channel['STTN'] \
-                                    and hinicio <= (ahora + timedelta(hours=23, minutes=59)) \
-                                    and (hfin >= ahora):
+                                    and hinicio < (ahora + timedelta(hours=23, minutes=59)) \
+                                    and (hfin > ahora):
+                                if hinicio < ahora:
+                                    hinicio = ahora
+                                if hfin > (ahora + timedelta(hours=23, minutes=59)):
+                                    hfin = ahora + timedelta(hours=23, minutes=59)
+
+                                inimin = (int(hinicio.hour) * 60) + int(hinicio.minute)
+                                finmin = (int(hfin.hour) * 60) + int(hfin.minute)
+
+                                duration = finmin - inimin
+                                durationh = duration/60
 
                                 for linea2 in lineasProgrec:
                                     listProgrec = linea2.split('|')
                                     if listProgrec[0] == listSkedrec[1]:
                                         
-                                        dataProgram[str(contadorPrograma)] = []
-                                        dataProgram[str(contadorPrograma)].append({
+                                        dataProgramTri[str(contadorPrograma)] = []
+                                        dataProgramTri[str(contadorPrograma)].append({
                                             "STTN": channel['STTN'],
                                             "DBKY": listProgrec[0],
                                             "TTLE": listProgrec[1],
@@ -451,11 +502,10 @@ def start(day):
                             'INDC': channel['INDC'],
                             'LOGO': channel['LOGO'],
                             'DATE': day.strftime("%Y%m%d"),
-                            'PROGRAMS': dataProgram,
-                            'P_Length' : contadorPrograma+1
+                            'PROGRAMS': dataProgramTri,
+                            'P_Length' : contadorPrograma
                         })
                         contadorCanal = contadorCanal + 1
-                        dataProgram.clear()
 
         data["C_Length"] = contadorCanal
         with open('/var/www/html/BBINCO/TV/Core/Controllers/Epg/VPL/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'w', encoding='ascii') as file:
