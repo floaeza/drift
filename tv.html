@@ -202,7 +202,7 @@
   <img src='Media/Logos/BBN/main_logo.png'>
 </div>
 <div id='Container'>
-  <iframe src="http://201.116.203.114/BBINCO/TV/index.php" width="1180" height="580"  title="BbincoTV" id="BbincoTV"></iframe>
+  <iframe width="1180" height="580"  title="BbincoTV" id="BbincoTV"></iframe>
 
   <div class='RemoteContainer' id='RemoteContainer'>
     <table>
@@ -316,9 +316,12 @@
           Number8             = document.getElementById('8'),
           Number9             = document.getElementById('9'),
           Number0             = document.getElementById('0'),
-          RemoteContainer     = document.getElementById('RemoteContainer'),
-          SnackBar            = document.getElementById("snackbar");
+          RemoteContainer     = document.getElementById('RemoteContainer');
 
+        var Host = self.location.host;
+
+          Frame.src = 'http://'+Host+'/BBINCO/TV/index.php';
+          console.log('http://'+Host+'/BBINCO/TV/index.php');
 
   /*********************************************
    * Creadores de eventos para control remoto
