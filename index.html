@@ -19,7 +19,7 @@
         }
 
         #Bbinco img {
-            width: 30%;
+            width: 25%;
         }
 
         #Control {
@@ -48,7 +48,7 @@
             width:200px;
             height: 600px;
             position: absolute;
-            top: 50%;
+            top: 55%;
             margin-top: -300px;
             right: 1%;
             background: no-repeat center center;
@@ -275,5 +275,83 @@
     // function CloseInfo() {
     //     Info.style.display = 'none';
     // }
+
+    /********************************************
+     * Inicialización de variables
+     *********************************************/
+    var
+        Frame               = document.getElementById('Frame'),
+        Menu                = document.getElementById('Menu'),
+        Info                = document.getElementById('Info'),
+        Left                = document.getElementById('Left').parentElement,
+        Right               = document.getElementById('Right').parentElement,
+        Up                  = document.getElementById('Up').parentElement,
+        Down                = document.getElementById('Down').parentElement,
+        Ok                  = document.getElementById('Ok'),
+        Back                = document.getElementById('Back'),
+        Guide               = document.getElementById('Guide'),
+        ChannelUp           = document.getElementById('ChannelUp'),
+        ChannelDown         = document.getElementById('ChannelDown'),
+        Number1             = document.getElementById('1'),
+        Number2             = document.getElementById('2'),
+        Number3             = document.getElementById('3'),
+        Number4             = document.getElementById('4'),
+        Number5             = document.getElementById('5'),
+        Number6             = document.getElementById('6'),
+        Number7             = document.getElementById('7'),
+        Number8             = document.getElementById('8'),
+        Number9             = document.getElementById('9'),
+        Number0             = document.getElementById('0'),
+        RemoteContainer     = document.getElementById('RemoteContainer'),
+        SnackBar            = document.getElementById("snackbar");
+
+
+    /*********************************************
+     * Creadores de eventos para control remoto
+     *********************************************/
+    Menu.addEventListener('click',        function(){ Frame.contentWindow.MakeEvent(REMOTE_MENU); });
+    Info.addEventListener('click',        function(){ Frame.contentWindow.MakeEvent(REMOTE_INFO); });
+    Left.addEventListener('click',        function(){ Frame.contentWindow.MakeEvent(ARROW_KEY_LEFT); });
+    Right.addEventListener('click',       function(){ Frame.contentWindow.MakeEvent(ARROW_KEY_RIGHT); });
+    Up.addEventListener('click',          function(){ Frame.contentWindow.MakeEvent(ARROW_KEY_UP); });
+    Down.addEventListener('click',        function(){ Frame.contentWindow.MakeEvent(ARROW_KEY_DOWN); });
+    Ok.addEventListener('click',          function(){ Frame.contentWindow.MakeEvent(REMOTE_OK); });
+    Back.addEventListener('click',        function(){ Frame.contentWindow.MakeEvent(REMOTE_BACK); });
+    Guide.addEventListener('click',       function(){ Frame.contentWindow.MakeEvent(REMOTE_GUIDE); });
+    ChannelUp.addEventListener('click',   function(){ Frame.contentWindow.MakeEvent(REMOTE_CHANNEL_UP); });
+    ChannelDown.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(REMOTE_CHANNEL_DOWN); });
+
+    Number0.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(48); });
+    Number1.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(49); });
+    Number2.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(50); });
+    Number3.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(51); });
+    Number4.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(52); });
+    Number5.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(53); });
+    Number6.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(54); });
+    Number7.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(55); });
+    Number8.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(56); });
+    Number9.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(57); });
+
+    Menu.addEventListener('mousedown',          function(){ Menu.classList.toggle('ClickedButton'); setTimeout(function(){ Menu.classList.toggle('ClickedButton'); },100) });
+    Info.addEventListener('mousedown',          function(){ Info.classList.toggle('ClickedButton'); setTimeout(function(){ Info.classList.toggle('ClickedButton'); },100) });
+    Left.addEventListener('mousedown',          function(){ Left.classList.toggle('ClickedButton'); setTimeout(function(){ Left.classList.toggle('ClickedButton'); },100) });
+    Right.addEventListener('mousedown',         function(){ Right.classList.toggle('ClickedButton'); setTimeout(function(){ Right.classList.toggle('ClickedButton'); },100) });
+    Up.addEventListener('mousedown',            function(){ Up.classList.toggle('ClickedButton'); setTimeout(function(){ Up.classList.toggle('ClickedButton'); },100) });
+    Down.addEventListener('mousedown',          function(){ Down.classList.toggle('ClickedButton'); setTimeout(function(){ Down.classList.toggle('ClickedButton'); },100) });
+    Ok.addEventListener('mousedown',            function(){ Ok.classList.toggle('ClickedButton'); setTimeout(function(){ Ok.classList.toggle('ClickedButton'); },100) });
+    Back.addEventListener('mousedown',          function(){ Back.classList.toggle('ClickedButton'); setTimeout(function(){ Back.classList.toggle('ClickedButton'); },100) });
+    Guide.addEventListener('mousedown',         function(){ Guide.classList.toggle('ClickedButton'); setTimeout(function(){ Guide.classList.toggle('ClickedButton'); },100) });
+    ChannelUp.addEventListener('mousedown',     function(){ ChannelUp.classList.toggle('ClickedButton'); setTimeout(function(){ ChannelUp.classList.toggle('ClickedButton'); },100) });
+    ChannelDown.addEventListener('mousedown',   function(){ ChannelDown.classList.toggle('ClickedButton'); setTimeout(function(){ ChannelDown.classList.toggle('ClickedButton'); },100) });
+    Number0.addEventListener('mousedown',       function(){ Number0.classList.toggle('ClickedButton'); setTimeout(function(){ Number0.classList.toggle('ClickedButton'); },100) });
+    Number1.addEventListener('mousedown',       function(){ Number1.classList.toggle('ClickedButton'); setTimeout(function(){ Number1.classList.toggle('ClickedButton'); },100) });
+    Number2.addEventListener('mousedown',       function(){ Number2.classList.toggle('ClickedButton'); setTimeout(function(){ Number2.classList.toggle('ClickedButton'); },100) });
+    Number3.addEventListener('mousedown',       function(){ Number3.classList.toggle('ClickedButton'); setTimeout(function(){ Number3.classList.toggle('ClickedButton'); },100) });
+    Number4.addEventListener('mousedown',       function(){ Number4.classList.toggle('ClickedButton'); setTimeout(function(){ Number4.classList.toggle('ClickedButton'); },100) });
+    Number5.addEventListener('mousedown',       function(){ Number5.classList.toggle('ClickedButton'); setTimeout(function(){ Number5.classList.toggle('ClickedButton'); },100) });
+    Number6.addEventListener('mousedown',       function(){ Number6.classList.toggle('ClickedButton'); setTimeout(function(){ Number6.classList.toggle('ClickedButton'); },100) });
+    Number7.addEventListener('mousedown',       function(){ Number7.classList.toggle('ClickedButton'); setTimeout(function(){ Number7.classList.toggle('ClickedButton'); },100) });
+    Number8.addEventListener('mousedown',       function(){ Number8.classList.toggle('ClickedButton'); setTimeout(function(){ Number8.classList.toggle('ClickedButton'); },100) });
+    Number9.addEventListener('mousedown',       function(){ Number9.classList.toggle('ClickedButton'); setTimeout(function(){ Number8.classList.toggle('ClickedButton'); },100) });
 </script>
 </html>
