@@ -315,5 +315,12 @@ var CheckInfo = 0;
             CheckingClicks = false;
         }
     }
+
+/*******************************************************************************
+ * Función para ejecutar los eventos de las teclas en Pantalla de Vendor = Generic
+ *******************************************************************************/
+function MakeEvent(key){
+    document.dispatchEvent(new KeyboardEvent('keydown', {'keyCode':key, 'which':key}));
+}
     
     
