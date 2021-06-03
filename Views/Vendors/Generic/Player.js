@@ -13,6 +13,15 @@
         WindowMinWidth  = 0,
         WindowMinHeight = 0;
 
+    var Sources = ['http://201.116.203.114/MULTIMEDIA_DMO/ChannelsVideos/AAA.mp4',
+                  'http://201.116.203.114/MULTIMEDIA_DMO/ChannelsVideos/ABC.mp4',
+                  'http://201.116.203.114/MULTIMEDIA_DMO/ChannelsVideos/CN.mp4',
+                  'http://201.116.203.114/MULTIMEDIA_DMO/ChannelsVideos/CNM.mp4',
+                  'http://201.116.203.114/MULTIMEDIA_DMO/ChannelsVideos/ESPN.mp4'
+                 ];
+
+    var IndexChannel = 0;
+
 /* *****************************************************************************
  * Reproductor de canal
  * ****************************************************************************/
@@ -22,10 +31,14 @@
         
         Debug('Playing: '+Source + ':'+Port);
 
-        Source = 'http://201.116.203.114/MULTIMEDIA_DMO/ChannelsVideos/AAA.mp4';
+        IndexChannel++;
 
-        document.getElementById('DigitalChannel').innerHTML = '<video id="VideoPlaying" autoplay loop><source src='+Source+' type="video/mp4"></video>';
+        document.getElementById('DigitalChannel').innerHTML = '<video id="VideoPlaying" autoplay loop><source src='+Sources[IndexChannel]+' type="video/mp4"></video>';
         document.getElementById('DigitalChannel').style.display = 'inline';
+
+        if(IndexChannel > Sources.length - 1){
+            IndexChannel = 0;
+        }
         
         // Si la guia esta cerrada muestra cuadro con informacion del canal en reproduccion
         ShowInfo();
@@ -39,10 +52,14 @@
         // Activamos la bandera
         PlayingChannel = true;
 
-        Source = 'http://201.116.203.114/MULTIMEDIA_DMO/ChannelsVideos/AAA.mp4';
+        IndexChannel++;
 
-        document.getElementById('DigitalChannel').innerHTML = '<video id="VideoPlaying" autoplay loop><source src='+Source+' type="video/mp4"></video>';
+        document.getElementById('DigitalChannel').innerHTML = '<video id="VideoPlaying" autoplay loop><source src='+Source[IndexChannel]+' type="video/mp4"></video>';
         document.getElementById('DigitalChannel').style.display = 'inline';
+
+        if(IndexChannel > Sources.length - 1){
+            IndexChannel = 0;
+        }
 
         // Si la guia esta cerrada muestra cuadro con informacion del canal en reproduccion
         ShowInfo();
