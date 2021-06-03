@@ -42,8 +42,9 @@
                 Model = 'N/A';
             }
 
-        var DeviceInfo = MacAddress + ' ' + IpAddress + ' '+ Model + ' '+ Firmware;
+        var DeviceInfo = MacAddress + ' - ' + IpAddress + ' - '+ Model + ' - '+ Firmware;
         document.getElementById('DebugText').innerHTML = DeviceInfo;
+
 
         // $.ajax({
         //     type: 'POST',
