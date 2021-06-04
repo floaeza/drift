@@ -20,7 +20,7 @@
     $ChannelsData = new Channels('system', $CurrentController);
     
     $ArrayEPGInfo = array();
-    $Option = !empty($_POST['Option']) ? $_POST['Option'] : 'GetChannelsInfoBypackage';
+    $Option = !empty($_POST['Option']) ? $_POST['Option'] : 'GetIdentifier';
     $PackageID = !empty($_POST['PackageID']) ? $_POST['PackageID'] : '6';
     $Station = !empty($_POST['Station']) ? $_POST['Station'] : 'GATO';  
 
@@ -41,6 +41,11 @@
             case 'GetOffsetZone':
                 $GuideDays = $ConfigData->getConfigByName('OffsetZone');
                 array_push($ArrayEPGInfo, array('OZN' => $GuideDays));
+                echo json_encode($ArrayEPGInfo);
+                break;
+            case 'GetIdentifier':
+                $GuideDays = $ConfigData->getConfigByName('Identifier');
+                array_push($ArrayEPGInfo, array('IDF' => $GuideDays));
                 echo json_encode($ArrayEPGInfo);
                 break;
             case 'GetChannelsInfoBypackage':

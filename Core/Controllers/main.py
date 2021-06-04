@@ -56,6 +56,10 @@ def start(day):
         Zone = requests.post('http://172.16.0.15/BBINCO/TV/Core/Controllers/PY.php', data=payload)
         OffSetZone = json.loads(Zone.content)
         OffSetZone = OffSetZone[0]
+        payload = {'Option': 'GetIdentifier'}
+        Identifier = requests.post('http://172.16.0.15/BBINCO/TV/Core/Controllers/PY.php', data=payload)
+        IDF = json.loads(Identifier.content)
+        IDF = IDF[0]
         for channel in channels:
             if 'GATO' in channel['STTN']:
                 dataProgramGato = {}
