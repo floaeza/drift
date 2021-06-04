@@ -512,16 +512,16 @@ def start(day):
                         contadorCanal = contadorCanal + 1
 
         data["C_Length"] = contadorCanal
-        with open('/var/www/html/BBINCO/IPTV/Core/Controllers/Epg/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'w', encoding='ascii') as file:
+        with open('/var/www/html/BBINCO/IPTV/Core/Controllers/Epg/'+IDF+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'w', encoding='ascii') as file:
             json.dump(data, file, indent=4)
 
-        with open('/var/www/html/BBINCO/IPTV/Core/Controllers/Epg/VPL/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'r') as file:
+        with open('/var/www/html/BBINCO/IPTV/Core/Controllers/Epg/'+IDF+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'r') as file:
             filedata = file.read()
 
         filedata = filedata.replace('[', '').replace(']', '')
-        with open('/var/www/html/BBINCO/IPTV/Core/Controllers/Epg/VPL/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'w') as file:
+        with open('/var/www/html/BBINCO/IPTV/Core/Controllers/Epg/'+IDF+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'w') as file:
             file.write(filedata)
-            print('/var/www/html/BBINCO/IPTV/Core/Controllers/Epg/VPL/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json ', 'CREADO')
+            print('/var/www/html/BBINCO/IPTV/Core/Controllers/Epg/'+IDF+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json ', 'CREADO')
 
         data.clear()
 
