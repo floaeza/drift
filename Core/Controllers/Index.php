@@ -144,4 +144,10 @@
                 
             echo json_encode($Response);
         break;
+
+        case 'LOCATIONS':
+            $LocationsData = new Locations($MacAddress, $CurrentController);
+
+            $Locations = $LocationsData->getLocations();
+        break;
     }
