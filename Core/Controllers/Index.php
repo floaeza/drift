@@ -12,12 +12,12 @@
     $CurrentController = 'IndexController';
 
     $Option     = !empty($_POST['Option']) ? $_POST['Option'] : ''; 
-    $MacAddress = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '00:00:00:00:00:00'; 
-    $IpAddress  = !empty($_POST['IpAddress']) ? $_POST['IpAddress'] : '0.0.0.0'; 
-    $Firmware   = !empty($_POST['Firmware']) ? $_POST['Firmware'] : 'x0x'; 
+    $MacAddress = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '00:00:00:00:00:00';
+    $IpAddress  = !empty($_POST['IpAddress']) ? $_POST['IpAddress'] : '0.0.0.0';
+    $Firmware   = !empty($_POST['Firmware']) ? $_POST['Firmware'] : 'x0x';
     $Model      = !empty($_POST['Model']) ? $_POST['Model'] : 'AXX';
-    $Hdd        = !empty($_POST['Hdd']) ? $_POST['Hdd'] : 'N'; 
-    $Vendor     = !empty($_POST['Vendor']) ? $_POST['Vendor'] : 'Generic'; 
+    $Hdd        = !empty($_POST['Hdd']) ? $_POST['Hdd'] : 'N';
+    $Vendor     = !empty($_POST['Vendor']) ? $_POST['Vendor'] : 'Generic';
     
     $DevicesData = new Devices($MacAddress, $CurrentController);
     $ConfigData  = new Config($MacAddress, $CurrentController);
@@ -147,6 +147,8 @@
 
         case 'LOCATIONS':
             $LocationsData = new Locations($MacAddress, $CurrentController);
-            $Locations = $LocationsData->getLocations();
+            $Response = $LocationsData->getLocations();
+
+            echo json_encode($Response);
         break;
     }
