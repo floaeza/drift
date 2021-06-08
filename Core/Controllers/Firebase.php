@@ -26,13 +26,18 @@
     switch ($Option) {
         case 'GetDeviceByMac':
             $Device = $DevicesData->getDevice($MacAddress);
-
-            echo json_encode($Device);
+            array_push($ArrayDeviceInfo, array('MAC' => $Device['mac_address'],
+            'IP' => $Device['ip'],
+            'MARK' => $Device['marca'],
+            'MDL' => $Device['modelo'],
+            'SWV' => $Device['version_software'],
+            'LEC' => $Device['ultima_ejecucion']
+            ));
+            echo json_encode($ArrayDeviceInfo);
             break;
         
         default:
             # code...
-            
             break;
     }
 
