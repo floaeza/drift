@@ -24,7 +24,7 @@
     $Version_software = !empty($_POST['Version_software']) ? $_POST['Version_software'] : 'Factory';
     
     $ConfigData   = new Config($MacAddress, $CurrentController);
-    $DevicesData  = new Devices($MacAddress, $CurrentController);
+    $DevicesData  = new Devices('system', $CurrentController);
     $LocationData = new Locations($MacAddress, $CurrentController);
     $ModulesData  = new Modules($MacAddress, $CurrentController);
     $DiskData     = new DiskInfo($MacAddress, $CurrentController);
@@ -53,7 +53,8 @@
             'orden'                      => $Orden,
             'version_software'           => $Version_software
             );
-            $DevicesData->setControl($NewDevice);
+           $DevicesData->setControl($NewDevice);
+           echo json_encode($NewDevice);
             break;
     }
 

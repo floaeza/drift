@@ -97,7 +97,7 @@ class Devices extends Database {
         $this->Function = 'setControl';
         
         $this->connect();
-        $this->insert("remote_ontrol", $NewDevice);
+        $this->insert("remote_control", $NewDevice);
         $this->Device = $this->getResult();
         $this->disconnect();
 
