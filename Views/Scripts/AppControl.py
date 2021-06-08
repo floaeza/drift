@@ -25,10 +25,11 @@ def on_snapshot(col_snapshot, changes, read_time):
         elif change.type.name == 'MODIFIED':
             stbs = db.collection(u'stb').document(f'{change.document.id}')
             stbb = stbs.get()
-            stb = stbs.to_dict()
+            stb = stbb.to_dict()
             if  stb['estado'] == 'Pendiente':
                 print('Ejecutando Orden 66')
-            
+                stbs.update({u'estado': 'Ok'})
+                print('Orden 66 Ejecutada')
                 
         elif change.type.name == 'REMOVED':
             print(f'Removed: {change.document.id}')
