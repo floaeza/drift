@@ -51,7 +51,7 @@
                 } 
             }
 
-            $Response = array('Option' => $Option);
+            $Response = array('Option' => $Option,'Mac' => $MacAddress);
                 
             echo json_encode($Response);
         break;
