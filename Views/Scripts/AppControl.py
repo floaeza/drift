@@ -23,14 +23,16 @@ def on_snapshot(col_snapshot, changes, read_time):
             print(f'Nuevo Dispositivo Agregado: {change.document.id}')
             
         elif change.type.name == 'MODIFIED':
-            print(f'Comando Recibido: {change.document.id}')
-            stbs = db.collection(u'stb').document(f'{change.document.id}').get()
-            stb = stbs.to_dict()
+            stbs = db.collection(u'stb').document(f'{change.document.id}')
+            stbb = stbs.get()
+            stb = stbb.to_dict()
             if  stb['estado'] == 'Pendiente':
                 print('Ejecutando Orden 66')
+                stbs.update({u'estado': 'Ok'})
+                print('Orden 66 Ejecutada')
                 
         elif change.type.name == 'REMOVED':
-            print(f'Removed city: {change.document.id}')
+            print(f'Removed: {change.document.id}')
             delete_done.set()
 
 col_query = db.collection(u'stb')
