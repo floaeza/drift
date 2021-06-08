@@ -9,7 +9,7 @@ cred = credentials.Certificate('/var/www/html/BBINCO/TV/Views/Scripts/FireBase/s
 firebase_admin.initialize_app(cred)
 
 db = firestore.client()
-
+stbDic = []
 users_ref = db.collection(u'stb')
 docs = users_ref.stream()
 
@@ -21,8 +21,14 @@ def on_snapshot(col_snapshot, changes, read_time):
     for change in changes:
         if change.type.name == 'ADDED':
             print(f'Nuevo Dispositivo Agregado: {change.document.id}')
+            
         elif change.type.name == 'MODIFIED':
             print(f'Comando Recibido: {change.document.id}')
+            stbs = db.collection(u'stb').document(f'{change.document.id}').get()
+            stb = stbs.to_dict()
+            if  stb['estado'] == 'Pendiente':
+                print('Ejecutando Orden 66')
+                
         elif change.type.name == 'REMOVED':
             print(f'Removed city: {change.document.id}')
             delete_done.set()
