@@ -53,7 +53,7 @@
             'orden'                      => $Orden,
             'version_software'           => $Version_software
             );
-            $New = $DevicesData->setControl($NewDevice);
+            $DevicesData->setControl($NewDevice);
             break;
     }
 
