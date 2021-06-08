@@ -14,7 +14,7 @@
     $CurrentController = 'DeviceController';
     
     $ArrayDeviceInfo = array();
-    $Option = !empty($_POST['Option']) ? $_POST['Option'] : 'GetDeviceByMac';
+    $Option = !empty($_POST['Option']) ? $_POST['Option'] : 'InsertControl';
     $MacAddress = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '00:02:02:4f:9b:af';
     $Estado = !empty($_POST['Estado']) ? $_POST['Estado'] : 'ON';
     $Ip = !empty($_POST['Ip']) ? $_POST['Ip'] : '172.16.0.15';
