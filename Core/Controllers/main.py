@@ -248,12 +248,18 @@ def start(day):
                             else:
                                 dur = endmin - inimin
                                 dur = dur + 1440
+                            
+                            titles = ""
+                            if table['data-showname'] == "Movie":
+                                titles = table['data-episodetitle']
+                            else:
+                                titles = table['data-showname']
 
                             dataProgramPass[str(conta)] = []
                             dataProgramPass[str(conta)].append({
                                 "STTN": channel['STTN'],
                                 "DBKY": '',
-                                "TTLE": table['data-showname'],
+                                "TTLE": titles,
                                 "DSCR": table['data-description'],
                                 "DRTN": float("{:.2f}".format(dur / 60)),
                                 "MNTS": dur,
@@ -294,11 +300,19 @@ def start(day):
                                 else:
                                     dur = endmin - inimin
                                     dur = dur + 1440
+
+
+                                titles = ""
+                                if table['data-showname'] == "Movie":
+                                    titles = table['data-episodetitle']
+                                else:
+                                    titles = table['data-showname']
+
                                 dataProgramPass[str(conta)] = []
                                 dataProgramPass[str(conta)].append({
                                     "STTN": channel['STTN'],
                                     "DBKY": '',
-                                    "TTLE": table['data-showname'],
+                                    "TTLE": titles,
                                     "DSCR": table['data-description'],
                                     "DRTN": float("{:.2f}".format(dur / 60)),
                                     "MNTS": dur,

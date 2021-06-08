@@ -11,7 +11,7 @@ Debug('########################### Time() ');
 
 /*******************************************************************************
  * Funcion que escribe la fecha actual en la EPG, esta funcion tiene un timer
- * para actualozar fecha y hora infinitamente
+ * para actualizar fecha y hora infinitamente
  *******************************************************************************/
     
     function SetDate(){
