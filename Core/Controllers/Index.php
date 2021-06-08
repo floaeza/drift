@@ -147,7 +147,6 @@
 
         case 'LOCATIONS':
             $LocationsData = new Locations($MacAddress, $CurrentController);
-
             $Locations = $LocationsData->getLocations();
         break;
     }
