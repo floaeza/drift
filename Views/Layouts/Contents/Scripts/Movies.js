@@ -4,16 +4,22 @@
  */
     //Variables Panel peliculas recomendadas
     var RecommendedMoviesList             = document.getElementById('RecommendedMoviesList'),
+        // @ts-ignore
         RecommendedMoviesListNodes        = RecommendedMoviesList.childNodes,
+        // @ts-ignore
         RecommendedMoviesListChildren     = RecommendedMoviesList.children;
     //Variables Panel peliculas recomendadas
     var AllMoviesList                     = document.getElementById('AllMoviesList'),
+        // @ts-ignore
         AllMoviesListNodes                = AllMoviesList.childNodes,
+        // @ts-ignore
         AllMoviesListChildren             = AllMoviesList.children,
         PanelRight                        = document.getElementById('PanelRight');
         //Variables Panel pelicula seleccionada
     var MoviePanel                        = document.getElementById('MoviePanel'),
+        // @ts-ignore
         MoviePanelNodes                   = MoviePanel.childNodes,
+        // @ts-ignore
         MoviePanelChildren                = MoviePanel.children;
     //Variables estilos
     var StyleFocusMovies                  = '3px solid rgb(233, 187, 38)',
@@ -35,32 +41,46 @@
         Onforward                         = document.getElementById('Onforward');
     //Variables Menu Principal
     var MenuHeader                        = document.getElementById('MenuOptions'),
+        // @ts-ignore
         MenuHeaderNodes                   = MenuHeader.childNodes,
+        // @ts-ignore
         MenuHeaderChildren                = MenuHeader.children;
         //Variebles Lista de filtros
     var FilterMovieCategoryList           = document.getElementById('filterMovieCategory'),
         PanelMenuFilters                  = document.getElementById('MenuFilters'),
+        // @ts-ignore
         FilterMovieCategoryListNodes      = FilterMovieCategoryList.childNodes,
+        // @ts-ignore
         FilterMovieCategoryListChildren   = FilterMovieCategoryList.children;
         //Variebles Panel filtro por año
     var PanelYearFilter                   = document.getElementById('PanelYearFilter'),
         YearFilter                        = document.getElementById('yearfilter'),
+        // @ts-ignore
         YearFilterNodes                   = YearFilter.childNodes,
+        // @ts-ignore
         YearFilterChildren                = YearFilter.children,
         MoviesByYearList                  = document.getElementById('MoviesByYearList'),
+        // @ts-ignore
         MoviesByYearListNodes             = MoviesByYearList.childNodes,
+        // @ts-ignore
         MoviesByYearListChildren          = MoviesByYearList.children;  
     //Variebles Panel filtro por genero
     var PanelGenderFilter                 = document.getElementById('PanelGenderFilter'),
         GenderFilter                      = document.getElementById('GenderFilter'),
+        // @ts-ignore
         GenderFIlterNodes                 = GenderFilter.childNodes,
+        // @ts-ignore
         GenderFilterChildren              = GenderFilter.children,
         PanelMoviesGenderFilter           = document.getElementById('MoviesByGenderList'),
+        // @ts-ignore
         PanelMoviesGenderFilterNodes      = PanelMoviesGenderFilter.childNodes,
+        // @ts-ignore
         PanelMoviesGenderFilterChildren   = PanelMoviesGenderFilter.children;
     //Variables menu para seleccionar idioma
     var MenuLanguagePanel                 = document.getElementById('MenuLanguagePanel'),
+        // @ts-ignore
         MenuLanguageNodes                 = MenuLanguagePanel.childNodes,
+        // @ts-ignore
         MenuLanguageChildren              = MenuLanguagePanel.children;
 /*******************************************************************************
  * Variables generales
@@ -77,9 +97,12 @@ var FiltersOptions          = ['By gender', 'By year'],
     FiltersByGender         = [];
 
 
+// @ts-ignore
 var MenuOptionsNodes        = document.getElementById('MenuOptions').childNodes;
     //MenuNodesArray          = [1,3,5,7],
+    // @ts-ignore
     MenuNodesArray          = [1],
+    // @ts-ignore
     MenuFocus               = -1;
 
 
@@ -89,6 +112,7 @@ var CurrentFocus            = '';
 var MoviesList              = [];
 
 
+// @ts-ignore
 var PanelRightNodes         = document.getElementById('PanelRight').childNodes,
     PanelRightNodesArray    = [1,3,5],
     MoviesRowLength         = 3,
@@ -105,6 +129,7 @@ var BackgroundPanel         = document.getElementById('BackgroundPanel');
 
 var ListPanel               = document.getElementById('ListPanel'),
     MoviePanel              = document.getElementById('MoviePanel'),
+    // @ts-ignore
     MoviePanelNodes         = MoviePanel.childNodes;
 
 var MoviePanelPlay          = document.getElementById('PlayPanel'),
@@ -114,7 +139,9 @@ var MoviePanelPlay          = document.getElementById('PlayPanel'),
 
 var PlayingPanel            = document.getElementById('PlayingPanel'),
     PlayingOptions          = document.getElementById('PlayingOptions'),
+    // @ts-ignore
     PlayingOptionsChildren  = PlayingOptions.children,
+    // @ts-ignore
     PlayingOptionsNodes     = PlayingOptions.childNodes,
     PlayingNodesArray       = [1,3,5,7],
     PlayingFocus            = -1,
@@ -156,6 +183,7 @@ SetMoviesList();
 setTimeout(Init,300);
 
 function GetFiltersList(){
+// @ts-ignore
 $.ajax({
     type: 'POST',
     url: 'Core/Controllers/VideoOnDemand.php',
@@ -163,10 +191,12 @@ $.ajax({
         Option : 'GetYearsList'
     },
     success: function (response){
+        // @ts-ignore
         FiltersByYear = $.parseJSON(response);
     }
 }); 
 
+// @ts-ignore
 $.ajax({
     type: 'POST',
     url: 'Core/Controllers/VideoOnDemand.php',
@@ -174,6 +204,7 @@ $.ajax({
         Option : 'GetGendersList'
     },
     success: function (response){
+        // @ts-ignore
         FiltersByGender = $.parseJSON(response);
     }
 }); 
@@ -183,27 +214,38 @@ $.ajax({
 *******************************************************************************/
 function SetFocusHeader(Direction){
     if (Direction == 'set') {
+        // @ts-ignore
         MenuHeaderChildren[0].style.backgroundColor = StyleFocusMenuHeader;
     } else if (Direction == 'down') {
         MenuHeader = document.getElementById('MenuOptions');
+        // @ts-ignore
         MenuHeaderChildren = MenuHeader.children;
         var positionFocus = getPositionFocusInMenu(StyleFocusMenuHeader, MenuHeaderChildren);
         if (positionFocus+1 >= MenuHeaderChildren.length) {
+            // @ts-ignore
             MenuHeaderChildren[positionFocus].style.backgroundColor = '';
+            // @ts-ignore
             MenuHeaderChildren[0].style.backgroundColor = StyleFocusMenuHeader;
         }else{
+            // @ts-ignore
             MenuHeaderChildren[positionFocus].style.backgroundColor = '';
+            // @ts-ignore
             MenuHeaderChildren[positionFocus+1].style.backgroundColor = StyleFocusMenuHeader;
         }
     } else if (Direction == 'up') {
         MenuHeader = document.getElementById('MenuOptions');
+        // @ts-ignore
         MenuHeaderChildren = MenuHeader.children;
         var positionFocus = getPositionFocusInMenu(StyleFocusMenuHeader, MenuHeaderChildren);
         if (positionFocus == 0) {
+            // @ts-ignore
             MenuHeaderChildren[positionFocus].style.backgroundColor = '';
+            // @ts-ignore
             MenuHeaderChildren[(MenuHeaderChildren.length)-1].style.backgroundColor = StyleFocusMenuHeader;
         }else{
+            // @ts-ignore
             MenuHeaderChildren[positionFocus].style.backgroundColor = '';
+            // @ts-ignore
             MenuHeaderChildren[positionFocus-1].style.backgroundColor = StyleFocusMenuHeader;
         }  
     }
@@ -239,7 +281,9 @@ function SetFocusHeader(Direction){
 function ClearFocusHeader(){
 var IndexC = 0;
 
+// @ts-ignore
 for(IndexC = 0; IndexC < MenuNodesArray.length; IndexC++){
+    // @ts-ignore
     MenuOptionsNodes[MenuNodesArray[IndexC]].classList.remove('OptionFocus');
 }
 }
@@ -256,6 +300,7 @@ function SelectMenuOption(){
             break;
         case 2:
             //Salir al menu principal
+            // @ts-ignore
             GoPage('menu.php', Device['MenuId'], 'Menu');
             break;
     }
@@ -285,6 +330,7 @@ function SelectMenuOption(){
 *******************************************************************************/
 
 function GetMoviesList(){
+// @ts-ignore
 $.ajax({
     type: 'POST',
     async: false,
@@ -293,16 +339,20 @@ $.ajax({
         Option : 'GetMoviesList'
     },
     success: function (response){
+        // @ts-ignore
         MoviesList = $.parseJSON(response);
     }
 }); 
 }
 
 function SetMoviesList(){
+    // @ts-ignore
     StopVideo();
     refreshMoviesPrincipalList(MoviesList, 'RecommendedMoviesList');
     refreshMoviesPrincipalList(MoviesList, 'AllMoviesList');
+    // @ts-ignore
     BackgroundPanel.style.backgroundImage = "url('"+FolderSource + "bg/BGMovies.PNG')";
+    // @ts-ignore
     PlayingVod = false;
 // var IndexR = 0,
 //     IndexM = 0,
@@ -352,6 +402,7 @@ function SetMoviesList(){
 function SetFocusMovie(Direction){
 
 if(MovieRowFocus !== -1 && MovieFocus !== -1){
+    // @ts-ignore
     PanelRightNodes[PanelRightNodesArray[MovieRowFocus]].childNodes[MovieFocus].style.border = '3px solid transparent';
 }
 
@@ -377,6 +428,7 @@ if(Direction === 'up'){
     MovieFocus = 0;
 }
 
+// @ts-ignore
 MovieBox = PanelRightNodes[PanelRightNodesArray[MovieRowFocus]].childNodes[MovieFocus];
 
 if(typeof(MovieBox) === 'undefined'){
@@ -396,9 +448,11 @@ if(typeof(MovieBox) === 'undefined'){
         }
     }
     
+    // @ts-ignore
     MovieBox = PanelRightNodes[PanelRightNodesArray[MovieRowFocus]].childNodes[MovieFocus];
 } 
 
+// @ts-ignore
 MovieBox.style.border = '3px solid #fff'; //.classList.add('OptionFocus');
 }
 /*******************************************************************************
@@ -435,18 +489,26 @@ function LoadMoviePanel(moviesContainer, movieOnPlay){
     if (moviesContainer != undefined) {
         //Carga los datos de la pelicula que estaba recientemente seleccionada al salir de la reproduccion
         if(IsMenuFilterSelected == true){
+            // @ts-ignore
             PanelYearFilter.style.visibility= 'hidden';
+            // @ts-ignore
             PanelMenuFilters.style.visibility = 'hidden';
             var moviesArrayElement    = document.getElementById(moviesContainer);
+            // @ts-ignore
             var movieSelectedPosition = getPositionFocusInMovies(StyleFocusMovies, moviesArrayElement.children);
+            // @ts-ignore
             var moviesArray           = moviesArrayElement.children;
             var movieTagP             = moviesArray[movieSelectedPosition].getElementsByTagName('p');
             var movieName             = movieTagP[0].innerHTML;
             var buttonPlay            = document.getElementById('PlayPanel'); 
+                // @ts-ignore
                 buttonPlay.style.backgroundColor = StyleFocusPanelMovie;
             CurrentFocus = 'MoviePanel';
+            // @ts-ignore
             ListPanel.style.visibility = 'hidden';
+            // @ts-ignore
             MoviePanel.style.visibility = 'visible';
+            // @ts-ignore
             PanelRight.style.visibility = 'hidden';
             var Movie = [];
             for (var x = 0; x < MoviesList.length; x++) {      
@@ -455,6 +517,7 @@ function LoadMoviePanel(moviesContainer, movieOnPlay){
                     CurrentMovieID = x;
                 }
             }
+            // @ts-ignore
             MoviePanelNodes[1].src = FolderSource + Movie[0].FLDR + 'HD'+Movie[0].PSTR;
             MoviePanelNodes[3].textContent  = Movie[0].TTLE;
             MoviePanelNodes[5].textContent  = Movie[0].SCOR;
@@ -465,19 +528,27 @@ function LoadMoviePanel(moviesContainer, movieOnPlay){
             MoviePanelNodes[17].textContent = Movie[0].DSCR;
             MoviePanelNodes[19].textContent = Movie[0].DRTR;
             MoviePanelNodes[21].textContent = 'Casting: '+Movie[0].CAST;
+            // @ts-ignore
             BackgroundPanel.style.backgroundImage = "url('"+ FolderSource + Movie[0].FLDR + 'preview.png' + "')";
+            // @ts-ignore
             PlayingVod = false;
         } else {
             var moviesArrayElement    = document.getElementById(moviesContainer);
+            // @ts-ignore
             var movieSelectedPosition = getPositionFocusInMovies(StyleFocusMovies, moviesArrayElement.children);
+            // @ts-ignore
             var moviesArray           = moviesArrayElement.children;
             var movieTagP             = moviesArray[movieSelectedPosition].getElementsByTagName('p');
             var movieName             = movieTagP[0].innerHTML;
             var buttonPlay            = document.getElementById('PlayPanel'); 
+                // @ts-ignore
                 buttonPlay.style.backgroundColor = StyleFocusPanelMovie;
             CurrentFocus = 'MoviePanel';
+            // @ts-ignore
             ListPanel.style.visibility = 'hidden';
+            // @ts-ignore
             MoviePanel.style.visibility = 'visible';
+            // @ts-ignore
             PanelRight.style.visibility = 'hidden';
             var Movie = [];
             for (var x = 0; x < MoviesList.length; x++) {      
@@ -486,6 +557,7 @@ function LoadMoviePanel(moviesContainer, movieOnPlay){
                     CurrentMovieID = x;
                 }
             }
+            // @ts-ignore
             MoviePanelNodes[1].src = FolderSource + Movie[0].FLDR + 'HD'+Movie[0].PSTR;
             MoviePanelNodes[3].textContent  = Movie[0].TTLE;
             MoviePanelNodes[5].textContent  = Movie[0].SCOR;
@@ -496,25 +568,34 @@ function LoadMoviePanel(moviesContainer, movieOnPlay){
             MoviePanelNodes[17].textContent = Movie[0].DSCR;
             MoviePanelNodes[19].textContent = Movie[0].DRTR;
             MoviePanelNodes[21].textContent = 'Casting: '+Movie[0].CAST;
+            // @ts-ignore
             BackgroundPanel.style.backgroundImage = "url('"+ FolderSource + Movie[0].FLDR + 'preview.png' + "')";
+            // @ts-ignore
             PlayingVod = false;
         }
 
     } else if (movieOnPlay != undefined) {
         //Carga normalmente los datos de la pelicula
+        // @ts-ignore
         if(MenuFilters.style.visibility == "visible"){
+            // @ts-ignore
             MenuFilters.style.visibility = "hidden"; 
         }
         // var moviesArrayElement    = document.getElementById(moviesContainer);
         // var movieSelectedPosition = getPositionFocusInMovies(StyleFocusMovies, moviesArrayElement.children);
         // var moviesArray           = moviesArrayElement.children;
         // var movieTagP             = moviesArray[movieSelectedPosition].getElementsByTagName('p');
+        // @ts-ignore
         var movieName                = movieOnPlay;
         var buttonPlay               = document.getElementById('PlayPanel'); 
+            // @ts-ignore
             buttonPlay.style.backgroundColor  = StyleFocusPanelMovie;
         CurrentFocus = 'MoviePanel';
+        // @ts-ignore
         ListPanel.style.visibility   = 'hidden';
+        // @ts-ignore
         MoviePanel.style.visibility  = 'visible';
+        // @ts-ignore
         PanelRight.style.visibility  = 'hidden';
         var Movie = [];
         for (var x = 0; x < MoviesList.length; x++) {      
@@ -522,6 +603,7 @@ function LoadMoviePanel(moviesContainer, movieOnPlay){
                 Movie.push(MoviesList[x]);
             }
         }
+        // @ts-ignore
         MoviePanelNodes[1].src = FolderSource + Movie[0].FLDR + 'HD'+Movie[0].PSTR;
         MoviePanelNodes[3].textContent  = Movie[0].TTLE;
         MoviePanelNodes[5].textContent  = Movie[0].SCOR;
@@ -532,14 +614,18 @@ function LoadMoviePanel(moviesContainer, movieOnPlay){
         MoviePanelNodes[17].textContent = Movie[0].DSCR;
         MoviePanelNodes[19].textContent = Movie[0].DRTR;
         MoviePanelNodes[21].textContent = 'Casting: '+Movie[0].CAST;
+        // @ts-ignore
         BackgroundPanel.style.backgroundImage = "url('"+ FolderSource + Movie[0].FLDR + 'preview.png' + "')";
+        // @ts-ignore
         PlayingVod = false;
     }
 }
 
 function ClearMoviePanel(){
+// @ts-ignore
 MoviePanel.style.visibility = 'hidden';
 
+// @ts-ignore
 MoviePanelNodes[1].src = '';
 MoviePanelNodes[3].textContent  = '';
 MoviePanelNodes[5].textContent  = '';
@@ -555,34 +641,44 @@ MoviePanelNodes[21].textContent = '';
 
 function SetFocusOnMoviePanel(){
 if(MoviePanelFocus === 'Play'){
+    // @ts-ignore
     MoviePanelPlay.classList.add('MovieOption');
+    // @ts-ignore
     MoviePanelExit.classList.remove('MovieOption');
     MoviePanelFocus = 'Exit';
 } else {
+    // @ts-ignore
     MoviePanelPlay.classList.remove('MovieOption');
+    // @ts-ignore
     MoviePanelExit.classList.add('MovieOption');
     MoviePanelFocus = 'Play';
 }
 }
 
 function ClearFocusMovieList(){
+// @ts-ignore
 PanelRightNodes[PanelRightNodesArray[MovieRowFocus]].childNodes[MovieFocus].style.border = '3px solid transparent';
 MovieFocus--;
 }
 
 function ExecOptionMoviePanel(){
 if(MoviePanelFocus === 'Play'){
+    // @ts-ignore
     ListPanel.style.visibility  = 'visible';
+    // @ts-ignore
     MoviePanel.style.visibility = 'hidden';
     
     CurrentFocus = 'Movies';
     
+    // @ts-ignore
     BackgroundPanel.style.backgroundImage = "url('"+FolderSource + "bg/BGMovies.PNG')";
 } else {
     CurrentFocus = 'Playing';
     
+    // @ts-ignore
     PlayMovie(Libraries['MoviesSource'] + MoviesList[MovieBox.id].FLDR + MoviesList[MovieBox.id].FILE);
     
+    // @ts-ignore
     PlayingVod = true;
     
     ClearMoviePanel();
@@ -591,6 +687,7 @@ if(MoviePanelFocus === 'Play'){
     
     SetFocusPlaying('right');
     
+    // @ts-ignore
     BackgroundPanel.style.visibility = 'hidden';
 }
 }
@@ -600,7 +697,9 @@ if(MoviePanelFocus === 'Play'){
 *******************************************************************************/
 
 function ShowPlayingPanel(){
+    // @ts-ignore
     PlayingPanel.style.visibility = 'visible';
+    // @ts-ignore
     PlayingOptionsChildren[2].style.border = StyleFocusPlayingMovie;
 // PlayinPanelActive = true;
 
@@ -613,49 +712,66 @@ function ShowPlayingPanel(){
 //     clearTimeout(PlayingPanelTimer);
 // }
 
+// @ts-ignore
 PlayingTitle.textContent = MoviesList[CurrentMovieID].TTLE;
    
 UpdateBarStatus();
 
+// @ts-ignore
 clearTimeout(BarUpdate);
 
+// @ts-ignore
 BarUpdate = setInterval(UpdateBarStatus,1000);
 
 //SetFocusPlaying('right');
 }
 function HidePlayingPanel(){
 if(PlayinPanelActive === true){
+    // @ts-ignore
     PlayingPanel.style.visibility = 'hidden';
 
     PlayinPanelActive = false;
 
+    // @ts-ignore
     clearTimeout(PlayingPanelTimer);
 
+    // @ts-ignore
     clearTimeout(BarUpdate);
     
+    // @ts-ignore
     ExitPlaying.classList.remove('ButtonFocus');
 }
 }
 function SetFocusPlaying(Direction){
     PlayingOptions                  = document.getElementById('PlayingOptions'),
+    // @ts-ignore
     PlayingOptionsNodes             = PlayingOptions.childNodes,
+    // @ts-ignore
     PlayingOptionsChildren          = PlayingOptions.children;
     if (Direction == 'right') {
         var positionFocus = getPositionFocusInMenu(StyleFocusPlayingMovie, PlayingOptionsChildren);
         if (positionFocus+1 >= PlayingOptionsChildren.length) {
+             // @ts-ignore
              PlayingOptionsChildren[positionFocus].style.border = '';
+             // @ts-ignore
              PlayingOptionsChildren[0].style.border = StyleFocusPlayingMovie;
         }else{
+            // @ts-ignore
             PlayingOptionsChildren[positionFocus].style.border = '';
+            // @ts-ignore
             PlayingOptionsChildren[positionFocus+1].style.border = StyleFocusPlayingMovie;
         }
     } else if (Direction == 'left') {
         var positionFocus = getPositionFocusInMenu(StyleFocusPlayingMovie, PlayingOptionsChildren);
         if (positionFocus == 0) {
+            // @ts-ignore
             PlayingOptionsChildren[positionFocus].style.border = '';
+            // @ts-ignore
             PlayingOptionsChildren[(PlayingOptionsChildren.length)-1].style.border = StyleFocusPlayingMovie;
         }else{
+            // @ts-ignore
             PlayingOptionsChildren[positionFocus].style.border = '';
+            // @ts-ignore
             PlayingOptionsChildren[positionFocus-1].style.border = StyleFocusPlayingMovie;
         } 
     }
@@ -687,6 +803,7 @@ function ClearFocusPlaying(){
 var IndexC = 0;
 
 for(IndexC = 0; IndexC < PlayingNodesArray.length; IndexC++){
+    // @ts-ignore
     PlayingOptionsNodes[PlayingNodesArray[IndexC]].classList.remove('ButtonFocus');
 }
 }
@@ -765,17 +882,21 @@ function SetFocusClose(){
 
 ClearFocusPlaying();
  
+// @ts-ignore
 ExitPlaying.classList.add('ButtonFocus');
 
 PlayingFocus++;
 
 CurrentFocus = 'StopPlaying';
 
+// @ts-ignore
 clearTimeout(PlayingPanelTimer);
 
+// @ts-ignore
 PlayingPanelTimer = setTimeout(HidePlayingPanel,7000);
 }
 function UnsetFocusClose(){
+// @ts-ignore
 ExitPlaying.classList.remove('ButtonFocus');
 
 SetFocusPlaying('left');
@@ -786,15 +907,21 @@ CurrentFocus = 'Playing';
 * Opciones reproduccion
 *******************************************************************************/
 function SetSpeed(Option){
+// @ts-ignore
 Debug('VodOk---> SetSpeed: '+Option);
 if(Option === 'forward'){
+    // @ts-ignore
     Debug('VodOk---> UpdatePosition: add');
+    // @ts-ignore
     UpdatePosition('add');
 } else if(Option === 'backward'){
+    // @ts-ignore
     UpdatePosition('subtract');
 } else if(Option === 'pause'){
+    // @ts-ignore
     PauseVideo();
 } else if(Option === 'play'){
+    // @ts-ignore
     ResumeVideo();
 }
 
@@ -802,13 +929,19 @@ OptionText = Option;
 }
 
 function UpdateBarStatus(){
+// @ts-ignore
 Debug('UpdateBarStatus-> '+MoviesList[CurrentMovieID].MNTS);
+// @ts-ignore
 AssetStatus(MoviesList[CurrentMovieID].MNTS);
 
+// @ts-ignore
 BarPosition.style.width = PercentagePosition +'%';
+// @ts-ignore
 InfoPosition.textContent = SecondsToTime(PositionAsset) + ' / '+MoviesList[CurrentMovieID].DRTN;
+// @ts-ignore
 PlayingSpeed.textContent = SpeedText;
 
+// @ts-ignore
 Debug('UpdateBarStatus-> PercentagePosition = '+PercentagePosition);
 }
 /*******************************************************************************
@@ -830,16 +963,23 @@ function StopCloseMovie(){
 
 // PlayingVod = false;
     //Cierra la pelicula cunado se esta reproduciendo y ademas manda las estadisticas a la base de datos
+    // @ts-ignore
     BackgroundPanel.style.visibility='visible';
     HidePlayingPanel();
+    // @ts-ignore
     StopVideo();
+    // @ts-ignore
     clearInterval(BarUpdate);
     LoadMoviePanel(undefined, MoviesList[CurrentMovieID].TTLE);
     CurrentFocus = 'MoviePanel';
+    // @ts-ignore
     CurrentMovie = MoviesList[CurrentMovieID].TTLE;
+    // @ts-ignore
     SetMoviesStatistics();
+    // @ts-ignore
     PlayingVod = false;
     var position = getPositionFocusInMenu(StyleFocusPlayingMovie, PlayingOptionsChildren);
+    // @ts-ignore
     PlayingOptionsChildren[position].style.border = '';
 }
 /*******************************************************************************
@@ -879,6 +1019,7 @@ if(CurrentFocus === 'Menu'){
     ///
 } else if(CurrentFocus === 'Movies'){
     if(MovieFocus === 0){
+        // @ts-ignore
         MenuFocus--;
         CurrentFocus = 'Menu';
         
@@ -998,13 +1139,16 @@ function refreshMoviesPrincipalList(moviesList, panel){
     if (panel != 'RecommendedMoviesList' && panel != 'AllMoviesList') {
         //Eliminando Peliculas del panel
         var  element    = document.getElementById(panel);
+        // @ts-ignore
         var  parent      = element.parentNode;
+                // @ts-ignore
                 parent.removeChild(element);
         var  div = document.createElement('div');
             div.setAttribute('id', panel);
             if (panel == 'MoviesByYearList') {
                 div.setAttribute('class', 'MoviesByYearRow')
             }
+            // @ts-ignore
             parent.appendChild(div);
         var rows = Math.ceil(moviesList.length/4);
         var matrix = getMatrix(rows,moviesList.length, 4);
@@ -1014,22 +1158,34 @@ function refreshMoviesPrincipalList(moviesList, panel){
                 if (peliculaID == -1) {
                     return;
                 }else{
+                    // @ts-ignore
                     BoxDiv               = document.createElement('div');
+                    // @ts-ignore
                     BoxDiv.className     = 'RowMovieByYearPoster';
+                    // @ts-ignore
                     BoxPoster            = document.createElement('img');
+                    // @ts-ignore
                     BoxTitle             = document.createElement('p');
+                    // @ts-ignore
                     BoxTitle.style.visibility = 'hidden';
+                    // @ts-ignore
                     BoxPoster.src        = getimageMovie(moviesList[peliculaID]);
+                    // @ts-ignore
                     BoxTitle.textContent = moviesList[peliculaID].TTLE;
+                    // @ts-ignore
                     BoxDiv.appendChild(BoxPoster);
+                    // @ts-ignore
                     BoxDiv.appendChild(BoxTitle);
+                    // @ts-ignore
                     document.getElementById(panel).appendChild(BoxDiv);
                 }
             }
         }
     }else{
         var element = document.getElementById(panel);
+        // @ts-ignore
         var parent  = element.parentNode;
+            // @ts-ignore
             parent.removeChild(element);
         var div = document.createElement('div');
             div.setAttribute('id', panel);
@@ -1038,6 +1194,7 @@ function refreshMoviesPrincipalList(moviesList, panel){
             } else if (panel == 'AllMoviesList'){
                 div.setAttribute('class', 'MoviesRow');
             }
+            // @ts-ignore
             parent.appendChild(div);
         var rows   = Math.ceil(moviesList.length/4);
         var matrix = getMatrix(rows, moviesList.length, 4);
@@ -1046,15 +1203,25 @@ function refreshMoviesPrincipalList(moviesList, panel){
                         if (peliculaID == -1) {
                             return;
                         }else{
+                                // @ts-ignore
                                 BoxDiv               = document.createElement('div');
+                                // @ts-ignore
                                 BoxDiv.className     = 'RowPoster';
+                                // @ts-ignore
                                 BoxPoster            = document.createElement('img');
+                                // @ts-ignore
                                 BoxTitle             = document.createElement('p');
+                                // @ts-ignore
                                 BoxPoster.src        = getimageMovie(moviesList[peliculaID]);
+                                // @ts-ignore
                                 BoxTitle.textContent = moviesList[peliculaID].TTLE;
+                                // @ts-ignore
                                 BoxTitle.style.visibility = 'hidden';
+                                // @ts-ignore
                                 BoxDiv.appendChild(BoxPoster);
+                                // @ts-ignore
                                 BoxDiv.appendChild(BoxTitle);
+                                // @ts-ignore
                                 document.getElementById(panel).appendChild(BoxDiv);
 
                         }
@@ -1102,31 +1269,46 @@ function scrollRefresh(row, panel, moviesList){
     if (panel != 'RecommendedMoviesList' && panel != 'AllMoviesList') {
         //Eliminando peliculas del panel
         var  element    = document.getElementById(panel);
+        // @ts-ignore
         var  parent      = element.parentNode;
+             // @ts-ignore
              parent.removeChild(element);
         var  div = document.createElement('div');
              div.setAttribute('id', panel);
              if (panel == 'MoviesByYearList') {
                 div.setAttribute('class', 'MoviesByYearRow')
             }
+            // @ts-ignore
             parent.appendChild(div);
             var rows = Math.ceil(moviesList.length/4);
             var matrix = getMatrix(rows,moviesList.length, 4); 
+        // @ts-ignore
         for (Y = row; Y < row+2; Y++) {
             for (var X = 0; X < 4; X++) {
+                // @ts-ignore
                 var peliculaID  = matrix[Y][X];
                 if (peliculaID == -1) {
                     return;
                 }else{
+                    // @ts-ignore
                     BoxDiv               = document.createElement('div');
+                    // @ts-ignore
                     BoxDiv.className     = 'RowMovieByYearPoster';
+                    // @ts-ignore
                     BoxPoster            = document.createElement('img');
+                    // @ts-ignore
                     BoxTitle             = document.createElement('p');
+                    // @ts-ignore
                     BoxPoster.src        = getimageMovie(moviesList[peliculaID]);
+                    // @ts-ignore
                     BoxTitle.textContent = moviesList[peliculaID].TTLE;
+                    // @ts-ignore
                     BoxTitle.style.visibility = 'hidden';
+                    // @ts-ignore
                     BoxDiv.appendChild(BoxPoster);
+                    // @ts-ignore
                     BoxDiv.appendChild(BoxTitle);
+                    // @ts-ignore
                     document.getElementById(panel).appendChild(BoxDiv);
                 }
         } 
@@ -1135,7 +1317,9 @@ function scrollRefresh(row, panel, moviesList){
     }else{
                     //Eliminando peliculas del panel
                     var  element    = document.getElementById(panel);
+                    // @ts-ignore
                     var  parent      = element.parentNode;
+                         // @ts-ignore
                          parent.removeChild(element);
                     var  div = document.createElement('div');
                          div.setAttribute('id', panel);
@@ -1144,21 +1328,32 @@ function scrollRefresh(row, panel, moviesList){
                          }else if (panel == 'AllMoviesList') {
                             div.setAttribute('class', 'MoviesRow')
                          }
+                         // @ts-ignore
                          parent.appendChild(div);
                     for (var x = 0; x < 4; x++) {
                         var peliculaID  = row[x];
                         if (peliculaID == -1) {
                             return;
                         }else{
+                            // @ts-ignore
                             BoxDiv               = document.createElement('div');
+                            // @ts-ignore
                             BoxDiv.className     = 'RowPoster';
+                            // @ts-ignore
                             BoxPoster            = document.createElement('img');
+                            // @ts-ignore
                             BoxTitle             = document.createElement('p');
+                            // @ts-ignore
                             BoxPoster.src        = getimageMovie(moviesList[peliculaID]);
+                            // @ts-ignore
                             BoxTitle.textContent = moviesList[peliculaID].TTLE;
+                            // @ts-ignore
                             BoxTitle.style.visibility = 'hidden';
+                            // @ts-ignore
                             BoxDiv.appendChild(BoxPoster);
+                            // @ts-ignore
                             BoxDiv.appendChild(BoxTitle);
+                            // @ts-ignore
                             document.getElementById(panel).appendChild(BoxDiv);
                         }
         
@@ -1203,11 +1398,17 @@ function refreshLanguages(){
     // gSTB.SetAudioPID(1);
     // alert(PIDS.length);
     // [{pid:1, lang:["spa",""]},{pid:2, lang:["eng",""]}]
+        // @ts-ignore
         for (var x = 0; x < numberOfLanguages; x++) {
+            // @ts-ignore
             LanDiv              = document.createElement('div');
+            // @ts-ignore
             LanDiv.className    = 'LanguageContainer';
+            // @ts-ignore
             LanDiv.textContent  = PIDS[x];
+            // @ts-ignore
             MenuLanguagePanel.appendChild(LanDiv);
+            // @ts-ignore
             document.getElementById('MenuLanguagePanel').appendChild(LanDiv);
         }
     // var  str = AVMedia.GetProgramInfo(AVMedia.PROGRAM_INFO_SUBTITLE);
@@ -1218,10 +1419,13 @@ function refreshLanguages(){
  *******************************************************************************/
 function SetFocusOnRecommendedMovies(Direction){
     RecommendedMoviesList           = document.getElementById('RecommendedMoviesList');
+    // @ts-ignore
     RecommendedMoviesListNodes      = RecommendedMoviesList.childNodes,
+    // @ts-ignore
     RecommendedMoviesListChildren   = RecommendedMoviesList.children;
     if (Direction == 'set') {
         CurrentFocus = 'RecommendedMovies';
+        // @ts-ignore
         RecommendedMoviesListChildren[0].style.border = StyleFocusMovies;
     } else if (Direction == 'right') {
         var position = getPositionFocusInMovies(StyleFocusMovies, RecommendedMoviesListChildren);  
@@ -1236,21 +1440,27 @@ function SetFocusOnRecommendedMovies(Direction){
             }else{
                 scrollRefresh(row, 'RecommendedMoviesList', MoviesList);
                 RecommendedMoviesList           = document.getElementById('RecommendedMoviesList');
+                // @ts-ignore
                 RecommendedMoviesListChildren   = RecommendedMoviesList.children;
                 if (RecommendedMoviesListChildren[position] === undefined) {
+                    // @ts-ignore
                     RecommendedMoviesListChildren[0].style.border=StyleFocusMovies;
                 } else{
+                    // @ts-ignore
                     RecommendedMoviesListChildren[0].style.border=StyleFocusMovies;
                 }
             }
             }else{
+            // @ts-ignore
             RecommendedMoviesListChildren[position].style.border='';
+            // @ts-ignore
             RecommendedMoviesListChildren[position+1].style.border=StyleFocusMovies;
             }
     } else if (Direction == 'left') {
         var position = getPositionFocusInMovies(StyleFocusMovies, RecommendedMoviesListChildren);  
         if (position-1 == -1 && y == 0) {
             CurrentFocus = 'Menu';
+            // @ts-ignore
             RecommendedMoviesListChildren[0].style.border= '';
         }else if (position-1 == -1 && y!=0) {
             var position = getPositionFocusInMovies(StyleFocusMovies, RecommendedMoviesListChildren);  
@@ -1263,15 +1473,20 @@ function SetFocusOnRecommendedMovies(Direction){
             }else{
                 scrollRefresh(row, 'RecommendedMoviesList', MoviesList);
                 RecommendedMoviesList           = document.getElementById('RecommendedMoviesList');
+                // @ts-ignore
                 RecommendedMoviesListChildren   = RecommendedMoviesList.children;
                 if (RecommendedMoviesListChildren[position] === undefined) {
+                    // @ts-ignore
                     RecommendedMoviesListChildren[0].style.border=StyleFocusMovies;
                 } else{
+                    // @ts-ignore
                     RecommendedMoviesListChildren[3].style.border=StyleFocusMovies;
                 }
             }
         }else{
+            // @ts-ignore
             RecommendedMoviesListChildren[position].style.border='';
+            // @ts-ignore
             RecommendedMoviesListChildren[position-1].style.border=StyleFocusMovies;
         }
     } else if (Direction == 'down') {
@@ -1279,9 +1494,13 @@ function SetFocusOnRecommendedMovies(Direction){
         y=0;
         var position = getPositionFocusInMovies(StyleFocusMovies, RecommendedMoviesListChildren);  
             AllMoviesList                   = document.getElementById('AllMoviesList'),
+            // @ts-ignore
             AllMoviesListNodes              = AllMoviesList.childNodes,
+            // @ts-ignore
             AllMoviesListChildren           = AllMoviesList.children;
+            // @ts-ignore
             RecommendedMoviesListChildren[position].style.border='';
+            // @ts-ignore
             AllMoviesListChildren[0].style.border= StyleFocusMovies;
             var rows = Math.ceil(MoviesList.length/4);
             var matrix = getMatrix(rows,MoviesList.length, 4);
@@ -1291,24 +1510,34 @@ function SetFocusOnRecommendedMovies(Direction){
 }
 function SetFocusOnMoviePanel(Direction){
     MoviePanel                      = document.getElementById('MoviePanel'),
+    // @ts-ignore
     MoviePanelNodes                 = MoviePanel.childNodes,
+    // @ts-ignore
     MoviePanelChildren              = MoviePanel.children;
    if (Direction == 'right') {
        var position = getPositionFocusInPanelMovie(StyleFocusPanelMovie, MoviePanelChildren);
        if (position == 12) {
+           // @ts-ignore
            MoviePanelChildren[position].style.backgroundColor = '';
+           // @ts-ignore
            MoviePanelChildren[position-1].style.backgroundColor = StyleFocusPanelMovie;
        }else{
+           // @ts-ignore
            MoviePanelChildren[position].style.backgroundColor = '';
+           // @ts-ignore
            MoviePanelChildren[position+1].style.backgroundColor = StyleFocusPanelMovie;
        }
    }else if (Direction == 'left') {
        var position = getPositionFocusInPanelMovie(StyleFocusPanelMovie, MoviePanelChildren);
        if (position == 11) {
+           // @ts-ignore
            MoviePanelChildren[position].style.backgroundColor = '';
+           // @ts-ignore
            MoviePanelChildren[position+1].style.backgroundColor = StyleFocusPanelMovie;
        }else{
+           // @ts-ignore
            MoviePanelChildren[position].style.backgroundColor = '';
+           // @ts-ignore
            MoviePanelChildren[position-1].style.backgroundColor = StyleFocusPanelMovie;
        }
    }
@@ -1316,26 +1545,33 @@ function SetFocusOnMoviePanel(Direction){
 function SetFocusOnHiddenMode(Direction){
     if(Direction == 'set'){
         CurrentFocus = 'HiddenMode';
+        // @ts-ignore
         PlayingPanel.style.visibility = 'hidden';
     } else if(Direction == 'right'){
          SetSpeed('forward');
+        // @ts-ignore
         Onforward.style.visibility= 'visible';
         setTimeout(HideOnforward, 3000);
     } else if (Direction == 'left') {
          SetSpeed('backward');
+        // @ts-ignore
         OnBackward.style.visibility= 'visible';
         setTimeout(HideOnBackward, 3000);
     } else if (Direction == 'down') {
+        // @ts-ignore
         PlayingPanel.style.visibility = 'visible';
         CurrentFocus = 'Playing';
     } else if (Direction == 'ok') {
         if (IsOnPlay == true) {
             IsOnPlay = false;
+            // @ts-ignore
             OnPause.style.visibility= 'visible';
              SetSpeed('pause');
         }else{
             IsOnPlay = true;  
+            // @ts-ignore
             OnPause.style.visibility= 'hidden';
+            // @ts-ignore
             OnPlay.style.visibility= 'visible';
              SetSpeed('play');
             setTimeout(HideOnPlay, 3000);
@@ -1344,25 +1580,34 @@ function SetFocusOnHiddenMode(Direction){
 }
 function SetFocusOnAllMovies(Direction){
     AllMoviesList           = document.getElementById('AllMoviesList');
+    // @ts-ignore
     AllMoviesListNodes      = AllMoviesList.childNodes,
+    // @ts-ignore
     AllMoviesListChildren   = AllMoviesList.children;
     if (Direction == 'right') {
         var position = getPositionFocusInMovies(StyleFocusMovies, AllMoviesListChildren);  
         if (position+1 >= AllMoviesListNodes.length) {
+            // @ts-ignore
             AllMoviesListChildren[position].style.border='';
             SetFocusOnAllMovies('down');
+            // @ts-ignore
             AllMoviesListChildren[0].style.border=StyleFocusMovies;
             }else{
+            // @ts-ignore
             AllMoviesListChildren[position].style.border='';
+            // @ts-ignore
             AllMoviesListChildren[position+1].style.border=StyleFocusMovies;
             }        
     } else if (Direction == 'left') {
         var position = getPositionFocusInMovies(StyleFocusMovies, AllMoviesListChildren);  
         if (position-1 <0) {
             CurrentFocus = 'Menu';
+            // @ts-ignore
             AllMoviesListChildren[0].style.border= '';
         }else{
+            // @ts-ignore
             AllMoviesListChildren[position].style.border='';
+            // @ts-ignore
             AllMoviesListChildren[position-1].style.border=StyleFocusMovies;
         }        
     } else if (Direction == 'down') {
@@ -1376,10 +1621,13 @@ function SetFocusOnAllMovies(Direction){
         }else{
             scrollRefresh(row, 'AllMoviesList', MoviesList);
             AllMoviesList           = document.getElementById('AllMoviesList');
+            // @ts-ignore
             AllMoviesListChildren   = AllMoviesList.children;
             if (AllMoviesListChildren[position] === undefined) {
+                // @ts-ignore
                 AllMoviesListChildren[0].style.border=StyleFocusMovies;
             } else{
+                // @ts-ignore
                 AllMoviesListChildren[position].style.border=StyleFocusMovies;
             }
         }
@@ -1391,19 +1639,26 @@ function SetFocusOnAllMovies(Direction){
         var row = matrix[y];
         if (row === undefined) {
             RecommendedMoviesList           = document.getElementById('RecommendedMoviesList');
+            // @ts-ignore
             RecommendedMoviesListNodes      = RecommendedMoviesList.childNodes,
+            // @ts-ignore
             RecommendedMoviesListChildren   = RecommendedMoviesList.children;
             y=0;
             CurrentFocus = 'RecommendedMovies';
+            // @ts-ignore
             RecommendedMoviesListChildren[0].style.border = StyleFocusMovies;
+            // @ts-ignore
             AllMoviesListChildren[position].style.border = '';
         }else {
             scrollRefresh(row, 'AllMoviesList', MoviesList);
             AllMoviesList           = document.getElementById('AllMoviesList');
+            // @ts-ignore
             AllMoviesListChildren   = AllMoviesList.children;
             if (AllMoviesListChildren[position] === undefined) {
+                // @ts-ignore
                 AllMoviesListChildren[0].style.border=StyleFocusMovies;
             } else{
+                // @ts-ignore
                 AllMoviesListChildren[position].style.border=StyleFocusMovies;
             }
         }
@@ -1413,25 +1668,35 @@ function SetFocusOnAllMovies(Direction){
 function SetFocusOnMenuFilter(Direction){
     if (Direction == 'down') {
         FilterMovieCategoryList = document.getElementById('filterMovieCategory');
+        // @ts-ignore
         FilterMovieCategoryListChildren = FilterMovieCategoryList.children;
         var positionFocus = getPositionFocusInMenuFilter(StyleFocusMenuFilter, FilterMovieCategoryListChildren);
         if (positionFocus+1 >= FilterMovieCategoryListChildren.length) {
+            // @ts-ignore
             FilterMovieCategoryListChildren[positionFocus].style.backgroundColor = '';
+            // @ts-ignore
             FilterMovieCategoryListChildren[0].style.backgroundColor = StyleFocusMenuFilter;
         }else{
+            // @ts-ignore
             FilterMovieCategoryListChildren[positionFocus].style.backgroundColor = '';
+            // @ts-ignore
             FilterMovieCategoryListChildren[positionFocus+1].style.backgroundColor = StyleFocusMenuFilter;
         }
         setFilterMovies(); 
     } else if (Direction == 'up') {
         FilterMovieCategoryList = document.getElementById('filterMovieCategory');
+        // @ts-ignore
         FilterMovieCategoryListChildren = FilterMovieCategoryList.children;
         var positionFocus = getPositionFocusInMenuFilter(StyleFocusMenuFilter, FilterMovieCategoryListChildren);
         if (positionFocus == 0) {
+            // @ts-ignore
             FilterMovieCategoryListChildren[positionFocus].style.backgroundColor = '';
+            // @ts-ignore
             FilterMovieCategoryListChildren[(FilterMovieCategoryListChildren.length)-1].style.backgroundColor = StyleFocusMenuFilter;
         }else{
+            // @ts-ignore
             FilterMovieCategoryListChildren[positionFocus].style.backgroundColor = '';
+            // @ts-ignore
             FilterMovieCategoryListChildren[positionFocus-1].style.backgroundColor = StyleFocusMenuFilter;
         }
         setFilterMovies();  
@@ -1446,11 +1711,16 @@ function SetFocusOnMenuFilter(Direction){
                 break;
             case 2:
                 RecommendedMoviesList           = document.getElementById('RecommendedMoviesList'),
+                // @ts-ignore
                 RecommendedMoviesListChildren   = RecommendedMoviesList.children;
                 CurrentFocus= 'RecommendedMovies';
+                // @ts-ignore
                 RecommendedMoviesListChildren[0].style.border = StyleFocusMovies;
+                // @ts-ignore
                 MenuFilters.style.visibility = 'hidden';
+                // @ts-ignore
                 FilterMovieCategoryListChildren[position].style = '';
+                // @ts-ignore
                 ListPanel.style.visibility = 'visible';
                 IsMenuFilterSelected = false;
                 break;
@@ -1464,11 +1734,17 @@ function SetFocusOnMenuFilter(Direction){
                 break;
             case 2:
         RecommendedMoviesList         = document.getElementById('RecommendedMoviesList'),
+        // @ts-ignore
         RecommendedMoviesListChildren = RecommendedMoviesList.children;
+        // @ts-ignore
         RecommendedMoviesListChildren[0].style.border = StyleFocusMovies;
+        // @ts-ignore
         ListPanel.style.visibility = 'visible';
+        // @ts-ignore
         PanelRight.style.visibility = 'visible';
+        // @ts-ignore
         BackgroundPanel.style.backgroundImage = "url('"+FolderSource + "bg/BGMovies.PNG')";
+        // @ts-ignore
         MenuFilters.style.visibility = 'hidden';
         break; 
         }
@@ -1477,16 +1753,20 @@ function SetFocusOnMenuFilter(Direction){
 }
 function SetFocusOnMenuByYear(Direction){
     YearFilter                      = document.getElementById('yearfilter'),
+    // @ts-ignore
     YearFilterNodes                 = YearFilter.childNodes,
+    // @ts-ignore
     YearFilterChildren              = YearFilter.children;
     if (Direction == 'set') {
         CurrentFocus = 'SelectYear';
+        // @ts-ignore
         YearFilterChildren[0].style.backgroundColor = StyleFocusMenuYearFilter;
         var positionFocus = getPositionFocusInMenuFilter(StyleFocusMenuYearFilter, YearFilterChildren);
         var movies = getMoviesByYear(positionFocus);
         refreshMoviesPrincipalList(movies, 'MoviesByYearList');
     } else if (Direction == 'down') {
         YearFilter = document.getElementById('yearfilter');
+        // @ts-ignore
         YearFilterChildren = YearFilter.children;
         var positionFocus = getPositionFocusInMenuFilter(StyleFocusMenuYearFilter, YearFilterChildren);
         if (positionFocus+1 >= YearFilterChildren.length) {
@@ -1494,13 +1774,16 @@ function SetFocusOnMenuByYear(Direction){
             // YearFilterChildren[0].style = StyleFocusMenuYearFilter;
             return;
         }else{
+            // @ts-ignore
             YearFilterChildren[positionFocus].style.backgroundColor = '';
+            // @ts-ignore
             YearFilterChildren[positionFocus+1].style.backgroundColor = StyleFocusMenuYearFilter;
         }
         var movies = getMoviesByYear(positionFocus+1);
         refreshMoviesPrincipalList(movies, 'MoviesByYearList');
     } else if (Direction == 'up') {
         YearFilter = document.getElementById('yearfilter');
+        // @ts-ignore
         YearFilterChildren = YearFilter.children;
         var positionFocus = getPositionFocusInMenuFilter(StyleFocusMenuYearFilter, YearFilterChildren);
         if (positionFocus == 0) {
@@ -1508,7 +1791,9 @@ function SetFocusOnMenuByYear(Direction){
             // YearFilterChildren[(YearFilterChildren.length)-1].style = StyleFocusMenuYearFilter;
             return;
         }else{
+            // @ts-ignore
             YearFilterChildren[positionFocus].style.backgroundColor = '';
+            // @ts-ignore
             YearFilterChildren[positionFocus-1].style.backgroundColor = StyleFocusMenuYearFilter;
         } 
         var movies = getMoviesByYear(positionFocus-1);
@@ -1517,26 +1802,33 @@ function SetFocusOnMenuByYear(Direction){
         SetFocusOnMovieByYear('set');
     } else if (Direction == 'left'){
         YearFilter = document.getElementById('yearfilter');
+        // @ts-ignore
         YearFilterChildren = YearFilter.children;
         var positionFocus = getPositionFocusInMenuFilter(StyleFocusMenuYearFilter, YearFilterChildren);
+        // @ts-ignore
         YearFilterChildren[positionFocus].style.backgroundColor = '';
         CurrentFocus = "FilterMovies";
     }
 }
 function SetFocusOnMovieByYear(Direction){
     MoviesByYearList                = document.getElementById('MoviesByYearList'),
+    // @ts-ignore
     MoviesByYearListNodes           = MoviesByYearList.childNodes,
+    // @ts-ignore
     MoviesByYearListChildren        = MoviesByYearList.children;
     var MoviesByYearLenght          = MoviesByYearListChildren.length;  
     if (Direction == 'set') {
         CurrentFocus = 'SelectMovieByYear';
+        // @ts-ignore
         MoviesByYearListChildren[0].style.border = StyleFocusMovies;
     } else if (Direction == 'right') {
         var positionFocus = getPositionFocusInMovies(StyleFocusMovies, MoviesByYearListChildren);
         if (MoviesByYearListChildren[positionFocus+1] === undefined) {
             return;
             }else{
+                // @ts-ignore
                 MoviesByYearListChildren[positionFocus].style.border= '';
+                // @ts-ignore
                 MoviesByYearListChildren[positionFocus+1].style.border= StyleFocusMovies;
             }
     } else if (Direction == 'left') {
@@ -1544,9 +1836,12 @@ function SetFocusOnMovieByYear(Direction){
         if (positionFocus%4 == 0) {
             y=0;
             CurrentFocus = 'SelectYear';
+            // @ts-ignore
             MoviesByYearListChildren[positionFocus].style.border = '';
             }else{
+                // @ts-ignore
                 MoviesByYearListChildren[positionFocus].style.border = '';
+                // @ts-ignore
                 MoviesByYearListChildren[positionFocus-1].style.border = StyleFocusMovies;
             }
     } else if (Direction == 'down') {
@@ -1556,7 +1851,9 @@ function SetFocusOnMovieByYear(Direction){
             var positionFocus = getPositionFocusInMovies(StyleFocusMovies, MoviesByYearListChildren);
             if (MoviesByYearListChildren[positionFocus+4] === undefined) {
                 YearFilter                      = document.getElementById('yearfilter'),
+                // @ts-ignore
                 YearFilterNodes                 = YearFilter.childNodes,
+                // @ts-ignore
                 YearFilterChildren              = YearFilter.children;
                 var positionYear = getPositionFocusInMenuFilter(StyleFocusMenuYearFilter, YearFilterChildren);
                 var movies       = getMoviesByYear(positionYear);
@@ -1569,16 +1866,21 @@ function SetFocusOnMovieByYear(Direction){
                 }else{
                     scrollRefresh(y, 'MoviesByYearList', movies);
                     MoviesByYearList           = document.getElementById('MoviesByYearList');
+                    // @ts-ignore
                     MoviesByYearListChildren   = MoviesByYearList.children;
                     if (MoviesByYearListChildren[positionFocus] === undefined) {
+                        // @ts-ignore
                         MoviesByYearListChildren[0].style.border=StyleFocusMovies;
                     } else{
+                        // @ts-ignore
                         MoviesByYearListChildren[positionFocus].style.border=StyleFocusMovies;
                     }
                 }
 
             }else{
+                // @ts-ignore
                 MoviesByYearListChildren[positionFocus].style.border = '';
+                // @ts-ignore
                 MoviesByYearListChildren[positionFocus+4].style.border = StyleFocusMovies;
             } 
         }
@@ -1586,7 +1888,9 @@ function SetFocusOnMovieByYear(Direction){
         var positionFocus = getPositionFocusInMovies(StyleFocusMovies, MoviesByYearListChildren);
         if (positionFocus<4) {
             YearFilter                      = document.getElementById('yearfilter'),
+            // @ts-ignore
             YearFilterNodes                 = YearFilter.childNodes,
+            // @ts-ignore
             YearFilterChildren              = YearFilter.children;
             var positionYear = getPositionFocusInMenuFilter(StyleFocusMenuYearFilter, YearFilterChildren);
             var movies       = getMoviesByYear(positionYear);           
@@ -1599,59 +1903,80 @@ function SetFocusOnMovieByYear(Direction){
             }else {
                 scrollRefresh(y, 'MoviesByYearList', movies);
                 MoviesByYearList           = document.getElementById('MoviesByYearList');
+                // @ts-ignore
                 MoviesByYearListChildren   = MoviesByYearList.children;
                 if (MoviesByYearListChildren[positionFocus] === undefined) {
+                    // @ts-ignore
                     MoviesByYearListChildren[0].style.border=StyleFocusMovies;
                 } else{
+                    // @ts-ignore
                     MoviesByYearListChildren[positionFocus+4].style.border=StyleFocusMovies;
                 }
             }
     
 
         }else{
+            // @ts-ignore
             MoviesByYearListChildren[positionFocus].style.border = '';
+            // @ts-ignore
             MoviesByYearListChildren[positionFocus-4].style.border = StyleFocusMovies;
 }
     }
 }
 function SetFocusOnMenuLanguage(Direction){
     MenuLanguagePanel                 = document.getElementById('MenuLanguagePanel'),
+    // @ts-ignore
     MenuLanguageNodes                 = MenuLanguagePanel.childNodes,
+    // @ts-ignore
     MenuLanguageChildren              = MenuLanguagePanel.children;
     if (Direction == 'set') {
         CurrentFocus = 'SelectLanguage';
+        // @ts-ignore
         MenuLanguageChildren[0].style.border = StyleFocusMenuLanguage;
+        // @ts-ignore
         MenuLanguagePanel.style.visibility = 'visible';
     } else if (Direction == 'right') {
         var positionFocus = getPositionFocusInMovies(StyleFocusMenuLanguage, MenuLanguageChildren);
         
         if (positionFocus+1 >= MenuLanguageChildren.length) {
+            // @ts-ignore
             MenuLanguageChildren[positionFocus].style.border = '';
+            // @ts-ignore
             MenuLanguageChildren[0].style.border = StyleFocusMenuLanguage;
         }else{
+            // @ts-ignore
             MenuLanguageChildren[positionFocus].style.border = '';
+            // @ts-ignore
             MenuLanguageChildren[positionFocus+1].style.border = StyleFocusMenuLanguage;
         }
     } else if (Direction == 'left') {
         var positionFocus = getPositionFocusInMovies(StyleFocusMenuLanguage, MenuLanguageChildren);
         if (positionFocus == 0) {
+            // @ts-ignore
             MenuLanguageChildren[positionFocus].style.border = '';
+            // @ts-ignore
             MenuLanguageChildren[(MenuLanguageChildren.length)-1].style.border = StyleFocusMenuLanguage;
         }else{
+            // @ts-ignore
             MenuLanguageChildren[positionFocus].style.border = '';
+            // @ts-ignore
             MenuLanguageChildren[positionFocus-1].style.border = StyleFocusMenuLanguage;
         } 
     } else if (Direction == 'down'){
         var positionFocus = getPositionFocusInMovies(StyleFocusMenuLanguage, MenuLanguageChildren);
+        // @ts-ignore
         MenuLanguageChildren[positionFocus].style.border = '';
+        // @ts-ignore
         MenuLanguagePanel.style.visibility = 'hidden';
         CurrentFocus = 'HiddenMode';
     } else if (Direction == 'ok'){
         var positionFocus = getPositionFocusInMovies(StyleFocusMenuLanguage, MenuLanguageChildren);
         
+        // @ts-ignore
         if (numberOfLanguages == 0) {
             return;
         }else{
+            // @ts-ignore
             changeLanguage(positionFocus);
         }
     }
@@ -1670,6 +1995,7 @@ function SelectPlayOption(){
         case 12:
             //Salir
             ExitMoviePanel();
+            // @ts-ignore
             MoviePanelChildren[12].style.backgroundColor = '';
             break;
     }
@@ -1681,14 +2007,19 @@ function ExitMoviePanel(){
         //Funcion que oculta el panel de detalles de la pelicula 
         if (IsMenuFilterSelected == true) {
             //Si la pelicula se abrio desde los menus de filtros 
+            // @ts-ignore
             PanelYearFilter.style.visibility= 'visible';
+            // @ts-ignore
             MenuFilters.style.visibility = "visible";
+            // @ts-ignore
             MoviePanel.style.visibility = 'hidden'; 
+            // @ts-ignore
             BackgroundPanel.style.backgroundImage = "url('"+FolderSource + "bg/BGMovies.PNG')";
             CurrentFocus = 'SelectMovieByYear';
         } else {
             //Si se abrio desde la pagina principal
             RecommendedMoviesList         = document.getElementById('RecommendedMoviesList'),
+            // @ts-ignore
             RecommendedMoviesListChildren = RecommendedMoviesList.children;
             var position = getPositionFocusInMovies(StyleFocusMovies, RecommendedMoviesListChildren);
             if (position == -1) {
@@ -1696,9 +2027,13 @@ function ExitMoviePanel(){
             }else{
                 CurrentFocus = 'RecommendedMovies';
             }
+            // @ts-ignore
             ListPanel.style.visibility = 'visible';
+            // @ts-ignore
             PanelRight.style.visibility = 'visible';
+            // @ts-ignore
             MoviePanel.style.visibility = 'hidden';
+            // @ts-ignore
             BackgroundPanel.style.backgroundImage = "url('"+FolderSource + "bg/BGMovies.PNG')";
         }
             // //Si se abrio desde la pagina principal
@@ -1717,60 +2052,84 @@ function ExitMoviePanel(){
 }
 function PlayingMovie(){
     CurrentFocus = 'Playing';
+    // @ts-ignore
     PlayMovie(Libraries['MoviesSource'] + MoviesList[CurrentMovieID].FLDR + MoviesList[CurrentMovieID].FILE);
+    // @ts-ignore
     PlayingVod = true;
     ClearMoviePanel();
     ShowPlayingPanel();
     // SetFocusPlaying('right');
+    // @ts-ignore
     BackgroundPanel.style.visibility = 'hidden';
+    // @ts-ignore
     PlayingOptionsChildren[2].style.border = StyleFocusPlayingMovie;
     setTimeout(refreshLanguages, 15000);
 }
 function HideOnforward (){
+    // @ts-ignore
     Onforward.style.visibility='hidden';
 }
 function HideOnBackward (){
+       // @ts-ignore
        OnBackward.style.visibility='hidden';
 }
 function HideOnPause (){
+       // @ts-ignore
        OnPause.style.visibility='hidden';
 }
 function HideOnPlay (){
+       // @ts-ignore
        OnPlay.style.visibility='hidden';
 }
 function FiltersList(){
     //Funcion que hace la carga inicial al abror el menu de filtros
     //Ocultando y abriendo paneles necesarios
     IsMenuFilterSelected = true;
+    // @ts-ignore
     ListPanel.style.visibility = 'hidden';
+    // @ts-ignore
     PanelRight.style.visibility= 'hidden';
     // PanelRight.style.visibility = 'hidden';
     CurrentFocus = "FilterMovies";
+    // @ts-ignore
     MenuFilters.style.visibility = "visible";
     //Seleccionando filtro por años por default
+    // @ts-ignore
     FilterMovieCategoryListChildren[0].style.backgroundColor = StyleFocusMenuFilter;
     LoadFilterByYearPanel();
 }
 function LoadFilterByYearPanel (){
     //Funcion que rellena el menu de filtros segun la cantidad de años que tenga la lista sacada de la base de datos
+    // @ts-ignore
     PanelYearFilter.style.visibility= 'visible';
     var  element     = document.getElementById('yearfilter'),
+         // @ts-ignore
          aux         = element.children;
     if (aux.length == 0 ) {
         for (var x = 0; x < FiltersByYear.length; x++) {
+            // @ts-ignore
             div = document.createElement('div');
+            // @ts-ignore
             div.innerHTML = FiltersByYear[x];
+            // @ts-ignore
             div.className = 'yearOpts';
+            // @ts-ignore
             document.getElementById('yearfilter').appendChild(div);
         }
     }else{
+        // @ts-ignore
         while (element.firstChild){
+            // @ts-ignore
             element.removeChild(element.firstChild);
           };
           for (var x = 0; x < FiltersByYear.length; x++) {
+            // @ts-ignore
             div = document.createElement('div');
+            // @ts-ignore
             div.innerHTML = FiltersByYear[x];
+            // @ts-ignore
             div.className = 'yearOpts';
+            // @ts-ignore
             document.getElementById('yearfilter').appendChild(div);
         }
     }
@@ -1790,14 +2149,18 @@ function setFilterMovies(){
             break;
         case 2:
             clearAllPanel();
+            // @ts-ignore
             PanelRight.style.visibility = 'visible';
             break;
     }
 }
 function clearAllPanel(){
     //Limpia paneles
+    // @ts-ignore
     PanelRight.style.visibility = 'hidden';
+    // @ts-ignore
     PanelYearFilter.style.visibility = 'hidden';
+    // @ts-ignore
     PanelGenderFilter.style.visibility = 'hidden';
 }
 function getMoviesByYear(position){
@@ -1810,3 +2173,4 @@ function getMoviesByYear(position){
     }
     return moviesByYear;
 }
+

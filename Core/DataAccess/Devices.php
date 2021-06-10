@@ -93,6 +93,7 @@ class Devices extends Database {
 
         return $this->Device;
     }
+
     function setControl($NewDevice) {
         $this->Function = 'setControl';
         

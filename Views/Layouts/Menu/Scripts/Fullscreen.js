@@ -1,3 +1,4 @@
+// @ts-nocheck
 /* @Creado por: Tania Maldonado
  * @Fecha: Enero 2020
  * @Tipo: Controla el menu
