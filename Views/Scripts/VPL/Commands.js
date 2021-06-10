@@ -1,3 +1,4 @@
+// @ts-nocheck
 
 function Red(){
     location.reload(true);

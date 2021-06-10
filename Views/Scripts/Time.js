@@ -1,3 +1,4 @@
+// @ts-nocheck
 /******************************************************************************
  * @Objetivo: Actualiza la hora
  * @CreadoPor: Tania Maldonado
@@ -19,7 +20,13 @@ Debug('########################### Time() ');
         
         FormatDateAndHour = moment().format('MMM, DD / h:mm A');
         CurrentStbDate = moment().format('Y-MM-DD h:mm:ss');
-        FormatHour = moment().format('h:mm A');
+
+        if (Device.Client == 'VPL') {
+            moment().format('MMMM Do YYYY, h:mm:ss a');
+        }else{
+            FormatHour = moment().format('h:mm A');
+        }
+        
 
         if(CurrentModule === 'Tv'){
             if(ActiveInfoContainer === true){
@@ -83,3 +90,4 @@ Debug('########################### Time() ');
     
     /* Agrega intervalo 50000 = 50 segundos*/
     TimerDate = setInterval(SetDate, 50000);
+

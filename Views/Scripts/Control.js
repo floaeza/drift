@@ -1,3 +1,4 @@
+// @ts-nocheck
 /******************************************************************************
  * @Objetivo: Ejecutar botones del control remoto para todas las marcas
  * @CreadoPor: Tania Maldonado

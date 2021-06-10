@@ -1,3 +1,4 @@
+// @ts-nocheck
  /******************************************************************************
  * @Objetivo: Ejecucion de funciones para EPG
  * @CreadoPor: Tania Maldonado

@@ -1,3 +1,4 @@
+// @ts-nocheck
 /******************************************************************************
  * @Objetivo: Obtiene la configuracion del dispositivo y define la forma de debuguear
  * @CreadoPor: Tania Maldonado
