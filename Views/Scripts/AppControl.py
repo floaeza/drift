@@ -3,6 +3,8 @@ import firebase_admin
 import time
 from firebase_admin import credentials
 from firebase_admin import firestore
+import requests
+import json
 
 # Use a service account
 cred = credentials.Certificate('/var/www/html/BBINCO/TV/Views/Scripts/FireBase/serviceAccountKey.json')
@@ -28,8 +30,13 @@ def on_snapshot(col_snapshot, changes, read_time):
             stb = stbb.to_dict()
             if  stb['estado'] == 'Pendiente':
                 print('Ejecutando Orden 66')
+                payload = {'Option': 'UpdateControlByMac', 'MacAddress': stb['mac_address'], 'Estado':stb['estado'], 'Orden':stb['orden']}
+                requests.post('http://172.16.0.15/BBINCO/TV/Core/Controllers/Firebase.php', data=payload)
+                
                 stbs.update({u'estado': 'Ok'})
                 print('Orden 66 Ejecutada')
+
+                
                 
         elif change.type.name == 'REMOVED':
             print(f'Removed: {change.document.id}')

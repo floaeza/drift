@@ -28,6 +28,16 @@ class Devices extends Database {
 
         return $this->Device;
     }
+    function getControl($MacAddress){
+        $this->Function = 'getControl';
+
+        $this->connect();
+        $this->select("remote_control", "*", "", "", "", "", "mac_address = '".$MacAddress."'");
+        $this->Device = $this->getResult();
+        $this->disconnect();
+
+        return $this->Device;
+    }
     
     function getVendor($MacAddress){
         $this->Function = 'getVendor';
@@ -109,6 +119,16 @@ class Devices extends Database {
         
         $this->connect();
         $this->update("dispositivos", $DeviceUpdate, "id_dispositivo = '$DeviceId'");
+        $this->Device = $this->getResult();
+        $this->disconnect();
+
+        return $this->Device;
+    }
+
+    function updateControl($MacAddress, $ControlInfo){
+        $this->Function = 'updateControl';   
+        $this->connect();
+        $this->update("remote_control", $ControlInfo, "mac_address = '$MacAddress'");
         $this->Device = $this->getResult();
         $this->disconnect();
 
@@ -196,6 +216,16 @@ class Devices extends Database {
         
         $this->connect();
         $this->select("dispositivos");
+        $this->DeviceList = $this->getResult();
+        $this->disconnect();
+
+        return $this->DeviceList;
+    }
+    function GetControlList(){
+        $this->Function = 'GetControlList';
+        
+        $this->connect();
+        $this->select("remote_control");
         $this->DeviceList = $this->getResult();
         $this->disconnect();
 
