@@ -11,7 +11,6 @@ import requests
 urls = ['https://www.gatotv.com/canal/', 'https://www.tvpassport.com/tv-listings/stations/']
 today = datetime.today()
 today = today
-
 listDays = ["", "", "", "", "", "", "", "", "", "", ""]
 
 for n in range(11):
@@ -44,22 +43,23 @@ def start(day):
     dataProgram = {}
     day = datetime.strptime(day, '%Y-%m-%d')
 
+    payload = {'Option': 'GetIdentifier'}
+    Identifier = requests.post('http://172.22.22.10/BBINCO/TV/Core/Controllers/PY.php', data=payload)
+    IDF = json.loads(Identifier.content)
+    IDF = IDF[0]
     for ids in range(1, paquetes):
         contadorCanal = 0
         data = {}
         data["C_Length"]=0
         payload = {'Option': 'GetChannelsInfoBypackage', 'PackageID': ids}
-        x = requests.post('http://172.16.0.15/BBINCO/TV/Core/Controllers/PY.php', data=payload)
+        x = requests.post('http://172.22.22.10/BBINCO/TV/Core/Controllers/PY.php', data=payload)
         channels = json.loads(x.content)
         #print(channels)
         payload = {'Option': 'GetOffsetZone'}
-        Zone = requests.post('http://172.16.0.15/BBINCO/TV/Core/Controllers/PY.php', data=payload)
+        Zone = requests.post('http://172.22.22.10/BBINCO/TV/Core/Controllers/PY.php', data=payload)
         OffSetZone = json.loads(Zone.content)
         OffSetZone = OffSetZone[0]
-        payload = {'Option': 'GetIdentifier'}
-        Identifier = requests.post('http://172.16.0.15/BBINCO/TV/Core/Controllers/PY.php', data=payload)
-        IDF = json.loads(Identifier.content)
-        IDF = IDF[0]
+
         for channel in channels:
             if 'GATO' in channel['STTN']:
                 dataProgramGato = {}
@@ -526,16 +526,16 @@ def start(day):
                         contadorCanal = contadorCanal + 1
 
         data["C_Length"] = contadorCanal
-        with open('/var/www/html/BBINCO/IPTV/Core/Controllers/Epg/'+IDF+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'w', encoding='ascii') as file:
+        with open('/var/www/html/BBINCO/TV/Core/Controllers/Epg/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'w', encoding='ascii') as file:
             json.dump(data, file, indent=4)
 
-        with open('/var/www/html/BBINCO/IPTV/Core/Controllers/Epg/'+IDF+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'r') as file:
+        with open('/var/www/html/BBINCO/TV/Core/Controllers/Epg/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'r') as file:
             filedata = file.read()
 
         filedata = filedata.replace('[', '').replace(']', '')
-        with open('/var/www/html/BBINCO/IPTV/Core/Controllers/Epg/'+IDF+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'w') as file:
+        with open('/var/www/html/BBINCO/TV/Core/Controllers/Epg/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'w') as file:
             file.write(filedata)
-            print('/var/www/html/BBINCO/IPTV/Core/Controllers/Epg/'+IDF+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json ', 'CREADO')
+            print('/var/www/html/BBINCO/TV/Core/Controllers/Epg/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json ', 'CREADO')
 
         data.clear()
 

@@ -46,7 +46,7 @@ class Locations extends Database {
     
     function getLocationServices($LocationId) {
         $this->Function = 'getLocationServices';
-        
+
         $this->connect();
         $this->select("locaciones","*","",
                                          "miembros ON locaciones.codigo_miembro = miembro.codigo_miembro",
@@ -56,5 +56,14 @@ class Locations extends Database {
         $this->disconnect();
 
         return $this->LocationById;
+    }
+
+    function getLocations(){
+        $this->Function = 'getLocations';
+        $this->connect();
+        $this->select("locaciones");
+        $this->Locations = $this->getResult();
+        $this->disconnect();
+        return $this->Locations;
     }
 }
