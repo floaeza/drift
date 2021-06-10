@@ -22,7 +22,7 @@ Debug('########################### Time() ');
         CurrentStbDate = moment().format('Y-MM-DD h:mm:ss');
 
         if (Device.Client == 'VPL') {
-            FormatHour = moment().format('MMMM Do YYYY, h:mm:ss a');
+            FormatHour = moment().format('MMMM Do , h:mm a');
         }else{
             FormatHour = moment().format('h:mm A');
         }
