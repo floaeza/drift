@@ -1,8 +1,7 @@
 // @ts-nocheck
 
 function Red(){
-    // location.reload(true);
-    Back();
+     location.reload(true);
 }
 
 function Blue(){
@@ -31,8 +30,7 @@ function Close(){
 
 function Back(){
     if(CurrentModule === 'Tv'){
-        // TvClose();
-        GoPage('menu.php', Device['MenuId'], 'Menu');
+        TvClose();
     } else if(CurrentModule === 'Menu'){
         //
     } else if(CurrentModule === 'Movies'){
