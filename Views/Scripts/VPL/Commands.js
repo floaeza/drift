@@ -1,7 +1,8 @@
 // @ts-nocheck
 
 function Red(){
-    location.reload(true);
+    // location.reload(true);
+    GoPage('menu.php', Device['MenuId'], 'Menu');
 }
 
 function Blue(){
@@ -37,6 +38,8 @@ function Back(){
         VodClose();
     } else if(CurrentModule === 'Moods'){
         MoodsClose();
+    }else{
+        GoPage('menu.php', Device['MenuId'], 'Menu');
     }
 }
 
