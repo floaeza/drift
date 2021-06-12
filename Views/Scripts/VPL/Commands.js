@@ -1,8 +1,8 @@
 // @ts-nocheck
 
 function Red(){
-    // location.reload(true);
-    GoPage('menu.php', Device['MenuId'], 'Menu');
+    location.reload(true);
+    Back();
 }
 
 function Blue(){
