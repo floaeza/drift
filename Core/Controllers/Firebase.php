@@ -14,8 +14,8 @@
     $CurrentController = 'DeviceController';
     
     $ArrayDeviceInfo = array();
-    $Option = !empty($_POST['Option']) ? $_POST['Option'] : 'InsertControl';
-    $MacAddress = !empty($_POST['mac_address']) ? $_POST['mac_address'] : '00:00:00:00:00:00';
+    $Option = !empty($_POST['Option']) ? $_POST['Option'] : 'DeleteControlbyMac';
+    $MacAddress = !empty($_POST['mac_address']) ? $_POST['mac_address'] : '00:00:00:00:00:01';
     $IDGuest = !empty($_POST['IDGuest']) ? $_POST['IDGuest'] : 'CHUY';
     $guest = !empty($_POST['guest']) ? $_POST['guest'] : '16';
     $orden = !empty($_POST['orden']) ? $_POST['orden'] : 'PLATA';
@@ -85,6 +85,7 @@
             break;
         case 'DeleteControlbyMac':
             $DevicesData->deleteControl($MacAddress);
+            echo json_encode($MacAddress);
             break;
     }
 
