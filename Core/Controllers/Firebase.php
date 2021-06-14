@@ -16,7 +16,7 @@
     $ArrayDeviceInfo = array();
     $Option = !empty($_POST['Option']) ? $_POST['Option'] : 'InsertControl';
     $MacAddress = !empty($_POST['mac_address']) ? $_POST['mac_address'] : '00:00:00:00:00:00';
-    $IDGuest = !empty($_POST['IDGuest']) ? $_POST['IDGuest'] : 'CHUY';
+    $IDGuest = !empty($_POST['IDGuest']) ? $_POST['IDGuest'] : '19';
     $guest = !empty($_POST['guest']) ? $_POST['guest'] : '16';
     $orden = !empty($_POST['orden']) ? $_POST['orden'] : 'PLATA';
 
