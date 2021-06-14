@@ -12,8 +12,10 @@ firebase_admin.initialize_app(cred)
 
 db = firestore.client()
 stbDic = []
-users_ref = db.collection(u'stb')
+users_ref = db.collection(u'PaquetesVPL')
 docs = users_ref.stream()
+
+identificador = 'VPL'
 
 # Create an Event for notifying main thread.
 delete_done = threading.Event()
@@ -22,27 +24,26 @@ delete_done = threading.Event()
 def on_snapshot(col_snapshot, changes, read_time):
     for change in changes:
         if change.type.name == 'ADDED':
-            print(f'Nuevo Dispositivo Agregado: {change.document.id}')
             
-        elif change.type.name == 'MODIFIED':
-            stbs = db.collection(u'stb').document(f'{change.document.id}')
+            print(f'Nueva orden agregada: {change.document.id}')
+            stbs = db.collection(identificador).document(f'{change.document.id}')
             stbb = stbs.get()
             stb = stbb.to_dict()
-            if  stb['estado'] == 'Pendiente':
-                print('Ejecutando Orden 66')
-                payload = {'Option': 'UpdateControlByMac', 'MacAddress': stb['mac_address'], 'Estado':stb['estado'], 'Orden':stb['orden']}
-                requests.post('http://172.16.0.15/BBINCO/TV/Core/Controllers/Firebase.php', data=payload)
-                
-                stbs.update({u'estado': 'Ok'})
-                print('Orden 66 Ejecutada')
+            
+            print('Ejecutando Orden 66')
+            #payload = {'Option': 'UpdateControlByMac', 'MacAddress': stb['mac_address'], 'Guest':stb['guest'], 'IDGuest':stb['IDGuest'], 'Orden':stb['order']}
+            #requests.post('http://172.16.0.15/BBINCO/TV/Core/Controllers/Firebase.php', data=payload)
+            
+            stbb.reference.delete()
+            print('Orden 66 Ejecutada')
 
-                
-                
+        elif change.type.name == 'MODIFIED':
+            print("MODIFIED")
         elif change.type.name == 'REMOVED':
             print(f'Removed: {change.document.id}')
             delete_done.set()
 
-col_query = db.collection(u'stb')
+col_query = db.collection(identificador)
 
 # Watch the collection query
 query_watch = col_query.on_snapshot(on_snapshot)
