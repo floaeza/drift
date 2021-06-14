@@ -1994,7 +1994,6 @@ function GetPvrInfo(){
         }
     });
 }
-GetPvrInfo();
 
 function CheckManualRecording(){
     $.ajax({
