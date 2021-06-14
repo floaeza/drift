@@ -68,7 +68,7 @@
             break;
         
         case 'InsertControl':
-            $NewDevice = array('IDGuest' => $IdGuest,
+            $NewDevice = array('IDGuest' => $IDGuest,
             'guest'                      => $guest,
             'mac_address'                => $MacAddress,
             'orden'                      => $orden
