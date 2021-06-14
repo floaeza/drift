@@ -117,7 +117,7 @@ class Devices extends Database {
     function deleteControl($MacAddress){
         $this->Function = 'deleteControl';
         $this->connect();
-        $this->delete("remote_control", "mac_address =".$MacAddress);
+        $this->delete("remote_control", "mac_address=$MacAddress");
         $this->Device = $this->getResult();
         $this->disconnect();
     }
