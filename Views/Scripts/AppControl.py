@@ -31,14 +31,16 @@ for i in range(1,100):
         numPaquetes = i-1
         break
 
-paquetes = {
-    u'name': u'Los Angeles',
-    u'state': u'CA',
-    u'country': u'USA'
-}
+for i in range(0,numPaquetes):
+    
+    paquetes = {
+        u'name': u'Los Angeles',
+        u'state': u'CA',
+        u'country': u'USA'
+    }
 
-# Add a new doc in collection 'cities' with ID 'LA'
-db.collection(u'cities').document(u'LA').set(paquetes)
+    # Add a new doc in collection 'cities' with ID 'LA'
+    db.collection(u'cities').document(u'LA').set(paquetes)
 
 # Create an Event for notifying main thread.
 delete_done = threading.Event()
