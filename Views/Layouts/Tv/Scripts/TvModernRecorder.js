@@ -2196,7 +2196,7 @@ function CheckRecordings() {
                 } else {
                     NewStartHour = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].STRH;
                 }
-                
+
                 NewEndHour = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].FNLH;
 
                 Debug('--------------------------------------->>4');
