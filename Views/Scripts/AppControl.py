@@ -25,22 +25,21 @@ jsons = []
 
 for i in range(1,100):
     try:
-        with open('/var/www/html/BBINCO/TV/Core/Controllers/Epg/'+identificador+'/epg_'+fechajson+'_'+i+'.json') as file:
+        with open('/var/www/html/BBINCO/TV/Core/Controllers/Epg/'+identificador+'/epg_'+fechajson+'_'+str(i)+'.json') as file:
             jsons.append(json.load(file))
     except:
         numPaquetes = i-1
         break
 
 for i in range(0,numPaquetes):
-    
-    paquetes = {
-        u'name': u'Los Angeles',
-        u'state': u'CA',
-        u'country': u'USA'
-    }
-
+    js = jsons[i]
+    channels = js['C_Length']
+    paquetes = {}
+    for j in range(0, channels):
+        paquetes.update({js[str(j)]['CHNL']:js[str(j)]['NAME']})
+        
     # Add a new doc in collection 'cities' with ID 'LA'
-    db.collection(u'cities').document(u'LA').set(paquetes)
+    db.collection(u'Paquetes'+identificador).document(u'Paquete'+str(i+1)).set(paquetes)
 
 # Create an Event for notifying main thread.
 delete_done = threading.Event()
@@ -56,8 +55,8 @@ def on_snapshot(col_snapshot, changes, read_time):
             stb = stbb.to_dict()
             
             print('Ejecutando Orden 66')
-            #payload = {'Option': 'UpdateControlByMac', 'MacAddress': stb['mac_address'], 'Guest':stb['guest'], 'IDGuest':stb['IDGuest'], 'Orden':stb['order']}
-            #requests.post('http://172.16.0.15/BBINCO/TV/Core/Controllers/Firebase.php', data=payload)
+            payload = {'Option': 'InsertControl', 'mac_address': stb['mac_address'], 'guest':stb['guest'], 'IDGuest':stb['IDGuest'], 'orden':stb['order']}
+            requests.post('http://172.16.0.15/BBINCO/TV/Core/Controllers/Firebase.php', data=payload)
             
             stbb.reference.delete()
             print('Orden 66 Ejecutada')

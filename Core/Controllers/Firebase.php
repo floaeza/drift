@@ -14,7 +14,7 @@
     $CurrentController = 'DeviceController';
     
     $ArrayDeviceInfo = array();
-    $Option = !empty($_POST['Option']) ? $_POST['Option'] : 'DeleteControlbyMac';
+    $Option = !empty($_POST['Option']) ? $_POST['Option'] : 'InsertControl';
     $MacAddress = !empty($_POST['mac_address']) ? $_POST['mac_address'] : '00:00:00:00:00:01';
     $IDGuest = !empty($_POST['IDGuest']) ? $_POST['IDGuest'] : 'CHUY';
     $guest = !empty($_POST['guest']) ? $_POST['guest'] : '16';
