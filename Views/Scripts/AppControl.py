@@ -5,6 +5,8 @@ from firebase_admin import credentials
 from firebase_admin import firestore
 import requests
 import json
+from datetime import date
+from datetime import datetime
 
 # Use a service account
 cred = credentials.Certificate('/var/www/html/BBINCO/TV/Views/Scripts/FireBase/serviceAccountKey.json')
@@ -16,6 +18,20 @@ users_ref = db.collection(u'PaquetesVPL')
 docs = users_ref.stream()
 
 identificador = 'VPL'
+
+today = date.today()
+fechajson = date.strftime('%Y%m%d')
+jsons = []
+
+for i in range(1,100):
+    try:
+        with open('/var/www/html/BBINCO/TV/Core/Controllers/Epg/'+identificador+'/epg_'+fechajson+i+'.json') as file:
+            jsons[i-1] = json.load(file)
+    except:
+        break
+
+
+print(jsons[0])
 
 # Create an Event for notifying main thread.
 delete_done = threading.Event()
