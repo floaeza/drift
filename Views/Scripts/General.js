@@ -1,3 +1,4 @@
+// @ts-nocheck
 /******************************************************************************
  * @Objetivo: Funciones generales, envio de estadisticas y clima
  * @CreadoPor: Tania Maldonado
