@@ -23,15 +23,17 @@ today = date.today()
 fechajson = today.strftime('%Y%m%d')
 jsons = []
 
-for i in range(1,100):
-    try:
-        with open('/var/www/html/BBINCO/TV/Core/Controllers/Epg/'+identificador+'/epg_'+fechajson+'_'+i+'.json') as file:
-            jsons[i-1] = json.load(file)
-    except:
-        break
+#for i in range(1,100):
+#    try:
+#        with open('/var/www/html/BBINCO/TV/Core/Controllers/Epg/'+identificador+'/epg_'+fechajson+'_'+i+'.json') as file:
+#            jsons[i-1] = json.load(file)
+#    except:
+#        break
 
-
-print(jsons)
+with open('/var/www/html/BBINCO/TV/Core/Controllers/Epg/'+identificador+'/epg_'+fechajson+'_'+str(1)+'.json') as file:
+    jsons.append(json.load(file))
+js = jsons[0]
+print(js['0'])
 
 # Create an Event for notifying main thread.
 delete_done = threading.Event()
