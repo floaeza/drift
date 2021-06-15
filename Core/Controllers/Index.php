@@ -57,6 +57,8 @@
         break;
 
         case 'REGISTER':
+            $LocationId = !empty($_POST['LocationId']) ? $_POST['LocationId'] : '';
+
             $LocationsData = new Locations($MacAddress, $CurrentController);
             
             if($Hdd == 'Y'){
@@ -64,9 +66,12 @@
             } else {
                 $HddValue = 0;
             }
-            
-            $LocationIdArray = $LocationsData->getLocationIdByName($ConfigData->getConfigByName('LocationCode'));
-            $LocationId = $LocationIdArray[$FirstElement]['id_locacion'];
+
+
+            if($LocationId === '') {
+                $LocationIdArray = $LocationsData->getLocationIdByName($ConfigData->getConfigByName('LocationCode'));
+                $LocationId = $LocationIdArray[$FirstElement]['id_locacion'];
+            }
 
             // Guardamos en un array la informacion obtenida del dispositivo
             $NewDevice = array('mac_address'                => $MacAddress,

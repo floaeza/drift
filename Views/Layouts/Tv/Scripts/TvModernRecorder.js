@@ -1,3 +1,4 @@
+// @ts-nocheck
 /* Creado por: Tania Maldonado
  * Fecha: Abril 2020
  * Tipo: Grabador y reproductor de grabaciones
@@ -1994,7 +1995,6 @@ function GetPvrInfo(){
         }
     });
 }
-GetPvrInfo();
 
 function CheckManualRecording(){
     $.ajax({
@@ -2197,7 +2197,6 @@ function CheckRecordings() {
                 } else {
                     NewStartHour = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].STRH;
                 }
-
 
                 NewEndHour = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].FNLH;
 
