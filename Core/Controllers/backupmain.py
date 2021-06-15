@@ -42,21 +42,21 @@ def tableDataText(table):
 def start(day):
     dataProgram = {}
     day = datetime.strptime(day, '%Y-%m-%d')
-    print("Empezo")
+
     payload = {'Option': 'GetIdentifier'}
     Identifier = requests.post('http://172.22.22.10/BBINCO/TV/Core/Controllers/PY.php', data=payload)
     IDF = json.loads(Identifier.content)
     IDF = IDF[0]
-    for ids in range(6, paquetes):
+    for ids in range(1, paquetes):
         contadorCanal = 0
         data = {}
         data["C_Length"]=0
         payload = {'Option': 'GetChannelsInfoBypackage', 'PackageID': ids}
-        x = requests.post('http://172.16.0.15/BBINCO/TV/Core/Controllers/PY.php', data=payload)
+        x = requests.post('http://172.22.22.10/BBINCO/TV/Core/Controllers/PY.php', data=payload)
         channels = json.loads(x.content)
         #print(channels)
         payload = {'Option': 'GetOffsetZone'}
-        Zone = requests.post('http://172.16.0.15/BBINCO/TV/Core/Controllers/PY.php', data=payload)
+        Zone = requests.post('http://172.22.22.10/BBINCO/TV/Core/Controllers/PY.php', data=payload)
         OffSetZone = json.loads(Zone.content)
         OffSetZone = OffSetZone[0]
 
@@ -73,7 +73,7 @@ def start(day):
                     table = soup.find("table", attrs={"class": "tbl_EPG"})
                     JSONGato = tableDataText(table)
                     JSONGato = separarGato(JSONGato)
-                    #print(JSONGato)
+                    print(JSONGato)
                     cana = True
                     for p in range(len(JSONGato)):
                         strh = datetime.strptime(JSONGato[p][0], '%H:%M %p')
