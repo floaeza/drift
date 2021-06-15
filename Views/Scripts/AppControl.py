@@ -58,7 +58,7 @@ def on_snapshot(col_snapshot, changes, read_time):
             payload = {'Option': 'InsertControl', 'mac_address': stb['mac_address'], 'guest':stb['guest'], 'IDGuest':stb['IDGuest'], 'orden':stb['order']}
             requests.post('http://172.16.0.15/BBINCO/TV/Core/Controllers/Firebase.php', data=payload)
             
-            stbb.reference.delete()
+            #stbb.reference.delete()
             print('Orden 66 Ejecutada')
 
         elif change.type.name == 'MODIFIED':
