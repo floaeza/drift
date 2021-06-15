@@ -18,7 +18,7 @@ for n in range(11):
     today = today + timedelta(days=1)
 
 ####Numero de paquetes + 1#########
-paquetes = 7
+paquetes = 4
 
 
 def tableDataText(table):
