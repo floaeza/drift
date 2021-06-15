@@ -1,3 +1,4 @@
+// @ts-nocheck
 /* Creado por: Tania Maldonado
  * Fecha: Abril 2020
  * Tipo: Grabador y reproductor de grabaciones
