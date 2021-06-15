@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 import urllib.request
 import json
 import requests
+import os
 
 urls = ['https://www.gatotv.com/canal/', 'https://www.tvpassport.com/tv-listings/stations/']
 today = datetime.today()
@@ -39,7 +40,7 @@ def tableDataText(table):
     return rows
 
 
-def start(day):
+def start(day, pos):
     dataProgram = {}
     day = datetime.strptime(day, '%Y-%m-%d')
     print("Empezo")
@@ -59,8 +60,12 @@ def start(day):
         Zone = requests.post('http://172.16.0.15/BBINCO/TV/Core/Controllers/PY.php', data=payload)
         OffSetZone = json.loads(Zone.content)
         OffSetZone = OffSetZone[0]
-
+        a = 0
         for channel in channels:
+            a = a + 1
+            os.system ("clear") 
+            print("Generando: ", 'epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json       ',"{:.2f}".format((a*100)/len(channels)), " %")
+            print("Archivos restantes: ", (paquetes-ids)*(len(listDays)-pos))
             if 'GATO' in channel['STTN']:
                 dataProgramGato = {}
                 cana = False
@@ -117,13 +122,6 @@ def start(day):
                             fnlhh = fnlh
                         else:
                             fnlhh = fnlh.strftime('%H:%M')
-
-                        print(strh)
-                        print(fnlh)
-                        print('Canal    ', channel['NAME'],'   ',JSONGato[p])
-                        print(channel)
-                        print(dur)
-                        print('--------------------------')
                   
                         dataProgramGato[str(p)] = []
                         dataProgramGato[str(p)].append({
@@ -131,7 +129,7 @@ def start(day):
                             "DBKY": '',
                             "TTLE": JSONGato[p][2],
                             "DSCR": JSONGato[p][3],
-                            "DRTN": float(float("{:.2f}".format(dur/60))),
+                            "DRTN": float("{:.2f}".format(dur/60)),
                             "MNTS": dur,
                             "DATE": day.strftime("%Y%m%d"),
                             "STRH": strhh,
@@ -526,16 +524,16 @@ def start(day):
                         contadorCanal = contadorCanal + 1
 
         data["C_Length"] = contadorCanal
-        with open('/var/www/html/BBINCO/TV/Core/Controllers/Epg/test/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'w', encoding='ascii') as file:
+        with open('/var/www/html/BBINCO/TV/Core/Controllers/Epg/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'w', encoding='ascii') as file:
             json.dump(data, file, indent=4)
 
-        with open('/var/www/html/BBINCO/TV/Core/Controllers/Epg/test/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'r') as file:
+        with open('/var/www/html/BBINCO/TV/Core/Controllers/Epg/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'r') as file:
             filedata = file.read()
 
         filedata = filedata.replace('[', '').replace(']', '')
-        with open('/var/www/html/BBINCO/TV/Core/Controllers/Epg/test/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'w') as file:
+        with open('/var/www/html/BBINCO/TV/Core/Controllers/Epg/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'w') as file:
             file.write(filedata)
-            print('/var/www/html/BBINCO/TV/Core/Controllers/Epg/test/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json ', 'CREADO')
+            print('/var/www/html/BBINCO/TV/Core/Controllers/Epg/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json ', 'CREADO')
 
         data.clear()
 
@@ -593,5 +591,5 @@ def separarGato(JSONGato):
             JSONGato[indice][3] = desc
     return JSONGato
 
-for day in range(len(listDays)):
-    start(listDays[day])
+for pos in range(len(listDays)):
+    start(listDays[pos], pos)
