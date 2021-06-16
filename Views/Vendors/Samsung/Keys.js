@@ -1,32 +1,49 @@
 var REMOTE_OK                    = 13, // Enter
-    PREVIOUS_PROGRAM             = 0, // P<P
+    PREVIOUS_PROGRAM             = 10190, // P<P
     ARROW_KEY_LEFT               = 37, // >
     ARROW_KEY_UP                 = 38, // <
     ARROW_KEY_RIGHT              = 39, //
     ARROW_KEY_DOWN               = 40, //
 
-    REMOTE_POWER                 = 8498, // STB
-    REMOTE_MENU                  = 8516, // MENU
-    REMOTE_MUTE                  = 8497, // MUTE X
-    REMOTE_RED                   = 8512, // ROJO
-    REMOTE_GREEN                 = 8513, // VERDE
-    REMOTE_YELLOW                = 8514, // AMARILLO
-    REMOTE_BLUE                  = 8515, // AZUL
-    REMOTE_BACK                  = 8568, // <- REGRESAR
+    REMOTE_POWER                 = 0, // STB
+    REMOTE_MENU                  = 10133, // MENU // TOOLS 10135
+    REMOTE_MUTE                  = 0, // MUTE X
+    REMOTE_RED                   = 403, // ROJO
+    REMOTE_GREEN                 = 404, // VERDE
+    REMOTE_YELLOW                = 405, // AMARILLO
+    REMOTE_BLUE                  = 406, // AZUL
+    REMOTE_BACK                  = 10009, // <- REGRESAR
 
-    REMOTE_GUIDE                 = 8537, // GUIDE
-    REMOTE_CHANNEL_UP            = 8492, // CHANNEL +
-    REMOTE_CHANNEL_DOWN          = 8494, // CHANNEL -
-    SMALL_ARROW_UP               = 8525, // PAGE UP
-    SMALL_ARROW_DOWN             = 8490, // PAGE DOWN
-    REMOTE_INFO                  = 8534, // i
-    REMOTE_PVR                   = 8569, // GRABADOR
-    REMOTE_CLOSE                 = 8536, // X
-    REMOTE_RECORD                = 8510, // REC
-    REMOTE_STOP                  = 8501, // STOP
-    REMOTE_PLAY                  = 8499, // PLAY
-    REMOTE_PAUSE                 = 8504, // PAUSE
-    REMOTE_BACKWARD              = 8502, // BACKWARD
-    REMOTE_FORWARD               = 8500, // FORWARD
-    REMOTE_FAST_BACKWARD         = 8566, // |<
-    REMOTE_FAST_FORWARD          = 8567; // >|
+    REMOTE_GUIDE                 = 10073, // GUIDE
+    REMOTE_CHANNEL_UP            = 428, // CHANNEL +
+    REMOTE_CHANNEL_DOWN          = 427, // CHANNEL -
+    SMALL_ARROW_UP               = 0,  // PAGE UP
+    SMALL_ARROW_DOWN             = 0,  // PAGE DOWN
+    REMOTE_INFO                  = 457, // i
+    REMOTE_PVR                   = 0, // GRABADOR
+    REMOTE_CLOSE                 = 10182,   // X
+    REMOTE_RECORD                = 0, // REC
+    REMOTE_STOP                  = 413, // STOP
+    REMOTE_PLAY                  = 415, // PLAY
+    REMOTE_PAUSE                 = 19, // PAUSE
+    REMOTE_BACKWARD              = 412, // BACKWARD
+    REMOTE_FORWARD               = 417, // FORWARD
+    REMOTE_FAST_BACKWARD         = 0, // |<
+    REMOTE_FAST_FORWARD          = 0; // >|
+
+function registerkeys(){
+
+    //console.log('register keys function called');
+    var usedKeys=['0','1','2', '3', '4', '5', '6', '7', '8', '9',
+        'ColorF0Red','ColorF1Green','ColorF2Yellow','ColorF3Blue','ChannelDown','ChannelUp',
+        'Info','Exit','ChannelList','PreviousChannel','Minus',
+        'MediaPlayPause','MediaRewind','MediaFastForward','MediaPlay','MediaPause','MediaStop','MediaRecord','MediaTrackPrevious','MediaTrackNext',
+        'Menu','Tools'];
+
+    usedKeys.forEach (
+        function (keyName){
+            tizen.tvinputdevice.registerKey(keyName);
+        });
+}
+
+registerkeys();
