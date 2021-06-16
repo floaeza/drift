@@ -33,8 +33,8 @@ $ServerSource = 'http://'.$ServerIp.'/BBINCO/TV/';
 
 
 /* Views */
-$Libraries['LayoutsPath']       = $ServerSource.'Views/Layouts/';
-$Libraries['LayoutsPhpPath']    = $ServerSource.'Views/Layouts/';
+$Libraries['LayoutsPath']       = './Views/Layouts/';
+$Libraries['LayoutsPhpPath']    = 'Views/Layouts/';
 $Libraries['LibrariesPath']     = $ServerSource.'Views/Libraries/';
 $Libraries['StylesPath']        = $ServerSource.'Views/Styles/';
 $Libraries['VendorsPath']       = $ServerSource.'Views/Vendors/';
