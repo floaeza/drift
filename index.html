@@ -259,8 +259,10 @@
 				Vendor      : 'Samsung'
 			},
 			success: function (response) {
-alert('GETINFO SUCCESS');
+
 				var Data = $.parseJSON(response);
+
+				alert(Data['Option']);
 
 				if(Data['Option'] === 'REGISTER') {
 					GetLocations();
