@@ -47,13 +47,6 @@
 
 </body>
 <script>
-	/* !IMPORTANTE! > Cambiar antes de compilar */
-	var ServerIp = '172.16.0.15';
-
-	var Host = self.location.host;
-
-	alert(Host);
-	
 	/* Carga inicial */
 	window.addEventListener('load',SetData,false);
 
@@ -230,8 +223,6 @@
 
 		try {
 			MACAddress = b2bcontrol.getMACAddress();
-
-			alert(MACAddress);
 		} catch (e) {
 			//'[getMACAddress] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
 		}
@@ -256,7 +247,7 @@
 	function GetInfoDevice(){
 		$.ajax({
 			type: 'POST',
-			url: 'http://'+ServerIp+'/BBINCO/TV/Core/Controllers/Index.php',
+			url: 'Core/Controllers/Index.php',
 			data: {
 				Option      : SetOption,
 				MacAddress  : MACAddress,
@@ -302,7 +293,7 @@
 	function GetLocations(){
 		$.ajax({
 			type: 'POST',
-			url: 'http://'+ServerIp+'/BBINCO/TV/Core/Controllers/Index.php',
+			url: 'Core/Controllers/Index.php',
 			data: {
 				Option : 'LOCATIONS'
 			},

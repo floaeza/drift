@@ -1,0 +1,57 @@
+<!-- Script Files -->
+<script type='text/javascript' src='$B2BAPIS/b2bapis/b2bapis.js'></script>
+<script type='text/javascript' src='$MANAGER_WIDGET/Common/af/2.0.0/loader.js'></script>
+<script type="text/javascript" src="$WEBAPIS/webapis/webapis.js"></script>
+<script type='text/javascript' src='./Views/Libraries/jquery-1.12.3.min.js'></script>
+<script>
+    var MACAddress  = '';
+
+    var InfoDevice = [];
+
+    var Content = '';
+
+    if (window.tizen !== undefined) {
+        var b2bcontrol = window.b2bapis.b2bcontrol;
+
+        try {
+            MACAddress = b2bcontrol.getMACAddress();
+        } catch (e) {
+            //'[getMACAddress] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
+        }
+    }
+
+    $.ajax({
+        type: 'POST',
+        url: 'Core/Controllers/Index.php',
+        async: false,
+        data: {
+            Option      : 'LOAD',
+            MacAddress  : MACAddress,
+        },
+        success: function (response) {
+            InfoDevice = $.parseJSON(response);
+        }
+    });
+
+    $.ajax({
+        method: "GET",
+        url: 'tv.php',
+        async: false,
+        data: {
+            //text: $("p.unbroken").text(),
+            MacAddress : MACAddress,
+            ModuleId: InfoDevice['ModuleId'],
+            CurrentModule: InfoDevice['ModuleName']
+        },
+        success: function (response) {
+            Content = response;
+
+            document.documentElement.innerHTML = Content;
+
+            alert(MACAddress + ' - '+InfoDevice['ModuleName']);
+        }
+    });
+</script>
+<!DOCTYPE html>
+<html>
+</html>
