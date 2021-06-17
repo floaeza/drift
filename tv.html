@@ -1,60 +1,100 @@
-<!-- Script Files -->
-<script type='text/javascript' src='$B2BAPIS/b2bapis/b2bapis.js'></script>
-<script type='text/javascript' src='$MANAGER_WIDGET/Common/af/2.0.0/loader.js'></script>
-<script type="text/javascript" src="$WEBAPIS/webapis/webapis.js"></script>
-<script type='text/javascript' src='./Views/Libraries/jquery-1.12.3.min.js'></script>
-<script type='text/javascript' src='./Views/Vendors/Samsung/Server.js'></script> <!-- ACTUALIZAR IP SERVIDOR! -->
-
-<script>
-    var MACAddress  = '';
-
-    var InfoDevice = [];
-
-    var Content = '';
-
-    if (window.tizen !== undefined) {
-        var b2bcontrol = window.b2bapis.b2bcontrol;
-
-        try {
-            MACAddress = b2bcontrol.getMACAddress();
-            alert(MACAddress);
-        } catch (e) {
-            //'[getMACAddress] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
-        }
-    }
-
-    $.ajax({
-        type: 'POST',
-        url: 'http://'+ServerIp+'/BBINCO/TV/Core/Controllers/Index.php',
-        async: false,
-        data: {
-            Option      : 'LOAD',
-            MacAddress  : MACAddress,
-        },
-        success: function (response) {
-            InfoDevice = $.parseJSON(response);
-        }
-    });
-
-    $.ajax({
-        method: "GET",
-        url: 'tv.php',
-        async: false,
-        data: {
-            //text: $("p.unbroken").text(),
-            MacAddress : MACAddress,
-            ModuleId: InfoDevice['ModuleId'],
-            CurrentModule: InfoDevice['ModuleName']
-        },
-        success: function (response) {
-            Content = response;
-
-            document.documentElement.innerHTML = Content;
-
-            alert(MACAddress + ' - '+InfoDevice['ModuleName']);
-        }
-    });
-</script>
 <!DOCTYPE html>
 <html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="BBINCOTV"/>
+
+    <title>BBINCOTV</title>
+    <?xml version="1.0" encoding="UTF-8"?>
+        <widget xmlns:tizen="http://tizen.org/ns/widgets" xmlns="http://www.w3.org/ns/widgets" id="http://172.15.0.15/BBINCO/TV/" version="0.2.1" viewmodes="maximized">
+            <tizen:application id="87yCAs7xPK.bbinco" package="87yCAs7xPK" required_version="2.3"/>
+            <content src="index.html"/>
+            <feature name="http://tizen.org/feature/screen.size.normal.1080.1920"/>
+            <feature name="http://tizen.org/feature/screen.size.all"/>
+            <feature name="http://www.samsungdforum.com/feature/Keyboard"/>
+            <icon src="icon.png"/>
+            <tizen:metadata key="http://samsung.com/tv/metadata/prelaunch.support" value="true"/>
+            <name>bbinco</name>
+            <tizen:privilege name="http://developer.samsung.com/privilege/productinfo"/>
+            <tizen:privilege name="http://tizen.org/privilege/tv.inputdevice"/>
+            <tizen:privilege name="http://tizen.org/privilege/mediacapture"/>
+            <tizen:privilege name="http://developer.samsung.com/privilege/b2bcontrol"/>
+            <tizen:privilege name="http://developer.samsung.com/privilege/b2bdoc"/>
+            <tizen:privilege name="http://tizen.org/privilege/application.launch"/>
+            <tizen:profile name="tv-samsung"/>
+            <tizen:setting screen-orientation="landscape" context-menu="enable" background-support="disable" encryption="disable" install-location="auto" hwkey-event="enable"/>
+        </widget>
+    </xml>
+
+    <!-- Script Files -->
+    <script type='text/javascript' src='$B2BAPIS/b2bapis/b2bapis.js'></script>
+    <script type='text/javascript' src='$MANAGER_WIDGET/Common/af/2.0.0/loader.js'></script>
+    <script type="text/javascript" src="$WEBAPIS/webapis/webapis.js"></script>
+    <script type='text/javascript' src='./Views/Vendors/Samsung/Server.js'></script> <!-- ACTUALIZAR IP SERVIDOR! -->
+
+    <script type='text/javascript' src='./Views/Libraries/jquery-1.12.3.min.js'></script>
+    <script type='text/javascript' src='./Views/Vendors/Samsung/Keys.js'></script>
+
+    <script>
+        var MACAddress  = '';
+
+        var InfoDevice = [];
+
+        var CurrentModule = '[@CurrentModule]',
+            ModuleId      = '[@ModuleId]',
+            IndexLogo     = '';
+
+        if (window.tizen !== undefined) {
+            var b2bcontrol = window.b2bapis.b2bcontrol;
+
+            try {
+                MACAddress = b2bcontrol.getMACAddress();
+            } catch (e) {
+                //'[getMACAddress] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
+            }
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: 'http://'+ServerIp+'/BBINCO/TV/Core/Controllers/Index.php',
+            async: false,
+            data: {
+                Option      : 'LOAD',
+                MacAddress  : MACAddress,
+            },
+            success: function (response) {
+                var InfoDevice = $.parseJSON(response);
+                    ModuleId = InfoDevice['ModuleId'];
+                    CurrentModule = InfoDevice['ModuleName'];
+
+                    InfoDevice = null;
+
+                GetContents();
+            }
+        });
+
+        function GetContents() {
+            alert('GetContents');
+            $.ajax({
+                method: 'POST',
+                url: 'http://' + ServerIp + '/BBINCO/TV/Core/Contents/Tv.php',
+                async: false,
+                data: {
+                    MacAddress: MACAddress,
+                    ModuleId: ModuleId,
+                    CurrentModule: CurrentModule
+                },
+                beforeSend: function () {
+                    alert(MACAddress + ' + ' + ModuleId + ' + ' + CurrentModule);
+                },
+                success: function (response) {
+                    alert(JSON.stringify(response));
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+</body>
 </html>

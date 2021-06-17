@@ -45,8 +45,6 @@ function registerkeys(){
         function (keyName){
             tizen.tvinputdevice.registerKey(keyName);
         });
-
-    console.log('usedKeys: '+usedKeys);
 }
 
 registerkeys();
