@@ -69,10 +69,10 @@ $Libraries['EpgFilesPath']      = '/var/www/html/mnt/nv/epg/';
 $Libraries['EpgDaysPath']       = $Libraries['ControllersPath'].'Epg/'.$Client;
 $JsonLibraries['EpgDaysPath']   = $Libraries['ControllersPath'].'Epg/'.$Client;
 /* Imagenes */
-    $Libraries['LogosPath']         = './Media/Logos/'.$Client;
-    $Libraries['ChannelsPath']      = './Media/Channels/'.$Client;
-    $JsonLibraries['ChannelsPath']  = './Media/Channels/'.$Client;
-    $JsonLibraries['MenuPath']      = './Media/Menu/'.$Client;
+    $Libraries['LogosPath']         = '../Media/Logos/'.$Client;
+    $Libraries['ChannelsPath']      = '../Media/Channels/'.$Client;
+    $JsonLibraries['ChannelsPath']  = '../Media/Channels/'.$Client;
+    $JsonLibraries['MenuPath']      = '../Media/Menu/'.$Client;
     
 /* Temas */
      $Libraries['ThemesPath']      = $Libraries['StylesPath'].'Themes/';
