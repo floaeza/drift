@@ -247,7 +247,7 @@
 		alert('SetOption: '+SetOption +' Mac: '+MACAddress+' IP: '+IPAddress+' Loc: '+IdLocation +' Fw: '+FirmwareVersion + '  Model: '+TvModel);
 		$.ajax({
 			type: 'POST',
-			url: 'Core/Controllers/Index.php',
+			url: 'http://localhost/Core/Controllers/Index.php',
 			data: {
 				Option      : SetOption,
 				MacAddress  : MACAddress,
