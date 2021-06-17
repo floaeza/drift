@@ -21,7 +21,7 @@
 <body>
 <div class='ContainerIndex' style="background-image: url('./Media/init.jpg') ">
 	<br>
-	<div id='CenterText'><h1>Hello, today is <?php echo date('l, F jS, Y'); ?></h1></div>
+	<div id='CenterText'><h1></h1></div>
 	<h2 id='DebugText'></h2>
 </div>
 
@@ -57,7 +57,7 @@
 		var b2bcontrol = window.b2bapis.b2bcontrol;
 	}
 
-	var DebugText = document.getElementById('DebugText'),
+	var DebugText = document.getElementById('CenterText'),
 		NewRegister = false,
 		FirmwareVersion = '',
 		TvModel = '',
