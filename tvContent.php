@@ -78,6 +78,7 @@ if($CurrentTime > $EffectiveTime || $Status === false){
     array_push($StylesHeader, $Libraries['ThemesPath'].$ModuleInfo['opcion_template'].'/'.$TvTheme);
 
     array_push($Variables, array('IndexLogo'=>$Libraries['LogosPath'].$ConfigData->getConfigByName('IndexLogo')));
+    array_push($Variables, array('Template' =>$Libraries['TvTemplates'].$ModuleInfo['opcion_template'].'.tpl'));
 
 
     /* SCRIPT FOOTER*/
@@ -91,6 +92,6 @@ if($CurrentTime > $EffectiveTime || $Status === false){
 
 }
 
-$response = array($License, $ScriptsHeader);
+$response = array($License, $ScriptsHeader, $ScriptFooter, $StylesHeader, $Variables);
 
 echo json_encode($response);
