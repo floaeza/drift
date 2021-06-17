@@ -61,9 +61,9 @@
 		NewRegister = false,
 		FirmwareVersion = '',
 		TvModel = '',
-		MACAddress = 'fc:03:9f:5c:98:ed',
+		MACAddress = '',
 		SetOption = 'CHECK',
-		IPAddress = '0.0.0.1',
+		IPAddress = '',
 		IdLocation = 1;
 
 	var Register = document.getElementById('Register'),
@@ -226,6 +226,8 @@
 
 		try {
 			MACAddress = b2bcontrol.getMACAddress();
+
+			alert(MACAddress);
 		} catch (e) {
 			//'[getMACAddress] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
 		}
