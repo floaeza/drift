@@ -91,5 +91,5 @@ if($CurrentTime > $EffectiveTime || $Status === false){
 
 }
 
-$response = array($License);
+$response = array($License, $ScriptsHeader);
 echo json_encode($response);
