@@ -1,6 +1,6 @@
 <?php
 $data = $_POST['data'];
-$file = 'Archivo.txt';
+$file = '/Epg/VPL/host.conf';
 
 if (isset($data)) {
     $fp = fopen($file, 'a');
