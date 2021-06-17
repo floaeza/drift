@@ -19,17 +19,6 @@ div.ContainerIndex {
     position: fixed;
 }
 
-#CenterText {
-    font-size: 24px;
-    font-family: Helvetica;
-    color: #FFFFFF;
-    text-shadow: 2px 2px 2px rgba(0,0,0,0.8);
-    margin: 0%;
-    bottom: 10%;
-    position: fixed;
-    text-align: center;
-    width: 100%;
-}
 
 h2{
     font-size: 32px;

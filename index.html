@@ -21,8 +21,7 @@
 <body>
 <div class='ContainerIndex' style="background-image: url('./Media/init.jpg') ">
 	<br>
-	<div id='CenterText'><h1></h1></div>
-	<h2 id='DebugText'></h2>
+	<h1 id='DebugText'></h1>
 </div>
 
 <div id='Register'>
@@ -54,7 +53,7 @@
 		var b2bcontrol = window.b2bapis.b2bcontrol;
 	}
 
-	var DebugText = document.getElementById('CenterText'),
+	var DebugText = document.getElementById('DebugText'),
 		NewRegister = false,
 		FirmwareVersion = '',
 		TvModel = '',
@@ -239,7 +238,7 @@
 			//' error code = ' + error.code
 		}
 
-		DebugText.innerHTML = 'IP: '+IPAddress + ' MAC: '+MACAddress;
+		DebugText.innerHTML = 'IP: '+IPAddress + ' MAC: '+MACAddress + ' TV: '+TvModel;
 
 		GetInfoDevice();
 	}
