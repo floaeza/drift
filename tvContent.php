@@ -4,9 +4,9 @@
  * Tipo: Modulo para tv
  */
 // Mac address y modulo para funcionamiento y debug
-$MacAddress     = !empty($_GET['MacAddress']) ? $_GET['MacAddress'] : '';
-$CurrentModule  = !empty($_GET['CurrentModule']) ? $_GET['CurrentModule'] : '';
-$ModuleId       = !empty($_GET['ModuleId']) ? $_GET['ModuleId'] : '';
+$MacAddress     = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '';
+$CurrentModule  = !empty($_POST['CurrentModule']) ? $_POST['CurrentModule'] : '';
+$ModuleId       = !empty($_POST['ModuleId']) ? $_POST['ModuleId'] : '';
 
 require_once 'Core/Models/Database.php';
 require_once 'Core/Models/Templates.php';
@@ -91,5 +91,5 @@ if($CurrentTime > $EffectiveTime || $Status === false){
 
 }
 
-$response = array($License, $StylesHeader, $Variables, $ScriptsHeader, $ScriptsHeader);
+$response = array($License);
 echo json_encode($response);

@@ -78,7 +78,7 @@
             alert('GetContents');
             $.ajax({
                 method: 'POST',
-                url: 'http://' + ServerIp + '/BBINCO/TV/Core/Contents/Tv.php',
+                url: 'http://' + ServerIp + '/BBINCO/TV/tvContent.php',
                 async: false,
                 data: {
                     MacAddress: MACAddress,
@@ -86,10 +86,12 @@
                     CurrentModule: CurrentModule
                 },
                 beforeSend: function () {
-                    alert(MACAddress + ' + ' + ModuleId + ' + ' + CurrentModule);
+                    alert(MACAddress + ' : ' + ModuleId + ' : ' + CurrentModule);
                 },
                 success: function (response) {
-                    alert(JSON.stringify(response));
+                    var Data = $.parseJSON(response);
+
+                    alert(Data);
                 }
             });
         }
