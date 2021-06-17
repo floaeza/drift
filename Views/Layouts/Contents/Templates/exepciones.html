@@ -24,9 +24,9 @@
                 type: "POST",
                 url: "../../../../Core/Controllers/exception.php",
                 data: dataString,
-                success: function(data) {
+                success: function(response) {
                     //alert(data);
-                    $('#df').text('exito');
+                    $('#df').text(response);
                 }
             });
             
