@@ -77,8 +77,9 @@ if($CurrentTime > $EffectiveTime || $Status === false){
     array_push($StylesHeader, $Libraries['TvStyles'].$ModuleInfo['opcion_template'].'.css');
     array_push($StylesHeader, $Libraries['ThemesPath'].$ModuleInfo['opcion_template'].'/'.$TvTheme);
 
-    array_push($Variables, array('IndexLogo'=>$Libraries['LogosPath'].$ConfigData->getConfigByName('IndexLogo')));
-    array_push($Variables, array('Template' =>$Libraries['TvTemplates'].$ModuleInfo['opcion_template'].'.tpl'));
+    array_push($Variables, array('IndexLogo'=>$Libraries['LogosPath'].$ConfigData->getConfigByName('IndexLogo'),
+                                        'Template' =>$Libraries['TvTemplates'].$ModuleInfo['opcion_template'].'.tpl'
+                                        ));
 
 
     /* SCRIPT FOOTER*/

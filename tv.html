@@ -93,6 +93,7 @@
                 success: function (response) {
                     Data = $.parseJSON(response);
 
+                    IndexLogo = Data['Variables'][0].IndexLogo;
 
                     alert(JSON.stringify(Data));
                 }
