@@ -245,6 +245,7 @@
 	}
 
 	function GetInfoDevice(){
+		alert('SetOption: '+SetOption +' Mac: '+MACAddress+' IP: '+IPAddress+' Loc: '+IdLocation +' Fw: '+FirmwareVersion + '  Model: '+TvModel);
 		$.ajax({
 			type: 'POST',
 			url: 'Core/Controllers/Index.php',
@@ -260,9 +261,11 @@
 			},
 			success: function (response) {
 				alert('SUCCESS');
-				var Data = $.parseJSON(response);
 
 				alert(JSON.stringify(response));
+
+
+				var Data = $.parseJSON(response);
 
 				if(Data['Option'] === 'REGISTER') {
 					GetLocations();
