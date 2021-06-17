@@ -40,6 +40,7 @@
         var MACAddress  = 'fc:03:9f:5c:98:ed';
 
         var InfoDevice = [];
+        var TemplateSource = '';
         var Data = '';
 
         var CurrentModule = '[@CurrentModule]',
@@ -95,13 +96,22 @@
 
                     IndexLogo = Data['Variables'][0].IndexLogo;
 
-                    alert(JSON.stringify(Data));
+                    TemplateSource = 'http://' + ServerIp + '/BBINCO/TV/'+Data['Variables'][0].Template;
+
+                    GetTemplateContent();
                 }
             });
         }
 
         function GetTemplateContent(){
-
+            $.ajax({
+                type: 'POST',
+                url: TemplateSource,
+                async: false,
+                success: function (response) {
+                    console.log(response);
+                }
+            });
         }
     </script>
 </head>

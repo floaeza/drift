@@ -83,13 +83,13 @@ if($CurrentTime > $EffectiveTime || $Status === false){
 
 
     /* SCRIPT FOOTER*/
-    array_push($ScriptsHeader, $Libraries['Tv']);
-    array_push($ScriptsHeader, $Libraries['TimeScript']);
-    array_push($ScriptsHeader, $Libraries['Settings']);
-    array_push($ScriptsHeader, $Libraries['TvScripts'].$ModuleInfo['opcion_template'].'.js');
-    array_push($ScriptsHeader, $Libraries['TvScripts'].$ModuleInfo['opcion_template'].$Libraries['Recorder'].'.js');
-    array_push($ScriptsHeader, $VendorFolder.$Libraries['Player']);
-    array_push($ScriptsHeader, $VendorFolder.$Libraries['Events']);
+    array_push($ScriptFooter, $Libraries['Tv']);
+    array_push($ScriptFooter, $Libraries['TimeScript']);
+    array_push($ScriptFooter, $ScriptFooter, $Libraries['Settings']);
+    array_push($ScriptFooter, $Libraries['TvScripts'].$ModuleInfo['opcion_template'].'.js');
+    array_push($ScriptFooter, $Libraries['TvScripts'].$ModuleInfo['opcion_template'].$Libraries['Recorder'].'.js');
+    array_push($ScriptFooter, $VendorFolder.$Libraries['Player']);
+    array_push($ScriptFooter, $VendorFolder.$Libraries['Events']);
 
 }
 
