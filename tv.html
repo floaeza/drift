@@ -3,6 +3,8 @@
 <script type='text/javascript' src='$MANAGER_WIDGET/Common/af/2.0.0/loader.js'></script>
 <script type="text/javascript" src="$WEBAPIS/webapis/webapis.js"></script>
 <script type='text/javascript' src='./Views/Libraries/jquery-1.12.3.min.js'></script>
+<script type='text/javascript' src='./Views/Vendors/Samsung/Server.js'></script> <!-- ACTUALIZAR IP SERVIDOR! -->
+
 <script>
     var MACAddress  = '';
 
@@ -15,6 +17,7 @@
 
         try {
             MACAddress = b2bcontrol.getMACAddress();
+            alert(MACAddress);
         } catch (e) {
             //'[getMACAddress] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
         }
@@ -22,7 +25,7 @@
 
     $.ajax({
         type: 'POST',
-        url: 'Core/Controllers/Index.php',
+        url: 'http://'+ServerIp+'/BBINCO/TV/Core/Controllers/Index.php',
         async: false,
         data: {
             Option      : 'LOAD',

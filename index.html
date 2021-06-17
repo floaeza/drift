@@ -11,6 +11,7 @@
 	<script type='text/javascript' src='$B2BAPIS/b2bapis/b2bapis.js'></script>
 	<script type='text/javascript' src='$MANAGER_WIDGET/Common/af/2.0.0/loader.js'></script>
 	<script type="text/javascript" src="$WEBAPIS/webapis/webapis.js"></script>
+	<script type='text/javascript' src='./Views/Vendors/Samsung/Server.js'></script> <!-- ACTUALIZAR IP SERVIDOR! -->
 
 	<script type='text/javascript' src='./Views/Libraries/jquery-1.12.3.min.js'></script>
 	<script type='text/javascript' src='./Views/Vendors/Samsung/Keys.js'></script>
@@ -21,8 +22,7 @@
 <body>
 <div class='ContainerIndex' style="background-image: url('./Media/init.jpg') ">
 	<br>
-	<div id='CenterText'><h1></h1></div>
-	<h2 id='DebugText'></h2>
+	<h1 id='DebugText'></h1>
 </div>
 
 <div id='Register'>
@@ -42,7 +42,7 @@
 </div>
 
 <div id='HelpControl'>
-	<img src='./Media/Logos/control-help.png'>
+	<img src='./Media/control-help.png'>
 </div>
 
 </body>
@@ -54,7 +54,7 @@
 		var b2bcontrol = window.b2bapis.b2bcontrol;
 	}
 
-	var DebugText = document.getElementById('CenterText'),
+	var DebugText = document.getElementById('DebugText'),
 		NewRegister = false,
 		FirmwareVersion = '',
 		TvModel = '',
@@ -239,7 +239,7 @@
 			//' error code = ' + error.code
 		}
 
-		DebugText.innerHTML = 'IP: '+IPAddress + ' MAC: '+MACAddress;
+		DebugText.innerHTML = 'IP: '+IPAddress + ' MAC: '+MACAddress + ' TV: '+TvModel;
 
 		GetInfoDevice();
 	}
@@ -247,7 +247,7 @@
 	function GetInfoDevice(){
 		$.ajax({
 			type: 'POST',
-			url: 'Core/Controllers/Index.php',
+			url: 'http://'+ServerIp+'/BBINCO/TV/Core/Controllers/Index.php',
 			data: {
 				Option      : SetOption,
 				MacAddress  : MACAddress,
@@ -259,7 +259,6 @@
 				Vendor      : 'Samsung'
 			},
 			success: function (response) {
-console.log(response);
 				var Data = $.parseJSON(response);
 
 				if(Data['Option'] === 'REGISTER') {
@@ -275,7 +274,7 @@ console.log(response);
 
 					var Page = Data['ModuleUrl'].replace('php','html');
 
-					//window.location.href = Page;
+					window.location.href = Page;
 				} else if(Data['Option'] === 'LICENSE'){
 					var DeviceInfo = ' Mac: '+MACAddress+' Ip: '+IPAddress;
 					DebugText.innerHTML = DeviceInfo;
@@ -293,7 +292,7 @@ console.log(response);
 	function GetLocations(){
 		$.ajax({
 			type: 'POST',
-			url: 'Core/Controllers/Index.php',
+			url: 'http://'+ServerIp+'/BBINCO/TV/Core/Controllers/Index.php',
 			data: {
 				Option : 'LOCATIONS'
 			},
