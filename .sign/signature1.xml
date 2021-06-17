@@ -39,8 +39,8 @@ VI+VpvZTJQ==</DigestValue>
 </Reference>
 <Reference URI=".idea%2Fworkspace.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>tk1CoeXpDN0Ghv4xY5BZCJUkCfqEyeQ/VswCyrEyDOe3UENeLBAA7KV9jdpOf5tJsJ4pYXKZAbf4
-/2rD92pWdA==</DigestValue>
+<DigestValue>utbJrtqckv/uZGXkQvh8uRNKUNZ/H21B4aE9sxgmmFR+6th1j/dWAlfh4kMMXpX64FPidLBkBCef
+QJ6Gtf4REw==</DigestValue>
 </Reference>
 <Reference URI="Core%2F.DS_Store">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -221,6 +221,11 @@ CzOB8sqWmw==</DigestValue>
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
 <DigestValue>tQ0H9zuS7MI4BGiebbSiyXSQUk+POJGsLI7WTeY4j/4AZGBlMRD7Ntoj/ZHWRlbj6QcRtuSUygJN
 WDcMo/mvag==</DigestValue>
+</Reference>
+<Reference URI="Core%2FControllers%2Fexepction.php">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
+<DigestValue>XBGVViEf0HkWBptHsbebMCLXSRPNxMrBjVebYvfow2XMKC2rOmcpG+MQjkAqvEJ8yLlAeOBr2/0O
+zyvDPyF17g==</DigestValue>
 </Reference>
 <Reference URI="Core%2FControllers%2Fmain.py">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -1429,8 +1434,8 @@ YdNuQ5SBMQ==</DigestValue>
 </Reference>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>GbuGcfloMqObKmXRDX3wnqAtOL3SWkYPQ5f1XATRT+tcBsuuveNndzjNdD0jajLTKPkPONi3zbnp
-z+PwbE9tNQ==</DigestValue>
+<DigestValue>uE83UJiAhJ5tzWGPicG0U6Z3FpJKKbfaBDFIvvMrnREspzAqy3pN/Bkq4nPkKZW2Y8Vn1Obwm1g+
+Gin1kmhzaA==</DigestValue>
 </Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -1474,8 +1479,8 @@ C5LGAJoCSA==</DigestValue>
 </Reference>
 <Reference URI="tv.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>+nS0hcLwmKVhU21u/UQs9gyZeJAeaRuxCzFNKSZBTFcxv//O/He3CazZotSq0ENnCFVgIvrGvM5g
-YLLFQjSlzQ==</DigestValue>
+<DigestValue>7V8EKywMZzwGHeoi9i82b/6UZCL+WfZyOd1Lc7TM18ru7za4pXGYgY4wS+Q6ohLhgqok930g8aGl
+rvKnw6Ukww==</DigestValue>
 </Reference>
 <Reference URI="tv.php">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -1492,9 +1497,9 @@ GyvKX9Snig==</DigestValue>
 </Reference>
 </SignedInfo>
 <SignatureValue>
-k/c7IqXXpTYrpOn4zkjtK6ws5Q9XeCkhiFX2mz3fKWoHeQnj03fyfyAIznR6GPlRfGfv1IdbQ83j
-Q8IM4ETytomSF5H3oWglWktrNsosexTgsBHEQ9ldyCE88f59TyvSzGK4JpAAmKA1FDf3ZSA+8LkT
-EiYn4gakDsl+Jrfn2JY=
+RHF0myDbTj7j0IqyCpvC3MKWfxltbQjRZbC0BF+cQiTL4TsqakP7d1W7dobukWTuboWnVNVAI5M+
+BCe5wwcaf5ZKfFkhCSDjGIhL3z5vGy4wJOnhbsXK5WPAK/vDnF8fvvaNHC2iebThRs/PnaakSjoQ
+X70TVR7Ynu5IrYgFFKQ=
 </SignatureValue>
 <KeyInfo>
 <X509Data>
