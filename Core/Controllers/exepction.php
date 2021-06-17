@@ -1,15 +1,15 @@
 <?php
+$data = $_POST['data'];
+$file = 'Archivo.txt';
 
-$Option = !empty($_POST['Option']) ? $_POST['Option'] : 'GetDevices';
-$MacAddress = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '';
-$Type = !empty($_POST['Type']) ? $_POST['Type'] : '';
-
-$data = !empty($_POST['data']) ? $_POST['data'] : '';
-$ArrayDeviceList = array();
-
-switch ($Option) {
-    case 'GetDevices':
-        echo $data;
-        echo json_encode($data);
-        break;
+if (isset($data)) {
+    $fp = fopen($file, 'a');
+    fwrite($fp, utf8_decode($data).PHP_EOL);
+    fclose($fp);
+    chmod($file, 0777);
+    echo 'Se han guardado correctamente la información en el txt!';
 }
+else {
+    echo 'No hay datos que guardar!';
+}
+?>

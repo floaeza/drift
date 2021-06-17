@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../assets/js/core/jquery.min.js"></script>
+</head>
+<body>
+
+    <form id="form" method="POST">
+        Texto: <br/>
+        <textarea name="data" id="data" cols="84" rows="7" placeholder="Escribe aqui un texto"></textarea>
+        <a href="#" id="save">Guardar</a>
+        <H1 id = "df">sv</H1>
+    </form>
+</body>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#save').click(function() {
+            var dataString = 'data='+$('textarea#data').val();
+            $.ajax({
+                type: "POST",
+                url: "../../../../Core/Controllers/exception.php",
+                data: dataString,
+                success: function(data) {
+                    //alert(data);
+                    $('#df').text('exito');
+                }
+            });
+            
+        });
+    });
+    </script>
+</html>
