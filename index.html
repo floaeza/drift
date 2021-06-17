@@ -46,6 +46,10 @@
 
 </body>
 <script>
+	/* !! IMPORTANTE !! */
+
+	var ServerIp = '172.16.0.15';
+
 	/* Carga inicial */
 	window.addEventListener('load',SetData,false);
 
@@ -247,7 +251,7 @@
 		alert('SetOption: '+SetOption +' Mac: '+MACAddress+' IP: '+IPAddress+' Loc: '+IdLocation +' Fw: '+FirmwareVersion + '  Model: '+TvModel);
 		$.ajax({
 			type: 'POST',
-			url: 'http://localhost/Core/Controllers/Index.php',
+			url: 'http://'+ServerIp+'/BBINCO/TV/Core/Controllers/Index.php',
 			data: {
 				Option      : SetOption,
 				MacAddress  : MACAddress,
@@ -297,7 +301,7 @@
 	function GetLocations(){
 		$.ajax({
 			type: 'POST',
-			url: 'Core/Controllers/Index.php',
+			url: 'http://'+ServerIp+'/BBINCO/TV/Core/Controllers/Index.php',
 			data: {
 				Option : 'LOCATIONS'
 			},
