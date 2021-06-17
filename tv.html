@@ -37,9 +37,10 @@
     <script type='text/javascript' src='./Views/Vendors/Samsung/Keys.js'></script>
 
     <script>
-        var MACAddress  = '';
+        var MACAddress  = 'fc:03:9f:5c:98:ed';
 
         var InfoDevice = [];
+        var Data = '';
 
         var CurrentModule = '[@CurrentModule]',
             ModuleId      = '[@ModuleId]',
@@ -74,6 +75,7 @@
             }
         });
 
+
         function GetContents() {
             alert('GetContents');
             $.ajax({
@@ -89,11 +91,16 @@
                     alert(MACAddress + ' : ' + ModuleId + ' : ' + CurrentModule);
                 },
                 success: function (response) {
-                    var Data = $.parseJSON(response);
+                    Data = $.parseJSON(response);
+
 
                     alert(JSON.stringify(Data));
                 }
             });
+        }
+
+        function GetTemplateContent(){
+
         }
     </script>
 </head>
