@@ -247,7 +247,7 @@
 	function GetInfoDevice(){
 		$.ajax({
 			type: 'POST',
-			url: '/Core/Controllers/Index.php',
+			url: 'Core/Controllers/Index.php',
 			data: {
 				Option      : SetOption,
 				MacAddress  : MACAddress,
@@ -259,7 +259,7 @@
 				Vendor      : 'Samsung'
 			},
 			success: function (response) {
-
+console.log(response);
 				var Data = $.parseJSON(response);
 
 				if(Data['Option'] === 'REGISTER') {
