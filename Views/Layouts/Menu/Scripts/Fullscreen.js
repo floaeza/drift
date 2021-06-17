@@ -36,7 +36,7 @@
     }
 
     function SetBackgrounds(){
-        debugger
+     
 
         var IndexM = 0;
         var MenuBackgrounds = document.getElementById('MenuBackgrounds');
