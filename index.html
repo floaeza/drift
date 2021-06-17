@@ -262,7 +262,7 @@
 				alert('SUCCESS');
 				var Data = $.parseJSON(response);
 
-				alert(Data['Option']);
+				alert(JSON.stringify(response));
 
 				if(Data['Option'] === 'REGISTER') {
 					GetLocations();
