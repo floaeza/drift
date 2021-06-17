@@ -41,7 +41,7 @@
 </div>
 
 <div id='HelpControl'>
-	<img src='./Media/Logos/control-help.png'>
+	<img src='./Media/control-help.png'>
 </div>
 
 </body>
@@ -248,7 +248,6 @@
 	}
 
 	function GetInfoDevice(){
-		alert('SetOption: '+SetOption +' Mac: '+MACAddress+' IP: '+IPAddress+' Loc: '+IdLocation +' Fw: '+FirmwareVersion + '  Model: '+TvModel);
 		$.ajax({
 			type: 'POST',
 			url: 'http://'+ServerIp+'/BBINCO/TV/Core/Controllers/Index.php',
@@ -263,11 +262,6 @@
 				Vendor      : 'Samsung'
 			},
 			success: function (response) {
-				alert('SUCCESS');
-
-				alert(JSON.stringify(response));
-
-
 				var Data = $.parseJSON(response);
 
 				if(Data['Option'] === 'REGISTER') {
@@ -283,7 +277,7 @@
 
 					var Page = Data['ModuleUrl'].replace('php','html');
 
-					//window.location.href = Page;
+					window.location.href = Page;
 				} else if(Data['Option'] === 'LICENSE'){
 					var DeviceInfo = ' Mac: '+MACAddress+' Ip: '+IPAddress;
 					DebugText.innerHTML = DeviceInfo;

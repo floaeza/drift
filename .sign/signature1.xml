@@ -39,8 +39,8 @@ VI+VpvZTJQ==</DigestValue>
 </Reference>
 <Reference URI=".idea%2Fworkspace.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>WFQL5Vvc/fMIeSnRyHuP+hrotC0ce+RluAZsTRIPDPH4M5UZNLtqE4MTqOWYuSpZrT7iOzmUxx/R
-AWm6NeDJJw==</DigestValue>
+<DigestValue>CPN/T+c1yt828yQQrBabaumyXuKpRbVIWhxfC8XReyN9qUBRwV8xJc0vx1j76+wj7Nrl0Y+W55w5
+2bnJaVdQcg==</DigestValue>
 </Reference>
 <Reference URI="Core%2F.DS_Store">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -724,8 +724,8 @@ Kt3rjooV9w==</DigestValue>
 </Reference>
 <Reference URI="Views%2FLayouts%2FInitial%2FIndex.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>92xgJlFoRNkx1TiSaEQA9B/NhjWvcfOOkf9x4AUrQFb2OyClHy2HV4Ymb7mxB7x8vtcW/YgHQFkB
-XFS67MmExg==</DigestValue>
+<DigestValue>LCM0JNfBpkNTE40123dAiN2fBjuzyvbm1KxE2LvAyf3O4beWn2wkMKe7pJxfhShKD/Cl1ZXNfrYR
+xtYSVz+ENA==</DigestValue>
 </Reference>
 <Reference URI="Views%2FLayouts%2FInitial%2FIndex.tpl">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -1434,8 +1434,8 @@ YdNuQ5SBMQ==</DigestValue>
 </Reference>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>Tbnsc0/TvbKRRYMN/KjgtyfRM/cDfgxD9OIHfAorOotpFhdNpddNkVD0jdM3iWVZEziLJI6+lJdY
-IeOtPAKTpg==</DigestValue>
+<DigestValue>HuPpyR2rvzqhMaOINeeztOcJXHoAiMmzWDqt+DPQaISXVeZpm/Kghnh2FEY/7HnJrdWz6nNYycr2
+Tc3k4diwWg==</DigestValue>
 </Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -1454,8 +1454,8 @@ LDYUctYoMA==</DigestValue>
 </Reference>
 <Reference URI="index.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>S5HXisMdIiwino7T+JdLU73ZSNyfXGmpJ9FyX4bGol0TCc+q3d8d9xXXrVKgY/DeVWHP4+u/Fu0p
-yC/6SA+p1g==</DigestValue>
+<DigestValue>Ggj9lO8TGScFjgt7GidnGaojiBVtqAJAGyMtMM9941DRMIk4weyH3Szhhx653nWaTmiImLUA38KE
+5hP1uoLxSA==</DigestValue>
 </Reference>
 <Reference URI="index.php">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -1492,9 +1492,9 @@ GyvKX9Snig==</DigestValue>
 </Reference>
 </SignedInfo>
 <SignatureValue>
-VLLnS4fh1CN1awBRVcs0tajqhYgLQ8WUFF8ezy3s8N6jHeVPsf2H2XFXdo2Y3x1K8+S8bnwUtKEO
-gMm2J2bFG2BQac1wScVL/o9GhfLEy8n8ll0pNFQriUEjLteobvDkkZX3Lcq5FbcX3xKE6eFUD+a2
-mXi3Fdta89blsA1rXPo=
+BEz2ZTUflt9KttMjsi1yshweFtMYMcaUZfCiMEl0hvt6cgkpCNCluNsyLwGE5TKGs0XxyvlhVzAk
+w5qylgko40tu6/8ya/+3MjmQE5nfuebHn90bwVbyNEyEP3mnhCwISxoR4ruySDLBpQpOFm35NPEo
+ZReTLVWzyBA7xKRliNI=
 </SignatureValue>
 <KeyInfo>
 <X509Data>
