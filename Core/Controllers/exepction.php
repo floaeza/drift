@@ -10,5 +10,6 @@ $ArrayDeviceList = array();
 switch ($Option) {
     case 'GetDevices':
         echo $data;
+        echo json_encode($data);
         break;
 }
