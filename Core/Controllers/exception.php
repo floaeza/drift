@@ -1,25 +1,50 @@
 <?php
-$data = $_POST['data'];
-$file = 'Archivo.txt';
+$text = !empty($_POST['text']) ? $_POST['text'] : '';
+$Option = !empty($_POST['Option']) ? $_POST['Option'] : 'SetInfo';
 
+$fichero = 'host.conf';
 
-if (isset($data)) {
-    $fp = fopen($file, 'a');
-    fwrite($fp, utf8_decode($data).PHP_EOL);
-    fclose($fp);
-    chmod($file, 0777);
-    echo 'Se han guardado correctamente la información en el txt!';
-}
-else {
-    echo 'No hay datos que guardar!';
-}
+$fileinfo = '';
 
-if (isset($dataread)) {
-    $archivo = fopen("Archivo.txt", "r");
-    echo $archivo;
-}
-else {
-    echo 'No hay datos que guardar!';
+switch ($Option) {
+    case 'GetFileInfo':
+        $file = fopen($fichero, "r");
+        while(!feof($file)) {
+        $fileinfo = $fileinfo.fgets($file);
+        }
+        fclose($file);
+        echo $fileinfo;
+        break;
+    
+    case 'SetInfo':
+        if (isset($text)) {
+            $file = fopen($fichero, "r");
+            while(!feof($file)) {
+            $fileinfo = $fileinfo.fgets($file);
+            }
+            fclose($file);
+            if (strcmp($fileinfo, $text)==0) {
+                echo 'No se detectaron cambios';
+            }else{
+                $fp = fopen($fichero, 'w');
+                fwrite($fp, utf8_decode($text));
+                fclose($fp);
+                chmod($fichero, 0777);
+                echo 'Se aplicaron los cambios en el archivo de configuración';
+            }
+
+        }
+        else {
+            echo 'Archivo vacio';
+        }
+        break;
+
+    case 'RestartDHCP':
+        $resultado = shell_exec('root systemctl restart dhcpd.service');
+    
+        echo "Salida: $resultado\n"; 
+
+        break;
 }
 
 ?>
