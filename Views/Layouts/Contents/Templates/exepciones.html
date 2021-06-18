@@ -69,6 +69,14 @@
                 return;
             }
         });
+
+        $('#restart').click(function() {
+            if(confirm('¿Realmente desea reiniciar el servicio DHCP?')){
+                setRestartDHCP();
+            } else {
+                return;
+            }
+        });
     });
 
 function setNewConfig(){
@@ -79,6 +87,19 @@ function setNewConfig(){
         data:{
             text: dataString,
             Option: 'SetInfo',
+        },
+        success: function(response) {
+            alert(response);
+        }
+    });
+}
+
+function setRestartDHCP(){
+    $.ajax({
+        type: "POST",
+        url: "../../../../Core/Controllers/exception.php",
+        data:{
+            Option: 'RestartDHCP',
         },
         success: function(response) {
             alert(response);
