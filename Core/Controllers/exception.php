@@ -1,6 +1,7 @@
 <?php
 $data = $_POST['data'];
-$file = '/Epg/VPL/host.conf';
+$file = 'Archivo.txt';
+
 
 if (isset($data)) {
     $fp = fopen($file, 'a');
@@ -12,4 +13,13 @@ if (isset($data)) {
 else {
     echo 'No hay datos que guardar!';
 }
+
+if (isset($dataread)) {
+    $archivo = fopen("Archivo.txt", "r");
+    echo $archivo;
+}
+else {
+    echo 'No hay datos que guardar!';
+}
+
 ?>

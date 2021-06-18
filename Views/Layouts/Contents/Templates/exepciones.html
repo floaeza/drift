@@ -29,7 +29,18 @@
                     $('#df').text(response);
                 }
             });
-            
+        });
+    });
+    $(window).load(function() {
+        var dataRead = 'dataRead';
+        $.ajax({
+            type: "POST",
+            url: "../../../../Core/Controllers/exception.php",
+            data: dataRead,
+            success: function(response) {
+                //alert(data);
+                $('textarea#data').text(response);
+            }
         });
     });
     </script>
