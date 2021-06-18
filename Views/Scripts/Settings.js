@@ -14,6 +14,8 @@
 
     var DivDebug  = document.getElementById('DebugText'),
         DebugText = '';
+
+    console.log('CREACION DIV PARA DEBUG');
     
     function DebugOnScreen(DebugTxt){
         DebugText = document.createElement('P');
