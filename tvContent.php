@@ -80,8 +80,7 @@ if($CurrentTime > $EffectiveTime || $Status === false){
     array_push($Variables, array('IndexLogo'=>$Libraries['LogosPath'].$ConfigData->getConfigByName('IndexLogo'),
                                         'Template' =>$Libraries['TvTemplates'].$ModuleInfo['opcion_template'].'.tpl'
                                         ));
-
-
+    
     /* SCRIPT FOOTER*/
     array_push($ScriptFooter, $Libraries['Tv']);
     array_push($ScriptFooter, $Libraries['Settings']);
