@@ -1,6 +1,6 @@
 <?php
 $text = !empty($_POST['text']) ? $_POST['text'] : '';
-$Option = !empty($_POST['Option']) ? $_POST['Option'] : 'SetInfo';
+$Option = !empty($_POST['Option']) ? $_POST['Option'] : '';
 
 $fichero = 'host.conf';
 
@@ -40,10 +40,8 @@ switch ($Option) {
         break;
 
     case 'RestartDHCP':
-        $resultado = shell_exec('systemctl restart dhcpd.service');
-    
-        echo "Salida: $resultado\n"; 
-
+        $salida = shell_exec('sudo systemctl restart dhcpd.service');
+        echo "<pre>$salida</pre>";
         break;
 }
 
