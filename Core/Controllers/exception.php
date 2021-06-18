@@ -40,7 +40,7 @@ switch ($Option) {
         break;
 
     case 'RestartDHCP':
-        $resultado = shell_exec('systemctl restart dhcpd.service');   
+        $resultado = shell_exec('sudo systemctl restart dhcpd.service');   
         echo "Salida: $resultado\n"; 
         break;
 }
