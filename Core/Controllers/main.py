@@ -45,10 +45,10 @@ def start(day, pos):
     day = datetime.strptime(day, '%Y-%m-%d')
     print("Empezo")
     payload = {'Option': 'GetIdentifier'}
-    Identifier = requests.post('http://172.22.22.10/BBINCO/TV/Core/Controllers/PY.php', data=payload)
+    Identifier = requests.post('http://172.16.0.15/BBINCO/TV/Core/Controllers/PY.php', data=payload)
     IDF = json.loads(Identifier.content)
     IDF = IDF[0]
-    for ids in range(6, paquetes):
+    for ids in range(1, paquetes):
         contadorCanal = 0
         data = {}
         data["C_Length"]=0

@@ -36,7 +36,7 @@ for i in range(0,numPaquetes):
     channels = js['C_Length']
     paquetes = {}
     for j in range(0, channels):
-        paquetes.update({str(j):js[str(j)]['CHNL']+"|"+js[str(j)]['NAME']+"|"+js[str(j)]['LOGO']})
+        paquetes.update({str(j):js[str(j)]['CHNL']+"|"+js[str(j)]['INDC']+"|"+js[str(j)]['LOGO']})
         
     # Add a new doc in collection 'cities' with ID 'LA'
     db.collection(u'Paquetes'+identificador).document(u'Paquete'+str(i+1)).set(paquetes)
