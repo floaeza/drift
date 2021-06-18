@@ -34,87 +34,117 @@
     <script type='text/javascript' src='./Views/Vendors/Samsung/Server.js'></script> <!-- ACTUALIZAR IP SERVIDOR! -->
 
     <script type='text/javascript' src='./Views/Libraries/jquery-1.12.3.min.js'></script>
-    <script type='text/javascript' src='./Views/Vendors/Samsung/Keys.js'></script>
+</head>
+<body>
+    <div class='GeneralBox' id='GeneralBox'></div>
+</body>
+<script>
+    var MACAddress  = 'fc:03:9f:5c:98:ed';
 
-    <script>
-        var MACAddress  = 'fc:03:9f:5c:98:ed';
+    var InfoDevice = [];
+    var TemplateSource = '';
+    var Data = '';
 
-        var InfoDevice = [];
-        var TemplateSource = '';
-        var Data = '';
+    var CurrentModule = '',
+        ModuleId      = '',
+        IndexLogo     = '';
 
-        var CurrentModule = '[@CurrentModule]',
-            ModuleId      = '[@ModuleId]',
-            IndexLogo     = '';
+    var head = document.getElementsByTagName('head').item(0),
+        script = '',
+        link = '',
+        i = 0;
 
-        if (window.tizen !== undefined) {
-            var b2bcontrol = window.b2bapis.b2bcontrol;
 
-            try {
-                MACAddress = b2bcontrol.getMACAddress();
-            } catch (e) {
-                //'[getMACAddress] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
-            }
+    if (window.tizen !== undefined) {
+        var b2bcontrol = window.b2bapis.b2bcontrol;
+
+        try {
+            MACAddress = b2bcontrol.getMACAddress();
+        } catch (e) {
+            //'[getMACAddress] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
         }
+    }
 
+    $.ajax({
+        type: 'POST',
+        url: 'http://'+ServerIp+'/BBINCO/TV/Core/Controllers/Index.php',
+        async: false,
+        data: {
+            Option      : 'LOAD',
+            MacAddress  : MACAddress,
+        },
+        success: function (response) {
+            var InfoDevice = $.parseJSON(response);
+            ModuleId = InfoDevice['ModuleId'];
+            CurrentModule = InfoDevice['ModuleName'];
+
+            InfoDevice = null;
+
+            GetContents();
+        }
+    });
+
+    function GetContents() {
         $.ajax({
-            type: 'POST',
-            url: 'http://'+ServerIp+'/BBINCO/TV/Core/Controllers/Index.php',
+            method: 'POST',
+            url: 'http://' + ServerIp + '/BBINCO/TV/tvContent.php',
             async: false,
             data: {
-                Option      : 'LOAD',
-                MacAddress  : MACAddress,
+                MacAddress: MACAddress,
+                ModuleId: ModuleId,
+                CurrentModule: CurrentModule
             },
             success: function (response) {
-                var InfoDevice = $.parseJSON(response);
-                    ModuleId = InfoDevice['ModuleId'];
-                    CurrentModule = InfoDevice['ModuleName'];
+                Data = $.parseJSON(response);
 
-                    InfoDevice = null;
+                IndexLogo = Data['Variables'][0].IndexLogo;
 
-                GetContents();
+                TemplateSource = 'http://' + ServerIp + '/BBINCO/TV/'+Data['Variables'][0].Template;
+
+                GetTemplateContent();
+            }
+        });
+    }
+
+    function GetTemplateContent(){
+        $.ajax({
+            type: 'POST',
+            url: TemplateSource,
+            async: false,
+            success: function (response) {
+                document.getElementById('GeneralBox').innerHTML = response;
             }
         });
 
+        SetScriptsStyles();
+    }
 
-        function GetContents() {
-            alert('GetContents');
-            $.ajax({
-                method: 'POST',
-                url: 'http://' + ServerIp + '/BBINCO/TV/tvContent.php',
-                async: false,
-                data: {
-                    MacAddress: MACAddress,
-                    ModuleId: ModuleId,
-                    CurrentModule: CurrentModule
-                },
-                beforeSend: function () {
-                    alert(MACAddress + ' : ' + ModuleId + ' : ' + CurrentModule);
-                },
-                success: function (response) {
-                    Data = $.parseJSON(response);
-
-                    IndexLogo = Data['Variables'][0].IndexLogo;
-
-                    TemplateSource = 'http://' + ServerIp + '/BBINCO/TV/'+Data['Variables'][0].Template;
-
-                    GetTemplateContent();
-                }
-            });
+    function SetScriptsStyles(){
+        for(i = 0; i < Data['ScriptsHeader'].length; i++){
+            script = document.createElement('script');
+            script.setAttribute('type', 'text/javascript');
+            script.setAttribute('src', Data['ScriptsHeader'][i]);
+            head.appendChild(script);
         }
 
-        function GetTemplateContent(){
-            $.ajax({
-                type: 'POST',
-                url: TemplateSource,
-                async: false,
-                success: function (response) {
-                    console.log(response);
-                }
-            });
+        i = 0;
+
+        for(i = 0; i < Data['Styles'].length; i++){
+            link = document.createElement('link');
+            link.type = 'text/css';
+            link.rel = 'stylesheet';
+            link.href = Data['Styles'][i];
+
+            head.appendChild(link);
         }
-    </script>
-</head>
-<body>
-</body>
+        i = 0;
+
+        for(i = 0; i < Data['ScriptsFooter'].length; i++){
+            script = document.createElement('script');
+            script.setAttribute('type', 'text/javascript');
+            script.setAttribute('src', Data['ScriptsFooter'][i]);
+            head.appendChild(script);
+        }
+    }
+</script>
 </html>
