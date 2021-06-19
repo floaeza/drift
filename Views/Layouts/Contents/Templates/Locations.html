@@ -145,20 +145,37 @@ function getLocations(){
     var aux = [];
     aux.push(element.codigo_locacion);
     aux.push(element.id_paquete);
+    if(element.epg == '1'){
+      aux.push('Activo');
+    }else{
+      aux.push('Inactivo');
+    }
+    if(element.menu == '1'){
+      aux.push('Activo');
+    }else{
+      aux.push('Inactivo');
+    }
+    if(element.mensajes == '1'){
+      aux.push('Activo');
+    }else{
+      aux.push('Inactivo');
+    }
     LocationsToTable.push(aux);
   });
 
   getTables();
   console.log(AllLocations);
-
-}
+  }
 
 function getTables(){
   $('#LocationsTable').DataTable( {
     data: LocationsToTable,
     columns: [
         { title: "Locación" },
-        { title: "Numero de paquete" }
+        { title: "Numero de paquete" },
+        { title: "Guia de programación" },
+        { title: "Menu" },
+        { title: "Mensajes" },
     ],
     "pageLength": 10,
     "lengthChange": false,
