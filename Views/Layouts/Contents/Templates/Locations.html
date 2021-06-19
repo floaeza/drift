@@ -161,8 +161,7 @@ function getLocations(){
     }
    AllModules.forEach(module => {
       if(module.Id == location.id_modulo){
-        debugger
-        if(module.name == 'Welcome'){
+        if(module.Name == 'Welcome'){
           aux.push('Menu');
         }else{
           aux.push(module.Name);
