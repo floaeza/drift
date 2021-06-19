@@ -135,6 +135,7 @@ The above copyright notice and this permission notice shall be included in all c
     getInfo();
     console.log(AllModules);
     console.log(AllPackages);
+    console.log(AllLocations);
     getLocations();
   });
 
@@ -158,6 +159,9 @@ function getLocations(){
     }else{
       aux.push('Inactivo');
     }
+//   AllModules.forEach(element => {
+//      if(element.Id == )
+//    });
     LocationsToTable.push(aux);
   });
 
@@ -174,6 +178,8 @@ function getTables(){
         { title: "Guia de programación" },
         { title: "Menu" },
         { title: "Mensajes" },
+        { title: "Paquete asignado" },
+        { title: "Pantalla de inicio" },
     ],
     "pageLength": 10,
     "lengthChange": false,
