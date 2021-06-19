@@ -133,6 +133,8 @@ The above copyright notice and this permission notice shall be included in all c
 
   $( document ).ready(function() {
     getInfo();
+    console.log(AllModules);
+    console.log(AllPackages);
     getLocations();
   });
 
@@ -160,7 +162,7 @@ function getLocations(){
   });
 
   getTables();
-  console.log(AllLocations);
+  
   }
 
 function getTables(){
