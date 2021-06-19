@@ -38,6 +38,7 @@
 <body>
     <div class='GeneralBox' id='GeneralBox'></div>
 </body>
+<footer></footer>
 <script>
     var MACAddress  = 'fc:03:9f:5c:98:ed';
 
@@ -50,6 +51,7 @@
         IndexLogo     = '';
 
     var head = document.getElementsByTagName('head').item(0),
+        footer = document.getElementsByTagName('footer').item(0),
         script = '',
         link = '',
         i = 0;
@@ -113,7 +115,7 @@
             url: TemplateSource,
             async: false,
             success: function (response) {
-                document.getElementById('GeneralBox').innerHTML = response;
+                document.getElementById('GeneralBox').innerHTML = '<div id="DebugText"></div> '+response;
 
                 console.log('SE CREAO EL CONTENIDO HTML');
             }
@@ -148,10 +150,10 @@
             script = document.createElement('script');
             script.setAttribute('type', 'text/javascript');
             script.setAttribute('src', Data['ScriptsFooter'][i]);
-            head.appendChild(script);
+            footer.appendChild(script);
         }
     }
 
-    setTimeout(function(){ SetFooterScripts(); }, 1000);
+    setTimeout(function(){ SetFooterScripts(); }, 900);
 </script>
 </html>
