@@ -140,28 +140,35 @@ The above copyright notice and this permission notice shall be included in all c
   });
 
 function getLocations(){
-  AllLocations.forEach(element => {
+  AllLocations.forEach(location => {
     var aux = [];
-    aux.push(element.codigo_locacion);
-    aux.push(element.id_paquete);
-    if(element.epg == '1'){
+    aux.push(location.codigo_locacion);
+    aux.push(location.id_paquete);
+    if(location.epg == '1'){
       aux.push('Activo');
     }else{
       aux.push('Inactivo');
     }
-    if(element.menu == '1'){
+    if(location.menu == '1'){
       aux.push('Activo');
     }else{
       aux.push('Inactivo');
     }
-    if(element.mensajes == '1'){
+    if(location.mensajes == '1'){
       aux.push('Activo');
     }else{
       aux.push('Inactivo');
     }
-//   AllModules.forEach(element => {
-//      if(element.Id == )
-//    });
+   AllModules.forEach(module => {
+      if(module.Id == location.id){
+        aux.push(module.Name);
+      }
+    });
+    AllPackages.forEach(package => {
+      if(package.id_paquete == location.id_paquete){
+        aux.push(package.nombre_paquete);
+      }
+    });
     LocationsToTable.push(aux);
   });
 
