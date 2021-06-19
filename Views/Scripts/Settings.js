@@ -53,7 +53,7 @@
         }
     }
         
-    function LgDevice(){ 
+    function LgDevice(){
         var GetNetwork = {
             'index' : 1,
             'onSuccess' : function(response_device) {
@@ -62,6 +62,23 @@
             }
         };
         hcap.network.getNetworkDevice(GetNetwork);
+    }
+
+    function SamsungDevice(){
+        if (window.tizen !== undefined) {
+            console.log('IF -> TIZEN');
+            var b2bcontrol = window.b2bapis.b2bcontrol;
+            try {
+                //MACAddress = b2bcontrol.getMACAddress();
+                MacAddress  = 'fc:03:9f:5c:98:ed';
+                Debug      = DebugOnScreen;
+            } catch (e) {
+                //'[getMACAddress] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
+            }
+        } else {
+            console.log('ELSE -> LG');
+            LgDevice();
+        }
     }
 
     function KamaiDevice(){
@@ -78,7 +95,7 @@
             MacAddress = gSTB.GetDeviceMacAddress();
             Debug      = DebugOnScreen;
         } else {
-            LgDevice();
+            SamsungDevice();
         }
     }
 
@@ -86,9 +103,11 @@
 // 1 - Amino 
 // 2 - Kamai
 // 3 - Infomir
-// 4 - Lg
+// 4 - Samsung
+// 5 - Lg
 
     function SetData() {
+        console.log('SET DATA');
         AminoDevice();
     }
 
