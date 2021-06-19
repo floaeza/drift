@@ -15,7 +15,7 @@
     var DivDebug  = document.getElementById('DebugText'),
         DebugText = '';
 
-    console.log('CREACION DIV PARA DEBUG');
+    alert('CREACION DIV PARA DEBUG');
     
     function DebugOnScreen(DebugTxt){
         DebugText = document.createElement('P');
@@ -53,15 +53,36 @@
         }
     }
         
-    function LgDevice(){ 
-        var GetNetwork = {
-            'index' : 1,
-            'onSuccess' : function(response_device) {
-                MacAddress = response_device.mac;
+    function LgDevice(){
+        if(typeof(hcap) !== 'undefined') {
+            var GetNetwork = {
+                'index': 1,
+                'onSuccess': function (response_device) {
+                    MacAddress = response_device.mac;
+                    Debug = DebugOnScreen;
+                }
+            };
+            hcap.network.getNetworkDevice(GetNetwork);
+        } else {
+            //
+        }
+    }
+
+    function SamsungDevice(){
+        if (window.tizen !== undefined) {
+            alert('IF -> TIZEN');
+            var b2bcontrol = window.b2bapis.b2bcontrol;
+            try {
+                //MACAddress = b2bcontrol.getMACAddress();
+                MacAddress  = 'fc:03:9f:5c:98:ed';
                 Debug      = DebugOnScreen;
+            } catch (e) {
+                //'[getMACAddress] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
             }
-        };
-        hcap.network.getNetworkDevice(GetNetwork);
+        } else {
+            console.log('ELSE -> LG');
+            LgDevice();
+        }
     }
 
     function KamaiDevice(){
@@ -78,7 +99,7 @@
             MacAddress = gSTB.GetDeviceMacAddress();
             Debug      = DebugOnScreen;
         } else {
-            LgDevice();
+            SamsungDevice();
         }
     }
 
@@ -86,9 +107,11 @@
 // 1 - Amino 
 // 2 - Kamai
 // 3 - Infomir
-// 4 - Lg
+// 4 - Samsung
+// 5 - Lg
 
     function SetData() {
+        console.log('SET DATA');
         AminoDevice();
     }
 
