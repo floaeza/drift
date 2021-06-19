@@ -161,7 +161,11 @@ function getLocations(){
     }
    AllModules.forEach(module => {
       if(module.Id == location.id_modulo){
-        aux.push(module.Name);
+        if(module.name == 'Welcome'){
+          aux.push('Menu');
+        }else{
+          aux.push(module.Name);
+        }
       }
     });
     AllPackages.forEach(package => {
@@ -185,8 +189,8 @@ function getTables(){
         { title: "Guia de programación" },
         { title: "Menu" },
         { title: "Mensajes" },
-        { title: "Paquete asignado" },
         { title: "Pantalla de inicio" },
+        { title: "Paquete asignado" },
     ],
     "pageLength": 10,
     "lengthChange": false,
