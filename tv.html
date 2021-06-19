@@ -114,6 +114,8 @@
             async: false,
             success: function (response) {
                 document.getElementById('GeneralBox').innerHTML = response;
+
+                console.log('SE CREAO EL CONTENIDO HTML');
             }
         });
 
@@ -139,7 +141,9 @@
             head.appendChild(link);
         }
         i = 0;
+    }
 
+    function SetFooterScripts(){
         for(i = 0; i < Data['ScriptsFooter'].length; i++){
             script = document.createElement('script');
             script.setAttribute('type', 'text/javascript');
@@ -147,5 +151,7 @@
             head.appendChild(script);
         }
     }
+
+    setTimeout(function(){ SetFooterScripts(); }, 1000);
 </script>
 </html>
