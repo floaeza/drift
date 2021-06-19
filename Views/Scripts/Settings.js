@@ -15,7 +15,7 @@
     var DivDebug  = document.getElementById('DebugText'),
         DebugText = '';
 
-    console.log('CREACION DIV PARA DEBUG');
+    alert('CREACION DIV PARA DEBUG');
     
     function DebugOnScreen(DebugTxt){
         DebugText = document.createElement('P');
@@ -54,19 +54,23 @@
     }
         
     function LgDevice(){
-        var GetNetwork = {
-            'index' : 1,
-            'onSuccess' : function(response_device) {
-                MacAddress = response_device.mac;
-                Debug      = DebugOnScreen;
-            }
-        };
-        hcap.network.getNetworkDevice(GetNetwork);
+        if(typeof(hcap) !== 'undefined') {
+            var GetNetwork = {
+                'index': 1,
+                'onSuccess': function (response_device) {
+                    MacAddress = response_device.mac;
+                    Debug = DebugOnScreen;
+                }
+            };
+            hcap.network.getNetworkDevice(GetNetwork);
+        } else {
+            //
+        }
     }
 
     function SamsungDevice(){
         if (window.tizen !== undefined) {
-            console.log('IF -> TIZEN');
+            alert('IF -> TIZEN');
             var b2bcontrol = window.b2bapis.b2bcontrol;
             try {
                 //MACAddress = b2bcontrol.getMACAddress();
