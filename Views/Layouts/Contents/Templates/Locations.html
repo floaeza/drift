@@ -118,29 +118,25 @@ The above copyright notice and this permission notice shall be included in all c
 </body>
 <script>
   // Controladores
-  const LocacionController = '/BBINCO/Admin/Core/Querys/Member.php';
+  const PathController = '/BBINCO/Admin/Core/Querys/',
+        SourceController= '/BBINCO/TV/Core/Controllers/';
   
   // Locaciones
   let AllLocations = [];
   let LocationsToTable = [];
 
+  // Modulos
+  let AllModules = [];
+
+  //Paquetes
+  let AllPackages = [];
+
   $( document ).ready(function() {
+    getInfo();
     getLocations();
   });
 
 function getLocations(){
-  $.ajax({
-    type: "POST",
-    url: LocacionController,
-    data: { 
-        Option    : 'SelectLocations',
-    }, 
-    async: false,
-    success: function (response) {
-      AllLocations  = $.parseJSON(response);
-    }
-});  
-
   AllLocations.forEach(element => {
     var aux = [];
     aux.push(element.codigo_locacion);
@@ -181,6 +177,44 @@ function getTables(){
     "lengthChange": false,
     "searching": false
 });
+}
+
+function getInfo(){
+  $.ajax({
+    type: "POST",
+    url: PathController+'Member.php',
+    data: { 
+        Option    : 'SelectLocations',
+    }, 
+    async: false,
+    success: function (response) {
+      AllLocations  = $.parseJSON(response);
+    }
+});  
+
+  $.ajax({
+    type: "POST",
+    url: SourceController+'Module.php',
+    data: { 
+        Option    : 'GetModules',
+        ProjectId : '1'
+    }, 
+    async: false,
+    success: function (response) {
+      AllModules  = $.parseJSON(response);
+    }
+  }); 
+  $.ajax({
+    type: "POST",
+    url: SourceController+'Module.php',
+    data: { 
+        Option    : 'GetAllPackages',
+    }, 
+    async: false,
+    success: function (response) {
+      AllPackages  = $.parseJSON(response);
+    }
+  }); 
 }
 </script>
 

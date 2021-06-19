@@ -10,9 +10,9 @@
     
     $CurrentController = 'ModulesController';
     
-    $Option = !empty($_POST['Option']) ? $_POST['Option'] : 'GetModules';
+    $Option = !empty($_POST['Option']) ? $_POST['Option'] : '';
     $MacAddress = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '';
-    $ProjectId = !empty($_POST['ProjectId']) ? $_POST['ProjectId'] : '1';
+    $ProjectId = !empty($_POST['ProjectId']) ? $_POST['ProjectId'] : '';
     
     $ConfigData   = new Config($MacAddress, $CurrentController);
     $ModulesData = new Modules($MacAddress, $CurrentController);
