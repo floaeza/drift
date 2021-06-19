@@ -188,7 +188,36 @@ The above copyright notice and this permission notice shall be included in all c
   <script src="../../../../../Assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="../../../../../Assets/demo/demo.js"></script>
-
 </body>
+<script>
+  // Controladores
+  const LocacionController = '/BBINCO/Admin/Core/Querys/Member.php';
+  
+  // Resultados
+  let AllLocations = [];
+
+  $( document ).ready(function() {
+    getLocations();
+});
+
+function getLocations(){
+  $.ajax({
+    type: "POST",
+    url: LocacionController,
+    data: { 
+        Option    : 'SelectLocations',
+    }, 
+    async: false,
+    success: function (response) {
+      AllLocations  = $.parseJSON(response);
+    }
+});  
+
+  console.log(AllLocations);
+}
+
+
+
+</script>
 
 </html>
