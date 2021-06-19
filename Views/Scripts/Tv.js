@@ -30,7 +30,6 @@
         ChannelsLength       = 0,
         Hours                = [],
         EpgDataActive        = false,
-        ActiveInfoContainer  = false,
         CurrentDateFormat    = '',
         CurrentDate          = '';
 
