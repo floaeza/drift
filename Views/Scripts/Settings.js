@@ -54,6 +54,7 @@
     }
         
     function LgDevice(){
+        alert('LG');
         if(typeof(hcap) !== 'undefined') {
             var GetNetwork = {
                 'index': 1,
@@ -80,7 +81,7 @@
                 //'[getMACAddress] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
             }
         } else {
-            console.log('ELSE -> LG');
+            alert('ELSE -> LG');
             LgDevice();
         }
     }
