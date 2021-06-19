@@ -193,12 +193,13 @@ The above copyright notice and this permission notice shall be included in all c
   // Controladores
   const LocacionController = '/BBINCO/Admin/Core/Querys/Member.php';
   
-  // Resultados
+  // Locaciones
   let AllLocations = [];
+  let LocationsToTable = [];
 
   $( document ).ready(function() {
     getLocations();
-});
+  });
 
 function getLocations(){
   $.ajax({
@@ -213,10 +214,14 @@ function getLocations(){
     }
 });  
 
-  console.log(AllLocations);
+  AllLocations.forEach(element => {
+    var aux = [];
+    aux.push(element.codigo_locacion);
+    aux.push(element.id_paquete);
+    LocationsToTable.push(aux);
+  });
+  console.log(LocationsToTable);
 }
-
-
 
 </script>
 
