@@ -12,8 +12,6 @@
         EventNetman = '',
         CurrentStbDate = moment().format('Y-MM-DD h:mm:ss');
 
-    Debug('CurrentStbDate:::: '+CurrentStbDate);
-
     var DivDebug  = document.getElementById('DebugText'),
         DebugText = '';
 
@@ -41,6 +39,7 @@
         Libraries   = '',
         Debug       = console.log;
 
+        Debug('CurrentStbDate:::: '+CurrentStbDate);
 
     SetData();
 
