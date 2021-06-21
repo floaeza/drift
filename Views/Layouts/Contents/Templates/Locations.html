@@ -175,12 +175,18 @@ The above copyright notice and this permission notice shall be included in all c
   //Paquetes
   let AllPackages = [];
 
+  //Nodos
+  let TableBody = document.getElementsByTagName('tbody');
+  let TableBodyChildren = TableBody.children;
+
   $( document ).ready(function() {
     getInfo();
     console.log(AllModules);
     console.log(AllPackages);
     console.log(AllLocations);
     getLocations();
+
+    console.log(TableBodyChildren);
   });
 
 function getLocations(){
