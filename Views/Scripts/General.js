@@ -69,7 +69,7 @@
             $.ajax({
                 type: 'POST',
                 async: false,
-                url: 'Core/Controllers/Statistics.php',
+                url: ServerSource + 'Core/Controllers/Statistics.php',
                 data: {
                     Option: 'Channels',
                     MacAddress: MacAddress,
@@ -97,7 +97,7 @@
             $.ajax({
                 type: 'POST',
                 async: false,
-                url: 'Core/Controllers/Statistics.php',
+                url: ServerSource + 'Core/Controllers/Statistics.php',
                 data: {
                     Option: 'Modules',
                     CurrentModule: CurrentModule,
@@ -123,7 +123,7 @@
             $.ajax({
                 type: 'POST',
                 async: false,
-                url: 'Core/Controllers/Statistics.php',
+                url: ServerSource + ServerSource + 'Core/Controllers/Statistics.php',
                 data: {
                     Option: 'Movies',
                     CurrentMovie: CurrentMovie,
@@ -410,7 +410,7 @@ function ConvertToHourEpoch(time24){
     function GetWeather(){
         $.ajax({
             type: 'GET',
-            url: 'Core/Controllers/Weather.php',
+            url: ServerSource + 'Core/Controllers/Weather.php',
             success: function (response) {
                 ObjectWeather = JSON.parse(response);
                 SetIcon();
@@ -448,7 +448,7 @@ function ConvertToHourEpoch(time24){
         $.ajax({
             type: 'POST',
             async: false,
-            url: 'Core/Controllers/Log.php',
+            url: ServerSource + 'Core/Controllers/Log.php',
             data: { 
                 MacAddress : MacAddress,
                 LogNumber : LogNumber,
