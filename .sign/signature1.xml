@@ -39,8 +39,8 @@ VI+VpvZTJQ==</DigestValue>
 </Reference>
 <Reference URI=".idea%2Fworkspace.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>/y9NchFtDvkEJK5gP+Y1onAw1sYtS2spzdei8dZFQl/T68hf1xv4+MTA1JCnrME/ENoF1hgEokpq
-3sdF5sJgig==</DigestValue>
+<DigestValue>UZSb/vbQvcjFA2flRm2tb617zUXVfnwtrX1/NTsfMJePfxigu+ToCzKsyYgpeEux8PZ9wxnb63pY
+a3u/aX8B1w==</DigestValue>
 </Reference>
 <Reference URI="Core%2F.DS_Store">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -1454,8 +1454,8 @@ XvrmBWrmhA==</DigestValue>
 </Reference>
 <Reference URI="Views%2FVendors%2FSamsung%2FPlayer.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>H9U+SxtBCHTi7Oc0PuYHTcqx1IfYTQQMm7J7jupMjhK4/C4X0YFWnL0oXl9VS1vrxIfVe1xu9Sud
-d3Nla6xuGw==</DigestValue>
+<DigestValue>TWZmvgYOwSa1iXtHEiR4VLfE6n5DpQEClGBb2hgpbuG2XqTT+HXwi+uiI3cnvfhhVb48i/zza4G4
+jnQQ8CDd0g==</DigestValue>
 </Reference>
 <Reference URI="Views%2FVendors%2FSamsung%2FServer.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -1469,8 +1469,8 @@ YdNuQ5SBMQ==</DigestValue>
 </Reference>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>0NaC79K1cn58VDvK8XAQw41/K0ayj8A54EQFKqeMLJGXZ3Jkqz26Een8EvEzY+2iFs9nyMBEOlao
-LkaOsSUtlw==</DigestValue>
+<DigestValue>w0UTXcJ1Lw4G6Yy6oW9b+BYOppaUci1IM5UtUikUu9BmSxQ1ADZaHwRebS8L83OnUBEBkdNKWIK4
+R/ml0YBizw==</DigestValue>
 </Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -1532,9 +1532,9 @@ GyvKX9Snig==</DigestValue>
 </Reference>
 </SignedInfo>
 <SignatureValue>
-jcPeMAowLKVd3P4b31HnDggKukn2XceKwf49wDAl6OJBq3Y+kR0jZ5sFlkr28cP3DN+tmStzBGOh
-UEjt5i2WIVknsybyg4tZrMoMS+rI+0h5f3PZzMkL9SVQoxraH2SoFi7OFHtWetlV2JXPPnqvr+lH
-KZL0dM2A8WuYQtTznhM=
+RjYejOkNhzvosTm6HCoH3qFDIqVOlKCpbdR8m1ci337Pb91O+Zfa+BFyTWw+7lPzsrO+iF0myns7
+EFRp/00vUw+XwWCV2Ix9RL08HXhUJlMi4POrO9XVqSDq+p02paGoaWJWuqjphbJ6a9fd7vpH3cpz
+JQ78wpGB5kx0I6UDoxc=
 </SignatureValue>
 <KeyInfo>
 <X509Data>
