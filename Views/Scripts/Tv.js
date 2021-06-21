@@ -131,8 +131,6 @@
     }
     
     function GetJsonEpg(){
-
-        Debug('EPG FILE::::: '+ServerSource + SourceEpgFile);
         $.ajax({
             async: false,
             url: ServerSource + SourceEpgFile,
