@@ -123,8 +123,12 @@
             EventString : 'Boot successful',
             CurrentDateStb : CurrentStbDate
         },
+        beforeSend: function (){
+            Debug('FIRST UPDATE')
+        },
         success: function (response){
             Debug(CurrentStbDate);
+
             Device = $.parseJSON(response);
 
               if(Device['Debug'] === '1'){
