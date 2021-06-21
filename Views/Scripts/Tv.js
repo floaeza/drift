@@ -130,7 +130,9 @@
         }
     }
     
-    function GetJsonEpg(){ 
+    function GetJsonEpg(){
+
+        Debug('EPG FILE::::: '+ServerSource + SourceEpgFile);
         $.ajax({
             async: false,
             url: ServerSource + SourceEpgFile,
@@ -169,7 +171,7 @@
         $.ajax({
             type: 'POST',
             async: false,
-            url: 'Core/Controllers/Packages.php',
+            url: ServerSource + 'Core/Controllers/Packages.php',
             data: { 
                 Option : 'GetChannels',
                 PackageId: Device['Services']['PackageId']
@@ -264,7 +266,7 @@
         $.ajax({
             type: 'POST',
             async: false,
-            url: 'Core/Controllers/Template.php',
+            url: ServerSource + 'Core/Controllers/Template.php',
             data: { 
                 Option : 'getDigitalChannel',
                 ModuleName : GetModule
