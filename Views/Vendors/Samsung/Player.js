@@ -39,6 +39,7 @@ function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPi
 
     // Detiene el proceso de la reproduccion anterior
     StopVideo();
+    Source = Source.replace('igmp','');
 Debug('PlayChannel::::::: '+Source+CheckPort);
     // Reproduce el canal actual
     try {
