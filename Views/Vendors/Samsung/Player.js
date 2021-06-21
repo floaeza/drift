@@ -39,21 +39,22 @@ function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPi
 
     // Detiene el proceso de la reproduccion anterior
     StopVideo();
-    Source = Source.replace('igmp','');
-Debug('PlayChannel::::::: '+Source+CheckPort);
+    Source = Source.replace('igmp','udp');
+    Debug('PlayChannel=::::::: '+Source+CheckPort);
+
     // Reproduce el canal actual
     try {
-        Player.close(Source+CheckPort);
-        Player.open(url);
-        //Player.setDisplayRect(0, 0, 1920, 1080);
-        // Player.setListener(listener);
+        Player.close();
+        Player.open(Source+CheckPort);
+        Player.setDisplayRect(0, 0, 1920, 1080);
+        Player.setListener(Listener);
         Player.prepareAsync(function() {
             Player.play();
 
         });
 
     } catch (error) {
-        //Debug("Error name = "+ error.name + ", Error message = " + error.message);
+        Debug('PlayChannel > Error name = '+ error.name + ', Error message = ' + error.message);
     }
 
     // Maximiza el video en caso de que no este en pantalla completa
@@ -81,12 +82,12 @@ Debug('PlayChannel::::::: '+Source+CheckPort);
 function PlayDigitalChannel(Source){
     // Detiene el proceso de la reproduccion anterior
     StopVideo();
-    Debug('PlayDigitalChannel::::::: '+Source);
+    Debug('PlayDigitalChannel=::::::: '+Source);
     // Reproduce el video
     try {
         Player.close();
         Player.open(Source);
-        //Player.setDisplayRect(0, 0, 1920, 1080);
+        Player.setDisplayRect(0, 0, 1920, 1080);
         // Player.setListener(listener);
         Player.prepareAsync(function() {
             Player.play();
@@ -94,7 +95,7 @@ function PlayDigitalChannel(Source){
         });
 
     } catch (error) {
-        //Debug("Error name = "+ error.name + ", Error message = " + error.message);
+        Debug('PlayDigitalChannel > Error name = '+ error.name + ', Error message = ' + error.message);
     }
 
     // Maximiza el video en caso de que no este en pantalla completa
