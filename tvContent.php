@@ -82,8 +82,8 @@ if($CurrentTime > $EffectiveTime || $Status === false){
                                         ));
 
     /* SCRIPT FOOTER*/
-    array_push($ScriptFooter, $Libraries['Tv']);
     array_push($ScriptFooter, $Libraries['Settings']);
+    array_push($ScriptFooter, $Libraries['Tv']);
     array_push($ScriptFooter, $Libraries['TimeScript']);
     array_push($ScriptFooter, $Libraries['TvScripts'].$ModuleInfo['opcion_template'].'.js');
     array_push($ScriptFooter, $Libraries['TvScripts'].$ModuleInfo['opcion_template'].$Libraries['Recorder'].'.js');

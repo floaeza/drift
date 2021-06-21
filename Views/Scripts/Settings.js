@@ -15,8 +15,6 @@
     var DivDebug  = document.getElementById('DebugText'),
         DebugText = '';
 
-    alert('CREACION DIV PARA DEBUG');
-    
     function DebugOnScreen(DebugTxt){
         DebugText = document.createElement('P');
 
@@ -41,6 +39,11 @@
         Libraries   = '',
         Debug       = console.log;
 
+        if(typeof(ServerSource) !== 'undefined'){
+            ServerSource = '';
+        }
+
+        Debug(ServerSource);
 
     SetData();
 
@@ -54,7 +57,6 @@
     }
         
     function LgDevice(){
-        alert('LG');
         if(typeof(hcap) !== 'undefined') {
             var GetNetwork = {
                 'index': 1,
@@ -71,7 +73,6 @@
 
     function SamsungDevice(){
         if (window.tizen !== undefined) {
-            alert('IF -> TIZEN');
             var b2bcontrol = window.b2bapis.b2bcontrol;
             try {
                 //MACAddress = b2bcontrol.getMACAddress();
@@ -81,7 +82,6 @@
                 //'[getMACAddress] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
             }
         } else {
-            alert('ELSE -> LG');
             LgDevice();
         }
     }
@@ -112,23 +112,26 @@
 // 5 - Lg
 
     function SetData() {
-        console.log('SET DATA');
         AminoDevice();
     }
 
-
+    Debug(ServerSource + 'Core/Controllers/Device.php');
     // Device
     $.ajax({
         type: 'POST',
         async: false,
-        url: 'Core/Controllers/Device.php',
-        data: { 
+        url: ServerSource + 'Core/Controllers/Device.php',
+        data: {
             MacAddress : MacAddress,
             EventString : 'Boot successful',
             CurrentDateStb : CurrentStbDate
         },
+        beforeSend: function (){
+            Debug('FIRST UPDATE')
+        },
         success: function (response){
             Debug(CurrentStbDate);
+
             Device = $.parseJSON(response);
 
               if(Device['Debug'] === '1'){
@@ -137,20 +140,19 @@
               }
         }
     });
-    
+
     //Libraries
     $.ajax({
         type: 'POST',
         async: false,
-        url: 'Core/Models/Libraries.php',
-        data: { 
+        url: ServerSource + 'Core/Models/Libraries.php',
+        data: {
             GetJson : true
         },
         success: function (response){
             Libraries = $.parseJSON(response);
         }
     });
-    
     
     function UpdateInfoDevice(){
         Debug('----------------> UpdateInfoDevice');
@@ -161,7 +163,7 @@
         Debug('----------------> Date '+CurrentStbDate);
         $.ajax({
             type: 'POST',
-            url: 'Core/Controllers/Device.php',
+            url: ServerSource + 'Core/Controllers/Device.php',
             data: {
                 MacAddress: MacAddress,
                 EventString: EventString,
@@ -228,7 +230,7 @@ function UpdateQuickInfoDevice(){
 
     $.ajax({
         type: 'POST',
-        url: 'Core/Controllers/DeviceInfo.php',
+        url: ServerSource + 'Core/Controllers/DeviceInfo.php',
         data: {
             MacAddress: MacAddress,
             DeviceId: Device.DeviceId,
