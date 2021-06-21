@@ -40,13 +40,14 @@ function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPi
     // Detiene el proceso de la reproduccion anterior
     StopVideo();
     Source = Source.replace('igmp','udp');
-Debug('PlayChannel=::::::: '+Source+CheckPort);
+    Debug('PlayChannel=::::::: '+Source+CheckPort);
+
     // Reproduce el canal actual
     try {
         Player.close();
         Player.open(Source+CheckPort);
         Player.setDisplayRect(0, 0, 1920, 1080);
-        // Player.setListener(listener);
+        Player.setListener(Listener);
         Player.prepareAsync(function() {
             Player.play();
 
