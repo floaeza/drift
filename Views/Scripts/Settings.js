@@ -114,46 +114,43 @@
         AminoDevice();
     }
 
-    function GetDeviceInfo(){
-        // Device
-        $.ajax({
-            type: 'POST',
-            async: false,
-            url: ServerSource + 'Core/Controllers/Device.php',
-            data: {
-                MacAddress : MacAddress,
-                EventString : 'Boot successful',
-                CurrentDateStb : CurrentStbDate
-            },
-            beforeSend: function (){
-                Debug('FIRST UPDATE')
-            },
-            success: function (response){
-                Debug(CurrentStbDate);
+    // Device
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: ServerSource + 'Core/Controllers/Device.php',
+        data: {
+            MacAddress : MacAddress,
+            EventString : 'Boot successful',
+            CurrentDateStb : CurrentStbDate
+        },
+        beforeSend: function (){
+            Debug('FIRST UPDATE')
+        },
+        success: function (response){
+            Debug(CurrentStbDate);
 
-                Device = $.parseJSON(response);
+            Device = $.parseJSON(response);
 
-                  if(Device['Debug'] === '1'){
-                      DivDebug.style.display = 'inline';
-                      Debug = DebugOnScreen;
-                  }
-            }
-        });
+              if(Device['Debug'] === '1'){
+                  DivDebug.style.display = 'inline';
+                  Debug = DebugOnScreen;
+              }
+        }
+    });
 
-        //Libraries
-        $.ajax({
-            type: 'POST',
-            async: false,
-            url: ServerSource + 'Core/Models/Libraries.php',
-            data: {
-                GetJson : true
-            },
-            success: function (response){
-                Libraries = $.parseJSON(response);
-            }
-        });
-    }
-    
+    //Libraries
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: ServerSource + 'Core/Models/Libraries.php',
+        data: {
+            GetJson : true
+        },
+        success: function (response){
+            Libraries = $.parseJSON(response);
+        }
+    });
     
     function UpdateInfoDevice(){
         Debug('----------------> UpdateInfoDevice');
