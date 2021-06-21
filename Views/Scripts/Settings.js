@@ -39,6 +39,7 @@
         Libraries   = '',
         Debug       = console.log;
 
+console.log(ServerSource + 'Core/Controllers/Device.php');
         if(typeof(ServerSource) !== 'undefined'){
             ServerSource = '';
         }
@@ -116,6 +117,7 @@
     }
 
     Debug(ServerSource + 'Core/Controllers/Device.php');
+
     // Device
     $.ajax({
         type: 'POST',
