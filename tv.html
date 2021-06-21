@@ -146,14 +146,18 @@
     }
 
     function SetFooterScripts(){
-        for(i = 0; i < Data['ScriptsFooter'].length; i++){
+        //for(i = 0; i < Data['ScriptsFooter'].length; i++){
             script = document.createElement('script');
             script.setAttribute('type', 'text/javascript');
             script.setAttribute('src', Data['ScriptsFooter'][i]);
+            console.log(Data['ScriptsFooter'][i]);
             footer.appendChild(script);
-        }
+            i++;
+       // }
     }
 
-    setTimeout(function(){ SetFooterScripts(); }, 900);
+    setInterval(function(){ SetFooterScripts(); }, 900);
+
+    //setTimeout(function(){ SetFooterScripts(); }, 900);
 </script>
 </html>
