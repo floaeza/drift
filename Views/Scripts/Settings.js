@@ -39,9 +39,14 @@
         Libraries   = '',
         Debug       = console.log;
 
-        if(typeof(ServerSource) === 'undefined'){
-            ServerSource = '';
+    console.log('---------ServerSource'+ServerSource);
+    console.log(typeof(ServerSource));
+
+         if(typeof(ServerSource) === 'undefined'){
+             var ServerSource = '';
         }
+
+console.log('>> ServerSource'+ServerSource);
     SetData();
 
     function AminoDevice(){
