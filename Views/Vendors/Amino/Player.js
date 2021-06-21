@@ -42,9 +42,7 @@
         StopVideo();
 
         // Reproduce el canal actual
-        //AVMedia.Play('src='+ Source+''+CheckPort+CheckProgram);
-
-        AVMedia.Play('src=http://201.116.203.114/MULTIMEDIA_DMO/ChannelsVideos/AAA.mp4');
+        AVMedia.Play('src='+ Source+''+CheckPort+CheckProgram);
         
         // Maximiza el video en caso de que no este en pantalla completa
         MaximizeTV();

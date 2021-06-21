@@ -39,7 +39,7 @@ function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPi
 
     // Detiene el proceso de la reproduccion anterior
     StopVideo();
-Debug('PlayChannl::::::: '+Source+CheckPort);
+Debug('PlayChannel::::::: '+Source+CheckPort);
     // Reproduce el canal actual
     try {
         Player.close(Source+CheckPort);
@@ -80,7 +80,7 @@ Debug('PlayChannl::::::: '+Source+CheckPort);
 function PlayDigitalChannel(Source){
     // Detiene el proceso de la reproduccion anterior
     StopVideo();
-    Debug('PlayChannl::::::: '+Source);
+    Debug('PlayDigitalChannel::::::: '+Source);
     // Reproduce el video
     try {
         Player.close();
