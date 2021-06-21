@@ -118,7 +118,7 @@
     $.ajax({
         type: 'POST',
         async: false,
-        url: 'Core/Controllers/Device.php',
+        url: ServerSource + 'Core/Controllers/Device.php',
         data: { 
             MacAddress : MacAddress,
             EventString : 'Boot successful',
@@ -143,7 +143,7 @@
     $.ajax({
         type: 'POST',
         async: false,
-        url: 'Core/Models/Libraries.php',
+        url: ServerSource + 'Core/Models/Libraries.php',
         data: { 
             GetJson : true
         },
@@ -162,7 +162,7 @@
         Debug('----------------> Date '+CurrentStbDate);
         $.ajax({
             type: 'POST',
-            url: 'Core/Controllers/Device.php',
+            url: ServerSource + 'Core/Controllers/Device.php',
             data: {
                 MacAddress: MacAddress,
                 EventString: EventString,
@@ -229,7 +229,7 @@ function UpdateQuickInfoDevice(){
 
     $.ajax({
         type: 'POST',
-        url: 'Core/Controllers/DeviceInfo.php',
+        url: ServerSource + 'Core/Controllers/DeviceInfo.php',
         data: {
             MacAddress: MacAddress,
             DeviceId: Device.DeviceId,
