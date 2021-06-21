@@ -2,3 +2,6 @@
 
 var ServerIp = '172.16.0.15';
 var ServerSource = 'http://'+ServerIp+'/BBINCO/TV/';
+
+console.log(ServerIp);
+console.log(ServerSource);
