@@ -285,7 +285,7 @@ function selectLocation(){
     if ($(this).hasClass('selected')) {
       $(this).removeClass('selected');
   } else {
-      $('#DevicesList').DataTable().$('tr.selected').removeClass('selected');
+      $('#LocationsTable').DataTable().$('tr.selected').removeClass('selected');
       $(this).addClass('selected');
   }
   });
