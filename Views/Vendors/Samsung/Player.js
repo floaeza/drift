@@ -43,8 +43,8 @@ function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPi
 Debug('PlayChannel::::::: '+Source+CheckPort);
     // Reproduce el canal actual
     try {
-        Player.close(Source+CheckPort);
-        Player.open(url);
+        Player.close();
+        Player.open(Source+CheckPort);
         //Player.setDisplayRect(0, 0, 1920, 1080);
         // Player.setListener(listener);
         Player.prepareAsync(function() {
@@ -53,7 +53,7 @@ Debug('PlayChannel::::::: '+Source+CheckPort);
         });
 
     } catch (error) {
-        //Debug("Error name = "+ error.name + ", Error message = " + error.message);
+        Debug('PlayChannel > Error name = '+ error.name + ', Error message = ' + error.message);
     }
 
     // Maximiza el video en caso de que no este en pantalla completa
@@ -94,7 +94,7 @@ function PlayDigitalChannel(Source){
         });
 
     } catch (error) {
-        //Debug("Error name = "+ error.name + ", Error message = " + error.message);
+        Debug('PlayDigitalChannel > Error name = '+ error.name + ', Error message = ' + error.message);
     }
 
     // Maximiza el video en caso de que no este en pantalla completa
