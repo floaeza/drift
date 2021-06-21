@@ -15,8 +15,6 @@
     var DivDebug  = document.getElementById('DebugText'),
         DebugText = '';
 
-    alert('CREACION DIV PARA DEBUG');
-    
     function DebugOnScreen(DebugTxt){
         DebugText = document.createElement('P');
 
@@ -54,7 +52,6 @@
     }
         
     function LgDevice(){
-        alert('LG');
         if(typeof(hcap) !== 'undefined') {
             var GetNetwork = {
                 'index': 1,
@@ -71,7 +68,7 @@
 
     function SamsungDevice(){
         if (window.tizen !== undefined) {
-            alert('IF -> TIZEN');
+            console.log('IF -> TIZEN');
             var b2bcontrol = window.b2bapis.b2bcontrol;
             try {
                 //MACAddress = b2bcontrol.getMACAddress();
@@ -81,7 +78,6 @@
                 //'[getMACAddress] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
             }
         } else {
-            alert('ELSE -> LG');
             LgDevice();
         }
     }

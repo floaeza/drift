@@ -153,10 +153,15 @@
             console.log(Data['ScriptsFooter'][i]);
             footer.appendChild(script);
             i++;
+
+            if(i >= Data['ScriptsFooter'].length){
+                clearInterval(FooterInterval);
+                console.log('END SCRIPTS');
+            }
        // }
     }
 
-    setInterval(function(){ SetFooterScripts(); }, 900);
+    var FooterInterval = setInterval(function(){ SetFooterScripts(); }, 900);
 
     //setTimeout(function(){ SetFooterScripts(); }, 900);
 </script>
