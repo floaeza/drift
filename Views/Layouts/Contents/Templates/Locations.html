@@ -296,11 +296,12 @@ function selectLocation(){
       $('#LocationsTable').DataTable().$('tr.selected').removeClass('selected');
       $(this).addClass('selected');
   }
-  debugger
+  
   TableBody = document.getElementsByTagName('tr');
   let variable = '';
 
   for (let x = 0; x < TableBody.length; index++) {
+    debugger
     let className = TableBody[x].className;
     let flag = className.indexOf('selected');
     if(flag !== -1){
