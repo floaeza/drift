@@ -37,9 +37,9 @@
     var MacAddress  = '00:00:00:00:00:00',
         Device      = '',
         Libraries   = '',
+        ServerSource = '',
         Debug       = console.log;
 
-        Debug('CurrentStbDate:::: '+CurrentStbDate);
 
     SetData();
 
@@ -69,7 +69,7 @@
 
     function SamsungDevice(){
         if (window.tizen !== undefined) {
-            console.log('IF -> TIZEN');
+            ServerSource = 'http://'+ServerIp+'/BBINCO/TV/';
             var b2bcontrol = window.b2bapis.b2bcontrol;
             try {
                 //MACAddress = b2bcontrol.getMACAddress();
