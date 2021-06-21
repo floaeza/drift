@@ -4,7 +4,7 @@
     }
 
     function Blue(){
-
+        window.location.href = 'http://201.116.203.114/BBINCO/TV/index.php';
     }
 
     function Green(){
