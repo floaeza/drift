@@ -18,6 +18,7 @@ var WindowMaxWidth  = 0,
     WindowMinWidth  = 0,
     WindowMinHeight = 0;
 
+var Player = webapis.avplay;
 
 /* *****************************************************************************
  * Reproductor de canal
@@ -38,9 +39,21 @@ function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPi
 
     // Detiene el proceso de la reproduccion anterior
     StopVideo();
-
+Debug('PlayChannl::::::: '+Source+CheckPort);
     // Reproduce el canal actual
-    AVMedia.Play('src='+ Source+''+CheckPort+CheckProgram);
+    try {
+        Player.close(Source+CheckPort);
+        Player.open(url);
+        //Player.setDisplayRect(0, 0, 1920, 1080);
+        // Player.setListener(listener);
+        Player.prepareAsync(function() {
+            Player.play();
+
+        });
+
+    } catch (error) {
+        //Debug("Error name = "+ error.name + ", Error message = " + error.message);
+    }
 
     // Maximiza el video en caso de que no este en pantalla completa
     MaximizeTV();
@@ -67,9 +80,21 @@ function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPi
 function PlayDigitalChannel(Source){
     // Detiene el proceso de la reproduccion anterior
     StopVideo();
-
+    Debug('PlayChannl::::::: '+Source);
     // Reproduce el video
-    AVMedia.Play('src='+ Source);
+    try {
+        Player.close();
+        Player.open(Source);
+        //Player.setDisplayRect(0, 0, 1920, 1080);
+        // Player.setListener(listener);
+        Player.prepareAsync(function() {
+            Player.play();
+
+        });
+
+    } catch (error) {
+        //Debug("Error name = "+ error.name + ", Error message = " + error.message);
+    }
 
     // Maximiza el video en caso de que no este en pantalla completa
     MaximizeTV();
@@ -108,16 +133,8 @@ function PlayMovie(Source){
     // Reproduce el video
     AVMedia.Play('src='+ Source);
 
-    setTimeout(getPIDSInfo, 15000);
     // Maximiza el video en caso de que no este en pantalla completa
     MaximizeTV();
-}
-function getPIDSInfo(){
-    var PIDObject = AVMedia.GetAudioPIDs();
-    numberOfLanguages = PIDObject.pids;
-    for (var x = 1; x <= numberOfLanguages; x++) {
-        PIDS.push(PIDObject[x].AudioLanguage);
-    }
 }
 
 function PreviewVideo(Source){
