@@ -43,6 +43,8 @@
             ServerSource = '';
         }
 
+        Debug(ServerSource);
+
     SetData();
 
     function AminoDevice(){
@@ -110,10 +112,10 @@
 // 5 - Lg
 
     function SetData() {
-        console.log('SET DATA');
         AminoDevice();
     }
 
+    Debug(ServerSource + 'Core/Controllers/Device.php');
     // Device
     $.ajax({
         type: 'POST',
