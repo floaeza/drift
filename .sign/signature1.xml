@@ -39,8 +39,8 @@ VI+VpvZTJQ==</DigestValue>
 </Reference>
 <Reference URI=".idea%2Fworkspace.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>UZSb/vbQvcjFA2flRm2tb617zUXVfnwtrX1/NTsfMJePfxigu+ToCzKsyYgpeEux8PZ9wxnb63pY
-a3u/aX8B1w==</DigestValue>
+<DigestValue>DCy5Ji8LI2rNrqqjynXsE+w37BNryPb0+wl7fBrvKSUHcoNy77+deTELUBhDP/yu8qJklcH44cSt
+un0Ef5uNqQ==</DigestValue>
 </Reference>
 <Reference URI="Core%2F.DS_Store">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -1454,8 +1454,8 @@ XvrmBWrmhA==</DigestValue>
 </Reference>
 <Reference URI="Views%2FVendors%2FSamsung%2FPlayer.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>TWZmvgYOwSa1iXtHEiR4VLfE6n5DpQEClGBb2hgpbuG2XqTT+HXwi+uiI3cnvfhhVb48i/zza4G4
-jnQQ8CDd0g==</DigestValue>
+<DigestValue>ioGT580sOOFYBJq13Ce64pZXxWdqZOu4MUl+TH/MYbR3mndMlGANQoeBevzAiVPNGDDAWNedIm+a
+UW+CXaV8qw==</DigestValue>
 </Reference>
 <Reference URI="Views%2FVendors%2FSamsung%2FServer.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -1469,8 +1469,8 @@ YdNuQ5SBMQ==</DigestValue>
 </Reference>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>w0UTXcJ1Lw4G6Yy6oW9b+BYOppaUci1IM5UtUikUu9BmSxQ1ADZaHwRebS8L83OnUBEBkdNKWIK4
-R/ml0YBizw==</DigestValue>
+<DigestValue>LzFKMVuo8g6OhGpKjwLPU24uWmnjir077TGj1gDKUStn9d47g1smViI19l3VI1VZOogLyY2FezRQ
+CL5gn1tvIQ==</DigestValue>
 </Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -1532,9 +1532,9 @@ GyvKX9Snig==</DigestValue>
 </Reference>
 </SignedInfo>
 <SignatureValue>
-RjYejOkNhzvosTm6HCoH3qFDIqVOlKCpbdR8m1ci337Pb91O+Zfa+BFyTWw+7lPzsrO+iF0myns7
-EFRp/00vUw+XwWCV2Ix9RL08HXhUJlMi4POrO9XVqSDq+p02paGoaWJWuqjphbJ6a9fd7vpH3cpz
-JQ78wpGB5kx0I6UDoxc=
+ZDNQkLeySCo8NynO6rpWgyb2VNNReoJUZrAsq0TpyWc6BrD3xIXMoOlmO/6mdcem5RJ1Pnw9vzFZ
+ws9FR4l7+EnFM06TR2ZeTnbl4McFaJjempvT0cBlisZIN6hrLVjpB+LtQIOKBJm7CR9cCirWaUy1
+fkkdtvB1cPgI9+aKHfQ=
 </SignatureValue>
 <KeyInfo>
 <X509Data>
