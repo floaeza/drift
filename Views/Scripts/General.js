@@ -459,4 +459,3 @@ function ConvertToHourEpoch(time24){
             }
         });
     }
-    

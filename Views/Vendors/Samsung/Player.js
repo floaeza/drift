@@ -19,6 +19,7 @@ var WindowMaxWidth  = 0,
     WindowMinHeight = 0;
 
 var Player = webapis.avplay;
+    Player.setListener(listener);
 
 /* *****************************************************************************
  * Reproductor de canal
@@ -47,10 +48,9 @@ function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPi
         Player.close();
         Player.open(Source+CheckPort);
         Player.setDisplayRect(0, 0, 1920, 1080);
-        Player.setListener(listener);
+        //Player.setListener(listener);
         Player.prepareAsync(function() {
             Player.play();
-
         });
 
     } catch (error) {
@@ -88,10 +88,9 @@ function PlayDigitalChannel(Source){
         Player.close();
         Player.open(Source);
         Player.setDisplayRect(0, 0, 1920, 1080);
-        // Player.setListener(listener);
+        //Player.setListener(listener);
         Player.prepareAsync(function() {
             Player.play();
-
         });
 
     } catch (error) {
@@ -170,11 +169,7 @@ function MaximizeTV(){
         } else if(RecordingPanel === true){
             // do nothing
         } else  {
-            try {
-                tizen.tvwindow.show(successCB, null, ["0", "0", "100%", "100%"], "MAIN");
-            } catch(error) {
-                console.log("error: " + error.name);
-            }
+
         }
     }
 }
@@ -184,11 +179,7 @@ function MaximizeTV(){
  * ****************************************************************************/
 
 function MinimizeTV(){
-    try {
-        tizen.tvwindow.show(successCB, null, ["0", "0", "50%", "50%"], "MAIN");
-    } catch(error) {
-        console.log("error: " + error.name);
-    }
+
 }
 
 /* *****************************************************************************
