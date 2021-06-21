@@ -176,8 +176,8 @@ The above copyright notice and this permission notice shall be included in all c
   let AllPackages = [];
 
   //Nodos
-  let TableBody = document.getElementsByTagName('tbody');
-  let TableBodyChildren = TableBody.children;
+  let TableBody = [];
+  let TableBodyChildren = [];
 
   $( document ).ready(function() {
     getInfo();
@@ -185,6 +185,9 @@ The above copyright notice and this permission notice shall be included in all c
     console.log(AllPackages);
     console.log(AllLocations);
     getLocations();
+
+    let TableBody = document.getElementsByTagName('tbody');
+    let TableBodyChildren = TableBody.children;
 
     console.log(TableBodyChildren);
   });
