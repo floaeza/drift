@@ -177,7 +177,6 @@ The above copyright notice and this permission notice shall be included in all c
 
   //Nodos
   let TableBody = [];
-  let TableBodyChildren = [];
 
   $( document ).ready(function() {
     getInfo();
@@ -187,10 +186,10 @@ The above copyright notice and this permission notice shall be included in all c
     getLocations();
     debugger
 
-    let TableBody = document.getElementsByTagName('tr');
-    let TableBodyChildren = TableBody.children;
+    TableBody = document.getElementsByTagName('tr');
+    
 
-    console.log(TableBodyChildren);
+    console.log(TableBody);
   });
 
 function getLocations(){
