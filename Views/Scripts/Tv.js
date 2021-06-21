@@ -133,7 +133,7 @@
     function GetJsonEpg(){ 
         $.ajax({
             async: false,
-            url: SourceEpgFile,
+            url: ServerSource + SourceEpgFile,
             success: function (response){
                 
                 ChannelsJson = [];
