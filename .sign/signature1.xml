@@ -39,8 +39,8 @@ VI+VpvZTJQ==</DigestValue>
 </Reference>
 <Reference URI=".idea%2Fworkspace.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>jEsT4a3lRotI4OAO3/8e+juK6BU+wfch3wLP30yknA8tO9dMJey6FNbJoR9iFO+SJrS1yTRiy98m
-GbLhf3mRYA==</DigestValue>
+<DigestValue>6CBkaxXtmSNR7i2wTfClqOFQEWphfGmvP8L3Yn8rSfusMXdmVrQ9a5DyIyTAnXwjNuLXPMdrt45i
+4kQO1e3ZJQ==</DigestValue>
 </Reference>
 <Reference URI="Core%2F.DS_Store">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -699,8 +699,8 @@ JLWpacHRBA==</DigestValue>
 </Reference>
 <Reference URI="Views%2FLayouts%2FContents%2FTemplates%2FLocations.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>DUEKaXG0mmgGmvT4d3FIPr0Cd88Ti2PPJOzN+Ri+re9Ehim7cqGZ4sWzEU6IbJW+1fZZCP0QyYVa
-WIBlwBJ4wA==</DigestValue>
+<DigestValue>FYSH3ajhtQIHVBMxPau8skPbZ58WW9iy0d+OqtQJaojb5QME83VsSt0xOLo/blGd6KvkVn42wHpt
+BVmKn6rlXQ==</DigestValue>
 </Reference>
 <Reference URI="Views%2FLayouts%2FContents%2FTemplates%2FMoods.tpl">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -1454,8 +1454,8 @@ XvrmBWrmhA==</DigestValue>
 </Reference>
 <Reference URI="Views%2FVendors%2FSamsung%2FPlayer.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>Go3RXgQBThAr1oO6Dkp/0NTWy8x7ciIuGe3EFa9wefW9XFDmIAB2LgRr9QWDBrlFDLsJf1oTVEoH
-O77PG4ayKw==</DigestValue>
+<DigestValue>EcI7lpPcK9HRi9bQ/MNXB9kIHiUt7jgaXsSndHq9Z3O7UqduDpz9NEHEIsm1GSx8l4qp1r3GGOcx
+cSq1ZH9nGQ==</DigestValue>
 </Reference>
 <Reference URI="Views%2FVendors%2FSamsung%2FServer.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -1469,8 +1469,8 @@ YdNuQ5SBMQ==</DigestValue>
 </Reference>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>dcLBZxWF1O4dA3QDD7Df05/QP8qHknr+Z931msq88GrBTbVGx5quTtX1cJvmot+YvIm7R4Cf2RA7
-fJ8Qh7yYHA==</DigestValue>
+<DigestValue>5ZZm97BVWurSbS8dvtjkzxMZRR2aPEP5Acw685pwOcw0tQ0QmHgi0CNtilSo6kplczCpbnaYmzGU
+OclaEkoLuA==</DigestValue>
 </Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -1532,9 +1532,9 @@ GyvKX9Snig==</DigestValue>
 </Reference>
 </SignedInfo>
 <SignatureValue>
-ZHeXlnecjQ5y5Ed4u1pNWkYc2IYzVJqQwRqsdndWOj1K9Q7QMxq1CK7QVM8XHGpQ++G8cZTNU7IY
-JyHUZ4CwfciOI94LRUyAsPEkYTG19MmtC14lVPw/cMg23gsJwC2IloLf2yEHdG4o/UppP1HwZyvf
-3DiRqv9KmsquFf58wUs=
+LNpRUNeATyQfjCTRsnx9iurfvpch0iAygk4lKwYXI1RIzc0x8M/E74JxnrpHqSNSrg1eptxHQeNh
+2ExsNzqhkL+C+8P2oImXmzlJYKi13EkjraujWMu6mWOlXCy9Qmcw906uf8OCZpG0fL2zDhuQoJkg
+tPYP4rAhUnOML71nOUY=
 </SignatureValue>
 <KeyInfo>
 <X509Data>
