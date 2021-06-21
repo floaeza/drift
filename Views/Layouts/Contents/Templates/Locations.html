@@ -184,12 +184,10 @@ The above copyright notice and this permission notice shall be included in all c
     console.log(AllPackages);
     console.log(AllLocations);
     getLocations();
-    debugger
 
-    TableBody = document.getElementsByTagName('tr');
+   
+
     
-
-    console.log(TableBody);
   });
 
 function getLocations(){
@@ -290,6 +288,7 @@ function getInfo(){
 }
 
 function selectLocation(){
+  debugger
   $('#LocationsTable tbody').on('click', 'tr', function(){
     if ($(this).hasClass('selected')) {
       $(this).removeClass('selected');
@@ -297,6 +296,18 @@ function selectLocation(){
       $('#LocationsTable').DataTable().$('tr.selected').removeClass('selected');
       $(this).addClass('selected');
   }
+  TableBody = document.getElementsByTagName('tr');
+  let variable = '';
+  TableBody.forEach(element => {
+    let className = element.className;
+    let flag = className.indexOf('selected');
+    if(flag !== -1){
+      variable = element.children[0].innerText;
+    }else{
+      return;
+    }
+  });
+  alert(variable);
   });
 }
 </script>
