@@ -2,7 +2,7 @@
 
 require_once './../DataAccess/Locations.php';
 
-$CurrentController = 'ModulesController';
+$CurrentController = 'LocationController';
 
 $MacAddress = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '';
 $Option = !empty($_POST['Option']) ? $_POST['Option'] : 'UpdateLocation';
