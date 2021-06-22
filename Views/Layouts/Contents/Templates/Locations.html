@@ -68,36 +68,36 @@ The above copyright notice and this permission notice shall be included in all c
                       <div>
                         <h6 class="card-category text-gray">Guia de programación</h6>
                         <select name="Epg" id="Epg" class="custom-select">
-                          <option value="0" selected>Seleccione estado de la guia</option>
+                          <option value="Default" selected>Seleccione estado de la guia</option>
+                          <option value="0">Inactivo</option>
                           <option value="1">Activo</option>
-                          <option value="2">Inactivo</option>
                         </select>
                       </div>
                       <div>
                         <h6 class="card-category text-gray">Menu</h6>
                         <select name="Menu" id="Menu" class="custom-select">
-                          <option value="0" selected>Seleccione estado del menu</option>
+                          <option value="Default" selected>Seleccione estado del menu</option>
+                          <option value="0">Inactivo</option>
                           <option value="1">Activo</option>
-                          <option value="2">Inactivo</option>
                         </select>
                       </div>                      <div>
                         <h6 class="card-category text-gray">Mensajes</h6>
                         <select name="Messages" id="Messages" class="custom-select">
-                          <option value="0" selected>Seleccione estado de los mensajes</option>
+                          <option value="Default" selected>Seleccione estado de los mensajes</option>
+                          <option value="0">Inactivo</option>
                           <option value="1">Activo</option>
-                          <option value="2">Inactivo</option>
                         </select>
                       </div>
                       <div>
                         <h6 class="card-category text-gray">Pantalla de inicio</h6>
                         <select name="InitScreen" id="InitScreen" class="custom-select">
-                          <option value="0" selected>Seleccione modulo de inicio</option>
+                          <option value="Default" selected>Seleccione modulo de inicio</option>
                         </select>
                       </div>
                       <div>
                         <h6 class="card-category text-gray">Paquete asignado</h6>
                         <select name="Package" id="Package" class="custom-select">
-                          <option value="0"  selected>Seleccione paquete</option>
+                          <option value="Default"  selected>Seleccione paquete</option>
                         </select>
                       </div>
 
@@ -321,14 +321,15 @@ function setInformation(name){
     }
   });
 
-  return locationSelected;
+  
 }
 
 function setAllInfo(){
-  let selectPackage = document.getElementById('NumPackage');
+  let selectPackage = document.getElementById('Package');
   AllPackages.forEach(element => {
     let option = document.createElement('option');
     option.text = element.nombre_paquete;
+    option.value = element.nombre_paquete;
     selectPackage.add(option);
   });
 
@@ -337,12 +338,11 @@ function setAllInfo(){
   AllModules.forEach(element => {
     let option = document.createElement('option');
     option.text = element.Name;
+    option.value = element.Name;
     selectModules.add(option);
   });
-
-  
-
 }
+
 </script>
 
 </html>
