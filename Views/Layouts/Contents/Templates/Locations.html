@@ -320,6 +320,7 @@ function selectLocation(){
     if ($(this).hasClass('selected')) {
       $(this).removeClass('selected');
       document.getElementById('btnRegistrar').disabled = false;
+      document.getElementById('btnActualizar').disabled = true;
   } else {
       $('#LocationsTable').DataTable().$('tr.selected').removeClass('selected');
       $(this).addClass('selected');
@@ -404,6 +405,21 @@ function setAllInfo(){
 
 }
 
+
+function sendInfo(){
+  $('$btnActualizar').click( function(){
+
+    alert('ya casi');
+
+  });
+
+
+  $('$btnRegistrar').click( function(){
+
+    alert('sdf');
+
+  });
+}
 </script>
 
 </html>
