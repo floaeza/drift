@@ -108,8 +108,8 @@ The above copyright notice and this permission notice shall be included in all c
                       </div>
 
 
-                      <a href="javascript:;" class="btn btn-primary btn-round">Actualizar</a>
-                      <a href="javascript:;" class="btn btn-primary btn-round">Registrar</a>
+                      <a href="javascript:;" class="btn btn-primary btn-round" id="btnActualizar">Actualizar</a>
+                      <a href="javascript:;" class="btn btn-primary btn-round" id="btnRegistrar">Registrar</a>
                     </div>
                   </div>
                 </div>
@@ -195,6 +195,8 @@ The above copyright notice and this permission notice shall be included in all c
     getLocations();
     setAllInfo();
 
+    $('Actualizar').prop('disabled', true);
+    
    
 
     
@@ -319,9 +321,12 @@ function selectLocation(){
   $('#LocationsTable tbody').on('click', 'tr', function(){
     if ($(this).hasClass('selected')) {
       $(this).removeClass('selected');
+      $('Registrar').prop('disabled', false);
   } else {
       $('#LocationsTable').DataTable().$('tr.selected').removeClass('selected');
       $(this).addClass('selected');
+      $('Actualizar').prop('disabled', false);
+      $('Registrar').prop('disabled', true);
   }
   
   TableBody = document.getElementsByTagName('tr');
