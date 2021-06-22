@@ -306,9 +306,7 @@ function selectLocation(){
       locationName = TableBody[x].children[0].innerText;
     }
   }
-  let locationSelected = setInformation(locationName);
-
-  console.log(locationSelected);
+  setInformation(locationName);
 
   });
 }
@@ -320,7 +318,11 @@ function setInformation(name){
       locationSelected = element;
     }
   });
-
+  $('#NameLocation').val(locationSelected.codigo_locacion);
+  $('#Menu').val(locationSelected.menu);
+  $('#Messages').val(locationSelected.mensajes);
+  $('#InitScreen').val(locationSelected.menu);
+  $('#Package').val(locationSelected.id_paquete);
   
 }
 
@@ -329,7 +331,7 @@ function setAllInfo(){
   AllPackages.forEach(element => {
     let option = document.createElement('option');
     option.text = element.nombre_paquete;
-    option.value = element.nombre_paquete;
+    option.value = element.id_paquete;
     selectPackage.add(option);
   });
 
@@ -338,7 +340,7 @@ function setAllInfo(){
   AllModules.forEach(element => {
     let option = document.createElement('option');
     option.text = element.Name;
-    option.value = element.Name;
+    option.value = element.Id;
     selectModules.add(option);
   });
 }
