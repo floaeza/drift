@@ -195,7 +195,7 @@ The above copyright notice and this permission notice shall be included in all c
     getLocations();
     setAllInfo();
 
-    $('Actualizar').prop('disabled', true);
+    $('#btnActualizar').prop('disabled', true);
     
    
 
@@ -321,12 +321,12 @@ function selectLocation(){
   $('#LocationsTable tbody').on('click', 'tr', function(){
     if ($(this).hasClass('selected')) {
       $(this).removeClass('selected');
-      $('Registrar').prop('disabled', false);
+      $('#btnRegistrar').prop('disabled', false);
   } else {
       $('#LocationsTable').DataTable().$('tr.selected').removeClass('selected');
       $(this).addClass('selected');
-      $('Actualizar').prop('disabled', false);
-      $('Registrar').prop('disabled', true);
+      $('#btnActualizar').prop('disabled', false);
+      $('#btnRegistrar').prop('disabled', true);
   }
   
   TableBody = document.getElementsByTagName('tr');
