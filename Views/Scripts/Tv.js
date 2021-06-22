@@ -235,10 +235,7 @@
                     if(ActiveDigitalChannel === true){
                         CloseDigitalChannel();
                     }
-                    
-                    if(ActiveFrame === true){
-                        CloseFrame();
-                    }
+
                     PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
                 } else {
                     //if(typeof(gSTB) !== 'undefined'){
@@ -250,7 +247,7 @@
                 }
             
         }
-        //Debug('------- SetChannel -> PC: '+Source);
+        Debug('------- SetChannel ->: '+Source + ' ChannelPosition: '+ChannelPosition);
     }
     
     function GetDigitalChannel(){
