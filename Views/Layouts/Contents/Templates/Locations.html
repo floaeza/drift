@@ -347,6 +347,8 @@ function setInformation(name){
     }
   });
   if(locationSelected.length == 0){
+    $('#NameLocation').val('');
+    $('#NameLocation').attr('placeholder', 'Inserta Nombre locacion');
     $('#Epg').val('Default');
     $('#Menu').val('Default');
     $('#Messages').val('Default');
