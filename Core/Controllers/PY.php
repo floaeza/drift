@@ -20,7 +20,7 @@
     $ChannelsData = new Channels('system', $CurrentController);
     
     $ArrayEPGInfo = array();
-    $Option = !empty($_POST['Option']) ? $_POST['Option'] : 'GetIdentifier';
+    $Option = !empty($_POST['Option']) ? $_POST['Option'] : 'GetModulesBypackage';
     $PackageID = !empty($_POST['PackageID']) ? $_POST['PackageID'] : '6';
     $Station = !empty($_POST['Station']) ? $_POST['Station'] : 'GATO';  
 
@@ -62,6 +62,25 @@
                     'NAME' => $PreChannelRow['nombre_estacion'],
                     'INDC' => $PreChannelRow['indicativo'],
                     'LOGO' => $PreChannelRow['logo']
+                    
+                    ));
+                endforeach;
+                echo json_encode($ArrayEPGInfo);
+                break;
+            case 'GetModulesBypackage':
+                $PreChannalesArray  = $PackagesData->getModulesPackageListById($PackageID);
+                foreach ($PreChannalesArray as $PreChannelRow):
+                    array_push($ArrayEPGInfo, array('PSCN' => '0',
+                    'ADIO' => '0',
+                    'PRGM' => null,
+                    'SRCE' => $PreChannelRow['url_modulo'],
+                    'QLTY' => 'HD',
+                    'PORT' => $PreChannelRow['id_modulo'],
+                    'CHNL' => $PreChannelRow['numero_canal'],
+                    'STTN' => 'CONTENT',
+                    'NAME' => $PreChannelRow['nombre_modulo'],
+                    'INDC' => $PreChannelRow['descripcion_modulo'],
+                    'LOGO' => $PreChannelRow['nombre_icono']                    
                     ));
                 endforeach;
                 echo json_encode($ArrayEPGInfo);
