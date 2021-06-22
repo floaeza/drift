@@ -1,5 +1,8 @@
 <?php
 
+require_once './../Models/Database.php';
+require_once './../DataAccess/Config.php';
+require_once './../DataAccess/Modules.php';
 require_once './../DataAccess/Locations.php';
 
 $CurrentController = 'LocationController';
@@ -23,6 +26,7 @@ $LocationsData = new Locations($MacAddress, $CurrentController);
 
 switch ($Option) {
     case 'UpdateLocation':
+        
         $LocationInfo = array('codigo_miembro' => $codigo_miembro,
         'epg' =>  $epg,
         'menu' => $menu,
