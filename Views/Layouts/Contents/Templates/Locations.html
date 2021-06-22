@@ -298,19 +298,31 @@ function selectLocation(){
   }
   
   TableBody = document.getElementsByTagName('tr');
-  let variable = '';
+  let locationName = '';
 
   for (let x = 0; x < TableBody.length; x++) {
-    debugger
     let className = TableBody[x].className;
     let flag = className.indexOf('selected');
     if(flag !== -1){
-      variable = TableBody[x].children[0].innerText;
+      locationName = TableBody[x].children[0].innerText;
     }
   }
-  alert(variable);
+  let locationSelected = setInformation(locationName);
+
+  console.log(locationSelected);
 
   });
+}
+
+function setInformation(name){
+  let locationSelected = [];
+  AllLocations.forEach(element => {
+    if(element.codigo_locacion == name){
+      locationSelected = element;
+    }
+  });
+
+  return locationSelected;
 }
 </script>
 
