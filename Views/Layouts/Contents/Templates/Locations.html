@@ -75,17 +75,23 @@ The above copyright notice and this permission notice shall be included in all c
                         <h6 class="card-category text-gray">Guia de programación</h6>
                         <select name="Epg" id="Epg" class="custom-select">
                           <option value="0" selected>Seleccione estado de la guia</option>
+                          <option value="1">Activo</option>
+                          <option value="2">Inactivo</option>
                         </select>
                       </div>
                       <div>
                         <h6 class="card-category text-gray">Menu</h6>
                         <select name="Menu" id="Menu" class="custom-select">
                           <option value="0" selected>Seleccione estado del menu</option>
+                          <option value="1">Activo</option>
+                          <option value="2">Inactivo</option>
                         </select>
                       </div>                      <div>
                         <h6 class="card-category text-gray">Mensajes</h6>
                         <select name="Messages" id="Messages" class="custom-select">
                           <option value="0" selected>Seleccione estado de los mensajes</option>
+                          <option value="1">Activo</option>
+                          <option value="2">Inactivo</option>
                         </select>
                       </div>
                       <div>
@@ -184,6 +190,7 @@ The above copyright notice and this permission notice shall be included in all c
     console.log(AllPackages);
     console.log(AllLocations);
     getLocations();
+    setAllInfo();
 
    
 
@@ -323,6 +330,26 @@ function setInformation(name){
   });
 
   return locationSelected;
+}
+
+function setAllInfo(){
+  let selectPackage = document.getElementById('NumPackage');
+  AllPackages.forEach(element => {
+    let option = document.createElement('option');
+    option.text = element.nombre_paquete;
+    selectPackage.add(option);
+  });
+
+  let selectModules = document.getElementById('InitScreen');
+
+  AllModules.forEach(element => {
+    let option = document.createElement('option');
+    option.text = element.Name;
+    selectModules.add(option);
+  });
+
+  
+
 }
 </script>
 
