@@ -416,6 +416,7 @@ function sendInfo(){
       locationSelected = element;
     }
   });
+  console.log(locationSelected);
   $('#btnActualizar').click( function(){
 
     $.ajax({
@@ -436,6 +437,7 @@ function sendInfo(){
         alert('Success');
         let r  = $.parseJSON(response);
         console.log(response);
+        console.log(locationSelected.id_locacion);
       }
     }); 
    
