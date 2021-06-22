@@ -44,18 +44,18 @@ function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPi
     Debug('PlayChannel=::::::: '+Source+CheckPort);
 
     // Reproduce el canal actual
-    try {
-        Player.close();
-        Player.open(Source+CheckPort);
-        Player.setDisplayRect(0, 0, 1920, 1080);
-        //Player.setListener(listener);
-        Player.prepareAsync(function() {
-            Player.play();
-        });
-
-    } catch (error) {
-        Debug('PlayChannel > Error name = '+ error.name + ', Error message = ' + error.message);
-    }
+    // try {
+    //     Player.close();
+    //     Player.open(Source+CheckPort);
+    //     Player.setDisplayRect(0, 0, 1920, 1080);
+    //     //Player.setListener(listener);
+    //     Player.prepareAsync(function() {
+    //         Player.play();
+    //     });
+    //
+    // } catch (error) {
+    //     Debug('PlayChannel > Error name = '+ error.name + ', Error message = ' + error.message);
+    // }
 
     // Maximiza el video en caso de que no este en pantalla completa
     MaximizeTV();
@@ -84,18 +84,18 @@ function PlayDigitalChannel(Source){
     StopVideo();
     Debug('PlayDigitalChannel=::::::: '+Source);
     // Reproduce el video
-    try {
-        Player.close();
-        Player.open(Source);
-        Player.setDisplayRect(0, 0, 1920, 1080);
-        //Player.setListener(listener);
-        Player.prepareAsync(function() {
-            Player.play();
-        });
-
-    } catch (error) {
-        Debug('PlayDigitalChannel > Error name = '+ error.name + ', Error message = ' + error.message);
-    }
+    // try {
+    //     Player.close();
+    //     Player.open(Source);
+    //     Player.setDisplayRect(0, 0, 1920, 1080);
+    //     //Player.setListener(listener);
+    //     Player.prepareAsync(function() {
+    //         Player.play();
+    //     });
+    //
+    // } catch (error) {
+    //     Debug('PlayDigitalChannel > Error name = '+ error.name + ', Error message = ' + error.message);
+    // }
 
     // Maximiza el video en caso de que no este en pantalla completa
     MaximizeTV();
@@ -121,7 +121,7 @@ function PlayVideo(Source){
     StopVideo();
 
     // Reproduce el video
-    AVMedia.Play('src='+ Source);
+
 
     // Maximiza el video en caso de que no este en pantalla completa
     MaximizeTV();
@@ -132,7 +132,7 @@ function PlayMovie(Source){
     StopVideo();
 
     // Reproduce el video
-    AVMedia.Play('src='+ Source);
+
 
     // Maximiza el video en caso de que no este en pantalla completa
     MaximizeTV();
@@ -143,7 +143,7 @@ function PreviewVideo(Source){
     StopVideo();
 
     // Reproduce el video
-    AVMedia.Play('src='+ Source);
+
 
     SetPosition(400);
 
