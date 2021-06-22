@@ -346,14 +346,24 @@ function setInformation(name){
       locationSelected = element;
     }
   });
-  console.log(locationSelected);
-  $('#NameLocation').val(locationSelected.codigo_locacion);
-  $('#Epg').val(locationSelected.epg);
-  $('#Menu').val(locationSelected.menu);
-  $('#Messages').val(locationSelected.mensajes);
-  $('#InitScreen').val(locationSelected.id_modulo);
-  $('#Package').val(locationSelected.id_paquete);
-  $('#Member').val(locationSelected.codigo_miembro);
+  if(locationSelected.length == 0){
+    $('#NameLocation').val('Default');
+    $('#Epg').val('Default');
+    $('#Menu').val('Default');
+    $('#Messages').val('Default');
+    $('#InitScreen').val('Default');
+    $('#Package').val('Default');
+    $('#Member').val('Default');
+  }else{
+    $('#NameLocation').val(locationSelected.codigo_locacion);
+    $('#Epg').val(locationSelected.epg);
+    $('#Menu').val(locationSelected.menu);
+    $('#Messages').val(locationSelected.mensajes);
+    $('#InitScreen').val(locationSelected.id_modulo);
+    $('#Package').val(locationSelected.id_paquete);
+    $('#Member').val(locationSelected.codigo_miembro);
+  }
+
   
 }
 
