@@ -434,6 +434,8 @@ function sendInfo(){
       async: false,
       success: function (response) {
         alert('Success');
+        let r  = $.parseJSON(response);
+        console.log(response);
       }
     }); 
    
