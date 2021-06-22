@@ -52,6 +52,6 @@ switch ($Option) {
         'id_proyecto'=> $id_proyecto,
         'id_modulo' => $id_modulo
         ); 
-        $LocationsData->updateLocation($LocationId, $LocationInfo);
+        $LocationsData->InsertLocation($LocationInfo);
         break;
 }
