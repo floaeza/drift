@@ -83,4 +83,12 @@ class Locations extends Database {
         return $this->Locations;
     }
 
+    function InsertLocation($NewLocation){
+        $this->function = 'InsertLocation';
+        $this->connect();
+        $this->insert("locaciones", $NewLocation);
+        $this->Locations = $this->getResult();
+        $this->disconnect();
+        return $this->Locations;
+    }
 }
