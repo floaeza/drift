@@ -193,6 +193,7 @@
  *******************************************************************************/
 
     function SetChannel(NewDirection){
+        Debug('SetChannel = '+NewDirection);
         
         if(ActiveEpgContainer === false){
             
@@ -207,8 +208,11 @@
                 
                 Direction = NewDirection;
 
+                Debug('SetChannel = Direction '+Direction);
                 /* Suma o resta segun sea el caso */
                 (Direction === 'UP') ? ChannelPosition++: ChannelPosition--;
+
+                Debug('1- ChannelPosition =  '+ChannelPosition);
 
                 /* Validamos si llego al princio/fin del arreglo*/
                 if(ChannelPosition < 0){
@@ -218,7 +222,8 @@
                 if(ChannelPosition > ChannelsLength){
                     ChannelPosition = 0;
                 }
-                
+
+                Debug('2- ChannelPosition =  '+ChannelPosition);
             }
 
             /* Actualiza el canal */
@@ -235,10 +240,7 @@
                     if(ActiveDigitalChannel === true){
                         CloseDigitalChannel();
                     }
-                    
-                    if(ActiveFrame === true){
-                        CloseFrame();
-                    }
+
                     PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
                 } else {
                     //if(typeof(gSTB) !== 'undefined'){
@@ -250,7 +252,7 @@
                 }
             
         }
-        //Debug('------- SetChannel -> PC: '+Source);
+        Debug('------- SetChannel ->: '+Source + ' ChannelPosition: '+ChannelPosition);
     }
     
     function GetDigitalChannel(){
