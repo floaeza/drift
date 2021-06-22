@@ -18,8 +18,8 @@ var WindowMaxWidth  = 0,
     WindowMinWidth  = 0,
     WindowMinHeight = 0;
 
-var Player = webapis.avplay;
-    Player.setListener(listener);
+// var Player = webapis.avplay;
+//     Player.setListener(listener);
 
 /* *****************************************************************************
  * Reproductor de canal
