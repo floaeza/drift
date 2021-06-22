@@ -7,6 +7,7 @@
     require_once './../Models/Database.php';
     require_once './../DataAccess/Config.php';
     require_once './../DataAccess/Modules.php';
+    require_once './../DataAccess/Locations.php';
     
     $CurrentController = 'ModulesController';
     
@@ -16,6 +17,7 @@
     
     $ConfigData   = new Config($MacAddress, $CurrentController);
     $ModulesData = new Modules($MacAddress, $CurrentController);
+    $LocationsData = new Locations($MacAddress, $CurrentController);
 
     switch ($Option){
         case 'GetModules':
@@ -49,6 +51,10 @@
             
             $Result = $ModulesList;
         break;
+        case 'GetAllMembers':
+            $ModulesInfo = $LocationsData->getMembers();
+            $Result = $ModulesInfo;
+            break;
     }
     
     echo json_encode($Result);

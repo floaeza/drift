@@ -100,6 +100,12 @@ The above copyright notice and this permission notice shall be included in all c
                           <option value="Default"  selected>Seleccione paquete</option>
                         </select>
                       </div>
+                      <div>
+                        <h6 class="card-category text-gray">Miembro asignado</h6>
+                        <select name="Member" id="Member" class="custom-select">
+                          <option value="Default"  selected>Seleccione miembro</option>
+                        </select>
+                      </div>
 
 
                       <a href="javascript:;" class="btn btn-primary btn-round">Actualizar</a>
@@ -175,6 +181,9 @@ The above copyright notice and this permission notice shall be included in all c
   //Paquetes
   let AllPackages = [];
 
+  //Miembros
+  let Allmembers = [];
+
   //Nodos
   let TableBody = [];
 
@@ -224,6 +233,12 @@ function getLocations(){
         aux.push(package.nombre_paquete);
       }
     });
+    Allmembers.forEach(member => {
+      if(member.codigo_miembro == location.codigo_miembro){
+        aux.push(member.codigo_miembro);
+      }
+    });
+    
     LocationsToTable.push(aux);
   });
 
@@ -242,6 +257,7 @@ function getTables(){
         { title: "Mensajes" },
         { title: "Pantalla de inicio" },
         { title: "Paquete asignado" },
+        { title: "Miembro" },
     ],
     "paging": false,
     "searching": false
@@ -260,6 +276,18 @@ function getInfo(){
       AllLocations  = $.parseJSON(response);
     }
 });  
+
+$.ajax({
+  type: "POST",
+  url: SourceController+'Module.php',
+  data: { 
+      Option    : 'GetAllMembers',
+  }, 
+  async: false,
+  success: function (response) {
+    Allmembers  = $.parseJSON(response);
+  }
+}); 
 
   $.ajax({
     type: "POST",
@@ -324,6 +352,7 @@ function setInformation(name){
   $('#Messages').val(locationSelected.mensajes);
   $('#InitScreen').val(locationSelected.menu);
   $('#Package').val(locationSelected.id_paquete);
+  $('#Member').val(codigo_miembro);
   
 }
 
@@ -344,6 +373,16 @@ function setAllInfo(){
     option.value = element.Id;
     selectModules.add(option);
   });
+
+  let selectMembers = document.getElementById('Member');
+
+  Allmembers.forEach(element => {
+    let option = document.createElement('option');
+    option.text = element.codigo_miembro;
+    option.value = element.codigo_miembro;
+    selectModules.add(option);
+  });
+
 }
 
 </script>

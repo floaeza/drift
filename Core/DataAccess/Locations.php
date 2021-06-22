@@ -66,4 +66,12 @@ class Locations extends Database {
         $this->disconnect();
         return $this->Locations;
     }
+    function getMembers(){
+        $this->Function = 'getMembers';
+        $this->connect();
+        $this->select("miembros");
+        $this->Locations = $this->getResult();
+        $this->disconnect();
+        return $this->Locations;
+    }
 }
