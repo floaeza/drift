@@ -38,6 +38,7 @@ switch ($Option) {
         'id_modulo' => $id_modulo
         ); 
         $LocationsData->updateLocation($LocationId, $LocationInfo);
+        echo json_encode($LocationInfo);
         break;
 
     case 'InsertLocation':
