@@ -74,4 +74,13 @@ class Locations extends Database {
         $this->disconnect();
         return $this->Locations;
     }
+    function updateLocation($LocationId, $infoLocation){
+        $this->Function = 'updateLocation';
+        $this->connect();
+        $this->update("locaciones", $infoLocation, "id_locacion = '$LocationId'" );
+        $this->Locations = $this->getResult();
+        $this->disconnect();
+        return $this->Locations;
+    }
+
 }
