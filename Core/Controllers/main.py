@@ -52,6 +52,56 @@ def start(day, pos):
         contadorCanal = 0
         data = {}
         data["C_Length"]=0
+
+        #######################################################################################################
+        ############################################ CANAL DIGITAL ############################################
+        #######################################################################################################
+
+
+        payload = {'Option': 'GetModulesBypackage', 'PackageID': ids}
+        x = requests.post('http://172.16.0.15/BBINCO/TV/Core/Controllers/PY.php', data=payload)
+        channels = json.loads(x.content)
+        for channel in channels:
+            dataProgradm = {}
+            dataProgradm['0'] = []
+            dataProgradm['0'].append({
+                "STTN": channel['STTN'],
+                "DBKY": '',
+                "TTLE": channel['NAME'],
+                "DSCR": '',
+                "DRTN": 24,
+                "MNTS": 1440,
+                "DATE": day.strftime("%Y%m%d"),
+                "STRH": "00:00",
+                "FNLH": "24:00",
+                "TVRT": '',
+                "STRS": '',
+                "EPSD": ''
+            })
+            data[str(contadorCanal)] = []
+            data[str(contadorCanal)].append({
+                'PSCN': channel['PSCN'],
+                'ADIO': channel['ADIO'],
+                'PRGM': channel['PRGM'],
+                'SRCE': channel['SRCE'],
+                'QLTY': channel['QLTY'],
+                'PORT': channel['PORT'],
+                'CHNL': channel['CHNL'],
+                'STTN': channel['STTN'],
+                'NAME': channel['NAME'],
+                'INDC': channel['INDC'],
+                'LOGO': channel['LOGO'],
+                'DATE': day.strftime("%Y%m%d"),
+                'PROGRAMS': dataProgradm,
+                'P_Length': 1
+            })
+            contadorCanal = contadorCanal + 1
+            dataProgram.clear()
+
+
+        #######################################################################################################
+        ############################################# PROGAMACION #############################################
+        #######################################################################################################
         payload = {'Option': 'GetChannelsInfoBypackage', 'PackageID': ids}
         x = requests.post('http://172.16.0.15/BBINCO/TV/Core/Controllers/PY.php', data=payload)
         channels = json.loads(x.content)
@@ -66,6 +116,7 @@ def start(day, pos):
             os.system ("clear") 
             print("Generando: ", 'epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json       ',"{:.2f}".format((a*100)/len(channels)), " %")
             print("Archivos restantes: ", (paquetes-ids)*(len(listDays)-pos))
+            #print(channel)
             if 'GATO' in channel['STTN']:
                 dataProgramGato = {}
                 cana = False
