@@ -412,6 +412,23 @@ function setAllInfo(){
 function sendInfo(){
   $('#btnActualizar').click( function(){
 
+    $.ajax({
+      type: "POST",
+      url: SourceController+'Location.php',
+      data: { 
+          Option    : 'UpdateLocation',
+          codigo_miembro : $('#Member').val(),
+          epg: $('#Epg').val(),
+          menu: $('#Menu').val(),
+          mensajes: $('#Messages').val(),
+          id_paquete: $('#Package').val(),
+          id_modulo: $('#InitScreen').val()
+      }, 
+      async: false,
+      success: function (response) {
+        alert('Success');
+      }
+    }); 
    
 
   });
