@@ -370,7 +370,11 @@ function setAllInfo(){
 
   AllModules.forEach(element => {
     let option = document.createElement('option');
-    option.text = element.Name;
+    if(element.Name == 'Welcome'){
+      option.text = 'Menu';
+    }else{
+      option.text = element.Name;
+    }
     option.value = element.Id;
     selectModules.add(option);
   });
