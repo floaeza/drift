@@ -320,11 +320,14 @@ function selectLocation(){
       $(this).removeClass('selected');
       document.getElementById('btnRegistrar').disabled = false;
       document.getElementById('btnActualizar').disabled = true;
+      document.getElementById('NameLocation').disabled = true;
   } else {
       $('#LocationsTable').DataTable().$('tr.selected').removeClass('selected');
       $(this).addClass('selected');
       document.getElementById('btnActualizar').disabled = false;
       document.getElementById('btnRegistrar').disabled = true;
+      document.getElementById('NameLocation').disabled = false;
+
   }
   
   TableBody = document.getElementsByTagName('tr');
@@ -408,7 +411,7 @@ function setAllInfo(){
 function sendInfo(){
   $('#btnActualizar').click( function(){
 
-    alert('ya casi');
+   
 
   });
 
