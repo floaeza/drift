@@ -160,6 +160,8 @@ The above copyright notice and this permission notice shall be included in all c
   <!-- DataTables -->
   <link rel="stylesheet" type="text/css" href="../../../../../Assets//DataTables/datatables.min.css"/>
   <script type="text/javascript" src="../../../../../Assets//DataTables/datatables.min.js"></script>
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 <script>
   // Controladores
@@ -439,28 +441,37 @@ function sendInfo(){
 
   $('#btnRegistrar').click( function(){
 
-
     let Empty = isEmpty();
-    console.log(Empty);
 
-    $.ajax({
-      type: "POST",
-      url: SourceController+'Location.php',
-      data: { 
-          Option    : 'InsertLocation',
-          codigo_locacion: $('#NameLocation').val(),
-          codigo_miembro : $('#Member').val(),
-          epg: $('#Epg').val(),
-          menu: $('#Menu').val(),
-          mensajes: $('#Messages').val(),
-          id_paquete: $('#Package').val(),
-          id_modulo: $('#InitScreen').val()
-      }, 
-      async: false,
-      success: function (response) {
-        alert('Se ah actualizado la locacion seleccionada');
-      }
-    }); 
+    if(Empty.length == 0){
+      $.ajax({
+        type: "POST",
+        url: SourceController+'Location.php',
+        data: { 
+            Option    : 'InsertLocation',
+            codigo_locacion: $('#NameLocation').val(),
+            codigo_miembro : $('#Member').val(),
+            epg: $('#Epg').val(),
+            menu: $('#Menu').val(),
+            mensajes: $('#Messages').val(),
+            id_paquete: $('#Package').val(),
+            id_modulo: $('#InitScreen').val()
+        }, 
+        async: false,
+        success: function (response) {
+          alert('Se ah actualizado la locacion seleccionada');
+        }
+      }); 
+    } else{
+      swal({
+        title: "Por favor selecciona o agrega un valor en lo siguientes campos:",
+        text: Empty.toString(),
+        icon: "error",
+      });
+    }
+    
+
+
 
   });
 }
@@ -489,6 +500,9 @@ function isEmpty(){
     }
   }
 
+  if($('#NameLocation').val() == 0){
+    EmptySelects.push('Nombre Locacion')
+  }
   return EmptySelects;
 }
 </script>
