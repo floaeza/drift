@@ -433,7 +433,7 @@ function sendInfo(){
         }, 
         async: false,
         success: function (response) {
-          swal({title: "Locacion actualizada", text: "La locacion con el nombre: "+$('#NameLocation').val()+" se actualizo exitosamente", type: 
+          swal({title: "Locacion actualizada", text: "La locacion con el nombre: "+$('#NameLocation').val()+" se actualizo exitosamente", icon: 
               "success"}).then(function(){ 
                 location.reload();
                 }
@@ -485,11 +485,11 @@ $('#btnRegistrar').click( function(){
         }, 
         async: false,
         success: function (response) {
-          swal({title: "Locacion registrada", text: "La locacion con el nombre: "+$('#NameLocation').val()+" se registro exitosamente", type: 
-          "success"}).then(function(){ 
-            location.reload();
-            }
-          );
+           swal({title: "Locacion actualizada", text: "La locacion con el nombre: "+$('#NameLocation').val()+" se actualizo exitosamente", icon: 
+              "success"}).then(function(){ 
+                location.reload();
+                }
+              );
         }
       });
   
