@@ -410,36 +410,46 @@ function setAllInfo(){
 function sendInfo(){
 
   $('#btnActualizar').click( function(){
-    let locationSelected = [];
-    AllLocations.forEach(element => {
-      if(element.codigo_locacion == $('#NameLocation').val()){
-        locationSelected = element;
-      }
-    });
-    $.ajax({
-      type: "POST",
-      url: SourceController+'Location.php',
-      data: { 
-          Option    : 'UpdateLocation',
-          LocationId: locationSelected.id_locacion,
-          codigo_miembro : $('#Member').val(),
-          epg: $('#Epg').val(),
-          menu: $('#Menu').val(),
-          mensajes: $('#Messages').val(),
-          id_paquete: $('#Package').val(),
-          id_modulo: $('#InitScreen').val()
-      }, 
-      async: false,
-      success: function (response) {
-        alert('Se ah actualizado la locacion seleccionada');
-      }
-    }); 
-   
+
+    let Empty = isEmpty();
+    if(Empty == 0){
+      let locationSelected = [];
+      AllLocations.forEach(element => {
+        if(element.codigo_locacion == $('#NameLocation').val()){
+          locationSelected = element;
+        }
+      });
+      $.ajax({
+        type: "POST",
+        url: SourceController+'Location.php',
+        data: { 
+            Option    : 'UpdateLocation',
+            LocationId: locationSelected.id_locacion,
+            codigo_miembro : $('#Member').val(),
+            epg: $('#Epg').val(),
+            menu: $('#Menu').val(),
+            mensajes: $('#Messages').val(),
+            id_paquete: $('#Package').val(),
+            id_modulo: $('#InitScreen').val()
+        }, 
+        async: false,
+        success: function (response) {
+          alert('Se ah actualizado la locacion seleccionada');
+        }
+      }); 
+    } else{
+      swal({
+        title: "Por favor selecciona o agrega un valor en lo siguientes campos:",
+        text: Empty.toString(),
+        icon: "error",
+      });
+    }
+
 
   });
 
 
-  $('#btnRegistrar').click( function(){
+$('#btnRegistrar').click( function(){
 
     let Empty = isEmpty();
 
