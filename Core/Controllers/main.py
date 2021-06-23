@@ -128,7 +128,133 @@ def start(day, pos):
             if 'GATO' in channel['STTN']:
                 if GatoTime['Time'] == '0':
                     dataProgramGato = {}
-                    cana = False
+                    print('GATO TV')
+                    P_Length = 0
+                    try:
+                        raw_html = urllib.request.urlopen(
+                            'https://www.gatotv.com/canal/' + channel['NAME'] + day.strftime("%Y-%m-%d")).read().decode()
+                        soup = BeautifulSoup(raw_html, 'html.parser')
+                        table = soup.find("table", attrs={"class": "tbl_EPG"})
+                        JSONGato = tableDataText(table)
+                        JSONGato = separarGato(JSONGato)
+                        #print(JSONGato)
+                        for p in range(len(JSONGato)):
+                            strh = datetime.strptime(JSONGato[p][0], '%H:%M %p')
+                            fnlh = datetime.strptime(JSONGato[p][1], '%H:%M %p')
+                            strh1 = JSONGato[p][0].split(' ')
+                            strh2 = JSONGato[p][1].split(' ')
+                            if strh1[1] == 'PM' and (strh1[0][0]+strh1[0][1]) !='12':
+                                strh = strh + timedelta(hours=12)
+                            else:
+                                if strh1[1] == 'AM' and (strh1[0][0] + strh1[0][1]) == '12':
+                                    strh = strh - timedelta(hours=12)
+                            if strh2[1] == 'PM' and (strh2[0][0]+strh2[0][1]) != '12':
+                                fnlh = fnlh + timedelta(hours=12)
+                            else:
+                                if strh2[1] == 'AM' and (strh2[0][0]+strh2[0][1]) == '12':
+                                    fnlh = fnlh - timedelta(hours=12)
+                            minuinicio = (int(strh.hour) * 60) + int(strh.minute)
+                            minufin = (int(fnlh.hour) * 60) + int(fnlh.minute)
+                            if p == 0:
+                                strh = strh.strftime('00:00')
+                                minuinicio = 0
+
+                            if p == len(JSONGato)-1:
+                                fnlh = fnlh.strftime('23:59')
+                                minufin = 1440
+
+                            if minuinicio <= minufin:
+                                dur = minufin - minuinicio
+                            else:
+                                dur = minufin - minuinicio
+                                dur = dur + 1440
+
+                            strhh = ''
+                            fnlhh = ''
+                            if type(strh) == str:
+                                strhh = strh
+                            else:
+                                strhh = strh.strftime( '%H:%M')
+
+                            if type(fnlh) == str:
+                                fnlhh = fnlh
+                            else:
+                                fnlhh = fnlh.strftime('%H:%M')
+
+                            dataProgramGato[str(p)] = []
+                            dataProgramGato[str(p)].append({
+                                "STTN": channel['STTN'],
+                                "DBKY": '',
+                                "TTLE": JSONGato[p][2],
+                                "DSCR": JSONGato[p][3],
+                                "DRTN": float("{:.2f}".format(dur/60)),
+                                "MNTS": dur,
+                                "DATE": day.strftime("%Y%m%d"),
+                                "STRH": strhh,
+                                "FNLH": fnlhh,
+                                "TVRT": '',
+                                "STRS": '',
+                                "EPSD": ''
+                            })
+                            P_Length += 1
+                    except:
+                        print(channel['NAME'] + "   No encontrado (GATO)")
+
+                    if dataProgramGato != {}:
+                        data[str(contadorCanal)] = []
+                        data[str(contadorCanal)].append({
+                            'PSCN': channel['PSCN'],
+                            'ADIO': channel['ADIO'],
+                            'PRGM': channel['PRGM'],
+                            'SRCE': channel['SRCE'],
+                            'QLTY': 'HD' if (channel['QLTY']=='1') else 'SD' ,
+                            'PORT': channel['PORT'],
+                            'CHNL': channel['CHNL'],
+                            'STTN': channel['STTN'],
+                            'NAME': channel['NAME'],
+                            'INDC': channel['INDC'],
+                            'LOGO': channel['LOGO'],
+                            'DATE': day.strftime("%Y%m%d"),
+                            'PROGRAMS': dataProgramGato,
+                            'P_Length': P_Length
+                        })
+                    else:
+                        dataProgradm = {}
+                        dataProgradm['0'] = []
+                        dataProgradm['0'].append({
+                            "STTN": channel['STTN'],
+                            "DBKY": '',
+                            "TTLE": channel['NAME'],
+                            "DSCR": '',
+                            "DRTN": 24,
+                            "MNTS": 1440,
+                            "DATE": day.strftime("%Y%m%d"),
+                            "STRH": "00:00",
+                            "FNLH": "23:59",
+                            "TVRT": '',
+                            "STRS": '',
+                            "EPSD": ''
+                        })
+                        data[str(contadorCanal)] = []
+                        data[str(contadorCanal)].append({
+                            'PSCN': channel['PSCN'],
+                            'ADIO': channel['ADIO'],
+                            'PRGM': channel['PRGM'],
+                            'SRCE': channel['SRCE'],
+                            'QLTY': 'HD' if (channel['QLTY']=='1') else 'SD',
+                            'PORT': channel['PORT'],
+                            'CHNL': channel['CHNL'],
+                            'STTN': channel['STTN'],
+                            'NAME': channel['NAME'],
+                            'INDC': channel['INDC'],
+                            'LOGO': channel['LOGO'],
+                            'DATE': day.strftime("%Y%m%d"),
+                            'PROGRAMS': dataProgradm,
+                            'P_Length': 1
+                        })
+                    contadorCanal = contadorCanal + 1
+                else:
+                    dataProgramGato = {}
                     print('GATO TV')
                     P_Length = 0
                     try:
@@ -200,7 +326,6 @@ def start(day, pos):
                             })
                             P_Length += 1
                     except:
-                        cana = False
                         print(channel['NAME'] + "   No encontrado (GATO)")
 
                     if dataProgramGato != {}:
@@ -256,8 +381,6 @@ def start(day, pos):
                             'P_Length': 1
                         })
                     contadorCanal = contadorCanal + 1
-                else:
-                    print('a')
             else:
                 ##############  TV PASSPORT ##############
                 if 'PASS' in channel['STTN']:
