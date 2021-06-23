@@ -469,7 +469,7 @@ function isEmpty(){
   let selects = document.getElementsByTagName('select');
   let EmptySelects = [];
 
-  for (let x = 1; x < selects.length; index++) {
+  for (let x = 1; x < selects.length; x++) {
     if(selects[x].value == 'Default'){
       if(selects[x].id == 'Epg'){
         EmptySelects.push('Guia de programacion');
