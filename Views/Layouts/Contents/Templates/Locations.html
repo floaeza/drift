@@ -172,7 +172,7 @@ The above copyright notice and this permission notice shall be included in all c
   // Locaciones
   let AllLocations = [];
   let LocationsToTable = [];
-  let locationName = '';
+  
 
   // Modulos
   let AllModules = [];
@@ -333,7 +333,7 @@ function selectLocation(){
   }
   
   TableBody = document.getElementsByTagName('tr');
-
+  let locationName = '';
   for (let x = 0; x < TableBody.length; x++) {
     let className = TableBody[x].className;
     let flag = className.indexOf('selected');
@@ -347,7 +347,6 @@ function selectLocation(){
 }
 
 function setInformation(name){
-  debugger
   let locationSelected = [];
   AllLocations.forEach(element => {
     if(element.codigo_locacion == name){
