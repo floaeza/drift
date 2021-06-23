@@ -40,7 +40,7 @@
                 break;
             case 'GetOffsetZone':
                 $GuideDays = $ConfigData->getConfigByName('OffsetZone');
-                array_push($ArrayEPGInfo, array('OZN' => $GuideDays));
+                array_push($ArrayEPGInfo, array('OZN' => $GuideDays, 'GATOTIME'));
                 echo json_encode($ArrayEPGInfo);
                 break;
             case 'GetIdentifier':
