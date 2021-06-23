@@ -409,7 +409,6 @@ function setAllInfo(){
 
 function sendInfo(){
   $('#btnActualizar').click( function(){
-
     let Empty = isEmpty();
     if(Empty == 0){
       let locationSelected = [];
@@ -475,7 +474,7 @@ $('#btnRegistrar').click( function(){
         url: SourceController+'Location.php',
         data: { 
             Option    : 'InsertLocation',
-            codigo_locacion: $('#NameLocation').val(),
+            codigo_locacion: $('#NameLocation').val().toUpperCase(),
             codigo_miembro : $('#Member').val(),
             epg: $('#Epg').val(),
             menu: $('#Menu').val(),
@@ -485,7 +484,7 @@ $('#btnRegistrar').click( function(){
         }, 
         async: false,
         success: function (response) {
-           swal({title: "Locacion actualizada", text: "La locacion con el nombre: "+$('#NameLocation').val()+" se actualizo exitosamente", icon: 
+           swal({title: "Locacion registrada", text: "La locacion con el nombre: "+$('#NameLocation').val().toUpperCase()+" se registro exitosamente", icon: 
               "success"}).then(function(){ 
                 location.reload();
                 }
@@ -531,7 +530,7 @@ function isEmpty(){
 function isEqual(){
   let flag = false;
   AllLocations.forEach(element => {
-    if(element.codigo_locacion == $('#NameLocation').val()){
+    if(element.codigo_locacion == $('#NameLocation').val().toUpperCase()){
        flag = true; 
     }
   });
