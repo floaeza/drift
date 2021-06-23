@@ -418,8 +418,6 @@ function sendInfo(){
         locationSelected = element;
       }
     });
-    console.log(locationSelected.id_locacion);
-
     $.ajax({
       type: "POST",
       url: SourceController+'Location.php',
@@ -435,10 +433,7 @@ function sendInfo(){
       }, 
       async: false,
       success: function (response) {
-        alert('Success');
-        let r  = $.parseJSON(response);
-        console.log(response);
-        console.log(locationSelected.id_locacion);
+        alert('Se ah actualizado la locacion seleccionada');
       }
     }); 
    
@@ -448,7 +443,24 @@ function sendInfo(){
 
   $('#btnRegistrar').click( function(){
 
-    alert('sdf');
+    $.ajax({
+      type: "POST",
+      url: SourceController+'Location.php',
+      data: { 
+          Option    : 'InsertLocation',
+          codigo_locacion: $('#NameLocation').val(),
+          codigo_miembro : $('#Member').val(),
+          epg: $('#Epg').val(),
+          menu: $('#Menu').val(),
+          mensajes: $('#Messages').val(),
+          id_paquete: $('#Package').val(),
+          id_modulo: $('#InitScreen').val()
+      }, 
+      async: false,
+      success: function (response) {
+        alert('Se ah actualizado la locacion seleccionada');
+      }
+    }); 
 
   });
 }
