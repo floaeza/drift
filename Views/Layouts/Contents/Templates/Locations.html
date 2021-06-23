@@ -438,9 +438,10 @@ function sendInfo(){
             text: "La locacion con el nombre: "+$('#NameLocation').val()+" se actualizo exitosamente",
             icon: "success",
             button: "Hecho",
-            function(){ 
-              location.reload();
-          }
+
+          },
+          function(){ 
+            location.reload();
           });
         }
       }); 
@@ -494,10 +495,11 @@ $('#btnRegistrar').click( function(){
             text: "La locacion con el nombre: "+$('#NameLocation').val()+" se registro exitosamente",
             icon: "success",
             button: "Hecho",
-            function(){ 
-              location.reload();
+          },
+          function(){ 
+            location.reload();
           }
-          });
+          );
         }
       });
   
