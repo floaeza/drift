@@ -43,6 +43,11 @@
                 array_push($ArrayEPGInfo, array('OZN' => $GuideDays, 'GATOTIME'));
                 echo json_encode($ArrayEPGInfo);
                 break;
+            case 'GetGatoTime':
+                $GuideDays = $ConfigData->getConfigByName('GatoTime');
+                array_push($ArrayEPGInfo, array('Time' => $GuideDays));
+                echo json_encode($ArrayEPGInfo);
+                break;
             case 'GetIdentifier':
                 $GuideDays = $ConfigData->getConfigByName('Identifier');
                 array_push($ArrayEPGInfo, array('IDF' => $GuideDays));
