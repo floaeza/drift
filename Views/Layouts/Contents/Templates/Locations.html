@@ -408,7 +408,6 @@ function setAllInfo(){
 
 
 function sendInfo(){
-
   $('#btnActualizar').click( function(){
 
     let Empty = isEmpty();
@@ -434,7 +433,12 @@ function sendInfo(){
         }, 
         async: false,
         success: function (response) {
-          alert('Se ah actualizado la locacion seleccionada');
+          swal({
+            title: "Locacion actualizada",
+            text: "La locacion con el nombre: "+$('#NameLocation').val()+" se actualizo exitosamente",
+            icon: "success",
+            button: "Hecho",
+          });
         }
       }); 
     } else{
@@ -452,8 +456,21 @@ function sendInfo(){
 $('#btnRegistrar').click( function(){
 
     let Empty = isEmpty();
-
-    if(Empty.length == 0){
+    let Equal = isEqual();
+    
+    if(Empty.length>0){
+      swal({
+        title: "Por favor selecciona o agrega un valor en lo siguientes campos:",
+        text: Empty.toString(),
+        icon: "error",
+      });
+    } else if (Equal == true){
+      swal({
+        title: "El nombre que estas tratando de registrar ya existe",
+        text: "Intenta con un nombre diferente",
+        icon: "error",
+      });
+    } else if (Equal == false && Empty == 0){
       $.ajax({
         type: "POST",
         url: SourceController+'Location.php',
@@ -469,19 +486,16 @@ $('#btnRegistrar').click( function(){
         }, 
         async: false,
         success: function (response) {
-          alert('Se ah actualizado la locacion seleccionada');
+          swal({
+            title: "Locacion registrada",
+            text: "La locacion con el nombre: "+$('#NameLocation').val()+" se registro exitosamente",
+            icon: "success",
+            button: "Hecho",
+          });
         }
-      }); 
-    } else{
-      swal({
-        title: "Por favor selecciona o agrega un valor en lo siguientes campos:",
-        text: Empty.toString(),
-        icon: "error",
       });
+  
     }
-    
-
-
 
   });
 }
@@ -514,6 +528,16 @@ function isEmpty(){
     EmptySelects.push('Nombre Locacion')
   }
   return EmptySelects;
+}
+
+function isEqual(){
+  let flag = false;
+  AllLocations.forEach(element => {
+    if(element.codigo_locacion == $('#NameLocation').val()){
+       flag = true; 
+    }
+  });
+  return flag;
 }
 </script>
 
