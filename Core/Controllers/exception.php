@@ -2,7 +2,7 @@
 $text = !empty($_POST['text']) ? $_POST['text'] : '';
 $Option = !empty($_POST['Option']) ? $_POST['Option'] : '';
 
-$fichero = 'host.conf';
+$fichero = '/etc/dhcp/dhcpd.conf';
 
 $fileinfo = '';
 
