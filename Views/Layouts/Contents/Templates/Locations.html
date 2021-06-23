@@ -410,14 +410,15 @@ function setAllInfo(){
 
 
 function sendInfo(){
-  let locationSelected = [];
-  AllLocations.forEach(element => {
-    if(element.codigo_locacion == $('#NameLocation').val()){
-      locationSelected = element;
-    }
-  });
-  console.log(locationSelected.id_locacion);
+
   $('#btnActualizar').click( function(){
+    let locationSelected = [];
+    AllLocations.forEach(element => {
+      if(element.codigo_locacion == $('#NameLocation').val()){
+        locationSelected = element;
+      }
+    });
+    console.log(locationSelected.id_locacion);
 
     $.ajax({
       type: "POST",
