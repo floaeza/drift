@@ -126,7 +126,7 @@ def start(day, pos):
             print("Archivos restantes: ", (paquetes-ids)*(len(listDays)-pos))
             #print(channel)
             if 'GATO' in channel['STTN']:
-                if GatoTime['Time'] != '0':
+                if GatoTime['Time'] == '0':
                     dataProgramGato = {}
                     cana = False
                     print('GATO TV')
@@ -257,7 +257,7 @@ def start(day, pos):
                         })
                     contadorCanal = contadorCanal + 1
                 else:
-                    
+                    print('a')
             else:
                 ##############  TV PASSPORT ##############
                 if 'PASS' in channel['STTN']:
