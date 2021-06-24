@@ -104,130 +104,198 @@ def start(day, pos):
             a = a + 1
             os.system ("clear") 
             print("Generando: ", 'epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json       ',"{:.2f}".format((a*100)/len(channels)), " %")
+            print(channel['NAME'])
             print("Archivos restantes: ", (paquetes-ids)*(len(listDays)-pos))
             #print(channel)
             if 'GATO' in channel['STTN']:
-                if GatoTime['Time'] == '0':
-                    dataProgramGato = {}
-                    print('GATO TV')
-                    P_Length = 0
-                    try:
-                        raw_html = urllib.request.urlopen('https://www.gatotv.com/canal/'+ channel['NAME'] + day.strftime("%Y-%m-%d")).read().decode()
-                        raw_html.encode('utf-8')
-                        soup = BeautifulSoup(raw_html, 'html.parser')
+                dataProgramGato = {}
+                print('GATO TV')
+                P_Length = 0
+                try:
+                    raw_html = urllib.request.urlopen('https://www.gatotv.com/canal/' + channel['NAME'] + day.strftime(
+                        "%Y-%m-%d")).read().decode()
+                    raw_html.encode('utf-8')
+                    soup = BeautifulSoup(raw_html, 'html.parser')
 
-                        prueba = soup.find('table', class_='tbl_EPG')
+                    prueba = soup.find('table', class_='tbl_EPG')
 
-                        lista1 = prueba.find_all('tr', class_=['tbl_EPG_row', 'tbl_EPG_row_selected','tbl_EPG_rowAlternate'])
+                    lista1 = prueba.find_all('tr', class_=['tbl_EPG_row', 'tbl_EPG_row_selected','tbl_EPG_rowAlternate'])
+                    parttwo = False
+                    lista = []
+                    dif = GatoTime['Time']
+                    if int(dif)!=0:
+                        parttwo = True
 
-                        print(len(lista1))
-                        lista = []
-                        horainicio = datetime.strptime("00:00","%H:%M")
-                        for list in lista1:
-                            try:
-                                emicion1 = list.find_all('time')
-                                inicio1 = datetime.strptime(emicion1[0]['datetime'], "%H:%M")
-                                fin1 = datetime.strptime(emicion1[1]['datetime'], "%H:%M")
-                                dur = fin1 - inicio1
+                    horainicio = datetime.strptime("0"+dif+":00","%H:%M")
+                    primero = True
+                    for list in lista1:
+                        try:
+                            emicion = list.find_all('time')
+                            inicio = datetime.strptime(emicion[0]['datetime'], "%H:%M")
+                            fin = datetime.strptime(emicion[1]['datetime'], "%H:%M")
+                            if (fin > horainicio) or primero == False:
+                                if primero:
+                                    inicio = horainicio
+                                    primero = False
+
                                 title1 = list.find('span')
                                 title1 = title1.get_text()
                                 tds = list.find_all('td')
-                                if len(tds) == 3:
+                                if fin >= datetime.strptime("01:00","%H:%M") and lista1.index(list) == len(lista1)-1:
+                                    fin = datetime.strptime("00:59","%H:%M")
+                                    parttwo = False
+                                if lista1.index(list) == len(lista1)-1 and parttwo == False:
+                                    fin = datetime.strptime("23:59", "%H:%M")
+                                inicio = inicio - timedelta(hours=int(dif))
+                                fin = fin - timedelta(hours=int(dif))
+                                dur = fin - inicio
+                                if len(tds) == 3 and (inicio.strftime("%H:%M") != fin.strftime("%H:%M")):
                                     lista.append({
-                                        'inicio': inicio1.strftime("%H:%M"),
-                                        'fin': fin1.strftime("%H:%M"),
+                                        'inicio': inicio.strftime("%H:%M"),
+                                        'fin': fin.strftime("%H:%M"),
                                         'durh': float("{:.2f}".format((int(dur.seconds)/60)/60)),
                                         'durm': (int(dur.seconds)/60),
                                         'title': title1,
                                         'desc' : ''
                                     })
-                                elif len(tds) == 4:
+                                elif len(tds) == 4 and (inicio.strftime("%H:%M") != fin.strftime("%H:%M")):
                                     desc = tds[3].get_text().split('\n\n\n')
                                     lista.append({
-                                        'inicio': inicio1.strftime("%H:%M"),
-                                        'fin': fin1.strftime("%H:%M"),
-                                        'durh': float("{:.2f}".format((int(dur.seconds) / 60) / 60)),
-                                        'durm': (int(dur.seconds) / 60),
-                                        'title': title1,
+                                        'inicio': inicio.strftime("%H:%M"),
+                                        'fin' : fin.strftime("%H:%M"),
+                                        'durh' : float("{:.2f}".format((int(dur.seconds) / 60) / 60)),
+                                        'durm' : (int(dur.seconds) / 60),
+                                        'title' : title1,
                                         'desc' : desc[2]
                                     })
-                            except:
-                                break
-                        for li in len(lista):
-                            dataProgramGato[str(li)] = []
-                            dataProgramGato[str(li)].append({
-                                "STTN": channel['STTN'],
-                                "DBKY": '',
-                                "TTLE": lista[li]['title'],
-                                "DSCR": lista[li]['desc'],
-                                "DRTN": lista[li]['durh'],
-                                "MNTS": lista[li]['durm'],
-                                "DATE": day.strftime("%Y%m%d"),
-                                "STRH": lista[li]['inicio'],
-                                "FNLH": lista[li]['fin'],
-                                "TVRT": '',
-                                "STRS": '',
-                                "EPSD": ''
-                            })
-                            P_Length += 1
-                    except:
-                        print(channel['NAME'] + "   No encontrado (GATO)")
+                            else:
+                                continue
+                        except:
+                            break
+                    if int(dif)!=0 and parttwo == True:
+                        tom = day + timedelta(days=1)
+                        raw_html = urllib.request.urlopen('https://www.gatotv.com/canal/' + channel['NAME'] + tom.strftime(
+                        "%Y-%m-%d")).read().decode()
+                        raw_html.encode('utf-8')
+                        soup = BeautifulSoup(raw_html, 'html.parser')
 
-                    if dataProgramGato != {}:
-                        data[str(contadorCanal)] = []
-                        data[str(contadorCanal)].append({
-                            'PSCN': channel['PSCN'],
-                            'ADIO': channel['ADIO'],
-                            'PRGM': channel['PRGM'],
-                            'SRCE': channel['SRCE'],
-                            'QLTY': 'HD' if (channel['QLTY']=='1') else 'SD' ,
-                            'PORT': channel['PORT'],
-                            'CHNL': channel['CHNL'],
-                            'STTN': channel['STTN'],
-                            'NAME': channel['NAME'],
-                            'INDC': channel['INDC'],
-                            'LOGO': channel['LOGO'],
-                            'DATE': day.strftime("%Y%m%d"),
-                            'PROGRAMS': dataProgramGato,
-                            'P_Length': P_Length
-                        })
-                    else:
-                        dataProgradm = {}
-                        dataProgradm['0'] = []
-                        dataProgradm['0'].append({
+                        prueba = soup.find('table', class_='tbl_EPG')
+                        brea = False
+                        lista1 = prueba.find_all('tr', class_=['tbl_EPG_row', 'tbl_EPG_row_selected', 'tbl_EPG_rowAlternate'])
+                        primero = True
+                        for list in lista1:
+                            if brea:
+                                break
+                            emicion = list.find_all('time')
+                            inicio = datetime.strptime(emicion[0]['datetime'], "%H:%M")
+                            fin = datetime.strptime(emicion[1]['datetime'], "%H:%M")
+                            if inicio == (datetime.strptime(lista[-1]['inicio'], "%H:%M") + timedelta(hours=int(dif))) and fin == (datetime.strptime(lista[-1]['fin'], "%H:%M") + timedelta(hours=int(dif))):
+                                continue
+                            if primero:
+                                inicio = datetime.strptime(lista[-1]['fin'], "%H:%M")+ timedelta(hours=int(dif))
+                                primero = False
+                            if fin > horainicio:
+                                fin = horainicio
+                                brea = True
+                            title1 = list.find('span')
+                            title1 = title1.get_text()
+                            tds = list.find_all('td')
+                            inicio = inicio - timedelta(hours=int(dif))
+                            fin = fin - timedelta(hours=int(dif))
+                            dur = fin - inicio
+                            print("entre")
+                            if len(tds) == 3 and (inicio.strftime("%H:%M") != fin.strftime("%H:%M")):
+                                lista.append({
+                                    'inicio': inicio.strftime("%H:%M"),
+                                    'fin': fin.strftime("%H:%M"),
+                                    'durh': float("{:.2f}".format((int(dur.seconds)/60)/60)),
+                                    'durm': (int(dur.seconds)/60),
+                                    'title': title1,
+                                    'desc' : ''
+                                })
+                            elif len(tds) == 4 and (inicio.strftime("%H:%M") != fin.strftime("%H:%M")):
+                                desc = tds[3].get_text().split('\n\n\n')
+                                lista.append({
+                                    'inicio': inicio.strftime("%H:%M"),
+                                    'fin' : fin.strftime("%H:%M"),
+                                    'durh' : float("{:.2f}".format((int(dur.seconds) / 60) / 60)),
+                                    'durm' : (int(dur.seconds) / 60),
+                                    'title' : title1,
+                                    'desc' : desc[2]
+                                })
+                    for li in range(len(lista)):
+                        dataProgramGato[str(li)] = []
+                        dataProgramGato[str(li)].append({
                             "STTN": channel['STTN'],
                             "DBKY": '',
-                            "TTLE": channel['NAME'],
-                            "DSCR": '',
-                            "DRTN": 24,
-                            "MNTS": 1440,
+                            "TTLE": lista[li]['title'],
+                            "DSCR": lista[li]['desc'],
+                            "DRTN": lista[li]['durh'],
+                            "MNTS": lista[li]['durm'],
                             "DATE": day.strftime("%Y%m%d"),
-                            "STRH": "00:00",
-                            "FNLH": "23:59",
+                            "STRH": lista[li]['inicio'],
+                            "FNLH": lista[li]['fin'],
                             "TVRT": '',
                             "STRS": '',
                             "EPSD": ''
                         })
-                        data[str(contadorCanal)] = []
-                        data[str(contadorCanal)].append({
-                            'PSCN': channel['PSCN'],
-                            'ADIO': channel['ADIO'],
-                            'PRGM': channel['PRGM'],
-                            'SRCE': channel['SRCE'],
-                            'QLTY': 'HD' if (channel['QLTY']=='1') else 'SD',
-                            'PORT': channel['PORT'],
-                            'CHNL': channel['CHNL'],
-                            'STTN': channel['STTN'],
-                            'NAME': channel['NAME'],
-                            'INDC': channel['INDC'],
-                            'LOGO': channel['LOGO'],
-                            'DATE': day.strftime("%Y%m%d"),
-                            'PROGRAMS': dataProgradm,
-                            'P_Length': 1
-                        })
-                    contadorCanal = contadorCanal + 1
+                        P_Length += 1
+                except:
+                    print(channel['NAME'] + "   No encontrado (GATO)")
+
+                if dataProgramGato != {}:
+                    data[str(contadorCanal)] = []
+                    data[str(contadorCanal)].append({
+                        'PSCN': channel['PSCN'],
+                        'ADIO': channel['ADIO'],
+                        'PRGM': channel['PRGM'],
+                        'SRCE': channel['SRCE'],
+                        'QLTY': 'HD' if (channel['QLTY']=='1') else 'SD' ,
+                        'PORT': channel['PORT'],
+                        'CHNL': channel['CHNL'],
+                        'STTN': channel['STTN'],
+                        'NAME': channel['NAME'],
+                        'INDC': channel['INDC'],
+                        'LOGO': channel['LOGO'],
+                        'DATE': day.strftime("%Y%m%d"),
+                        'PROGRAMS': dataProgramGato,
+                        'P_Length': P_Length
+                    })
                 else:
-                    print("")
+                    dataProgradm = {}
+                    dataProgradm['0'] = []
+                    dataProgradm['0'].append({
+                        "STTN": channel['STTN'],
+                        "DBKY": '',
+                        "TTLE": channel['NAME'],
+                        "DSCR": '',
+                        "DRTN": 24,
+                        "MNTS": 1440,
+                        "DATE": day.strftime("%Y%m%d"),
+                        "STRH": "00:00",
+                        "FNLH": "23:59",
+                        "TVRT": '',
+                        "STRS": '',
+                        "EPSD": ''
+                    })
+                    data[str(contadorCanal)] = []
+                    data[str(contadorCanal)].append({
+                        'PSCN': channel['PSCN'],
+                        'ADIO': channel['ADIO'],
+                        'PRGM': channel['PRGM'],
+                        'SRCE': channel['SRCE'],
+                        'QLTY': 'HD' if (channel['QLTY']=='1') else 'SD',
+                        'PORT': channel['PORT'],
+                        'CHNL': channel['CHNL'],
+                        'STTN': channel['STTN'],
+                        'NAME': channel['NAME'],
+                        'INDC': channel['INDC'],
+                        'LOGO': channel['LOGO'],
+                        'DATE': day.strftime("%Y%m%d"),
+                        'PROGRAMS': dataProgradm,
+                        'P_Length': 1
+                    })
+                contadorCanal = contadorCanal + 1
             else:
                 ##############  TV PASSPORT ##############
                 if 'PASS' in channel['STTN']:
