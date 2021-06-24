@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exepciones DHCP</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<style>
+#data{
+    min-width: 100%;
+    max-height: 450px;
+    height: 450px;
+    width: 100%;
+    resize: none;
+    background-color: black;
+    color: #21fd34;
+}
+#save{
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+    color: #fff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: #005bbb;
+}
+#restart{
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+    color: #fff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: #e68507d7;
+}
+
+</style>
+<body>
+    <div>
+        <form id="form" method="POST">
+            Excepción de dispositivos DHCP: <br/>
+            <textarea name="data" id="data" cols="84" rows="7"></textarea>
+            <button id="save">Guardar</button>
+            <button id="restart">Reiniciar servicio DHCP</button>
+        </form>
+    </div>
+   
+ </body>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $.ajax({
+            type: "POST",
+            url: "../../../../Core/Controllers/exception.php", 
+            data:{
+                Option: 'GetFileInfo',
+            },
+            success: function(response) {
+                //alert(data);
+                $('#data').text(response);
+            }
+        });
+        $('#save').click(function() {
+            if(confirm('Cualquier omisión de punto y coma, llaves sin cerrar y mac address repetidas ocasionarian que el servicio DHCP no inicie correctamente, ¿Deseas guardar los cambios?')){
+                setNewConfig();
+            } else {
+                return;
+            }
+        });
+
+        $('#restart').click(function() {
+            if(confirm('¿Realmente desea reiniciar el servicio DHCP?')){
+                setRestartDHCP();
+            } else {
+                return;
+            }
+        });
+    });
+
+function setNewConfig(){
+    var dataString =$('textarea#data').val();
+    $.ajax({
+        type: "POST",
+        url: "../../../../Core/Controllers/exception.php",
+        data:{
+            text: dataString,
+            Option: 'SetInfo',
+        },
+        success: function(response) {
+            alert(response);
+        }
+    });
+}
+
+function setRestartDHCP(){
+    $.ajax({
+        type: "POST",
+        url: "../../../../Core/Controllers/exception.php",
+        data:{
+            Option: 'RestartDHCP',
+        },
+        success: function(response) {
+            alert(response);
+        }
+    });
+}
+    </script>
+</html>

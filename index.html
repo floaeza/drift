@@ -1,373 +1,317 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-	<script src="Views/Libraries/jquery-1.12.3.min.js"></script>
-	<script src="Views/Vendors/Generic/Keys.js"></script>
-	<style>
-		body{
-			width: 100%;
-			height: 100%;
-			position: fixed;
-			margin: 0;
-			padding: 0;
-		}
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<meta name="description" content="BBINCOTV"/>
 
-		#Bbinco {
-			height: 12%;
-		}
+	<title>BBINCOTV</title>
 
-		#BbincoTV {
-			border: 8px solid #797777;
-			box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.88);
-			float: left;
-		}
+	<!-- Script Files -->
+	<script type='text/javascript' src='$B2BAPIS/b2bapis/b2bapis.js'></script>
+	<script type='text/javascript' src='$MANAGER_WIDGET/Common/af/2.0.0/loader.js'></script>
+	<script type="text/javascript" src="$WEBAPIS/webapis/webapis.js"></script>
+	<script type='text/javascript' src='./Views/Vendors/Samsung/Server.js'></script> <!-- ACTUALIZAR IP SERVIDOR! -->
 
-		#Container {
-			width: 100%;
-			position: fixed;
-			height: 90%;
-			overflow: scroll;
-			white-space: nowrap;
-		}
+	<script type='text/javascript' src='./Views/Libraries/jquery-1.12.3.min.js'></script>
+	<script type='text/javascript' src='./Views/Vendors/Samsung/Keys.js'></script>
 
-		#Bbinco img {
-			width: 20%;
-		}
-
-		#Control {
-			float: right;
-			padding: 0.5%;
-			width: 30%;
-		}
-
-		#Control img {
-			max-height: 720px;
-			max-width: 400px;
-		}
-
-		/*#Info  {*/
-		/*    position: fixed;*/
-		/*    left: 25%;*/
-		/*    width: 500px;*/
-		/*    border-radius: 18px;*/
-		/*    box-shadow: 2px 2px 2px rgba(0,0,0,0.5);*/
-		/*    opacity: 0.9;*/
-		/*    top: 25%;*/
-		/*    display: none;*/
-		/*}*/
-
-		.RemoteContainer{
-			width:200px;
-			height: 600px;
-			position: absolute;
-			top: 48%;
-			margin-top: -300px;
-			right: 1%;
-			background: no-repeat center center;
-			background-size: contain;
-			font-size: 1em;
-			border-radius: 15px;
-			background-image: linear-gradient(to top, #000, #444);
-
-		}
-
-		.RemoteContainer > table{
-			margin: 0 auto;
-			width: 70%;
-			height: 80%
-		}
-
-		.NumericButton{
-			width: 40px;
-			height: 40px;
-			float:left;
-			border-radius: 15px;
-			text-align: center;
-			font-weight: bold;
-		}
-
-		.Button{
-			width: 40px;
-			height: 35px;
-			float:left;
-			text-align: center;
-			/*border-radius: 15px;*/
-			/*background-image: linear-gradient(to bottom right, #000000, #cccccc);*/
-			color: white;
-			line-height: 2.3em;
-			font-family: Arial, Helvetica, sans-serif;
-
-
-
-			-webkit-touch-callout: none; /* iOS Safari */
-			-webkit-user-select: none; /* Safari */
-			-khtml-user-select: none; /* Konqueror HTML */
-			-moz-user-select: none; /* Firefox */
-			-ms-user-select: none; /* Internet Explorer/Edge */
-			user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
-		}
-		.ClickedButton{
-			border-radius: 5px;
-			background-image: linear-gradient(to bottom right, #0b0b0b, #1a2a5c);
-
-		}
-		.Top{
-			line-height: 2.5em;
-			font-size: 0.9em;
-		}
-
-		.Middle{
-			line-height: 2.3em;
-		}
-
-
-		#Up{
-			margin: 5px;
-			width: 0;
-			height: 0;
-			border-right: 16px solid transparent;
-			border-left: 16px solid transparent;
-			border-bottom: 20px solid whitesmoke;
-			opacity: 0.5;
-		}
-
-		#Down{
-			margin: 5px;
-			margin-top: 10px;
-			width: 0;
-			height: 0;
-			border-right: 16px solid transparent;
-			border-left: 16px solid transparent;
-			border-top: 20px solid whitesmoke;
-			opacity: 0.5;
-		}
-
-		#Left{
-			margin-left: 7px;
-			margin-top: 2px;
-			width: 0;
-			height: 0;
-			border-top: 16px solid transparent;
-			border-bottom: 16px solid transparent;
-			border-right: 20px solid whitesmoke;
-			opacity: 0.5;
-		}
-
-		#Right{
-			margin-left: 14px;
-			margin-top: 2px;
-			width: 0;
-			height: 0;
-			border-top: 16px solid transparent;
-			border-bottom: 16px solid transparent;
-			border-left: 20px solid whitesmoke;
-			opacity: 0.5;
-		}
-
-		#ChannelUp{
-			font-weight: bold;
-			font-size: 2.5em;
-			line-height: 0.95em;
-		}
-
-		#ChannelDown{
-			font-weight: bold;
-			font-size: 2.5em;
-			line-height: 0.75em;
-		}
-
-		#Channel{
-			line-height: 2.3em;
-			background-image: unset ;
-		}
-
-		#Guide{
-			font-size: 0.9em;
-			line-height: 2.6em;
-		}
-
-		#Frame {
-			position: absolute;
-			top: 50%;
-			margin-top: -360px;
-			border: solid rgba(255, 255, 255, 0.3) 5px;
-			pointer-events: none;
-			margin-left: 1%;
-		}
-	</style>
+	<link rel='stylesheet' href='./Views/Styles/FontAwesome/css/all.css'>
+	<link rel='stylesheet' href='./Views/Layouts/Initial/Index.css'>
 </head>
 <body>
-<div id='Bbinco'>
-	<img src='Media/Logos/BBN/main_logo.png'>
+<div class='ContainerIndex' style="background-image: url('./Media/init.jpg') ">
+	<br>
+	<h1 id='DebugText'></h1>
 </div>
-<div id='Container'>
-	<iframe width="1180" height="580"  title="BbincoTV" id="BbincoTV"></iframe>
 
-	<div class='RemoteContainer' id='RemoteContainer'>
-		<table>
-			<tr class='TopSpacer'>
-				<!--Spacer-->
-			</tr>
-			<tr>
-				<td><div class = 'Button Top' id='Back'>Close</div></td>
-				<td><div class = 'Button Top' id='Menu'>Menu</div></td>
-				<td><div class = 'Button Top' id='Info'>Info</div></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><div class = 'Button Up'><div id='Up'></div></div></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td><div class = 'Button Middle'><div id='Left'></div></div></td>
-				<td><div class = 'Button Middle'><div id='Ok'>OK</td>
-				<td><div class = 'Button Middle'><div id='Right'></div></div></td>
-			</tr>
-			<tr>
-				<td><i></i></td>
-				<td><div class = 'Button Down'><div id='Down'></div></div></td>
-				<td><i></i></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><div class = 'Button Bottom' id='Guide'>Guide</div></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td><div class = 'Button' id='ChannelUp'>+</div></td>
-				<td><div class = 'Button' id='Channel'>CH</div></td>
-				<td><div class = 'Button' id='ChannelDown'>-</div></td>
-			</tr>
-			<tr class='ChannelButtonsLimit'>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-			<tr class='Spacer'>
-				<!--Spacer-->
-			</tr>
-			<td><div class = 'NumericButton Button' id='1'>1</div></td>
-			<td><div class = 'NumericButton Button' id='2'>2</div></td>
-			<td><div class = 'NumericButton Button' id='3'>3</div></td>
-			</tr>
-			<tr>
-				<td><div class = 'NumericButton Button' id='4'>4</div></td>
-				<td><div class = 'NumericButton Button' id='5'>5</div></td>
-				<td><div class = 'NumericButton Button' id='6'>6</div></td>
-			</tr>
-			<tr>
-				<td><div class = 'NumericButton Button' id='7'>7</div></td>
-				<td><div class = 'NumericButton Button' id='8'>8</div></td>
-				<td><div class = 'NumericButton Button' id='9'>9</div></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><div class = 'NumericButton Button' id='0'>0</div></td>
-				<td></td>
-			</tr>
-		</table>
+<div id='Register'>
+	<div class='Help'>Ingrese el código de la habitación/residencia:</div>
+	<div id='Location'>#</div>
+
+	<div id='SelectLocation'>
+		<div class='Help' id='Coincidence'></div>
+
+		<i class="fa fa-caret-up Help" id='Up'></i>
+		<div id='SetLocation'></div>
+		<i class="fa fa-caret-down Help" id='Down'></i>
+		<div class='Help' id='Optional'>Presione ARRIBA o ABAJO hasta encontrar el código correcto</div>
+		<br>
+		<div class='Help' id='LastStep'>Presione ENTER si el código es correcto, CLEAR para empezar de nuevo o EXIT para omitir el registro</div>
 	</div>
-	<!--div id='Control'>
-        <img src='Media/Logos/BBN/control.png'>
-    </div-->
 </div>
 
-<!--img id='Help' src='Media/Logos/BBN/help.png' onclick="ShowInfo()">
+<div id='HelpControl'>
+	<img src='./Media/control-help.png'>
+</div>
 
-<img id='Info' src='Media/Logos/BBN/info.png' onclick="CloseInfo()"-->
 </body>
 <script>
-	// var Help = document.getElementById('Help');
-	// var Info = document.getElementById('Info');
-	//
-	// function ShowInfo() {
-	//     Info.style.display = 'inline';
-	// }
-	//
-	// function CloseInfo() {
-	//     Info.style.display = 'none';
-	// }
+	/* Carga inicial */
+	window.addEventListener('load',SetData,false);
 
-	/********************************************
-	 * Inicialización de variables
-	 *********************************************/
-	var
-			Frame               = document.getElementById('BbincoTV'),
-			Menu                = document.getElementById('Menu'),
-			Info                = document.getElementById('Info'),
-			Left                = document.getElementById('Left').parentElement,
-			Right               = document.getElementById('Right').parentElement,
-			Up                  = document.getElementById('Up').parentElement,
-			Down                = document.getElementById('Down').parentElement,
-			Ok                  = document.getElementById('Ok'),
-			Back                = document.getElementById('Back'),
-			Guide               = document.getElementById('Guide'),
-			ChannelUp           = document.getElementById('ChannelUp'),
-			ChannelDown         = document.getElementById('ChannelDown'),
-			Number1             = document.getElementById('1'),
-			Number2             = document.getElementById('2'),
-			Number3             = document.getElementById('3'),
-			Number4             = document.getElementById('4'),
-			Number5             = document.getElementById('5'),
-			Number6             = document.getElementById('6'),
-			Number7             = document.getElementById('7'),
-			Number8             = document.getElementById('8'),
-			Number9             = document.getElementById('9'),
-			Number0             = document.getElementById('0'),
-			RemoteContainer     = document.getElementById('RemoteContainer');
+	if (window.tizen !== undefined) {
+		var b2bcontrol = window.b2bapis.b2bcontrol;
+	}
 
-	var Host = self.location.host;
+	var DebugText = document.getElementById('DebugText'),
+		NewRegister = false,
+		FirmwareVersion = '',
+		TvModel = '',
+		MACAddress = '',
+		SetOption = 'CHECK',
+		IPAddress = '',
+		IdLocation = 1;
 
-	Frame.src = 'http://'+Host+'/BBINCO/TV/index.php';
+	var Register = document.getElementById('Register'),
+		HelpControl = document.getElementById('HelpControl');
 
-	/*********************************************
-	 * Creadores de eventos para control remoto
-	 *********************************************/
-	Menu.addEventListener('click',        function(){ Frame.contentWindow.MakeEvent(REMOTE_MENU); });
-	Info.addEventListener('click',        function(){ Frame.contentWindow.MakeEvent(REMOTE_INFO); });
-	Left.addEventListener('click',        function(){ Frame.contentWindow.MakeEvent(ARROW_KEY_LEFT); });
-	Right.addEventListener('click',       function(){ Frame.contentWindow.MakeEvent(ARROW_KEY_RIGHT); });
-	Up.addEventListener('click',          function(){ Frame.contentWindow.MakeEvent(ARROW_KEY_UP); });
-	Down.addEventListener('click',        function(){ Frame.contentWindow.MakeEvent(ARROW_KEY_DOWN); });
-	Ok.addEventListener('click',          function(){ Frame.contentWindow.MakeEvent(REMOTE_OK); });
-	Back.addEventListener('click',        function(){ Frame.contentWindow.MakeEvent(REMOTE_BACK); });
-	Guide.addEventListener('click',       function(){ Frame.contentWindow.MakeEvent(REMOTE_GUIDE); });
-	ChannelUp.addEventListener('click',   function(){ Frame.contentWindow.MakeEvent(REMOTE_CHANNEL_UP); });
-	ChannelDown.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(REMOTE_CHANNEL_DOWN); });
+	var PressedKey = 0,
+		AccountCode = 0,
+		CheckLocations = [],
+		LocationsFound = false,
+		IndexCheck = 0;
 
-	Number0.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(48); });
-	Number1.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(49); });
-	Number2.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(50); });
-	Number3.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(51); });
-	Number4.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(52); });
-	Number5.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(53); });
-	Number6.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(54); });
-	Number7.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(55); });
-	Number8.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(56); });
-	Number9.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(57); });
+	var Location = document.getElementById('Location'),
+		Coincidence = document.getElementById('Coincidence'),
+		LastStep = document.getElementById('LastStep'),
+		SetLocation = document.getElementById('SetLocation'),
+		Optional = document.getElementById('Optional'),
+		Up = document.getElementById('Up'),
+		Down = document.getElementById('Down');
 
-	Menu.addEventListener('mousedown',          function(){ Menu.classList.toggle('ClickedButton'); setTimeout(function(){ Menu.classList.toggle('ClickedButton'); },100) });
-	Info.addEventListener('mousedown',          function(){ Info.classList.toggle('ClickedButton'); setTimeout(function(){ Info.classList.toggle('ClickedButton'); },100) });
-	Left.addEventListener('mousedown',          function(){ Left.classList.toggle('ClickedButton'); setTimeout(function(){ Left.classList.toggle('ClickedButton'); },100) });
-	Right.addEventListener('mousedown',         function(){ Right.classList.toggle('ClickedButton'); setTimeout(function(){ Right.classList.toggle('ClickedButton'); },100) });
-	Up.addEventListener('mousedown',            function(){ Up.classList.toggle('ClickedButton'); setTimeout(function(){ Up.classList.toggle('ClickedButton'); },100) });
-	Down.addEventListener('mousedown',          function(){ Down.classList.toggle('ClickedButton'); setTimeout(function(){ Down.classList.toggle('ClickedButton'); },100) });
-	Ok.addEventListener('mousedown',            function(){ Ok.classList.toggle('ClickedButton'); setTimeout(function(){ Ok.classList.toggle('ClickedButton'); },100) });
-	Back.addEventListener('mousedown',          function(){ Back.classList.toggle('ClickedButton'); setTimeout(function(){ Back.classList.toggle('ClickedButton'); },100) });
-	Guide.addEventListener('mousedown',         function(){ Guide.classList.toggle('ClickedButton'); setTimeout(function(){ Guide.classList.toggle('ClickedButton'); },100) });
-	ChannelUp.addEventListener('mousedown',     function(){ ChannelUp.classList.toggle('ClickedButton'); setTimeout(function(){ ChannelUp.classList.toggle('ClickedButton'); },100) });
-	ChannelDown.addEventListener('mousedown',   function(){ ChannelDown.classList.toggle('ClickedButton'); setTimeout(function(){ ChannelDown.classList.toggle('ClickedButton'); },100) });
-	Number0.addEventListener('mousedown',       function(){ Number0.classList.toggle('ClickedButton'); setTimeout(function(){ Number0.classList.toggle('ClickedButton'); },100) });
-	Number1.addEventListener('mousedown',       function(){ Number1.classList.toggle('ClickedButton'); setTimeout(function(){ Number1.classList.toggle('ClickedButton'); },100) });
-	Number2.addEventListener('mousedown',       function(){ Number2.classList.toggle('ClickedButton'); setTimeout(function(){ Number2.classList.toggle('ClickedButton'); },100) });
-	Number3.addEventListener('mousedown',       function(){ Number3.classList.toggle('ClickedButton'); setTimeout(function(){ Number3.classList.toggle('ClickedButton'); },100) });
-	Number4.addEventListener('mousedown',       function(){ Number4.classList.toggle('ClickedButton'); setTimeout(function(){ Number4.classList.toggle('ClickedButton'); },100) });
-	Number5.addEventListener('mousedown',       function(){ Number5.classList.toggle('ClickedButton'); setTimeout(function(){ Number5.classList.toggle('ClickedButton'); },100) });
-	Number6.addEventListener('mousedown',       function(){ Number6.classList.toggle('ClickedButton'); setTimeout(function(){ Number6.classList.toggle('ClickedButton'); },100) });
-	Number7.addEventListener('mousedown',       function(){ Number7.classList.toggle('ClickedButton'); setTimeout(function(){ Number7.classList.toggle('ClickedButton'); },100) });
-	Number8.addEventListener('mousedown',       function(){ Number8.classList.toggle('ClickedButton'); setTimeout(function(){ Number8.classList.toggle('ClickedButton'); },100) });
-	Number9.addEventListener('mousedown',       function(){ Number9.classList.toggle('ClickedButton'); setTimeout(function(){ Number8.classList.toggle('ClickedButton'); },100) });
+
+	document.addEventListener('keydown',KeyHandler,false);
+	
+
+	function KeyHandler(e) {
+		PressedKey = e.keyCode;
+		e.preventDefault();
+
+		//console.log('PressedKey: '+PressedKey);
+
+		switch (PressedKey) {
+		
+
+
+			case REMOTE_OK:
+				if(LocationsFound === false) {
+					if (AccountCode > 0) {
+						var obj = FindLocation();
+					}
+				} else {
+					IdLocation = CheckLocations[IndexCheck]['id_locacion'];
+
+					RegisterDeviceLocation();
+				}
+			break;
+
+			case REMOTE_BACK:
+				ClearLocation();
+				break;
+
+			case  REMOTE_CLOSE:
+				IdLocation = '';
+				RegisterDeviceLocation();
+				break;
+
+			case ARROW_KEY_UP:
+				SetNextLocation('UP');
+				break;
+
+			case ARROW_KEY_DOWN:
+				SetNextLocation('DOWN');
+				break;
+
+			case 48: // 0
+			case 49: // 1
+			case 50: // 2
+			case 51: // 3
+			case 52: // 4
+			case 53: // 5
+			case 54: // 6
+			case 55: // 7
+			case 56: // 8
+			case 57: // 9
+				WriteLocation(PressedKey - 48);
+				break;
+		}
+	}
+
+	function WriteLocation(Key){
+		if(AccountCode === 0){
+			AccountCode = Key;
+		} else {
+			/* Multiplica por 10 el digito que se haya ingresado previamente mas el nuevo que se ingreso */
+			AccountCode *= 10;
+			AccountCode = AccountCode + Key;
+		}
+		Location.textContent = AccountCode;
+	}
+
+	function ClearLocation(){
+		AccountCode = 0;
+		Location.textContent = '#';
+		CheckLocations = [];
+		IndexCheck = 0;
+		LocationsFound = false;
+
+		Coincidence.textContent = '';
+		SetLocation.textContent = '';
+		Optional.style.visibility = 'hidden';
+		Up.style.visibility = 'hidden';
+		Down.style.visibility = 'hidden';
+		LastStep.style.visibility = 'hidden';
+	}
+
+	function FindLocation(){
+		var i = 0,
+			Check = '';
+
+		for(i = 0; i < Locations.length; i++) {
+
+			Check = Locations[i]['codigo_locacion'].includes(AccountCode.toString());
+			if (Check === true){
+				LocationsFound = true;
+				CheckLocations.push(Locations[i]);
+			}
+		}
+
+		SelectLocation();
+
+		return null;
+	}
+
+	function SelectLocation(){
+		if(CheckLocations.length > 1){
+			Optional.style.visibility = 'visible';
+			Up.style.visibility = 'visible';
+			Down.style.visibility = 'visible';
+
+			SetLocation.textContent  = CheckLocations[IndexCheck]['codigo_locacion'];
+		}
+
+		Coincidence.textContent = 'Total coincidencias: '+CheckLocations.length;
+
+		Coincidence.style.visibility = 'visible';
+		LastStep.style.visibility = 'visible';
+	}
+
+	function SetNextLocation(direction){
+
+		(direction === 'UP') ? IndexCheck++: IndexCheck--;
+
+		/* Validamos si llego al princio/fin del arreglo*/
+		if(IndexCheck < 0){
+			IndexCheck = CheckLocations.length - 1;
+		}
+
+		if(IndexCheck > CheckLocations.length){
+			IndexCheck = 0;
+		}
+
+		SetLocation.textContent  = CheckLocations[IndexCheck]['codigo_locacion'];
+	}
+
+	function SetData(){
+
+		try {
+			IPAddress = b2bapis.b2bcontrol.getIPAddress();
+		} catch (e) {
+			//'[getIPAddress] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
+		}
+
+		try {
+			MACAddress = b2bcontrol.getMACAddress();
+		} catch (e) {
+			//'[getMACAddress] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
+		}
+
+		try {
+			FirmwareVersion = b2bcontrol.getFirmwareVersion();
+		} catch (e) {
+			//'[getFirmwareVersion] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
+		}
+
+		try {
+			TvModel = webapis.productinfo.getModel();
+		} catch (error) {
+			//' error code = ' + error.code
+		}
+
+		DebugText.innerHTML = 'IP: '+IPAddress + ' MAC: '+MACAddress + ' TV: '+TvModel;
+
+		GetInfoDevice();
+	}
+
+	function GetInfoDevice(){
+		$.ajax({
+			type: 'POST',
+			url: 'http://'+ServerIp+'/BBINCO/TV/Core/Controllers/Index.php',
+			data: {
+				Option      : SetOption,
+				MacAddress  : MACAddress,
+				IpAddress   : IPAddress,
+				LocationId  : IdLocation,
+				Firmware    : FirmwareVersion,
+				Model       : TvModel,
+				Hdd         : 'N',
+				Vendor      : 'Samsung'
+			},
+			success: function (response) {
+				var Data = $.parseJSON(response);
+
+				if(Data['Option'] === 'REGISTER') {
+					GetLocations();
+				} else if(Data['Option'] === 'RELOAD'){
+
+					if(NewRegister === true){
+						alert('Registrado correctamente');
+					}
+
+					var DeviceInfo = 'BBINCOTV > Macaddress: '+MACAddress+' Ip: '+IPAddress;
+						DebugText.innerHTML = DeviceInfo;
+
+					var Page = Data['ModuleUrl'].replace('php','html');
+
+					window.location.href = Page;
+				} else if(Data['Option'] === 'LICENSE'){
+					var DeviceInfo = ' Mac: '+MACAddress+' Ip: '+IPAddress;
+					DebugText.innerHTML = DeviceInfo;
+				} else if(Data['Option'] === 'LOAD'){
+					SetOption = 'LOAD';
+
+					GetInfoDevice();
+				}
+			}
+		});
+	}
+
+	var Locations = [];
+
+	function GetLocations(){
+		$.ajax({
+			type: 'POST',
+			url: 'http://'+ServerIp+'/BBINCO/TV/Core/Controllers/Index.php',
+			data: {
+				Option : 'LOCATIONS'
+			},
+			success: function (response) {
+
+				Locations  = $.parseJSON(response);
+
+				Register.style.visibility = 'visible';
+				HelpControl.style.visibility = 'visible';
+			}
+		});
+	}
+
+	function RegisterDeviceLocation(){
+		SetOption = 'REGISTER';
+
+		NewRegister =  true;
+
+		GetInfoDevice();
+	}
 </script>
 </html>

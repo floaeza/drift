@@ -40,6 +40,13 @@ $Libraries['StylesPath']        = $ServerSource.'Views/Styles/';
 $Libraries['VendorsPath']       = $ServerSource.'Views/Vendors/';
 $Libraries['ScriptsPath']       = $ServerSource.'Views/Scripts/';
 
+//$Libraries['LayoutsPath']       = './Views/Layouts/';
+//$Libraries['LayoutsPhpPath']    = 'Views/Layouts/';
+//$Libraries['LibrariesPath']     = './Views/Libraries/';
+//$Libraries['StylesPath']        = './Views/Styles/';
+//$Libraries['VendorsPath']       = './Views/Vendors/';
+//$Libraries['ScriptsPath']       = './Views/Scripts/';
+
 $Libraries['TvScripts']    = $Libraries['LayoutsPath'].'Tv/Scripts/';
 $Libraries['TvStyles']     = $Libraries['LayoutsPath'].'Tv/Styles/';
 $Libraries['TvTemplates']  = $Libraries['LayoutsPhpPath'].'Tv/Templates/';
@@ -62,10 +69,10 @@ $Libraries['EpgFilesPath']      = '/var/www/html/mnt/nv/epg/';
 $Libraries['EpgDaysPath']       = $Libraries['ControllersPath'].'Epg/'.$Client;
 $JsonLibraries['EpgDaysPath']   = $Libraries['ControllersPath'].'Epg/'.$Client;
 /* Imagenes */
-    $Libraries['LogosPath']         = './Media/Logos/'.$Client;
-    $Libraries['ChannelsPath']      = './Media/Channels/'.$Client;
-    $JsonLibraries['ChannelsPath']  = './Media/Channels/'.$Client;
-    $JsonLibraries['MenuPath']      = './Media/Menu/'.$Client;
+    $Libraries['LogosPath']         = '../Media/Logos/'.$Client;
+    $Libraries['ChannelsPath']      = '../Media/Channels/'.$Client;
+    $JsonLibraries['ChannelsPath']  = '../Media/Channels/'.$Client;
+    $JsonLibraries['MenuPath']      = '../Media/Menu/'.$Client;
     
 /* Temas */
      $Libraries['ThemesPath']      = $Libraries['StylesPath'].'Themes/';

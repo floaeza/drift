@@ -1,373 +1,168 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
-  <script src="Views/Libraries/jquery-1.12.3.min.js"></script>
-  <script src="Views/Vendors/Generic/Keys.js"></script>
-  <style>
-    body{
-      width: 100%;
-      height: 100%;
-      position: fixed;
-      margin: 0;
-      padding: 0;
-    }
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="BBINCOTV"/>
 
-    #Bbinco {
-      height: 12%;
-    }
+    <title>BBINCOTV</title>
+    <?xml version="1.0" encoding="UTF-8"?>
+        <widget xmlns:tizen="http://tizen.org/ns/widgets" xmlns="http://www.w3.org/ns/widgets" id="http://172.15.0.15/BBINCO/TV/" version="0.2.1" viewmodes="maximized">
+            <tizen:application id="87yCAs7xPK.bbinco" package="87yCAs7xPK" required_version="2.3"/>
+            <content src="index.html"/>
+            <feature name="http://tizen.org/feature/screen.size.normal.1080.1920"/>
+            <feature name="http://tizen.org/feature/screen.size.all"/>
+            <feature name="http://www.samsungdforum.com/feature/Keyboard"/>
+            <icon src="icon.png"/>
+            <tizen:metadata key="http://samsung.com/tv/metadata/prelaunch.support" value="true"/>
+            <name>bbinco</name>
+            <tizen:privilege name="http://developer.samsung.com/privilege/productinfo"/>
+            <tizen:privilege name="http://tizen.org/privilege/tv.inputdevice"/>
+            <tizen:privilege name="http://tizen.org/privilege/mediacapture"/>
+            <tizen:privilege name="http://developer.samsung.com/privilege/b2bcontrol"/>
+            <tizen:privilege name="http://developer.samsung.com/privilege/b2bdoc"/>
+            <tizen:privilege name="http://tizen.org/privilege/application.launch"/>
+            <tizen:profile name="tv-samsung"/>
+            <tizen:setting screen-orientation="landscape" context-menu="enable" background-support="disable" encryption="disable" install-location="auto" hwkey-event="enable"/>
+        </widget>
+    </xml>
 
-    #BbincoTV {
-      border: 8px solid #797777;
-      box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.88);
-      float: left;
-    }
+    <!-- Script Files -->
+    <script type='text/javascript' src='$B2BAPIS/b2bapis/b2bapis.js'></script>
+    <script type='text/javascript' src='$MANAGER_WIDGET/Common/af/2.0.0/loader.js'></script>
+    <script type="text/javascript" src="$WEBAPIS/webapis/webapis.js"></script>
+    <script type='text/javascript' src='./Views/Vendors/Samsung/Server.js'></script> <!-- ACTUALIZAR IP SERVIDOR! -->
 
-    #Container {
-      width: 100%;
-      position: fixed;
-      height: 90%;
-      overflow: scroll;
-      white-space: nowrap;
-    }
-
-    #Bbinco img {
-      width: 20%;
-    }
-
-    #Control {
-      float: right;
-      padding: 0.5%;
-      width: 30%;
-    }
-
-    #Control img {
-      max-height: 720px;
-      max-width: 400px;
-    }
-
-    /*#Info  {*/
-    /*    position: fixed;*/
-    /*    left: 25%;*/
-    /*    width: 500px;*/
-    /*    border-radius: 18px;*/
-    /*    box-shadow: 2px 2px 2px rgba(0,0,0,0.5);*/
-    /*    opacity: 0.9;*/
-    /*    top: 25%;*/
-    /*    display: none;*/
-    /*}*/
-
-    .RemoteContainer{
-      width:200px;
-      height: 600px;
-      position: absolute;
-      top: 48%;
-      margin-top: -300px;
-      right: 1%;
-      background: no-repeat center center;
-      background-size: contain;
-      font-size: 1em;
-      border-radius: 15px;
-      background-image: linear-gradient(to top, #000, #444);
-
-    }
-
-    .RemoteContainer > table{
-      margin: 0 auto;
-      width: 70%;
-      height: 80%
-    }
-
-    .NumericButton{
-      width: 40px;
-      height: 40px;
-      float:left;
-      border-radius: 15px;
-      text-align: center;
-      font-weight: bold;
-    }
-
-    .Button{
-      width: 40px;
-      height: 35px;
-      float:left;
-      text-align: center;
-      /*border-radius: 15px;*/
-      /*background-image: linear-gradient(to bottom right, #000000, #cccccc);*/
-      color: white;
-      line-height: 2.3em;
-      font-family: Arial, Helvetica, sans-serif;
-
-
-
-      -webkit-touch-callout: none; /* iOS Safari */
-      -webkit-user-select: none; /* Safari */
-      -khtml-user-select: none; /* Konqueror HTML */
-      -moz-user-select: none; /* Firefox */
-      -ms-user-select: none; /* Internet Explorer/Edge */
-      user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
-    }
-    .ClickedButton{
-      border-radius: 5px;
-      background-image: linear-gradient(to bottom right, #0b0b0b, #1a2a5c);
-
-    }
-    .Top{
-      line-height: 2.5em;
-      font-size: 0.9em;
-    }
-
-    .Middle{
-      line-height: 2.3em;
-    }
-
-
-    #Up{
-      margin: 5px;
-      width: 0;
-      height: 0;
-      border-right: 16px solid transparent;
-      border-left: 16px solid transparent;
-      border-bottom: 20px solid whitesmoke;
-      opacity: 0.5;
-    }
-
-    #Down{
-      margin: 5px;
-      margin-top: 10px;
-      width: 0;
-      height: 0;
-      border-right: 16px solid transparent;
-      border-left: 16px solid transparent;
-      border-top: 20px solid whitesmoke;
-      opacity: 0.5;
-    }
-
-    #Left{
-      margin-left: 7px;
-      margin-top: 2px;
-      width: 0;
-      height: 0;
-      border-top: 16px solid transparent;
-      border-bottom: 16px solid transparent;
-      border-right: 20px solid whitesmoke;
-      opacity: 0.5;
-    }
-
-    #Right{
-      margin-left: 14px;
-      margin-top: 2px;
-      width: 0;
-      height: 0;
-      border-top: 16px solid transparent;
-      border-bottom: 16px solid transparent;
-      border-left: 20px solid whitesmoke;
-      opacity: 0.5;
-    }
-
-    #ChannelUp{
-      font-weight: bold;
-      font-size: 2.5em;
-      line-height: 0.95em;
-    }
-
-    #ChannelDown{
-      font-weight: bold;
-      font-size: 2.5em;
-      line-height: 0.75em;
-    }
-
-    #Channel{
-      line-height: 2.3em;
-      background-image: unset ;
-    }
-
-    #Guide{
-      font-size: 0.9em;
-      line-height: 2.6em;
-    }
-
-    #Frame {
-      position: absolute;
-      top: 50%;
-      margin-top: -360px;
-      border: solid rgba(255, 255, 255, 0.3) 5px;
-      pointer-events: none;
-      margin-left: 1%;
-    }
-  </style>
+    <script type='text/javascript' src='./Views/Libraries/jquery-1.12.3.min.js'></script>
 </head>
 <body>
-<div id='Bbinco'>
-  <img src='Media/Logos/BBN/main_logo.png'>
-</div>
-<div id='Container'>
-  <iframe width="1180" height="580"  title="BbincoTV" id="BbincoTV"></iframe>
-
-  <div class='RemoteContainer' id='RemoteContainer'>
-    <table>
-      <tr class='TopSpacer'>
-        <!--Spacer-->
-      </tr>
-      <tr>
-        <td><div class = 'Button Top' id='Back'>Close</div></td>
-        <td><div class = 'Button Top' id='Menu'>Menu</div></td>
-        <td><div class = 'Button Top' id='Info'>Info</div></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td><div class = 'Button Up'><div id='Up'></div></div></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><div class = 'Button Middle'><div id='Left'></div></div></td>
-        <td><div class = 'Button Middle'><div id='Ok'>OK</td>
-        <td><div class = 'Button Middle'><div id='Right'></div></div></td>
-      </tr>
-      <tr>
-        <td><i></i></td>
-        <td><div class = 'Button Down'><div id='Down'></div></div></td>
-        <td><i></i></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td><div class = 'Button Bottom' id='Guide'>Guide</div></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><div class = 'Button' id='ChannelUp'>+</div></td>
-        <td><div class = 'Button' id='Channel'>CH</div></td>
-        <td><div class = 'Button' id='ChannelDown'>-</div></td>
-      </tr>
-      <tr class='ChannelButtonsLimit'>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-      <tr class='Spacer'>
-        <!--Spacer-->
-      </tr>
-      <td><div class = 'NumericButton Button' id='1'>1</div></td>
-      <td><div class = 'NumericButton Button' id='2'>2</div></td>
-      <td><div class = 'NumericButton Button' id='3'>3</div></td>
-      </tr>
-      <tr>
-        <td><div class = 'NumericButton Button' id='4'>4</div></td>
-        <td><div class = 'NumericButton Button' id='5'>5</div></td>
-        <td><div class = 'NumericButton Button' id='6'>6</div></td>
-      </tr>
-      <tr>
-        <td><div class = 'NumericButton Button' id='7'>7</div></td>
-        <td><div class = 'NumericButton Button' id='8'>8</div></td>
-        <td><div class = 'NumericButton Button' id='9'>9</div></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td><div class = 'NumericButton Button' id='0'>0</div></td>
-        <td></td>
-      </tr>
-    </table>
-  </div>
-  <!--div id='Control'>
-      <img src='Media/Logos/BBN/control.png'>
-  </div-->
-</div>
-
-<!--img id='Help' src='Media/Logos/BBN/help.png' onclick="ShowInfo()">
-
-<img id='Info' src='Media/Logos/BBN/info.png' onclick="CloseInfo()"-->
+    <div class='GeneralBox' id='GeneralBox'></div>
 </body>
+<footer></footer>
 <script>
-  // var Help = document.getElementById('Help');
-  // var Info = document.getElementById('Info');
-  //
-  // function ShowInfo() {
-  //     Info.style.display = 'inline';
-  // }
-  //
-  // function CloseInfo() {
-  //     Info.style.display = 'none';
-  // }
+    var MACAddress  = 'fc:03:9f:5c:98:ed';
 
-  /********************************************
-   * Inicialización de variables
-   *********************************************/
-  var
-          Frame               = document.getElementById('BbincoTV'),
-          Menu                = document.getElementById('Menu'),
-          Info                = document.getElementById('Info'),
-          Left                = document.getElementById('Left').parentElement,
-          Right               = document.getElementById('Right').parentElement,
-          Up                  = document.getElementById('Up').parentElement,
-          Down                = document.getElementById('Down').parentElement,
-          Ok                  = document.getElementById('Ok'),
-          Back                = document.getElementById('Back'),
-          Guide               = document.getElementById('Guide'),
-          ChannelUp           = document.getElementById('ChannelUp'),
-          ChannelDown         = document.getElementById('ChannelDown'),
-          Number1             = document.getElementById('1'),
-          Number2             = document.getElementById('2'),
-          Number3             = document.getElementById('3'),
-          Number4             = document.getElementById('4'),
-          Number5             = document.getElementById('5'),
-          Number6             = document.getElementById('6'),
-          Number7             = document.getElementById('7'),
-          Number8             = document.getElementById('8'),
-          Number9             = document.getElementById('9'),
-          Number0             = document.getElementById('0'),
-          RemoteContainer     = document.getElementById('RemoteContainer');
+    var InfoDevice = [];
+    var TemplateSource = '';
+    var Data = '';
 
-        var Host = self.location.host;
+    var CurrentModule = '',
+        ModuleId      = '',
+        IndexLogo     = '';
 
-          Frame.src = 'http://'+Host+'/BBINCO/TV/index.php';
+    var head = document.getElementsByTagName('head').item(0),
+        footer = document.getElementsByTagName('footer').item(0),
+        script = '',
+        link = '',
+        i = 0;
 
-  /*********************************************
-   * Creadores de eventos para control remoto
-   *********************************************/
-  Menu.addEventListener('click',        function(){ Frame.contentWindow.MakeEvent(REMOTE_MENU); });
-  Info.addEventListener('click',        function(){ Frame.contentWindow.MakeEvent(REMOTE_INFO); });
-  Left.addEventListener('click',        function(){ Frame.contentWindow.MakeEvent(ARROW_KEY_LEFT); });
-  Right.addEventListener('click',       function(){ Frame.contentWindow.MakeEvent(ARROW_KEY_RIGHT); });
-  Up.addEventListener('click',          function(){ Frame.contentWindow.MakeEvent(ARROW_KEY_UP); });
-  Down.addEventListener('click',        function(){ Frame.contentWindow.MakeEvent(ARROW_KEY_DOWN); });
-  Ok.addEventListener('click',          function(){ Frame.contentWindow.MakeEvent(REMOTE_OK); });
-  Back.addEventListener('click',        function(){ Frame.contentWindow.MakeEvent(REMOTE_BACK); });
-  Guide.addEventListener('click',       function(){ Frame.contentWindow.MakeEvent(REMOTE_GUIDE); });
-  ChannelUp.addEventListener('click',   function(){ Frame.contentWindow.MakeEvent(REMOTE_CHANNEL_UP); });
-  ChannelDown.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(REMOTE_CHANNEL_DOWN); });
 
-  Number0.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(48); });
-  Number1.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(49); });
-  Number2.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(50); });
-  Number3.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(51); });
-  Number4.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(52); });
-  Number5.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(53); });
-  Number6.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(54); });
-  Number7.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(55); });
-  Number8.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(56); });
-  Number9.addEventListener('click', function(){ Frame.contentWindow.MakeEvent(57); });
+    if (window.tizen !== undefined) {
+        var b2bcontrol = window.b2bapis.b2bcontrol;
 
-  Menu.addEventListener('mousedown',          function(){ Menu.classList.toggle('ClickedButton'); setTimeout(function(){ Menu.classList.toggle('ClickedButton'); },100) });
-  Info.addEventListener('mousedown',          function(){ Info.classList.toggle('ClickedButton'); setTimeout(function(){ Info.classList.toggle('ClickedButton'); },100) });
-  Left.addEventListener('mousedown',          function(){ Left.classList.toggle('ClickedButton'); setTimeout(function(){ Left.classList.toggle('ClickedButton'); },100) });
-  Right.addEventListener('mousedown',         function(){ Right.classList.toggle('ClickedButton'); setTimeout(function(){ Right.classList.toggle('ClickedButton'); },100) });
-  Up.addEventListener('mousedown',            function(){ Up.classList.toggle('ClickedButton'); setTimeout(function(){ Up.classList.toggle('ClickedButton'); },100) });
-  Down.addEventListener('mousedown',          function(){ Down.classList.toggle('ClickedButton'); setTimeout(function(){ Down.classList.toggle('ClickedButton'); },100) });
-  Ok.addEventListener('mousedown',            function(){ Ok.classList.toggle('ClickedButton'); setTimeout(function(){ Ok.classList.toggle('ClickedButton'); },100) });
-  Back.addEventListener('mousedown',          function(){ Back.classList.toggle('ClickedButton'); setTimeout(function(){ Back.classList.toggle('ClickedButton'); },100) });
-  Guide.addEventListener('mousedown',         function(){ Guide.classList.toggle('ClickedButton'); setTimeout(function(){ Guide.classList.toggle('ClickedButton'); },100) });
-  ChannelUp.addEventListener('mousedown',     function(){ ChannelUp.classList.toggle('ClickedButton'); setTimeout(function(){ ChannelUp.classList.toggle('ClickedButton'); },100) });
-  ChannelDown.addEventListener('mousedown',   function(){ ChannelDown.classList.toggle('ClickedButton'); setTimeout(function(){ ChannelDown.classList.toggle('ClickedButton'); },100) });
-  Number0.addEventListener('mousedown',       function(){ Number0.classList.toggle('ClickedButton'); setTimeout(function(){ Number0.classList.toggle('ClickedButton'); },100) });
-  Number1.addEventListener('mousedown',       function(){ Number1.classList.toggle('ClickedButton'); setTimeout(function(){ Number1.classList.toggle('ClickedButton'); },100) });
-  Number2.addEventListener('mousedown',       function(){ Number2.classList.toggle('ClickedButton'); setTimeout(function(){ Number2.classList.toggle('ClickedButton'); },100) });
-  Number3.addEventListener('mousedown',       function(){ Number3.classList.toggle('ClickedButton'); setTimeout(function(){ Number3.classList.toggle('ClickedButton'); },100) });
-  Number4.addEventListener('mousedown',       function(){ Number4.classList.toggle('ClickedButton'); setTimeout(function(){ Number4.classList.toggle('ClickedButton'); },100) });
-  Number5.addEventListener('mousedown',       function(){ Number5.classList.toggle('ClickedButton'); setTimeout(function(){ Number5.classList.toggle('ClickedButton'); },100) });
-  Number6.addEventListener('mousedown',       function(){ Number6.classList.toggle('ClickedButton'); setTimeout(function(){ Number6.classList.toggle('ClickedButton'); },100) });
-  Number7.addEventListener('mousedown',       function(){ Number7.classList.toggle('ClickedButton'); setTimeout(function(){ Number7.classList.toggle('ClickedButton'); },100) });
-  Number8.addEventListener('mousedown',       function(){ Number8.classList.toggle('ClickedButton'); setTimeout(function(){ Number8.classList.toggle('ClickedButton'); },100) });
-  Number9.addEventListener('mousedown',       function(){ Number9.classList.toggle('ClickedButton'); setTimeout(function(){ Number8.classList.toggle('ClickedButton'); },100) });
+        try {
+            //MACAddress = b2bcontrol.getMACAddress();
+            MACAddress  = 'fc:03:9f:5c:98:ed';
+        } catch (e) {
+            //'[getMACAddress] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
+        }
+    }
+
+    $.ajax({
+        type: 'POST',
+        url: 'http://'+ServerIp+'/BBINCO/TV/Core/Controllers/Index.php',
+        async: false,
+        data: {
+            Option      : 'LOAD',
+            MacAddress  : MACAddress,
+        },
+        success: function (response) {
+            var InfoDevice = $.parseJSON(response);
+            ModuleId = InfoDevice['ModuleId'];
+            CurrentModule = InfoDevice['ModuleName'];
+
+            InfoDevice = null;
+
+            GetContents();
+        }
+    });
+
+    function GetContents() {
+        $.ajax({
+            method: 'POST',
+            url: 'http://' + ServerIp + '/BBINCO/TV/tvContent.php',
+            async: false,
+            data: {
+                MacAddress: MACAddress,
+                ModuleId: ModuleId,
+                CurrentModule: CurrentModule
+            },
+            success: function (response) {
+                Data = $.parseJSON(response);
+
+                IndexLogo = Data['Variables'][0].IndexLogo;
+
+                TemplateSource = 'http://' + ServerIp + '/BBINCO/TV/'+Data['Variables'][0].Template;
+
+                GetTemplateContent();
+            }
+        });
+    }
+
+    function GetTemplateContent(){
+        $.ajax({
+            type: 'POST',
+            url: TemplateSource,
+            async: false,
+            success: function (response) {
+                document.getElementById('GeneralBox').innerHTML = '<div id="DebugText"></div> '+response;
+
+                console.log('SE CREAO EL CONTENIDO HTML');
+            }
+        });
+
+        SetScriptsStyles();
+    }
+
+    function SetScriptsStyles(){
+        for(i = 0; i < Data['ScriptsHeader'].length; i++){
+            script = document.createElement('script');
+            script.setAttribute('type', 'text/javascript');
+            script.setAttribute('src', Data['ScriptsHeader'][i]);
+            head.appendChild(script);
+        }
+
+        i = 0;
+
+        for(i = 0; i < Data['Styles'].length; i++){
+            link = document.createElement('link');
+            link.type = 'text/css';
+            link.rel = 'stylesheet';
+            link.href = Data['Styles'][i];
+
+            head.appendChild(link);
+        }
+        i = 0;
+    }
+
+    function SetFooterScripts(){
+        for(i = 0; i < Data['ScriptsFooter'].length; i++){
+            script = document.createElement('script');
+            script.setAttribute('type', 'text/javascript');
+            script.setAttribute('src', Data['ScriptsFooter'][i]);
+            console.log(Data['ScriptsFooter'][i]);
+            footer.appendChild(script);
+
+            // i++;
+            // if(i >= Data['ScriptsFooter'].length){
+            //     clearInterval(FooterInterval);
+            //     console.log('END SCRIPTS');
+            // }
+        }
+    }
+
+    //var FooterInterval = setInterval(function(){ SetFooterScripts(); }, 900);
+
+    setTimeout(function(){ SetFooterScripts(); }, 900);
 </script>
 </html>

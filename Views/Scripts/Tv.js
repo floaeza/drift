@@ -115,11 +115,11 @@
         
         /* Si tiene activa EPG actualiza la variable que por defecto tiene el valor de general */
         if(Device['Services']['ActiveEpg'] === true){
-             if(MacAddress === '00:00:00:00:00:01'){
+             //if(MacAddress === '00:00:00:00:00:01'){
                  SourceEpgFile = Libraries['EpgDaysPath'] + 'epg_demo.json';
-             } else {
-                 SourceEpgFile = Libraries['EpgDaysPath'] + 'epg_' + CurrentDate + '_' + Device['Services']['PackageId'] + '.json';
-             }
+             // } else {
+             //     SourceEpgFile = Libraries['EpgDaysPath'] + 'epg_' + CurrentDate + '_' + Device['Services']['PackageId'] + '.json';
+             // }
             Debug('------- SetEpgFile ->>> SourceEpgFile: ' + SourceEpgFile);
             GetJsonEpg();
         } else {
@@ -130,10 +130,10 @@
         }
     }
     
-    function GetJsonEpg(){ 
+    function GetJsonEpg(){
         $.ajax({
             async: false,
-            url: SourceEpgFile,
+            url: ServerSource + SourceEpgFile,
             success: function (response){
                 
                 ChannelsJson = [];
@@ -169,7 +169,7 @@
         $.ajax({
             type: 'POST',
             async: false,
-            url: 'Core/Controllers/Packages.php',
+            url: ServerSource + 'Core/Controllers/Packages.php',
             data: { 
                 Option : 'GetChannels',
                 PackageId: Device['Services']['PackageId']
@@ -193,6 +193,7 @@
  *******************************************************************************/
 
     function SetChannel(NewDirection){
+        Debug('SetChannel = '+NewDirection);
         
         if(ActiveEpgContainer === false){
             
@@ -207,8 +208,11 @@
                 
                 Direction = NewDirection;
 
+                Debug('SetChannel = Direction '+Direction);
                 /* Suma o resta segun sea el caso */
                 (Direction === 'UP') ? ChannelPosition++: ChannelPosition--;
+
+                Debug('1- ChannelPosition =  '+ChannelPosition);
 
                 /* Validamos si llego al princio/fin del arreglo*/
                 if(ChannelPosition < 0){
@@ -218,7 +222,8 @@
                 if(ChannelPosition > ChannelsLength){
                     ChannelPosition = 0;
                 }
-                
+
+                Debug('2- ChannelPosition =  '+ChannelPosition);
             }
 
             /* Actualiza el canal */
@@ -235,10 +240,7 @@
                     if(ActiveDigitalChannel === true){
                         CloseDigitalChannel();
                     }
-                    
-                    if(ActiveFrame === true){
-                        CloseFrame();
-                    }
+
                     PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
                 } else {
                     //if(typeof(gSTB) !== 'undefined'){
@@ -250,7 +252,7 @@
                 }
             
         }
-        //Debug('------- SetChannel -> PC: '+Source);
+        Debug('------- SetChannel ->: '+Source + ' ChannelPosition: '+ChannelPosition);
     }
     
     function GetDigitalChannel(){
@@ -264,7 +266,7 @@
         $.ajax({
             type: 'POST',
             async: false,
-            url: 'Core/Controllers/Template.php',
+            url: ServerSource + 'Core/Controllers/Template.php',
             data: { 
                 Option : 'getDigitalChannel',
                 ModuleName : GetModule

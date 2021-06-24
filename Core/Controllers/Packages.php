@@ -13,8 +13,8 @@
     $ConfigData   = new Config('system', $CurrentController);
     $PackagesData = new Packages('system', $CurrentController);
     
-    $Option = !empty($_POST['Option']) ? $_POST['Option'] : 'GetChannels';
-    $PackageId = !empty($_POST['PackageId']) ? $_POST['PackageId'] : '1';
+    $Option = !empty($_POST['Option']) ? $_POST['Option'] : '';
+    $PackageId = !empty($_POST['PackageId']) ? $_POST['PackageId'] : '';
     
     switch ($Option){
         case 'GetChannels':
@@ -56,6 +56,10 @@
         
             $Result = $ChannelsList;
         break;
+        case 'GetAllPackages':
+            $PackageList = $PackagesData->getPackagesId();
+            $Result = $PackageList;
+            break;
     }
     
     echo json_encode($Result);

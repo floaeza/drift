@@ -41,12 +41,12 @@ function registerkeys(){
         'MediaPlayPause','MediaRewind','MediaFastForward','MediaPlay','MediaPause','MediaStop','MediaRecord','MediaTrackPrevious','MediaTrackNext',
         'Menu','Tools'];
 
-    usedKeys.forEach (
-        function (keyName){
-            tizen.tvinputdevice.registerKey(keyName);
-        });
-
-    console.log('usedKeys: '+usedKeys);
+    if (window.tizen !== undefined) {
+        usedKeys.forEach(
+            function (keyName) {
+                tizen.tvinputdevice.registerKey(keyName);
+            });
+    }
 }
 
 registerkeys();

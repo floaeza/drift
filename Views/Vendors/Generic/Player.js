@@ -54,7 +54,7 @@
     function PlayDigitalChannel(Source){
         // Activamos la bandera
         PlayingChannel = true;
-
+D
         document.getElementById('DigitalChannel').innerHTML = '<video id="VideoPlaying" autoplay loop><source src='+Sources[IndexChannel]+' type="video/mp4"></video>';
         document.getElementById('DigitalChannel').style.display = 'inline';
 

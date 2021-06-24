@@ -66,4 +66,29 @@ class Locations extends Database {
         $this->disconnect();
         return $this->Locations;
     }
+    function getMembers(){
+        $this->Function = 'getMembers';
+        $this->connect();
+        $this->select("miembros");
+        $this->Locations = $this->getResult();
+        $this->disconnect();
+        return $this->Locations;
+    }
+    function updateLocation($LocationId, $infoLocation){
+        $this->Function = 'updateLocation';
+        $this->connect();
+        $this->update("locaciones", $infoLocation, "id_locacion = '$LocationId'" );
+        $this->Locations = $this->getResult();
+        $this->disconnect();
+        return $this->Locations;
+    }
+
+    function InsertLocation($NewLocation){
+        $this->function = 'InsertLocation';
+        $this->connect();
+        $this->insert("locaciones", $NewLocation);
+        $this->Locations = $this->getResult();
+        $this->disconnect();
+        return $this->Locations;
+    }
 }
