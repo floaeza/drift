@@ -17,8 +17,8 @@
     $ConfigData   = new Config($MacAddress, $CurrentController);
     $ModulesData = new Modules($MacAddress, $CurrentController);
     
-    $Option = 'GetModules';
-    $ProjectId = '1';
+    // $Option = 'GetModules';
+    // $ProjectId = '1';
     switch ($Option){
         case 'GetModules':
             
