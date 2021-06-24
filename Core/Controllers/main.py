@@ -21,25 +21,6 @@ for n in range(11):
 ####Numero de paquetes + 1#########
 paquetes = 7
 
-
-def tableDataText(table):
-    def rowgetDataText(tr, coltag='td'):  # td (data) or th (header)
-        return [td.get_text(strip=True) for td in tr.find_all(coltag)]
-
-    rows = []
-    trs = table.find_all('tr')
-    headerow = rowgetDataText(trs[0], 'th')
-
-    if headerow:  # if there is a header row include first
-        rows.append(headerow)
-        trs = trs[1:]
-
-    for tr in trs:  # for every table row
-        rows.append(rowgetDataText(tr, 'td'))  # data row
-
-    return rows
-
-
 def start(day, pos):
     dataProgram = {}
     day = datetime.strptime(day, '%Y-%m-%d')
@@ -131,67 +112,59 @@ def start(day, pos):
                     print('GATO TV')
                     P_Length = 0
                     try:
-                        raw_html = urllib.request.urlopen(
-                            'https://www.gatotv.com/canal/' + channel['NAME'] + day.strftime("%Y-%m-%d")).read().decode()
+                        raw_html = urllib.request.urlopen('https://www.gatotv.com/canal/cartoon_network_mexico/2021-06-23').read().decode()
+                        raw_html.encode('utf-8')
                         soup = BeautifulSoup(raw_html, 'html.parser')
-                        table = soup.find("table", attrs={"class": "tbl_EPG"})
-                        JSONGato = tableDataText(table)
-                        JSONGato = separarGato(JSONGato)
-                        #print(JSONGato)
-                        for p in range(len(JSONGato)):
-                            strh = datetime.strptime(JSONGato[p][0], '%H:%M %p')
-                            fnlh = datetime.strptime(JSONGato[p][1], '%H:%M %p')
-                            strh1 = JSONGato[p][0].split(' ')
-                            strh2 = JSONGato[p][1].split(' ')
-                            if strh1[1] == 'PM' and (strh1[0][0]+strh1[0][1]) !='12':
-                                strh = strh + timedelta(hours=12)
-                            else:
-                                if strh1[1] == 'AM' and (strh1[0][0] + strh1[0][1]) == '12':
-                                    strh = strh - timedelta(hours=12)
-                            if strh2[1] == 'PM' and (strh2[0][0]+strh2[0][1]) != '12':
-                                fnlh = fnlh + timedelta(hours=12)
-                            else:
-                                if strh2[1] == 'AM' and (strh2[0][0]+strh2[0][1]) == '12':
-                                    fnlh = fnlh - timedelta(hours=12)
-                            minuinicio = (int(strh.hour) * 60) + int(strh.minute)
-                            minufin = (int(fnlh.hour) * 60) + int(fnlh.minute)
-                            if p == 0:
-                                strh = strh.strftime('00:00')
-                                minuinicio = 0
 
-                            if p == len(JSONGato)-1:
-                                fnlh = fnlh.strftime('23:59')
-                                minufin = 1440
+                        prueba = soup.find('table', class_='tbl_EPG')
 
-                            if minuinicio <= minufin:
-                                dur = minufin - minuinicio
-                            else:
-                                dur = minufin - minuinicio
-                                dur = dur + 1440
+                        lista1 = prueba.find_all('tr', class_=['tbl_EPG_row', 'tbl_EPG_row_selected','tbl_EPG_rowAlternate'])
 
-                            strhh = ''
-                            fnlhh = ''
-                            if type(strh) == str:
-                                strhh = strh
-                            else:
-                                strhh = strh.strftime( '%H:%M')
-
-                            if type(fnlh) == str:
-                                fnlhh = fnlh
-                            else:
-                                fnlhh = fnlh.strftime('%H:%M')
-
-                            dataProgramGato[str(p)] = []
-                            dataProgramGato[str(p)].append({
+                        print(len(lista1))
+                        lista = []
+                        horainicio = datetime.strptime("00:00","%H:%M")
+                        for list in lista1:
+                            try:
+                                emicion1 = list.find_all('time')
+                                inicio1 = datetime.strptime(emicion1[0]['datetime'], "%H:%M")
+                                fin1 = datetime.strptime(emicion1[1]['datetime'], "%H:%M")
+                                dur = fin1 - inicio1
+                                title1 = list.find('span')
+                                title1 = title1.get_text()
+                                tds = list.find_all('td')
+                                if len(tds) == 3:
+                                    lista.append({
+                                        'inicio': inicio1.strftime("%H:%M"),
+                                        'fin': fin1.strftime("%H:%M"),
+                                        'durh': float("{:.2f}".format((int(dur.seconds)/60)/60)),
+                                        'durm': (int(dur.seconds)/60),
+                                        'title': title1,
+                                        'desc' : ''
+                                    })
+                                elif len(tds) == 4:
+                                    desc = tds[3].get_text().split('\n\n\n')
+                                    lista.append({
+                                        'inicio': inicio1.strftime("%H:%M"),
+                                        'fin': fin1.strftime("%H:%M"),
+                                        'durh': float("{:.2f}".format((int(dur.seconds) / 60) / 60)),
+                                        'durm': (int(dur.seconds) / 60),
+                                        'title': title1,
+                                        'desc' : desc[2]
+                                    })
+                            except:
+                                break
+                        for li in len(lista):
+                            dataProgramGato[str(li)] = []
+                            dataProgramGato[str(li)].append({
                                 "STTN": channel['STTN'],
                                 "DBKY": '',
-                                "TTLE": JSONGato[p][2],
-                                "DSCR": JSONGato[p][3],
-                                "DRTN": float("{:.2f}".format(dur/60)),
-                                "MNTS": dur,
+                                "TTLE": lista[li]['title'],
+                                "DSCR": lista[li]['desc'],
+                                "DRTN": lista[li]['durh'],
+                                "MNTS": lista[li]['durm'],
                                 "DATE": day.strftime("%Y%m%d"),
-                                "STRH": strhh,
-                                "FNLH": fnlhh,
+                                "STRH": lista[li]['inicio'],
+                                "FNLH": lista[li]['fin'],
                                 "TVRT": '',
                                 "STRS": '',
                                 "EPSD": ''
@@ -254,133 +227,7 @@ def start(day, pos):
                         })
                     contadorCanal = contadorCanal + 1
                 else:
-                    dataProgramGato = {}
-                    print('GATO TV')
-                    P_Length = 0
-                    try:
-                        raw_html = urllib.request.urlopen(
-                            'https://www.gatotv.com/canal/' + channel['NAME'] + day.strftime("%Y-%m-%d")).read().decode()
-                        soup = BeautifulSoup(raw_html, 'html.parser')
-                        table = soup.find("table", attrs={"class": "tbl_EPG"})
-                        JSONGato = tableDataText(table)
-                        JSONGato = separarGato(JSONGato)
-                        #print(JSONGato)
-                        cana = True
-                        for p in range(len(JSONGato)):
-                            strh = datetime.strptime(JSONGato[p][0], '%H:%M %p')
-                            fnlh = datetime.strptime(JSONGato[p][1], '%H:%M %p')
-                            strh1 = JSONGato[p][0].split(' ')
-                            strh2 = JSONGato[p][1].split(' ')
-                            if strh1[1] == 'PM' and (strh1[0][0]+strh1[0][1]) !='12':
-                                strh = strh + timedelta(hours=12)
-                            else:
-                                if strh1[1] == 'AM' and (strh1[0][0] + strh1[0][1]) == '12':
-                                    strh = strh - timedelta(hours=12)
-                            if strh2[1] == 'PM' and (strh2[0][0]+strh2[0][1]) != '12':
-                                fnlh = fnlh + timedelta(hours=12)
-                            else:
-                                if strh2[1] == 'AM' and (strh2[0][0]+strh2[0][1]) == '12':
-                                    fnlh = fnlh - timedelta(hours=12)
-                            minuinicio = (int(strh.hour) * 60) + int(strh.minute)
-                            minufin = (int(fnlh.hour) * 60) + int(fnlh.minute)
-                            if p == 0:
-                                strh = strh.strftime('00:00')
-                                minuinicio = 0
-
-                            if p == len(JSONGato)-1:
-                                fnlh = fnlh.strftime('23:59')
-                                minufin = 1440
-
-                            if minuinicio <= minufin:
-                                dur = minufin - minuinicio
-                            else:
-                                dur = minufin - minuinicio
-                                dur = dur + 1440
-
-                            strhh = ''
-                            fnlhh = ''
-                            if type(strh) == str:
-                                strhh = strh
-                            else:
-                                strhh = strh.strftime( '%H:%M')
-
-                            if type(fnlh) == str:
-                                fnlhh = fnlh
-                            else:
-                                fnlhh = fnlh.strftime('%H:%M')
-
-                            dataProgramGato[str(p)] = []
-                            dataProgramGato[str(p)].append({
-                                "STTN": channel['STTN'],
-                                "DBKY": '',
-                                "TTLE": JSONGato[p][2],
-                                "DSCR": JSONGato[p][3],
-                                "DRTN": float("{:.2f}".format(dur/60)),
-                                "MNTS": dur,
-                                "DATE": day.strftime("%Y%m%d"),
-                                "STRH": strhh,
-                                "FNLH": fnlhh,
-                                "TVRT": '',
-                                "STRS": '',
-                                "EPSD": ''
-                            })
-                            P_Length += 1
-                    except:
-                        print(channel['NAME'] + "   No encontrado (GATO)")
-
-                    if dataProgramGato != {}:
-                        data[str(contadorCanal)] = []
-                        data[str(contadorCanal)].append({
-                            'PSCN': channel['PSCN'],
-                            'ADIO': channel['ADIO'],
-                            'PRGM': channel['PRGM'],
-                            'SRCE': channel['SRCE'],
-                            'QLTY': 'HD' if (channel['QLTY']=='1') else 'SD' ,
-                            'PORT': channel['PORT'],
-                            'CHNL': channel['CHNL'],
-                            'STTN': channel['STTN'],
-                            'NAME': channel['NAME'],
-                            'INDC': channel['INDC'],
-                            'LOGO': channel['LOGO'],
-                            'DATE': day.strftime("%Y%m%d"),
-                            'PROGRAMS': dataProgramGato,
-                            'P_Length': P_Length
-                        })
-                    else:
-                        dataProgradm = {}
-                        dataProgradm['0'] = []
-                        dataProgradm['0'].append({
-                            "STTN": channel['STTN'],
-                            "DBKY": '',
-                            "TTLE": channel['NAME'],
-                            "DSCR": '',
-                            "DRTN": 24,
-                            "MNTS": 1440,
-                            "DATE": day.strftime("%Y%m%d"),
-                            "STRH": "00:00",
-                            "FNLH": "23:59",
-                            "TVRT": '',
-                            "STRS": '',
-                            "EPSD": ''
-                        })
-                        data[str(contadorCanal)] = []
-                        data[str(contadorCanal)].append({
-                            'PSCN': channel['PSCN'],
-                            'ADIO': channel['ADIO'],
-                            'PRGM': channel['PRGM'],
-                            'SRCE': channel['SRCE'],
-                            'QLTY': 'HD' if (channel['QLTY']=='1') else 'SD',
-                            'PORT': channel['PORT'],
-                            'CHNL': channel['CHNL'],
-                            'STTN': channel['STTN'],
-                            'NAME': channel['NAME'],
-                            'INDC': channel['INDC'],
-                            'LOGO': channel['LOGO'],
-                            'DATE': day.strftime("%Y%m%d"),
-                            'PROGRAMS': dataProgradm,
-                            'P_Length': 1
-                        })
-                    contadorCanal = contadorCanal + 1
+                    print("")
             else:
                 ##############  TV PASSPORT ##############
                 if 'PASS' in channel['STTN']:
@@ -732,49 +579,6 @@ def deleteline(slinea):
             if borrar[0] == slinea:
                 f.write(line)
     f.close()
-
-def separarGato(JSONGato):
-    JSONGato.pop(0)
-    JSONGato.pop(0)
-    JSONGato.pop(0)
-    e = 0
-    while e < len(JSONGato):
-        if JSONGato[e] == []:
-            JSONGato.pop(e)
-            e = 0
-        else:
-            e += 1
-
-    for indice in range(len(JSONGato)):
-
-        if JSONGato[indice] != []:
-            try:
-                if JSONGato[indice][2] == '' or JSONGato[indice][3] == '':
-                    continue
-            except:
-                JSONGato[indice].append('')
-
-    for indice in range(len(JSONGato)):
-        desc = ''
-        title = ''
-        if JSONGato[indice][2] == '':
-            letras = JSONGato[indice][3]
-        else:
-            letras = JSONGato[indice][2]
-
-        for ind in range(len(letras)):
-            if ind < len(letras) - 1:
-                if (letras[ind].islower() and letras[ind + 1].isupper()) or (
-                        letras[ind].isnumeric() and letras[ind + 1].isupper()):
-                    for y in range(ind + 1):
-                        title = title + letras[y]
-                    for x in range(ind + 1, len(letras)):
-                        desc = desc + letras[x]
-                    break
-        if title != '':
-            JSONGato[indice][2] = title
-            JSONGato[indice][3] = desc
-    return JSONGato
 
 for pos in range(len(listDays)):
     start(listDays[pos], pos)
