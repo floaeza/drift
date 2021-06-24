@@ -112,7 +112,7 @@ def start(day, pos):
                     print('GATO TV')
                     P_Length = 0
                     try:
-                        raw_html = urllib.request.urlopen('https://www.gatotv.com/canal/cartoon_network_mexico/2021-06-23').read().decode()
+                        raw_html = urllib.request.urlopen('https://www.gatotv.com/canal/'+ channel['NAME'] + day.strftime("%Y-%m-%d")).read().decode()
                         raw_html.encode('utf-8')
                         soup = BeautifulSoup(raw_html, 'html.parser')
 
