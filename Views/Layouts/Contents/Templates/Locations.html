@@ -1,17 +1,5 @@
-<!--
-=========================================================
-Material Dashboard - v2.1.2
-=========================================================
-
-Product Page: https://www.creative-tim.com/product/material-dashboard
-Copyright 2020 Creative Tim (https://www.creative-tim.com)
-Coded by Creative Tim
-
-=========================================================
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="../../../../../Assets/img/apple-icon.png">
@@ -29,7 +17,6 @@ The above copyright notice and this permission notice shall be included in all c
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../../../../../Assets/demo/demo.css" rel="stylesheet" />
 </head>
-
 <body class="">
   <div class="wrapper ">
     <div class="main-panel">
@@ -161,45 +148,34 @@ The above copyright notice and this permission notice shall be included in all c
   <!-- DataTables -->
   <link rel="stylesheet" type="text/css" href="../../../../../Assets//DataTables/datatables.min.css"/>
   <script type="text/javascript" src="../../../../../Assets//DataTables/datatables.min.js"></script>
-
+  <!-- Alerts editables -->
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 <script>
   // Controladores
-  const PathController = '/BBINCO/Admin/Core/Querys/',
-        SourceController= '/BBINCO/TV/Core/Controllers/';
-  
+  const PathController   = '/BBINCO/Admin/Core/Querys/',
+        SourceController = '/BBINCO/TV/Core/Controllers/';
   // Locaciones
-  let AllLocations = [];
-  let LocationsToTable = [];
-  
-
+  let AllLocations      = [],
+      LocationsToTable  = [];
   // Modulos
-  let AllModules = [];
-
+  let AllModules        = [];
   //Paquetes
-  let AllPackages = [];
-
+  let AllPackages       = [];
   //Miembros
-  let Allmembers = [];
-
+  let Allmembers        = [];
   //Nodos
-  let TableBody = [];
+  let TableBody         = [];
 
-  $( document ).ready(function() {
+//Llama a todas las funciones cuando el documento termina de cargar el DOM
+$( document ).ready(function() {
     getInfo();
-    console.log(AllModules);
-    console.log(AllPackages);
-    console.log(AllLocations);
     getLocations();
     setAllInfo();
     document.getElementById('btnActualizar').disabled = true;
-    sendInfo();
-   
-
-    
+    sendInfo(); 
   });
-
+//Procesa la informacion del json de la BD para poder ser leidos por la funcion de tablas
 function getLocations(){
   AllLocations.forEach(location => {
     var aux = [];
@@ -246,7 +222,7 @@ function getLocations(){
   selectLocation();
   
   }
-
+//Crea las tablas y se les asigna la informacion
 function getTables(){
   $('#LocationsTable').DataTable( {
     data: LocationsToTable,
@@ -262,7 +238,7 @@ function getTables(){
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
 });
 }
-
+//Obtiene los datos de la BD mediante AJAX
 function getInfo(){
   $.ajax({
     type: "POST",
@@ -312,7 +288,7 @@ $.ajax({
     }
   }); 
 }
-
+//Al seleccionar una locacion de la tabla en la pagina toma la informacion de la locacion seleccionada 
 function selectLocation(){
   
   $('#LocationsTable tbody').on('click', 'tr', function(){
@@ -344,7 +320,7 @@ function selectLocation(){
 
   });
 }
-
+//Con el nombre de la locacion seleccionada cambia dinamicamente el input y lo select 
 function setInformation(name){
   let locationSelected = [];
   AllLocations.forEach(element => {
@@ -373,7 +349,7 @@ function setInformation(name){
 
   
 }
-
+//Coloca la informacion de modulos, paquetes y miembros en sus respectivos select boxes
 function setAllInfo(){
   let selectPackage = document.getElementById('Package');
   AllPackages.forEach(element => {
@@ -406,8 +382,7 @@ function setAllInfo(){
   });
 
 }
-
-
+//Envia la informacion segun el boton oprimido
 function sendInfo(){
   $('#btnActualizar').click( function(){
     let Empty = isEmpty();
@@ -497,7 +472,7 @@ $('#btnRegistrar').click( function(){
 
   });
 }
-
+//Devuelve un arreglo con los nombres de los campos que estan vacios
 function isEmpty(){
   let selects = document.getElementsByTagName('select');
   let EmptySelects = [];
@@ -527,7 +502,7 @@ function isEmpty(){
   }
   return EmptySelects;
 }
-
+//Devuelve tru si encuentra un nombre igual al que se obtiene del input NameLocation
 function isEqual(){
   let flag = false;
   AllLocations.forEach(element => {
@@ -538,5 +513,4 @@ function isEqual(){
   return flag;
 }
 </script>
-
 </html>
