@@ -31,29 +31,17 @@ def start(day, pos):
     Ver = Ver[0]
 
     payload = {'Option': 'GetIdentifier'}
-<<<<<<< HEAD
-    Identifier = requests.post('http://10.0.3.10/bbincotv/Core/Controllers/PY.php', data=payload)
-=======
     Identifier = requests.post('http://10.0.3.10/BBINCO/TV/Core/Controllers/PY.php', data=payload)
->>>>>>> 3d4fae585ba83172383d32d786e7484304d8802d
     IDF = json.loads(Identifier.content)
     IDF = IDF[0]
     
     payload = {'Option': 'GetOffsetZone'}
-<<<<<<< HEAD
-    Zone = requests.post('http://10.0.3.10/bbincotv/Core/Controllers/PY.php', data=payload)
-=======
     Zone = requests.post('http://10.0.3.10/BBINCO/TV/Core/Controllers/PY.php', data=payload)
->>>>>>> 3d4fae585ba83172383d32d786e7484304d8802d
     OffSetZone = json.loads(Zone.content)
     OffSetZone = OffSetZone[0]
 
     payload = {'Option': 'GetGatoTime'}
-<<<<<<< HEAD
-    GTime = requests.post('http://10.0.3.10/bbincotv/Core/Controllers/PY.php', data=payload)
-=======
     GTime = requests.post('http://10.0.3.10/BBINCO/TV/Core/Controllers/PY.php', data=payload)
->>>>>>> 3d4fae585ba83172383d32d786e7484304d8802d
     GatoTime = json.loads(GTime.content)
     GatoTime = GatoTime[0]
 
@@ -70,11 +58,7 @@ def start(day, pos):
 
 
         payload = {'Option': 'GetModulesBypackage', 'PackageID': ids}
-<<<<<<< HEAD
-        x = requests.post('http://10.0.3.10/bbincotv/Core/Controllers/PY.php', data=payload)
-=======
         x = requests.post('http://10.0.3.10/BBINCO/TV/Core/Controllers/PY.php', data=payload)
->>>>>>> 3d4fae585ba83172383d32d786e7484304d8802d
         channels = json.loads(x.content)
         for channel in channels:
             dataProgradm = {}
@@ -118,11 +102,7 @@ def start(day, pos):
         ############################################# PROGAMACION #############################################
         #######################################################################################################
         payload = {'Option': 'GetChannelsInfoBypackage', 'PackageID': ids}
-<<<<<<< HEAD
-        x = requests.post('http://10.0.3.10/bbincotv/Core/Controllers/PY.php', data=payload)
-=======
         x = requests.post('http://10.0.3.10/BBINCO/TV/Core/Controllers/PY.php', data=payload)
->>>>>>> 3d4fae585ba83172383d32d786e7484304d8802d
         channels = json.loads(x.content)
         #print(channels)
         
