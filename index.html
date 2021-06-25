@@ -245,9 +245,11 @@
 	}
 
 	function GetInfoDevice(){
+
 		$.ajax({
 			type: 'POST',
 			url: 'http://'+ServerIp+'/BBINCO/TV/Core/Controllers/Index.php',
+			async: false,
 			data: {
 				Option      : SetOption,
 				MacAddress  : MACAddress,
@@ -269,12 +271,12 @@
 						alert('Registrado correctamente');
 					}
 
-					var DeviceInfo = 'BBINCOTV > Macaddress: '+MACAddress+' Ip: '+IPAddress;
+					var DeviceInfo = 'BBINCOTV Update: '+Data['Updated'] + ' - '+JSON.stringify(Data['DeviceUpdate']);
 						DebugText.innerHTML = DeviceInfo;
 
 					var Page = Data['ModuleUrl'].replace('php','html');
 
-					window.location.href = Page;
+					setTimeout(function(){ window.location.href = Page; }, 5000);
 				} else if(Data['Option'] === 'LICENSE'){
 					var DeviceInfo = ' Mac: '+MACAddress+' Ip: '+IPAddress;
 					DebugText.innerHTML = DeviceInfo;
@@ -293,6 +295,7 @@
 		$.ajax({
 			type: 'POST',
 			url: 'http://'+ServerIp+'/BBINCO/TV/Core/Controllers/Index.php',
+			async: false,
 			data: {
 				Option : 'LOCATIONS'
 			},

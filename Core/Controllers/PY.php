@@ -53,6 +53,11 @@
                 array_push($ArrayEPGInfo, array('IDF' => $GuideDays));
                 echo json_encode($ArrayEPGInfo);
                 break;
+            case 'GetVersion':
+                $GuideDays = $ConfigData->getConfigByName('Version');
+                array_push($ArrayEPGInfo, array('VER' => $GuideDays));
+                echo json_encode($ArrayEPGInfo);
+                break;
             case 'GetChannelsInfoBypackage':
                 $PreChannalesArray  = $PackagesData->getPackageListById($PackageID);
                 foreach ($PreChannalesArray as $PreChannelRow):
@@ -66,7 +71,8 @@
                     'STTN' => $PreChannelRow['numero_estacion'],
                     'NAME' => $PreChannelRow['nombre_estacion'],
                     'INDC' => $PreChannelRow['indicativo'],
-                    'LOGO' => $PreChannelRow['logo']
+                    'LOGO' => $PreChannelRow['logo'],
+                    'NACH' => $PreChannelRow['nombre_canal']
                     
                     ));
                 endforeach;
@@ -85,7 +91,8 @@
                     'STTN' => 'CONTENT',
                     'NAME' => $PreChannelRow['nombre_modulo'],
                     'INDC' => $PreChannelRow['descripcion_modulo'],
-                    'LOGO' => $PreChannelRow['nombre_icono']                    
+                    'LOGO' => $PreChannelRow['nombre_icono']
+                                      
                     ));
                 endforeach;
                 echo json_encode($ArrayEPGInfo);
