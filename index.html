@@ -269,7 +269,7 @@
 						alert('Registrado correctamente');
 					}
 
-					var DeviceInfo = 'BBINCOTV Update: '+Data['Updated'] + ' - '+Data['DeviceUpdate'];
+					var DeviceInfo = 'BBINCOTV Update: '+Data['Updated'] + ' - '+JSON.stringify(Data['DeviceUpdate']);
 						DebugText.innerHTML = DeviceInfo;
 
 					var Page = Data['ModuleUrl'].replace('php','html');
