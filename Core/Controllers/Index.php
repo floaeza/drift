@@ -123,7 +123,8 @@
 
                 $Option = 'RELOAD';
 
-                $Response = array('Option' => $Option, 
+                $Response = array('Option' => $Option,
+                                  'Updated' => $UpdateDevice,
                                   'ModuleUrl' => $LocationDevice[$FirstElement]['url_modulo'],
                                   'ModuleId' => $LocationDevice[$FirstElement]['id_modulo'],
                                   'ModuleName' => $LocationDevice[$FirstElement]['nombre_modulo']);
