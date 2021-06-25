@@ -273,10 +273,10 @@
 						DebugText.innerHTML = DeviceInfo;
 
 					var Page = Data['ModuleUrl'].replace('php','html');
-					alert(JSON.stringify(Data['Updated']));
-					alert(Data['Updated']);
+					//alert(JSON.stringify(Data['Updated']));
+					//alert(Data['Updated']);
 
-					//window.location.href = Page;
+					window.location.href = Page;
 				} else if(Data['Option'] === 'LICENSE'){
 					var DeviceInfo = ' Mac: '+MACAddress+' Ip: '+IPAddress;
 					DebugText.innerHTML = DeviceInfo;
