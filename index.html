@@ -271,12 +271,12 @@
 						alert('Registrado correctamente');
 					}
 
-					var DeviceInfo = 'BBINCOTV Update: '+Data['Updated'] + ' - '+JSON.stringify(Data['DeviceUpdate']);
+					var DeviceInfo = 'loading - '+MACAddress;
 						DebugText.innerHTML = DeviceInfo;
 
 					var Page = Data['ModuleUrl'].replace('php','html');
 
-					setTimeout(function(){ window.location.href = Page; }, 5000);
+					setTimeout(function(){ window.location.href = Page; }, 2000);
 				} else if(Data['Option'] === 'LICENSE'){
 					var DeviceInfo = ' Mac: '+MACAddress+' Ip: '+IPAddress;
 					DebugText.innerHTML = DeviceInfo;

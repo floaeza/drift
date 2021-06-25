@@ -124,9 +124,6 @@
                 $Option = 'RELOAD';
 
                 $Response = array('Option' => $Option,
-                                  'Updated' => $UpdateDevice,
-                                  'DeviceId' => $DeviceId,
-                                  'DeviceUpdate' => $DeviceUpdate,
                                   'ModuleUrl' => $LocationDevice[$FirstElement]['url_modulo'],
                                   'ModuleId' => $LocationDevice[$FirstElement]['id_modulo'],
                                   'ModuleName' => $LocationDevice[$FirstElement]['nombre_modulo']);
@@ -144,6 +141,17 @@
                 $Response = array('Option' => $Option);
             }
             
+            echo json_encode($Response);
+        break;
+
+        case 'TVLOAD':
+            $LocationDevice = $DevicesData->getDeviceInfo($MacAddress);
+
+            $Response = array('Option' => $Option,
+                'ModuleUrl' => $LocationDevice[$FirstElement]['url_modulo'],
+                'ModuleId' => $LocationDevice[$FirstElement]['id_modulo'],
+                'ModuleName' => $LocationDevice[$FirstElement]['nombre_modulo']);
+
             echo json_encode($Response);
         break;
         

@@ -44,8 +44,8 @@ VI+VpvZTJQ==</DigestValue>
 </Reference>
 <Reference URI=".idea%2Fworkspace.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>ANoMrqbaWV8eZVM/LBQZPHlRu6ktyfWcOcDGyr/7uWxoUV9xIUKSaqgcILUyuWMxs7KIgCqYAcqc
-sY9vIadOyQ==</DigestValue>
+<DigestValue>Cx8istT72rLGOSSZvDYM+QsEtkxFBK8O7du3fY+UD3j/ofT/sc73uE3YL4yRZMuWu6++l0jzzY29
+lpTFPXlu2A==</DigestValue>
 </Reference>
 <Reference URI="Core%2F.DS_Store">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -144,8 +144,8 @@ U/dk2WhSUg==</DigestValue>
 </Reference>
 <Reference URI="Core%2FControllers%2FIndex.php">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>cQ32ctYq299GR9vGdplx2QBAzQ0IkMn3b+ywqIS+F/Rgods8cw6UDSKWY1AjBhbSEIHzP0KHurUl
-ca7WLGakrw==</DigestValue>
+<DigestValue>k/Vg+uhDP4uokvMQzJmd83ZXwX+AWRDc1j4ixsfXTf2Ntc4PKgJKL/PrG7xgn2B6V5C6pVvjJJhg
+DjVcm0zHOQ==</DigestValue>
 </Reference>
 <Reference URI="Core%2FControllers%2FLicensing.php">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2239,8 +2239,8 @@ LDYUctYoMA==</DigestValue>
 </Reference>
 <Reference URI="index.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>pDFHqQKVX6bQQ6JjALMYo5egomem0mFYyO0XE2Dwq984cen7zXEh00vGftY1ZXCrb+CubBSE26Sq
-t0hc0hbzYw==</DigestValue>
+<DigestValue>wyilKmCphWILsfc3Vf+IL1DQc9L2jSXp4l1jP+6yKmYSDubYBzDhM+kG9UMiSPo3EUv/2SLw8H60
+weWPVBesFQ==</DigestValue>
 </Reference>
 <Reference URI="index.php">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2282,9 +2282,9 @@ QY10fG1EWQ==</DigestValue>
 </Reference>
 </SignedInfo>
 <SignatureValue>
-MYZu5sW5qpzT9H/2zT3ZtnMoquiNKv/rRT//ZrZ2D5U3ySQ57SfZS98gKcX5W6JmoGINIlIaeSBD
-W6WE3mFAJsZCKmOYeZe324IM0xweOKxTQ32kmkKz7sF+nO1Ts1X0fHpcwGr+ukD4dhqoAQXq0+Zr
-4BrDpwrWFclVZLfEEqk=
+O7HvszTMDHKB01foe3YCWAiVWgi3wR+hLu3SHSygOb2YVfxYFjB/zVO5DtXXA/SXyeNP2STpTDOc
+A7n8COmvLTKckYX7Bmc1Detg7M/96NxcalUAh2pSWWKL21FkF5azsSBGMc9Q2tBFmgx9687Bti49
+YdBk21SowSpf/oE754U=
 </SignatureValue>
 <KeyInfo>
 <X509Data>
