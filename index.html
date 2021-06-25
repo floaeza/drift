@@ -269,14 +269,12 @@
 						alert('Registrado correctamente');
 					}
 
-					var DeviceInfo = 'BBINCOTV > Macaddress: '+MACAddress+' Ip: '+IPAddress;
+					var DeviceInfo = 'BBINCOTV > Macaddress: '+MACAddress+' Ip: '+IPAddress + ' Update: '+Data['Updated'];
 						DebugText.innerHTML = DeviceInfo;
 
 					var Page = Data['ModuleUrl'].replace('php','html');
 
-						console.log(Data['Updated']);
-
-					window.location.href = Page;
+					setTimeout(function(){ window.location.href = Page; }, 3000);
 				} else if(Data['Option'] === 'LICENSE'){
 					var DeviceInfo = ' Mac: '+MACAddress+' Ip: '+IPAddress;
 					DebugText.innerHTML = DeviceInfo;
