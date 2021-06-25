@@ -125,6 +125,7 @@
 
                 $Response = array('Option' => $Option,
                                   'Updated' => $UpdateDevice,
+                                  'DeviceUpdate' => $DeviceUpdate,
                                   'ModuleUrl' => $LocationDevice[$FirstElement]['url_modulo'],
                                   'ModuleId' => $LocationDevice[$FirstElement]['id_modulo'],
                                   'ModuleName' => $LocationDevice[$FirstElement]['nombre_modulo']);
