@@ -12,12 +12,12 @@
     $CurrentController = 'IndexController';
 
     $Option     = !empty($_POST['Option']) ? $_POST['Option'] : ''; 
-    $MacAddress = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '00:00:00:00:00:00';
-    $IpAddress  = !empty($_POST['IpAddress']) ? $_POST['IpAddress'] : '0.0.0.0';
-    $Firmware   = !empty($_POST['Firmware']) ? $_POST['Firmware'] : 'x0x';
-    $Model      = !empty($_POST['Model']) ? $_POST['Model'] : 'AXX';
-    $Hdd        = !empty($_POST['Hdd']) ? $_POST['Hdd'] : 'N';
-    $Vendor     = !empty($_POST['Vendor']) ? $_POST['Vendor'] : 'Generic';
+    $MacAddress = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '';
+    $IpAddress  = !empty($_POST['IpAddress']) ? $_POST['IpAddress'] : '';
+    $Firmware   = !empty($_POST['Firmware']) ? $_POST['Firmware'] : '';
+    $Model      = !empty($_POST['Model']) ? $_POST['Model'] : '';
+    $Hdd        = !empty($_POST['Hdd']) ? $_POST['Hdd'] : '';
+    $Vendor     = !empty($_POST['Vendor']) ? $_POST['Vendor'] : '';
     
     $DevicesData = new Devices($MacAddress, $CurrentController);
     $ConfigData  = new Config($MacAddress, $CurrentController);
@@ -125,6 +125,7 @@
 
                 $Response = array('Option' => $Option,
                                   'Updated' => $UpdateDevice,
+                                  'DeviceId' => $DeviceId,
                                   'DeviceUpdate' => $DeviceUpdate,
                                   'ModuleUrl' => $LocationDevice[$FirstElement]['url_modulo'],
                                   'ModuleId' => $LocationDevice[$FirstElement]['id_modulo'],
