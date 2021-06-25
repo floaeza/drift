@@ -15,8 +15,8 @@ var REMOTE_OK                    = 13, // Enter
     REMOTE_BACK                  = 10009, // <- REGRESAR
 
     REMOTE_GUIDE                 = 10073, // GUIDE
-    REMOTE_CHANNEL_UP            = 428, // CHANNEL +
-    REMOTE_CHANNEL_DOWN          = 427, // CHANNEL -
+    REMOTE_CHANNEL_UP            = 427, // CHANNEL +
+    REMOTE_CHANNEL_DOWN          = 428, // CHANNEL -
     SMALL_ARROW_UP               = 0,  // PAGE UP
     SMALL_ARROW_DOWN             = 0,  // PAGE DOWN
     REMOTE_INFO                  = 457, // i
