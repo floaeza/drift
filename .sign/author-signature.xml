@@ -44,8 +44,8 @@ VI+VpvZTJQ==</DigestValue>
 </Reference>
 <Reference URI=".idea%2Fworkspace.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>qlCLEzSc1n44TX1jJ+QdgmGi7CYGgawc/jjsGJGqdvbZnUTW5zmF4DOGWZ0gpvcucYJnu+e84i5f
-BLJDOhNizQ==</DigestValue>
+<DigestValue>ZY2yk3pGIZJG1VrE0Qaa90XBTkaVEccwg2pH6rxuNVFUS9Prwn66ux3bX+q2XqrpuEzvGDwdVIhN
+s1Bi+3FPbQ==</DigestValue>
 </Reference>
 <Reference URI="Core%2F.DS_Store">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2282,9 +2282,9 @@ QY10fG1EWQ==</DigestValue>
 </Reference>
 </SignedInfo>
 <SignatureValue>
-YHj9IFYg6dSYOA8efwq36mKtTWPUqP55dnDpeH4e0evvxspk9JsjjhMVCbq8GcmoJUZdzx2jRpDs
-NVBqwtCqvPsEsULDiOS6hO4wjMbgHyQ9qaMEzd1uawQ+5ouiBzarjd+6jLszHms9l+9vhd73phxA
-7+1GPncmgKbfcOybyFA=
+GdNIunPgkhejw8TR3or9tdDCs6/l5XuboB87KPwR4ficgYaKYcuV2mZgqrVZqNLy1KfkBDWZVxHZ
+Bea6BaKvhCB+ZAKjWVHA1d34UxRMSj/H+e+K79C3zRMBY8dySGBjm34fjqYH140+qL4uOpr4kRQH
+sUoqBHeHokP4AI2+a0I=
 </SignatureValue>
 <KeyInfo>
 <X509Data>
