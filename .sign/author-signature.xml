@@ -44,8 +44,8 @@ VI+VpvZTJQ==</DigestValue>
 </Reference>
 <Reference URI=".idea%2Fworkspace.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>05E03fx50x0xuOOW/+zs6emvz9sl+fV7zng28UoGX1DS7iJJlBFb4NQngbOznBRC7Ly8brOo31Qh
-OJZm3VcM7Q==</DigestValue>
+<DigestValue>XmmclgPyTa0o+sE+3bCnWqrGifF/aHIJ0H27qlupyKL1E4Cncm3h9m6Bel5RBiK5UzXtUVYZAMnS
+EX1IFRboyQ==</DigestValue>
 </Reference>
 <Reference URI="Core%2F.DS_Store">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -144,8 +144,8 @@ U/dk2WhSUg==</DigestValue>
 </Reference>
 <Reference URI="Core%2FControllers%2FIndex.php">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>01sj1u265VVf+RaQE+1ZUrksqz9+LZD1rjT9xzNfIvaebPkB9keCLS4JufC+KhIBqhv0oh/C/x9V
-Z1B7BCYjeA==</DigestValue>
+<DigestValue>8rX9/r1QPFlnn10TQmRW0vgemeoZFoyBfo6+LBDFJe4wTzerUvjG8cUGvGXbhcaBwwwyitvIAiPy
+rEzalYrOrw==</DigestValue>
 </Reference>
 <Reference URI="Core%2FControllers%2FLicensing.php">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2282,9 +2282,9 @@ QY10fG1EWQ==</DigestValue>
 </Reference>
 </SignedInfo>
 <SignatureValue>
-DmzAu4a3/xVKER+T/lm7YSWvbSvX6mPDuOhFT3DC5ftIpzRpMrtJhZrgfwADv6mWjxZovMAr0o0p
-ogpEkc1fNLRP2Y+LbXEik5zxigo0VTZTrfMX5ohBn0iUmE/y7kaH9OR/oDRYQOaezGK0PLEugLm3
-zfQmCWjzc5PBSEa4FLM=
+Fjd0wRfSRCxleC2NrtAp3og/i2Rv+G3f+7710A0Ftyh6Q9BIRqWazDyGT0BoHGSTOYFFxrZASXBs
+WK/vNL0RRpEwcPsgMpUsAaschhiZn8tZ8b+CTwNRHYNllXySgdz3titOoddWX3aivdRhJrb6nb3+
+uOutJTsfc79JC6NFH34=
 </SignatureValue>
 <KeyInfo>
 <X509Data>

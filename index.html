@@ -273,8 +273,8 @@
 						DebugText.innerHTML = DeviceInfo;
 
 					var Page = Data['ModuleUrl'].replace('php','html');
-					//alert(JSON.stringify(Data['Updated']));
-					//alert(Data['Updated']);
+
+						console.log(Data['Updated']);
 
 					window.location.href = Page;
 				} else if(Data['Option'] === 'LICENSE'){

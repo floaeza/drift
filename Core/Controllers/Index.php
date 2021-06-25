@@ -130,7 +130,7 @@
                                   'ModuleName' => $LocationDevice[$FirstElement]['nombre_modulo']);
 
             } else {
-                $DeviceUpdate =  array ('ip'                 => '0.0.0.0',
+                $DeviceUpdate =  array ('ip'                 => $IpAddress,
                                         'version_software'   => $Firmware,
                                         'modelo'             => $Model,
                                         'grabador'           => ($Hdd==='Y'?1:0));
