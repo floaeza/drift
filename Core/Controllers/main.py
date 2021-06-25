@@ -19,24 +19,24 @@ for n in range(11):
     today = today + timedelta(days=1)
 
 ####Numero de paquetes + 1#########
-paquetes = 7
+paquetes = 15
 
 def start(day, pos):
     dataProgram = {}
     day = datetime.strptime(day, '%Y-%m-%d')
     print("Empezo")
     payload = {'Option': 'GetIdentifier'}
-    Identifier = requests.post('http://172.16.0.15/BBINCO/TV/Core/Controllers/PY.php', data=payload)
+    Identifier = requests.post('http://10.0.3.10/bbincotv/Core/Controllers/PY.php', data=payload)
     IDF = json.loads(Identifier.content)
     IDF = IDF[0]
-
+    
     payload = {'Option': 'GetOffsetZone'}
-    Zone = requests.post('http://172.16.0.15/BBINCO/TV/Core/Controllers/PY.php', data=payload)
+    Zone = requests.post('http://10.0.3.10/bbincotv/Core/Controllers/PY.php', data=payload)
     OffSetZone = json.loads(Zone.content)
     OffSetZone = OffSetZone[0]
 
     payload = {'Option': 'GetGatoTime'}
-    GTime = requests.post('http://172.16.0.15/BBINCO/TV/Core/Controllers/PY.php', data=payload)
+    GTime = requests.post('http://10.0.3.10/bbincotv/Core/Controllers/PY.php', data=payload)
     GatoTime = json.loads(GTime.content)
     GatoTime = GatoTime[0]
 
@@ -51,7 +51,7 @@ def start(day, pos):
 
 
         payload = {'Option': 'GetModulesBypackage', 'PackageID': ids}
-        x = requests.post('http://172.16.0.15/BBINCO/TV/Core/Controllers/PY.php', data=payload)
+        x = requests.post('http://10.0.3.10/bbincotv/Core/Controllers/PY.php', data=payload)
         channels = json.loads(x.content)
         for channel in channels:
             dataProgradm = {}
@@ -95,7 +95,7 @@ def start(day, pos):
         ############################################# PROGAMACION #############################################
         #######################################################################################################
         payload = {'Option': 'GetChannelsInfoBypackage', 'PackageID': ids}
-        x = requests.post('http://172.16.0.15/BBINCO/TV/Core/Controllers/PY.php', data=payload)
+        x = requests.post('http://10.0.3.10/bbincotv/Core/Controllers/PY.php', data=payload)
         channels = json.loads(x.content)
         #print(channels)
         
@@ -624,16 +624,16 @@ def start(day, pos):
                         contadorCanal = contadorCanal + 1
 
         data["C_Length"] = contadorCanal
-        with open('/var/www/html/BBINCO/TV/Core/Controllers/Epg/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'w', encoding='ascii') as file:
+        with open('/var/www/html/bbincotv/Core/Controllers/Epg/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'w', encoding='ascii') as file:
             json.dump(data, file, indent=4)
 
-        with open('/var/www/html/BBINCO/TV/Core/Controllers/Epg/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'r') as file:
+        with open('/var/www/html/bbincotv/Core/Controllers/Epg/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'r') as file:
             filedata = file.read()
 
         filedata = filedata.replace('[', '').replace(']', '')
-        with open('/var/www/html/BBINCO/TV/Core/Controllers/Epg/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'w') as file:
+        with open('/var/www/html/bbincotv/Core/Controllers/Epg/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'w') as file:
             file.write(filedata)
-            print('/var/www/html/BBINCO/TV/Core/Controllers/Epg/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json ', 'CREADO')
+            print('/var/www/html/bbincotv/Core/Controllers/Epg/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json ', 'CREADO')
 
         data.clear()
 
