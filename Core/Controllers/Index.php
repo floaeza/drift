@@ -148,9 +148,6 @@
             $LocationDevice = $DevicesData->getDeviceInfo($MacAddress);
 
             $Response = array('Option' => $Option,
-                'Mac' => $MacAddress,
-                'Location' => $LocationDevice,
-                'LocationF' => $LocationDevice[$FirstElement],
                 'ModuleUrl' => $LocationDevice[$FirstElement]['url_modulo'],
                 'ModuleId' => $LocationDevice[$FirstElement]['id_modulo'],
                 'ModuleName' => $LocationDevice[$FirstElement]['nombre_modulo']);

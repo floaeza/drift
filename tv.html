@@ -80,9 +80,7 @@
                 MacAddress: MACAddress,
             },
             success: function (response) {
-                alert(MACAddress);
                 var InfoDevice = $.parseJSON(response);
-                console.log(JSON.stringify(InfoDevice));
 
                 ModuleId = InfoDevice['ModuleId'];
                 CurrentModule = InfoDevice['ModuleName'];
@@ -95,7 +93,6 @@
     }
 
     function GetContents() {
-        alert('GetContents:: '+MACAddress + ' '+ ModuleId + ' '+CurrentModule );
         $.ajax({
             method: 'POST',
             url: 'http://' + ServerIp + '/BBINCO/TV/tvContent.php',
