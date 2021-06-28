@@ -11,16 +11,14 @@
     
     $CurrentController = 'IndexController';
 
-    $Option     = !empty($_POST['Option']) ? $_POST['Option'] : ''; 
-    $MacAddress = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '';
+    $Option     = !empty($_POST['Option']) ? $_GET['Option'] : '';
+    $MacAddress = !empty($_POST['MacAddress']) ? $_GET['MacAddress'] : '';
     $IpAddress  = !empty($_POST['IpAddress']) ? $_POST['IpAddress'] : '';
     $Firmware   = !empty($_POST['Firmware']) ? $_POST['Firmware'] : '';
     $Model      = !empty($_POST['Model']) ? $_POST['Model'] : '';
     $Hdd        = !empty($_POST['Hdd']) ? $_POST['Hdd'] : '';
     $Vendor     = !empty($_POST['Vendor']) ? $_POST['Vendor'] : '';
 
-    echo $Option . ' -- '  . $MacAddress;
-    
     $DevicesData = new Devices($MacAddress, $CurrentController);
     $ConfigData  = new Config($MacAddress, $CurrentController);
 
