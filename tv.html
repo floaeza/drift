@@ -89,6 +89,7 @@
     });
 
     function GetContents() {
+        alert('GetContents:: '+MACAddress + ' '+ ModuleId + ' '+CurrentModule );
         $.ajax({
             method: 'POST',
             url: 'http://' + ServerIp + '/BBINCO/TV/tvContent.php',
