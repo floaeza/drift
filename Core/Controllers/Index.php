@@ -18,6 +18,8 @@
     $Model      = !empty($_POST['Model']) ? $_POST['Model'] : '';
     $Hdd        = !empty($_POST['Hdd']) ? $_POST['Hdd'] : '';
     $Vendor     = !empty($_POST['Vendor']) ? $_POST['Vendor'] : '';
+
+    echo $Option . ' -- '  . $MacAddress;
     
     $DevicesData = new Devices($MacAddress, $CurrentController);
     $ConfigData  = new Config($MacAddress, $CurrentController);
