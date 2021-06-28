@@ -48,7 +48,8 @@
 </body>
 <script>
 	/* Carga inicial */
-	window.addEventListener('load',SetData,false);
+	//window.addEventListener('load',SetData,false);
+	setTimeout(function(){ SetData(); }, 2000);
 
 	if (window.tizen !== undefined) {
 		var b2bcontrol = window.b2bapis.b2bcontrol;
@@ -239,7 +240,7 @@
 			//' error code = ' + error.code
 		}
 
-		DebugText.innerHTML = 'IP: '+IPAddress + ' MAC: '+MACAddress + ' TV: '+TvModel + ' '+ServerIp;
+		DebugText.innerHTML = 'IP: '+IPAddress + ' MAC: '+MACAddress + ' TV: '+TvModel + ' IPs: '+ServerIp;
 
 		GetInfoDevice();
 	}
