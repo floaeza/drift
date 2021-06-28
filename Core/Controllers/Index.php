@@ -11,7 +11,7 @@
     
     $CurrentController = 'IndexController';
 
-    echo $Option     = !empty($_POST['Option']) ? $_GET['Option'] : 'r';
+    echo $Option     = !empty($_POST['Option']) ? $_POST['Option'] : 'r';
     $MacAddress = !empty($_POST['MacAddress']) ? $_GET['MacAddress'] : '';
     $IpAddress  = !empty($_POST['IpAddress']) ? $_POST['IpAddress'] : '';
     $Firmware   = !empty($_POST['Firmware']) ? $_POST['Firmware'] : '';
