@@ -154,9 +154,9 @@ function OpenEpg(){
         EpgTimer = setTimeout(CloseEpg,TimeoutEpg);
 
         SetChannelLogo();
-        Debug('------- OpenEpg 2 -> EpgDataActive: '+EpgDataActive);
+        Debug('------- OpenEpg 2 (Modern) -> EpgDataActive: '+EpgDataActive);
     } else if(ActiveEpgContainer === true){
-        Debug('------- OpenEpg 3 -> EpgDataActive: '+EpgDataActive);
+        Debug('------- OpenEpg 3 (Modern) -> EpgDataActive: '+EpgDataActive);
         CloseEpg();
     }
 }

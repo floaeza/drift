@@ -211,6 +211,7 @@ function SelectRecordingsOption(){
             ADD_SERIE_BCKG = false;
 
             if(ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].DRTN !== '24'){
+                Debug("Caso 3");
                 CheckRecordings();
             } else {
                 CloseRecordingOptions();
@@ -408,6 +409,12 @@ function SetPvrInfoGB(){
             TotalSize = (StorageInfo.pvrTotalSpace / 1024) / 1024;
             AvailableSize = (StorageInfo.pvrFreeSpace / 1024) / 1024;
 
+        }else if(typeof(gSTB) !== 'undefined'){
+            storageInfo = JSON.parse(gSTB.GetStorageInfo('{}'));
+            USB = storageInfo.result || [];
+
+            TotalSize = (USB[0].size / 1024) / 1024;
+            AvailableSize = (USB[0].freeSize / 1024) / 1024;
         }
     } else {
         AvailableSize  = (parseInt(DiskInfo[DiskInfoIndex].espacio_disponible,10) / 1024);
@@ -461,6 +468,12 @@ function SetPvrInfo(){
             AvailableSize = (StorageInfo.pvrFreeSpace / 1000);
 
             TotalSize = (StorageInfo.pvrTotalSpace / 1000);
+        }else if(typeof(gSTB) !== 'undefined'){
+            storageInfo = JSON.parse(gSTB.GetStorageInfo('{}'));
+            USB = storageInfo.result || [];
+            TotalSize = (USB[0].size / 1024) / 1024;
+            AvailableSize = (USB[0].freeSize / 1024) / 1024;
+            //Debug('Infomir');
         }
     } else {
         AvailableSize  = parseInt(DiskInfo[DiskInfoIndex].espacio_disponible,10) ;
@@ -470,16 +483,16 @@ function SetPvrInfo(){
     Debug('AvailableSize: '+AvailableSize);
     Debug('TotalSize: '+TotalSize);
 
-    var SizePerSeconds = parseInt(DiskInfo[DiskInfoIndex].tamano_grabaciones);
+    var SizePerSeconds = (typeof(gSTB) !== 'undefined')? 0.3: parseInt(DiskInfo[DiskInfoIndex].tamano_grabaciones);
 
     //Debug('SizePerSeconds: '+SizePerSeconds);
-
     var TimeRemaining = Math.round(AvailableSize / SizePerSeconds);
-    //Debug('TimeRemaining: '+TimeRemaining);
+    
+    Debug('TimeRemaining: '+TimeRemaining);
     var Percentage = (AvailableSize / TotalSize) * 100,
         PercentageSize = parseFloat((100 - Percentage).toFixed(2));
     //Debug('PercentageSize: '+PercentageSize);
-
+    
     //Debug(SecondsToTime(Math.round(TimeRemaining)));
     PvrDiskInfoNodes[1].textContent = secondsToString(Math.round(TimeRemaining)); + ' available';
     PvrDiskInfoNodes[5].textContent = PercentageSize + '%';
@@ -1825,11 +1838,16 @@ function PvrClose(){
 function SetMacAddressPvr(){
     // Elige aleatoriamente la mac addres donde se guardara la serie en caso de que haya mas de un grabador
     if(Device['Type'] === 'WHP_HDDN'){
-        if(Device['MacAddressPvr'].length > 1){
-            var RandomMac = getRandomInt(0,Device['MacAddressPvr'].length);
-            MacAddressPvr = Device['MacAddressPvr'][RandomMac];
-        } else {
-            MacAddressPvr = Device['MacAddressPvr'][0];
+        
+        if((gSTB.GetDeviceModel() == 'MAG424') && (USB.length !== 0)){
+            MacAddressPvr = gSTB.GetDeviceMacAddress();
+        }else{
+            if(Device['MacAddressPvr'].length > 1){
+                var RandomMac = getRandomInt(0,Device['MacAddressPvr'].length);
+                MacAddressPvr = Device['MacAddressPvr'][RandomMac];
+            } else {
+                MacAddressPvr = Device['MacAddressPvr'][0];
+            }
         }
     }
 }
@@ -2123,8 +2141,8 @@ function CheckRecordings() {
                 RecordingsToCheck = $.parseJSON(response);
 
                 Debug('--------------------------------------->>0');
-                Debug(REC_CHNL_POS);
-                Debug(REC_PROG_POS);
+                Debug("Channel Pos:     "+ REC_CHNL_POS);
+                Debug("Program Pos:     " + REC_PROG_POS);
 
                 // Convierte a UTC el tiempo inicio de la grabacion que se quiere agregar
                 var ProgramYear = ChannelsJson[REC_CHNL_POS].DTNU.slice(0, 4),

@@ -12,6 +12,10 @@
         EventNetman = '',
         CurrentStbDate = moment().format('Y-MM-DD h:mm:ss');
 
+    var StorageInfo,
+        InfomirUSB  = 0,
+        USB;
+
     var DivDebug  = document.getElementById('DebugText'),
         DebugText = '';
 
@@ -168,7 +172,8 @@
                 EventString: EventString,
                 EventHdmi: EventHdmi,
                 //EventNetman: EventNetman,
-                CurrentDate: CurrentStbDate
+                CurrentDate: CurrentStbDate,
+                Grabador: InfomirUSB
             },
             beforeSend: function (){
                 Executing = true;
@@ -224,8 +229,6 @@ function UpdateQuickInfoDevice(){
 
     Debug('CurrentModule:: '+CurrentModule);
     Debug('OnScreen:: '+OnScreen);
-
-
 
     $.ajax({
         type: 'POST',

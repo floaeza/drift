@@ -109,7 +109,7 @@ function OpenEpg(){
             SetPvrInfo();
         }
 
-        Debug('------- OpenEpg 1 -> EpgDataActive: '+EpgDataActive);
+        Debug('------- OpenEpg 1 (Min) -> EpgDataActive: '+EpgDataActive);
 
 
 
@@ -153,9 +153,9 @@ function OpenEpg(){
         EpgTimer = setTimeout(CloseEpg,TimeoutEpg);
 
         SetChannelLogo();
-        Debug('------- OpenEpg 2 -> EpgDataActive: '+EpgDataActive);
+        Debug('------- OpenEpg 2 (Min) -> EpgDataActive: '+EpgDataActive);
     } else if(ActiveEpgContainer === true){
-        Debug('------- OpenEpg 3 -> EpgDataActive: '+EpgDataActive);
+        Debug('------- OpenEpg 3 (Min) -> EpgDataActive: '+EpgDataActive);
         CloseEpg();
     }
 }

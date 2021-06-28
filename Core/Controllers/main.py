@@ -18,7 +18,7 @@ for n in range(11):
     today = today + timedelta(days=1)
 
 ####Numero de paquetes + 1#########
-paquetes = 15
+paquetes = 7
 
 def start(day, pos):
     dataProgram = {}
@@ -70,7 +70,7 @@ def start(day, pos):
                 "DSCR": '',
                 "DRTN": 24,
                 "MNTS": 1440,
-                'DATE' if Ver['VER'] == '2.0.7' else 'DTNU': day.strftime("%Y%m%d") if Ver['VER'] == '2.0.7' else day.strftime("%c"),
+                'DATE' if Ver['VER'] == '2.0.7' else 'DTNU': day.strftime("%Y%m%d"),
                 "STRH": "00:00",
                 "FNLH": "24:00",
                 "TVRT": '',
@@ -90,7 +90,7 @@ def start(day, pos):
                 'NAME': channel['NAME'],
                 'INDC': channel['INDC'],
                 'LOGO': channel['LOGO'],
-                'DATE' if Ver['VER'] == '2.0.7' else 'DTNU': day.strftime("%Y%m%d") if Ver['VER'] == '2.0.7' else day.strftime("%c"),
+                'DATE' if Ver['VER'] == '2.0.7' else 'DTNU': day.strftime("%Y%m%d"),
                 'PROGRAMS': dataProgradm,
                 'P_Length': 1
             })
@@ -239,7 +239,7 @@ def start(day, pos):
                             "DSCR": lista[li]['desc'],
                             "DRTN": lista[li]['durh'],
                             "MNTS": lista[li]['durm'],
-                            'DATE' if Ver['VER'] == '2.0.7' else 'DTNU': day.strftime("%Y%m%d") if Ver['VER'] == '2.0.7' else day.strftime("%c"),
+                            'DATE' if Ver['VER'] == '2.0.7' else 'DTNU': day.strftime("%Y%m%d"),
                             "STRH": lista[li]['inicio'],
                             "FNLH": lista[li]['fin'],
                             "TVRT": '',
@@ -264,7 +264,7 @@ def start(day, pos):
                         'NAME': channel['NACH'],
                         'INDC': channel['INDC'],
                         'LOGO': channel['LOGO'],
-                        'DATE' if Ver['VER'] == '2.0.7' else 'DTNU': day.strftime("%Y%m%d") if Ver['VER'] == '2.0.7' else day.strftime("%c"),
+                        'DATE' if Ver['VER'] == '2.0.7' else 'DTNU': day.strftime("%Y%m%d"),
                         'PROGRAMS': dataProgramGato,
                         'P_Length': P_Length
                     })
@@ -278,7 +278,7 @@ def start(day, pos):
                         "DSCR": '',
                         "DRTN": 24,
                         "MNTS": 1440,
-                        'DATE' if Ver['VER'] == '2.0.7' else 'DTNU': day.strftime("%Y%m%d") if Ver['VER'] == '2.0.7' else day.strftime("%c"),
+                        'DATE' if Ver['VER'] == '2.0.7' else 'DTNU': day.strftime("%Y%m%d"),
                         "STRH": "00:00",
                         "FNLH": "23:59",
                         "TVRT": '',
@@ -298,7 +298,7 @@ def start(day, pos):
                         'NAME': channel['NACH'],
                         'INDC': channel['INDC'],
                         'LOGO': channel['LOGO'],
-                        'DATE' if Ver['VER'] == '2.0.7' else 'DTNU': day.strftime("%Y%m%d") if Ver['VER'] == '2.0.7' else day.strftime("%c"),
+                        'DATE' if Ver['VER'] == '2.0.7' else 'DTNU': day.strftime("%Y%m%d"),
                         'PROGRAMS': dataProgradm,
                         'P_Length': 1
                     })
@@ -368,7 +368,7 @@ def start(day, pos):
                                 "DSCR": table['data-description'],
                                 "DRTN": float("{:.2f}".format(dur / 60)),
                                 "MNTS": dur,
-                                'DATE' if Ver['VER'] == '2.0.7' else 'DTNU': day.strftime("%Y%m%d") if Ver['VER'] == '2.0.7' else day.strftime("%c"),
+                                'DATE' if Ver['VER'] == '2.0.7' else 'DTNU': day.strftime("%Y%m%d"),
                                 "STRH": ini.strftime("%H:%M"),
                                 "FNLH": end.strftime("%H:%M"),
                                 "TVRT": table['data-rating'],
@@ -421,7 +421,7 @@ def start(day, pos):
                                     "DSCR": table['data-description'],
                                     "DRTN": float("{:.2f}".format(dur / 60)),
                                     "MNTS": dur,
-                                    'DATE' if Ver['VER'] == '2.0.7' else 'DTNU': day.strftime("%Y%m%d") if Ver['VER'] == '2.0.7' else day.strftime("%c"),
+                                    'DATE' if Ver['VER'] == '2.0.7' else 'DTNU': day.strftime("%Y%m%d"),
                                     "STRH": ini.strftime("%H:%M"),
                                     "FNLH": end.strftime("%H:%M"),
                                     "TVRT": table['data-rating'],
@@ -447,7 +447,7 @@ def start(day, pos):
                             'NAME': channel['NACH'],
                             'INDC': channel['INDC'],
                             'LOGO': channel['LOGO'],
-                            'DATE' if Ver['VER'] == '2.0.7' else 'DTNU': day.strftime("%Y%m%d") if Ver['VER'] == '2.0.7' else day.strftime("%c"),
+                            'DATE' if Ver['VER'] == '2.0.7' else 'DTNU': day.strftime("%Y%m%d"),
                             'PROGRAMS': dataProgramPass,
                             'P_Length': P_Length
                         })
@@ -461,7 +461,7 @@ def start(day, pos):
                                 "DSCR": table['data-description'],
                                 "DRTN": float("{:.2f}".format(dur / 60)),
                                 "MNTS": dur,
-                                'DATE' if Ver['VER'] == '2.0.7' else 'DTNU': day.strftime("%Y%m%d") if Ver['VER'] == '2.0.7' else day.strftime("%c"),
+                                'DATE' if Ver['VER'] == '2.0.7' else 'DTNU': day.strftime("%Y%m%d"),
                                 "STRH": dataProgramPass[str(conta-1):"STRH"],
                                 "FNLH": '23:59',
                                 "TVRT": table['data-rating'],
@@ -478,7 +478,7 @@ def start(day, pos):
                                 "DSCR": '',
                                 "DRTN": 24,
                                 "MNTS": 1440,
-                                'DATE' if Ver['VER'] == '2.0.7' else 'DTNU': day.strftime("%Y%m%d") if Ver['VER'] == '2.0.7' else day.strftime("%c"),
+                                'DATE' if Ver['VER'] == '2.0.7' else 'DTNU': day.strftime("%Y%m%d"),
                                 "STRH": "00:00",
                                 "FNLH": "23:59",
                                 "TVRT": '',
@@ -498,7 +498,7 @@ def start(day, pos):
                                 'NAME': channel['NACH'],
                                 'INDC': channel['INDC'],
                                 'LOGO': channel['LOGO'],
-                                'DATE' if Ver['VER'] == '2.0.7' else 'DTNU': day.strftime("%Y%m%d") if Ver['VER'] == '2.0.7' else day.strftime("%c"),
+                                'DATE' if Ver['VER'] == '2.0.7' else 'DTNU': day.strftime("%Y%m%d"),
                                 'PROGRAMS': dataProgradm,
                                 'P_Length': 1
                             })
@@ -516,7 +516,7 @@ def start(day, pos):
                             "DSCR": '',
                             "DRTN": 24,
                             "MNTS": 1440,
-                            'DATE' if Ver['VER'] == '2.0.7' else 'DTNU': day.strftime("%Y%m%d") if Ver['VER'] == '2.0.7' else day.strftime("%c"),
+                            'DATE' if Ver['VER'] == '2.0.7' else 'DTNU': day.strftime("%Y%m%d"),
                             "STRH": "00:00",
                             "FNLH": "24:00",
                             "TVRT": '',
@@ -536,7 +536,7 @@ def start(day, pos):
                             'NAME': channel['NACH'],
                             'INDC': channel['INDC'],
                             'LOGO': channel['LOGO'],
-                            'DATE' if Ver['VER'] == '2.0.7' else 'DTNU': day.strftime("%Y%m%d") if Ver['VER'] == '2.0.7' else day.strftime("%c"),
+                            'DATE' if Ver['VER'] == '2.0.7' else 'DTNU': day.strftime("%Y%m%d"),
                             'PROGRAMS': dataProgradm,
                             'P_Length': 1
                         })
@@ -600,7 +600,7 @@ def start(day, pos):
                                             "DSCR": listProgrec[159],
                                             "DRTN": float("{:.2f}".format(durationh)),
                                             "MNTS": duration,
-                                            'DATE' if Ver['VER'] == '2.0.7' else 'DTNU': day.strftime("%Y%m%d") if Ver['VER'] == '2.0.7' else day.strftime("%c"),
+                                            'DATE' if Ver['VER'] == '2.0.7' else 'DTNU': day.strftime("%Y%m%d"),
                                             "STRH": hinicio.strftime("%H:%M"),
                                             "FNLH": hfin.strftime("%H:%M"),
                                             "TVRT": '',
@@ -624,23 +624,23 @@ def start(day, pos):
                             'NAME': channel['NACH'],
                             'INDC': channel['INDC'],
                             'LOGO': channel['LOGO'],
-                            'DATE' if Ver['VER'] == '2.0.7' else 'DTNU': day.strftime("%Y%m%d") if Ver['VER'] == '2.0.7' else day.strftime("%c"),
+                            'DATE' if Ver['VER'] == '2.0.7' else 'DTNU': day.strftime("%Y%m%d"),
                             'PROGRAMS': dataProgramTri,
                             'P_Length' : contadorPrograma
                         })
                         contadorCanal = contadorCanal + 1
 
         data["C_Length"] = contadorCanal
-        with open('/var/www/html/bbincotv/Core/Controllers/Epg/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'w', encoding='ascii') as file:
+        with open('/var/www/html/BBINCO/TV/Core/Controllers/Epg/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'w', encoding='ascii') as file:
             json.dump(data, file, indent=4)
 
-        with open('/var/www/html/bbincotv/Core/Controllers/Epg/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'r') as file:
+        with open('/var/www/html/BBINCO/TV/Core/Controllers/Epg/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'r') as file:
             filedata = file.read()
 
         filedata = filedata.replace('[', '').replace(']', '')
-        with open('/var/www/html/bbincotv/Core/Controllers/Epg/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'w') as file:
+        with open('/var/www/html/BBINCO/TV/Core/Controllers/Epg/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'w') as file:
             file.write(filedata)
-            print('/var/www/html/bbincotv/Core/Controllers/Epg/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json ', 'CREADO')
+            print('/var/www/html/BBINCO/TV/Core/Controllers/Epg/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json ', 'CREADO')
 
         data.clear()
 

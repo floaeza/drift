@@ -171,10 +171,12 @@
  ******************************************************************************/
     function InfomirDevice(){
         if(typeof(gSTB) !== 'undefined'){
+            storageInfo = JSON.parse(gSTB.GetStorageInfo('{}'));
+            USB = storageInfo.result || [];
             MacAddress  = gSTB.GetDeviceMacAddress();
             Firmware    = gSTB.GetDeviceImageDesc();
             Model       = gSTB.GetDeviceModel();
-            Hdd         = 'N';
+            Hdd         = (gSTB.GetDeviceModel() == 'MAG424') && (USB.length !== 0)?'Y':'N';
             Vendor      = gSTB.GetDeviceVendor();
             IpAddress   = gSTB.RDir('IPAddress');
             
