@@ -288,18 +288,18 @@ function UpdateProgramDeleteInformir(ProgramId, OperationId, AssetId){
 
  if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
 
-    HandlerPvr();
+    HandlerPvrInformir();
 
-    UpdateDiskInfo();
+    UpdateDiskInfoInformir();
 
-    GetProgramsSerie();
+    GetProgramsSerieInformir();
 
-    setInterval(HandlerPvr,60000);
+    setInterval(HandlerPvrInformir,60000);
 }
 
-function HandlerPvr(){
+function HandlerPvInformirr(){
 
-    UpdateAssetsId();
+    UpdateAssetsIdInformir();
 
     GetProgramsToScheduleInformir();
 

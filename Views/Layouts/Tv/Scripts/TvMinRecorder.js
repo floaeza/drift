@@ -1838,16 +1838,11 @@ function PvrClose(){
 function SetMacAddressPvr(){
     // Elige aleatoriamente la mac addres donde se guardara la serie en caso de que haya mas de un grabador
     if(Device['Type'] === 'WHP_HDDN'){
-        
-        if((gSTB.GetDeviceModel() == 'MAG424') && (USB.length !== 0)){
-            MacAddressPvr = gSTB.GetDeviceMacAddress();
-        }else{
-            if(Device['MacAddressPvr'].length > 1){
-                var RandomMac = getRandomInt(0,Device['MacAddressPvr'].length);
-                MacAddressPvr = Device['MacAddressPvr'][RandomMac];
-            } else {
-                MacAddressPvr = Device['MacAddressPvr'][0];
-            }
+        if(Device['MacAddressPvr'].length > 1){
+            var RandomMac = getRandomInt(0,Device['MacAddressPvr'].length);
+            MacAddressPvr = Device['MacAddressPvr'][RandomMac];
+        } else {
+            MacAddressPvr = Device['MacAddressPvr'][0];
         }
     }
 }
