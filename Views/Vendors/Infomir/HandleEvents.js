@@ -75,7 +75,7 @@ window.stbEvent = {
  * Actualiza informacion del disco duro
  *******************************************************************************/
 
- function UpdateDiskInfo(){
+ function UpdateDiskInfoInformir(){
     $.ajax({
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
@@ -97,7 +97,7 @@ window.stbEvent = {
  * Obtien lista de programas para grabar
  *******************************************************************************/
 
- function GetProgramsToSchedule(){
+ function GetProgramsToScheduleInformir(){
     Debug('-------->> GetProgramsToSchedule');
     $.ajax({
         type: 'POST',
@@ -153,7 +153,7 @@ window.stbEvent = {
  * Obtien lista de programas a eliminar
  *******************************************************************************/
 
- function GetSchedulesToDelete(){
+ function GetSchedulesToDeleteInformir(){
 
     Debug('-------->> GetSchedulesToDelete');
     $.ajax({
@@ -208,7 +208,7 @@ window.stbEvent = {
  * Actualiza el estatus de la grabacion y su stream id
  *******************************************************************************/
 
-function DeleteProgram(ProgramId){
+function DeleteProgramInformir(ProgramId){
     $.ajax({
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
@@ -226,7 +226,7 @@ function DeleteProgram(ProgramId){
  * Actualiza el estatus de la grabacion y su stream id
  *******************************************************************************/
 
-function UpdateProgramAsset(ProgramId, OperationId, AssetId, ActiveRecording){
+function UpdateProgramAssetInformir(ProgramId, OperationId, AssetId, ActiveRecording){
 
     $.ajax({
         type: 'POST',
@@ -245,7 +245,7 @@ function UpdateProgramAsset(ProgramId, OperationId, AssetId, ActiveRecording){
     });
 }
 
-function UpdateProgramStreamId(ProgramId, OperationId, StreamId){
+function UpdateProgramStreamIdInformir(ProgramId, OperationId, StreamId){
     Debug('--------->> UpdateProgramStreamid= '+ ProgramId + ', ' + OperationId + ', '+StreamId);
     $.ajax({
         type: 'POST',
@@ -263,7 +263,7 @@ function UpdateProgramStreamId(ProgramId, OperationId, StreamId){
     });
 }
 
-function UpdateProgramDelete(ProgramId, OperationId, AssetId){
+function UpdateProgramDeleteInformir(ProgramId, OperationId, AssetId){
 
     $.ajax({
         type: 'POST',
