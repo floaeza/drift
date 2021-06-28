@@ -79,7 +79,7 @@
         success: function (response) {
             alert(MACAddress);
             var InfoDevice = $.parseJSON(response);
-            alert(JSON.stringify(InfoDevice));
+            console.log(JSON.stringify(InfoDevice));
 
             ModuleId = InfoDevice['ModuleId'];
             CurrentModule = InfoDevice['ModuleName'];
