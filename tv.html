@@ -82,6 +82,8 @@
             success: function (response) {
                 var InfoDevice = $.parseJSON(response);
 
+                console.log(InfoDevice);
+
                 ModuleId = InfoDevice['ModuleId'];
                 CurrentModule = InfoDevice['ModuleName'];
 
