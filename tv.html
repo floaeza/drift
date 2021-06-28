@@ -66,29 +66,33 @@
         } catch (e) {
             //'[getMACAddress] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
         }
+
+        GetModule();
     }
 
-    $.ajax({
-        type: 'POST',
-        url: 'http://'+ServerIp+'/BBINCO/TV/Core/Controllers/Index.php',
-        async: false,
-        data: {
-            Option      : 'TVLOAD',
-            MacAddress  : MACAddress,
-        },
-        success: function (response) {
-            alert(MACAddress);
-            var InfoDevice = $.parseJSON(response);
-            console.log(JSON.stringify(InfoDevice));
+    function GetModule() {
+        $.ajax({
+            type: 'POST',
+            url: 'http://' + ServerIp + '/BBINCO/TV/Core/Controllers/Index.php',
+            async: false,
+            data: {
+                Option: 'TVLOAD',
+                MacAddress: MACAddress,
+            },
+            success: function (response) {
+                alert(MACAddress);
+                var InfoDevice = $.parseJSON(response);
+                console.log(JSON.stringify(InfoDevice));
 
-            ModuleId = InfoDevice['ModuleId'];
-            CurrentModule = InfoDevice['ModuleName'];
+                ModuleId = InfoDevice['ModuleId'];
+                CurrentModule = InfoDevice['ModuleName'];
 
-            InfoDevice = null;
+                InfoDevice = null;
 
-            GetContents();
-        }
-    });
+                GetContents();
+            }
+        });
+    }
 
     function GetContents() {
         alert('GetContents:: '+MACAddress + ' '+ ModuleId + ' '+CurrentModule );
