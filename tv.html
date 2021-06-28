@@ -82,8 +82,6 @@
             success: function (response) {
                 var InfoDevice = $.parseJSON(response);
 
-                console.log(InfoDevice);
-
                 ModuleId = InfoDevice['ModuleId'];
                 CurrentModule = InfoDevice['ModuleName'];
 
@@ -123,8 +121,6 @@
             async: false,
             success: function (response) {
                 document.getElementById('GeneralBox').innerHTML = '<div id="DebugText"></div> '+response;
-
-                console.log('SE CREO EL CONTENIDO HTML');
             }
         });
 
@@ -153,22 +149,22 @@
     }
 
     function SetFooterScripts(){
-        for(i = 0; i < Data['ScriptsFooter'].length; i++){
+        //for(i = 0; i < Data['ScriptsFooter'].length; i++){
             script = document.createElement('script');
             script.setAttribute('type', 'text/javascript');
             script.setAttribute('src', Data['ScriptsFooter'][i]);
             console.log(Data['ScriptsFooter'][i]);
             footer.appendChild(script);
 
-            // i++;
-            // if(i >= Data['ScriptsFooter'].length){
-            //     clearInterval(FooterInterval);
-            //     console.log('END SCRIPTS');
-            // }
-        }
+            i++;
+            if(i >= Data['ScriptsFooter'].length){
+                clearInterval(FooterInterval);
+                console.log('END SCRIPTS');
+            }
+        //}
     }
 
-    //var FooterInterval = setInterval(function(){ SetFooterScripts(); }, 900);
+    var FooterInterval = setInterval(function(){ SetFooterScripts(); }, 900);
 
     setTimeout(function(){ SetFooterScripts(); }, 900);
 </script>
