@@ -40,7 +40,9 @@
 </body>
 <footer></footer>
 <script>
-    var MACAddress  = 'fc:03:9f:5c:98:ed';
+
+
+    var MACAddress  = '';
 
     var InfoDevice = [];
     var TemplateSource = '';
@@ -56,18 +58,20 @@
         link = '',
         i = 0;
 
+    var init = function() {
+        if (window.tizen !== undefined) {
+            var b2bcontrol = window.b2bapis.b2bcontrol;
 
-    if (window.tizen !== undefined) {
-        var b2bcontrol = window.b2bapis.b2bcontrol;
+            try {
+                MACAddress = b2bcontrol.getMACAddress();
+            } catch (e) {
+                //'[getMACAddress] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
+            }
 
-        try {
-            //MACAddress = b2bcontrol.getMACAddress();
-            MACAddress  = 'fc:03:9f:5c:98:ed';
-        } catch (e) {
-            //'[getMACAddress] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
+            registerkeys();
+
+            GetModule();
         }
-
-        GetModule();
     }
 
     function GetModule() {
