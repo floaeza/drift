@@ -230,10 +230,6 @@
 
 		try {
 			MACAddress = b2bcontrol.getMACAddress();
-			MACAddress_WIRED = b2bapis.b2bcontrol.getMACAddress('WIRED');
-			MACAddress_WIRELESS = b2bapis.b2bcontrol.getMACAddress('WIRELESS');
-
-			alert('MACAddress_WIRED: '+MACAddress_WIRED+' MACAddress_WIRELESS: '+MACAddress_WIRELESS);
 		} catch (e) {
 			//'[getMACAddress] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
 		}
