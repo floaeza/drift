@@ -60,7 +60,7 @@
 		TvModel = '',
 		MACAddress = '',
 		SetOption = 'CHECK',
-		IPAddress = '',
+		IPAddress = null,
 		IdLocation = 1;
 
 	var Register = document.getElementById('Register'),
@@ -222,10 +222,10 @@
 		}
 
 		try {
-			IPAddressWR = b2bcontrol.getIPAddress('WIRELESS');
-			alert('IPAddressWR: '+IPAddressWR);
+			var gatewayAddress = b2bcontrol.getGatewayAddress();
+			alert(gatewayAddress);
 		} catch (e) {
-			//'[getIPAddress] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
+			//("[getGatewayAddress] call syncFunction exception [" + e.code + "] name: " + e.name + " message: " + e.message);
 		}
 
 		try {
