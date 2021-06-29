@@ -224,13 +224,6 @@
 		}
 
 		try {
-			var gatewayAddress = b2bcontrol.getGatewayAddress();
-			alert(gatewayAddress);
-		} catch (e) {
-			//("[getGatewayAddress] call syncFunction exception [" + e.code + "] name: " + e.name + " message: " + e.message);
-		}
-
-		try {
 			MACAddress = b2bcontrol.getMACAddress();
 		} catch (e) {
 			//'[getMACAddress] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
@@ -280,10 +273,10 @@
 						alert('Registrado correctamente');
 					}
 
-					var DeviceInfo = 'loading - '+MACAddress;
-						DebugText.innerHTML = DeviceInfo;
-
 					var Page = Data['ModuleUrl'].replace('php','html');
+
+					var DeviceInfo = 'loading - '+MACAddress + ' > '+Page;
+					DebugText.innerHTML = DeviceInfo;
 
 					setTimeout(function(){ window.location.href = Page; }, 2000);
 				} else if(Data['Option'] === 'LICENSE'){
