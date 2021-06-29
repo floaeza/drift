@@ -21,6 +21,15 @@ var WindowMaxWidth  = 0,
 var Player = webapis.avplay;
     //Player.setListener(listener);
 
+webapis.appcommon.setScreenSaver(
+    webapis.appcommon.AppCommonScreenSaverState.SCREEN_SAVER_OFF,
+    function(result) {
+        console.log(result);
+    }, function(error) {
+        console.log(JSON.stringify(error));
+    }
+);
+
 /* *****************************************************************************
  * Reproductor de canal
  * ****************************************************************************/
