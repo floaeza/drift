@@ -10,7 +10,7 @@
 	<!-- Script Files -->
 	<script type='text/javascript' src='$B2BAPIS/b2bapis/b2bapis.js'></script>
 	<script type='text/javascript' src='$MANAGER_WIDGET/Common/af/2.0.0/loader.js'></script>
-	<script type="text/javascript" src="$WEBAPIS/webapis/webapis.js"></script>
+	<script type='text/javascript' src='$WEBAPIS/webapis/webapis.js'></script>
 	<script type='text/javascript' src='./Views/Vendors/Samsung/Server.js'></script> <!-- ACTUALIZAR IP SERVIDOR! -->
 
 	<script type='text/javascript' src='./Views/Libraries/jquery-1.12.3.min.js'></script>
@@ -48,10 +48,14 @@
 </body>
 <script>
 	/* Carga inicial */
-	setTimeout(function(){ SetData(); }, 4000);
+	setTimeout(function(){ SetData(); }, 3000);
 
-	if (window.tizen !== undefined) {
-		var b2bcontrol = window.b2bapis.b2bcontrol;
+	var init = function() {
+		if (window.tizen !== undefined) {
+			var b2bcontrol = window.b2bapis.b2bcontrol;
+
+			registerkeys();
+		}
 	}
 
 	var DebugText = document.getElementById('DebugText'),
@@ -91,8 +95,6 @@
 		//console.log('PressedKey: '+PressedKey);
 
 		switch (PressedKey) {
-		
-
 
 			case REMOTE_OK:
 				if(LocationsFound === false) {
@@ -134,7 +136,7 @@
 			case 56: // 8
 			case 57: // 9
 				WriteLocation(PressedKey - 48);
-				break;
+			break;
 		}
 	}
 

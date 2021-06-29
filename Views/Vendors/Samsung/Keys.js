@@ -48,5 +48,3 @@ function registerkeys(){
             });
     }
 }
-
-registerkeys();
