@@ -68,9 +68,11 @@
             try {
                 MACAddress = b2bcontrol.getMACAddress();
             } catch (e) {
+                MACAddress = 'd0:03:df:20:c8:1e';
                 //'[getMACAddress] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
             }
 
+            alert(MACAddress);
             GetModule();
         }
     }
