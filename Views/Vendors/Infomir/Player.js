@@ -141,22 +141,32 @@ function PlayDigitalChannel(Source){
 
 var Playlist = '',
     IndexPlaylist = 0;
-LengthPlaylist = 0;
+    LengthPlaylist = 0;
 
 function PlayVideo(Source){
     // Detiene el proceso de la reproduccion anterior
     StopVideo();
 
     if(CurrentModule === 'Tv'){
-        GetRaws(Source);
+        if(Source.includes('http') ||Source.includes('udp') || Source.includes('igmp') || Source.includes('rtsp')){
+            GetRaws(Source);
 
-        LengthPlaylist = Playlist.length;
-        Debug('--------------->>> '+Playlist[IndexPlaylist]);
-        //Reproduce el video
-        player.play({
-            uri: Playlist[IndexPlaylist],
-            solution: 'auto'
-        });
+            LengthPlaylist = Playlist.length;
+            Debug('--------------->>> '+Playlist[IndexPlaylist]);
+            //Reproduce el video
+            player.play({
+                uri: Playlist[IndexPlaylist],
+                solution: 'auto'
+            });
+        }else{
+            Debug('--------------->>> '+Source);
+            //Reproduce el video
+            player.play({
+                uri: Source,
+                solution: 'auto'
+            });
+        }
+            
 
     } else {
         //Reproduce el video

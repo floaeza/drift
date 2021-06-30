@@ -268,7 +268,7 @@ function DeleteProgramInformir(ProgramId){
  * Actualiza el estatus de la grabacion mediante el Stream Id y el Asset Id
  *******************************************************************************/
 
- function UpdateProgramOpera(StreamId, AssetId, OperationId, ActiveRecording){
+ function UpdateProgramOpera(StreamId, file, OperationId, ActiveRecording){
 
     $.ajax({
         type: 'POST',
@@ -276,7 +276,7 @@ function DeleteProgramInformir(ProgramId){
         data: {
             Option     : 'UpdateProgramOpera',
             StreamId : StreamId,
-            AssetId : AssetId,
+            File : file,
             OperationId : OperationId,
             ActiveRecording : ActiveRecording
         },

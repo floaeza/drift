@@ -145,6 +145,7 @@ switch ($Option){
                     array_push($NewArray[$j], array(
                         'id' => $ProgramsRecorded[$i]['id_programa'],
                         'url' => $Url,
+                        'file' => $ProgramsRecorded[$i]['file'],
                         'description' => $Utilities->CleanString($ProgramsRecorded[$i]['descripcion_programa']),
                         'episode' => $Utilities->CleanString($ProgramsRecorded[$i]['titulo_episodio']),
                         'rating' => $ProgramsRecorded[$i]['estrellas_rating'],
@@ -402,7 +403,7 @@ switch ($Option){
 
             $ProgramId   = !empty($_POST['ProgramId']) ? $_POST['ProgramId'] : '';
             $OperationId = !empty($_POST['OperationId']) ? $_POST['OperationId'] : '';
-            $AssetId     = !empty($_POST['AssetId']) ? $_POST['AssetId'] : '';
+            $File     = !empty($_POST['File']) ? $_POST['File'] : '';
             $ActiveRec   = !empty($_POST['ActiveRecording']) ? $_POST['ActiveRecording'] : '';
     
     
@@ -418,7 +419,7 @@ switch ($Option){
     
                 $InfoUpdate =  array ('id_operacion' => $OperationId, 'grabacion_activa' =>$ActiveRecording, 'id_asset'=>$AssetId);
     
-                $TypeResult = 'UpdateProgramAsset: update grabacion activa '.$ActiveRecording.' y assetid= '.$AssetId. ' -$OptionProgram '.$OptionProgram['id_operacion'];
+                $TypeResult = 'UpdateProgramAsset: update grabacion activa '.$ActiveRecording.' y file= '.$File. ' -$OptionProgram '.$OptionProgram['id_operacion'];
     
                 $Result = $ProgramsData->updateProgram($ProgramId, $InfoUpdate);
             }

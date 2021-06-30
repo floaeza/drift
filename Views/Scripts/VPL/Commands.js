@@ -14,7 +14,7 @@ function Green(){
     //Debug(gSTB.ListDir(USB[0].mountPath));
     //var NewTasks;
     //NewTasks = pvrManager.CreateTask('http://10.0.3.207:8080/', USB[0].mountPath+"/Cruela", '1624980120', '1624980300');
-    pvrManager.ChangeEndTime(0, '1625065500');
+    pvrManager.ChangeEndTime(2, '1625074200');
     Debug("EndTime Cambiado");
 }
 
