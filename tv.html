@@ -70,10 +70,7 @@
             } catch (e) {
                 //'[getMACAddress] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
             }
-alert('MAC'+MACAddress);
-            //registerkeys('tv');
-//alert('registerkeys TV');
-            alert('GETMODULE');
+
             GetModule();
         }
     }
@@ -89,7 +86,7 @@ alert('MAC'+MACAddress);
             },
             success: function (response) {
                 var InfoDevice = $.parseJSON(response);
-                alert('InfoDevice'+InfoDevice);
+
                 ModuleId = InfoDevice['ModuleId'];
                 CurrentModule = InfoDevice['ModuleName'];
 
@@ -114,6 +111,8 @@ alert('MAC'+MACAddress);
                 Data = $.parseJSON(response);
 
                 IndexLogo = Data['Variables'][0].IndexLogo;
+
+                alert(IndexLogo);
 
                 TemplateSource = 'http://' + ServerIp + '/BBINCO/TV/'+Data['Variables'][0].Template;
 
@@ -161,7 +160,7 @@ alert('MAC'+MACAddress);
             script = document.createElement('script');
             script.setAttribute('type', 'text/javascript');
             script.setAttribute('src', Data['ScriptsFooter'][i]);
-            console.log(Data['ScriptsFooter'][i]);
+            alert(Data['ScriptsFooter'][i]);
             footer.appendChild(script);
 
             // i++;
