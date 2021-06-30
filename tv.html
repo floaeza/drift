@@ -71,8 +71,9 @@
                 //'[getMACAddress] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
             }
 alert('MAC'+MACAddress);
-            registerkeys('tv');
-alert('registerkeys TV');
+            //registerkeys('tv');
+//alert('registerkeys TV');
+            alert('GETMODULE');
             GetModule();
         }
     }
@@ -88,7 +89,7 @@ alert('registerkeys TV');
             },
             success: function (response) {
                 var InfoDevice = $.parseJSON(response);
-
+                alert('InfoDevice'+InfoDevice);
                 ModuleId = InfoDevice['ModuleId'];
                 CurrentModule = InfoDevice['ModuleName'];
 
