@@ -58,5 +58,17 @@ function registerkeys(){
                 alert(JSON.stringify(error));
             }
         );
+
+        // NETWORK
+        webapis.network.addNetworkStateChangeListener(function(value) {
+            if (value == webapis.network.NetworkState.GATEWAY_DISCONNECTED) {
+                // Something you want to do when network is disconnected
+                alert('GATEWAY_DISCONNECTED')
+            } else if (value == webapis.network.NetworkState.GATEWAY_CONNECTED) {
+                // Something you want to do when network is connected again
+                alert('GATEWAY_CONNECTED');
+                SetData();
+            }
+        });
     }
 }
