@@ -112,8 +112,6 @@
 
                 IndexLogo = Data['Variables'][0].IndexLogo;
 
-                alert(IndexLogo);
-
                 TemplateSource = 'http://' + ServerIp + '/BBINCO/TV/'+Data['Variables'][0].Template;
 
                 GetTemplateContent();
@@ -160,7 +158,7 @@
             script = document.createElement('script');
             script.setAttribute('type', 'text/javascript');
             script.setAttribute('src', Data['ScriptsFooter'][i]);
-            alert(Data['ScriptsFooter'][i]);
+            console.log(Data['ScriptsFooter'][i]);
             footer.appendChild(script);
 
             // i++;
@@ -169,6 +167,8 @@
             //     console.log('END SCRIPTS');
             // }
         }
+
+        registerkeys('tv');
     }
 
     //var FooterInterval = setInterval(function(){ SetFooterScripts(); }, 500);
