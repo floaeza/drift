@@ -54,23 +54,11 @@
 		if (window.tizen !== undefined) {
 			b2bcontrol = window.b2bapis.b2bcontrol;
 
-			registerkeys();
-
-			addNetworkStateChangeListener();
+			registerkeys('index');
 		}
 	}
 
-	// NETWORK
-	webapis.network.addNetworkStateChangeListener(function(value) {
-		if (value == webapis.network.NetworkState.GATEWAY_DISCONNECTED) {
-			// Something you want to do when network is disconnected
-			alert('GATEWAY_DISCONNECTED');
-		} else if (value == webapis.network.NetworkState.GATEWAY_CONNECTED) {
-			// Something you want to do when network is connected again
-			alert('GATEWAY_CONNECTED');
-			SetData();
-		}
-	});
+
 
 	var DebugText = document.getElementById('DebugText'),
 		NewRegister = false,

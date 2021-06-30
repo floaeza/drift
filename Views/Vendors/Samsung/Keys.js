@@ -31,7 +31,7 @@ var REMOTE_OK                    = 13, // Enter
     REMOTE_FAST_BACKWARD         = 0, // |<
     REMOTE_FAST_FORWARD          = 0; // >|
 
-function registerkeys(){
+function registerkeys(Page){
 
     console.log('register keys function called');
 
@@ -58,5 +58,28 @@ function registerkeys(){
                 console.log(JSON.stringify(error));
             }
         );
+
+        // NETWORK ACTIVE
+        var ActiveConnectionType = webapis.network.getActiveConnectionType();
+
+        if (ActiveConnectionType !== 0) {
+            if(Page === 'index') {
+                SetData();
+            }
+        }
+
+        // NETWORK GATEWAY
+        webapis.network.addNetworkStateChangeListener(function(value) {
+            if (value == webapis.network.NetworkState.GATEWAY_CONNECTED) {
+                // Something you want to do when network is connected again
+                if(Page === 'index') {
+                    SetData();
+                }
+            }
+        });
+
+        addNetworkStateChangeListener();
+
+        ActiveConnectionType = null;
     }
 }
