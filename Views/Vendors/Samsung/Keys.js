@@ -60,27 +60,27 @@ function registerkeys(Page){
         );
 
         // NETWORK ACTIVE
-        var ActiveConnectionType = webapis.network.getActiveConnectionType();
-        alert('ActiveConnectionType'+ActiveConnectionType);
-        if (ActiveConnectionType !== 0) {
-
-            if(Page === 'index') {
-                SetData();
-            }
-        }
-
-        // NETWORK GATEWAY
-        webapis.network.addNetworkStateChangeListener(function(value) {
-            if (value == webapis.network.NetworkState.GATEWAY_CONNECTED) {
-                // Something you want to do when network is connected again
-                if(Page === 'index') {
-                    SetData();
-                }
-            }
-        });
-
-        addNetworkStateChangeListener();
-
-        ActiveConnectionType = null;
+        // var ActiveConnectionType = webapis.network.getActiveConnectionType();
+        // alert('ActiveConnectionType'+ActiveConnectionType);
+        // if (ActiveConnectionType !== 0) {
+        //
+        //     if(Page === 'index') {
+        //         SetData();
+        //     }
+        // }
+        //
+        // // NETWORK GATEWAY
+        // webapis.network.addNetworkStateChangeListener(function(value) {
+        //     if (value == webapis.network.NetworkState.GATEWAY_CONNECTED) {
+        //         // Something you want to do when network is connected again
+        //         if(Page === 'index') {
+        //             SetData();
+        //         }
+        //     }
+        // });
+        //
+        // addNetworkStateChangeListener();
+        //
+        // ActiveConnectionType = null;
     }
 }
