@@ -71,5 +71,7 @@ function registerkeys(){
         });
 
         addNetworkStateChangeListener();
+
+        
     }
 }
