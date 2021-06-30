@@ -48,13 +48,12 @@
 </body>
 <script>
 	/* Carga inicial */
-	var b2bcontrol = '',
-		PageContent = 'index';
+	var b2bcontrol = '';
 
 	var init = function() {
 		if (window.tizen !== undefined) {
 			b2bcontrol = window.b2bapis.b2bcontrol;
-			registerkeys();
+			registerkeys('index');
 		}
 	}
 

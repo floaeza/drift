@@ -31,7 +31,7 @@ var REMOTE_OK                    = 13, // Enter
     REMOTE_FAST_BACKWARD         = 0, // |<
     REMOTE_FAST_FORWARD          = 0; // >|
 
-function registerkeys(){
+function registerkeys(Page){
 
     console.log('register keys function called');
 
@@ -66,7 +66,7 @@ function registerkeys(){
             } else if (value == webapis.network.NetworkState.GATEWAY_CONNECTED) {
                 // Something you want to do when network is connected again
 
-                if(PageContent === 'index'){
+                if(Page === 'index'){
                     SetData();
                 } else {
                     GetModule();
