@@ -77,8 +77,7 @@
         if (window.tizen !== undefined) {
             var b2bcontrol = window.b2bapis.b2bcontrol;
             try {
-                //MACAddress = b2bcontrol.getMACAddress();
-                MacAddress  = 'fc:03:9f:5c:98:ed';
+                MacAddress = b2bcontrol.getMACAddress();
                 Debug      = DebugOnScreen;
             } catch (e) {
                 //'[getMACAddress] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
