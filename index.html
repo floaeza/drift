@@ -218,12 +218,10 @@
 
 	function SetData(){
 
-		alert('SetData');
-
 		try {
 			IPAddress = b2bcontrol.getIPAddress();
 		} catch (e) {
-			alert('[getIPAddress] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
+			//alert('[getIPAddress] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
 		}
 
 		try {
