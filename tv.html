@@ -70,10 +70,6 @@
             } catch (e) {
                 //'[getMACAddress] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
             }
-
-            alert(MACAddress);
-
-            registerkeys('tv');
         }
     }
 
@@ -169,6 +165,8 @@
             //     console.log('END SCRIPTS');
             // }
         }
+
+        registerkeys('tv');
     }
 
     //var FooterInterval = setInterval(function(){ SetFooterScripts(); }, 500);
