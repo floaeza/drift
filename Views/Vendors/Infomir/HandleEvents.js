@@ -290,7 +290,7 @@ function DeleteProgramInformir(ProgramId){
  * Actualiza el estatus de la grabacion y su stream id
  *******************************************************************************/
 
-function UpdateProgramAssetInformir(ProgramId, OperationId, AssetId, ActiveRecording){
+function UpdateProgramAssetInformir(ProgramId, OperationId, file, ActiveRecording){
 
     $.ajax({
         type: 'POST',
@@ -299,7 +299,7 @@ function UpdateProgramAssetInformir(ProgramId, OperationId, AssetId, ActiveRecor
             Option     : 'UpdateProgramAsset',
             ProgramId : ProgramId,
             OperationId : OperationId,
-            AssetId : AssetId,
+            File : file,
             ActiveRecording : ActiveRecording
         },
         success: function (response){
