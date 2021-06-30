@@ -417,7 +417,7 @@ switch ($Option){
     
                 $ActiveRecording = ($ActiveRec === 'true') ? '1' : '0';
     
-                $InfoUpdate =  array ('id_operacion' => $OperationId, 'grabacion_activa' =>$ActiveRecording, 'id_asset'=>$AssetId);
+                $InfoUpdate =  array ('id_operacion' => $OperationId, 'grabacion_activa' =>$ActiveRecording, 'file'=>$File);
     
                 $TypeResult = 'UpdateProgramAsset: update grabacion activa '.$ActiveRecording.' y file= '.$File. ' -$OptionProgram '.$OptionProgram['id_operacion'];
     
