@@ -31,7 +31,7 @@ var REMOTE_OK                    = 13, // Enter
     REMOTE_FAST_BACKWARD         = 0, // |<
     REMOTE_FAST_FORWARD          = 0; // >|
 
-function registerkeys(Page){
+function registerkeys(){
 
     console.log('register keys function called');
 
@@ -58,26 +58,5 @@ function registerkeys(Page){
                 console.log(JSON.stringify(error));
             }
         );
-
-        // NETWORK
-        webapis.network.addNetworkStateChangeListener(function(value) {
-            if (value == webapis.network.NetworkState.GATEWAY_DISCONNECTED) {
-                // Something you want to do when network is disconnected
-            } else if (value == webapis.network.NetworkState.GATEWAY_CONNECTED) {
-                // Something you want to do when network is connected again
-
-                alert('C O N N E C T E D');
-
-                if(Page === 'index'){
-                    SetData();
-                } else {
-                    GetModule();
-                }
-            }
-        });
-
-        addNetworkStateChangeListener();
-
-
     }
 }

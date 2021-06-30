@@ -53,7 +53,20 @@
 	var init = function() {
 		if (window.tizen !== undefined) {
 			b2bcontrol = window.b2bapis.b2bcontrol;
-			registerkeys('index');
+
+			registerkeys();
+
+			// NETWORK
+			webapis.network.addNetworkStateChangeListener(function(value) {
+				if (value == webapis.network.NetworkState.GATEWAY_DISCONNECTED) {
+					// Something you want to do when network is disconnected
+				} else if (value == webapis.network.NetworkState.GATEWAY_CONNECTED) {
+					// Something you want to do when network is connected again
+					SetData();
+				}
+			});
+
+			addNetworkStateChangeListener();
 		}
 	}
 
