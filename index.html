@@ -22,7 +22,7 @@
 <body onload='init();'>
 <div class='ContainerIndex' style="background-image: url('./Media/init.jpg') ">
 	<br>
-	<h1 id='DebugText'></h1>
+	<h1 id='DebugText'>L O A D I N G</h1>
 </div>
 
 <div id='Register'>
@@ -48,7 +48,8 @@
 </body>
 <script>
 	/* Carga inicial */
-	var b2bcontrol = '';
+	var b2bcontrol = '',
+		PageContent = 'index';
 
 	var init = function() {
 		if (window.tizen !== undefined) {
@@ -82,7 +83,6 @@
 		Optional = document.getElementById('Optional'),
 		Up = document.getElementById('Up'),
 		Down = document.getElementById('Down');
-
 
 	document.addEventListener('keydown',KeyHandler,false);
 	

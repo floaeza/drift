@@ -6,26 +6,28 @@
     <meta name="description" content="BBINCOTV"/>
 
     <title>BBINCOTV</title>
+
+    <!-- SE DEBE ACTUALIZAR CON EL ARCHIVO CONFIG.XML PRINCIPAL-->
     <?xml version="1.0" encoding="UTF-8"?>
-        <widget xmlns:tizen="http://tizen.org/ns/widgets" xmlns="http://www.w3.org/ns/widgets" id="http://10.0.3.10/BBINCO/TV/" version="0.2.1" viewmodes="maximized">
-            <tizen:application id="87yCAs7xPK.bbinco" package="87yCAs7xPK" required_version="2.3"/>
-            <content src="index.html"/>
-            <feature name="http://tizen.org/feature/screen.size.normal.1080.1920"/>
-            <feature name="http://tizen.org/feature/screen.size.all"/>
-            <feature name="http://www.samsungdforum.com/feature/Keyboard"/>
-            <icon src="icon.png"/>
-            <tizen:metadata key="http://samsung.com/tv/metadata/prelaunch.support" value="true"/>
-            <name>bbinco</name>
-            <tizen:privilege name="http://developer.samsung.com/privilege/productinfo"/>
-            <tizen:privilege name="http://tizen.org/privilege/tv.inputdevice"/>
-            <tizen:privilege name="http://tizen.org/privilege/mediacapture"/>
-            <tizen:privilege name="http://developer.samsung.com/privilege/b2bcontrol"/>
-            <tizen:privilege name="http://developer.samsung.com/privilege/b2bdoc"/>
-            <tizen:privilege name="http://tizen.org/privilege/application.launch"/>
-            <tizen:profile name="tv-samsung"/>
-            <tizen:setting screen-orientation="landscape" context-menu="enable" background-support="disable" encryption="disable" install-location="auto" hwkey-event="enable"/>
-        </widget>
-    </xml>
+    <widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://10.0.3.10/BBINCO/TV/" version="1.0.0" viewmodes="maximized">
+        <tizen:application id="87yCAs7xPK.bbinco" package="87yCAs7xPK" required_version="2.3"/>
+        <content src="index.html"/>
+        <feature name="http://tizen.org/feature/screen.size.normal.1080.1920"/>
+        <feature name="http://tizen.org/feature/screen.size.all"/>
+        <feature name="http://www.samsungdforum.com/feature/Keyboard"/>
+        <icon src="icon.png"/>
+        <tizen:metadata key="http://samsung.com/tv/metadata/prelaunch.support" value="true"/>
+        <name>bbinco</name>
+        <tizen:privilege name="http://developer.samsung.com/privilege/network.public"/>
+        <tizen:privilege name="http://developer.samsung.com/privilege/productinfo"/>
+        <tizen:privilege name="http://tizen.org/privilege/tv.inputdevice"/>
+        <tizen:privilege name="http://tizen.org/privilege/mediacapture"/>
+        <tizen:privilege name="http://developer.samsung.com/privilege/b2bcontrol"/>
+        <tizen:privilege name="http://developer.samsung.com/privilege/b2bdoc"/>
+        <tizen:privilege name="http://tizen.org/privilege/application.launch"/>
+        <tizen:profile name="tv-samsung"/>
+        <tizen:setting screen-orientation="landscape" context-menu="enable" background-support="disable" encryption="disable" install-location="auto" hwkey-event="enable"/>
+    </widget>
 
     <!-- Script Files -->
     <script type='text/javascript' src='$B2BAPIS/b2bapis/b2bapis.js'></script>
@@ -40,7 +42,9 @@
 </body>
 <footer></footer>
 <script>
-
+    /* Carga inicial */
+    var b2bcontrol = '',
+        PageContent = 'tv';
 
     var MACAddress  = '';
 
@@ -60,7 +64,7 @@
 
     var init = function() {
         if (window.tizen !== undefined) {
-            var b2bcontrol = window.b2bapis.b2bcontrol;
+            b2bcontrol = window.b2bapis.b2bcontrol;
 
             try {
                 MACAddress = b2bcontrol.getMACAddress();
@@ -69,8 +73,6 @@
             }
 
             registerkeys();
-
-            GetModule();
         }
     }
 

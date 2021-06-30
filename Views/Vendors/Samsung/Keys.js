@@ -64,14 +64,18 @@ function registerkeys(){
             if (value == webapis.network.NetworkState.GATEWAY_DISCONNECTED) {
                 // Something you want to do when network is disconnected
             } else if (value == webapis.network.NetworkState.GATEWAY_CONNECTED) {
-                alert('GATEWAY_CONNECTED');
                 // Something you want to do when network is connected again
-                SetData();
+
+                if(PageContent === 'index'){
+                    SetData();
+                } else {
+                    GetModule();
+                }
             }
         });
 
         addNetworkStateChangeListener();
 
-        
+
     }
 }
