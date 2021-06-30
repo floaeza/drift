@@ -68,9 +68,6 @@ function registerkeys(Page){
 
             if(Page === 'index') {
                 SetData();
-            } else {
-                alert('GetModule');
-                GetModule();
             }
         }
 
@@ -80,8 +77,6 @@ function registerkeys(Page){
                 // Something you want to do when network is connected again
                 if(Page === 'index') {
                     SetData();
-                } else {
-                    GetModule();
                 }
             }
         });
