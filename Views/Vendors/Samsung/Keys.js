@@ -66,7 +66,7 @@ function registerkeys(Page){
             } else if (value == webapis.network.NetworkState.GATEWAY_CONNECTED) {
                 // Something you want to do when network is connected again
 
-                DebugText.innerHTML = 'C O N N E C T E D';
+                alert('C O N N E C T E D');
 
                 if(Page === 'index'){
                     SetData();
