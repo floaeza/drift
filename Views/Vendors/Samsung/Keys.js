@@ -42,9 +42,34 @@ function registerkeys(){
         'Menu','Tools'];
 
     if (window.tizen !== undefined) {
+
+        // KEYS
         usedKeys.forEach(
-            function (keyName) {
-                tizen.tvinputdevice.registerKey(keyName);
-            });
+        function (keyName) {
+            tizen.tvinputdevice.registerKey(keyName);
+        });
+
+        //SCREEN SAVER
+        webapis.appcommon.setScreenSaver(
+            webapis.appcommon.AppCommonScreenSaverState.SCREEN_SAVER_OFF,
+            function(result) {
+                console.log(result);
+            }, function(error) {
+                console.log(JSON.stringify(error));
+            }
+        );
+
+        // NETWORK
+        webapis.network.addNetworkStateChangeListener(function(value) {
+            if (value == webapis.network.NetworkState.GATEWAY_DISCONNECTED) {
+                // Something you want to do when network is disconnected
+            } else if (value == webapis.network.NetworkState.GATEWAY_CONNECTED) {
+                alert('GATEWAY_CONNECTED');
+                // Something you want to do when network is connected again
+                SetData();
+            }
+        });
+
+        addNetworkStateChangeListener();
     }
 }

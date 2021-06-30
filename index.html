@@ -48,12 +48,11 @@
 </body>
 <script>
 	/* Carga inicial */
-	setTimeout(function(){ SetData(); }, 4000);
+	var b2bcontrol = '';
 
 	var init = function() {
 		if (window.tizen !== undefined) {
-			var b2bcontrol = window.b2bapis.b2bcontrol;
-
+			b2bcontrol = window.b2bapis.b2bcontrol;
 			registerkeys();
 		}
 	}
@@ -220,7 +219,7 @@
 		try {
 			IPAddress = b2bcontrol.getIPAddress();
 		} catch (e) {
-			//'[getIPAddress] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
+			alert('[getIPAddress] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
 		}
 
 		try {
