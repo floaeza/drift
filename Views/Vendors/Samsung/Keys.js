@@ -65,6 +65,8 @@ function registerkeys(Page){
         if (ActiveConnectionType !== 0) {
             if(Page === 'index') {
                 SetData();
+            } else {
+                GetModule();
             }
         }
 
@@ -74,6 +76,8 @@ function registerkeys(Page){
                 // Something you want to do when network is connected again
                 if(Page === 'index') {
                     SetData();
+                } else {
+                    GetModule();
                 }
             }
         });
