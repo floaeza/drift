@@ -267,7 +267,7 @@ switch ($Option){
 
             $Response = $DiskData->setPvrInfo($InfoDevice);
         } else {
-            $InfoUpdate =  array('id_locacion' => $LocationId,
+            $InfoUpdate = array('id_locacion' => $LocationId,
                                  'espacio_total' => $TotalSize,
                                  'espacio_disponible' => $AvailableSize,
                                  'tamano_grabaciones' => $SizeRecords);
@@ -398,7 +398,34 @@ switch ($Option){
 
         $Response = array($Result, $TypeResult);
         break;
+    case 'UpdateProgramOpera':
 
+            $ProgramId   = !empty($_POST['ProgramId']) ? $_POST['ProgramId'] : '';
+            $OperationId = !empty($_POST['OperationId']) ? $_POST['OperationId'] : '';
+            $AssetId     = !empty($_POST['AssetId']) ? $_POST['AssetId'] : '';
+            $ActiveRec   = !empty($_POST['ActiveRecording']) ? $_POST['ActiveRecording'] : '';
+    
+    
+            $OptionProgram = $ProgramsData->getOptionByStreamAndAsset($ProgramId);
+    
+            if($OptionProgram['id_operacion'] == '2' || $OptionProgram['id_operacion'] == '1'){
+                $Result = 'UpdateProgramAsset';
+                $TypeResult = 'NO actualiza id_programa: '.$ProgramId. ' -$OptionProgram '.$OptionProgram['id_operacion'];
+    
+            } else {
+    
+                $ActiveRecording = ($ActiveRec === 'true') ? '1' : '0';
+    
+                $InfoUpdate =  array ('id_operacion' => $OperationId, 'grabacion_activa' =>$ActiveRecording, 'id_asset'=>$AssetId);
+    
+                $TypeResult = 'UpdateProgramAsset: update grabacion activa '.$ActiveRecording.' y assetid= '.$AssetId. ' -$OptionProgram '.$OptionProgram['id_operacion'];
+    
+                $Result = $ProgramsData->updateProgram($ProgramId, $InfoUpdate);
+            }
+    
+    
+            $Response = array($Result, $TypeResult);
+            break;
     case 'UpdateProgramAssetTest':
 
         $ProgramId   = !empty($_POST['ProgramId']) ? $_POST['ProgramId'] : '4876';

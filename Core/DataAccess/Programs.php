@@ -186,6 +186,23 @@ class Programs extends Database {
         return $this->ProgramsList;
     }
 
+    function getOptionByStreamAndAsset($StreamId, $AssetId) {
+        $this->Function = 'getOptionByStreamAndAsset';
+
+        $this->connect();
+        $this->select("pvr_programas", "id_operacion",
+            "", "", "", "",
+            "id_stream = '".$StreamId."' AND id_asset = '".$AssetId."'");
+        $Result = $this->getResult();
+        foreach ($Result as $Row):
+            $this->ProgramsList = $Row;
+        endforeach;
+
+
+        $this->disconnect();
+
+        return $this->ProgramsList;
+    }
 
     function getIdProgramByAsset($MacAddress, $AssetId) {
         $this->Function = 'getIdProgramByAsset';

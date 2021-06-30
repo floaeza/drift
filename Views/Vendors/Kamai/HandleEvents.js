@@ -1,3 +1,4 @@
+// @ts-nocheck
 // Video.setVideoCallback(HandleVideo);
 // function HandleVideo(event_type){
 //     if(event_type === 'EN_VIDEOEVENT_EOS'){
