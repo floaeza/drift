@@ -33,7 +33,7 @@ var REMOTE_OK                    = 13, // Enter
 
 function registerkeys(){
 
-    alert('register keys function called');
+    console.log('register keys function called');
 
     var usedKeys=['0','1','2', '3', '4', '5', '6', '7', '8', '9',
         'ColorF0Red','ColorF1Green','ColorF2Yellow','ColorF3Blue','ChannelDown','ChannelUp',
@@ -53,9 +53,9 @@ function registerkeys(){
         webapis.appcommon.setScreenSaver(
             webapis.appcommon.AppCommonScreenSaverState.SCREEN_SAVER_OFF,
             function(result) {
-                alert(result);
+                console.log(result);
             }, function(error) {
-                alert(JSON.stringify(error));
+                console.log(JSON.stringify(error));
             }
         );
 
