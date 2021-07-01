@@ -78,7 +78,8 @@ function registerkeys(Page){
             }
         });
 
-        addNetworkStateChangeListener();
+        console.log('Page: '+Page);
+        //addNetworkStateChangeListener();
 
         ActiveConnectionType = null;
     }
