@@ -44,8 +44,8 @@ VI+VpvZTJQ==</DigestValue>
 </Reference>
 <Reference URI=".idea%2Fworkspace.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>USLuOLjsJ/bcDFNepljHYJFVLbxWpY7Wv8KUGE1bpFFgoFFEoWoljBVhz807kwk1B7iRS5Hu9ENB
-KOAyf9fx/g==</DigestValue>
+<DigestValue>Q8QjwMUOYp0ipO532LO0SfcKB2hSlZAD43jQJ+0MJK84TBEvRuGApxLSusIY+1DzUAv9MV2d0J3y
+MppuN5B73w==</DigestValue>
 </Reference>
 <Reference URI="Core%2F.DS_Store">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2204,8 +2204,8 @@ fHC3Up0ZyA==</DigestValue>
 </Reference>
 <Reference URI="Views%2FVendors%2FSamsung%2FKeys.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>EcMEa7IiBtRYZGX32UIYW2xnoOO8Dq4eAIYY1HqNE2hc2chqvlQ+y9VjBwvroUd8ClVINGe8QHTL
-t7tQ1eHr8A==</DigestValue>
+<DigestValue>Qv3zdFzDI1Igv3DE6juo9Bn92zF7ntdw7cGTGJet4sH/h4GySdT58sDzvUy8lkWeDjPPW9WKhRA3
+HUuPzEqd5Q==</DigestValue>
 </Reference>
 <Reference URI="Views%2FVendors%2FSamsung%2FPlayer.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2282,9 +2282,9 @@ QY10fG1EWQ==</DigestValue>
 </Reference>
 </SignedInfo>
 <SignatureValue>
-kLjTwYh94z/EWuVOkhEjcKk8PcPdX3VYGNDwEpN4fZukWQxSj0v6IK04ojhxm9TjmP6HJnzTRTEf
-/qOLBPdk71xrI7Vmyi+tw+2KQELGIVGPAN2eEOTapJEOg9yj2uQ2gg7lYS8YTOIpxnjC2qIHpVUa
-Sq4sMa42i7zYBrf2IVI=
+Qx4L25yJm0zOE0EmLD3JHrP0LyOm+NhLYX6X3YA9E+17wyCdN0yxmD/9QyzEs72vjop9YtORJnbL
+4d/RCDUMNxAlwa6vsx0PDrSazt/CdsgDpFMa0ezGsIxjGWOeKYKcB/fu6bZHJF0bRXa6pWZMgAFF
+nLoVhyWWZ5++A5PP3po=
 </SignatureValue>
 <KeyInfo>
 <X509Data>

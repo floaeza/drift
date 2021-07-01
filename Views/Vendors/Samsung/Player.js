@@ -51,9 +51,9 @@ function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPi
         Player.open(Source+CheckPort);
         Player.setDisplayRect(0, 0, 1920, 1080);
         //Player.setListener(listener);
-        //Player.prepareAsync(function() {
+        Player.prepareAsync(function() {
             Player.play();
-        //});
+        });
 
         Debug('PlayChannel > PLAYER');
 
