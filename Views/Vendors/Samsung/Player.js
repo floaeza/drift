@@ -1,7 +1,3 @@
-if (window.tizen !== undefined) {
-    var b2bcontrol = window.b2bapis.b2bcontrol;
-}
-
 /* Creado por: Tania Maldonado
  * Fecha: Noviembre 2019
  * Tipo: Reproductor tv
@@ -50,10 +46,12 @@ function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPi
         Player.close();
         Player.open(Source+CheckPort);
         Player.setDisplayRect(0, 0, 1920, 1080);
-        Player.setListener(listener);
-        Player.prepareAsync(function() {
+        //Player.setListener(listener);
+        //Player.prepareAsync(function() {
             Player.play();
-        });
+        //});
+
+        Debug('PlayChannel > PLAYER');
 
     } catch (error) {
         Debug('PlayChannel > Error name = '+ error.name + ', Error message = ' + error.message);

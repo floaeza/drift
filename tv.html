@@ -60,7 +60,7 @@
         script = '',
         link = '',
         i = 0;
-    MACAddress = 'd0:03:df:20:c8:1e';
+
     var init = function() {
         if (window.tizen !== undefined) {
             b2bcontrol = window.b2bapis.b2bcontrol;
@@ -74,8 +74,6 @@
 
             GetModule();
         }
-
-
     }
 
     function GetModule() {
@@ -172,6 +170,7 @@
         }
 
         registerkeys('tv');
+    }
     }
 
     //var FooterInterval = setInterval(function(){ SetFooterScripts(); }, 500);
