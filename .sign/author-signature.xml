@@ -44,8 +44,8 @@ VI+VpvZTJQ==</DigestValue>
 </Reference>
 <Reference URI=".idea%2Fworkspace.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>6aEtOTG8CJDy3yP5KcURmZicYC/Z3ki5yFbS0vSviDYQ+Ix6zY//RHbhc9pTMrzHBwFn3PlmwuLL
-WjVaTDbdLg==</DigestValue>
+<DigestValue>RfpFr1WAIAhhoXxkI5TH5rlz6lAXUPmQhG3A0G/VouW0rnUTH6QIHwtOEaRvWXFhvL5nBH9AK6iX
+zWP7WUIxrQ==</DigestValue>
 </Reference>
 <Reference URI="Core%2F.DS_Store">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2204,13 +2204,13 @@ fHC3Up0ZyA==</DigestValue>
 </Reference>
 <Reference URI="Views%2FVendors%2FSamsung%2FKeys.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>g59m59vZy67CSOZRx4px6sszJx1yF1kzEET9tAloZ6RBAWUpDfOMlsJM12hONkbWiqZfJ3rBhQEb
-KSQPFvJxCA==</DigestValue>
+<DigestValue>++Tpv3tyUJ/q3bX4Kx5KzvZyBNUA0nb57DsGBb5ogb9NcmECamC475MnvolCL0Wh0kI2ClqzTl7h
+Bj6bpofW0w==</DigestValue>
 </Reference>
 <Reference URI="Views%2FVendors%2FSamsung%2FPlayer.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>GSyabrICJKyUcwwAl6xoR6p05jkr8SBH7BGVjZM4UIaRaT60W8YyKYyS2i66BFKyHLuO5f/C76Vj
-0VVvTQ6Vqg==</DigestValue>
+<DigestValue>L8SACWvd/ETyjac0U4ngVtXLzQ1kVQxl0RQAN5+bFwZ3lvD74gsUv0Yrf6eJe2eOZOnx2y0+vZlB
+2YGjXoiIsg==</DigestValue>
 </Reference>
 <Reference URI="Views%2FVendors%2FSamsung%2FServer.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2259,8 +2259,8 @@ C5LGAJoCSA==</DigestValue>
 </Reference>
 <Reference URI="tv.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>aCUuLusYST8GJAiQicXsEwDwh7lKZvRRNhxjC0CCrgNhqF4tflF9ciZ6xELTlZbAfX68vCnaeR2z
-fo3p18aWjA==</DigestValue>
+<DigestValue>C6mSO34fyKV15WKuiMS6eL+W4dgK1EHhmLc2Za0jQ3cmYXlu73TCA7ERKHhL+q4SbInzMs9MpXv0
+KUcIJzseDQ==</DigestValue>
 </Reference>
 <Reference URI="tv.php">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2282,9 +2282,9 @@ QY10fG1EWQ==</DigestValue>
 </Reference>
 </SignedInfo>
 <SignatureValue>
-PiQEZkVFSEiH+QOEibUK8DtfXfXQevZA6KSsIq1e1X8sMVhiZ919JCCH8rHWwQTb9gNC/NlqGFaX
-mSY/bcGM5RPyMGf5veY30chAu0so/jOPT4wbtgUdie3O00ujsNSAHmZzqIm+l84WaMR9G/GHf62S
-bpppxBThiHpRtjtRvnU=
+Reihiv+9WfDYq70HsuSB/6uWzDSU2vm09AROxNSOJ3dwe3vfRQGSmEUV5SfPNLQUqyIgK0p1dPjM
+UATP37Lm/KPpdSPyjnm8Tm0bBIhooTseyW9vwVBsNyt9ygLPiUdUxiD4A7+YYAsuAHqgqILhHrM6
+yunP9rVeAxb81/2l9M0=
 </SignatureValue>
 <KeyInfo>
 <X509Data>
