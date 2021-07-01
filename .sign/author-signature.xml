@@ -44,8 +44,8 @@ VI+VpvZTJQ==</DigestValue>
 </Reference>
 <Reference URI=".idea%2Fworkspace.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>DwBLRa+SEpQgDqoD6bEskOq/EE9BbirbGLBgb+dkZjvtjyN0i1iR47Red1HP0Y0YXGE9iV47C+Z6
-upxnQqrSSQ==</DigestValue>
+<DigestValue>gOPG0zciVv+nrdU5L8IUhJaDhWXU6f2+tSjGgm/57LRjEojV5kCUTQJ7TqNPdA1rQCob2VhAs5P9
+nb7yX0Gr8w==</DigestValue>
 </Reference>
 <Reference URI="Core%2F.DS_Store">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -1674,8 +1674,8 @@ ODJ6+SfaPg==</DigestValue>
 </Reference>
 <Reference URI="Views%2FScripts%2FSettings.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>KD57JesiYgLwKJyRaqkxpCRKax6UTaogUJWVuw36DaSfkp1NI9RRirCt3ZkPjxFWfpUKSOGiBieL
-jjx30zzNCw==</DigestValue>
+<DigestValue>p8AbJepkCnnrWlMdhDaldPYqGS5hievj3VErj38KuhVC41/t3l517yF8nqqS5d3iiixNV8eJPzGL
+mZMZ9vy0Mg==</DigestValue>
 </Reference>
 <Reference URI="Views%2FScripts%2FTime.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2204,8 +2204,8 @@ fHC3Up0ZyA==</DigestValue>
 </Reference>
 <Reference URI="Views%2FVendors%2FSamsung%2FKeys.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>M5Am2/ROJJ1XmgaVqzmrKv5sdo7MGPaYNtuHbwE0suD9P8R8uuidOZ7zpOA2KgCn8FOcEB7Blex1
-EvyC59mx5Q==</DigestValue>
+<DigestValue>g59m59vZy67CSOZRx4px6sszJx1yF1kzEET9tAloZ6RBAWUpDfOMlsJM12hONkbWiqZfJ3rBhQEb
+KSQPFvJxCA==</DigestValue>
 </Reference>
 <Reference URI="Views%2FVendors%2FSamsung%2FPlayer.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2259,8 +2259,8 @@ C5LGAJoCSA==</DigestValue>
 </Reference>
 <Reference URI="tv.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>FQLwuY4Nu39b+k2fLAimpD38J3XTfNlwWcZ/EQu/KCcgzL+zEXrNzhINCTS5HRGfFeypUACKeZ+t
-9m9qCeMdiA==</DigestValue>
+<DigestValue>rgTmlBf/GkT0ru5ayn8MC/Z8b66oDDRmNlmvnxakCgLJs1umUpg9se2Hb9sYbQJjaT2gI4FoploM
+JvukquEsbA==</DigestValue>
 </Reference>
 <Reference URI="tv.php">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2282,9 +2282,9 @@ QY10fG1EWQ==</DigestValue>
 </Reference>
 </SignedInfo>
 <SignatureValue>
-GQZV2aCw2myTSYbzAewMC/fM5I3g/2M2QGN+yZ+JFwKgRHLyIflrWY9XtkfFtXpM/LCl3OnRNiwU
-FuABZUjjiKBAoUOuCHNtbD33kiwFtUBkotB0V9bItoo/rU33BEICcf2FS8V4EhpjXjP/ANxXSUBP
-D8Tjghsq9RHYPDOCvg8=
+HtxQstClYuEGfMn6ym+L7tQl3wat968/DM4tYpl94TSevmf2fwbCsTCHWzQjP/8oKzARZmnlqzxm
+zL3okNfBOioukVIwqcw2FcDftX5K/TS76qsYa/D6v60sQ5qrbzwBBkl9Ja/3ORRj9eP/Lom9n0cW
+yEve2xl0YPD2OLzWkmU=
 </SignatureValue>
 <KeyInfo>
 <X509Data>
