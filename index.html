@@ -279,6 +279,8 @@
 					var DeviceInfo = 'loading - '+MACAddress + ' > '+Page;
 					DebugText.innerHTML = DeviceInfo;
 
+					alert('PAGE > '+Page);
+
 					setTimeout(function(){ window.location.href = Page; }, 2000);
 				} else if(Data['Option'] === 'LICENSE'){
 					var DeviceInfo = ' Mac: '+MACAddress+' Ip: '+IPAddress;

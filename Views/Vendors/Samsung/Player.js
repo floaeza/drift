@@ -1,6 +1,6 @@
-if (window.tizen !== undefined) {
-    var b2bcontrol = window.b2bapis.b2bcontrol;
-}
+// if (window.tizen !== undefined) {
+//     var b2bcontrol = window.b2bapis.b2bcontrol;
+// }
 
 /* Creado por: Tania Maldonado
  * Fecha: Noviembre 2019
