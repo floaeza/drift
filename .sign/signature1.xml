@@ -44,8 +44,8 @@ VI+VpvZTJQ==</DigestValue>
 </Reference>
 <Reference URI=".idea%2Fworkspace.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>BIxFr/HJpM6cbvMNKrCIwB1Jqtxt5lknH0YP4n4i56uEiDxPiShtAzi5QYHs6vwGHv1uYe5buGf1
-5RqFrfAjvQ==</DigestValue>
+<DigestValue>uziJ+1SxroJEHKXLQll19sD+NAwgkPaZAXl2rqdBwCfCnWEutQEJdkRCkvGnKG2TQ3yoqpCWirsy
+1J3Bo8/3gg==</DigestValue>
 </Reference>
 <Reference URI="Core%2F.DS_Store">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2224,8 +2224,8 @@ YdNuQ5SBMQ==</DigestValue>
 </Reference>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>I/JdxkKzGnFo0rGI+ePB1yuFYFHbqVs7NNqhkPOjndz6NB8E9OHjsp74XrrkxMQpLb2OUln+GxxG
-l+WLm/q0lg==</DigestValue>
+<DigestValue>hJ7Io5KCfjkrCGFV48ELHGzDpsMRBJN4ycjlHGGU1ZOYkMyfgP/nuzDUMAeUrQxVsiDbvI4AJ+ZI
+w3nXK/GqHQ==</DigestValue>
 </Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2264,8 +2264,8 @@ C5LGAJoCSA==</DigestValue>
 </Reference>
 <Reference URI="tv.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>8dgC+VKaAMhCoDAhj/4qQ5/e7TDWPX98+PiDbi2fus2B7nQzcwAniAhs3TKzJGFNURMSutHMR5pC
-yBneiw9NRA==</DigestValue>
+<DigestValue>GutcsmClgxewTWjUD2zyUamkrqu+Xli3xaZfjvbMj96uGy158ecSVkXutpyUWxoMKQwJZMmWWS53
+pTneo0M4eA==</DigestValue>
 </Reference>
 <Reference URI="tv.php">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2274,8 +2274,8 @@ qIydD0o5DA==</DigestValue>
 </Reference>
 <Reference URI="tvContent.php">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>N3IEkUey4ddFAuYPKgw4W/EEEOZdGSKU9Fe9WCRxSWW3r9ENUtxx5EfJGhHEv8zeHeC7UlXCtT4/
-znIUJK1TXA==</DigestValue>
+<DigestValue>Gi0LDv3fFAQuc3F7AS87F/1PwgEraDzya/HXsoAJyZvDQXo9DeCbwEJuqB9ZE7CSpeeMnEcvm7C7
+ASHP0g45sA==</DigestValue>
 </Reference>
 <Reference URI="#prop">
 <Transforms>
@@ -2287,9 +2287,9 @@ GyvKX9Snig==</DigestValue>
 </Reference>
 </SignedInfo>
 <SignatureValue>
-kzm7qiGCP3NpdevzpxfOOT9kfP0BYTP/cKzdM2RIZj0IohDzMETirXFu9r+yOH5s0ndP6mp0Pzah
-0ihxP09wkTSY9sBpC9jTKIWanZ0ghabSq/stIIo1r/LrExHJNeJlBgJFL4I9XG/M7N4p2EB2O0wH
-t6GUYNrAaZAHoWZVpOc=
+XfMFZ48HqFq+VAyTpuh5WGo7Lw5LlxabcudDoIojL3Ru98Hx7uKIC7SElcAb3MsAkm5oIuoDi1c8
+LNpbQM++UhEytktgVs0/PY2rRFyO7zWL614Mf9+RAZyin9JnYDsTXpnwNoQODW0C/x1zICc9TeUu
+EFF08HMp5BzJEpHHeoc=
 </SignatureValue>
 <KeyInfo>
 <X509Data>

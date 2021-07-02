@@ -44,8 +44,8 @@ VI+VpvZTJQ==</DigestValue>
 </Reference>
 <Reference URI=".idea%2Fworkspace.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>BIxFr/HJpM6cbvMNKrCIwB1Jqtxt5lknH0YP4n4i56uEiDxPiShtAzi5QYHs6vwGHv1uYe5buGf1
-5RqFrfAjvQ==</DigestValue>
+<DigestValue>uziJ+1SxroJEHKXLQll19sD+NAwgkPaZAXl2rqdBwCfCnWEutQEJdkRCkvGnKG2TQ3yoqpCWirsy
+1J3Bo8/3gg==</DigestValue>
 </Reference>
 <Reference URI="Core%2F.DS_Store">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2259,8 +2259,8 @@ C5LGAJoCSA==</DigestValue>
 </Reference>
 <Reference URI="tv.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>8dgC+VKaAMhCoDAhj/4qQ5/e7TDWPX98+PiDbi2fus2B7nQzcwAniAhs3TKzJGFNURMSutHMR5pC
-yBneiw9NRA==</DigestValue>
+<DigestValue>GutcsmClgxewTWjUD2zyUamkrqu+Xli3xaZfjvbMj96uGy158ecSVkXutpyUWxoMKQwJZMmWWS53
+pTneo0M4eA==</DigestValue>
 </Reference>
 <Reference URI="tv.php">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2269,8 +2269,8 @@ qIydD0o5DA==</DigestValue>
 </Reference>
 <Reference URI="tvContent.php">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>N3IEkUey4ddFAuYPKgw4W/EEEOZdGSKU9Fe9WCRxSWW3r9ENUtxx5EfJGhHEv8zeHeC7UlXCtT4/
-znIUJK1TXA==</DigestValue>
+<DigestValue>Gi0LDv3fFAQuc3F7AS87F/1PwgEraDzya/HXsoAJyZvDQXo9DeCbwEJuqB9ZE7CSpeeMnEcvm7C7
+ASHP0g45sA==</DigestValue>
 </Reference>
 <Reference URI="#prop">
 <Transforms>
@@ -2282,9 +2282,9 @@ QY10fG1EWQ==</DigestValue>
 </Reference>
 </SignedInfo>
 <SignatureValue>
-eG0KhR3Oc//gH3JmpCn7CYSFrhvJjEavjfrNOB/OneFq3qHCCpCUWYeKFlZgtlaxQkjtNDf5AaCA
-emsxpz7AliHlQJw48EBxkak5umQWX4vKPmTibZWq+AH9X48XjKsg7BBdCl94GeCAtaY+JzUo5feJ
-8B7gauJD7K88HQZeAPI=
+BNgFKtSkOpYS8PToemSttlCT5851EZx+FoQ4fW0JlqQimmvHMRsSM7urSbFVE10M/e5z8fWvn8EN
+K1wTKXRMp2oQlPzCQiqzZtfRhxrtz8PIVmoLAZ23S4wCwwSgRJXHqH+4bjlMg0np7WiW5tn0uIDA
+APf06v4py46Vm8s2D+g=
 </SignatureValue>
 <KeyInfo>
 <X509Data>
