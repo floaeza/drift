@@ -48,9 +48,12 @@ function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPi
 
     // Reproduce el canal actual
     try {
-        Player.close();
+
         Player.open(Source+CheckPort);
-        Player.setDisplayRect(0, 0, 1920, 1080);
+
+        // Maximiza el video en caso de que no este en pantalla completa
+        MaximizeTV();
+
         Player.prepareAsync(function() {
             Player.play();
         });
@@ -61,8 +64,8 @@ function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPi
         Debug('PlayChannel > Error name = '+ error.name + ', Error message = ' + error.message);
     }
 
-    // Maximiza el video en caso de que no este en pantalla completa
-    MaximizeTV();
+
+
 
     // Activamos la bandera
     PlayingChannel   = true;
@@ -89,9 +92,16 @@ function PlayDigitalChannel(Source){
     Debug('PlayDigitalChannel > ::::::: '+Source);
     // Reproduce el video
     try {
-        Player.close();
+
+        var ActiveConnectionType = webapis.network.getActiveConnectionType();
+
+        Debug(ActiveConnectionType);
+
         Player.open(Source);
-        Player.setDisplayRect(0, 0, 1920, 1080);
+
+        // Maximiza el video en caso de que no este en pantalla completa
+        MaximizeTV();
+
         Player.prepareAsync(function() {
             Player.play();
         });
@@ -99,9 +109,6 @@ function PlayDigitalChannel(Source){
     } catch (error) {
         Debug('PlayDigitalChannel > Error name = '+ error.name + ', Error message = ' + error.message);
     }
-
-    // Maximiza el video en caso de que no este en pantalla completa
-    MaximizeTV();
 
     // Activamos la bandera
     PlayingChannel = true;
@@ -211,6 +218,8 @@ function RebootDevice(){
  * ****************************************************************************/
 
 function StopVideo(){
+    Player.close();
+
     PauseLive = false;
     PlayingRecording = false;
 }
