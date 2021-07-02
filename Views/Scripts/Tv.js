@@ -240,9 +240,10 @@
                     if(ActiveDigitalChannel === true){
                         CloseDigitalChannel();
                     }
-
+                    Debug('PlayChannel');
                     PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
                 } else {
+                    Debug('GetDigitalChannel');
                     //if(typeof(gSTB) !== 'undefined'){
                         GetDigitalChannel();
                    // } else {
@@ -263,6 +264,8 @@
             DigitalSource = Libraries['MultimediaSource'] + GetModule + '/';
             DigitalImgSource = '../../Multimedia/' + GetModule + '/';
 
+            Debug('GetModule: '+GetModule);
+
         $.ajax({
             type: 'POST',
             async: false,
@@ -273,7 +276,7 @@
             },
             success: function (response){
                 DigitalContent = $.parseJSON(response);
-                
+                Debug('SetDigitalChannel');
                 SetDigitalChannel();
             }
         });    
