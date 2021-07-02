@@ -44,8 +44,8 @@ VI+VpvZTJQ==</DigestValue>
 </Reference>
 <Reference URI=".idea%2Fworkspace.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>wxfYRp28PR7p1eHeIOW/bxnmeST/+gsCXdeOVxwtIZytvY9vlwpZ2vrBR4y1y1I1evV/w5ttKZ52
-xyAo/SEyIg==</DigestValue>
+<DigestValue>bGh3x/GfsaqLdr55ZeflQKEWb1TnKj0uSuFw2vKnHwbv+ijYdHpw3uAybInnq4Te5Uk5XiVcFJJZ
+PSDkqeJoaQ==</DigestValue>
 </Reference>
 <Reference URI="Core%2F.DS_Store">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2199,18 +2199,18 @@ HZ0X+LnF3Q==</DigestValue>
 </Reference>
 <Reference URI="Views%2FVendors%2FSamsung%2FHandleEvents.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>Jl28uXzh1SojGwdz8HuA2HeF7CCshmqYBmy7Tu7l+P/XXLcZYr+W737iE4r7cKFRSNMxe6jZfRsj
-EIkU2y/IEw==</DigestValue>
+<DigestValue>vZM3Ue/60j8a1O3Xj3I1lu9SbRHGIRRGe483pnMSYZ9JLIUNu3heCFp0xPrX2PxBApgsU/8lDU90
+F0tc/9gkoQ==</DigestValue>
 </Reference>
 <Reference URI="Views%2FVendors%2FSamsung%2FKeys.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>Qv3zdFzDI1Igv3DE6juo9Bn92zF7ntdw7cGTGJet4sH/h4GySdT58sDzvUy8lkWeDjPPW9WKhRA3
-HUuPzEqd5Q==</DigestValue>
+<DigestValue>bS0gpBMKbNsBzSRbFpHUJYO3qXl/kl72z7qfKVy+/neir1bS5mFhLvhzCizYSeEinOD743FkleP5
+kOU8eQ2yzg==</DigestValue>
 </Reference>
 <Reference URI="Views%2FVendors%2FSamsung%2FPlayer.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>pXeNVYeKlv0mKdKnNs+Jq4F6qvlkhVcYv1jQIx/KPz3CxAQriQnH4S6xbsFOgsz6H1FDx6dXnr8+
-aHrrZIY9BA==</DigestValue>
+<DigestValue>brgxXs8Eg2v5QReM56b4QQPg2d/xLWUr+lNqDCzgpxsa/pT6eK6OH0JiY+/I/wv+VWGc934awV0p
+Uwrm/Imeww==</DigestValue>
 </Reference>
 <Reference URI="Views%2FVendors%2FSamsung%2FServer.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2282,9 +2282,9 @@ QY10fG1EWQ==</DigestValue>
 </Reference>
 </SignedInfo>
 <SignatureValue>
-RpSeeSnZM12BOyMLiAN/cB8Qfc5w9qz6Iv4FmPJX+qZkbDYCBrWiJEPE0yZ6bM77jEh3NBgfsHpm
-w/udi3ysnUrNVEaChU/P4+KGJ7LTJHRZwFoM+1OOF3gtmvije+nhyuIjwypJOfquRDSVHwcTxcVS
-obgIvyKPfolkoNsNza0=
+Mn3wpua9+AcWCtpPA0HnOkR4FP9IANlebDLK2UTidXSS2s1YzlSUv+ZXVEF94oESp1+pOvlvAPkQ
+6C1Bvp+gHMOKcJqxkRMODunmTfr7EBxAcah1kmD+Cmuw7+GTmFwNSuu6OYWOVeaMuqNxTNlar9zL
+qrwqK0QXJNaLTzMxGyA=
 </SignatureValue>
 <KeyInfo>
 <X509Data>
