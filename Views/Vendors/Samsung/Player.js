@@ -19,7 +19,7 @@ var WindowMaxWidth  = 0,
     WindowMinHeight = 0;
 
 var Player = webapis.avplay;
-    //Player.setListener(listener);
+    Player.setListener(listener);
 
 
 
@@ -92,7 +92,7 @@ function PlayDigitalChannel(Source){
         Player.close();
         Player.open(Source);
         Player.setDisplayRect(0, 0, 1920, 1080);
-        Player.setListener(listener);
+        //Player.setListener(listener);
         Player.prepareAsync(function() {
             Player.play();
         });
@@ -255,9 +255,11 @@ var listener = {
         Debug('Stream Completed');
     },
 
-    oncurrentplaytime: function(currentTime) {
-        Debug('Current playtime: ' + currentTime);
-    },
+    // Se actualiza cada segundo, genera demasiados logs
+
+    // oncurrentplaytime: function(currentTime) {
+    //     Debug('Current playtime: ' + currentTime);
+    // },
 
     onerror: function(eventType) {
         Debug('event type error : ' + eventType);
