@@ -1,3 +1,4 @@
+// @ts-nocheck
 /* Creado por: Tania Maldonado
  * Fecha: Noviembre 2019
  * Tipo: Reproductor tv
@@ -38,6 +39,7 @@
                 CheckProgram = ';Progid='+ProgramIdChannnel+';audiopid='+AudioPid;
             }
 
+            Debug('########################### Channelinfo: '+CheckProgram);
         // Detiene el proceso de la reproduccion anterior
         StopVideo();
 
