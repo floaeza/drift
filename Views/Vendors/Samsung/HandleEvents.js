@@ -4,16 +4,20 @@ var listener = {
         Debug('Buffering start.');
     },
 
-    // Se actualiza cada segundo, genera demasiados logs
-    // onbufferingprogress: function(percent) {
-    //     Debug('Buffering progress data : ' + percent);
-    // },
-
     onbufferingcomplete: function() {
-        Debug('Buffering complete.');
+        Debug('Buffering complete. > start');
+        if(Executing === false){
+            UpdateQuickInfoDevice();
+        }
     },
     onstreamcompleted: function() {
-        Debug('Stream Completed');
+        Debug('Stream Completed > end');
+        if(CurrentModule === 'Tv'){
+            SetDigitalChannel();
+        }
+        if(Executing === false){
+            UpdateQuickInfoDevice();
+        }
     },
 
     // Se actualiza cada segundo, genera demasiados logs
@@ -27,12 +31,5 @@ var listener = {
 
     onevent: function(eventType, eventData) {
         Debug('event type: ' + eventType + ', data: ' + eventData);
-    },
-
-    onsubtitlechange: function(duration, text, data3, data4) {
-        Debug('subtitleText: ' + text);
-    },
-    ondrmevent: function(drmEvent, drmData) {
-        Debug('DRM callback: ' + drmEvent + ', data: ' + drmData);
     }
 };

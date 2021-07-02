@@ -18,6 +18,9 @@ var WindowMaxWidth  = 0,
     WindowMinWidth  = 0,
     WindowMinHeight = 0;
 
+    GetWindowFullSize();
+    GetWindowMinSize();
+
 var Player = webapis.avplay;
     Player.setListener(listener);
 
@@ -48,7 +51,6 @@ function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPi
         Player.close();
         Player.open(Source+CheckPort);
         Player.setDisplayRect(0, 0, 1920, 1080);
-        //Player.setListener(listener);
         Player.prepareAsync(function() {
             Player.play();
         });
@@ -90,7 +92,6 @@ function PlayDigitalChannel(Source){
         Player.close();
         Player.open(Source);
         Player.setDisplayRect(0, 0, 1920, 1080);
-        //Player.setListener(listener);
         Player.prepareAsync(function() {
             Player.play();
         });
@@ -159,6 +160,19 @@ function SetPosition(Pos){
 
 }
 
+/* *****************************************************************************
+ * Obtiene los tamanos maximos y minimos de la pantalla
+ * ****************************************************************************/
+
+function GetWindowFullSize(){
+    WindowMaxWidth   = 1920;
+    WindowMaxHeight  = 1080;
+}
+
+function GetWindowMinSize(){
+    WindowMinWidth   = ((1920)*TvPercentageSize)/100;
+    WindowMinHeight  = ((1080)*TvPercentageSize)/100;
+}
 
 /* *****************************************************************************
  * Funcion para poner TV en pantalla completa
@@ -171,7 +185,7 @@ function MaximizeTV(){
         } else if(RecordingPanel === true){
             // do nothing
         } else  {
-
+            Player.setDisplayRect(0, 0, WindowMaxWidth, WindowMaxHeight);
         }
     }
 }
@@ -181,7 +195,7 @@ function MaximizeTV(){
  * ****************************************************************************/
 
 function MinimizeTV(){
-
+    Player.setDisplayRect(TvPositionLeft, TvPositionTop, WindowMinWidth, WindowMinHeight);
 }
 
 /* *****************************************************************************
