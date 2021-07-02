@@ -23,9 +23,10 @@ var listener = {
         Debug('Buffering start.');
     },
 
-    onbufferingprogress: function(percent) {
-        Debug('Buffering progress data : ' + percent);
-    },
+    // Se actualiza cada segundo, genera demasiados logs
+    // onbufferingprogress: function(percent) {
+    //     Debug('Buffering progress data : ' + percent);
+    // },
 
     onbufferingcomplete: function() {
         Debug('Buffering complete.');
@@ -35,7 +36,6 @@ var listener = {
     },
 
     // Se actualiza cada segundo, genera demasiados logs
-
     // oncurrentplaytime: function(currentTime) {
     //     Debug('Current playtime: ' + currentTime);
     // },
