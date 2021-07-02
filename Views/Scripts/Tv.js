@@ -235,7 +235,7 @@
             /* Regresamos a su valor inicial la variable DIRECTION*/
                 Direction = 'UP';
                 Debug('********************************************');
-                Debug(ChannelsJson[ChannelPosition].STTN);
+                Debug('STTN: '+ChannelsJson[ChannelPosition].STTN);
                 if(ChannelsJson[ChannelPosition].STTN !== 'CONTENT'){
                     if(ActiveDigitalChannel === true){
                         CloseDigitalChannel();
