@@ -18,6 +18,44 @@ var WindowMaxWidth  = 0,
     WindowMinWidth  = 0,
     WindowMinHeight = 0;
 
+var listener = {
+    onbufferingstart: function() {
+        Debug('Buffering start.');
+    },
+
+    onbufferingprogress: function(percent) {
+        Debug('Buffering progress data : ' + percent);
+    },
+
+    onbufferingcomplete: function() {
+        Debug('Buffering complete.');
+    },
+    onstreamcompleted: function() {
+        Debug('Stream Completed');
+    },
+
+    // Se actualiza cada segundo, genera demasiados logs
+
+    // oncurrentplaytime: function(currentTime) {
+    //     Debug('Current playtime: ' + currentTime);
+    // },
+
+    onerror: function(eventType) {
+        Debug('event type error : ' + eventType);
+    },
+
+    onevent: function(eventType, eventData) {
+        Debug('event type: ' + eventType + ', data: ' + eventData);
+    },
+
+    onsubtitlechange: function(duration, text, data3, data4) {
+        Debug('subtitleText: ' + text);
+    },
+    ondrmevent: function(drmEvent, drmData) {
+        Debug('DRM callback: ' + drmEvent + ', data: ' + drmData);
+    }
+};
+
 var Player = webapis.avplay;
     Player.setListener(listener);
 
@@ -238,41 +276,3 @@ function AssetStatus(Duration){
 
     }
 }
-
-var listener = {
-    onbufferingstart: function() {
-        Debug('Buffering start.');
-    },
-
-    onbufferingprogress: function(percent) {
-        Debug('Buffering progress data : ' + percent);
-    },
-
-    onbufferingcomplete: function() {
-        Debug('Buffering complete.');
-    },
-    onstreamcompleted: function() {
-        Debug('Stream Completed');
-    },
-
-    // Se actualiza cada segundo, genera demasiados logs
-
-    // oncurrentplaytime: function(currentTime) {
-    //     Debug('Current playtime: ' + currentTime);
-    // },
-
-    onerror: function(eventType) {
-        Debug('event type error : ' + eventType);
-    },
-
-    onevent: function(eventType, eventData) {
-        Debug('event type: ' + eventType + ', data: ' + eventData);
-    },
-
-    onsubtitlechange: function(duration, text, data3, data4) {
-        Debug('subtitleText: ' + text);
-    },
-    ondrmevent: function(drmEvent, drmData) {
-        Debug('DRM callback: ' + drmEvent + ', data: ' + drmData);
-    }
-};
