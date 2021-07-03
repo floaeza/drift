@@ -90,6 +90,7 @@ function PlayDigitalChannel(Source){
     // Detiene el proceso de la reproduccion anterior
     StopVideo();
     Debug('PlayDigitalChannel > ::::::: '+Source);
+
     // Reproduce el video
     try {
 

@@ -1,3 +1,4 @@
+// @ts-nocheck
 
 window.stbEvent = {
     onEvent: function ( event ) {
