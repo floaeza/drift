@@ -201,13 +201,15 @@ var CheckInfo = 0;
                 case REMOTE_PLAY:
 
                     if(typeof(gSTB) !== 'undefined'){
+                        
                         if(CurrentModule === 'Tv'){
                             if(SwapPausePlay === false){
-                                TvPlay();
                                 SwapPausePlay = true;
+                                TvPlay();
+                                
                             } else {
-                                TvPause();
                                 SwapPausePlay = false;
+                                TvPause();
                             }
                         }
                     } else {

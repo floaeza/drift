@@ -146,9 +146,9 @@ var Playlist = '',
 function PlayVideo(Source){
     // Detiene el proceso de la reproduccion anterior
     StopVideo();
-
+    //Debug(Source);
     if(CurrentModule === 'Tv'){
-        if(Source.includes('http') ||Source.includes('udp') || Source.includes('igmp') || Source.includes('rtsp')){
+        if(Source.indexOf('pvr') !== -1 || Source.indexOf('rtsp') !== -1){
             GetRaws(Source);
 
             LengthPlaylist = Playlist.length;
@@ -159,15 +159,13 @@ function PlayVideo(Source){
                 solution: 'auto'
             });
         }else{
-            Debug('--------------->>> '+Source);
+            //Debug('--------------->>> '+Source);
             //Reproduce el video
             player.play({
                 uri: Source,
                 solution: 'auto'
             });
         }
-            
-
     } else {
         //Reproduce el video
 

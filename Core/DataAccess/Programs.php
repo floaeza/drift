@@ -131,6 +131,17 @@ class Programs extends Database {
 
         return $this->ProgramsList;
     }
+    function updateProgramByFile($File, $ProgramInfo) {
+        $this->Function = 'updateProgramByFile';
+
+        $this->connect();
+        $this->update("pvr_programas", $ProgramInfo, "file = '$File'");
+        $this->ProgramsList = $this->getResult();
+
+        $this->disconnect();
+
+        return $this->ProgramsList;
+    }
 
     function getStatusProgram($ProgramId) {
         $this->Function = 'getStatusProgram';
@@ -226,7 +237,7 @@ class Programs extends Database {
         $this->Function = 'getToSchedulesToDelete';
 
         $this->connect();
-        $this->select("pvr_programas", "id_programa, id_asset, id_stream, grabacion_activa",
+        $this->select("pvr_programas", "id_programa, id_asset, id_stream, grabacion_activa, file",
             "", "", "", "",
             "mac_address_pvr = '".$MacAddress."' AND id_operacion = '2' ");
         $this->ProgramsList = $this->getResult();
@@ -247,5 +258,15 @@ class Programs extends Database {
 
         return $this->ProgramsList;
     }
+    function DeleteProgramByFile($File) {
+        $this->Function = 'DeleteProgramByFile';
 
+        $this->connect();
+        $this->delete("pvr_programas", "file=$File");
+        $this->ProgramsList = $this->getResult();
+
+        $this->disconnect();
+
+        return $this->ProgramsList;
+    }
 }
