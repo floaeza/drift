@@ -44,8 +44,8 @@ VI+VpvZTJQ==</DigestValue>
 </Reference>
 <Reference URI=".idea%2Fworkspace.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>mAww00peihMXcwW+uybtyROGK5eArjWNoCMoaH8Uuv/Rq96G0TBdHxgksmwqgRzknd+xAeLu3TSn
-igNNPm4G3w==</DigestValue>
+<DigestValue>zteUNberSf3I9Bhvqks7Pbhl0Zo1BRdDhb6u0sAzIbSMS7WoJE3JS7Vx+mWPxbJWCQpoxrTpTiOA
+ArMKBrlb2g==</DigestValue>
 </Reference>
 <Reference URI="Core%2F.DS_Store">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -1689,8 +1689,8 @@ zXFftiirww==</DigestValue>
 </Reference>
 <Reference URI="Views%2FScripts%2FVPL%2FCommands.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>aWkr8bFLNz31sDZ/MjU5I3Cx5fjpvDbKTcqVfqSgqOjij5X8g1jHTg5x7xqYkDiZprkN1gBKgxDR
-umF4fgc25A==</DigestValue>
+<DigestValue>QfBi0Dk8oCXs5fAaEVr0EE7KnoGMomradQ0DeufmoCif7TareqUnlz4hPaRWEktIEMZqe8LhRcrJ
+bhbyMY74zA==</DigestValue>
 </Reference>
 <Reference URI="Views%2FScripts%2Feditor.py">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2209,8 +2209,8 @@ HZ0X+LnF3Q==</DigestValue>
 </Reference>
 <Reference URI="Views%2FVendors%2FSamsung%2FPlayer.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>/ZuDjkrZDwst2N6K2XJ9/Dp5oYrKodZkmgaRQsrKbO0bgzfKhUsuoSCuAwhcBR2RgGhxmmqDu7MI
-CPhWO1PHGA==</DigestValue>
+<DigestValue>cPbIxq85ug1YIfCap9t1bpVw9fS4oGAgZ9r3gXc+7YBAnWaGM0AfoTo0UQDtX33eexec4AG/JIhS
+mLSyWFDUjw==</DigestValue>
 </Reference>
 <Reference URI="Views%2FVendors%2FSamsung%2FServer.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2282,9 +2282,9 @@ QY10fG1EWQ==</DigestValue>
 </Reference>
 </SignedInfo>
 <SignatureValue>
-ZeyNFl+VlUFEIlGonSi8pwRhOFcMDYd+QtcN9fo0zEbOGrc4/j06xDi2Xl6oiTYSYbjvS8AXmlcL
-AtKk/Zdp0HFfVmsrPkrTDvTBNwyukxacT07f3Y3GqcxtXD295WmIAbLw1cuHrwdLtvD2x6uJ8njC
-lzG0sg+jDsbJTYAfdd0=
+DnryF+gWPlo2nLDdmNXgBTvg9Xdhc60gbTkm49zL5bUqWrqJ7liqt5NO7SyVWdruOnkCs3p0AQsC
+2/fh3UBRNiHipB+RGVnfx2l+Z1XAEfeAasdQug0nrUkZWYhf34bGzpAwxziNKOlBmaWcq3NxLPnn
+XbNbfUr92qwRsIQT39Q=
 </SignatureValue>
 <KeyInfo>
 <X509Data>
