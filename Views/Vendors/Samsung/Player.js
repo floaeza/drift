@@ -21,10 +21,9 @@ var WindowMaxWidth  = 0,
     GetWindowFullSize();
     GetWindowMinSize();
 
-var Player = webapis.avplay;
     Player.setListener(listener);
 
-    Debug('INIT PLAYER WEBAPIS.AVPLAY > LISTENER');
+    Debug('PLAYER WEBAPIS.AVPLAY > LISTENER');
 
 /* *****************************************************************************
  * Reproductor de canal
@@ -45,10 +44,6 @@ Debug('PlayChannel('+Source+', '+Port+')');
 
     // Reproduce el canal actual
     try {
-
-        var ActiveConnectionType = webapis.network.getActiveConnectionType();
-
-        Debug(ActiveConnectionType);
 
         Player.open(Source+CheckPort);
         Debug('Player.open : '+Source+CheckPort);
@@ -95,10 +90,6 @@ function PlayDigitalChannel(Source){
 
     // Reproduce el video
     try {
-
-        var ActiveConnectionType = webapis.network.getActiveConnectionType();
-
-        Debug(ActiveConnectionType);
 
         Player.open(Source);
 
@@ -213,7 +204,36 @@ function MinimizeTV(){
  * ****************************************************************************/
 
 function RebootDevice(){
+    Debug("[rebootDevice] function call");
+    Debug("[rebootDevice] b2bcontrol object == " + b2bcontrol);
 
+    var onSuccess = function() {
+        Debug("[rebootDevice] succeeded!");
+
+        setTimeout(function(){ setPowerOn(); }, 3000);
+    };
+
+    var onError = function(error) {
+        Debug("[rebootDevice] failed! error code: " + error.code + " error name: " + error.name + "  message " + error.message);
+    };
+
+    b2bcontrol.rebootDevice(onSuccess, onError);
+}
+
+function setPowerOn(){
+
+    Debug("[setPowerOn] function call");
+    var onSuccess = function() {
+
+        Debug("[setPowerOn]success ");
+    };
+    var onError = function(error) {
+
+        Debug("[setPowerOn]code :" + error.code + " error name: " + error.name + "  message " + error.message);
+    };
+
+    Debug("[setPowerOn] b2bpower object == " + b2bpower);
+    b2bpower.setPowerOn(onSuccess, onError);
 }
 
 /* *****************************************************************************

@@ -5,7 +5,36 @@ function Red(){
 }
 
 function Blue(){
-    
+    Debug("[rebootDevice] function call");
+    Debug("[rebootDevice] b2bcontrol object == " + b2bcontrol);
+
+    var onSuccess = function() {
+        Debug("[rebootDevice] succeeded!");
+
+        setTimeout(function(){ setPowerOn(); }, 3000);
+    };
+
+    var onError = function(error) {
+        Debug("[rebootDevice] failed! error code: " + error.code + " error name: " + error.name + "  message " + error.message);
+    };
+
+    b2bcontrol.rebootDevice(onSuccess, onError);
+}
+
+function setPowerOn(){
+
+    Debug("[setPowerOn] function call");
+    var onSuccess = function() {
+
+        Debug("[setPowerOn]success ");
+    };
+    var onError = function(error) {
+
+        Debug("[setPowerOn]code :" + error.code + " error name: " + error.name + "  message " + error.message);
+    };
+
+    Debug("[setPowerOn] b2bpower object == " + b2bpower);
+    b2bpower.setPowerOn(onSuccess, onError);
 }
 
 function Green(){

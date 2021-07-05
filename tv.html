@@ -34,7 +34,6 @@
     <script type="text/javascript" src="$WEBAPIS/webapis/webapis.js"></script>
     <script type='text/javascript' src='$B2BAPIS/b2bapis/b2bavplay.js'></script>
     <script type='text/javascript' src='./Views/Vendors/Samsung/Server.js'></script> <!-- ACTUALIZAR IP SERVIDOR! -->
-
     <script type='text/javascript' src='./Views/Libraries/jquery-1.12.3.min.js'></script>
 </head>
 <body onload='init();'>
@@ -43,7 +42,8 @@
 <footer></footer>
 <script>
     /* Carga inicial */
-    var b2bcontrol = '';
+    var b2bcontrol = '',
+        Player = '';
 
     var MACAddress  = '';
 
@@ -64,6 +64,8 @@
     var init = function() {
         if (window.tizen !== undefined) {
             b2bcontrol = window.b2bapis.b2bcontrol;
+
+            Player = webapis.avplay;
 
             try {
                 MACAddress = b2bcontrol.getMACAddress();
