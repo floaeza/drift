@@ -43,22 +43,25 @@ window.stbEvent = {
             case 32:
                 //HDMI device has been connected.
                 EventHdmi = 1;
-
+            
                 Debug('....................HDMI 1........................');
                 gSTB.StandBy(false);
                 Debug('..................STANDBY EXIT..........................');
                 var SWS = gSTB.GetStandByStatus();
                 Debug('----------------------- SWS'+SWS);
-
                 if(Executing === false){
                     UpdateQuickInfoDevice();
                 }
-
-                break;
+                
+                break;  
 
             case 33:
                 //HDMI device has been disconnected.
                 EventHdmi = 0;
+
+                if(Executing === false){
+                    UpdateQuickInfoDevice();
+                }
                 break;
             case 39: //Task started recording.
                     EventString = 'STATUS_START_RECORD';
