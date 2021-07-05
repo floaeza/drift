@@ -722,7 +722,7 @@
         } else {
             Debug('GetDigitalChannel EPG');
             //if(typeof(gSTB) !== 'undefined'){
-            GetDigitalChannel();
+            SetDigitalChannel();
         }  
     }
     
