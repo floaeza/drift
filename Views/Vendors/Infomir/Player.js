@@ -411,7 +411,9 @@ function ResumeVideo(){
 }
 
 function SpeedVideo(Speed){
-    gSTB.SetSpeed(Speed);
+    
+    player.speed = Speed;
+    Debug("Adelantando "+ player.speeds);
 }
 
 /* *****************************************************************************
