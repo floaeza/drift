@@ -57,7 +57,7 @@ window.stbEvent = {
 
             case 33:
                 //HDMI device has been disconnected.
-                EventHdmi = 0;
+                EventHdmi = -1;
 
                 if(Executing === false){
                     UpdateQuickInfoDevice();
