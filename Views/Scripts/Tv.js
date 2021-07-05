@@ -716,11 +716,13 @@
 
         if(ChannelsJson[ChannelPosition].STTN !== 'CONTENT'){
             if(ActiveDigitalChannel === true){
-                ActiveDigitalChannel = false;
+                CloseDigitalChannel();
             }
             PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
         } else {
-            SetDigitalChannel();
+            Debug('GetDigitalChannel EPG');
+            //if(typeof(gSTB) !== 'undefined'){
+            GetDigitalChannel();
         }  
     }
     

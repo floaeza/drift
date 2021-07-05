@@ -45,10 +45,6 @@ Debug('PlayChannel('+Source+', '+Port+')');
     // Reproduce el canal actual
     try {
 
-        var ActiveConnectionType = webapis.network.getActiveConnectionType();
-
-        Debug(ActiveConnectionType);
-
         Player.open(Source+CheckPort);
         Debug('Player.open : '+Source+CheckPort);
 
@@ -94,10 +90,6 @@ function PlayDigitalChannel(Source){
 
     // Reproduce el video
     try {
-
-        var ActiveConnectionType = webapis.network.getActiveConnectionType();
-
-        Debug(ActiveConnectionType);
 
         Player.open(Source);
 
