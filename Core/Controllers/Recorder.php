@@ -138,9 +138,18 @@ switch ($Option){
                     //'rtsp://'.$Recorder['ip'].$Config['PortRtsp'];
 
                     if($MacAddress === $ProgramsRecorded[$i]['mac_address_pvr']){
-                        $Url = 'pvr://'.str_pad($ProgramsRecorded[$i]['id_asset'],10,'0', STR_PAD_LEFT);
+                        if($ProgramsRecorded[$i]['file'] !== null){
+                            $Url = $ProgramsRecorded[$i]['file'];
+                        }else{
+                            $Url = 'pvr://'.str_pad($ProgramsRecorded[$i]['id_asset'],10,'0', STR_PAD_LEFT);
+                        }
                     } else {
-                        $Url = 'rtsp://'.$ProgramsRecorded[$i]['ip'].':554/'.str_pad($ProgramsRecorded[$i]['id_asset'],10,'0', STR_PAD_LEFT);
+                        if($ProgramsRecorded[$i]['file'] !== null){
+                            $Url = 'http://'.$ProgramsRecorded[$i]['ip'].':8080'.substr($ProgramsRecorded[$i]['file'],6);
+                        }else{
+                            $Url = 'rtsp://'.$ProgramsRecorded[$i]['ip'].':554/'.str_pad($ProgramsRecorded[$i]['id_asset'],10,'0', STR_PAD_LEFT);
+                        }
+                        
                     }
                     array_push($NewArray[$j], array(
                         'id' => $ProgramsRecorded[$i]['id_programa'],
@@ -399,30 +408,31 @@ switch ($Option){
 
         $Response = array($Result, $TypeResult);
         break;
-    case 'UpdateProgramOpera':
+    case 'UpdateProgramStatusInformir':
 
-            $ProgramId   = !empty($_POST['ProgramId']) ? $_POST['ProgramId'] : '';
-            $OperationId = !empty($_POST['OperationId']) ? $_POST['OperationId'] : '';
+        $ProgramId   = !empty($_POST['ProgramId']) ? $_POST['ProgramId'] : '';
+        $OperationId = !empty($_POST['OperationId']) ? $_POST['OperationId'] : '';
+        $File     = !empty($_POST['file']) ? $_POST['file'] : '';
+
+        $InfoUpdate =  array ('id_operacion' => $OperationId, 'file'=>$File);
+
+        $TypeResult = 'UpdateProgramStatusInformir: update grabacion   -$OptionProgram '.$OptionProgram['id_operacion'];
+
+        $Result = $ProgramsData->updateProgram($ProgramId, $InfoUpdate);
+
+
+        $Response = array($Result, $TypeResult);
+        break;
+    case 'UpdateProgramOpera':
+           
             $File     = !empty($_POST['File']) ? $_POST['File'] : '';
-            $ActiveRec   = !empty($_POST['ActiveRecording']) ? $_POST['ActiveRecording'] : '';
+            $OperationId = !empty($_POST['OperationId']) ? $_POST['OperationId'] : '';
     
-    
-            $OptionProgram = $ProgramsData->getOptionByStreamAndAsset($ProgramId);
-    
-            if($OptionProgram['id_operacion'] == '2' || $OptionProgram['id_operacion'] == '1'){
-                $Result = 'UpdateProgramAsset';
-                $TypeResult = 'NO actualiza id_programa: '.$ProgramId. ' -$OptionProgram '.$OptionProgram['id_operacion'];
-    
-            } else {
-    
-                $ActiveRecording = ($ActiveRec === 'true') ? '1' : '0';
-    
-                $InfoUpdate =  array ('id_operacion' => $OperationId, 'grabacion_activa' =>$ActiveRecording, 'file'=>$File);
-    
-                $TypeResult = 'UpdateProgramAsset: update grabacion activa '.$ActiveRecording.' y file= '.$File. ' -$OptionProgram '.$OptionProgram['id_operacion'];
-    
-                $Result = $ProgramsData->updateProgram($ProgramId, $InfoUpdate);
-            }
+            $InfoUpdate =  array ('id_operacion' => $OperationId);
+
+            $TypeResult = 'UpdateProgramByFile: update grabacion (OPERA) ';
+
+            $Result = $ProgramsData->updateProgramByFile($File, $InfoUpdate);
     
     
             $Response = array($Result, $TypeResult);
@@ -465,7 +475,12 @@ switch ($Option){
         $ProgramId = !empty($_POST['ProgramId']) ? $_POST['ProgramId'] : '';
 
         $Response = $ProgramsData->DeleteProgram($ProgramId);
-    break;
+        break;
+    case 'DeleteProgramByFile':
+        $File = !empty($_POST['File']) ? $_POST['File'] : '';
+
+        $Response = $ProgramsData->DeleteProgramByFile($File);
+        break;
 
     case 'CheckProgramsToScheduleNow':
         $Schedules = $ProgramsData->getProgramsToSchedule($MacAddress);

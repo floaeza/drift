@@ -852,24 +852,17 @@ function SelectRecordOption(){
                 ShowRecorderMessage('All connections to your recorder are active, please wait or close a connection');
             } else {
                 UpdateRtspConnections('add');
+                ClearSpeed();
                 // @ts-ignore
-                if(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].file !== null)
-                    // @ts-ignore
-                    PlayVideo(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].file);
-                else
-                    // @ts-ignore
-                    PlayVideo(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].url);
-
-                // @ts-ignore
-                Debug('URL>>>>>> '+RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].url);
-
                 PlayingRecording = true;
-
-                //* ClosePvr();
-
-                HidePvr();
-
+                
+                PlayVideo(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].url);
+                // @ts-ignore
                 ShowPvrInfo();
+                Debug('URL>>>>>> '+RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].url);
+                //* ClosePvr();
+                HidePvr();
+                
 
                 SetSpeed('play');
             }
@@ -983,11 +976,11 @@ function SelectDeleteOption(){
  *******************************************************************************/
 
 function ShowPvrInfo(){
-
+    
     if(ActivePvrInfoContainer === false){
         // @ts-ignore
         InfoContainer.style.visibility = 'visible';
-
+        
         ShowBarStatus();
 
         ActivePvrInfoContainer = true;
@@ -1375,12 +1368,7 @@ function SelectRecordPlayOption(){
             PlayingRecording = true;
 
             // @ts-ignore
-            if(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].url !== null)
-                // @ts-ignore
-                PlayVideo(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].file);
-            else
-                // @ts-ignore
-                PlayVideo(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].url);
+            PlayVideo(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].url);
             
 
             // @ts-ignore
@@ -1531,7 +1519,7 @@ function ShowBarStatus(){
     }
 
     // @ts-ignore
-    Debug('ShowBarStatus......');
+    Debug('ShowBarStatus......RRRRRRRRR');
     UpdateBarStatus();
 
     // @ts-ignore
@@ -2447,10 +2435,28 @@ function CheckManualRecording(){
                         ShowRecorderMessage('Reached the limit of recordings at the same time');
                     }
                 } else {
-                    AddRecord();
+                    if(Date.now() < ProgramUtcEndDate+400000){
+                        if(Date.now() < ProgramUtcStartDate+100000){
+                           AddRecord(); 
+                        }else{
+                            ProgramUtcStartDate = Date.now() +100000;
+                            AddRecord(); 
+                        }
+                    }else{
+                        ShowRecorderMessage('This program has already ended');
+                    }
                 }
             } else {
-                AddRecord();
+                if(Date.now() < ProgramUtcEndDate+400000){
+                    if(Date.now() < ProgramUtcStartDate+100000){
+                       AddRecord(); 
+                    }else{
+                        ProgramUtcStartDate = Date.now() + 100000;
+                        AddRecord(); 
+                    }
+                }else{
+                    ShowRecorderMessage('This program has already ended');
+                }
             }
         }
     });
@@ -2708,11 +2714,29 @@ function CheckRecordings() {
                                     ShowRecorderMessage('Reached the limit of recordings at the same time');
                                 }
                             } else {
-                                AddRecord();
+                                if(Date.now() < ProgramUtcEndDate+400000){
+                                    if(Date.now() < ProgramUtcStartDate+100000){
+                                       AddRecord(); 
+                                    }else{
+                                        Date.now() = ProgramUtcStartDate+100000;
+                                        AddRecord(); 
+                                    }
+                                }else{
+                                    ShowRecorderMessage('This program has already ended');
+                                }
                             }
                         }
                     } else {
-                        AddRecord();
+                        if(Date.now() < ProgramUtcEndDate+400000){
+                            if(Date.now() < ProgramUtcStartDate+100000){
+                               AddRecord(); 
+                            }else{
+                                Date.now() = ProgramUtcStartDate+100000;
+                                AddRecord(); 
+                            }
+                        }else{
+                            ShowRecorderMessage('This program has already ended');
+                        }
                     }
                 }
             }

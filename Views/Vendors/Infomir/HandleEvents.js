@@ -68,13 +68,13 @@ window.stbEvent = {
                     Debug("---------------> " + EventString + " <---------------");
                     var tas = JSON.parse(pvrManager.GetAllTasks());
                     var reco = [];
-                    for(var element in tas){
-                        if (element.state === 2){
-                            reco.push(element);
+                    for(var x = 0; x < tas.length; x++){
+                        if (tas[x].state === 2){
+                            reco.push(tas[x]);
                         }
                     }
                     var inre = reco[reco.length - 1];
-                    UpdateProgramOpera(tasks[tasks.length-1].id, tasks[tasks.length-1].fileName, OperationsList.recording);
+                    UpdateProgramOpera(inre.fileName, OperationsList.recording);
                     UpdateDiskInfoInformir();
                     break;
             case 34: //Task has been finished successfully.
@@ -82,18 +82,29 @@ window.stbEvent = {
                     Debug("---------------> " + EventString + " <---------------");
                     var tas = JSON.parse(pvrManager.GetAllTasks());
                     var reco = [];
-                    for(var element in tas){
-                        if (element.state === 4){
-                            reco.push(element);
+                    for(var x = 0; x < tas.length; x++){
+                        if (tas[x].state === 4){
+                            reco.push(tas[x]);
                         }
                     }
                     var inre = reco[reco.length - 1];
-                    UpdateProgramOpera(tasks[tasks.length-1].id, tasks[tasks.length-1].fileName, OperationsList.recorded);
+                    Debug("---------------> EXITOOOO  "+OperationsList.recorded+" <---------------");
+                    UpdateProgramOpera(inre.fileName, OperationsList.recorded);
                     UpdateDiskInfoInformir();
                     break;
             case 35: //Task has been finished with error.
                     EventString = 'STATUS_ERROR_RECORD';
                     Debug("---------------> " + EventString + " <---------------");
+                    var tas = JSON.parse(pvrManager.GetAllTasks());
+                    var reco = [];
+                    for(var x = 0; x < tas.length; x++){
+                        if (tas[x].state === 3){
+                            reco.push(tas[x]);
+                        }
+                    }
+                    var inre = reco[reco.length - 1];
+                    UpdateProgramOpera(inre.fileName, 2);
+                    UpdateDiskInfoInformir();
                     break;
         }
     },
@@ -186,7 +197,7 @@ function UpdateDiskInfoInformir(){
                     Debug('New schedule added, streamid = '+tasks[tasks.length-1].id);
                     Debug('> '+ProgramId + ', '+OperationsList.recording+', '+tasks[tasks.length-1].id);
                     UpdateProgramStreamIdInformir(ProgramId, OperationsList.recording, tasks[tasks.length-1].id);
-                    UpdateProgramAssetInformir(ProgramId, OperationsList.recording, tasks[tasks.length-1].fileName, false);
+                    UpdateProgramStatusInformir(ProgramId, OperationsList.recording, tasks[tasks.length-1].fileName);
                 }
             }
         }
@@ -230,14 +241,14 @@ function UpdateDiskInfoInformir(){
                 if(StreamId === 0){
                     DeleteProgramInformir(ProgramsToDelete[Indexps].id_programa);
                 } if(AssetId > 0 && Active === 0){
-                    ResultDelete = PVR.DeleteAsset(AssetId);
-
-                    if(ResultDelete === 0){
+                    ResultDelete = gSTB.RDir('RemoveFile '+ProgramsToDelete[Indexps].file);
+                    UpdateDiskInfoInformir();
+                    if(ResultDelete === "Ok"){
                         DeleteProgramInformir(ProgramsToDelete[Indexps].id_programa);
                     }
                 } else {
-                    ResultDelete = PVR.DeleteSchedule(StreamId);
-
+                    ResultDelete = gSTB.RDir('RemoveFile '+ProgramsToDelete[Indexps].file);
+                    UpdateDiskInfoInformir();
                     if(Active === 1){
                         UpdateProgramDeleteInformir(ProgramsToDelete[Indexps].id_programa, OperationsList.delete, AssetId);
                     } else {
@@ -268,21 +279,32 @@ function DeleteProgramInformir(ProgramId){
         }
     });
 }
+function DeleteProgramByFile(file){
+    $.ajax({
+        type: 'POST',
+        url: 'Core/Controllers/Recorder.php',
+        data: {
+            Option     : 'DeleteProgramByFile',
+            File : file
+        },
+        success: function (response){
+            //Debug(response);
+        }
+    });
+}
 /*******************************************************************************
  * Actualiza el estatus de la grabacion mediante el Stream Id y el Asset Id
  *******************************************************************************/
 
- function UpdateProgramOpera(StreamId, file, OperationId, ActiveRecording){
+ function UpdateProgramOpera(file, OperationId){
 
     $.ajax({
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
         data: {
             Option     : 'UpdateProgramOpera',
-            StreamId : StreamId,
             File : file,
             OperationId : OperationId,
-            ActiveRecording : ActiveRecording
         },
         success: function (response){
             Debug('----------UpdateProgramOpera----------');
@@ -294,20 +316,19 @@ function DeleteProgramInformir(ProgramId){
  * Actualiza el estatus de la grabacion y su stream id
  *******************************************************************************/
 
-function UpdateProgramAssetInformir(ProgramId, OperationId, file, ActiveRecording){
+function UpdateProgramStatusInformir(ProgramId, OperationId, file){
 
     $.ajax({
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
         data: {
-            Option     : 'UpdateProgramAsset',
+            Option     : 'UpdateProgramStatusInformir',
             ProgramId : ProgramId,
             OperationId : OperationId,
-            File : file,
-            ActiveRecording : ActiveRecording
+            file : file,
         },
         success: function (response){
-            Debug('----------UpdateProgramAsset----------');
+            Debug('----------UpdateProgramStatusInformir----------');
             Debug(response);
         }
     });

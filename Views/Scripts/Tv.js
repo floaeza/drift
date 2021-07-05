@@ -791,6 +791,7 @@
             SetSpeed('play');
             ShowInfo();
         } else if(PlayingRecording === true){
+            Debug("On'ta mi pishi bici pa'irme");
             ShowPvrInfo();
         } else {
             if(Device['Type'] !== 'NONE'){
