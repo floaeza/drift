@@ -30,17 +30,12 @@ var Player = webapis.avplay;
  * Reproductor de canal
  * ****************************************************************************/
 
-function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPid){
-Debug('PlayChannel('+Source+', '+Port+', '+ProgramIdChannnel+', '+ProgramIdPosition+', '+AudioPid+')');
-    var CheckPort = '',
-        CheckProgram = '';
+function PlayChannel(Source, Port){
+Debug('PlayChannel('+Source+', '+Port+')');
+    var CheckPort = '';
 
     if(Port){
         CheckPort = ':' + Port;
-    }
-
-    if(ProgramIdChannnel){
-        CheckProgram = ';Progid='+ProgramIdChannnel+';audiopid='+AudioPid;
     }
 
     // Detiene el proceso de la reproduccion anterior
