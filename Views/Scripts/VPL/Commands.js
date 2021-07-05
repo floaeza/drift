@@ -5,10 +5,20 @@ function Red(){
 }
 
 function Blue(){
-    Debug('SetPowerReboot');
-    var g_playHotel =  document.getElementById('pluginPower');
-        g_playHotel.Open("HOTEL", "1.000", "HOTEL");
-        g_playHotel.Execute("SetPowerReboot");
+    Debug("[rebootDevice] function call");
+    Debug("[rebootDevice] b2bcontrol object == " + b2bcontrol);
+
+    var onSuccess = function() {
+
+        Debug("[rebootDevice] succeeded!");
+    };
+
+    var onError = function(error) {
+        Debug("[rebootDevice] failed! error code: " + error.code + " error name: " + error.name + "  message " + error.message);
+    };
+
+    b2bcontrol.rebootDevice(onSuccess, onError);
+
 }
 
 function Green(){
