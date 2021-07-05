@@ -204,12 +204,13 @@ var CheckInfo = 0;
                         
                         if(CurrentModule === 'Tv'){
                             if(SwapPausePlay === false){
-                                SwapPausePlay = true;
-                                TvPlay();
                                 
+                                TvPlay();
+                                SwapPausePlay = true;
                             } else {
-                                SwapPausePlay = false;
+                                
                                 TvPause();
+                                SwapPausePlay = false;
                             }
                         }
                     } else {

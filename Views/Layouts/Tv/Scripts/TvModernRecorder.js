@@ -848,12 +848,13 @@ function SelectDeleteOption(){
  *******************************************************************************/
 
 function ShowPvrInfo(){
-
+    
     if(ActivePvrInfoContainer === false){
+        
         InfoContainer.style.visibility = 'visible';
-
+        
         ShowBarStatus();
-
+        Debug('SHOWWWWWWWWWWW');
         ActivePvrInfoContainer = true;
         var EpisodeInfo = '';
 
@@ -1299,7 +1300,6 @@ function SetSpeed(Option){
 }
 
 function ShowBarStatus(){
-
     /* Muestra la barra */
     BarContainer.style.display = 'inline';
 
@@ -1322,10 +1322,12 @@ function ShowBarStatus(){
 }
 
 function UpdateBarStatus(){
+    
     var AssetDrt = 0;
 
     if(PlayingRecording === true){
         AssetDrt = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].duration;
+        Debug('UpdateBarStatus---->');
     }
 
     AssetStatus(AssetDrt);
@@ -2118,10 +2120,28 @@ function CheckManualRecording(){
                         ShowRecorderMessage('Reached the limit of recordings at the same time');
                     }
                 } else {
-                    AddRecord();
+                    if(Date.now() < ProgramUtcEndDate+400000){
+                        if(Date.now() < ProgramUtcStartDate+100000){
+                           AddRecord(); 
+                        }else{
+                            ProgramUtcStartDate = Date.now() +100000;
+                            AddRecord(); 
+                        }
+                    }else{
+                        ShowRecorderMessage('This program has already ended');
+                    }
                 }
             } else {
-                AddRecord();
+                if(Date.now() < ProgramUtcEndDate+400000){
+                    if(Date.now() < ProgramUtcStartDate+100000){
+                       AddRecord(); 
+                    }else{
+                        ProgramUtcStartDate = Date.now() +100000;
+                        AddRecord(); 
+                    }
+                }else{
+                    ShowRecorderMessage('This program has already ended');
+                }
             }
         }
     });
@@ -2310,11 +2330,29 @@ function CheckRecordings() {
                                     ShowRecorderMessage('Reached the limit of recordings at the same time');
                                 }
                             } else {
-                                AddRecord();
+                                if(Date.now()/1000 < ProgramUtcEndDate+ 400){
+                                    if(Date.now()/1000 < ProgramUtcStartDate+100){
+                                       AddRecord(); 
+                                    }else{
+                                        ProgramUtcStartDate = (Date.now()/1000) + 100;
+                                        AddRecord(); 
+                                    }
+                                }else{
+                                    ShowRecorderMessage('This program has already ended');
+                                }
                             }
                         }
                     } else {
-                        AddRecord();
+                        if(Date.now()/1000 < ProgramUtcEndDate+400){
+                            if(Date.now()/1000 < ProgramUtcStartDate+100){
+                               AddRecord(); 
+                            }else{
+                                ProgramUtcStartDate = (Date.now()/1000) +100;
+                                AddRecord(); 
+                            }
+                        }else{
+                            ShowRecorderMessage('This program has already ended');
+                        }
                     }
                 }
             }
@@ -2346,7 +2384,7 @@ function AddRecord(){
             EndTime         : NewEndHour,
             UtcStart        : ProgramUtcStartDate,
             UtcEnd          : ProgramUtcEndDate,
-            ChannelSource   : ChannelsJson[REC_CHNL_POS].SRCE +':'+ChannelsJson[REC_PROG_POS].PORT
+            ChannelSource   : ChannelsJson[REC_CHNL_POS].SRCE +':'+ChannelsJson[REC_CHNL_POS].PORT
         },
         success: function (response){
             if(ADD_SERIE_BCKG === false){

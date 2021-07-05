@@ -976,7 +976,7 @@ function SelectDeleteOption(){
  *******************************************************************************/
 
 function ShowPvrInfo(){
-    Debug('SHOWWWWWWWWWWW');
+    
     if(ActivePvrInfoContainer === false){
         // @ts-ignore
         InfoContainer.style.visibility = 'visible';
