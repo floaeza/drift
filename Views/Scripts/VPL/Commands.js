@@ -5,7 +5,10 @@ function Red(){
 }
 
 function Blue(){
-    
+    Debug('SetPowerReboot');
+    var g_playHotel =  document.getElementById('pluginPower');
+        g_playHotel.Open("HOTEL", "1.000", "HOTEL");
+        g_playHotel.Execute("SetPowerReboot");
 }
 
 function Green(){
