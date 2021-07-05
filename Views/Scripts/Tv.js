@@ -235,7 +235,10 @@
             /* Regresamos a su valor inicial la variable DIRECTION*/
                 Direction = 'UP';
                 Debug('********************************************');
-                Debug('STTN: '+ChannelsJson[ChannelPosition].STTN);
+                Debug('STTN::: '+ChannelsJson[ChannelPosition].STTN);
+
+                Debug('SRCE::: '+Source + ' : '+Port);
+
                 if(ChannelsJson[ChannelPosition].STTN !== 'CONTENT'){
                     if(ActiveDigitalChannel === true){
                         CloseDigitalChannel();
@@ -288,6 +291,7 @@
  var DigitalChannel = document.getElementById('DigitalChannel');
     
     function SetDigitalChannel(){
+        Debug('--> SetDigitalChannel');
         if(ActiveDigitalChannel === true){
             if(DigitalContent.length > 0){
                 var FileType = DigitalContent[IndexDigital].split('.')[1];
