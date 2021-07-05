@@ -24,21 +24,18 @@ var WindowMaxWidth  = 0,
 var Player = webapis.avplay;
     Player.setListener(listener);
 
+    Debug('INIT PLAYER WEBAPIS.AVPLAY > LISTENER');
+
 /* *****************************************************************************
  * Reproductor de canal
  * ****************************************************************************/
 
-function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPid){
-
-    var CheckPort = '',
-        CheckProgram = '';
+function PlayChannel(Source, Port){
+Debug('PlayChannel('+Source+', '+Port+')');
+    var CheckPort = '';
 
     if(Port){
         CheckPort = ':' + Port;
-    }
-
-    if(ProgramIdChannnel){
-        CheckProgram = ';Progid='+ProgramIdChannnel+';audiopid='+AudioPid;
     }
 
     // Detiene el proceso de la reproduccion anterior
@@ -50,6 +47,7 @@ function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPi
     try {
 
         Player.open(Source+CheckPort);
+        Debug('Player.open : '+Source+CheckPort);
 
         // Maximiza el video en caso de que no este en pantalla completa
         MaximizeTV();
@@ -219,10 +217,18 @@ function RebootDevice(){
  * ****************************************************************************/
 
 function StopVideo(){
-    Player.close();
+    Debug('STOP VIDEO >');
+
+    try {
+        Debug('STOP VIDEO > close');
+        Player.close();
+    } catch (e)  {
+        Debug('STOP VIDEO > catch'+e);
+    }
 
     PauseLive = false;
     PlayingRecording = false;
+    Debug('STOP VIDEO <');
 }
 
 function PauseVideo(){
