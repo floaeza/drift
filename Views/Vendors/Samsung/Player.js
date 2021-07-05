@@ -218,7 +218,13 @@ function RebootDevice(){
 
 function StopVideo(){
     Debug('STOP VIDEO >');
-    Player.close();
+
+    try {
+        Debug('STOP VIDEO > close');
+        Player.close();
+    } catch (e)  {
+        Debug('STOP VIDEO > catch'+e);
+    }
 
     PauseLive = false;
     PlayingRecording = false;
