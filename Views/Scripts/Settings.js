@@ -129,8 +129,7 @@
             CurrentDateStb : CurrentStbDate
         },
         beforeSend: function (){
-            Debug('FIRST UPDATE > MacAddress: ' + MacAddress +' CurrentStbDate: '+CurrentStbDate)
-            Debug('The local time zone is ' + tizen.time.getLocalTimezone());
+            Debug('FIRST UPDATE > MacAddress: ' + MacAddress +' CurrentStbDate: '+CurrentStbDate);
         },
         success: function (response){
             Debug(CurrentStbDate);
