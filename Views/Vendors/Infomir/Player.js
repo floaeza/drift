@@ -356,8 +356,8 @@ function GetWindowMinSize(){
     WindowMinWidth   = (WindowMaxWidth*TvPercentageSize)/100;
     WindowMinHeight  = (WindowMaxHeight*TvPercentageSize)/100;
 
-    Debug(WindowMinWidth);
-    Debug(WindowMinHeight);
+    Debug("Porsentaje minimo " + WindowMinWidth);
+    Debug("Porsentaje minimo " + WindowMinHeight);
 
 }
 
@@ -370,9 +370,9 @@ function MaximizeTV(){
     //player.setViewport({x: 0, y: 0, width: WindowMaxWidth, height: WindowMaxHeight});
     //gSTB.SetViewport(3840, 2160, 0, 0);
     Debug("Maximizar");
-    player.setViewport({x: 0, y: 0, width: 3840, height: 2160});
-    player2.setViewport({x: 0, y: 0, width: 3840, height: 2160});
-    Debug(JSON.stringify(player.viewport));
+    player.fullscreen = true;
+    player2.fullscreen = true;
+    //Debug(JSON.stringify(player.viewport));
 }
 
 /* *****************************************************************************

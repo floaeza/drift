@@ -20,6 +20,8 @@ window.stbEvent = {
             case 2:
                 //Information on audio and video tracks of the media content is received
                 EventString = 'STATUS_PLAYING';
+
+                Debug("---------------> " + EventString + " <---------------");
             break;
 
             case 4:
