@@ -10,26 +10,7 @@ function Blue(){
 
 function Green(){
     
-    //StopVideo();
-    //stbPlayerManager.setRTSP({type:0, useUDP: true, nonSmoothPause:true});
-    //player.play({
-    //    uri: 'udp://@239.113.215.2:6002',
-    //    solution: 'auto'
-    //});
-   //
-    //Debug('q_p');
-    //player.onPlayEnd = function () {   
-    //    Debug('Play end');
-    //};
-    //player.onPlayError = function () {   
-    //    Debug('Play Error');
-    //};
-    //player.onRTPBreak = function () {   
-    //    Debug('RTP Break');
-    //};
-    //player.onPlayStart = function () {   
-    //    Debug('Play start');
-    //};
+    player.setViewport({x: 0, y: 0, width: 3840, height: 2160});
 }
 
 function Yellow(){
