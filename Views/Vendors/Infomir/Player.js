@@ -38,6 +38,12 @@ GetWindowMinSize();
  * 1 	video window   */
 gSTB.SetTopWin(0);
 
+timeShift.SetTimeShiftFolder(pathToSave);
+// set buffer duration in seconds
+timeShift.SetMaxDuration(durationSec);
+// set mode which defines what happens after reaching the left boundary of TimeShift buffer in paused mode
+timeShift.SetSlidingMode(true);
+
 var Ext = gSTB.StandBy(false);
 
 
@@ -46,7 +52,6 @@ var Ext = gSTB.StandBy(false);
  * ****************************************************************************/
 
 function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition){
-
     var CheckPort = '';
 
     if(Port){
@@ -55,11 +60,12 @@ function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition){
 
     // Detiene el proceso de la reproduccion anterior
     Source = Source.replace('igmp','udp');
-
+    Source = (Source).slice(0, 6) + "@" + (Source).slice(6);
+    
     // Detiene el proceso de la reproduccion anterior
     StopVideo();
-
-    //gSTB.Play(url);
+    Debug("Source "+ Source +" Port "+CheckPort);
+    //gSTB.Play(Source + CheckPort);
     player.play({
         uri: Source + CheckPort,
         solution: 'auto',
@@ -95,6 +101,8 @@ function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition){
 
     // Actualiza la fecha inicio de la reproduccion del canal */
     StartDateChannel = new Date();
+    
+    
 }
 
 /* *****************************************************************************
@@ -362,8 +370,8 @@ function MaximizeTV(){
     //player.setViewport({x: 0, y: 0, width: WindowMaxWidth, height: WindowMaxHeight});
     //gSTB.SetViewport(3840, 2160, 0, 0);
 
-    player.setViewport({x: 0, y: 0, width: WindowMaxWidth, height: WindowMaxHeight,save: true});
-    player2.setViewport({x: 0, y: 0, width: WindowMaxWidth, height: WindowMaxHeight,save: true});
+    player.setViewport({x: 0, y: 0, width: WindowMaxWidth, height: WindowMaxHeight, save: true});
+    player2.setViewport({x: 0, y: 0, width: WindowMaxWidth, height: WindowMaxHeight, save: true});
     //Debug(JSON.stringify(player.viewport));
 }
 
@@ -412,7 +420,7 @@ function ResumeVideo(){
 
 function SpeedVideo(Speed){
     
-    player.speed = Speed;
+    stbPlayerManager.speed = Speed;
     Debug("Adelantando "+ player.speeds);
 }
 

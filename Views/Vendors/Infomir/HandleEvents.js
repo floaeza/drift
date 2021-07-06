@@ -1,7 +1,7 @@
 // @ts-nocheck
 
 window.stbEvent = {
-    onEvent: function ( event ) {
+    onEvent: function ( event, info ) {
 
         Debug(event);
         EventNetman = gSTB.GetLanLinkStatus();
@@ -62,6 +62,10 @@ window.stbEvent = {
                 if(Executing === false){
                     UpdateQuickInfoDevice();
                 }
+                break;
+            case 36:
+                info = JSON.parse(info);
+                Debug('TimeShift mode is enabled. TimeShift data:', info);
                 break;
             case 39: //Task started recording.
                     EventString = 'STATUS_START_RECORD';
@@ -184,7 +188,8 @@ function UpdateDiskInfoInformir(){
                 storageInfo = JSON.parse(gSTB.GetStorageInfo('{}'));
                 USB = storageInfo.result || [];
                 Debug(USB[0].mountPath+'/'+Title);
-                
+                Source = Source.replace('igmp','udp');
+                Source = (Source).slice(0, 6) + "@" + (Source).slice(6);
                 var NewTask = pvrManager.CreateTask(Source, USB[0].mountPath+"/"+ProgramId+'_'+Title+'_'+Fecha, Start, End)
                 if (NewTask<0){
                     //CurrentTime = Date.UTC(moment().format('Y'), moment().format('MM'), moment().format('DD'), moment().format('HH'), moment().format('mm'));

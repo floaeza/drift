@@ -9,13 +9,27 @@ function Blue(){
 }
 
 function Green(){
-    //storageInfo = JSON.parse(gSTB.GetStorageInfo('{}'));
-    //USB = storageInfo.result || [];
-    //Debug(gSTB.ListDir(USB[0].mountPath));
-    //var NewTasks;
-    //NewTasks = pvrManager.CreateTask('http://10.0.3.207:8080/', USB[0].mountPath+"/Cruela", '1624980120', '1624980300');
-    pvrManager.ChangeEndTime(2, '1625074200');
-    Debug("EndTime Cambiado");
+    
+    //StopVideo();
+    //stbPlayerManager.setRTSP({type:0, useUDP: true, nonSmoothPause:true});
+    //player.play({
+    //    uri: 'udp://@239.113.215.2:6002',
+    //    solution: 'auto'
+    //});
+   //
+    //Debug('q_p');
+    //player.onPlayEnd = function () {   
+    //    Debug('Play end');
+    //};
+    //player.onPlayError = function () {   
+    //    Debug('Play Error');
+    //};
+    //player.onRTPBreak = function () {   
+    //    Debug('RTP Break');
+    //};
+    //player.onPlayStart = function () {   
+    //    Debug('Play start');
+    //};
 }
 
 function Yellow(){
