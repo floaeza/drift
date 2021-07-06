@@ -369,7 +369,7 @@ function MaximizeTV(){
     //gSTB.SetViewport(WindowMaxWidth, WindowMaxHeighc, 0, 0);
     //player.setViewport({x: 0, y: 0, width: WindowMaxWidth, height: WindowMaxHeight});
     //gSTB.SetViewport(3840, 2160, 0, 0);
-
+    Debug();
     player.setViewport({x: 0, y: 0, width: WindowMaxWidth, height: WindowMaxHeight, save: true});
     player2.setViewport({x: 0, y: 0, width: WindowMaxWidth, height: WindowMaxHeight, save: true});
     //Debug(JSON.stringify(player.viewport));
