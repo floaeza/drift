@@ -130,6 +130,7 @@
         },
         beforeSend: function (){
             Debug('FIRST UPDATE > MacAddress: ' + MacAddress +' CurrentStbDate: '+CurrentStbDate)
+            Debug('The local time zone is ' + tizen.time.getLocalTimezone());
         },
         success: function (response){
             Debug(CurrentStbDate);
