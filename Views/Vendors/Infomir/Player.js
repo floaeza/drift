@@ -369,10 +369,10 @@ function MaximizeTV(){
     //gSTB.SetViewport(WindowMaxWidth, WindowMaxHeighc, 0, 0);
     //player.setViewport({x: 0, y: 0, width: WindowMaxWidth, height: WindowMaxHeight});
     //gSTB.SetViewport(3840, 2160, 0, 0);
-    Debug();
-    player.setViewport({x: 0, y: 0, width: WindowMaxWidth, height: WindowMaxHeight, save: true});
-    player2.setViewport({x: 0, y: 0, width: WindowMaxWidth, height: WindowMaxHeight, save: true});
-    //Debug(JSON.stringify(player.viewport));
+    Debug("Maximizar");
+    player.setViewport({x: 0, y: 0, width: 3840, height: 2160});
+    player2.setViewport({x: 0, y: 0, width: 3840, height: 2160});
+    Debug(JSON.stringify(player.viewport));
 }
 
 /* *****************************************************************************
@@ -389,7 +389,7 @@ function MinimizeTV(){
 //            gSTB.SetViewport(WindowMinWidth, WindowMinHeight, 15, 60);
 //        }
 
-    player.setViewport({x: TvPositionLeft, y: TvPositionTop, width: WindowMinWidth, height: WindowMinHeight,save: true});
+    player.setViewport({x: TvPositionLeft, y: TvPositionTop, width: WindowMinWidth, height: WindowMinHeight});
 }
 
 /* *****************************************************************************
