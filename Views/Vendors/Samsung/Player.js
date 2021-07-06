@@ -25,6 +25,9 @@ var WindowMaxWidth  = 0,
 
     Debug('PLAYER WEBAPIS.AVPLAY > LISTENER');
 
+var current_dt = tizen.time.getCurrentDateTime();
+alert("current date/time is " + current_dt.toLocaleString());
+
 /* *****************************************************************************
  * Reproductor de canal
  * ****************************************************************************/
