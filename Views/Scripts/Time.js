@@ -21,12 +21,15 @@
         FormatDateAndHour = moment().format('MMM, DD / h:mm A');
         CurrentStbDate = moment().format('Y-MM-DD h:mm:ss');
 
-        if (Device.Client === 'CHL') {
-            FormatHour = moment().format('h:mm A');
+        if(!Device){
+            if (Device.Client === 'CHL') {
+                FormatHour = moment().format('h:mm A');
+            } else {
+                FormatHour = moment().format('MMMM Do h:mm a');
+            }
         } else {
             FormatHour = moment().format('MMMM Do h:mm a');
         }
-        
 
         if(CurrentModule === 'Tv'){
             if(ActiveInfoContainer === true){

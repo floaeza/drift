@@ -36,7 +36,7 @@ function Yellow(){
 // @ts-nocheck
 var f = gSTB.GetEnv('{ "varList":["timezone_conf"] }');
 Debug(f);
-var g = gSTB.SetEnv('{ "timezone_conf":"America/Mazatlan" }');
+var g = gSTB.SetEnv('{ "timezone_conf":"America/Mexico_City" }');
 Debug(g);
 }
 
