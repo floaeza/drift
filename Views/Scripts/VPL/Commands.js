@@ -5,15 +5,38 @@ function Red(){
 }
 
 function Blue(){
-    var onSuccess = function() {
-        Debug("[rebootDevice] succeeded!");
-    };
+    // var onSuccess = function() {
+    //     Debug("[rebootDevice] succeeded!");
+    // };
+    //
+    // var onError = function(error) {
+    //     Debug("[rebootDevice] failed! error code: " + error.code + " error name: " + error.name + "  message " + error.message);
+    // };
+    //
+    // b2bcontrol.rebootDevice(onSuccess, onError);
 
-    var onError = function(error) {
-        Debug("[rebootDevice] failed! error code: " + error.code + " error name: " + error.name + "  message " + error.message);
-    };
+    var now = new tizen.TZDate();
 
-    b2bcontrol.rebootDevice(onSuccess, onError);
+    Debug('************* > '+now);
+
+    $.ajax({
+        type: 'POST',
+        url: 'http://'+ServerIp+'/BBINCO/TV/Core/Models/Time.php',
+        async : false,
+        success: function (response) {
+            var Today = $.parseJSON(response),
+                Hours   = parseInt(Today.Hours, 10);
+
+            Debug('************* HOURS: '+Hours);
+
+            // now.setDate(1); // Changes the day of month to 1.
+            // now.setMonth(2); // Changes the month to March
+            // now.setFullYear(2099); // Changes the year to 2099.
+            now.setHours(Hours); // Sets the hour to 3 PM.
+
+            Debug('************* < '+now);
+        }
+    });
 }
 
 function Green(){
