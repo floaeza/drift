@@ -5,7 +5,15 @@ function Red(){
 }
 
 function Blue(){
-    Debug("Info del video " + JSON.parse(player.positionPercent)); 
+    var onSuccess = function() {
+        Debug("[rebootDevice] succeeded!");
+    };
+
+    var onError = function(error) {
+        Debug("[rebootDevice] failed! error code: " + error.code + " error name: " + error.name + "  message " + error.message);
+    };
+
+    b2bcontrol.rebootDevice(onSuccess, onError);
 }
 
 function Green(){
