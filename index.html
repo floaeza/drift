@@ -216,6 +216,25 @@
 		SetLocation.textContent  = CheckLocations[IndexCheck]['codigo_locacion'];
 	}
 
+	function SetDate(){
+		var now = new tizen.TZDate();
+
+		$.ajax({
+			type: 'POST',
+			url: 'http://'+ServerIp+'/BBINCO/TV/Core/Models/Time.php',
+			async : false,
+			success: function (response) {
+				var Today = $.parseJSON(response),
+					Hours   = parseInt(Today.Hours, 10);
+
+				// now.setDate(1); // Changes the day of month to 1.
+				// now.setMonth(2); // Changes the month to March
+				// now.setFullYear(2099); // Changes the year to 2099.
+				now.setHours(Hours); // Sets the hour to 3 PM.
+			}
+		});
+	}
+
 	function SetData(){
 
 		try {
