@@ -44,8 +44,8 @@ VI+VpvZTJQ==</DigestValue>
 </Reference>
 <Reference URI=".idea%2Fworkspace.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>ExS+V/2fl95vI6e0Bi2ekBRRxxr/GDKTyPAPJU6LrPuHdp4yJt00dka6bmee7XcYL2upVYUN1Gpp
-z32XQbh1ZQ==</DigestValue>
+<DigestValue>ZgrAC5MiKLTBBJFGGC5e/sdNsiTjKkkpp414bnHJc42oThwrpkFXjXULxiZUtRNtJen/eOb5OgwA
+0FW05bUQgQ==</DigestValue>
 </Reference>
 <Reference URI="Core%2F.DS_Store">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -1679,8 +1679,8 @@ ZafMHUB5jA==</DigestValue>
 </Reference>
 <Reference URI="Views%2FScripts%2FTime.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>pYFo++XD0dwLIeI67frUJ8lVc2MC4okOwVjgWLK2f1o8BaNjGGD6Ly31v9O6tuZXlGhUUrW1XDfu
-HbVSNuZdgQ==</DigestValue>
+<DigestValue>BAAL7rNWRhK3lv4BWKFK8MPRjkgrUKiw9iRrWixg1EATdKGYVbSIgd0/186UnMx8TGAYWi/j8vmR
+Sqro+69NiQ==</DigestValue>
 </Reference>
 <Reference URI="Views%2FScripts%2FTv.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -1689,8 +1689,8 @@ zXFftiirww==</DigestValue>
 </Reference>
 <Reference URI="Views%2FScripts%2FVPL%2FCommands.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>CMKYP/yj1DwTJTFu/kacvADIKnVxJ03RZ9vJ/i1HkWismjopgYIdX7Dzsa+0mQ+hgOIm6EEHuSGW
-LxFguSmzKw==</DigestValue>
+<DigestValue>1PybVL4O9Ss+hbpBSTB8+FBeZPbvWzylgcv+8KKqR0oCNu2z54Igter2KK8dNR7YVef1rTE3FGH3
+TOTihEYIew==</DigestValue>
 </Reference>
 <Reference URI="Views%2FScripts%2Feditor.py">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2282,9 +2282,9 @@ QY10fG1EWQ==</DigestValue>
 </Reference>
 </SignedInfo>
 <SignatureValue>
-jbWMJTgA/q6v+wJJb5vf4H3AK3/Dhuv2/Eaw2DIl6Ak28BvBTDhgaxTGuoulJrVscPwd6LbJ+XF/
-ggVS0h/gYGZRpWPuNI1N98xeZecnxMECvtcOizxX1poDL90ta9KiFHqRUhBt9jGIebGXMFvF+36v
-n2g0lW8RM9G7YD9nF+s=
+Dolp+3O2iJMafweMpEulGnmjtCOxBEWBwPifPSHbgHJn2At7LQi0cMN32W7iuLaZ7REKLTo5zSeW
+VbMNzfL3yyWeSQvPZ3eCi0p91THAitaZ/Ze7hLTZRGR76QgUhiVNQkwZCawq8Mml2gxiry3nndNJ
+z0nWaYihAkECags1+sw=
 </SignatureValue>
 <KeyInfo>
 <X509Data>

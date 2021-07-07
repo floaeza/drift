@@ -18,7 +18,7 @@ function Blue(){
     var now = new tizen.TZDate(),
         TvHour = now.getHours();
 
-    Debug('************* > '+now);
+
 
     $.ajax({
         type: 'POST',
@@ -27,6 +27,9 @@ function Blue(){
         success: function (response) {
             var Today = $.parseJSON(response),
                 ServerHour   = Today.Hours;
+
+            Debug('************* > '+TvHour);
+            Debug('************* > '+ServerHour);
 
                 var HourDifference = parseInt(TvHour) -  parseInt(ServerHour);
 
