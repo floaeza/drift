@@ -11,7 +11,7 @@ function Blue(){
 function Green(){
     
     StopVideo();
-    stbPlayerManager.setRTSP({type:1, useUDP:true});
+    stbPlayerManager.setRTSP({type:3, useUDP:true});
     player.play({
         uri: 'rtsp://10.0.3.21:554/0000000207',
         solution: 'rtsp_ac3'
