@@ -15,7 +15,8 @@ function Blue(){
     //
     // b2bcontrol.rebootDevice(onSuccess, onError);
 
-    var now = new tizen.TZDate();
+    var now = new tizen.TZDate(),
+        TvHour = now.getHours();
 
     Debug('************* > '+now);
 
@@ -25,16 +26,12 @@ function Blue(){
         async : false,
         success: function (response) {
             var Today = $.parseJSON(response),
-                Hours   = parseInt(Today.Hours, 10);
+                ServerHour   = Today.Hours;
 
-            Debug('************* HOURS: '+Hours);
+                var HourDifference = parseInt(TvHour) -  parseInt(ServerHour);
 
-            // now.setDate(1); // Changes the day of month to 1.
-            // now.setMonth(2); // Changes the month to March
-            // now.setFullYear(2099); // Changes the year to 2099.
-            now.setHours(Hours); // Sets the hour to 3 PM.
+                Debug('HourDifference:: '+HourDifference);
 
-            Debug('************* < '+now);
         }
     });
 }

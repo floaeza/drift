@@ -31,6 +31,8 @@
             FormatHour = moment().format('MMMM Do h:mm a');
         }
 
+        //.subtract('hours', 3);
+
         if(CurrentModule === 'Tv'){
             if(ActiveInfoContainer === true){
                 InfoContainerNodes[7].textContent  = FormatHour;
