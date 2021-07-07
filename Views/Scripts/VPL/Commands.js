@@ -5,16 +5,16 @@ function Red(){
 }
 
 function Blue(){
-
+    Debug("Info del video " + JSON.parse(player.positionPercent)); 
 }
 
 function Green(){
     
     StopVideo();
-    stbPlayerManager.setRTSP({type:3, useUDP:true});
+    stbPlayerManager.setRTSP({type: 0, useUDP: true, nonSmoothPause: true});
     player.play({
         uri: 'rtsp://10.0.3.21:554/0000000207',
-        solution: 'rtsp_ac3'
+        solution: ''
     });
    
     Debug('q_p');

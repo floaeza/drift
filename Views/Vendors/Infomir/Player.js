@@ -420,8 +420,8 @@ function ResumeVideo(){
 
 function SpeedVideo(Speed){
     
-    stbPlayerManager.speed = Speed;
-    Debug("Adelantando "+ player.speeds);
+    player.speed = Speed;
+    Debug(Speed + " Adelantando "+ player.speed);
 }
 
 /* *****************************************************************************
