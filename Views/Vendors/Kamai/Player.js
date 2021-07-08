@@ -220,6 +220,7 @@
  * ****************************************************************************/ 
 
     function AssetStatus(Duration){
+        alert('Asset');
         var PositionInfo = [];
         if(PlayingRecording === true || PlayingVod === true){
             PositionInfo = Video.getPlayPositionInfo();
