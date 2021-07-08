@@ -4,13 +4,44 @@
  * @CreadoPor: Tania Maldonado
  * @Fecha: Noviembre 2019
  *******************************************************************************/
+var Offset = 0;
+
+if (window.tizen !== undefined) {
+    var now = new tizen.TZDate(),
+        TvHour = now.getHours();
+
+    Debug('------------------------- NOW:::: '+now);
+
+    $.ajax({
+        type: 'POST',
+        url: 'http://'+ServerIp+'/BBINCO/TV/Core/Models/Time.php',
+        async : false,
+        success: function (response) {
+            var Today = $.parseJSON(response),
+                ServerHour   = Today.Hours;
+
+            Debug('****************************************** > '+TvHour);
+            Debug('****************************************** > '+ServerHour);
+
+            Offset = parseInt(TvHour) - parseInt(ServerHour);
+
+            Debug(':::::::::::::::::::::::::::::OFFSET:: '+Offset);
+
+            Today = null;
+            ServerHour = null;
+        }
+    });
+
+    now = null;
+    TvHour = null;
+}
 
     var Line        = 0,
         Executing   = false,
         EventString = '',
         EventHdmi   = 0,
         EventNetman = '',
-        CurrentStbDate = moment().format('Y-MM-DD h:mm:ss');
+        CurrentStbDate = moment().subtract('hours', Offset).format('Y-MM-DD h:mm:ss');
 
     var StorageInfo,
         InfomirUSB  = 0,
