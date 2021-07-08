@@ -171,7 +171,7 @@ if (window.tizen !== undefined) {
 
             Device = $.parseJSON(response);
 
-            Debug('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> DEVICE:'+Device);
+            Debug('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> DEVICE:'+JSON.stringify(Device));
 
               if(Device['Debug'] === '1'){
                   DivDebug.style.display = 'inline';
