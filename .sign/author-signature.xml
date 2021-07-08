@@ -44,8 +44,8 @@ VI+VpvZTJQ==</DigestValue>
 </Reference>
 <Reference URI=".idea%2Fworkspace.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>y3033pHKWTWYu/Q7LrOWMNSDBHTfPOG7M5Vo7W7vnMKmt+tpIVln2Aa+RWF+/qXwXfISlgnlnfOM
-s6jDJf4A/A==</DigestValue>
+<DigestValue>C9/G85HspgbBV6ZW4zSx91GhYglgOoacdbjcuyAG5I7DnVv5g+dTU0F2YBcRetWMwtbdtedIhT7x
+bVITjt/dHA==</DigestValue>
 </Reference>
 <Reference URI="Core%2F.DS_Store">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -1679,8 +1679,8 @@ ZafMHUB5jA==</DigestValue>
 </Reference>
 <Reference URI="Views%2FScripts%2FTime.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>q7Z5BnOq2bbMCiL97nYb1Hy61RsGlCvYQ+VKOVNTVdOOzeio0LPcY8QtAd7LOJsmoGywhE1hmeOb
-6kqIOJaznw==</DigestValue>
+<DigestValue>YG/CYnbOnjdj3WJPyylItxmrVdzZ70QIusPrTDj8yafwN8w+x2kykxv3NJC3wSrwnGzM9BpfnBnt
+euKJAmJB4A==</DigestValue>
 </Reference>
 <Reference URI="Views%2FScripts%2FTv.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2149,8 +2149,8 @@ PB9IXwjfGQ==</DigestValue>
 </Reference>
 <Reference URI="Views%2FVendors%2FGeneric%2FPlayer.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>tybqSzY629bB/QBv8OT/0Qi2Smaxxb7SWWYR7R/PGohJABDWldom5lym0bzaNr22cGPgLvOju3T8
-zu4aQBLiuw==</DigestValue>
+<DigestValue>KORcEduFoajqDwFxr55djU8ISc8MV3S1O/TCvcltHENdCj+yhdrszXK8qo6h0NSrada1v0POXkGQ
+xiDkom53qQ==</DigestValue>
 </Reference>
 <Reference URI="Views%2FVendors%2FInfomir%2FHandleEvents.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2179,8 +2179,8 @@ hmO/Mt+XHw==</DigestValue>
 </Reference>
 <Reference URI="Views%2FVendors%2FKamai%2FPlayer.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>+WkifP8m9XdwpF4xwsKmMlM69T1C9MkL/dpO8gBDlC4Q/OsiXlAtYyBVw/9Q8vBAVQSsPh3trO+8
-lmPkH1tNZw==</DigestValue>
+<DigestValue>0GyWfO0IV+UgWrLEVPK8LyTa3sq5xb01ONF/yDvGP+6KvurjYQ8NXHevBkNnWUBEeb0p0fAVD9Ry
+rLAxyN1wOw==</DigestValue>
 </Reference>
 <Reference URI="Views%2FVendors%2FLg%2FHandleEvents.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2282,9 +2282,9 @@ QY10fG1EWQ==</DigestValue>
 </Reference>
 </SignedInfo>
 <SignatureValue>
-JPiVqZaQAANJHtLNSBac1C1l5rUnw3DrqMeKl1NobXoqug/lobgj5iBy8slnYz/00y1fekezhDU6
-Mpgg38EWHobuYYnB2b6nQ0b7WDahc7vBWBw4orfjdouTu+cHLWaXCVVJUGiF5lk1P5hmuxzol2zW
-Yoxe5ApOg6QgGhKD4EY=
+N5cgOj75CG8omQIXKuFQ+KpWlJZ7YHi7+CVRYPGEXPi+BfPlANAhb7LaZsfpzkOsnNum6O1xmAgQ
+Em7d8RkRFA+MPb96oMno8PlykWuLB4kUXHNGUAYLYpYtYbdGhfYwL0F7SMFxOWxfZ2JgcllU50wz
+DwBEkMSiSescRoFoPsg=
 </SignatureValue>
 <KeyInfo>
 <X509Data>

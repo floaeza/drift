@@ -18,7 +18,7 @@
         var now = new tizen.TZDate(),
             TvHour = now.getHours();
 
-        Debug('NOW:::: '+now);
+        Debug('------------------------- NOW:::: '+now);
 
         $.ajax({
             type: 'POST',
@@ -28,12 +28,12 @@
                 var Today = $.parseJSON(response),
                     ServerHour   = Today.Hours;
 
-                Debug('************** > '+TvHour);
-                Debug('************** > '+ServerHour);
+                Debug('****************************************** > '+TvHour);
+                Debug('****************************************** > '+ServerHour);
 
                 Offset = parseInt(TvHour) - parseInt(ServerHour);
 
-                Debug('::OFFSET:: '+HourDifference);
+                Debug(':::::::::::::::::::::::::::::OFFSET:: '+HourDifference);
 
                 Today = null;
                 ServerHour = null;
@@ -85,7 +85,7 @@
                 TimerDate = setInterval(SetDate, 50000);
 
                 SetEpgFile();
-                Debug('------------- SetEpgFile -> FormatHour: '+FormatHour);
+                Debug('------------------------------ SetEpgFile -> FormatHour: '+FormatHour);
 
                 if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
                     if(EpgDataActive === true){
@@ -118,7 +118,7 @@
                 }
             }
         }
-        Debug('------------- FormatDateAndHour: '+FormatDateAndHour);
+        Debug('-------------------------------- FormatDateAndHour: '+FormatDateAndHour);
     }
 
 /*******************************************************************************
