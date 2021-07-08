@@ -240,7 +240,7 @@
                 //DurationAsset = parseInt(Duration,10) * 60;
                 Debug('>>>>>> DurationAsset: '+DurationAsset);
                 PositionAsset = Math.round((Video.getPlayPosition())/1000);
-
+                Debug('>>>>>> PositionAsset: '+PositionAsset);
                 // if(DurationAsset !== 0){
                     PercentagePosition = Math.round((PositionAsset * 100) / DurationAsset);
                     Debug('>>>>>> PercentagePosition: '+PercentagePosition);
