@@ -24,7 +24,7 @@ function Green(){
     stbPlayerManager.setRTSP({type: 0, useUDP: true, nonSmoothPause: true});
     player.play({
         uri: 'rtsp://10.0.3.21:554/0000000207',
-        solution: ''
+        solution: 'auto'
     });
    
     Debug('q_p');
