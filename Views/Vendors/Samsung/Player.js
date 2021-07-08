@@ -168,8 +168,12 @@ function GetWindowFullSize(){
 }
 
 function GetWindowMinSize(){
+
+    Debug('TvPercentageSize: '+TvPercentageSize);
     WindowMinWidth   = ((1920)*TvPercentageSize)/100;
     WindowMinHeight  = ((1080)*TvPercentageSize)/100;
+
+    Debug('WindowMinWidth: '+WindowMinWidth);
 }
 
 /* *****************************************************************************
