@@ -67,8 +67,6 @@ function registerkeys(Page){
         if (ActiveConnectionType !== 0) {
             if(Page === 'index') {
                 SetData();
-
-                SetDate();
             }
         }
 
@@ -78,8 +76,6 @@ function registerkeys(Page){
                 // Something you want to do when network is connected again
                 if(Page === 'index') {
                     SetData();
-
-                    SetDate();
                 }
             }
         });

@@ -44,8 +44,8 @@ VI+VpvZTJQ==</DigestValue>
 </Reference>
 <Reference URI=".idea%2Fworkspace.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>ZgrAC5MiKLTBBJFGGC5e/sdNsiTjKkkpp414bnHJc42oThwrpkFXjXULxiZUtRNtJen/eOb5OgwA
-0FW05bUQgQ==</DigestValue>
+<DigestValue>3SCjTjycUAIh4og3xn/ThVHqYv/I3/K5gq7jrJljPiLaVKsIubKIE1KmnKfkN8lFptxi6I7tRMGj
+Oepb4Q7yJw==</DigestValue>
 </Reference>
 <Reference URI="Core%2F.DS_Store">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -1689,8 +1689,8 @@ zXFftiirww==</DigestValue>
 </Reference>
 <Reference URI="Views%2FScripts%2FVPL%2FCommands.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>1PybVL4O9Ss+hbpBSTB8+FBeZPbvWzylgcv+8KKqR0oCNu2z54Igter2KK8dNR7YVef1rTE3FGH3
-TOTihEYIew==</DigestValue>
+<DigestValue>Yf5/LNX4BB30BvJp4zNhV3jw2kTxgmybsSjBqRLJ1P17xGgP3KP/M4m8qeOcvpprgdmFFIWjK7Ii
+WqZP/ZzQbQ==</DigestValue>
 </Reference>
 <Reference URI="Views%2FScripts%2Feditor.py">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2282,9 +2282,9 @@ QY10fG1EWQ==</DigestValue>
 </Reference>
 </SignedInfo>
 <SignatureValue>
-Dolp+3O2iJMafweMpEulGnmjtCOxBEWBwPifPSHbgHJn2At7LQi0cMN32W7iuLaZ7REKLTo5zSeW
-VbMNzfL3yyWeSQvPZ3eCi0p91THAitaZ/Ze7hLTZRGR76QgUhiVNQkwZCawq8Mml2gxiry3nndNJ
-z0nWaYihAkECags1+sw=
+UylUs89pgp57xPns/zWiqJ56eCMczK1aIg17cmNEAmIdDuwKmvUByJ1kTX0ENChaez1ErMYwpnJK
+cRpZPSLoIJ9pcbDdr2JFx1As5QVp/SDBY28iRdB/QJY6Yzm72eFQx/3UnZ3wiRdSeB9tE3Rfxkso
+LuaSDHRMbRFIiPGfT34=
 </SignatureValue>
 <KeyInfo>
 <X509Data>

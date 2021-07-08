@@ -15,28 +15,7 @@ function Blue(){
     //
     // b2bcontrol.rebootDevice(onSuccess, onError);
 
-    var now = new tizen.TZDate(),
-        TvHour = now.getHours();
 
-
-
-    $.ajax({
-        type: 'POST',
-        url: 'http://'+ServerIp+'/BBINCO/TV/Core/Models/Time.php',
-        async : false,
-        success: function (response) {
-            var Today = $.parseJSON(response),
-                ServerHour   = Today.Hours;
-
-            Debug('************* > '+TvHour);
-            Debug('************* > '+ServerHour);
-
-                var HourDifference = parseInt(TvHour) -  parseInt(ServerHour);
-
-                Debug('HourDifference:: '+HourDifference);
-
-        }
-    });
 }
 
 function Green(){
