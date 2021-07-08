@@ -66,10 +66,7 @@
             b2bcontrol = window.b2bapis.b2bcontrol;
 
             Player = webapis.avplay;
-
-            var current_dt = tizen.time.getCurrentDateTime();
-            console.log("current date/time is " + current_dt.toLocaleString());
-
+            
             try {
                 MACAddress = b2bcontrol.getMACAddress();
             } catch (e) {

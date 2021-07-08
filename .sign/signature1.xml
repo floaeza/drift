@@ -144,8 +144,8 @@ U/dk2WhSUg==</DigestValue>
 </Reference>
 <Reference URI="Core%2FControllers%2FIndex.php">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>LfvHVginPm+ss4MeKT4SRy/2dm4o4yh1AQkYfbJdasn3zwCbOB3qHAnMz/2D8gxSYd0L52ppUGZZ
-6/vGecuZHw==</DigestValue>
+<DigestValue>ZHimTK5Vd9BXDe18mdQvYFx48aV+966wtFrjlAFwG7SSq4Ljt7zky/eb29G6/a5jioZf+HOZ4KiP
+zMBzdbm19Q==</DigestValue>
 </Reference>
 <Reference URI="Core%2FControllers%2FLicensing.php">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -1684,8 +1684,8 @@ hdg0wK33OA==</DigestValue>
 </Reference>
 <Reference URI="Views%2FScripts%2FTv.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>VB53M5wJl+j1zP25JJKAbExz9+sVtjtrxLdQZQY4zC18w6wVpKn7ph8Kbtpb8EqCcBojrP3Hp6Bm
-zXFftiirww==</DigestValue>
+<DigestValue>sKcxohIGlb/87Iv2ZQJtVKVh+x6RJHMYgEeTyPoOPUAP6FLHDm9OzPDeq/94FzsxLO4M6Cb2rgFn
+pmImFiHnsg==</DigestValue>
 </Reference>
 <Reference URI="Views%2FScripts%2FVPL%2FCommands.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2134,8 +2134,8 @@ NdMlpgn1+g==</DigestValue>
 </Reference>
 <Reference URI="Views%2FVendors%2FAmino%2FPlayer.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>eXHzv7jBHWNJ/atAhMPNpRMHp58yGHNkRehwLifF+oeyxxUUnjYalw1Uxn2wmEtvTwhqan6lx4d5
-XU9Bz6H99w==</DigestValue>
+<DigestValue>CIW98kmss3/thH3+UJVDruasUcOyVHHiOmlLk63uIVJkOY+S97RR7VZAC+ib6w998GtaCga0ajs0
+HlFJ/SGvQg==</DigestValue>
 </Reference>
 <Reference URI="Views%2FVendors%2FGeneric%2FHandleEvents.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2224,8 +2224,8 @@ YdNuQ5SBMQ==</DigestValue>
 </Reference>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>bNxepSZJfomi8ooVRTpgo1rwvZwOAS+Phl8fY+iq4hA7cyI0pXpUCjcLqaalRcoSC/Q1aPuZcfEu
-y/FsiQw7gw==</DigestValue>
+<DigestValue>CkdCVnEdXMwUxdAI1zufmu9TLr7ZzRRBbPok3bG1GQ+AT3ohz7cZWSnNm/UvlKCKcJv+LUXe8dUU
+RMK9PMmyww==</DigestValue>
 </Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2287,9 +2287,9 @@ GyvKX9Snig==</DigestValue>
 </Reference>
 </SignedInfo>
 <SignatureValue>
-J3TqpsPNUcJynBZy5x+MRsGl7DSVEBOxFQteOTKQW3AlQ049fb5JQgMIWtNv3Pex47KLOeQTDVsM
-vqiyqLl/Jjy1KTSMfPlpo1cZzFXqa0xTw2x2xi/KM06qp+02cWN2kERJ/otGkKmfsz+82QuI2n01
-OUH7dc3VYB91sM8PgXY=
+nFoF78HF21QYsIRH5t7NjjDCLCC3z1cHJp9m4cYaa+Rw2sHLAp2eWX/Fwlj6YDBZxhk/LQlUoBnQ
+wNbP+gYhmy3GOQBO0rctLF35RTZVZ9620P9vR0NWhPc7EBMGI5UhOxFfFH+ZqfKlBewf+Zk9gl+g
+6fdnbfXwQhoCXNA3P9c=
 </SignatureValue>
 <KeyInfo>
 <X509Data>
