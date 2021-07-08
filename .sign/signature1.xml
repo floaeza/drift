@@ -44,8 +44,8 @@ VI+VpvZTJQ==</DigestValue>
 </Reference>
 <Reference URI=".idea%2Fworkspace.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>hh+843rtqJjuraz7j9RSgQmzoXqnnnCUcBABjv9z2ee93IxYq5KA6Prm2a9mMDLSv5Binp9SAu/w
-lQWP93odqQ==</DigestValue>
+<DigestValue>jrlEzQV87kbcBbYHNYnHVLz3g64yELWx6Zo06ZPsvNDCU5MvVxSKNGIVzbaG2IgXlo+3QSYolXPt
+zqwAVLh3oA==</DigestValue>
 </Reference>
 <Reference URI="Core%2F.DS_Store">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2224,13 +2224,13 @@ YdNuQ5SBMQ==</DigestValue>
 </Reference>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>KKVgopIc1JCfy22WsHVLtpYGy/68OwYkGsp5A9jEwVwf4E0lDw3XOcNQFw85xGd/IZpb/9FPiUn0
-8aooWTaudA==</DigestValue>
+<DigestValue>uC5YZk03kbQiOHd/d7lgdc+zrNVptXf6oXLihGjUNkF9qrLFlREziaFZwyyiafKtrZ+c/JErFMGh
+ZHpibEL0PA==</DigestValue>
 </Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>z2/DENLB77K+bHPr9c9rTcw3UAmFi8lFYI+SrtSbBhgnOJ0GWEQvNArfZNKVEv1e3MteVjSGUJod
-uL0QkHZKCA==</DigestValue>
+<DigestValue>QD0+/FCYIOJ8y33SZNl54L4gws1nNbl60GtxarNLn++PJyVev9rEc57ldB9wJe79B3i/ZKcC1gvk
+kc3wIsV7WQ==</DigestValue>
 </Reference>
 <Reference URI="content.php">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2264,8 +2264,8 @@ C5LGAJoCSA==</DigestValue>
 </Reference>
 <Reference URI="tv.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>YNvaH+g6a04gJ10pqqD1RQbgbjXjYYlsdJrkCegQ2HlMe/1rCN+kFmC2UFuHebut44dVAQBMzMcM
-5COpx7NAMg==</DigestValue>
+<DigestValue>tzMIeqmVq68h77Wn1fuciruCOoSrfozmEd0rGsy8pg323GD+9BSBoSaRD4RDN7DGQNTQJHasq+uV
+d7AqgvGWxg==</DigestValue>
 </Reference>
 <Reference URI="tv.php">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2287,9 +2287,9 @@ GyvKX9Snig==</DigestValue>
 </Reference>
 </SignedInfo>
 <SignatureValue>
-A5RgLJ9HR8GaX3Sx/djAMVx05ZD300VtWC6vlMNLOYM7Ln/Cw+BsDqBdQTwZHWI83hCizflCjEuG
-WrgFzUHqk/dRZhobS0wolAir1xGfsWhlsrZDSRi0PAuT7GU/UYVcBvws/fZYNvgKICP05lKsBmiE
-7iWNkaZs/aRHxAj+COQ=
+W3SHE96DFi+Xhw2Ttd5geNLcdh7vdKdUo3oC7ZL23V/0b7cH678EUzW1upnR2FHYpfi3Q4QPeywd
++NmmhW903YV58wpQgohueoVJW0vKk5wFO+s9t+Jd06JX5auffz/wi5q+1ZZiQTWMngg8mS9ik5Ac
+sxyoeEgjjcnRWwPAsY4=
 </SignatureValue>
 <KeyInfo>
 <X509Data>
