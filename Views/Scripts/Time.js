@@ -78,14 +78,12 @@
         if(CurrentModule === 'Tv'){
 
             Debug('############################################################### CurrentModule === '+CurrentModule);
-            if(ActiveInfoContainer === true){
+            if(typeof (ActiveInfoContainer) !== 'undefined' && ActiveInfoContainer === true){
                 InfoContainerNodes[7].textContent  = FormatHour;
-            } else if(ActiveEpgContainer === true){
+            } else if(typeof (ActiveEpgContainer) !== 'undefined' && ActiveEpgContainer === true){
                 EpgDate.textContent = FormatDateAndHour;
-            } else if(typeof (RecordingPanel) !== 'undefined'){
-                if(RecordingPanel === true) {
-                    PvrDate.textContent = FormatHour;
-                }
+            } else if(typeof (RecordingPanel) !== 'undefined' && RecordingPanel === true){
+                PvrDate.textContent = FormatHour;
             }
 
             Debug('############################################################### FormatHour2 === '+FormatHour);

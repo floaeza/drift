@@ -28,6 +28,7 @@ var listener = {
         EventString = 'STATUS_ERROR_STREAM';
     },
     onevent: function(eventType, eventData) {
+        EventString = eventType;
         Debug('event type: ' + eventType + ', data: ' + eventData);
     }
 };
