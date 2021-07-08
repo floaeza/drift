@@ -26,8 +26,8 @@
                 var Today = $.parseJSON(response),
                     ServerHour   = Today.Hours;
 
-                Debug('************* > '+TvHour);
-                Debug('************* > '+ServerHour);
+                Debug('************** > '+TvHour);
+                Debug('************** > '+ServerHour);
 
                 Offset = parseInt(TvHour) - parseInt(ServerHour);
 
