@@ -44,8 +44,8 @@ VI+VpvZTJQ==</DigestValue>
 </Reference>
 <Reference URI=".idea%2Fworkspace.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>6ozpSQiKBzh2H8H58/k6RlmcFdkAWawJcpIzH6WZTCQooFZqFSCMPCvZg8Fm5OLjtLqC2X3yAmmd
-cLJCsyVLdA==</DigestValue>
+<DigestValue>y3033pHKWTWYu/Q7LrOWMNSDBHTfPOG7M5Vo7W7vnMKmt+tpIVln2Aa+RWF+/qXwXfISlgnlnfOM
+s6jDJf4A/A==</DigestValue>
 </Reference>
 <Reference URI="Core%2F.DS_Store">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2179,8 +2179,8 @@ hmO/Mt+XHw==</DigestValue>
 </Reference>
 <Reference URI="Views%2FVendors%2FKamai%2FPlayer.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>ebrkp6xiC+RR2ubI+oYtx7bZs6xMJbCePrdJL2Ruz1I8KPgVUoLMCjGA9lZxTreZiZf69CFPwmvZ
-SLtKoChR+w==</DigestValue>
+<DigestValue>+WkifP8m9XdwpF4xwsKmMlM69T1C9MkL/dpO8gBDlC4Q/OsiXlAtYyBVw/9Q8vBAVQSsPh3trO+8
+lmPkH1tNZw==</DigestValue>
 </Reference>
 <Reference URI="Views%2FVendors%2FLg%2FHandleEvents.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2224,13 +2224,13 @@ YdNuQ5SBMQ==</DigestValue>
 </Reference>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>KIJX/Qo7T75eJxq3eDcMKc5GXN4Y6sIbqqZNzXdJRjGkpswLe9H536+5cZD524ZRD21df4AMw79r
-ckXI+vKCZg==</DigestValue>
+<DigestValue>hnFVCbrA/8XPVKgcAEHhX7lhBOd/IgNmFN+nmT2khOd+kS98u60NcRdQefrD24IVAXqlnS/CiIIE
+vtA6TClDsw==</DigestValue>
 </Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>enl9Q495N4nmvV0AlGLuR478GT1ThBJbW/fvuk9hA5p0vyMqhBrU00ZD1KnmAnNfq6TKWP+BVt1Z
-WUj18+xSKw==</DigestValue>
+<DigestValue>wF7n1/WvLQwjWn/e5JrcKS87Q9godfZj2lw8LJQrPUvOyjgyrEw4/pEZHh8xVu40ZUbZvhj/tId0
+TpvSbIzH3A==</DigestValue>
 </Reference>
 <Reference URI="content.php">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2287,9 +2287,9 @@ GyvKX9Snig==</DigestValue>
 </Reference>
 </SignedInfo>
 <SignatureValue>
-TA1/d9ruLQNuwAfuWi7xk4dwpnzvhC7UU8YJ1rTR3ifnAsgoL3C6pCTbXz1CcKsJsL5S/czGqr6H
-JOiQnqrkZnDNxxnpQq91zZU4nZgHC5fU8Rb3HIU4l8p547sJ85vOwenHlEfZFw/8Io8NBt3QzsPZ
-p0HC/eB1zLlRg3xJb5s=
+rSOBNt/3d61k6IaW/onlcM9UspJgkphcrsYmBqpoLiEURrcgCETIIu+e0tl+7fJishHsaRVHT/QD
+h0fsFAdqvtCbR/JtrHGYU4039tGDNFCPjDUDE9jG1W0wmpq/E0ueLvdTbY7+5ehxx+FjJgGu0YYo
+tZ5QVG/+4jS7UJoCcqw=
 </SignatureValue>
 <KeyInfo>
 <X509Data>
