@@ -235,6 +235,7 @@
 
             Debug('PercentagePosition: '+PercentagePosition);
         } else if (PauseLive == true){
+            alert('jklñ');
             var PltInfo = PVR.GetPltInfo();
 
             alert(PltInfo);
