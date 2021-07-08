@@ -222,6 +222,7 @@
 
         AVMedia.SetPos(PositionAsset);
 
+        
         PositionAsset = AVMedia.GetPos();
 
         //AVMedia.Continue();
