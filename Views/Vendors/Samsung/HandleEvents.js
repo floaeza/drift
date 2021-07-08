@@ -7,16 +7,16 @@ var listener = {
     onbufferingcomplete: function() {
         Debug('............................ Buffering complete. > start' +Executing);
         if(Executing === false){
-            UpdateQuickInfoDevice();
+            //UpdateQuickInfoDevice();
         }
     },
     onstreamcompleted: function() {
         Debug('Stream Completed > end');
         if(CurrentModule === 'Tv'){
-            SetDigitalChannel();
+            //SetDigitalChannel();
         }
         if(Executing === false){
-            UpdateQuickInfoDevice();
+            //UpdateQuickInfoDevice();
         }
     },
 
