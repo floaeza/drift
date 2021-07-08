@@ -192,7 +192,7 @@ function UpdateDiskInfoInformir(){
                 Debug(USB[0].mountPath+'/'+Title);
                 Source = Source.replace('igmp','udp');
                 Source = (Source).slice(0, 6) + "@" + (Source).slice(6);
-                var NewTask = pvrManager.CreateTask(Source, USB[0].mountPath+"/"+ProgramId+'_'+Title+'_'+Fecha, Start, End)
+                var NewTask = pvrManager.CreateTask(Source, USB[0].mountPath+"/"+ProgramId+'_'+Title+'_'+Fecha+".mp4", Start, End)
                 if (NewTask<0){
                     //CurrentTime = Date.UTC(moment().format('Y'), moment().format('MM'), moment().format('DD'), moment().format('HH'), moment().format('mm'));
                     Debug('> Fail new schedule');

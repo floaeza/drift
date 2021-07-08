@@ -52,8 +52,8 @@
     function SetDate(){
         TimeRunning++;
         
-        FormatDateAndHour = moment().subtract('hours', Offset).format('MMM, DD / h:mm A');
-        CurrentStbDate = moment().subtract('hours', Offset).format('Y-MM-DD h:mm:ss');
+        FormatDateAndHour = moment().subtract(Offset, 'hours').format('MMM, DD / h:mm A');
+        CurrentStbDate = moment().subtract(Offset, 'hours').format('Y-MM-DD h:mm:ss');
 
         //Debug('################################################ FormatDateAndHour '+FormatDateAndHour);
         //Debug('################################################ CurrentStbDate '+CurrentStbDate);
@@ -61,14 +61,14 @@
         if(!Device){
             //Debug('################################################ !Device ');
             if (Device.Client === 'CHL') {
-                FormatHour = moment().subtract('hours', Offset).format('h:mm A');
+                FormatHour = moment().subtract(Offset, 'hours').format('h:mm A');
                 //Debug('------------------------------------------------ 1');
             } else {
-                FormatHour = moment().subtract('hours', Offset).format('MMMM Do h:mm a');
+                FormatHour = moment().subtract(Offset, 'hours').format('MMMM Do h:mm a');
                 //Debug('------------------------------------------------ 2');
             }
         } else {
-            FormatHour = moment().subtract('hours', Offset).format('MMMM Do h:mm a');
+            FormatHour = moment().subtract(Offset, 'hours').format('MMMM Do h:mm a');
             //Debug('------------------------------------------------ 3');
         }
 
@@ -78,14 +78,12 @@
         if(CurrentModule === 'Tv'){
 
             Debug('############################################################### CurrentModule === '+CurrentModule);
-            if(ActiveInfoContainer === true){
+            if(typeof (ActiveInfoContainer) !== 'undefined' && ActiveInfoContainer === true){
                 InfoContainerNodes[7].textContent  = FormatHour;
-            } else if(ActiveEpgContainer === true){
+            } else if(typeof (ActiveEpgContainer) !== 'undefined' && ActiveEpgContainer === true){
                 EpgDate.textContent = FormatDateAndHour;
-            } else if(typeof (RecordingPanel) !== 'undefined'){
-                if(RecordingPanel === true) {
-                    PvrDate.textContent = FormatHour;
-                }
+            } else if(typeof (RecordingPanel) !== 'undefined' && RecordingPanel === true){
+                PvrDate.textContent = FormatHour;
             }
 
             Debug('############################################################### FormatHour2 === '+FormatHour);
@@ -107,8 +105,8 @@
             }
 
         } else if(CurrentModule === 'Menu' || CurrentModule === 'Movies'){
-            FormatDate = moment().subtract('hours', Offset).format('MMM DD ');
-            FormatHour = moment().subtract('hours', Offset).format('h:mm a');
+            FormatDate = moment().subtract(Offset, 'hours').format('MMM DD ');
+            FormatHour = moment().subtract(Offset, 'hours').format('h:mm a');
         
             MenuDate.textContent = FormatDate;
             MenuHour.textContent = FormatHour;
