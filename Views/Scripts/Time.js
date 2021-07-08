@@ -55,24 +55,24 @@
         FormatDateAndHour = moment().subtract('hours', Offset).format('MMM, DD / h:mm A');
         CurrentStbDate = moment().subtract('hours', Offset).format('Y-MM-DD h:mm:ss');
 
-        Debug('################################################ FormatDateAndHour '+FormatDateAndHour);
-        Debug('################################################ CurrentStbDate '+CurrentStbDate);
+        //Debug('################################################ FormatDateAndHour '+FormatDateAndHour);
+        //Debug('################################################ CurrentStbDate '+CurrentStbDate);
 
         if(!Device){
-            Debug('################################################ !Device ');
+            //Debug('################################################ !Device ');
             if (Device.Client === 'CHL') {
                 FormatHour = moment().subtract('hours', Offset).format('h:mm A');
-                Debug('------------------------------------------------ 1');
+                //Debug('------------------------------------------------ 1');
             } else {
                 FormatHour = moment().subtract('hours', Offset).format('MMMM Do h:mm a');
-                Debug('------------------------------------------------ 2');
+                //Debug('------------------------------------------------ 2');
             }
         } else {
             FormatHour = moment().subtract('hours', Offset).format('MMMM Do h:mm a');
-            Debug('------------------------------------------------ 3');
+            //Debug('------------------------------------------------ 3');
         }
 
-    Debug('################################################ FormatHour '+FormatHour);
+    Debug('################################################ FormatHour === '+FormatHour);
 
 
         if(CurrentModule === 'Tv'){
