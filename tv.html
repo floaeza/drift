@@ -67,9 +67,6 @@
 
             Player = webapis.avplay;
 
-            var current_dt = tizen.time.getCurrentDateTime();
-            console.log("current date/time is " + current_dt.toLocaleString());
-
             try {
                 MACAddress = b2bcontrol.getMACAddress();
             } catch (e) {
@@ -176,9 +173,6 @@
         }
 
         registerkeys('tv');
-
-        GetWindowFullSize();
-        GetWindowMinSize();
     }
 
     //var FooterInterval = setInterval(function(){ SetFooterScripts(); }, 500);

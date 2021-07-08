@@ -20,7 +20,10 @@ var WindowMaxWidth  = 0,
 
     Player.setListener(listener);
 
-    Debug('PLAYER WEBAPIS.AVPLAY > LISTENER');
+    Debug('PLAYER WEBAPIS.AVPLAY >>s LISTENER');
+
+GetWindowFullSize();
+GetWindowMinSize();
 
 /* *****************************************************************************
  * Reproductor de canal
@@ -168,8 +171,12 @@ function GetWindowFullSize(){
 }
 
 function GetWindowMinSize(){
+
+    Debug('TvPercentageSize: '+TvPercentageSize);
     WindowMinWidth   = ((1920)*TvPercentageSize)/100;
     WindowMinHeight  = ((1080)*TvPercentageSize)/100;
+
+    Debug('WindowMinWidth: '+WindowMinWidth);
 }
 
 /* *****************************************************************************
