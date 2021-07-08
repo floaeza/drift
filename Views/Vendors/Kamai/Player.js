@@ -221,8 +221,20 @@
 
     function AssetStatus(Duration){
         var PositionInfo = [];
+
         if(PlayingRecording === true || PlayingVod === true){
-            alert('asset');
+            PositionInfo = Video.getPlayPositionInfo();
+
+            DurationAsset = parseInt(Duration,10) * 60;
+            Debug('>>>>>> DurationAsset: '+DurationAsset);
+            PositionAsset = Math.round((PositionInfo.playPosition)/1000);
+
+            Debug('>>>>>> PositionAsset: '+PositionAsset);
+            
+            PercentagePosition = Math.round((PositionAsset * 100) / DurationAsset);
+
+            Debug('PercentagePosition: '+PercentagePosition);
+        } else if (PauseLive == true){
             PositionInfo = Video.getPlayPositionInfo();
 
             DurationAsset = parseInt(Duration,10) * 60;
