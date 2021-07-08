@@ -24,6 +24,7 @@ var WindowMaxWidth  = 0,
 
 GetWindowFullSize();
 
+setTimeout(function(){ GetWindowMinSize(); }, 2000);
 
 /* *****************************************************************************
  * Reproductor de canal
@@ -274,4 +275,3 @@ function AssetStatus(Duration){
     }
 }
 
-GetWindowMinSize();
