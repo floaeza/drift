@@ -148,7 +148,7 @@ if (window.tizen !== undefined) {
 
         CurrentStbDate = moment().subtract('hours', Offset).format('Y-MM-DD h:mm:ss');
 
-        Debug('CurrentStbDate= '+CurrentStbDate);
+        Debug('CurrentStbDate = '+CurrentStbDate);
     }
 
     Debug(ServerSource + 'Core/Controllers/Device.php');
@@ -170,6 +170,8 @@ if (window.tizen !== undefined) {
             Debug(CurrentStbDate);
 
             Device = $.parseJSON(response);
+
+            Debug('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> DEVICE:'+JSON.stringify(Device));
 
               if(Device['Debug'] === '1'){
                   DivDebug.style.display = 'inline';
