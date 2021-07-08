@@ -19,7 +19,8 @@ function Blue(){
 }
 
 function Green(){
-    
+    //player.speed = 4;
+    //Debug(player.speed);
     StopVideo();
     stbPlayerManager.setRTSP({type: 0, useUDP: true, nonSmoothPause: true});
     player.play({
@@ -43,11 +44,14 @@ function Green(){
 }
 
 function Yellow(){
-// @ts-nocheck
-var f = gSTB.GetEnv('{ "varList":["timezone_conf"] }');
-Debug(f);
-var g = gSTB.SetEnv('{ "timezone_conf":"America/Mexico_City" }');
-Debug(g);
+    // @ts-nocheck
+    //var f = gSTB.GetEnv('{ "varList":["timezone_conf"] }');
+    //Debug(f);
+    //var g = gSTB.SetEnv('{ "timezone_conf":"America/Mexico_City" }');
+    //Debug(g);
+
+    stbPlayerManager.speed = 4;
+    Debug(player.speed);
 }
 
 function Close(){
