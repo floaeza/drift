@@ -23,7 +23,8 @@ var WindowMaxWidth  = 0,
     Debug('PLAYER WEBAPIS.AVPLAY >>s LISTENER');
 
 GetWindowFullSize();
-GetWindowMinSize();
+
+setTimeout(function(){ GetWindowMinSize(); }, 2000);
 
 /* *****************************************************************************
  * Reproductor de canal
@@ -171,12 +172,10 @@ function GetWindowFullSize(){
 }
 
 function GetWindowMinSize(){
-
     Debug('TvPercentageSize: '+TvPercentageSize);
     WindowMinWidth   = ((1920)*TvPercentageSize)/100;
     WindowMinHeight  = ((1080)*TvPercentageSize)/100;
-
-    Debug('WindowMinWidth: '+WindowMinWidth);
+    Debug('WindowMinHeight: '+WindowMinHeight);
 }
 
 /* *****************************************************************************
@@ -275,3 +274,4 @@ function AssetStatus(Duration){
 
     }
 }
+

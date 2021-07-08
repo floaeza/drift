@@ -56,56 +56,56 @@
             echo json_encode($Response);
         break;
 
-        //case 'REGISTER':
-        //    $LocationId = !empty($_POST['LocationId']) ? $_POST['LocationId'] : '';
-//
-        //    $LocationsData = new Locations($MacAddress, $CurrentController);
-        //    
-        //    if($Hdd == 'Y'){
-        //        $HddValue = 1;
-        //    } else {
-        //        $HddValue = 0;
-        //    }
-//
-//
-        //    if($LocationId === '') {
-        //        $LocationIdArray = $LocationsData->getLocationIdByName($ConfigData->getConfigByName('LocationCode'));
-        //        $LocationId = $LocationIdArray[$FirstElement]['id_locacion'];
-        //    }
-//
-        //    // Guardamos en un array la informacion obtenida del dispositivo
-        //    $NewDevice = array('mac_address'                => $MacAddress,
-        //                       'ip'                         => $IpAddress,
-        //                       'version_software'           => $Firmware,
-        //                       'modelo'                     => $Model,
-        //                       'marca'                      => $Vendor,
-        //                       'fecha_activacion'           => date('Y-m-d'),
-        //                       'ultima_ejecucion'           => date('Y-m-d'),
-        //                       'grabador'                   => $HddValue);
-//
-        //    //Registramos dispositivo
-        //   
-        //    $New = $DevicesData->setDevice($NewDevice);
-//
-        //    // Obtenemos el identificador del dispositivo registrado
-        //    $DeviceId = $New[$FirstElement];
-//
-        //    //Lo guardanmos en la locacion por defecto
-        //    $DeviceLocationData = array('id_dispositivo' => $DeviceId, 'id_locacion' => $LocationId);
-        //    
-        //    $NewDeviceLocation = $DevicesData->setDeviceLocation($DeviceLocationData);
-//
-        //    if(is_numeric($New[$FirstElement])){
-        //        $Option = 'LOAD';
-        //    }  else {
-        //        $Option = 'CHECK';
-        //    }
-        //    
-        //    $Response = array('Option' => $Option);
-//
-        //    echo json_encode($Response);
-        //break;
-//
+        case 'REGISTER':
+            $LocationId = !empty($_POST['LocationId']) ? $_POST['LocationId'] : '';
+
+            $LocationsData = new Locations($MacAddress, $CurrentController);
+            
+            if($Hdd == 'Y'){
+                $HddValue = 1;
+            } else {
+                $HddValue = 0;
+            }
+
+
+            if($LocationId === '') {
+                $LocationIdArray = $LocationsData->getLocationIdByName($ConfigData->getConfigByName('LocationCode'));
+                $LocationId = $LocationIdArray[$FirstElement]['id_locacion'];
+            }
+
+            // Guardamos en un array la informacion obtenida del dispositivo
+            $NewDevice = array('mac_address'                => $MacAddress,
+                               'ip'                         => $IpAddress,
+                               'version_software'           => $Firmware,
+                               'modelo'                     => $Model,
+                               'marca'                      => $Vendor,
+                               'fecha_activacion'           => date('Y-m-d'),
+                               'ultima_ejecucion'           => date('Y-m-d'),
+                               'grabador'                   => $HddValue);
+
+            //Registramos dispositivo
+           
+            $New = $DevicesData->setDevice($NewDevice);
+
+            // Obtenemos el identificador del dispositivo registrado
+            $DeviceId = $New[$FirstElement];
+
+            //Lo guardanmos en la locacion por defecto
+            $DeviceLocationData = array('id_dispositivo' => $DeviceId, 'id_locacion' => $LocationId);
+            
+            $NewDeviceLocation = $DevicesData->setDeviceLocation($DeviceLocationData);
+
+            if(is_numeric($New[$FirstElement])){
+                $Option = 'LOAD';
+            }  else {
+                $Option = 'CHECK';
+            }
+            
+            $Response = array('Option' => $Option);
+
+            echo json_encode($Response);
+        break;
+
         case 'LOAD':
             $Device   = $DevicesData->getDevice($MacAddress);
             $DeviceId = $Device[$FirstElement]['id_dispositivo'];
