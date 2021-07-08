@@ -25,7 +25,7 @@
 
         ++Line;
 
-        if(Line > 25){
+        if(Line > 35){
             ClearDebugOnScreen();
             Line = 0;
         }
