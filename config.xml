@@ -2,8 +2,6 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://10.0.3.10/BBINCO/TV/" version="1.0.0" height="1080" width="1920" viewmodes="fullscreen">
     <tizen:application id="87yCAs7xPK.bbinco" package="87yCAs7xPK" required_version="2.3"/>
     <content src="index.html"/>
-    <feature name="http://tizen.org/feature/screen.size.normal.1080.1920"/>
-    <feature name="http://tizen.org/feature/screen.size.all"/>
     <feature name="http://www.samsungdforum.com/feature/Keyboard"/>
     <icon src="icon.png"/>
     <tizen:metadata key="http://samsung.com/tv/metadata/prelaunch.support" value="true"/>
