@@ -72,12 +72,12 @@
             //Debug('------------------------------------------------ 3');
         }
 
-    Debug('############################################################### FormatHour === '+FormatHour);
+    Debug('############################################################### FormatHour1 === '+FormatHour);
 
 
         if(CurrentModule === 'Tv'){
 
-            Debug('############################################################### CurrentModule === '+CurrentModuleCurrentModule);
+            Debug('############################################################### CurrentModule === '+CurrentModule);
             if(ActiveInfoContainer === true){
                 InfoContainerNodes[7].textContent  = FormatHour;
             } else if(ActiveEpgContainer === true){
@@ -88,7 +88,7 @@
                 }
             }
 
-            Debug('############################################################### FormatHour2 === '+CurrentModuleCurrentModule);
+            Debug('############################################################### FormatHour2 === '+FormatHour);
 
             if(FormatHour === '12:01 AM'){
 
