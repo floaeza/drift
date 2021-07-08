@@ -236,7 +236,9 @@
             Debug('PercentagePosition: '+PercentagePosition);
         } else if (PauseLive == true){
             //alert('jklñ');
-            
+            var PositionInfo = [];
+                PositionInfo = Video.getPlayPositionInfo();
+            Debug(PositionInfo);
             //if(typeof PltInfo === 'object') {
                 DurationAsset = Video.getDuration();
                 PositionAsset = Video.getPlayPosition();
