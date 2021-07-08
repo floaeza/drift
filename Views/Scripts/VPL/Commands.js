@@ -22,25 +22,10 @@ function Green(){
     //player.speed = 4;
     //Debug(player.speed);
     StopVideo();
-    stbPlayerManager.setRTSP({type: 0, useUDP: true, nonSmoothPause: true});
-    player.play({
-        uri: '/media/USB-E0D55EA574F1F4718944A9E1-1/329_Botched_undefined.mp4',
-        solution: 'auto'
-    });
-   
+    //stbPlayerManager.setRTSP({type: 0, useUDP: true, nonSmoothPause: true});
+    gSTB.Play('http://10.0.3.10/vod/mvs/M00012/interstellar.mkv');
     Debug('q_p');
-    player.onTracksInfo = function () {   
-        Debug('Play end');
-    };
-    player.onPlayError = function () {   
-        Debug('Play Error');
-    };
-    player.onRTPBreak = function () {   
-        Debug('RTP Break');
-    };
-    player.onPlayStart = function () {   
-        Debug('Play start');
-    };
+    
 }
 
 function Yellow(){
@@ -51,7 +36,7 @@ function Yellow(){
     //Debug(g);
 
     gSTB.SetSpeed(4);
-    Debug(player.speed);
+    Debug(gSTB.GetSpeed());
 }
 
 function Close(){

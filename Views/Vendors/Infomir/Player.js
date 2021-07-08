@@ -61,7 +61,7 @@ function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition){
 
     // Detiene el proceso de la reproduccion anterior
     Source = Source.replace('igmp','udp');
-    Source = (Source).slice(0, 6) + "@" + (Source).slice(6);
+    //Source = (Source).slice(0, 6) + "@" + (Source).slice(6);
     
     // Detiene el proceso de la reproduccion anterior
     StopVideo();
@@ -174,6 +174,10 @@ function PlayVideo(Source){
                 uri: Source,
                 solution: 'auto'
             });
+            player.onTracksInfo = function () {
+                Debug('Information on audio and video tracks of the media content is received.');
+                Debug(JSON.stringify(player.metadataInfo));
+            };
         }
     } else {
         //Reproduce el video
@@ -421,7 +425,7 @@ function ResumeVideo(){
 
 function SpeedVideo(Speed){
     
-    player.speed = 4;
+    gSTB.SetSpeed(Speed);
     Debug(Speed + " Adelantando "+ player.speed);
 }
 
