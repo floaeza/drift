@@ -50,7 +50,7 @@ function Yellow(){
     //var g = gSTB.SetEnv('{ "timezone_conf":"America/Mexico_City" }');
     //Debug(g);
 
-    stbPlayerManager.speed = 4;
+    gSTB.SetSpeed(4);
     Debug(player.speed);
 }
 

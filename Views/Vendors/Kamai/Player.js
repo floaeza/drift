@@ -235,10 +235,18 @@
 
             Debug('PercentagePosition: '+PercentagePosition);
         } else if (PauseLive == true){
-            alert('jklñ');
-            var PltInfo = PVR.GetPltInfo();
+            //alert('jklñ');
+            
+            //if(typeof PltInfo === 'object') {
+                DurationAsset = Video.getDuration();
+                PositionAsset = Video.getPlayPosition();
 
-            alert(PltInfo);
+                if(DurationAsset !== 0){
+                    PercentagePosition = Math.round((PositionAsset * 100) / DurationAsset);
+
+                    //DurationAsset = DurationAsset * 2;
+                }
+            //}
         }
 
         PositionInfo = null;
