@@ -218,7 +218,7 @@
     }
 
 function UpdateQuickInfoDevice(){
-
+    Debug('_______________________________________________________________________________________ UpdateQuickInfoDevice 1');
     var OnScreen = '';
     if (CurrentModule === 'Tv') {
         OnScreen = ChannelsJson[ChannelPosition].CHNL + ' - ' +ChannelsJson[ChannelPosition].NAME;
@@ -226,8 +226,13 @@ function UpdateQuickInfoDevice(){
         OnScreen =  CurrentModule;
     }
 
-    Debug('CurrentModule:: '+CurrentModule);
-    Debug('OnScreen:: '+OnScreen);
+    Debug('----------------------------# CurrentModule:: '+CurrentModule);
+    Debug('----------------------------# OnScreen:: '+OnScreen);
+
+    Debug('----------------------------# Device.DeviceId:: '+Device.DeviceId);
+    Debug('----------------------------# EventString:: '+EventString);
+    Debug('----------------------------# EventHdmi:: '+EventHdmi);
+    Debug('----------------------------# CurrentStbDate:: '+CurrentStbDate);
 
     $.ajax({
         type: 'POST',
@@ -248,6 +253,8 @@ function UpdateQuickInfoDevice(){
         success: function (response) {
             var RebootResponse = $.parseJSON(response);
 
+            Debug('RebootResponse:: '+RebootResponse);
+
             if(RebootResponse === '1'){
                 RebootDevice();
             }
@@ -259,4 +266,6 @@ function UpdateQuickInfoDevice(){
             Debug('CT > Executing:: '+Executing);
         }
     });
+
+    Debug('_______________________________________________________________________________________ UpdateQuickInfoDevice 2');
 }
