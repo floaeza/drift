@@ -10,7 +10,7 @@ if (window.tizen !== undefined) {
     var now = new tizen.TZDate(),
         TvHour = now.getHours();
 
-    Debug('------------------------- NOW:::: '+now);
+    console.log('------------------------- NOW:::: '+now);
 
     $.ajax({
         type: 'POST',
@@ -20,12 +20,12 @@ if (window.tizen !== undefined) {
             var Today = $.parseJSON(response),
                 ServerHour   = Today.Hours;
 
-            Debug('****************************************** > '+TvHour);
-            Debug('****************************************** > '+ServerHour);
+            console.log('****************************************** > '+TvHour);
+            console.log('****************************************** > '+ServerHour);
 
             Offset = parseInt(TvHour) - parseInt(ServerHour);
 
-            Debug(':::::::::::::::::::::::::::::OFFSET:: '+Offset);
+            console.log(':::::::::::::::::::::::::::::OFFSET:: '+Offset);
 
             Today = null;
             ServerHour = null;
