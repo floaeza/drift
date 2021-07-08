@@ -236,8 +236,8 @@
             Debug('PercentagePosition: '+PercentagePosition);
         } else if (PauseLive == true){
             
-                //DurationAsset = Video.getDuration();
-                DurationAsset = parseInt(Duration,10) * 60;
+                DurationAsset = Video.getDuration();
+                //DurationAsset = parseInt(Duration,10) * 60;
                 Debug('>>>>>> DurationAsset: '+DurationAsset);
                 PositionAsset = Math.round((Video.getPlayPosition())/1000);
 
