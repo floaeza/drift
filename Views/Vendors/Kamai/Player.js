@@ -241,11 +241,11 @@
                 Debug('>>>>>> DurationAsset: '+DurationAsset);
                 PositionAsset = Math.round((Video.getPlayPosition())/1000);
 
-                if(DurationAsset !== 0){
+                // if(DurationAsset !== 0){
                     PercentagePosition = Math.round((PositionAsset * 100) / DurationAsset);
-
+                    Debug('>>>>>> PercentagePosition: '+PercentagePosition);
                     //DurationAsset = DurationAsset * 2;
-                }
+                // }
             
         }
 
