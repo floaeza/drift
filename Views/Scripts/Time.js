@@ -33,7 +33,7 @@
 
                 Offset = parseInt(TvHour) - parseInt(ServerHour);
 
-                Debug(':::::::::::::::::::::::::::::OFFSET:: '+HourDifference);
+                Debug(':::::::::::::::::::::::::::::OFFSET:: '+Offset);
 
                 Today = null;
                 ServerHour = null;
