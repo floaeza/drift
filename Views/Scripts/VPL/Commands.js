@@ -23,7 +23,9 @@ function Green(){
     //Debug(player.speed);
     StopVideo();
     //stbPlayerManager.setRTSP({type: 0, useUDP: true, nonSmoothPause: true});
-    gSTB.Play('http://10.0.3.10/vod/mvs/M00012/interstellar.mkv');
+    player.play({
+        uri: 'http://10.0.3.10/vod/mvs/M00012/interstellar.mkv',
+        solution: 'auto'});
     Debug('q_p');
     
 }
@@ -35,8 +37,8 @@ function Yellow(){
     //var g = gSTB.SetEnv('{ "timezone_conf":"America/Mexico_City" }');
     //Debug(g);
 
-    gSTB.SetSpeed(4);
-    Debug(gSTB.GetSpeed());
+    player.speed = 4;
+    Debug(player.speeds);
 }
 
 function Close(){
