@@ -20,7 +20,10 @@ var WindowMaxWidth  = 0,
 
     Player.setListener(listener);
 
-    Debug('PLAYER WEBAPIS.AVPLAY > LISTENER');
+    Debug('PLAYER WEBAPIS.AVPLAY >>s LISTENER');
+
+GetWindowFullSize();
+GetWindowMinSize();
 
 /* *****************************************************************************
  * Reproductor de canal
