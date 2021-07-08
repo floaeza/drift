@@ -237,16 +237,15 @@
         } else if (PauseLive == true){
             
                 //DurationAsset = Video.getDuration();
-                DurationAsset = parseInt(Duration,10) * 60;
+                DurationAsset = parseInt(Video.getDuration(),10) * 60;
                 
                 PositionAsset = Math.round((Video.getPlayPosition())/1000);
 
-                // if(DurationAsset !== 0){
-                //     alert('1');
+                if(DurationAsset !== 0){
                     PercentagePosition = Math.round((PositionAsset * 100) / DurationAsset);
 
                     //DurationAsset = DurationAsset * 2;
-                // }
+                }
             
         }
 
