@@ -912,7 +912,7 @@
         if(PlayingRecording === true){
             SetSpeed('play');
         } else {
-            if(Device['Type'] === 'PVR_ONLY' || Device['Type'] === 'WHP_HDDY'|| 1===1){
+            if(Device['Type'] === 'PVR_ONLY' || Device['Type'] === 'WHP_HDDY'){
                 PauseLive = true;
                 SetSpeed('play');
             }
@@ -923,7 +923,7 @@
         if(PlayingRecording === true){
             SetSpeed('pause');
         } else {
-            if(Device['Type'] === 'PVR_ONLY' || Device['Type'] === 'WHP_HDDY' || 1===1){
+            if(Device['Type'] === 'PVR_ONLY' || Device['Type'] === 'WHP_HDDY'){
                 PauseLive = true;
                 SetSpeed('pause');
             }
@@ -940,7 +940,7 @@
         if(PlayingRecording === true){
             SetSpeed('forward');
         } else {
-            if(Device['Type'] === 'PVR_ONLY' || Device['Type'] === 'WHP_HDDY' || 1===1){
+            if(Device['Type'] === 'PVR_ONLY' || Device['Type'] === 'WHP_HDDY'){
                 PauseLive = true;
                 SetSpeed('forward');
             }
@@ -951,7 +951,7 @@
         if(PlayingRecording === true){
             SetSpeed('backward');
         } else {
-            if(Device['Type'] === 'PVR_ONLY' || Device['Type'] === 'WHP_HDDY' || 1===1){
+            if(Device['Type'] === 'PVR_ONLY' || Device['Type'] === 'WHP_HDDY'){
                 PauseLive = true;
                 SetSpeed('backward');
             }

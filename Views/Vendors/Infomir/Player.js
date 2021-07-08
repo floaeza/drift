@@ -61,7 +61,7 @@ function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition){
 
     // Detiene el proceso de la reproduccion anterior
     Source = Source.replace('igmp','udp');
-    //Source = (Source).slice(0, 6) + "@" + (Source).slice(6);
+    Source = (Source).slice(0, 6) + "@" + (Source).slice(6);
     
     // Detiene el proceso de la reproduccion anterior
     StopVideo();
@@ -425,8 +425,10 @@ function ResumeVideo(){
 
 function SpeedVideo(Speed){
     
-    gSTB.SetSpeed(Speed);
+    player.speed = 4;
+    player2.speed = Speed;
     Debug(Speed + " Adelantando "+ player.speed);
+    Debug(Speed + " Adelantando "+ player2.speed);
 }
 
 /* *****************************************************************************
