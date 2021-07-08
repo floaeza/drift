@@ -4,8 +4,8 @@
 <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"></SignatureMethod>
 <Reference URI=".DS_Store">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>+YOjK49wK/nTCXmrWB9AzruHVgWIhs9dNvqFaaj4BD3pdMN5zPcQsZ/c7VRR5wNsA9Cf16DsFEST
-Fv0HL39ROw==</DigestValue>
+<DigestValue>Tme8xaimAlVnX2Fz+83ImRoRokMa6M/75vBctkZKtARBYyvW0daUrw5sxevdjCLBpOIAkMELPrgo
+GufKLxDOvg==</DigestValue>
 </Reference>
 <Reference URI=".gitignore">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -1249,8 +1249,8 @@ tmwJy9M8kQ==</DigestValue>
 </Reference>
 <Reference URI="Views%2F.DS_Store">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>DJtW8Jg2TAgVoAqI0N6a9tkHGuVHt9lZA9bIW2mxIbMLTjgxkmYBv9ATh9FAarysTsu5rFhFse5k
-pP54svZhkQ==</DigestValue>
+<DigestValue>qwn4Jpipa/dlF4Ns7cR9anthngaFMTLcqROpRoesX/wd4e03wbrp/WsA4dgup+grgUyUOaeZJXrN
+7R7B48U+Ug==</DigestValue>
 </Reference>
 <Reference URI="Views%2FLayouts%2F.DS_Store">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2282,9 +2282,9 @@ QY10fG1EWQ==</DigestValue>
 </Reference>
 </SignedInfo>
 <SignatureValue>
-Silqd56ycJrTnUdS7jXVGBqxGW5jW1aRMk83Dt0pzr31R6480ElucyRGfPcn8jBr7q1PxwsSeopy
-wLu0eY2d3dEuQfrHruMuTYHFwphNz5zRKRGkMnrv6bF1Fo2fV7uOadyDffsRKrxXHO/5KV8zDELL
-A1sbFl8jFYgIbcHBGrY=
+cPyjdvHjoUpyHTAoFGyypWZqxdcux973ikhJCfHel6OWnb+4EfElSw1eQKE1VSdChEC5QuuUvFyq
+/QFpbCDo3Wol+mIv5QTFgCXtSS9mm0PNpdX0ceBDLCoYSavAcFhcKappxkSpEb7JBcz+s1a/6xzO
+P6gysMGvq4eidBV/JtY=
 </SignatureValue>
 <KeyInfo>
 <X509Data>

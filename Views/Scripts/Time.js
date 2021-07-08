@@ -52,8 +52,8 @@
     function SetDate(){
         TimeRunning++;
         
-        FormatDateAndHour = moment().subtract('hours', Offset).format('MMM, DD / h:mm A');
-        CurrentStbDate = moment().subtract('hours', Offset).format('Y-MM-DD h:mm:ss');
+        FormatDateAndHour = moment().subtract(Offset, 'hours').format('MMM, DD / h:mm A');
+        CurrentStbDate = moment().subtract(Offset, 'hours').format('Y-MM-DD h:mm:ss');
 
         //Debug('################################################ FormatDateAndHour '+FormatDateAndHour);
         //Debug('################################################ CurrentStbDate '+CurrentStbDate);
@@ -61,14 +61,14 @@
         if(!Device){
             //Debug('################################################ !Device ');
             if (Device.Client === 'CHL') {
-                FormatHour = moment().subtract('hours', Offset).format('h:mm A');
+                FormatHour = moment().subtract(Offset, 'hours').format('h:mm A');
                 //Debug('------------------------------------------------ 1');
             } else {
-                FormatHour = moment().subtract('hours', Offset).format('MMMM Do h:mm a');
+                FormatHour = moment().subtract(Offset, 'hours').format('MMMM Do h:mm a');
                 //Debug('------------------------------------------------ 2');
             }
         } else {
-            FormatHour = moment().subtract('hours', Offset).format('MMMM Do h:mm a');
+            FormatHour = moment().subtract(Offset, 'hours').format('MMMM Do h:mm a');
             //Debug('------------------------------------------------ 3');
         }
 
@@ -107,8 +107,8 @@
             }
 
         } else if(CurrentModule === 'Menu' || CurrentModule === 'Movies'){
-            FormatDate = moment().subtract('hours', Offset).format('MMM DD ');
-            FormatHour = moment().subtract('hours', Offset).format('h:mm a');
+            FormatDate = moment().subtract(Offset, 'hours').format('MMM DD ');
+            FormatHour = moment().subtract(Offset, 'hours').format('h:mm a');
         
             MenuDate.textContent = FormatDate;
             MenuHour.textContent = FormatHour;
