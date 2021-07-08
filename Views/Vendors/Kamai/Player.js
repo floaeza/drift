@@ -237,7 +237,7 @@
         } else if (PauseLive == true){
             var PltInfo = PVR.GetPltInfo();
 
-            Debug(PltInfo);
+            alert(PltInfo);
         }
 
         PositionInfo = null;
