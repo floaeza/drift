@@ -18,6 +18,8 @@
         var now = new tizen.TZDate(),
             TvHour = now.getHours();
 
+        Debug('NOW:::: '+now);
+
         $.ajax({
             type: 'POST',
             url: 'http://'+ServerIp+'/BBINCO/TV/Core/Models/Time.php',
@@ -50,20 +52,20 @@
     function SetDate(){
         TimeRunning++;
         
-        FormatDateAndHour = moment().format('MMM, DD / h:mm A').subtract('hours', Offset);;
-        CurrentStbDate = moment().format('Y-MM-DD h:mm:ss').subtract('hours', Offset);;
+        FormatDateAndHour = moment().subtract('hours', Offset).format('MMM, DD / h:mm A');
+        CurrentStbDate = moment().subtract('hours', Offset).format('Y-MM-DD h:mm:ss');
 
         if(!Device){
             if (Device.Client === 'CHL') {
-                FormatHour = moment().format('h:mm A').subtract('hours', Offset);;
+                FormatHour = moment().subtract('hours', Offset).format('h:mm A');
             } else {
-                FormatHour = moment().format('MMMM Do h:mm a').subtract('hours', Offset);;
+                FormatHour = moment().subtract('hours', Offset).format('MMMM Do h:mm a');
             }
         } else {
-            FormatHour = moment().format('MMMM Do h:mm a').subtract('hours', Offset);;
+            FormatHour = moment().subtract('hours', Offset).format('MMMM Do h:mm a');
         }
 
-        //.subtract('hours', Offset);
+        //;
 
         if(CurrentModule === 'Tv'){
             if(ActiveInfoContainer === true){
@@ -93,8 +95,8 @@
             }
 
         } else if(CurrentModule === 'Menu' || CurrentModule === 'Movies'){
-            FormatDate = moment().format('MMM DD ').subtract('hours', Offset);;
-            FormatHour = moment().format('h:mm a').subtract('hours', Offset);;
+            FormatDate = moment().subtract('hours', Offset).format('MMM DD ');
+            FormatHour = moment().subtract('hours', Offset).format('h:mm a');
         
             MenuDate.textContent = FormatDate;
             MenuHour.textContent = FormatHour;
