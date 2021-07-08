@@ -24,7 +24,7 @@ function Green(){
     StopVideo();
     stbPlayerManager.setRTSP({type: 0, useUDP: true, nonSmoothPause: true});
     player.play({
-        uri: 'rtsp://10.0.3.21:554/0000000207',
+        uri: '/media/USB-E0D55EA574F1F4718944A9E1-1/329_Botched_undefined.mp4',
         solution: 'auto'
     });
    
