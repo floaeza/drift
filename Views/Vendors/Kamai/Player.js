@@ -235,20 +235,18 @@
 
             Debug('PercentagePosition: '+PercentagePosition);
         } else if (PauseLive == true){
-            //alert('jklñ');
-            var PositionInfo = [];
-                PositionInfo = Video.getPlayPositionInfo();
-            Debug(PositionInfo);
-            //if(typeof PltInfo === 'object') {
-                DurationAsset = Video.getDuration();
-                PositionAsset = Video.getPlayPosition();
+            
+                //DurationAsset = Video.getDuration();
+                DurationAsset = parseInt(Duration,10) * 60;
+                
+                PositionAsset = Math.round((Video.getPlayPosition())/1000);
 
                 if(DurationAsset !== 0){
                     PercentagePosition = Math.round((PositionAsset * 100) / DurationAsset);
 
                     //DurationAsset = DurationAsset * 2;
                 }
-            //}
+            
         }
 
         PositionInfo = null;
