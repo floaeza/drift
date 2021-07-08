@@ -5,16 +5,26 @@ function Red(){
 }
 
 function Blue(){
+    // var onSuccess = function() {
+    //     Debug("[rebootDevice] succeeded!");
+    // };
+    //
+    // var onError = function(error) {
+    //     Debug("[rebootDevice] failed! error code: " + error.code + " error name: " + error.name + "  message " + error.message);
+    // };
+    //
+    // b2bcontrol.rebootDevice(onSuccess, onError);
+
 
 }
 
 function Green(){
     
     StopVideo();
-    stbPlayerManager.setRTSP({type:3, useUDP:true});
+    stbPlayerManager.setRTSP({type: 0, useUDP: true, nonSmoothPause: true});
     player.play({
         uri: 'rtsp://10.0.3.21:554/0000000207',
-        solution: 'rtsp_ac3'
+        solution: ''
     });
    
     Debug('q_p');
