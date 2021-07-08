@@ -925,6 +925,7 @@
             SetSpeed('pause');
         } else {
             if(Device['Type'] === 'PVR_ONLY' || Device['Type'] === 'WHP_HDDY'){
+                alert('true');
                 PauseLive = true;
                 SetSpeed('pause');
             }
