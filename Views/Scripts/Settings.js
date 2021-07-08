@@ -41,7 +41,7 @@ if (window.tizen !== undefined) {
         EventString = '',
         EventHdmi   = 0,
         EventNetman = '',
-        CurrentStbDate = moment().subtract('hours', Offset).format('Y-MM-DD h:mm:ss');
+        CurrentStbDate = '';
 
     var StorageInfo,
         InfomirUSB  = 0,
@@ -145,6 +145,10 @@ if (window.tizen !== undefined) {
 
     function SetData() {
         AminoDevice();
+
+        CurrentStbDate = moment().subtract('hours', Offset).format('Y-MM-DD h:mm:ss');
+
+        Debug('CurrentStbDate= '+CurrentStbDate);
     }
 
     Debug(ServerSource + 'Core/Controllers/Device.php');
