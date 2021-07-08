@@ -220,9 +220,9 @@
  * ****************************************************************************/ 
 
     function AssetStatus(Duration){
-        alert('Asset');
         var PositionInfo = [];
         if(PlayingRecording === true || PlayingVod === true){
+            alert('asset');
             PositionInfo = Video.getPlayPositionInfo();
 
             DurationAsset = parseInt(Duration,10) * 60;
