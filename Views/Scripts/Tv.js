@@ -793,7 +793,6 @@
             SetSpeed('play');
             ShowInfo();
         } else if(PlayingRecording === true){
-            Debug("On'ta mi pishi bici pa'irme");
             ShowPvrInfo();
         } else {
             if(Device['Type'] !== 'NONE'){
@@ -913,7 +912,7 @@
         if(PlayingRecording === true){
             SetSpeed('play');
         } else {
-            if(Device['Type'] === 'PVR_ONLY' || Device['Type'] === 'WHP_HDDY'){
+            if(Device['Type'] === 'PVR_ONLY' || Device['Type'] === 'WHP_HDDY'|| 1===1){
                 PauseLive = true;
                 SetSpeed('play');
             }
@@ -924,7 +923,7 @@
         if(PlayingRecording === true){
             SetSpeed('pause');
         } else {
-            if(Device['Type'] === 'PVR_ONLY' || Device['Type'] === 'WHP_HDDY'){
+            if(Device['Type'] === 'PVR_ONLY' || Device['Type'] === 'WHP_HDDY' || 1===1){
                 PauseLive = true;
                 SetSpeed('pause');
             }
@@ -941,7 +940,7 @@
         if(PlayingRecording === true){
             SetSpeed('forward');
         } else {
-            if(Device['Type'] === 'PVR_ONLY' || Device['Type'] === 'WHP_HDDY'){
+            if(Device['Type'] === 'PVR_ONLY' || Device['Type'] === 'WHP_HDDY' || 1===1){
                 PauseLive = true;
                 SetSpeed('forward');
             }
@@ -952,7 +951,7 @@
         if(PlayingRecording === true){
             SetSpeed('backward');
         } else {
-            if(Device['Type'] === 'PVR_ONLY' || Device['Type'] === 'WHP_HDDY'){
+            if(Device['Type'] === 'PVR_ONLY' || Device['Type'] === 'WHP_HDDY' || 1===1){
                 PauseLive = true;
                 SetSpeed('backward');
             }
