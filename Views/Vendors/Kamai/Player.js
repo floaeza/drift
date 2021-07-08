@@ -235,17 +235,9 @@
 
             Debug('PercentagePosition: '+PercentagePosition);
         } else if (PauseLive == true){
-            PositionInfo = Video.getPlayPositionInfo();
+            var PltInfo = PVR.GetPltInfo();
 
-            DurationAsset = parseInt(Duration,10) * 60;
-            Debug('>>>>>> DurationAsset: '+DurationAsset);
-            PositionAsset = Math.round((PositionInfo.playPosition)/1000);
-
-            Debug('>>>>>> PositionAsset: '+PositionAsset);
-            
-            PercentagePosition = Math.round((PositionAsset * 100) / DurationAsset);
-
-            Debug('PercentagePosition: '+PercentagePosition);
+            Debug(PltInfo);
         }
 
         PositionInfo = null;
