@@ -46,6 +46,8 @@ $AddChannelsLength     = count($PreChannalesArrayM);
 
 $ChannelsLength = $ChannelsLength + $AddChannelsLength;
 
+print_r($ChannelsLength); echo '<br>';
+
 foreach ($PreChannalesArrayM as $PreChannelRow):
 
     $PreChannelRow['SRCE'] = $PreChannelRow['url_modulo'];
@@ -90,6 +92,8 @@ foreach ($PreChannalesArrayM as $PreChannelRow):
     unset($PreChannelRow['id_template']);
 
     array_push($PreChannalesArrayA, $PreChannelRow);
+
+    print_r($PreChannelRow); echo '<br>';
 endforeach;
 
 // Wednesday 20th of February 2019
