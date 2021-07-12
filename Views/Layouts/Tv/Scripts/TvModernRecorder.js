@@ -2120,11 +2120,11 @@ function CheckManualRecording(){
                         ShowRecorderMessage('Reached the limit of recordings at the same time');
                     }
                 } else {
-                    if(Date.now() < ProgramUtcEndDate+400000){
-                        if(Date.now() < ProgramUtcStartDate+100000){
+                    if(Date.now()/1000 < ProgramUtcEndDate+ 400){
+                        if(Date.now()/1000 < ProgramUtcStartDate+100){
                            AddRecord(); 
                         }else{
-                            ProgramUtcStartDate = Date.now() +100000;
+                            ProgramUtcStartDate = (Date.now()/1000) + 100;
                             AddRecord(); 
                         }
                     }else{
@@ -2132,11 +2132,11 @@ function CheckManualRecording(){
                     }
                 }
             } else {
-                if(Date.now() < ProgramUtcEndDate+400000){
-                    if(Date.now() < ProgramUtcStartDate+100000){
+                if(Date.now()/1000 < ProgramUtcEndDate+ 400){
+                    if(Date.now()/1000 < ProgramUtcStartDate+100){
                        AddRecord(); 
                     }else{
-                        ProgramUtcStartDate = Date.now() +100000;
+                        ProgramUtcStartDate = (Date.now()/1000) + 100;
                         AddRecord(); 
                     }
                 }else{
