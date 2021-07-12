@@ -24,9 +24,15 @@ function Green(){
     StopVideo();
     //stbPlayerManager.setRTSP({type: 0, useUDP: true, nonSmoothPause: true});
     player.play({
-        uri: 'http://10.0.3.10/vod/mvs/M00012/interstellar.mkv',
-        solution: 'auto'});
+        uri: "rtsp://10.0.3.21:554/0000000207",
+        solution: 'auto'
+    });
     Debug('q_p');
+    player.onTracksInfo = function () {
+        Debug('Information on audio and video tracks of the media content is received.');
+        Debug(JSON.stringify(player.metadataInfo));
+    };
+    
     
 }
 
