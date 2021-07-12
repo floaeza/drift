@@ -29,10 +29,10 @@ $OffsetZone = $ConfigData->getConfigByName('OffsetZone');
 $Client = $ConfigData->getConfigByName('Identifier');
 $ServerIp = $ConfigData->getConfigByName('ServerIp');
 
-    $CurrentDate = date('Ymd');
-    $PackageId   = '5';
-//$CurrentDate  = stripslashes($argv[1]);
-//$PackageId    = $argv[2];
+//    $CurrentDate = date('Ymd');
+//    $PackageId   = '5';
+$CurrentDate  = stripslashes($argv[1]);
+$PackageId    = $argv[2];
 $PlusDate     = strtotime('+1 day', strtotime($CurrentDate));
 $TomorrowDate = date('Ymd',$PlusDate);
 
@@ -46,7 +46,7 @@ $AddChannelsLength     = count($PreChannalesArrayM);
 
 $ChannelsLength = $ChannelsLength + $AddChannelsLength;
 
-print_r($ChannelsLength); echo '<br>';
+//print_r($ChannelsLength); echo '<br>';
 
 foreach ($PreChannalesArray as $PreChannelRow):
 
@@ -291,9 +291,9 @@ if (is_readable('/var/www/html/mnt/nv/epg/')) {
 
     $NameDay = 'epg_'.$CurrentDate.'_'.$PackageId.'.json';
 
-    echo $NameDay.'<br>';
-
-    echo 'Epg/'.$Client.'/'.$NameDay.'<br>';
+//    echo $NameDay.'<br>';
+//
+//    echo 'Epg/'.$Client.'/'.$NameDay.'<br>';
 
     if (file_put_contents('Epg/'.$Client.'/'.$NameDay, $EpgData)) {
         chmod('Epg/'.$Client.'/'.$NameDay, 0775);
