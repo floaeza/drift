@@ -293,6 +293,8 @@ if (is_readable('/var/www/html/mnt/nv/epg/')) {
 
     echo $NameDay.'<br>';
 
+    echo 'Epg/'.$Client.'/'.$NameDay.'<br>';
+
     if (file_put_contents('Epg/'.$Client.'/'.$NameDay, $EpgData)) {
         chmod('Epg/'.$Client.'/'.$NameDay, 0775);
         echo ".::: Archivo JSON con la programacion del dia $CurrentDate del paquete $PackageId se ha creado correctamente". PHP_EOL;
