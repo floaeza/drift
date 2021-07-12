@@ -10,7 +10,6 @@
 date_default_timezone_set('America/Mazatlan');
 
 require_once '../Models/Database.php';
-require_once '../Models/Libraries.php';
 require_once '../Models/Utilities.php';
 require_once '../DataAccess/Config.php';
 require_once '../DataAccess/Packages.php';
@@ -30,10 +29,10 @@ $OffsetZone = $ConfigData->getConfigByName('OffsetZone');
 $Client = $ConfigData->getConfigByName('Identifier');
 $ServerIp = $ConfigData->getConfigByName('ServerIp');
 
-//    $CurrentDate = date('Ymd');
-//    $PackageId   = '1';
-$CurrentDate  = stripslashes($argv[1]);
-$PackageId    = $argv[2];
+    $CurrentDate = date('Ymd');
+    $PackageId   = '5';
+//$CurrentDate  = stripslashes($argv[1]);
+//$PackageId    = $argv[2];
 $PlusDate     = strtotime('+1 day', strtotime($CurrentDate));
 $TomorrowDate = date('Ymd',$PlusDate);
 
@@ -111,10 +110,10 @@ $Index = 0;
 //print_r($Channels);
 
 // Valida si la ubicacion puede ser utilizada
-if (is_readable($Libraries['EpgFilesPath'])) {
+if (is_readable('/var/www/html/mnt/nv/epg/')) {
 
     // s k e d r e c
-    $ScheduleRecord = fopen($Libraries['EpgFilesPath'] . 'skedrec.txt', 'r')
+    $ScheduleRecord = fopen('/var/www/html/mnt/nv/epg/skedrec.txt', 'r')
     or exit('No se puede abrir el archivo skedrec.txt');
     while (!feof($ScheduleRecord)) {
         $schedule = explode('|', fgets($ScheduleRecord));
@@ -141,7 +140,7 @@ if (is_readable($Libraries['EpgFilesPath'])) {
     }fclose($ScheduleRecord);
 
     // p r o r e c
-    $ProgramRecord = fopen($Libraries['EpgFilesPath'] . 'progrec.txt', 'r')
+    $ProgramRecord = fopen('/var/www/html/mnt/nv/epg/progrec.txt', 'r')
     or exit('No se puede abrir el archivo progrec.txt');
     while (!feof($ProgramRecord)) {
         $program = explode('|', fgets($ProgramRecord));
