@@ -158,7 +158,7 @@
             // Regresa al respaldo
             ChannelsJson = BackUpChannelsJson;
         } else {
-            if(ChannelsJson[0].PROGRAMS[0]['DATE'] === CurrentDate) {
+            if(ChannelsJson[0].PROGRAMS[0]['DTNU'] === CurrentDate) {
                 // Borra el respaldo
                 BackUpChannelsJson = '';
             }
