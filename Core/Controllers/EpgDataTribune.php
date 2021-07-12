@@ -29,10 +29,10 @@ $OffsetZone = $ConfigData->getConfigByName('OffsetZone');
 $Client = $ConfigData->getConfigByName('Identifier');
 $ServerIp = $ConfigData->getConfigByName('ServerIp');
 
-//    $CurrentDate = date('Ymd');
-//    $PackageId   = '5';
-$CurrentDate  = stripslashes($argv[1]);
-$PackageId    = $argv[2];
+    $CurrentDate = date('Ymd');
+    $PackageId   = '5';
+//$CurrentDate  = stripslashes($argv[1]);
+//$PackageId    = $argv[2];
 $PlusDate     = strtotime('+1 day', strtotime($CurrentDate));
 $TomorrowDate = date('Ymd',$PlusDate);
 
@@ -93,6 +93,7 @@ foreach ($PreChannalesArray as $PreChannelRow):
     unset($PreChannelRow['id_paquete']);
     unset($PreChannelRow['id_estacion']);
     unset($PreChannelRow['repetir_contenido']);
+
     array_push($PreChannalesArrayA, $PreChannelRow);
 
 endforeach;
@@ -148,6 +149,10 @@ $arrayCanales = array();
 foreach($PreChannalesArrayA as $PreChannelRowB):
     $PreChannelRowB = array_push_assoc($PreChannelRowB, 'DTNU', $CurrentDate);
     array_push($arrayCanales, $PreChannelRowB);
+endforeach;
+
+foreach ($arrayCanales as $acrow):
+print_r($acrow); echo '<br>';
 endforeach;
 
 $arraySchedule = array();
