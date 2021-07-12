@@ -174,7 +174,7 @@ if (is_readable('/var/www/html/mnt/nv/epg/')) {
         }
 
         if ($schedule[2] == $CurrentDate && ($schedule[3] + $schedule[4]) > $StartEnd && $schedule[3] >= $StartEnd || $schedule[2] == $TomorrowDate && $schedule[3] < $StartEnd) {
-            echo $schedule[0]." - ".$schedule[1].": ".$schedule[2] ." && (".$schedule[3]." + ".$schedule[4]." )= ".($schedule[4]+$schedule[3])." > ".$StartEnd. " <br>";
+            //echo $schedule[0]." - ".$schedule[1].": ".$schedule[2] ." && (".$schedule[3]." + ".$schedule[4]." )= ".($schedule[4]+$schedule[3])." > ".$StartEnd. " <br>";
             array_push($arraySchedule, array(
                 $schedule[0], // 0 station
                 $schedule[1], //  1 databasekey
@@ -292,11 +292,13 @@ if (is_readable('/var/www/html/mnt/nv/epg/')) {
 
     $EpgData = json_encode(utf8ize($arrayCanales), JSON_UNESCAPED_SLASHES | JSON_FORCE_OBJECT | JSON_PRETTY_PRINT);
 
+    print_r($EpgData); echo '<br>';
+
     $NameDay = 'epg_'.$CurrentDate.'_'.$PackageId.'.json';
 
-//    echo $NameDay.'<br>';
-//
-//    echo 'Epg/'.$Client.'/'.$NameDay.'<br>';
+    echo $NameDay.'<br>';
+
+    echo 'Epg/'.$Client.'/'.$NameDay.'<br>';
 
     if (file_put_contents('Epg/'.$Client.'/'.$NameDay, $EpgData)) {
         chmod('Epg/'.$Client.'/'.$NameDay, 0775);
