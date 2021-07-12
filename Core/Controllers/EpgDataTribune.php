@@ -100,8 +100,6 @@ foreach ($PreChannalesArray as $PreChannelRow):
 
 endforeach;
 
-print_r($PreChannalesArrayA);echo'<br>';
-
 foreach ($PreChannalesArrayM as $PreChannelRow):
 
     $PreChannelRow['SRCE'] = $PreChannelRow['url_modulo'];
@@ -149,7 +147,7 @@ foreach ($PreChannalesArrayM as $PreChannelRow):
 
 endforeach;
 
-print_r($PreChannalesArrayA);
+//print_r($PreChannalesArrayA);
 
 $arrayCanales = array();
 foreach($PreChannalesArrayA as $PreChannelRowB):
