@@ -147,16 +147,10 @@ foreach ($PreChannalesArrayM as $PreChannelRow):
 
 endforeach;
 
-//print_r($PreChannalesArrayA);
-
 $arrayCanales = array();
 foreach($PreChannalesArrayA as $PreChannelRowB):
     $PreChannelRowB = array_push_assoc($PreChannelRowB, 'DTNU', $CurrentDate);
     array_push($arrayCanales, $PreChannelRowB);
-endforeach;
-
-foreach ($arrayCanales as $acrow):
-print_r($acrow); echo '<br>';
 endforeach;
 
 $arraySchedule = array();
@@ -180,7 +174,7 @@ if (is_readable('/var/www/html/mnt/nv/epg/')) {
         }
 
         if ($schedule[2] == $CurrentDate && ($schedule[3] + $schedule[4]) > $StartEnd && $schedule[3] >= $StartEnd || $schedule[2] == $TomorrowDate && $schedule[3] < $StartEnd) {
-            //echo $schedule[0]." - ".$schedule[1].": ".$schedule[2] ." && (".$schedule[3]." + ".$schedule[4]." )= ".($schedule[4]+$schedule[3])." > ".$StartEnd. " <br>";
+            echo $schedule[0]." - ".$schedule[1].": ".$schedule[2] ." && (".$schedule[3]." + ".$schedule[4]." )= ".($schedule[4]+$schedule[3])." > ".$StartEnd. " <br>";
             array_push($arraySchedule, array(
                 $schedule[0], // 0 station
                 $schedule[1], //  1 databasekey
