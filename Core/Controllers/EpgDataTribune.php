@@ -48,6 +48,54 @@ $ChannelsLength = $ChannelsLength + $AddChannelsLength;
 
 print_r($ChannelsLength); echo '<br>';
 
+foreach ($PreChannalesArray as $PreChannelRow):
+
+    $Calidad = ($PreChannelRow['id_calidad'] === '1') ? 'HD' : '';
+
+    $PreChannelRow['SRCE'] = $PreChannelRow['src'];
+    unset($PreChannelRow['src']);
+
+    $PreChannelRow['QLTY'] = $Calidad;
+    unset($PreChannelRow['calidad']);
+
+    $PreChannelRow['PORT'] = $PreChannelRow['puerto'];
+    unset($PreChannelRow['puerto']);
+
+    $PreChannelRow['PRGM'] = $PreChannelRow['programa'];
+    unset($PreChannelRow['programa']);
+
+    $PreChannelRow['PSCN'] = $PreChannelRow['posicion'];
+    unset($PreChannelRow['posicion']);
+
+    $PreChannelRow['ADIO'] = $PreChannelRow['audio'];
+    unset($PreChannelRow['audio']);
+
+    $PreChannelRow['CHNL'] = $PreChannelRow['numero_canal'];
+    unset($PreChannelRow['numero_canal']);
+
+    $PreChannelRow['STTN'] = $PreChannelRow['numero_estacion'];
+    unset($PreChannelRow['numero_estacion']);
+
+    $PreChannelRow['NAME'] = $PreChannelRow['nombre_canal'];
+    unset($PreChannelRow['nombre_estacion']);
+
+    $PreChannelRow['INDC'] = $PreChannelRow['indicativo'];
+    unset($PreChannelRow['indicativo']);
+
+    $PreChannelRow['LOGO'] = $PreChannelRow['logo'];
+    unset($PreChannelRow['logo']);
+
+    unset($PreChannelRow['id_paquete_canal']);
+    unset($PreChannelRow['id_modulo']);
+    unset($PreChannelRow['id_calidad']);
+    unset($PreChannelRow['nombre_canal']);
+    unset($PreChannelRow['id_canal']);
+    unset($PreChannelRow['id_paquete']);
+    unset($PreChannelRow['id_estacion']);
+    unset($PreChannelRow['repetir_contenido']);
+    array_push($PreChannalesArrayA, $PreChannelRow);
+endforeach;
+
 foreach ($PreChannalesArrayM as $PreChannelRow):
 
     $PreChannelRow['SRCE'] = $PreChannelRow['url_modulo'];
