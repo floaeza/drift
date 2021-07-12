@@ -46,7 +46,7 @@ $AddChannelsLength     = count($PreChannalesArrayM);
 
 $ChannelsLength = $ChannelsLength + $AddChannelsLength;
 
-//print_r($ChannelsLength); echo '<br>';
+print_r($ChannelsLength); echo '<br>';
 
 foreach ($PreChannalesArray as $PreChannelRow):
 
@@ -97,6 +97,8 @@ foreach ($PreChannalesArray as $PreChannelRow):
     array_push($PreChannalesArrayA, $PreChannelRow);
 
 endforeach;
+
+print_r($PreChannalesArrayA);echo'br';
 
 foreach ($PreChannalesArrayM as $PreChannelRow):
 
