@@ -145,6 +145,8 @@ foreach ($PreChannalesArrayM as $PreChannelRow):
 
 endforeach;
 
+print_r($PreChannalesArrayA);
+
 $arrayCanales = array();
 foreach($PreChannalesArrayA as $PreChannelRowB):
     $PreChannelRowB = array_push_assoc($PreChannelRowB, 'DTNU', $CurrentDate);
