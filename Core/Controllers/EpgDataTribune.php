@@ -40,6 +40,8 @@ $PreChannalesArray  = $PackageData->getPackageListById($PackageId);
 
 $ChannelsLength     = count($PreChannalesArray);
 
+$PreChannalesArrayA = array();
+
 $PreChannalesArrayM  = $PackageData->getModulesPackageListById($PackageId);
 
 $AddChannelsLength     = count($PreChannalesArrayM);
@@ -98,7 +100,7 @@ foreach ($PreChannalesArray as $PreChannelRow):
 
 endforeach;
 
-print_r($PreChannalesArrayA);echo'br';
+print_r($PreChannalesArrayA);echo'<br>';
 
 foreach ($PreChannalesArrayM as $PreChannelRow):
 
