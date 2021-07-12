@@ -29,10 +29,10 @@ $OffsetZone = $ConfigData->getConfigByName('OffsetZone');
 $Client = $ConfigData->getConfigByName('Identifier');
 $ServerIp = $ConfigData->getConfigByName('ServerIp');
 
-    $CurrentDate = date('Ymd');
-    $PackageId   = '5';
-//$CurrentDate  = stripslashes($argv[1]);
-//$PackageId    = $argv[2];
+//    $CurrentDate = date('Ymd');
+//    $PackageId   = '5';
+$CurrentDate  = stripslashes($argv[1]);
+$PackageId    = $argv[2];
 $PlusDate     = strtotime('+1 day', strtotime($CurrentDate));
 $TomorrowDate = date('Ymd',$PlusDate);
 
