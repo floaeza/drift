@@ -95,7 +95,6 @@ foreach ($PreChannalesArray as $PreChannelRow):
     unset($PreChannelRow['repetir_contenido']);
     array_push($PreChannalesArrayA, $PreChannelRow);
 
-    print_r($PreChannelRow); echo '<br>';
 endforeach;
 
 foreach ($PreChannalesArrayM as $PreChannelRow):
@@ -145,9 +144,6 @@ foreach ($PreChannalesArrayM as $PreChannelRow):
 
 endforeach;
 
-// Wednesday 20th of February 2019
-$FormatDate =  date('l, F j, Y', strtotime($CurrentDate));
-
 $arrayCanales = array();
 foreach($PreChannalesArrayA as $PreChannelRowB):
     $PreChannelRowB = array_push_assoc($PreChannelRowB, 'DTNU', $CurrentDate);
@@ -175,7 +171,7 @@ if (is_readable('/var/www/html/mnt/nv/epg/')) {
         }
 
         if ($schedule[2] == $CurrentDate && ($schedule[3] + $schedule[4]) > $StartEnd && $schedule[3] >= $StartEnd || $schedule[2] == $TomorrowDate && $schedule[3] < $StartEnd) {
-            //echo $schedule[0]." - ".$schedule[1].": ".$schedule[2] ." && (".$schedule[3]." + ".$schedule[4]." )= ".($schedule[4]+$schedule[3])." > ".$StartEnd. " <br>";
+            echo $schedule[0]." - ".$schedule[1].": ".$schedule[2] ." && (".$schedule[3]." + ".$schedule[4]." )= ".($schedule[4]+$schedule[3])." > ".$StartEnd. " <br>";
             array_push($arraySchedule, array(
                 $schedule[0], // 0 station
                 $schedule[1], //  1 databasekey
