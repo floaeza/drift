@@ -94,6 +94,8 @@ foreach ($PreChannalesArray as $PreChannelRow):
     unset($PreChannelRow['id_estacion']);
     unset($PreChannelRow['repetir_contenido']);
     array_push($PreChannalesArrayA, $PreChannelRow);
+
+    print_r($PreChannelRow); echo '<br>';
 endforeach;
 
 foreach ($PreChannalesArrayM as $PreChannelRow):
@@ -141,7 +143,6 @@ foreach ($PreChannalesArrayM as $PreChannelRow):
 
     array_push($PreChannalesArrayA, $PreChannelRow);
 
-    print_r($PreChannelRow); echo '<br>';
 endforeach;
 
 // Wednesday 20th of February 2019
