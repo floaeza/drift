@@ -410,7 +410,7 @@ function sendInfo(){
         success: function (response) {
           swal({title: "Locacion actualizada", text: "La locacion con el nombre: "+$('#NameLocation').val()+" se actualizo exitosamente", icon: 
               "success"}).then(function(){ 
-                location.reload();
+                $("#LocationsTable").load(" #LocationsTable");
                 }
               );
         }
