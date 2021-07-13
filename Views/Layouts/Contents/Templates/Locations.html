@@ -182,8 +182,9 @@ $( document ).ready(function() {
     alert("select ="+select+" "+ "input = "+input);
     
     $(selectTable[0]).val(select);
-    $(inputTable[0]).val(input);
+    $(inputTable).val(input);
 
+    $(inputTable).focus();
     
 
 
@@ -192,7 +193,7 @@ $( document ).ready(function() {
 
     });
 
-    inputTable.addEventListener('change', updateValue)
+    inputTable.addEventListener('change', updateValue);
 
     function updateValue(e) {
       alert('asd');
