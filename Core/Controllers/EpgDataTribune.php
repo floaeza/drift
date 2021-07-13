@@ -63,7 +63,7 @@ foreach ($PreChannalesArray as $PreChannelRow):
     $PreChannelRow['PORT'] = $PreChannelRow['puerto'];
     unset($PreChannelRow['puerto']);
 
-    $PreChannelRow['PRGM'] = $PreChannelRow['programa'];
+    $PreChannelRow['PRGR'] = $PreChannelRow['programa'];
     unset($PreChannelRow['programa']);
 
     $PreChannelRow['PSCN'] = $PreChannelRow['posicion'];
@@ -119,7 +119,7 @@ foreach ($PreChannalesArrayM as $PreChannelRow):
 
     $PreChannelRow['PSCN'] = '0';
     $PreChannelRow['ADIO'] = '0';
-    $PreChannelRow['PRGM'] = null;
+    $PreChannelRow['PRGR'] = null;
 
 
     $PreChannelRow['NAME'] = $PreChannelRow['descripcion_modulo'];
