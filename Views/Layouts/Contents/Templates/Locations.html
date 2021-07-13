@@ -178,26 +178,22 @@ $( document ).ready(function() {
     var inputTable  = document.querySelector("input");
     var select = document.cookie.replace(/(?:(?:^|.*;\s*)select\s*\=\s*([^;]*).*$)|^.*$/, "$1");
     var input = document.cookie.replace(/(?:(?:^|.*;\s*)input\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-
-    alert("select ="+select+" "+ "input = "+input);
     
+    var selece = 0;
     $(selectTable[0]).val(select);
     $(inputTable).val(input);
 
     var table = $('#LocationsTable').DataTable();
-
-      table.search(inputTable.value).draw();
+        table.search(inputTable.value).draw();
 
 
 
     $(selectTable[0]).change(function(){
       document.cookie = 'select='+$(this).val();
-      alert(document.cookie);
     });
 
     $(inputTable).change(function() {
       document.cookie = 'input='+$(this).val();
-      alert(document.cookie);
     });
     
   });
