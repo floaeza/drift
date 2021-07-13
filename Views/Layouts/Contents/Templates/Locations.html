@@ -185,17 +185,19 @@ $( document ).ready(function() {
     $(selectTable[0]).val(select);
     $(inputTable[0]).val(input);
 
+    inputTable[0].click();
 
 
     $(selectTable[0]).change(function(){
       document.cookie = 'select='+$(this).val();
+
     });
 
     if($(inputTable[0]).val() != ""){
       document.cookie = 'input='+$(inputTable[0]).val();
     }
 
-
+    console.log(document.cookie);
   });
 
 
