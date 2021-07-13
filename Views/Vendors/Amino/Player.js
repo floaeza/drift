@@ -27,7 +27,7 @@
  * ****************************************************************************/
     //function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPid){
     function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition){
-        
+        Debug('############################### PLAYCHANNEL AMINO');
         var CheckPort = '',
             CheckProgram = '';
         
