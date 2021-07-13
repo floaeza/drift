@@ -105,7 +105,7 @@
     /* Asigna archivo para consultar por primera vez */
     setTimeout(SetEpgFile,300);
     /* Carga inicial para reproducir canal por primera vez */
-    setTimeout(SetChannel,1500, '');
+    setTimeout(SetChannel,2000, '');
     
     function SetEpgFile(){
         /* Consulta la fecha actual cada vez que actualiza la guia */
