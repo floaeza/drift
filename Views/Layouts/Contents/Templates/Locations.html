@@ -174,8 +174,18 @@ $( document ).ready(function() {
     setAllInfo();
     document.getElementById('btnActualizar').disabled = true;
     sendInfo(); 
-    alert(document.cookie);
+    var selectTable = document.getElementsByName("LocationsTable_length");
+
+    $(selectTable[0]).change(function(){
+      document.cookie = $(this).val();
+      alert(document.cookie);
+    });
+
+
   });
+
+
+
 //Procesa la informacion del json de la BD para poder ser leidos por la funcion de tablas
 function getLocations(){
   AllLocations.forEach(location => {
@@ -411,8 +421,6 @@ function sendInfo(){
         success: function (response) {
           swal({title: "Locacion actualizada", text: "La locacion con el nombre: "+$('#NameLocation').val()+" se actualizo exitosamente", icon: 
               "success"}).then(function(){ 
-                var selectTable = document.getElementsByName("LocationsTable_length");
-                document.cookie = selectTable[0].value;
                 location.reload();
                 }
               );
