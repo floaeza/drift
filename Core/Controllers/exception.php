@@ -1,6 +1,6 @@
 <?php
 $text = !empty($_POST['text']) ? $_POST['text'] : '';
-$Option = !empty($_POST['Option']) ? $_POST['Option'] : '';
+$Option = !empty($_POST['Option']) ? $_POST['Option'] : 'getDHCPLog';
 
 $fichero = '/etc/dhcp/dhcpd.conf';
 
