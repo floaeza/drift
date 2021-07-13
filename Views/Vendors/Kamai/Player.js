@@ -23,13 +23,17 @@
 
     // Variables kamai
     var Video   = new ENTONE.video(1,0);
-        Video.setPltvBuffer(7200);
+        //Video.setPltvBuffer(7200);
+
+Debug('#################################################################');
 
 /* *****************************************************************************
  * Reproductor de canal
  * ****************************************************************************/
 
     function PlayChannel(Source, Port){
+        Debug('PlayChannel---->> Source + CheckPort'+Source + ':'+ Port);
+
         var CheckPort = '';
         
             if(Port){
