@@ -2,8 +2,11 @@
     </body>
     <!-- Script que utilizan elementos HTML -->
     <script src='[@Settings]'></script>
-    <script src='[@Player]'></script>
+
     <script src='[@TvScript]'></script>
+
+    <script src='[@Player]'></script>
+
     <script src='[@Time]'></script>
     <script src='[@LayoutScript]'></script>
     <script src='[@LayoutRecorderScript]'></script>
