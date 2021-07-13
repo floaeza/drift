@@ -183,8 +183,11 @@ $( document ).ready(function() {
     
     $(selectTable[0]).val(select);
     $(inputTable).val(input);
-    $(inputTable).focus();
-    $(inputTable).click();
+
+    var table = $('#LocationsTable').DataTable();
+
+      table.search(inputTable.value).draw();
+
 
 
     $(selectTable[0]).change(function(){
