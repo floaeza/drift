@@ -27,7 +27,7 @@
  * ****************************************************************************/
     //function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPid){
     function PlayChannel(Source, Port){
-        ASTB.DebugString('############################### PLAYCHANNEL AMINO');
+        Debug('############################### PLAYCHANNEL AMINO');
         var CheckPort = '',
             CheckProgram = '';
         
@@ -47,7 +47,7 @@
         // Reproduce el canal actual
         //AVMedia.Play('src='+ Source+''+CheckPort+CheckProgram);
         AVMedia.Play('src='+ Source+''+CheckPort);
-        ASTB.DebugString('src='+ Source+''+CheckPort);
+        Debug('src='+ Source+''+CheckPort);
         // Maximiza el video en caso de que no este en pantalla completa
         MaximizeTV();
         
