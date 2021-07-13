@@ -23,7 +23,7 @@
 
     // Variables kamai
     var Video   = new ENTONE.video(1,0);
-        //Video.setPltvBuffer(7200);
+        Video.setPltvBuffer(7200);
 
 Debug('#################################################################');
 
@@ -46,9 +46,7 @@ Debug('#################################################################');
 
         StopVideo();
 
-        //Video.open(Source + CheckPort, null, {pltbuf:1000});
-
-        Video.open(Source + CheckPort);
+        Video.open(Source + CheckPort, null, {pltbuf:1000});
 
         //ret = video.open(url, null, {pltbuf: 3600});
         //, null, {sync:0,seek_to_start:1}

@@ -8,7 +8,7 @@
     <script src='[@LayoutScript]'></script>
     <script src='[@LayoutRecorderScript]'></script>
 
-        <script src='[@Player]'></script>
+    <script src='[@Player]'></script>
 
     <script src='[@EventsScript]'></script> 
     
