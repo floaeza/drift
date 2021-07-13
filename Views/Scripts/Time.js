@@ -59,17 +59,17 @@
         //Debug('################################################ CurrentStbDate '+CurrentStbDate);
 
         if(!Device){
+            Debug('------------------------------------------------ Device::if');
             //Debug('################################################ !Device ');
             if (Device.Client === 'CHL') {
                 FormatHour = moment().subtract(Offset, 'hours').format('h:mm A');
-                //Debug('------------------------------------------------ 1');
             } else {
                 FormatHour = moment().subtract(Offset, 'hours').format('MMMM Do h:mm a');
                 //Debug('------------------------------------------------ 2');
             }
         } else {
             FormatHour = moment().subtract(Offset, 'hours').format('h:mm A');
-            //Debug('------------------------------------------------ 3');
+            Debug('------------------------------------------------ Device::else');
         }
 
     Debug('############################################################### FormatHour1 === '+FormatHour);
@@ -135,7 +135,7 @@
  * Activa timer para que se ejecute cada minuto (60000 milisegundos = 60 segundos)
  *******************************************************************************/
     /* Lo ejecuta la primera vez que carga */
-    SetDate();
+    setTimeout(SetDate,1000);
     
     /* Agrega intervalo 50000 = 50 segundos*/
     TimerDate = setInterval(SetDate, 50000);
