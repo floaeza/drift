@@ -100,11 +100,11 @@
         echo $TvContent->output();   
 
         /** PIE DE PAGINA **/
-        if($Vendor === 'Kamai'){
-            $Footer = new Templates($Libraries['LayoutsPhpPath'].'SpecialFooter.tpl');
-        } else {
+      //  if($Vendor === 'Kamai'){
+           // $Footer = new Templates($Libraries['LayoutsPhpPath'].'SpecialFooter.tpl');
+       // } else {
             $Footer = new Templates($Libraries['LayoutsPhpPath'].'Footer.tpl');
-        }
+       // }
 
 
             // Librerias javascript generales
