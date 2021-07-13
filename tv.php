@@ -105,7 +105,7 @@
         } else {
             $Footer = new Templates($Libraries['LayoutsPhpPath'].'Footer.tpl');
         }
-        
+
 
             // Librerias javascript generales
             $Footer->set('TvScript', $Libraries['Tv']);
