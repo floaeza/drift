@@ -68,7 +68,7 @@
                 //Debug('------------------------------------------------ 2');
             }
         } else {
-            FormatHour = moment().subtract(Offset, 'hours').format('MMMM Do h:mm a');
+            FormatHour = moment().subtract(Offset, 'hours').format('h:mm A');
             //Debug('------------------------------------------------ 3');
         }
 
