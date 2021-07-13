@@ -182,7 +182,9 @@ $( document ).ready(function() {
     $(selectTable[0]).change(function(){
       document.cookie = 'select='+$(this).val();
       document.cookie = 'input='+$(inputTable[0]).val();
+      var select = document.cookie.replace(/(?:(?:^|.*;\s*)select\s*\=\s*([^;]*).*$)|^.*$/, "$1");
       alert(document.cookie);
+      alert(select);
     });
 
 
