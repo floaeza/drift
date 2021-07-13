@@ -244,6 +244,9 @@
                         CloseDigitalChannel();
                     }
                     Debug('PlayChannel');
+                    Debug('ProgramIdChannnel: '+ProgramIdChannnel);
+                    Debug('ProgramIdPosition: '+ProgramIdPosition);
+
                     PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
                 } else {
                     Debug('GetDigitalChannel');
