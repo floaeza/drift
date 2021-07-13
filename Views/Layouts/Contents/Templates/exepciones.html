@@ -89,11 +89,12 @@
         $('#restart').click(function() {
             if(confirm('¿Realmente desea reiniciar el servicio DHCP?')){
                 setRestartDHCP();
+                setTimeout(getDHCPLog(), 3000);
             } else {
                 return;
             }
         });
-        setInterval('getDHCPLog()',1000);
+        
     });
 
 function setNewConfig(){
