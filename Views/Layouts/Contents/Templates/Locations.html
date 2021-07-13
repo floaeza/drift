@@ -183,21 +183,19 @@ $( document ).ready(function() {
     
     $(selectTable[0]).val(select);
     $(inputTable).val(input);
-
     $(inputTable).focus();
-    
+    $(inputTable).click();
 
 
     $(selectTable[0]).change(function(){
       document.cookie = 'select='+$(this).val();
-
+      alert(document.cookie);
     });
 
-    inputTable.addEventListener('change', updateValue);
-
-    function updateValue(e) {
-      alert('asd');
-    }
+    $(inputTable).change(function() {
+      document.cookie = 'input='+$(this).val();
+      alert(document.cookie);
+    });
     
   });
 
