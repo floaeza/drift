@@ -2778,7 +2778,7 @@ function AddRecord(){
             UtcStart        : ProgramUtcStartDate,
             UtcEnd          : ProgramUtcEndDate,
             // @ts-ignore
-            ChannelSource   : ChannelsJson[REC_CHNL_POS].SRCE +':'+ChannelsJson[REC_PROG_POS].PORT
+            ChannelSource   : ChannelsJson[REC_CHNL_POS].SRCE +':'+ChannelsJson[REC_CHNL_POS].PORT
         },
         success: function (response){
             if(ADD_SERIE_BCKG === false){
