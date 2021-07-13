@@ -175,9 +175,13 @@ $( document ).ready(function() {
     document.getElementById('btnActualizar').disabled = true;
     sendInfo(); 
     var selectTable = document.getElementsByName("LocationsTable_length");
+    var inputTable  = document.getElementsByClassName("ui input");
+        inputTable  = inputTable[0].children;
+
 
     $(selectTable[0]).change(function(){
       document.cookie = $(this).val();
+      document.cookie = $(inputTable[0]).val();
       alert(document.cookie);
     });
 
