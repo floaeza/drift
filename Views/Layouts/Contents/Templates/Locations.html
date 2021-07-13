@@ -183,7 +183,10 @@ $( document ).ready(function() {
     $(inputTable).val(input);
 
     var table = $('#LocationsTable').DataTable();
+
         table.search(inputTable.value).draw();
+        table.page.len(select).draw();
+    
 
     $(selectTable[0]).change(function(){
       document.cookie = 'select='+$(this).val();
