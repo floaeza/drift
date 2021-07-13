@@ -50,20 +50,22 @@
         Debug('src='+ Source+''+CheckPort);
         // Maximiza el video en caso de que no este en pantalla completa
         MaximizeTV();
-        
+        Debug('############################### MaximizeTV');
         // Activamos la bandera
         PlayingChannel   = true;
         
         // Si la guia esta cerrada muestra cuadro con informacion del canal en reproduccion
         ShowInfo();
-
+        Debug('############################### ShowInfo');
         // Si tiene una fecha ya registrada guarda estadisticas en la BD
         if(StartDateChannel !== ''){
             SetChannelStatistics();
+            Debug('############################### SetChannelStatistics');
         }
         
         // Actualiza la fecha inicio de la reproduccion del canal */
         StartDateChannel = new Date();
+        Debug('############################### StartDateChannel: '+StartDateChannel);
     }
     
 /* *****************************************************************************
