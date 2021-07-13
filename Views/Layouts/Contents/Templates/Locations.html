@@ -180,15 +180,20 @@ $( document ).ready(function() {
     var select = document.cookie.replace(/(?:(?:^|.*;\s*)select\s*\=\s*([^;]*).*$)|^.*$/, "$1");
     var input = document.cookie.replace(/(?:(?:^|.*;\s*)input\s*\=\s*([^;]*).*$)|^.*$/, "$1");
 
+    alert("select ="+select+" "+ "input = "+input);
+    
+    $(selectTable[0]).val(select);
+    $(inputTable[0]).val(input);
+
+
 
     $(selectTable[0]).change(function(){
       document.cookie = 'select='+$(this).val();
-      document.cookie = 'input='+$(inputTable[0]).val();
     });
 
-    $(inputTable[0]).on(inputTable[0], function(){
-      alert('hola');
-    });
+    if($(inputTable[0]).val() != ""){
+      document.cookie = 'input='+$(inputTable[0]).val();
+    }
 
 
   });
