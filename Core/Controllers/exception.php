@@ -1,6 +1,6 @@
 <?php
 $text = !empty($_POST['text']) ? $_POST['text'] : '';
-$Option = !empty($_POST['Option']) ? $_POST['Option'] : 'getDHCPLog';
+$Option = !empty($_POST['Option']) ? $_POST['Option'] : '';
 
 $fichero = '/etc/dhcp/dhcpd.conf';
 
@@ -45,7 +45,7 @@ switch ($Option) {
         break;
     case 'getDHCPLog':
         $resultado = shell_exec('systemctl status dhcpd.service');   
-        echo $resultado; 
+        echo "$resultado\n"; 
         break;
 }
 
