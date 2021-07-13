@@ -1,6 +1,6 @@
         </div>
     </body>
-<!-- Script que utilizan elementos HTML -->
+<!-- Script que utilizan elementos HTML KAMAI-->
 <script src='[@Settings]'></script>
 <script src='[@TvScript]'></script>
 <script src='[@Time]'></script>
@@ -14,7 +14,7 @@
 
         </div>
     </body>
-<!-- Script que utilizan elementos HTML -->
+<!-- Script que utilizan elementos HTML AMINO-->
 <script src='[@Settings]'></script>
 <script src='[@TvScript]'></script>
 <script src='[@Player]'></script>
