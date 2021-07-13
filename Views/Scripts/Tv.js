@@ -229,8 +229,8 @@
             /* Actualiza el canal */
                 Source = ChannelsJson[ChannelPosition].SRCE;
                 Port   = ChannelsJson[ChannelPosition].PORT;
-                ProgramIdChannnel = ChannelsJson[ChannelPosition].PRGR;
-                ProgramIdPosition = ChannelsJson[ChannelPosition].PSCN;
+                // ProgramIdChannnel = ChannelsJson[ChannelPosition].PRGR;
+                // ProgramIdPosition = ChannelsJson[ChannelPosition].PSCN;
 
             /* Regresamos a su valor inicial la variable DIRECTION*/
                 Direction = 'UP';
@@ -244,10 +244,9 @@
                         CloseDigitalChannel();
                     }
                     Debug('PlayChannel');
-                    Debug('ProgramIdChannnel: '+ProgramIdChannnel);
-                    Debug('ProgramIdPosition: '+ProgramIdPosition);
 
-                    PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
+                    //PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
+                    PlayChannel(Source, Port);   /* TvFunctions por marca */
                 } else {
                     Debug('GetDigitalChannel');
                     //if(typeof(gSTB) !== 'undefined'){
@@ -388,8 +387,8 @@
             /* Actualiza el canal */
                 Source = ChannelsJson[LastChannelPosition].SRCE;
                 Port   = ChannelsJson[LastChannelPosition].PORT;
-                ProgramIdChannnel = ChannelsJson[ChannelPosition].PRGR;
-                ProgramIdPosition = ChannelsJson[ChannelPosition].PSCN;
+                // ProgramIdChannnel = ChannelsJson[ChannelPosition].PRGR;
+                // ProgramIdPosition = ChannelsJson[ChannelPosition].PSCN;
 
                 Debug('Source:: CRRN '+ChannelsJson[ChannelPosition].SRCE + ' '+ChannelsJson[ChannelPosition].STTN );
                 Debug('Source:: LAST '+ChannelsJson[LastChannelPosition].SRCE + ' '+ChannelsJson[LastChannelPosition].STTN );
@@ -413,8 +412,8 @@
                     }
                     
                     Debug('PlayChannel:: '+Source);
-                    PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
-
+                    //PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
+                    PlayChannel(Source, Port);   /* TvFunctions por marca */
                 } else {
                     SetDigitalChannel();
                 }
@@ -713,15 +712,16 @@
         CloseEpg();
 
         var Source = ChannelsJson[ChannelPosition].SRCE,
-            Port   = ChannelsJson[ChannelPosition].PORT,
-            ProgramIdChannnel = ChannelsJson[ChannelPosition].PRGR,
-            ProgramIdPosition = ChannelsJson[ChannelPosition].PSCN;
+            Port   = ChannelsJson[ChannelPosition].PORT;
+            // ProgramIdChannnel = ChannelsJson[ChannelPosition].PRGR,
+            // ProgramIdPosition = ChannelsJson[ChannelPosition].PSCN;
 
         if(ChannelsJson[ChannelPosition].STTN !== 'CONTENT'){
             if(ActiveDigitalChannel === true){
                 CloseDigitalChannel();
             }
-            PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
+            //PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
+            PlayChannel(Source, Port);   /* TvFunctions por marca */
         } else {
             Debug('GetDigitalChannel EPG');
             //if(typeof(gSTB) !== 'undefined'){

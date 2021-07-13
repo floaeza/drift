@@ -26,7 +26,7 @@
  * Reproductor de canal
  * ****************************************************************************/
     //function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPid){
-    function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition){
+    function PlayChannel(Source, Port){
         Debug('############################### PLAYCHANNEL AMINO');
         var CheckPort = '',
             CheckProgram = '';
@@ -35,18 +35,19 @@
                 CheckPort = ':' + Port;
             }
 
-            if(ProgramIdChannnel){
-               // CheckProgram = ';Progid='+ProgramIdChannnel+';audiopid='+AudioPid;
-                CheckProgram = ';Progid='+ProgramIdChannnel;
-            }
-
-            Debug('########################### Channelinfo: '+CheckProgram);
+            // if(ProgramIdChannnel){
+            //    // CheckProgram = ';Progid='+ProgramIdChannnel+';audiopid='+AudioPid;
+            //     CheckProgram = ';Progid='+ProgramIdChannnel;
+            // }
+            //
+            // Debug('########################### Channelinfo: '+CheckProgram);
         // Detiene el proceso de la reproduccion anterior
         StopVideo();
 
         // Reproduce el canal actual
-        AVMedia.Play('src='+ Source+''+CheckPort+CheckProgram);
-        
+        //AVMedia.Play('src='+ Source+''+CheckPort+CheckProgram);
+        AVMedia.Play('src='+ Source+''+CheckPort);
+        Debug('src='+ Source+''+CheckPort+CheckProgram);
         // Maximiza el video en caso de que no este en pantalla completa
         MaximizeTV();
         
