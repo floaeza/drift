@@ -177,17 +177,19 @@ $( document ).ready(function() {
     var selectTable = document.getElementsByName("LocationsTable_length");
     var inputTable  = document.getElementsByClassName("ui input");
         inputTable  = inputTable[0].children;
+    var select = document.cookie.replace(/(?:(?:^|.*;\s*)select\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+    var input = document.cookie.replace(/(?:(?:^|.*;\s*)input\s*\=\s*([^;]*).*$)|^.*$/, "$1");
 
 
     $(selectTable[0]).change(function(){
       document.cookie = 'select='+$(this).val();
       document.cookie = 'input='+$(inputTable[0]).val();
-      var select = document.cookie.replace(/(?:(?:^|.*;\s*)select\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-      var input = document.cookie.replace(/(?:(?:^|.*;\s*)input\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-
-      alert(select);
-      alert(input);
     });
+
+    $(inputTable[0]).change(function(){
+      alert('hola');
+    });
+    
 
 
   });
