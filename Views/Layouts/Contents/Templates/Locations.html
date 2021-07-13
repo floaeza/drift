@@ -186,10 +186,9 @@ $( document ).ready(function() {
       document.cookie = 'input='+$(inputTable[0]).val();
     });
 
-    $(inputTable[0]).change(function(){
+    $(inputTable[0]).on(inputTable[0], function(){
       alert('hola');
     });
-    
 
 
   });
