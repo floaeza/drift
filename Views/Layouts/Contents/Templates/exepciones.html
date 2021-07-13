@@ -93,6 +93,7 @@
                 return;
             }
         });
+        setInterval('getDHCPLog()',1000);
     });
 
 function setNewConfig(){
@@ -122,5 +123,21 @@ function setRestartDHCP(){
         }
     });
 }
+
+function getDHCPLog(){
+    $.ajax({
+        type: "POST",
+        url: "../../../../Core/Controllers/exception.php",
+        data:{
+            Option: 'getDHCPLog',
+        },
+        success: function(response) {
+            $('#dataLog').text(response);
+        }
+    });
+}
+
+
+
     </script>
 </html>
