@@ -151,8 +151,16 @@
   <!-- Alerts editables -->
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <!-- jQuery Modal -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+  <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+  <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap4.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" />
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css" />
+  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap4.min.css" />
+
 </body>
 <script>
   // Controladores
@@ -253,6 +261,16 @@ function getLocations(){
 //Crea las tablas y se les asigna la informacion
 function getTables(){
   $('#LocationsTable').DataTable( {
+    data: LocationsToTable,
+    columns: [
+        { title: "Locación" },
+        { title: "Guia de programación" },
+        { title: "Menu" },
+        { title: "Mensajes" },
+        { title: "Pantalla de inicio" },
+        { title: "Paquete asignado" },
+        { title: "Miembro" },
+    ],
     responsive: {
       details: {
           display: $.fn.dataTable.Responsive.display.modal( {
@@ -266,19 +284,13 @@ function getTables(){
           } )
       }
   },
-    data: LocationsToTable,
-    columns: [
-        { title: "Locación" },
-        { title: "Guia de programación" },
-        { title: "Menu" },
-        { title: "Mensajes" },
-        { title: "Pantalla de inicio" },
-        { title: "Paquete asignado" },
-        { title: "Miembro" },
-    ],
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
 });
 }
+
+
+
+
 //Obtiene los datos de la BD mediante AJAX
 function getInfo(){
   $.ajax({
