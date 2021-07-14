@@ -253,6 +253,19 @@ function getLocations(){
 //Crea las tablas y se les asigna la informacion
 function getTables(){
   $('#LocationsTable').DataTable( {
+    responsive: {
+      details: {
+          display: $.fn.dataTable.Responsive.display.modal( {
+              header: function ( row ) {
+                  var data = row.data();
+                  return 'Details for '+data[0]+' '+data[1];
+              }
+          } ),
+          renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
+              tableClass: 'table'
+          } )
+      }
+  },
     data: LocationsToTable,
     columns: [
         { title: "Locación" },
@@ -263,8 +276,7 @@ function getTables(){
         { title: "Paquete asignado" },
         { title: "Miembro" },
     ],
-    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-    "buttons": [ 'copy', 'csv', 'excel' ]
+    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
 });
 }
 //Obtiene los datos de la BD mediante AJAX
