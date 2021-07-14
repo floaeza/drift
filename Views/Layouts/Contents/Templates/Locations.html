@@ -189,7 +189,13 @@ $( document ).ready(function() {
 
         table.search(inputTable.value).draw();
         table.page.len(select).draw();
-    
+
+        
+        new $.fn.table.Buttons( table, {
+          buttons: [
+              'copy', 'excel', 'pdf'
+          ]
+      } );
 
     $(selectTable[0]).change(function(){
       document.cookie = 'select='+$(this).val();
@@ -262,9 +268,6 @@ function getTables(){
         { title: "Pantalla de inicio" },
         { title: "Paquete asignado" },
         { title: "Miembro" },
-    ],
-    buttons: [
-    'copy', 'excel', 'pdf'
     ],
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
 });
