@@ -191,12 +191,6 @@ $( document ).ready(function() {
         table.page.len(select).draw();
 
         
-        new $.fn.table.Buttons( table, {
-          buttons: [
-              'copy', 'excel', 'pdf'
-          ]
-      } );
-
     $(selectTable[0]).change(function(){
       document.cookie = 'select='+$(this).val();
     });
@@ -269,7 +263,8 @@ function getTables(){
         { title: "Paquete asignado" },
         { title: "Miembro" },
     ],
-    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+    "buttons": [ 'copy', 'csv', 'excel' ]
 });
 }
 //Obtiene los datos de la BD mediante AJAX
