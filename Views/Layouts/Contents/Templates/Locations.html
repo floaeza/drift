@@ -150,6 +150,9 @@
   <script type="text/javascript" src="../../../../../Assets//DataTables/datatables.min.js"></script>
   <!-- Alerts editables -->
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <!-- jQuery Modal -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 </body>
 <script>
   // Controladores
@@ -259,6 +262,9 @@ function getTables(){
         { title: "Pantalla de inicio" },
         { title: "Paquete asignado" },
         { title: "Miembro" },
+    ],
+    buttons: [
+    'copy', 'excel', 'pdf'
     ],
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
 });
