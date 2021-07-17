@@ -160,7 +160,7 @@ if (window.tizen !== undefined) {
         url: ServerSource + 'Core/Controllers/Device.php',
         data: {
             MacAddress : MacAddress,
-            EventString : 'Boot successful',
+            EventString : 'BOOT_SUCCESSFUL',
             CurrentDateStb : CurrentStbDate
         },
         beforeSend: function (){

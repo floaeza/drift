@@ -78,6 +78,7 @@ switch ($Option){
                     array_push($DeviceInfoList, $Row['ip']);
                     array_push($DeviceInfoList, $Row['version_software']);
                     array_push($DeviceInfoList, $Row['fecha_activacion']);
+                    array_push($DeviceInfoList, $Row['marca']);
                 }
             endforeach;
 
