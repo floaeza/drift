@@ -4,7 +4,7 @@ function Red(){
 }
 
 function Blue(){
-
+    alert('PRUEBA COMANDO AZUL');
 }
 
 function Green(){
