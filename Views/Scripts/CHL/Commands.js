@@ -4,7 +4,9 @@ function Red(){
 }
 
 function Blue(){
-    alert('PRUEBA COMANDO AZUL');
+    var Up = 0;
+    Up = ASTB.Upgrade('http://10.0.3.10/bbinco_28_x4x_0.mcfs');
+    alert(Up);
 }
 
 function Green(){
