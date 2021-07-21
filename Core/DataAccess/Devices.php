@@ -213,6 +213,26 @@ class Devices extends Database {
 
         return $this->DeviceRecorder;
     }
+    function getDeviceRecorderInfomir($LocationId) {
+        $this->Function = 'getDeviceRecorderInfomir';
+        
+        $this->connect();
+        $this->select("dispositivo_locacion", "*",
+                      "dispositivos ON dispositivo_locacion.id_dispositivo = dispositivos.id_dispositivo",
+                      "", "", "", "id_locacion = '$LocationId' AND grabador = 1  AND marca = 'Infomir'");
+        $Result = $this->getResult();
+        $this->DeviceRecorder = array();
+        
+        foreach ($Result as $Row):
+            array_push($this->DeviceRecorder, $Row['mac_address']);
+
+        endforeach;
+        
+        
+        $this->disconnect();
+
+        return $this->DeviceRecorder;
+    }
 
     function setDeviceRecorder($DeviceRecorder) {
         $this->DeviceRecorder = $DeviceRecorder;

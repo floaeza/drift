@@ -91,15 +91,28 @@
             $DeviceType = 'NONE';
         } else {
             // Obtenemos si hay dispositivo grabador en su locacion
-            $RecorderDeviceByLocation = $DevicesData->getDeviceRecorder($LocationId);
+            if($DeviceVendor == 'Infomir'){
+                $RecorderDeviceByLocation = $DevicesData->getDeviceRecorderInfomir($LocationId);
 
-            if(empty($RecorderDeviceByLocation)){
-                // No es un dispositivo grabador y no hay grabador en su locacion
-                $DeviceType = 'NONE';
-            } else {
-                 // Hay dispositivo grabador, carga funciones para grabar y WholeHomePvr
-                 $DeviceType = 'WHP_HDDN';
-            } 
+                if(empty($RecorderDeviceByLocation)){
+                    // No es un dispositivo grabador y no hay grabador en su locacion
+                    $DeviceType = 'NONE';
+                } else {
+                    // Hay dispositivo grabador, carga funciones para grabar y WholeHomePvr
+                    $DeviceType = 'WHP_HDDN';
+                }
+            }else{
+                $RecorderDeviceByLocation = $DevicesData->getDeviceRecorder($LocationId);
+
+                if(empty($RecorderDeviceByLocation)){
+                    // No es un dispositivo grabador y no hay grabador en su locacion
+                    $DeviceType = 'NONE';
+                } else {
+                    // Hay dispositivo grabador, carga funciones para grabar y WholeHomePvr
+                    $DeviceType = 'WHP_HDDN';
+                } 
+            }
+            
         }
     }
     
