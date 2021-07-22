@@ -4,9 +4,9 @@ function Red(){
 }
 
 function Blue(){
-    var Up = 0;
-    Up = ASTB.Upgrade('http://10.0.3.10/bbinco_28_x4x_611.mcfs');
-    alert(Up);
+    // var Up = 0;
+    // Up = ASTB.Upgrade('http://10.0.3.10/bbinco_28_x4x_611.mcfs');
+    // alert(Up);
 }
 
 function Green(){
@@ -14,7 +14,7 @@ function Green(){
 }
 
 function Yellow(){
-
+    Browser.Action(7); // 7 | 16
 }
 
 function Close(){
