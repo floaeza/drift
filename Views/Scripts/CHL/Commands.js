@@ -14,7 +14,7 @@ function Green(){
 }
 
 function Yellow(){
-    Browser.Action(7); // 7 | 16
+    Browser.Action(16); // 7 | 16
 }
 
 function Close(){
