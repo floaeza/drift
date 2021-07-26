@@ -14,7 +14,9 @@ function Green(){
 }
 
 function Yellow(){
-    Browser.Action(16);
+    if(typeof(ASTB) !== 'undefined') {
+        Browser.Action(16);
+    }
 }
 
 function Close(){
