@@ -91,4 +91,13 @@ class Locations extends Database {
         $this->disconnect();
         return $this->Locations;
     }
+
+    function UpdateDevice_Location($dispositivoId, $infoLocation){
+        $this->Function = 'UpdateDevice_Location';
+        $this->connect();
+        $this->update("dispositivo_locacion", $infoLocation, "id_dispositivo = '$dispositivoId'" );
+        $this->Locations = $this->getResult();
+        $this->disconnect();
+        return $this->Locations;
+    }
 }

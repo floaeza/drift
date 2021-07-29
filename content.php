@@ -78,6 +78,8 @@
             $Header->set('Commands', $Libraries['Commands']);
             $Header->set('RemoteControl', $Libraries['RemoteControl']);
 
+            $Header->set('AppControl', $Libraries['AppControl']);
+
             // Librerias javascript por marca
             $Header->set('Keys', $VendorFolder.$Libraries['Keys']);
 

@@ -393,5 +393,13 @@ class Devices extends Database {
 
         return $this->DeviceList;
     }
+
+    function deleteDeviceInLocation($DeviceId){
+        $this->Function = 'deleteDeviceInLocation';
+        $this->connect();
+        $this->delete("dispositivo_locacion", "id_dispositivo = '$DeviceId'");
+        $this->Device = $this->getResult();
+        $this->disconnect();
+    }
     
 }

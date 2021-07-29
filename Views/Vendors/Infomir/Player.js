@@ -38,12 +38,14 @@ GetWindowMinSize();
  * 0 	graphic window
  * 1 	video window   */
 gSTB.SetTopWin(0);
-
-timeShift.SetTimeShiftFolder(pathToSave);
-// set buffer duration in seconds
-timeShift.SetMaxDuration(durationSec);
-// set mode which defines what happens after reaching the left boundary of TimeShift buffer in paused mode
-timeShift.SetSlidingMode(true);
+var storageInfo = JSON.parse(gSTB.GetStorageInfo('{}'));
+var USB = storageInfo.result || [];
+if((gSTB.GetDeviceModel() == 'MAG424') && (USB.length !== 0)){
+    // set folder for saving TimeShift buffer data
+    timeShift.SetTimeShiftFolder(USB[0].mountPath);
+    // set mode which defines what happens after reaching the left boundary of TimeShift buffer in paused mode
+    timeShift.SetSlidingMode(true);
+}
 
 var Ext = gSTB.StandBy(false);
 
@@ -54,6 +56,8 @@ var Ext = gSTB.StandBy(false);
 
 function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition){
     var CheckPort = '';
+
+    timeShift.ExitTimeShift();
 
     if(Port){
         CheckPort = ':' + Port;
@@ -69,7 +73,7 @@ function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition){
     //gSTB.Play(Source + CheckPort);
     player.play({
         uri: Source + CheckPort,
-        solution: 'auto',
+        solution: 'extTimeShift',
         program: ProgramIdPosition
     });
 
@@ -416,6 +420,7 @@ function StopVideo(){
 }
 
 function PauseVideo(){
+    timeShift.EnterTimeShift();
     player.pause();
 }
 
@@ -445,6 +450,20 @@ function AssetStatus(Duration){
         DurationAsset = parseInt(Duration,10) * 60;
 
         PercentagePosition = Math.round((PositionAsset * 100) / DurationAsset);
+        
+    }else if (PauseLive === true){
+            
+        DurationAsset = Math.round((player.durationMs)/1000);
+        //DurationAsset = Video.getDuration();
+        //DurationAsset = parseInt(Duration,10) * 60;
+        Debug('>>>>>> DurationAsset: '+DurationAsset);
+        PositionAsset = Math.round((player.positionMs)/1000);
+        Debug('>>>>>> PositionAsset: '+PositionAsset);
+        // if(DurationAsset !== 0){
+            PercentagePosition = Math.round((PositionAsset * 100) / DurationAsset);
+            Debug('>>>>>> PercentagePosition: '+PercentagePosition);
+            //DurationAsset = DurationAsset * 2;
+        // }
         
     }
 }

@@ -14,11 +14,12 @@
     $CurrentController = 'DeviceController';
     
     $ArrayDeviceInfo = array();
-    $Option = !empty($_POST['Option']) ? $_POST['Option'] : 'InsertControl';
-    $MacAddress = !empty($_POST['mac_address']) ? $_POST['mac_address'] : '00:00:00:00:00:01';
-    $IDGuest = !empty($_POST['IDGuest']) ? $_POST['IDGuest'] : 'CHUY';
-    $guest = !empty($_POST['guest']) ? $_POST['guest'] : '16';
-    $orden = !empty($_POST['orden']) ? $_POST['orden'] : 'PLATA';
+    $Option = !empty($_POST['Option']) ? $_POST['Option'] : 'GetControllByMac';
+    $MacAddress = !empty($_POST['mac_address']) ? $_POST['mac_address'] : '00:1a:79:6c:cc:3e';
+    $IDGuest = !empty($_POST['IDGuest']) ? $_POST['IDGuest'] : '';
+    $guest = !empty($_POST['guest']) ? $_POST['guest'] : '';
+    $orden = !empty($_POST['orden']) ? $_POST['orden'] : '';
+    $status = !empty($_POST['status']) ? $_POST['status'] : '';
 
 
     
@@ -46,10 +47,11 @@
         case 'GetControllByMac':
             $Device = $DevicesData->getControl($MacAddress);
             foreach ($Device as $DeviceInfo):
-                array_push($ArrayDeviceInfo, array('IDGuest' => $DeviceInfo['IDGuest'],
-                'guest' => $DeviceInfo['guest'],
-                'MAC' => $DeviceInfo['mac_address'],
-                'orden' => $DeviceInfo['orden'],
+                    array_push($ArrayDeviceInfo, array('IDGUEST' => $DeviceInfo['IDGuest'],
+                    'GUEST' => $DeviceInfo['guest'],
+                    'MAC' => $DeviceInfo['mac_address'],
+                    'ORDEN' => $DeviceInfo['orden'],
+                    'STATUS' => $DeviceInfo['status']
                 ));
             endforeach;
             echo json_encode($ArrayDeviceInfo);
@@ -71,15 +73,14 @@
             $NewDevice = array('IDGuest' => $IDGuest,
             'guest'                      => $guest,
             'mac_address'                => $MacAddress,
-            'orden'                      => $orden
+            'orden'                      => $orden,
+            'status'                      => $status
             );
            $DevicesData->setControl($NewDevice);
            echo json_encode($NewDevice);
             break;
         case 'UpdateControlByMac':
-            $NewDevice = array('guest'  => $guest,
-            'orden'                      => $orden,
-            );
+            $NewDevice = array('status'  => 'executed');
            $DevicesData->updateControl($MacAddress, $NewDevice);
            echo json_encode($NewDevice);
             break;

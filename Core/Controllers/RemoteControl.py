@@ -16,9 +16,17 @@ db = firestore.client()
 stbDic = []
 users_ref = db.collection(u'PaquetesVPL')
 docs = users_ref.stream()
+payload = {'Option': 'GetIdentifier'}
+Identifier = requests.post('http://172.16.0.15/BBINCO/TV/Core/Controllers/PY.php', data=payload)
+#Identifier = requests.post('http://bbinco.fortiddns.com:669/BBINCO/TV/Core/Controllers/PY.php', data=payload)
+IDF = json.loads(Identifier.content)
+IDF = IDF[0]
 
+#identificador = IDF['IDF']
 identificador = 'VPL'
+print(identificador)
 numPaquetes = 0
+
 today = date.today()
 fechajson = today.strftime('%Y%m%d')
 jsons = []
@@ -49,17 +57,22 @@ def on_snapshot(col_snapshot, changes, read_time):
     for change in changes:
         if change.type.name == 'ADDED':
             
-            print(f'Nueva orden agregada: {change.document.id}')
+            #print(f'Nueva orden agregada: {change.document.id}')
             stbs = db.collection(identificador).document(f'{change.document.id}')
             stbb = stbs.get()
             stb = stbb.to_dict()
-            
-            print('Ejecutando Orden 66')
-            payload = {'Option': 'InsertControl', 'mac_address': stb['mac_address'], 'guest':stb['guest'], 'IDGuest':stb['IDGuest'], 'orden':stb['order']}
-            requests.post('http://172.16.0.15/BBINCO/TV/Core/Controllers/Firebase.php', data=payload)
+            if stb['status'] == 'pending':
+                #print('Ejecutando Orden 66')
+                payload = {'Option': 'InsertControl', 'mac_address': stb['mac_address'], 'guest':stb['guest'], 'IDGuest':stb['IDGuest'], 'orden':stb['order'], 'status':'pendingServer'}
+                var = requests.post('http://172.16.0.15/BBINCO/TV/Core/Controllers/Firebase.php', data=payload)
+                #requests.post('http://bbinco.fortiddns.com:669/BBINCO/TV/Core/Controllers/Firebase.php', data=payload)
+                #print(json.loads(var.content))
+                update = db.collection(identificador).document(f'{change.document.id}')
+                update.update({u'status': 'pendingServer'})
+                print('Orden 66 Ejecutada')
             
             #stbb.reference.delete()
-            print('Orden 66 Ejecutada')
+            
 
         elif change.type.name == 'MODIFIED':
             print("MODIFIED")
@@ -73,4 +86,17 @@ col_query = db.collection(identificador)
 query_watch = col_query.on_snapshot(on_snapshot)
 
 while True:
+    now = datetime.now()
+    #print(now.hour)
+    if now.hour == 00 and now.minute == 30 and now.second == 00:
+        delet = db.collection(identificador)
+        delete = delet.where(u'status', u'==', u'executed')
+        for dele in delete.get():
+            dele.reference.delete()
+
+    if now.minute == 20 and now.second == 00:
+        delet = db.collection(identificador)
+        delete = delet.where(u'status', u'==', u'executed')
+        for dele in delete.get():
+            dele.reference.delete()
     time.sleep(1)
