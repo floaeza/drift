@@ -47,7 +47,7 @@ def start(day, pos):
 
 
 
-    for ids in range(6, paquetes):
+    for ids in range(1, paquetes):
         contadorCanal = 0
         data = {}
         data["C_Length"]=0
@@ -546,7 +546,7 @@ def start(day, pos):
                         print('TRIBIUNE     ', channel['STTN'])
                         dataProgramTri = {}
                         contadorPrograma = 0
-                        deleteline(channel['STTN'])
+                        deleteline(channel['STTN'], day)
                         statrec = open("/var/www/html/mnt/nv/epg/statrec.txt", "r", errors="ignore", encoding='ascii')
                         skedrec = open("/var/www/html/mnt/nv/epg/skedrec_copia.txt", "r", errors="ignore", encoding='ascii')
                         progrec = open("/var/www/html/mnt/nv/epg/progrec.txt", "r", errors="ignore", encoding='ascii')
@@ -644,8 +644,8 @@ def start(day, pos):
 
         data.clear()
 
-def deleteline(slinea):
-    with open("/var/www/html/mnt/nv/epg/skedrec.txt", "r", encoding='ascii') as f:
+def deleteline(slinea, day):
+    with open("/var/www/html/mnt/nv/epg/skedrec2.txt", "r", encoding='ascii') as f:
         lines = f.readlines()
     f.close()
     with open("/var/www/html/mnt/nv/epg/skedrec_copia.txt", "w", encoding='ascii') as f:
@@ -654,6 +654,5 @@ def deleteline(slinea):
             if borrar[0] == slinea:
                 f.write(line)
     f.close()
-
 for pos in range(len(listDays)):
     start(listDays[pos], pos)

@@ -74,4 +74,17 @@ class Channels extends Database
         return $this->ChannelsList;
     }
 
+    function getTribStationsList()
+    {
+        $this->Function = 'getTribStationsList';
+
+        $this->connect();
+        $this->select("canales", "*", "estaciones ON canales.id_estacion = estaciones.id_estacion", "", "", "",
+            "numero_estacion NOT LIKE '%GATO%' AND numero_estacion NOT LIKE '%PASS%' AND numero_estacion NOT LIKE '%VIDEO%' AND numero_estacion NOT LIKE '%AUDIO%' AND numero_estacion NOT LIKE '%LOCAL%'");
+        $this->ChannelsList = $this->getResult();
+        $this->disconnect();
+
+        return $this->ChannelsList;
+    }
+
 }

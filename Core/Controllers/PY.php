@@ -48,6 +48,11 @@
                 array_push($ArrayEPGInfo, array('Time' => $GuideDays));
                 echo json_encode($ArrayEPGInfo);
                 break;
+            case 'GetLastPackage':
+                $GuideDays = $ConfigData->getConfigByName('LastPackage');
+                array_push($ArrayEPGInfo, array('Pack' => $GuideDays));
+                echo json_encode($ArrayEPGInfo);
+                break;
             case 'GetIdentifier':
                 $GuideDays = $ConfigData->getConfigByName('Identifier');
                 array_push($ArrayEPGInfo, array('IDF' => $GuideDays));
@@ -137,6 +142,26 @@
                         echo json_encode($ArrayEPGInfo);
                         break;
                 }
+                break;
+            case 'GetChannelsInfoTri':
+                $ChannelsTribByPackage   = $ChannelsData->getTribStationsList();        
+                foreach ($ChannelsTribByPackage as $PreChannelRow):
+                    array_push($ArrayEPGInfo, array('PSCN' => $PreChannelRow['posicion'],
+                    'ADIO' => $PreChannelRow['audio'],
+                    'PRGM' => $PreChannelRow['programa'],
+                    'SRCE' => $PreChannelRow['src'],
+                    'QLTY' => $PreChannelRow['id_calidad'],
+                    'PORT' => $PreChannelRow['puerto'],
+                    'CHNL' => $PreChannelRow['numero_canal'],
+                    'STTN' => $PreChannelRow['numero_estacion'],
+                    'NAME' => $PreChannelRow['nombre_estacion'],
+                    'INDC' => $PreChannelRow['indicativo'],
+                    'LOGO' => $PreChannelRow['logo'],
+                    'NACH' => $PreChannelRow['nombre_canal']
+                    ));
+                    endforeach;
+                echo json_encode($ArrayEPGInfo);
+                break;
                 break;
             case 'GetChannelsInfoByStationAndPackage':
                 $ChannelsGatoByPackage   = $ChannelsData->getGatoChannelsList($PackageID);
