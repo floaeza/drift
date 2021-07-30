@@ -554,7 +554,7 @@ def start(day, pos):
                         deleteline(channel['STTN'])
                         statrec = open("/var/www/html/mnt/nv/epg/statrec.txt", "r", errors="ignore", encoding='ascii')
                         skedrec = open("/var/www/html/mnt/nv/epg/skedrec_copia.txt", "r", errors="ignore", encoding='ascii')
-                        progrec = open("/var/www/html/mnt/nv/epg/progrec.txt", "r", errors="ignore", encoding='ascii')
+                        progrec = open("/var/www/html/mnt/nv/epg/progrec2.txt", "r", errors="ignore", encoding='ascii')
                         lineasSkedrec = skedrec.readlines()
                         lineasProgrec = progrec.readlines()
                         statrec.close()
@@ -650,19 +650,35 @@ def start(day, pos):
         data.clear()
 
 def deleteline(slinea):
-    with open("/var/www/html/mnt/nv/epg/skedrec.txt", "r", encoding='ascii') as f:
-        lines = f.readlines()
-    f.close()
-    with open("/var/www/html/mnt/nv/epg/skedrec_copia.txt", "w", encoding='ascii') as f:
-        for line in lines:
-            borrar = line.split('|')
-            if borrar[0] == slinea:
-                f.write(line)
-    f.close()
+    lineas_escribir = []
+    with open("/var/www/html/mnt/nv/epg/skedrec2.txt", "r") as archivo_lectura:
+        numero_linea = 0
+        for linea in archivo_lectura:
+            numero_linea += 1
+            
+            separado = linea.split("|")
+            if slinea in separado:
+                lineas_escribir.append(str(numero_linea) + " - " + linea)   
+    
+    archivo_lectura.close()
+    
+    with open("/var/www/html/mnt/nv/epg/skedrec_copia.txt", "w") as archivo_salida:
+        for linea in lineas_escribir:
+            archivo_salida.write(linea)
+    archivo_salida.close()
+    #with open("/var/www/html/mnt/nv/epg/skedrec2.txt", "r", encoding='ascii') as f:
+    #    lines = f.readlines()
+    #f.close()
+    #with open("/var/www/html/mnt/nv/epg/skedrec_copia.txt", "w", encoding='ascii') as f:
+    #    for line in lines:
+    #        borrar = line.split('|')
+    #        if borrar[0] == slinea:
+    #            f.write(line)
+    #f.close()
 
 
 
 for pos in range(len(listDays)):
     start(listDays[pos], pos)
 
-os.system ("python3 /var/www/html/BBINCO/TV/Core/Controllers/main.py")
+#os.system ("python3 /var/www/html/BBINCO/TV/Core/Controllers/main.py")

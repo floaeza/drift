@@ -77,8 +77,8 @@
                     'NAME' => $PreChannelRow['nombre_estacion'],
                     'INDC' => $PreChannelRow['indicativo'],
                     'LOGO' => $PreChannelRow['logo'],
-                    'NACH' => $PreChannelRow['nombre_canal']
-                    
+                    'NACH' => $PreChannelRow['nombre_canal'],
+                    'IDCH' => $PreChannelRow['id_canal']
                     ));
                 endforeach;
                 echo json_encode($ArrayEPGInfo);

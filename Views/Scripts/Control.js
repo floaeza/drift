@@ -113,14 +113,27 @@ var CheckInfo = 0;
         /********** CANAL +/- **********/
 
                 case REMOTE_CHANNEL_UP:
-                    if(CurrentModule === 'Tv'){
-                        TvChannelUp();
+                    if (ActiveEpgContainer === true && typeof(ENTONE) !== 'undefined') {
+                        if(CurrentModule === 'Tv'){
+                            TvPageUp();
+                        }
+                    }else{
+                        if(CurrentModule === 'Tv'){
+                            TvChannelUp();
+                        }
                     }
+                    
                 break;
 
                 case REMOTE_CHANNEL_DOWN:
-                    if(CurrentModule === 'Tv'){
-                        TvChannelDown();
+                    if (ActiveEpgContainer === true && typeof(ENTONE) !== 'undefined') {
+                        if(CurrentModule === 'Tv'){
+                            TvPageDown();
+                        }
+                    }else{
+                        if(CurrentModule === 'Tv'){
+                            TvChannelDown();
+                        }
                     }
                 break;
                 

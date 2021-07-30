@@ -28,7 +28,9 @@ player2.aspectConversion = 5;
 
 var Swap            = false,
     Playlist        = '',
-    IndexPlaylist   = -1;
+    IndexPlaylist   = -1,
+    seconds         = 0,
+    id = null;
 LengthPlaylist  = 0;
 
 GetWindowFullSize();
@@ -58,7 +60,18 @@ function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition){
     var CheckPort = '';
 
     timeShift.ExitTimeShift();
-
+    if(id !== null){
+        timeShift.ExitTimeShift();
+        clearInterval(id);
+        seconds = 0;
+        id = null;
+        TvPlay();
+        SwapPausePlay = true;
+        ResumeVideo()
+    }
+    //clearInterval(id);
+    //alert(id);
+    seconds = 0;
     if(Port){
         CheckPort = ':' + Port;
     }
@@ -420,10 +433,24 @@ function StopVideo(){
 }
 
 function PauseVideo(){
-    timeShift.EnterTimeShift();
+    storageInfo = JSON.parse(gSTB.GetStorageInfo('{}'));
+    USB = storageInfo.result || [];
+    if((gSTB.GetDeviceModel() == 'MAG424') && (USB.length !== 0)){
+        
+        if(id === null){
+            timeShift.EnterTimeShift();
+            id = setInterval(updateSeconds, 1000);
+        }
+        
+    }
     player.pause();
 }
-
+function updateSeconds(){
+    seconds += 1;
+    if(seconds>7500){
+        seconds=7500;
+    }
+}
 function ResumeVideo(){
     player.resume();
 }
@@ -453,7 +480,7 @@ function AssetStatus(Duration){
         
     }else if (PauseLive === true){
             
-        DurationAsset = Math.round((player.durationMs)/1000);
+        DurationAsset = Math.round(seconds);
         //DurationAsset = Video.getDuration();
         //DurationAsset = parseInt(Duration,10) * 60;
         Debug('>>>>>> DurationAsset: '+DurationAsset);

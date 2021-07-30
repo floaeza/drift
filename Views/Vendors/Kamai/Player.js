@@ -8,7 +8,8 @@
     // Variables globales
     var PlayingChannel  = false,
         PlayingVod      = false,
-        PauseLive       = false;
+        PauseLive       = false,
+        PauseStatus     = false;
 
     var WindowMaxWidth  = 0,
         WindowMaxHeight = 0,
@@ -40,6 +41,11 @@ Debug('#################################################################');
                 CheckPort = ':' + Port;
             }
             
+        if(PauseStatus = true){
+            TvPlay();
+            PauseStatus = false;
+            ResumeVideo()
+        }
         // Reproduce el canal actual 
         Source = Source.replace('igmp','udp');
         Debug(Source + ' ' + CheckPort);
@@ -208,6 +214,7 @@ Debug('#################################################################');
     }
     
     function PauseVideo(){
+        PauseStatus = true;
         Video.play(0);
     }
     
