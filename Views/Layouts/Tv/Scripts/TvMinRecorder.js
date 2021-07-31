@@ -856,7 +856,8 @@ function SelectRecordOption(){
                 ClearSpeed();
                 // @ts-ignore
                 PlayingRecording = true;
-                
+                //alert();
+                //Debug("#################################3"+PlayingRecording);
                 PlayVideo(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].url);
                 // @ts-ignore
                 ShowPvrInfo();

@@ -30,7 +30,8 @@ var Swap            = false,
     Playlist        = '',
     IndexPlaylist   = -1,
     seconds         = 0,
-    id = null;
+    id              = null,
+    RewFor          = null;
 LengthPlaylist  = 0;
 
 GetWindowFullSize();
@@ -68,6 +69,10 @@ function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition){
         TvPlay();
         SwapPausePlay = true;
         ResumeVideo()
+        if(RewFor !== null){
+            clearInterval(RewFor);
+            RewFor = null;
+        }
     }
     //clearInterval(id);
     //alert(id);
@@ -171,7 +176,14 @@ var Playlist = '',
 
 function PlayVideo(Source){
     // Detiene el proceso de la reproduccion anterior
+    var conti = false;
+    if(PlayingRecording===true){
+        conti = true;
+    }
     StopVideo();
+    if(conti == true){
+        PlayingRecording = true;
+    }
     //Debug(Source);
     if(CurrentModule === 'Tv'){
         if(Source.indexOf('pvr') !== -1 || Source.indexOf('rtsp') !== -1){
@@ -377,10 +389,6 @@ function GetWindowMinSize(){
 
     WindowMinWidth   = (WindowMaxWidth*TvPercentageSize)/100;
     WindowMinHeight  = (WindowMaxHeight*TvPercentageSize)/100;
-
-    Debug("Porsentaje minimo " + WindowMinWidth);
-    Debug("Porsentaje minimo " + WindowMinHeight);
-
 }
 
 /* *****************************************************************************
@@ -391,7 +399,7 @@ function MaximizeTV(){
     //gSTB.SetViewport(WindowMaxWidth, WindowMaxHeighc, 0, 0);
     //player.setViewport({x: 0, y: 0, width: WindowMaxWidth, height: WindowMaxHeight});
     //gSTB.SetViewport(3840, 2160, 0, 0);
-    Debug("Maximizar");
+    //Debug("Maximizar");
     player.fullscreen = true;
     player2.fullscreen = true;
     //Debug(JSON.stringify(player.viewport));
@@ -433,9 +441,13 @@ function StopVideo(){
 }
 
 function PauseVideo(){
+    if(RewFor !== null){
+        clearInterval(RewFor);
+        RewFor = null;
+    }
     storageInfo = JSON.parse(gSTB.GetStorageInfo('{}'));
     USB = storageInfo.result || [];
-    if((gSTB.GetDeviceModel() == 'MAG424') && (USB.length !== 0)){
+    if((gSTB.GetDeviceModel() == 'MAG424') && (USB.length !== 0) && PauseLive == true){
         
         if(id === null){
             timeShift.EnterTimeShift();
@@ -450,17 +462,40 @@ function updateSeconds(){
     if(seconds>7500){
         seconds=7500;
     }
+    //Debug("#################################3       "+seconds);
 }
 function ResumeVideo(){
     player.resume();
+    if(RewFor !== null){
+        clearInterval(RewFor);
+        RewFor = null;
+    }
 }
 
 function SpeedVideo(Speed){
     
-    player.speed = 4;
-    player2.speed = Speed;
-    Debug(Speed + " Adelantando "+ player.speed);
-    Debug(Speed + " Adelantando "+ player2.speed);
+    if(RewFor === null){
+        RewFor = setInterval(function(){
+            var pos = player.position;
+            if(pos - 1 + Speed >= player.position + seconds){
+                clearInterval(RewFor);
+            }else{
+                player.position = pos - 1 + Speed;
+                Debug("############3    "+player.position + "   E############");
+            }
+        },1000);
+    }else{
+        clearInterval(RewFor);
+        RewFor = null;
+        RewFor = setInterval(function(){
+            var pos = player.position;
+            if(pos - 1 + Speed >= player.duration){
+                clearInterval(RewFor);
+            }else{
+                player.position = pos - 1 + Speed;
+            }
+        },1000);
+    }
 }
 
 /* *****************************************************************************
@@ -468,19 +503,19 @@ function SpeedVideo(Speed){
  * ****************************************************************************/
 
 function AssetStatus(Duration){
-    
     if(PlayingRecording === true){
         
-        PositionAsset = gSTB.GetPosTime();
+        PositionAsset = player.position;
         Debug('AssetStatus------------->'+ PositionAsset);
         //PositionAsset = stbPlayer.position;
         DurationAsset = parseInt(Duration,10) * 60;
 
         PercentagePosition = Math.round((PositionAsset * 100) / DurationAsset);
         
-    }else if (PauseLive === true){
-            
+    }else{ if (PauseLive === true){
+        //alert('as');
         DurationAsset = Math.round(seconds);
+        
         //DurationAsset = Video.getDuration();
         //DurationAsset = parseInt(Duration,10) * 60;
         Debug('>>>>>> DurationAsset: '+DurationAsset);
@@ -492,5 +527,5 @@ function AssetStatus(Duration){
             //DurationAsset = DurationAsset * 2;
         // }
         
-    }
+    }}
 }
