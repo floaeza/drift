@@ -15,6 +15,8 @@
     
     $Option = !empty($_POST['Option']) ? $_POST['Option'] : '';
     $PackageId = !empty($_POST['PackageId']) ? $_POST['PackageId'] : '';
+    $Package_name = !empty($_POST['Package_name']) ? $_POST['Package_name'] : '';
+    $Package_description = !empty($_POST['Package_description']) ? $_POST['Package_description'] : '';
     
     switch ($Option){
         case 'GetChannels':
@@ -59,6 +61,14 @@
         case 'GetAllPackages':
             $PackageList = $PackagesData->getPackagesId();
             $Result = $PackageList;
+            break;
+        case 'CreatePackage':
+            $NewPackage = array(
+                'nombre_paquete' => $Package_name,
+                'descripcion_paquete' => $Package_description,    
+                ); 
+            $PackagesData->InsertPackage($NewPackage);
+
             break;
     }
     

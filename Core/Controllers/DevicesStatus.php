@@ -11,11 +11,13 @@ require_once './../DataAccess/Devices.php';
     $CurrentController = 'DeviceDashboard';
 
     $Option         = !empty($_POST['Option']) ? $_POST['Option'] : 'UpdateRebootDevice';
+    $MacAddress     = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '00:02:02:69:93:83';
+
 
 $DevicesData   = new Devices('System', $CurrentController);
 
 $Response = '';
-
+$Option = 'GetRemoteControl';
 switch ($Option){
     case 'GetDevicesByStatus':
         $Status = array();
@@ -92,6 +94,9 @@ switch ($Option){
 
             $Response = $DevicesData->updateDevice($DeviceId, $DevicesUpdateData);
         break;
+        case 'GetRemoteControl':
+            $Response = $DevicesData->getRemoteControl($MacAddress);
+            break;
 }
 
 //

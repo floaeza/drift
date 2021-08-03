@@ -1037,7 +1037,6 @@
                 if (Device['Type'] !== 'NONE') {
                     GetRecordingsToRecord();
                 }
-
                 OpenEpg();
             } else {
                 OpenRecordPlayOptions();

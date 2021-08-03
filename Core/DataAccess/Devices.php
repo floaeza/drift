@@ -401,5 +401,14 @@ class Devices extends Database {
         $this->Device = $this->getResult();
         $this->disconnect();
     }
+
+    function getRemoteControl($MacAddress){
+        $this->Function = 'getRemoteControl';
+        $this->connect();
+        $this->select("dispositivos","dispositivos.control_remoto","","","","","mac_address = '$MacAddress'");
+        $result = $this->getResult();
+        return $result;
+    }
+    
     
 }

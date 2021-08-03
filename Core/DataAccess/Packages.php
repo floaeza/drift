@@ -35,7 +35,6 @@ class Packages extends Database {
 
     function getPackageListById($PackageId) {
         $this->Function = 'getPackageListById';
-        
         $this->connect();
         $this->select("paquete_canal","paquete_canal.id_paquete_canal, canales.id_canal, canales.posicion, canales.audio, canales.programa, paquete_canal.id_paquete, paquete_canal.id_modulo, paquete_canal.numero_canal, canales.src, canales.puerto, canales.id_calidad, estaciones.nombre_canal, estaciones.id_estacion, estaciones.numero_estacion, estaciones.nombre_estacion, estaciones.indicativo, estaciones.logo",
                                       "canales ON paquete_canal.id_canal = canales.id_canal",
@@ -86,6 +85,15 @@ class Packages extends Database {
         $this->PackagesId = $this->getResult();
         $this->disconnect();
 
+        return $this->PackagesId;
+    }
+
+    function InsertPackage($NewPackage){
+        $this->function = 'InsertPackage';
+        $this->connect();
+        $this->insert("cat_paquete", $NewPackage);
+        $this->PackagesId = $this->getResult();
+        $this->disconnect();
         return $this->PackagesId;
     }
 

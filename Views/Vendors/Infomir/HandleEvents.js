@@ -3,7 +3,7 @@
 window.stbEvent = {
     onEvent: function ( event, info ) {
 
-        Debug(event);
+        Debug('Evento:  '+event);
         EventNetman = gSTB.GetLanLinkStatus();
 
         switch ( Number (event) ) {

@@ -10,7 +10,13 @@ function Blue(){
 }
 
 function Green(){
-
+    var storageInfo = JSON.parse(gSTB.GetStorageInfo('{}'));
+    var USB = storageInfo.result || [];
+    if((gSTB.GetDeviceModel() == 'MAG424') && (USB.length === 0)){
+        alert('No Hay Usb');
+    }else{
+        alert('Hay Usb');
+    }
 }
 
 function Yellow(){

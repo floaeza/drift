@@ -393,13 +393,11 @@ function SetOptionPanel(){
 
 function SetPvrInfo(){
     //Device['MacAddressPvr'].length
-
     var AvailableSize  = 0,
         TotalSize = 0;
 
     if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
         var StorageInfo = [];
-
         if(typeof(ASTB) !== 'undefined') {
             StorageInfo = PVR.GetStorageInfo();
 
@@ -419,10 +417,12 @@ function SetPvrInfo(){
             AvailableSize = (USB[0].freeSize / 1024) / 1024;
         }
     } else {
+        Debug("Current Module TV");
+        alert(JSON.stringify(DiskInfo));
         AvailableSize  = (parseInt(DiskInfo[DiskInfoIndex].espacio_disponible,10) / 1024);
         TotalSize = (parseInt(DiskInfo[DiskInfoIndex].espacio_total,10) / 1024);
     }
-
+    
     AvailableSize  = (AvailableSize / 1024).toFixed(2);
     TotalSize = (TotalSize / 1024).toFixed(2);
 
@@ -1990,6 +1990,7 @@ function GetRecordingsToRecord(){
 }
 
 function GetPvrInfo(){
+    //alert();
     $.ajax({
         type: 'POST',
         async: false,
@@ -2001,7 +2002,8 @@ function GetPvrInfo(){
         },
         success: function (response){
             DiskInfo = $.parseJSON(response);
-            Debug(DiskInfo);
+            //alert(JSON.stringify(DiskInfo));
+            //alert(DiskInfo);
             if(DiskInfo.length > 0){
                 SetPvrInfo();
             }

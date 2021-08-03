@@ -104,15 +104,15 @@ function GetNextJsonEpg(Direction){
 
 function OpenEpg(){
     if(ActiveEpgContainer === false && EpgDataActive === true){
-
         // Actualiza el estatus del disco duro
         if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'WHP_HDDN' || Device['Type'] === 'PVR_ONLY') {
+            
             SetPvrInfo();
         }
 
         Debug('------- OpenEpg 1 -> EpgDataActive: '+EpgDataActive);
 
-
+        
 
         /* Activa bandera, muestra contenedor y asigna la informacion de la cabecera */
         EpgContainer.style.visibility = 'visible';

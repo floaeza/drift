@@ -20,7 +20,7 @@
     $ChannelsData = new Channels('system', $CurrentController);
     
     $ArrayEPGInfo = array();
-    $Option = !empty($_POST['Option']) ? $_POST['Option'] : 'GetModulesBypackage';
+    $Option = !empty($_POST['Option']) ? $_POST['Option'] : 'GetChannelsInfo';
     $PackageID = !empty($_POST['PackageID']) ? $_POST['PackageID'] : '6';
     $Station = !empty($_POST['Station']) ? $_POST['Station'] : 'GATO';  
 
@@ -213,7 +213,9 @@
                     'STTN' => $PreChannelRow['numero_estacion'],
                     'NAME' => $PreChannelRow['nombre_estacion'],
                     'INDC' => $PreChannelRow['indicativo'],
-                    'LOGO' => $PreChannelRow['logo']
+                    'LOGO' => $PreChannelRow['logo'],
+                    'IDPK' => $PreChannelRow['id_paquete'],
+                    'IDCH' => $PreChannelRow['id_canal'],
                     ));
                 endforeach;
                 echo json_encode($ArrayEPGInfo);

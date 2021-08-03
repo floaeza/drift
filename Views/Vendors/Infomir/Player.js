@@ -28,10 +28,17 @@ player2.aspectConversion = 5;
 
 var Swap            = false,
     Playlist        = '',
-    IndexPlaylist   = -1,
+    IndexPlaylist   = -1;
+
+
+var idSeconds       = null,
+    idPosition      = null,
+    RewFor          = null,
+    Position        = 0,
+    TimeShiftStart  = 0,
     seconds         = 0,
-    id              = null,
-    RewFor          = null;
+    NewSpeed        = 0,
+    isPause         = false;
 LengthPlaylist  = 0;
 
 GetWindowFullSize();
@@ -45,7 +52,8 @@ var storageInfo = JSON.parse(gSTB.GetStorageInfo('{}'));
 var USB = storageInfo.result || [];
 if((gSTB.GetDeviceModel() == 'MAG424') && (USB.length !== 0)){
     // set folder for saving TimeShift buffer data
-    timeShift.SetTimeShiftFolder(USB[0].mountPath);
+    timeShift.SetTimeShiftFolder(USB[0].mountPath+"/records");
+    timeShift.SetMaxDuration(7500);
     // set mode which defines what happens after reaching the left boundary of TimeShift buffer in paused mode
     timeShift.SetSlidingMode(true);
 }
@@ -61,14 +69,35 @@ function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition){
     var CheckPort = '';
 
     timeShift.ExitTimeShift();
-    if(id !== null){
+    //Establece de forma manual la posicion en la que se encuentra el reproductor de video
+    if(idPosition !== null){
+        clearInterval(idPosition);
+        idPosition = null;
+        Position = 0;
+    }else{
+        Position = 0;
+        idPosition = setInterval(updatePosition,1000);
+    }
+    if(idSeconds !== null){
         timeShift.ExitTimeShift();
-        clearInterval(id);
+        clearInterval(idSeconds);
         seconds = 0;
-        id = null;
+        Position = 0;
+        idSeconds = null;
         TvPlay();
         SwapPausePlay = true;
         ResumeVideo()
+        if(RewFor !== null){
+            clearInterval(RewFor);
+            RewFor = null;
+        }
+    }else{
+        seconds = 0;
+        Position = 0;
+        idSeconds = null;
+        TvPlay();
+        ResumeVideo()
+        idSeconds = setInterval(updateSeconds,1000);
         if(RewFor !== null){
             clearInterval(RewFor);
             RewFor = null;
@@ -441,63 +470,85 @@ function StopVideo(){
 }
 
 function PauseVideo(){
+    if((gSTB.GetDeviceModel() == 'MAG424') && (USB.length !== 0)){
+        timeShift.EnterTimeShift();
+        TimeShiftStart = Position;
+    }
     if(RewFor !== null){
         clearInterval(RewFor);
         RewFor = null;
     }
     storageInfo = JSON.parse(gSTB.GetStorageInfo('{}'));
     USB = storageInfo.result || [];
-    if((gSTB.GetDeviceModel() == 'MAG424') && (USB.length !== 0) && PauseLive == true){
-        
-        if(id === null){
-            timeShift.EnterTimeShift();
-            id = setInterval(updateSeconds, 1000);
-        }
-        
-    }
+    //timeShift.EnterTimeShift();
     player.pause();
 }
 function updateSeconds(){
-    seconds += 1;
-    if(seconds>7500){
-        seconds=7500;
+    if(seconds-TimeShiftStart<7500){
+        seconds += 1;
     }
     //Debug("#################################3       "+seconds);
 }
+function updatePosition(){
+    if(player.state != 3){
+        Position += 1;
+    }
+}
+
+
+
 function ResumeVideo(){
-    player.resume();
     if(RewFor !== null){
         clearInterval(RewFor);
         RewFor = null;
     }
+    player.resume();
 }
 
 function SpeedVideo(Speed){
-    
+    //player.speed = parseInt(Speed);
+    //Debug(player.speed);
+    //Debug("############3    ID RewFor:"+RewFor + "   E############");
     if(RewFor === null){
-        RewFor = setInterval(function(){
-            var pos = player.position;
-            if(pos - 1 + Speed >= player.position + seconds){
-                clearInterval(RewFor);
-            }else{
-                player.position = pos - 1 + Speed;
-                Debug("############3    "+player.position + "   E############");
-            }
-        },1000);
+        NewSpeed = Speed;
+        RewFor = setInterval(updateRewFor,1000);
+        //Debug("############3    ID RewFor Es Null:"+RewFor + "   E############");
     }else{
+        //Debug("############3    ID RewFor No Es Null:"+RewFor + "   E############");
         clearInterval(RewFor);
         RewFor = null;
-        RewFor = setInterval(function(){
-            var pos = player.position;
-            if(pos - 1 + Speed >= player.duration){
-                clearInterval(RewFor);
-            }else{
-                player.position = pos - 1 + Speed;
-            }
-        },1000);
+        NewSpeed = Speed;
+        RewFor = setInterval(updateRewFor,1000);
     }
 }
-
+function updateRewFor(){
+    //Debug("############3    "+player.position + "   E############");
+    var pos = player.position;
+    if(PauseLive === true){
+        if(parseInt(Position) + (parseInt(NewSpeed)-1) >= parseInt(Position) + (parseInt(seconds) - parseInt(TimeShiftStart))){
+            Debug("############3    Se Pasa: "+parseInt(player.position) + "   E############");
+            clearInterval(RewFor);
+        }else{
+            if(NewSpeed<0){
+                player.position += (parseInt(NewSpeed)-1);
+            }else{
+                player.position += parseInt(NewSpeed);
+            }
+            
+            Position = parseInt(Position) + parseInt(NewSpeed);
+            Debug("############3    player.position "+parseInt(player.position) + "   E############");
+        }
+    }else{
+        if(parseInt(player.position) + parseInt(NewSpeed) >= player.duration || parseInt(player.position) + parseInt(NewSpeed) <= 0){
+            //Debug("############3    Se Pasa: "+parseInt(player.position) + "   E############");
+            clearInterval(RewFor);
+        }else{
+            player.position += parseInt(NewSpeed);
+            Position = parseInt(Position) + parseInt(NewSpeed);
+            //Debug("############3    player.position "+parseInt(player.position) + "   E############");
+        }
+    }
+}
 /* *****************************************************************************
  * Obtiene la posicion del video en reproduccion (PAUSE LIVE Y GRABACIONES)
  * ****************************************************************************/
@@ -519,10 +570,13 @@ function AssetStatus(Duration){
         //DurationAsset = Video.getDuration();
         //DurationAsset = parseInt(Duration,10) * 60;
         Debug('>>>>>> DurationAsset: '+DurationAsset);
-        PositionAsset = Math.round((player.positionMs)/1000);
+        PositionAsset = Math.round(Position);
         Debug('>>>>>> PositionAsset: '+PositionAsset);
         // if(DurationAsset !== 0){
             PercentagePosition = Math.round((PositionAsset * 100) / DurationAsset);
+            if(PercentagePosition > 100){
+                PercentagePosition = 100;
+            }
             Debug('>>>>>> PercentagePosition: '+PercentagePosition);
             //DurationAsset = DurationAsset * 2;
         // }
