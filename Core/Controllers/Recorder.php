@@ -260,6 +260,9 @@ switch ($Option){
     case 'GetPvrInfo':
         $Response = $DiskData->getPvrInfo($LocationId, $MacAddress);
         break;
+    case 'GetPvrInfoInfomir':
+        $Response = $DiskData->getPvrInfoInfomir($LocationId, $MacAddress);
+        break;
 
     case 'SetPvrInfo':
         $LocationId = !empty($_POST['LocationId']) ? $_POST['LocationId'] : '';

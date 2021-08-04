@@ -1990,13 +1990,13 @@ function GetRecordingsToRecord(){
 }
 
 function GetPvrInfo(){
-    //alert();
+    Debug("MAAAAACC     " + MacAddress);
     $.ajax({
         type: 'POST',
         async: false,
         url: 'Core/Controllers/Recorder.php',
         data: {
-            Option     : 'GetPvrInfo',
+            Option     : 'GetPvrInfoInfomir',
             LocationId : Device['LocationId'],
             MacAddress : MacAddress
         },

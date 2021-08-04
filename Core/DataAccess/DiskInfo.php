@@ -34,7 +34,27 @@ class DiskInfo extends Database {
         $this->disconnect();
 
         return $this->DiskInfoList;
-    } 
+    }
+    function getPvrInfoInfomir($LocationId,$MacAddress) {
+        $this->Function = 'getPvrInfoInfomir';
+        
+        $this->connect();
+        $this->select("pvr_info", "*", 
+                      "", "", "", "", 
+                      "mac_address = '".$MacAddress."'");
+        $this->DiskInfoList = $this->getResult();
+        
+        if(empty($this->DiskInfoList)){
+            $this->select("pvr_info", "*", 
+                      "dispositivos ON pvr_info.mac_address = dispositivos.mac_address", "", "", "", 
+                      "id_locacion = '".$LocationId."' AND marca = 'Infomir");
+            $this->DiskInfoList = $this->getResult();
+        }
+        
+        $this->disconnect();
+
+        return $this->DiskInfoList;
+    }
     
     function checkPvrInfo($MacAddress) {
         $this->Function = 'checkPvrInfo';
