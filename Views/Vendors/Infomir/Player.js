@@ -20,11 +20,11 @@ var player = stbPlayerManager.list[0];
 
 player.videoWindowMode = 0;
 player.aspectConversion = 5;
-
-var player2 = stbPlayerManager.list[1];
-
-player2.videoWindowMode = 0;
-player2.aspectConversion = 5;
+if(gSTB.GetDeviceModel() !== 'MAG520'){
+    var player2 = stbPlayerManager.list[1];
+    player2.videoWindowMode = 0;
+    player2.aspectConversion = 5;    
+}
 
 var Swap            = false,
     Playlist        = '',
@@ -67,49 +67,51 @@ var Ext = gSTB.StandBy(false);
 
 function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition){
     var CheckPort = '';
-
-    timeShift.ExitTimeShift();
-    //Establece de forma manual la posicion en la que se encuentra el reproductor de video
-    if(idPosition !== null){
-        clearInterval(idPosition);
-        idPosition = null;
-        Position = 0;
-    }else{
-        Position = 0;
-        idPosition = setInterval(updatePosition,1000);
-    }
-    if(idSeconds !== null){
+    
+    if((gSTB.GetDeviceModel() == 'MAG424') && (USB.length !== 0)){
         timeShift.ExitTimeShift();
-        clearInterval(idSeconds);
-        seconds = 0;
-        Position = 0;
-        idSeconds = null;
-        TvPlay();
-        SwapPausePlay = true;
-        ResumeVideo()
-        if(RewFor !== null){
-            clearInterval(RewFor);
-            RewFor = null;
+        //Establece de forma manual la posicion en la que se encuentra el reproductor de video
+        if(idPosition !== null){
+            clearInterval(idPosition);
+            idPosition = null;
+            Position = 0;
+            idPosition = setInterval(updatePosition,1000);
+        }else{
+            Position = 0;
+            idPosition = setInterval(updatePosition,1000);
         }
-    }else{
-        seconds = 0;
-        Position = 0;
-        idSeconds = null;
-        TvPlay();
-        ResumeVideo()
-        idSeconds = setInterval(updateSeconds,1000);
-        if(RewFor !== null){
-            clearInterval(RewFor);
-            RewFor = null;
+        if(idSeconds !== null){
+            timeShift.ExitTimeShift();
+            clearInterval(idSeconds);
+            seconds = 0;
+            Position = 0;
+            idSeconds = null;
+            TvPlay();
+            SwapPausePlay = true;
+            ResumeVideo()
+            if(RewFor !== null){
+                clearInterval(RewFor);
+                RewFor = null;
+            }
+        }else{
+            seconds = 0;
+            Position = 0;
+            idSeconds = null;
+            TvPlay();
+            ResumeVideo()
+            idSeconds = setInterval(updateSeconds,1000);
+            if(RewFor !== null){
+                clearInterval(RewFor);
+                RewFor = null;
+            }
         }
+        //clearInterval(id);
+        //alert(id);
+        seconds = 0;
     }
-    //clearInterval(id);
-    //alert(id);
-    seconds = 0;
     if(Port){
         CheckPort = ':' + Port;
     }
-
     // Detiene el proceso de la reproduccion anterior
     Source = Source.replace('igmp','udp');
     Source = (Source).slice(0, 6) + "@" + (Source).slice(6);
@@ -118,11 +120,20 @@ function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition){
     StopVideo();
     Debug("Source "+ Source +" Port "+CheckPort);
     //gSTB.Play(Source + CheckPort);
-    player.play({
-        uri: Source + CheckPort,
-        solution: 'extTimeShift',
-        program: ProgramIdPosition
-    });
+    if((gSTB.GetDeviceModel() == 'MAG424') && (USB.length !== 0)){
+        player.play({
+            uri: Source + CheckPort,
+            solution: 'extTimeShift',
+            program: ProgramIdPosition
+        });
+    }else{
+        player.play({
+            uri: Source + CheckPort,
+            solution: 'auto',
+            program: ProgramIdPosition
+        }); 
+    }
+    
 
     player.onTracksInfo = function () {
         Debug('Information on audio and video tracks of the media content is received.');
@@ -136,10 +147,9 @@ function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition){
         Debug('Video playback error.');
     };
 
-
     // Maximiza el video en caso de que no este en pantalla completa
     MaximizeTV();
-
+    Debug("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
     // Activamos la bandera
     PlayingChannel = true;
 
@@ -430,7 +440,9 @@ function MaximizeTV(){
     //gSTB.SetViewport(3840, 2160, 0, 0);
     //Debug("Maximizar");
     player.fullscreen = true;
-    player2.fullscreen = true;
+    if(gSTB.GetDeviceModel() !== 'MAG520'){
+        player2.fullscreen = true;
+    }
     //Debug(JSON.stringify(player.viewport));
 }
 
@@ -465,7 +477,11 @@ function RebootDevice(){
 
 function StopVideo(){
     player.stop();
-    player2.stop();
+    if(gSTB.GetDeviceModel() !== 'MAG520'){
+        if(player2.state !== 0){
+            player2.stop();
+        }
+    }
     PlayingRecording = false;
 }
 

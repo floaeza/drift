@@ -237,9 +237,9 @@ function ChangeAppControl(){
     }
 }
 
-//InitialDataAppControl();
+InitialDataAppControl();
 
-//if (typeof(gSTB) !== 'undefined'){
+if (typeof(gSTB) !== 'undefined'){
     
-//setInterval(DBAppControl, 1000);
-//}     
+    setInterval(DBAppControl, 1000);
+}     

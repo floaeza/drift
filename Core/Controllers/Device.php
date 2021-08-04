@@ -93,7 +93,7 @@
             // Obtenemos si hay dispositivo grabador en su locacion
             if($DeviceVendor == 'Infomir'){
                 $RecorderDeviceByLocation = $DevicesData->getDeviceRecorderInfomir($LocationId);
-
+                
                 if(empty($RecorderDeviceByLocation)){
                     // No es un dispositivo grabador y no hay grabador en su locacion
                     $DeviceType = 'NONE';

@@ -566,7 +566,7 @@
  *******************************************************************************/
     
     function ShowInfo(){
-         
+        
         if(ActiveEpgContainer === false){
             if(ActiveInfoContainer === false){
                 InfoContainer.style.visibility = 'visible';

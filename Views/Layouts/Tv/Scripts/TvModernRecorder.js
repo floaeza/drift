@@ -417,8 +417,8 @@ function SetPvrInfo(){
             AvailableSize = (USB[0].freeSize / 1024) / 1024;
         }
     } else {
-        Debug("Current Module TV");
-        alert(JSON.stringify(DiskInfo));
+        //Debug("Current Module TV");
+        //alert(gSTB.GetDeviceModel());
         AvailableSize  = (parseInt(DiskInfo[DiskInfoIndex].espacio_disponible,10) / 1024);
         TotalSize = (parseInt(DiskInfo[DiskInfoIndex].espacio_total,10) / 1024);
     }
