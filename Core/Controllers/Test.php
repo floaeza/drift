@@ -12,7 +12,7 @@ require_once './../DataAccess/Devices.php';
 $CurrentController = 'TestController';
 $MacAddress = '';
 
-$LocationId     = !empty($_POST['LocationId']) ? $_POST['LocationId'] : '190';
+$LocationId     = !empty($_POST['LocationId']) ? $_POST['LocationId'] : '3';
 
 $DevicesData = new Devices($MacAddress, $CurrentController);
 
