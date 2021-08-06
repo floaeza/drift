@@ -198,8 +198,8 @@ if (is_readable('/var/www/html/mnt/nv/epg/')) {
         $program = explode('|', fgets($ProgramRecord));
         for ($i = 0; $i < count($arraySchedule); $i++) {
             if ($arraySchedule[$i][1] == $program[0])  {
-                if($$arraySchedule[$i][0] == '10244' || $$arraySchedule[$i][0] == '16619' || $$arraySchedule[$i][0] == '10242' ){
-                    $OffsetZone = '-8';
+                if($$arraySchedule[$i][0] == '10244' || $$arraySchedule[$i][0] == '16619' || $$arraySchedule[$i][0] == '10242' || $$arraySchedule[$i][0] == '12508'){
+                    $OffsetZone = -8;
                 }else{
                     $OffsetZone = $ConfigData->getConfigByName('OffsetZone');
                 }
