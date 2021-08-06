@@ -10,13 +10,10 @@ function Blue(){
 }
 
 function Green(){
-    var storageInfo = JSON.parse(gSTB.GetStorageInfo('{}'));
-    var USB = storageInfo.result || [];
-    if((gSTB.GetDeviceModel() == 'MAG424') && (USB.length === 0)){
-        alert('No Hay Usb');
-    }else{
-        alert('Hay Usb');
-    }
+    player.play({
+        uri: 'http://10.0.3.205:8080//media/USB-E0D55EA574F1F4718944A9E1-1/378_Diseñando tu Amor_undefined.mp4',
+        solution: 'auto'
+    });
 }
 
 function Yellow(){

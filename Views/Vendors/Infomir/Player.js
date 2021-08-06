@@ -214,6 +214,7 @@ var Playlist = '',
     LengthPlaylist = 0;
 
 function PlayVideo(Source){
+    
     // Detiene el proceso de la reproduccion anterior
     var conti = false;
     if(PlayingRecording===true){
@@ -236,7 +237,8 @@ function PlayVideo(Source){
                 solution: 'auto'
             });
         }else{
-            //Debug('--------------->>> '+Source);
+            //alert(Source);
+            Debug('--------------->>> '+Source);
             //Reproduce el video
             player.play({
                 uri: Source,
