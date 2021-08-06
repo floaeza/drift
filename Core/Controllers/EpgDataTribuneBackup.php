@@ -199,7 +199,7 @@ if (is_readable('/var/www/html/mnt/nv/epg/')) {
         for ($i = 0; $i < count($arraySchedule); $i++) {
             if ($arraySchedule[$i][1] == $program[0])  {
                 if($$arraySchedule[$i][0] == '10244' || $$arraySchedule[$i][0] == '16619' || $$arraySchedule[$i][0] == '10242' || $$arraySchedule[$i][0] == '12508'){
-                    $OffsetZone = -8;
+                    $OffsetZone = $ConfigData->getConfigByName('OffsetZone');
                 }else{
                     $OffsetZone = $ConfigData->getConfigByName('OffsetZone');
                 }
