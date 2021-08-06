@@ -25,7 +25,8 @@ $ChannelsData = new Channels('system', $CurrentController);
 $ExtraHour  = $ConfigData->getConfigByName('ExtraHour');
 $StartEnd   = $ConfigData->getConfigByName('StartEnd');
 $OffsetZone = $ConfigData->getConfigByName('OffsetZone');
-
+$Offti2 = $ConfigData->getConfigByName('OffsetZone2');
+$Offti = $ConfigData->getConfigByName('OffsetZone');
 $Client = $ConfigData->getConfigByName('Identifier');
 $ServerIp = $ConfigData->getConfigByName('ServerIp');
 
@@ -190,8 +191,7 @@ if (is_readable('/var/www/html/mnt/nv/epg/')) {
         }
         $Index++;
     }fclose($ScheduleRecord);
-    $Offti2 = $ConfigData->getConfigByName('OffsetZone2');
-    $Offti = $ConfigData->getConfigByName('OffsetZone');
+    
     // p r o r e c
     $ProgramRecord = fopen('/var/www/html/mnt/nv/epg/progrec.txt', 'r')
     or exit('No se puede abrir el archivo progrec.txt');
