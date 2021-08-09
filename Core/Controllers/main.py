@@ -11,14 +11,14 @@ import os
 
 today = datetime.today()
 today = today
-listDays = ["", "", "", "", "", "", "", "", "", "", ""]
+listDays = ["", ""]
 
-for n in range(11):
+for n in range(2):
     listDays[n] = today.strftime("%Y-%m-%d")
     today = today + timedelta(days=1)
 
 ####Numero de paquetes + 1#########
-paquetes = 7
+paquetes = 3
 
 def start(day, pos):
     dataProgram = {}
@@ -26,22 +26,22 @@ def start(day, pos):
     print("Empezo")
     
     payload = {'Option': 'GetVersion'}
-    Version = requests.post('http://10.0.3.10/BBINCO/TV/Core/Controllers/PY.php', data=payload)
+    Version = requests.post('http://10.30.0.15/BBINCO/TV/Core/Controllers/PY.php', data=payload)
     Ver = json.loads(Version.content)
     Ver = Ver[0]
 
     payload = {'Option': 'GetIdentifier'}
-    Identifier = requests.post('http://10.0.3.10/BBINCO/TV/Core/Controllers/PY.php', data=payload)
+    Identifier = requests.post('http://10.30.0.15/BBINCO/TV/Core/Controllers/PY.php', data=payload)
     IDF = json.loads(Identifier.content)
     IDF = IDF[0]
     
     payload = {'Option': 'GetOffsetZone'}
-    Zone = requests.post('http://10.0.3.10/BBINCO/TV/Core/Controllers/PY.php', data=payload)
+    Zone = requests.post('http://10.30.0.15/BBINCO/TV/Core/Controllers/PY.php', data=payload)
     OffSetZone = json.loads(Zone.content)
     OffSetZone = OffSetZone[0]
 
     payload = {'Option': 'GetGatoTime'}
-    GTime = requests.post('http://10.0.3.10/BBINCO/TV/Core/Controllers/PY.php', data=payload)
+    GTime = requests.post('http://10.30.0.15/BBINCO/TV/Core/Controllers/PY.php', data=payload)
     GatoTime = json.loads(GTime.content)
     GatoTime = GatoTime[0]
 
@@ -58,7 +58,7 @@ def start(day, pos):
 
 
         payload = {'Option': 'GetModulesBypackage', 'PackageID': ids}
-        x = requests.post('http://10.0.3.10/BBINCO/TV/Core/Controllers/PY.php', data=payload)
+        x = requests.post('http://10.30.0.15/BBINCO/TV/Core/Controllers/PY.php', data=payload)
         channels = json.loads(x.content)
         for channel in channels:
             dataProgradm = {}
@@ -102,7 +102,7 @@ def start(day, pos):
         ############################################# PROGAMACION #############################################
         #######################################################################################################
         payload = {'Option': 'GetChannelsInfoBypackage', 'PackageID': ids}
-        x = requests.post('http://10.0.3.10/BBINCO/TV/Core/Controllers/PY.php', data=payload)
+        x = requests.post('http://10.30.0.15/BBINCO/TV/Core/Controllers/PY.php', data=payload)
         channels = json.loads(x.content)
         #print(channels)
         
@@ -556,6 +556,10 @@ def start(day, pos):
                         skedrec.close()
                         progrec.close()
                         dataProgram = {}
+                        if channel['STTN'] == '10244' or channel['STTN'] == '16619' or channel['STTN'] == '10242' or channel['STTN'] == '12508':
+                        	off = '-9'
+                        else:
+                        	off = OffSetZone['OZN']
 
                         for lineaSkedrec in lineasSkedrec:
                             listSkedrec = lineaSkedrec.split('|')
@@ -567,8 +571,8 @@ def start(day, pos):
                             duracionm = duracion.strftime('%M')
                             
                             hfin = hinicio + timedelta(hours=int(duracionh), minutes=int(duracionm))
-                            hfin = hfin + timedelta(hours=int(OffSetZone['OZN']))
-                            hinicio = hinicio + timedelta(hours=int(OffSetZone['OZN']))
+                            hfin = hfin + timedelta(hours=int(off))
+                            hinicio = hinicio + timedelta(hours=int(off))
                             ahora = datetime.strptime((day.strftime("%Y%m%d") + " 00:00"), '%Y%m%d %H:%M')
                             
                             duration = (int(duracionh) * 60) + int(duracionm)
@@ -645,7 +649,7 @@ def start(day, pos):
         data.clear()
 
 def deleteline(slinea, day):
-    with open("/var/www/html/mnt/nv/epg/skedrec2.txt", "r", encoding='ascii') as f:
+    with open("/var/www/html/mnt/nv/epg/skedrec.txt", "r", encoding='ascii') as f:
         lines = f.readlines()
     f.close()
     with open("/var/www/html/mnt/nv/epg/skedrec_copia.txt", "w", encoding='ascii') as f:
