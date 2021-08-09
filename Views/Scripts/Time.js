@@ -62,6 +62,7 @@
             Debug('------------------------------------------------ Device::if');
             //Debug('################################################ !Device ');
             if (Device.Client === 'CHL') {
+                Debug("+++++++++++++++++++++++++++++++++++++++");
                 FormatHour = moment().subtract(Offset, 'hours').format('h:mm A');
             } else {
                 FormatHour = moment().subtract(Offset, 'hours').format('MMMM Do h:mm a');

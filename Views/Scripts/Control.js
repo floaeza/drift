@@ -32,10 +32,9 @@ var CheckInfo = 0;
         }
         
         Debug('>> PressedKey: '+PressedKey);
-        
         if(Clicks <= MaxClicks) {
+            //alert(REMOTE_RED);
             switch (PressedKey) {
-
                 case REMOTE_RED:
                     Red();
                 break;
@@ -158,7 +157,7 @@ var CheckInfo = 0;
                     } else if(CurrentModule === 'Moods'){
                         MoodsOk();
                     } 
-                break;
+                    break;
             
                 case REMOTE_INFO:
                     if(CurrentModule === 'Tv'){
