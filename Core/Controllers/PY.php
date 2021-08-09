@@ -233,7 +233,7 @@
                         'IDCH' => $PreChannelRow['id_canal'],
                         ));
                     endforeach;
-                    
+                    echo json_encode($ArrayEPGInfo);
                     break;
         }
 

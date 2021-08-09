@@ -116,4 +116,13 @@ class Packages extends Database {
         return $this->PackageList;
     }
 
+    function deleteChannelInPackage($ChannelID, $PackageID){
+        $this->function = 'deleteChannelInPackage';
+        $this->connect();
+        $this->delete("paquete_canal", "id_canal = '$ChannelID' AND id_paquete= '$PackageID'");
+        $this->PackagesId = $this->getResult();
+        $this->disconnect();
+        return $this->PackagesId;
+    }
+
 }

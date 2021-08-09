@@ -55,9 +55,6 @@ if($CurrentTime > $EffectiveTime || $Status === false){
     $Vendor = $DeviceData->getVendor($MacAddress);
     $VendorFolder = $Libraries['VendorsPath'].$Vendor;
 
-
-
-
     /* STYLES HEADER */
     array_push($StylesHeader, $Libraries['GeneralStyle']);
     array_push($StylesHeader, $Libraries['FontAwesome']);

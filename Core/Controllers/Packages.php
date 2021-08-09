@@ -83,6 +83,14 @@
                     ); 
                     $PackagesData->InsertChannelInPackage($ChannelsToInsert);
             endforeach;
+            break;
+        case 'DeletePackages':
+            $DataChannels = json_decode($Channels);
+            foreach ($DataChannels as $DataChannel):    
+                    $ChannelID = $DataChannel[0];
+                    $PackageID = $PackageId; 
+                    $PackagesData->deleteChannelInPackage($ChannelID, $PackageID);
+            endforeach;
 
             break;
     }
