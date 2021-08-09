@@ -56,7 +56,7 @@
             Debug('location.replace('+PageH);
             //location.replace(PageH);
         } else {
-            location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
+            //location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
         }
     }
     
