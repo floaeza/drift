@@ -48,8 +48,13 @@
         Debug('SetModuleStatistics ---> ');
         
         Debug(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
-        
-        location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
+
+        if (window.tizen !== undefined) {
+            var PageH = Page.replace('php','html');
+            location.replace(PageH);
+        } else {
+            location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
+        }
     }
     
     function SetChannelStatistics(){ 
