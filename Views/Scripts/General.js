@@ -54,9 +54,9 @@
             Debug('Window.tizen !== undefined');
             var PageH = Page.replace('php','html');
             Debug('location.replace('+PageH);
-            //location.replace(PageH);
+            location.replace(PageH);
         } else {
-            //location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
+            location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
         }
     }
     
