@@ -60,10 +60,8 @@
           link = '',
           i = 0;
 
-  alert('MENUUUUUUU');
   var init = function() {
 
-    alert('init menu');
     if (window.tizen !== undefined) {
       b2bcontrol = window.b2bapis.b2bcontrol;
 
@@ -93,7 +91,7 @@
       success: function (response) {
         var MenuInfo = $.parseJSON(response);
 
-        alert(MenuInfo);
+        alert(JSON.stringify(MenuInfo));
 
 
         // ModuleId = InfoDevice['ModuleId'];
