@@ -59,7 +59,6 @@
 
         case 'GetMenuInfo':
             $Result = $ModulesData->getMenuByProject('1');
-
         break;
     }
     

@@ -64,5 +64,4 @@ class Modules extends Database {
             $this->disconnect();
             return $this->Modules;
     }
-
 }

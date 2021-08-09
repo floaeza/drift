@@ -91,15 +91,12 @@
       success: function (response) {
         var MenuInfo = $.parseJSON(response);
 
-        alert(JSON.stringify(MenuInfo));
+          ModuleId = MenuInfo['id_modulo'];
+          CurrentModule = 'Menu';
 
+          MenuInfo = null;
 
-        // ModuleId = InfoDevice['ModuleId'];
-        // CurrentModule = InfoDevice['ModuleName'];
-        //
-        // InfoDevice = null;
-        //
-        // GetContents();
+          GetContents();
       }
     });
   }
