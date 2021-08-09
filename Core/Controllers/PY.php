@@ -220,6 +220,21 @@
                 endforeach;
                 echo json_encode($ArrayEPGInfo);
                     break;
+                case 'GetAllChannels':
+                    $ChannelsInfo = $PackagesData->getAllChannelList();
+                    foreach ($ChannelsInfo as $PreChannelRow):
+                        array_push($ArrayEPGInfo, array('SRCE' => $PreChannelRow['src'],
+                        'QLTY' => $PreChannelRow['id_calidad'],
+                        'PORT' => $PreChannelRow['puerto'],
+                        'STTN' => $PreChannelRow['numero_estacion'],
+                        'NAME' => $PreChannelRow['nombre_estacion'],
+                        'INDC' => $PreChannelRow['indicativo'],
+                        'LOGO' => $PreChannelRow['logo'],
+                        'IDCH' => $PreChannelRow['id_canal'],
+                        ));
+                    endforeach;
+                    
+                    break;
         }
 
          

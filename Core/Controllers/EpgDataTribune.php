@@ -199,11 +199,11 @@ if (is_readable('/var/www/html/mnt/nv/epg/')) {
         $program = explode('|', fgets($ProgramRecord));
         for ($i = 0; $i < count($arraySchedule); $i++) {
             if ($arraySchedule[$i][1] == $program[0])  {
-                if($arraySchedule[$i][0] == '10244' || $arraySchedule[$i][0] == '16619' || $arraySchedule[$i][0] == '10242' || $arraySchedule[$i][0] == '12508'){
-                    $OffsetZone = $Offti2;
-                }else{
-                    $OffsetZone = $Offti;
-                }
+                //if($arraySchedule[$i][0] == '10244' || $arraySchedule[$i][0] == '16619' || $arraySchedule[$i][0] == '10242' || $arraySchedule[$i][0] == '12508'){
+                //   $OffsetZone = $Offti2;
+                //}else{
+                //    $OffsetZone = $Offti;
+                //}
                 array_push($Programacion, array('STTN' => $arraySchedule[$i][0], //STATION
                     'DBKY' => $arraySchedule[$i][1], //DATABASEKEY
                     'TTLE' => ReplaceXtrainChar($program[1]), //TITLE

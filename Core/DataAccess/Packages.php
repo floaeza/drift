@@ -97,4 +97,23 @@ class Packages extends Database {
         return $this->PackagesId;
     }
 
+    function InsertChannelInPackage($NewChannel){
+        $this->function = 'InsertChannelInPackage';
+        $this->connect();
+        $this->insert("paquete_canal", $NewChannel);
+        $this->PackagesId = $this->getResult();
+        $this->disconnect();
+        return $this->PackagesId;
+    }
+
+    function getAllChannelList() {
+        $this->Function = 'getAllChannelList';
+        $this->connect();
+        $this->select("canales", "*", "estaciones ON canales.id_estacion = estaciones.id_estacion", "", "", "","");
+        $this->PackageList = $this->getResult();
+        $this->disconnect();
+
+        return $this->PackageList;
+    }
+
 }

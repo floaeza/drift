@@ -17,6 +17,8 @@
     $PackageId = !empty($_POST['PackageId']) ? $_POST['PackageId'] : '';
     $Package_name = !empty($_POST['Package_name']) ? $_POST['Package_name'] : '';
     $Package_description = !empty($_POST['Package_description']) ? $_POST['Package_description'] : '';
+
+    $Channels = !empty($_POST['Channels']) ? $_POST['Channels'] : '';
     
     switch ($Option){
         case 'GetChannels':
@@ -68,6 +70,19 @@
                 'descripcion_paquete' => $Package_description,    
                 ); 
             $PackagesData->InsertPackage($NewPackage);
+            break;
+        case 'CreateChannelinPackage':
+            $DataChannels = json_decode($Channels);
+            
+            foreach ($DataChannels as $DataChannel):    
+                $ChannelsToInsert = array(
+                    'id_canal' => $DataChannel[0],
+                    'id_paquete' => $PackageId, 
+                    'numero_canal' => $DataChannel[0]+5000,
+                     'canal_activo' => '1',  
+                    ); 
+                    $PackagesData->InsertChannelInPackage($ChannelsToInsert);
+            endforeach;
 
             break;
     }
