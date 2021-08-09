@@ -38,7 +38,8 @@
                 'MARK' => $DeviceInfo['marca'],
                 'MDL' => $DeviceInfo['modelo'],
                 'SWV' => $DeviceInfo['version_software'],
-                'LEC' => $DeviceInfo['ultima_ejecucion']
+                'LEC' => $DeviceInfo['ultima_ejecucion'],
+                'CON' => $DeviceInfo['control_remoto']
                 ));
             endforeach;
             echo json_encode($ArrayDeviceInfo);

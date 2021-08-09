@@ -5,31 +5,17 @@ var MacAddressAppControl;
 function InitialDataAppControl(){    
     // @ts-ignore
     if (typeof(ASTB) !== 'undefined') {
-        AminoDeviceAppControl();
-    // @ts-ignore
+        // @ts-ignore
+        MacAddressAppControl  = ASTB.GetMacAddress();
     } else if (typeof(ENTONE) !== 'undefined') {
-        KamaiDeviceAppControl();
-    // @ts-ignore
+        // @ts-ignore
+        MacAddressAppControl  = ENTONE.stb.getMacAddress();
     } else if (typeof(gSTB) !== 'undefined'){
-        InfomirDeviceAppControl();
+        // @ts-ignore
+        MacAddressAppControl  = gSTB.GetDeviceMacAddress();
+        //alert(MacAddressAppControl);
     }           
 }
-
-function AminoDeviceAppControl(){
-    // @ts-ignore
-    MacAddressAppControl  = ASTB.GetMacAddress();
-}
-
-function KamaiDeviceAppControl(){
-    // @ts-ignore
-    MacAddressAppControl  = ENTONE.stb.getMacAddress();
-}
-
-function InfomirDeviceAppControl(){
-    // @ts-ignore
-    MacAddressAppControl  = gSTB.GetDeviceMacAddress();
-}
-
 
 function DBAppControl(){
     // @ts-ignore
@@ -236,10 +222,27 @@ function ChangeAppControl(){
         }
     }
 }
-
 InitialDataAppControl();
-
-if (typeof(gSTB) !== 'undefined'){
-    
+// @ts-ignore
+$.ajax({
+    type: "POST",
+    url: '/BBINCO/TV/Core/Controllers/Firebase.php',
+    data: { 
+        Option    : 'GetDeviceByMac',
+        mac_address: MacAddressAppControl
+    }, 
+    async: false,
+    success: function (response) {
+        // @ts-ignore
+        STBControll  = $.parseJSON(response);
+        //alert(Comando[0].MAC);
+        //alert('Wenas Nochis');
+    }
+});
+//lert(STBControll[0]['CON']);
+if(STBControll[0]['CON']=="1"){
+    //alert();
     setInterval(DBAppControl, 1000);
-}     
+}
+
+     
