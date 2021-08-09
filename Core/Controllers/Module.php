@@ -58,9 +58,9 @@
         break;
 
         case 'GetMenuInfo':
-        $Result = $ModulesData->getMenuByProject('1');
+            $Result = $ModulesData->getMenuByProject('1');
 
-            break;
+        break;
     }
     
     echo json_encode($Result);
