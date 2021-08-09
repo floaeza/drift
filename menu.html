@@ -81,21 +81,24 @@
   function GetModule() {
     $.ajax({
       type: 'POST',
-      url: 'http://' + ServerIp + '/BBINCO/TV/Core/Controllers/Index.php',
+      url: 'http://' + ServerIp + '/BBINCO/TV/Core/Controllers/Module.php',
       async: false,
       data: {
-        Option: 'TVLOAD',
+        Option: 'GetMenuInfo',
         MacAddress: MACAddress,
       },
       success: function (response) {
-        var InfoDevice = $.parseJSON(response);
+        var MenuInfo = $.parseJSON(response);
 
-        ModuleId = InfoDevice['ModuleId'];
-        CurrentModule = InfoDevice['ModuleName'];
+        alert(MenuInfo);
 
-        InfoDevice = null;
 
-        GetContents();
+        // ModuleId = InfoDevice['ModuleId'];
+        // CurrentModule = InfoDevice['ModuleName'];
+        //
+        // InfoDevice = null;
+        //
+        // GetContents();
       }
     });
   }
@@ -103,7 +106,7 @@
   function GetContents() {
     $.ajax({
       method: 'POST',
-      url: 'http://' + ServerIp + '/BBINCO/TV/tvContent.php',
+      url: 'http://' + ServerIp + '/BBINCO/TV/menuContent.php',
       async: false,
       data: {
         MacAddress: MACAddress,

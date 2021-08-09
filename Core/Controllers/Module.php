@@ -51,9 +51,15 @@
             
             $Result = $ModulesList;
         break;
+
         case 'GetAllMembers':
             $ModulesInfo = $LocationsData->getMembers();
             $Result = $ModulesInfo;
+        break;
+
+        case 'GetMenuInfo':
+        $Result = $ModulesData->getMenuByProject('1');
+
             break;
     }
     
