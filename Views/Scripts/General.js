@@ -53,7 +53,6 @@
 
             Debug('Window.tizen !== undefined');
             var PageH = Page.replace('php','html');
-            alert('location.replace('+PageH);
             location.replace(PageH);
         } else {
             location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
