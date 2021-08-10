@@ -681,4 +681,4 @@ def deleteline(slinea):
 for pos in range(len(listDays)):
     start(listDays[pos], pos)
 
-os.system ("python3 /var/www/html/BBINCO/TV/Core/Controllers/main.py")
+# os.system ("python3 /var/www/html/BBINCO/TV/Core/Controllers/main.py")

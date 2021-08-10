@@ -14,11 +14,13 @@
     $PackagesData = new Packages('system', $CurrentController);
     
     $Option = !empty($_POST['Option']) ? $_POST['Option'] : '';
-    $PackageId = !empty($_POST['PackageId']) ? $_POST['PackageId'] : '';
+    $PackageId = !empty($_POST['PackageId']) ? $_POST['PackageId'] : '10';
     $Package_name = !empty($_POST['Package_name']) ? $_POST['Package_name'] : '';
     $Package_description = !empty($_POST['Package_description']) ? $_POST['Package_description'] : '';
 
     $Channels = !empty($_POST['Channels']) ? $_POST['Channels'] : '';
+
+    // $Option = 'UpdateGuide';
     
     switch ($Option){
         case 'GetChannels':
@@ -91,7 +93,26 @@
                     $PackageID = $PackageId; 
                     $PackagesData->deleteChannelInPackage($ChannelID, $PackageID);
             endforeach;
-
+            break;
+        case 'UpdatePackage':
+            $NewPackage = array(
+                'nombre_paquete' => $Package_name,
+                'descripcion_paquete' => $Package_description,    
+                ); 
+            $PackagesData->updatePackage($PackageId, $NewPackage);
+            break;
+        case 'UpdateGuide':
+            $NewPackage = array(
+                'valor_parametro' => $PackageId,   
+                ); 
+            $PackagesData->updateParameter($NewPackage);
+        //    $resultado = shell_exec('cd /var/www/html/BBINCO/TV/Core/Controllers && python3 DebugTr.py');   
+        //    $Result= "$resultado\n"; 
+            /* Añade redirección, por lo que podemos obtener stderr. */
+            $gestor = popen('cd /var/www/html/BBINCO/TV/Core/Controllers && python3 DebugTr.py', 'r');
+            $leer = fread($gestor, 2096);
+            $Result = $leer;
+            pclose($gestor);
             break;
     }
     

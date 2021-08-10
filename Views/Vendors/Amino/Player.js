@@ -77,6 +77,7 @@
         StopVideo();
 
         // Reproduce el video
+        Debug('src='+ Source);
         AVMedia.Play('src='+ Source);
 
         // Maximiza el video en caso de que no este en pantalla completa

@@ -125,4 +125,23 @@ class Packages extends Database {
         return $this->PackagesId;
     }
 
+    function updatePackage($PackageId, $PackageInfo){
+        $this->Function = 'updatePackage';
+        $this->connect();
+        $this->update("cat_paquete", $PackageInfo, "id_paquete = '$PackageId'" );
+        $this->PackagesId = $this->getResult();
+        $this->disconnect();
+        return $this->PackagesId;
+    }
+
+    function updateParameter($infoPackage){
+        $this->Function = 'updateParameter';
+        $this->connect();
+        $this->update("parametros", $infoPackage, "id_parametro = '18'" );
+        $this->PackagesId = $this->getResult();
+        $this->disconnect();
+        return $this->PackagesId;
+    }
+
+
 }
