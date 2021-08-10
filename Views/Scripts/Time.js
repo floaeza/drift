@@ -54,7 +54,7 @@
         
         FormatDateAndHour = moment().subtract(Offset, 'hours').format('MMM, DD / h:mm A');
         CurrentStbDate = moment().subtract(Offset, 'hours').format('Y-MM-DD h:mm:ss');
-        alert("Aleeert");
+    if(typeof(ASTB) !== 'undefined'){ alert("Aleeert"); }
         //Debug('################################################ FormatDateAndHour '+FormatDateAndHour);
         //Debug('################################################ CurrentStbDate '+CurrentStbDate);
 
