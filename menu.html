@@ -183,15 +183,15 @@
 
   setTimeout(function(){ SetFooterScripts(); }, 900);
 
+  setTimeout(function(){ SetMenuElements(); }, 1000);
+  function SetMenuElements(){
+    // Contenido multimedia para Menu
 
+    var MainLogo = document.getElementById('MainLogo');
 
-  // Contenido multimedia para Menu
+    MainLogo.src = IndexLogo;
 
-  var MainLogo = document.getElementById('MainLogo');
-
-      MainLogo.src = IndexLogo;
-
-      Debug('------------------->>>>>>>> MAINGLOGO: '+MainLogo);
-
+    console.log('------------------->>>>>>>> MAINGLOGO: '+MainLogo);
+  }
 </script>
 </html>
