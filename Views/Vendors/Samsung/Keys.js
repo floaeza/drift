@@ -66,7 +66,7 @@ function registerkeys(Page){
 
         if (ActiveConnectionType !== 0) {
             if(Page === 'index') {
-                SetData();
+                SetIndexData();
             }
         }
 
@@ -75,7 +75,7 @@ function registerkeys(Page){
             if (value == webapis.network.NetworkState.GATEWAY_CONNECTED) {
                 // Something you want to do when network is connected again
                 if(Page === 'index') {
-                    SetData();
+                    SetIndexData();
                 }
             }
         });
