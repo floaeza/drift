@@ -204,9 +204,16 @@
  */
     function GetCurrentHour(){
 
-        var GDate = new Date(),
-            CurrentHour = GDate.getHours(), 
+        var GDate = new Date();
+
+        console.log('------> Hour! = '+ GDate.getHours());
+        console.log('------> Offset! = '+Offset);
+
+        var CurrentHour = GDate.getHours() - Offset,
             CurrentMinute = '';
+
+        console.log('------> HOUR - Offset! = '+CurrentHour);
+
         if(GDate.getMinutes() > 30){
             CurrentMinute = '30';
         }else{
@@ -220,8 +227,6 @@
         CurrentMinute = null;
         CurrentHour = null;
 
-        console.log('------> Hour! = '+Hour);
-        console.log('------> Offset! = '+Offset);
         return Hour;
     }
     
