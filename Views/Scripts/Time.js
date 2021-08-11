@@ -54,7 +54,9 @@
         
         FormatDateAndHour = moment().subtract(Offset, 'hours').format('MMM, DD / h:mm A');
         CurrentStbDate = moment().subtract(Offset, 'hours').format('Y-MM-DD h:mm:ss');
-        if(typeof(ASTB) !== 'undefined'){ Browser.CacheFlush(); }
+        if(typeof(ASTB) !== 'undefined'){ 
+            Debug(JSON.stringify(Browser.GetStats()));
+            Browser.CacheFlush(); }
         //Debug('################################################ FormatDateAndHour '+FormatDateAndHour);
         //Debug('################################################ CurrentStbDate '+CurrentStbDate);
 
