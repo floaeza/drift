@@ -27,7 +27,7 @@ $JsonLibraries['ServerSource']      = 'http://'.$ServerIp.'/BBINCO/TV/';
 $JsonLibraries['MultimediaSource']  = 'http://'.$ServerIp.'/Multimedia/';
 $JsonLibraries['MoviesSource']      = 'http://'.$ServerIp.'/vod/mvs/';
 $JsonLibraries['SeriesSource']      = 'http://'.$ServerIp.'/vod/srs/';
-
+$JsonLibraries['MenuBackgrounds']   = $JsonLibraries['ServerSource'].'Media/Menu/'.$Client;
 
 $ServerSource = 'http://'.$ServerIp.'/BBINCO/TV/';
 
