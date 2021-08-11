@@ -72,7 +72,7 @@ if($CurrentTime > $EffectiveTime || $Status === false){
     /* STYLES HEADER > Tema > Template */
     array_push($StylesHeader, $Libraries['MenuStyles'].$ModuleInfo['opcion_template'].'.css');
 
-    array_push($Variables, array('IndexLogo'=>$Libraries['LogosPath'].$ConfigData->getConfigByName('IndexLogo'),
+    array_push($Variables, array('IndexLogo'=>$Libraries['LogosPath'].$ConfigData->getConfigByName('EpgLogo'),
         'Template' =>$Libraries['MenuTemplates'].$ModuleInfo['opcion_template'].'.tpl'
     ));
 
@@ -82,7 +82,6 @@ if($CurrentTime > $EffectiveTime || $Status === false){
     array_push($ScriptFooter, $VendorFolder.$Libraries['Events']);
 
     array_push($ScriptFooter, $VendorFolder.$Libraries['Player']);
-    array_push($ScriptFooter, $Libraries['Tv']);
 
     array_push($ScriptFooter, $Libraries['MenuScripts'].$ModuleInfo['opcion_template'].'.js');
 
