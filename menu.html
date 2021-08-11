@@ -166,7 +166,7 @@
       script = document.createElement('script');
       script.setAttribute('type', 'text/javascript');
       script.setAttribute('src', Data['ScriptsFooter'][i]);
-      alert(Data['ScriptsFooter'][i]);
+      console.log(Data['ScriptsFooter'][i]);
       footer.appendChild(script);
 
       // i++;
@@ -184,6 +184,7 @@
   setTimeout(function(){ SetFooterScripts(); }, 900);
 
   setTimeout(function(){ SetMenuElements(); }, 1000);
+
   function SetMenuElements(){
     // Contenido multimedia para Menu
 
