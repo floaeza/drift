@@ -220,6 +220,7 @@
         CurrentMinute = null;
         CurrentHour = null;
 
+        console.log('------> Hour! = '+Hour);
         console.log('------> Offset! = '+Offset);
         return Hour;
     }
