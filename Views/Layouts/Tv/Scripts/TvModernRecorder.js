@@ -419,7 +419,9 @@ function SetPvrInfo(){
     } else {
         //Debug("Current Module TV");
         //alert(gSTB.GetDeviceModel());
+        // @ts-ignore
         AvailableSize  = (parseInt(DiskInfo[DiskInfoIndex].espacio_disponible,10) / 1024);
+        // @ts-ignore
         TotalSize = (parseInt(DiskInfo[DiskInfoIndex].espacio_total,10) / 1024);
     }
     
@@ -2010,7 +2012,7 @@ function GetPvrInfo(){
         }
     });
 }
-
+GetPvrInfo();
 function CheckManualRecording(){
     $.ajax({
         type: 'POST',
