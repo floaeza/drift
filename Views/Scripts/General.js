@@ -206,13 +206,13 @@
 
         var GDate = new Date();
 
-        console.log('------> Hour! = '+ GDate.getHours());
-        console.log('------> Offset! = '+Offset);
+        Debug('------> Hour! = '+ GDate.getHours());
+        Debug('------> Offset! = '+Offset);
 
         var CurrentHour = GDate.getHours() - Offset,
             CurrentMinute = '';
 
-        console.log('------> HOUR - Offset! = '+CurrentHour);
+        Debug('------> HOUR - Offset! = '+CurrentHour);
 
         if(GDate.getMinutes() > 30){
             CurrentMinute = '30';
