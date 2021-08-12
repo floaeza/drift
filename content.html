@@ -87,6 +87,8 @@
         ModuleId = localStorage.getItem('Id');
         CurrentModule = localStorage.getItem('Module');
 
+        alert(CurrentModule);
+
         $.ajax({
             method: 'POST',
             url: 'http://' + ServerIp + '/BBINCO/TV/contentContent.php',
