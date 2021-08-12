@@ -14,14 +14,14 @@
         ImagesLeft          = '',
         ImagesArrayLeft     = [],
         IndexLeft           = 0,
-        MediaSourceLeft         = '../../Multimedia/PromoLeft/';
+        MediaSourceLeft         = Libraries['MultimediaSource']+'PromoLeft/';
 
     var ImageRight           = document.getElementById('ImageRight'),
         SliderIntervalRight  = '',
         ImagesRight          = '',
         ImagesArrayRight     = [],
         IndexRight           = 1,
-        MediaSourceRight     = '../../Multimedia/PromoRight/';
+        MediaSourceRight     = Libraries['MultimediaSource']+'PromoRight/';
 
 /*******************************************************************************
  * Contenido multimedia
