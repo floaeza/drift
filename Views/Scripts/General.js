@@ -32,6 +32,8 @@
         MM_MinSeconds         = 600000, // 30 minutos
         MM_DifferenceInSec    = '';
 
+        window.localStorage;
+
     function GoPage(Page, ModuleId, ChangeModule){
         if(CurrentModule === 'Tv' && StartDateChannel !== ''){
             SetChannelStatistics();
@@ -53,6 +55,10 @@
 
             Debug('Window.tizen !== undefined');
             var PageH = Page.replace('php','html');
+
+            localStorage.setItem('Module', ChangeModule);
+            localStorage.setItem('Id', ModuleId);
+
             location.replace(PageH);
         } else {
             location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);

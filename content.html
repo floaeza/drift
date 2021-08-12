@@ -74,40 +74,22 @@
                 //'[getMACAddress] call syncFunction exception [' + e.code + '] name: ' + e.name + ' message: ' + e.message);
             }
 
-            GetModule();
+            GetContents();
         } else {
             MACAddress = 'd0:03:df:20:c8:1e';
-            GetModule();
+            GetContents();
         }
     }
 
 
-    function GetModule() {
-        $.ajax({
-            type: 'POST',
-            url: 'http://' + ServerIp + '/BBINCO/TV/Core/Controllers/Module.php',
-            async: false,
-            data: {
-                Option: 'GetMenuInfo',
-                MacAddress: MACAddress,
-            },
-            success: function (response) {
-                var MenuInfo = $.parseJSON(response);
-
-                ModuleId = MenuInfo['id_modulo'];
-                CurrentModule = 'Menu';
-
-                MenuInfo = null;
-
-                GetContents();
-            }
-        });
-    }
-
     function GetContents() {
+
+        ModuleId = localStorage.getItem('Id');
+        CurrentModule = localStorage.getItem('Module');
+
         $.ajax({
             method: 'POST',
-            url: 'http://' + ServerIp + '/BBINCO/TV/menuContent.php',
+            url: 'http://' + ServerIp + '/BBINCO/TV/contentContent.php',
             async: false,
             data: {
                 MacAddress: MACAddress,
