@@ -31,7 +31,7 @@
        $.ajax({
             type: 'POST',
             async: false,
-            url: 'Core/Controllers/Template.php',
+            url: ServerSource+'Core/Controllers/Template.php',
             data: { 
                 Option : 'getMultimediaFolder',
                 ModuleName : 'PromoLeft'
@@ -53,7 +53,7 @@
         $.ajax({
             type: 'POST',
             async: false,
-            url: 'Core/Controllers/Template.php',
+            url: ServerSource+'Core/Controllers/Template.php',
             data: { 
                 Option : 'getMultimediaFolder',
                 ModuleName : 'PromoRight'

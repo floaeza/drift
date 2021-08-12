@@ -28,7 +28,7 @@
         IntervalRight      = 0,
         RightContentLength = 0,
         TemplateList        = '',
-        MediaSource         = '../../Multimedia/' + CurrentModule.replace(/\s/g,'') + '/';
+        MediaSource         = Libraries['MultimediaSource'] + CurrentModule.replace(/\s/g,'') + '/';
 
 /*******************************************************************************
  * Contenido multimedia
@@ -38,7 +38,7 @@
        $.ajax({
             type: 'POST',
             async: false,
-            url: 'Core/Controllers/Template.php',
+            url: ServerSource+'Core/Controllers/Template.php',
             data: { 
                 Option : 'getDetailTemplate',
                 Option2 : ModuleId

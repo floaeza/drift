@@ -17,7 +17,7 @@
         MoodsNodes      = [1,3,5,7],
         MoodsVideos     = ['Fireplace.mp4','Rain.mp4','Forest.mp4','Waterfall.mp4'],
         IndexMood       = -1,
-        MediaSource     = '../../MULTIMEDIA_VPL/Moods/';
+        MediaSource     = Libraries['ServerRoot']+'MULTIMEDIA_VPL/Moods/';
 
     var VideoScreen     = document.getElementById('video1');
         VideoScreen.style.display = 'none';
