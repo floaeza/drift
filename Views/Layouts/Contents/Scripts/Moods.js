@@ -22,6 +22,11 @@
     var VideoScreen     = document.getElementById('video1');
         VideoScreen.style.display = 'none';
 
+MoodsList[1].src = MediaSource + 'Fireplace.jpg';
+MoodsList[3].src = MediaSource + 'Rain.jpg';
+MoodsList[5].src = MediaSource + 'Forest.jpg';
+MoodsList[7].src = MediaSource + 'Waterfall.jpg';
+
 /*******************************************************************************
  * Contenido multimedia
  *******************************************************************************/
