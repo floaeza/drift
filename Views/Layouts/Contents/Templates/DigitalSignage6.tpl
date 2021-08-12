@@ -1,6 +1,6 @@
 
 <div id='Welcome'>
-    <img src='../../MULTIMEDIA_VPL/Logos/LogoWhite.png'>
+    <img id='MainLogo' src=''>
     <h1>Welcome</h1>
     <h2>We're happy you're here</h2>
 </div>

@@ -164,5 +164,19 @@
 
     setTimeout(function(){ SetFooterScripts(); }, 900);
 
+    setTimeout(function(){ SetLogo(); }, 1000);
+
+    function SetLogo(){
+        // Contenido multimedia para Menu
+
+        if(CurrentModule === 'Promos') {
+            var MainLogo = document.getElementById('MainLogo');
+
+            MainLogo.src = IndexLogo;
+
+            console.log('------------------->>>>>>>> MAIN LOGO: ' + MainLogo);
+        }
+    }
+
 </script>
 </html>
