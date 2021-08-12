@@ -123,8 +123,8 @@
                 'src' => $multicast,
                 'puerto' => $puerto,    
                 ); 
-            
-            UpdateChannel($ChannelId, $infoChannel);
+            $PackagesData->UpdateChannelNumber($ChannelId, $infoChannel, $PackageID);
+            $PackagesData->UpdateChannel($ChannelId, $infoChannel);
             break;
     }
     
