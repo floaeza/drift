@@ -27,7 +27,6 @@ $JsonLibraries['ServerSource']      = 'http://'.$ServerIp.'/BBINCO/TV/';
 $JsonLibraries['MultimediaSource']  = 'http://'.$ServerIp.'/Multimedia/';
 $JsonLibraries['MoviesSource']      = 'http://'.$ServerIp.'/vod/mvs/';
 $JsonLibraries['SeriesSource']      = 'http://'.$ServerIp.'/vod/srs/';
-$JsonLibraries['MenuBackgrounds']   = $JsonLibraries['ServerSource'].'Media/Menu/'.$Client;
 
 $ServerSource = 'http://'.$ServerIp.'/BBINCO/TV/';
 
@@ -71,8 +70,8 @@ $JsonLibraries['EpgDaysPath']   = $Libraries['ControllersPath'].'Epg/'.$Client;
 /* Imagenes */
     $Libraries['LogosPath']         = '../Media/Logos/'.$Client;
     $Libraries['ChannelsPath']      = '../Media/Channels/'.$Client;
-    $JsonLibraries['ChannelsPath']  = '../Media/Channels/'.$Client;
-    $JsonLibraries['MenuPath']      = '../Media/Menu/'.$Client;
+    $JsonLibraries['ChannelsPath']  = $JsonLibraries['ServerSource'].'Media/Channels/'.$Client;
+    $JsonLibraries['MenuPath']   = $JsonLibraries['ServerSource'].'Media/Menu/'.$Client;
     
 /* Temas */
      $Libraries['ThemesPath']      = $Libraries['StylesPath'].'Themes/';
