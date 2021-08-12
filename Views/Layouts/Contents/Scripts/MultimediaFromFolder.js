@@ -67,7 +67,7 @@
 
                 VideoScreen.src = MediaSource+Images3[Index3];
 
-                Debug('VideoScreen:: '+VideoScreen);
+                Debug('VideoScreen:: '+MediaSource+Images3[Index3]);
                 
                 VideoScreen.play();
                 
