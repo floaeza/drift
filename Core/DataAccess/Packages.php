@@ -142,6 +142,22 @@ class Packages extends Database {
         $this->disconnect();
         return $this->PackagesId;
     }
+    function UpdateChannel($ChannelId, $infoChannel){
+        $this->Function = 'UpdateChannel';
+        $this->connect();
+        $this->update("canales", $infoChannel, "id_canal = '$ChannelId'" );
+        $this->PackagesId = $this->getResult();
+        $this->disconnect();
+        return $this->PackagesId;
+    }
+    function UpdateChannelNumber($ChannelId, $infoChannel, $PackageID){
+        $this->Function = 'UpdateChannelNumber';
+        $this->connect();
+        $this->update("paquete_canal", $infoChannel, "id_canal = '$ChannelId' AND id_paquete ='$PackageID'" );
+        $this->PackagesId = $this->getResult();
+        $this->disconnect();
+        return $this->PackagesId;
+    }
 
 
 }

@@ -73,7 +73,7 @@
                     'QLTY' => $PreChannelRow['id_calidad'],
                     'PORT' => $PreChannelRow['puerto'],
                     'CHNL' => $PreChannelRow['numero_canal'],
-                    'STTN' => $PreChannelRow['numero_estacion'],
+                    'STTN' => $PreChannelRow['id_estacion'],
                     'NAME' => $PreChannelRow['nombre_estacion'],
                     'INDC' => $PreChannelRow['indicativo'],
                     'LOGO' => $PreChannelRow['logo'],

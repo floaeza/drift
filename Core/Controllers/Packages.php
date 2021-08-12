@@ -18,6 +18,10 @@
     $Package_name = !empty($_POST['Package_name']) ? $_POST['Package_name'] : '';
     $Package_description = !empty($_POST['Package_description']) ? $_POST['Package_description'] : '';
 
+    $ChannelId = !empty($_POST['ChannelId']) ? $_POST['ChannelId'] : '';
+    $multicast = !empty($_POST['multicast']) ? $_POST['multicast'] : '';
+    $puerto = !empty($_POST['puerto']) ? $_POST['puerto'] : '';
+
     $Channels = !empty($_POST['Channels']) ? $_POST['Channels'] : '';
 
     // $Option = 'UpdateGuide';
@@ -113,6 +117,14 @@
             $leer = fread($gestor, 2096);
             $Result = $leer;
             pclose($gestor);
+            break;
+        case 'UpdateChannel':
+            $infoChannel = array(
+                'src' => $multicast,
+                'puerto' => $puerto,    
+                ); 
+            
+            UpdateChannel($ChannelId, $infoChannel);
             break;
     }
     
