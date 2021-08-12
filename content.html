@@ -87,8 +87,6 @@
         ModuleId = localStorage.getItem('Id');
         CurrentModule = localStorage.getItem('Module');
 
-        alert(CurrentModule);
-
         $.ajax({
             method: 'POST',
             url: 'http://' + ServerIp + '/BBINCO/TV/contentContent.php',
@@ -102,7 +100,6 @@
                 Data = $.parseJSON(response);
 
                 IndexLogo = Data['Variables'][0].IndexLogo;
-                alert(IndexLogo);
 
                 TemplateSource = 'http://' + ServerIp + '/BBINCO/TV/'+Data['Variables'][0].Template;
 
@@ -171,13 +168,12 @@
 
     function SetLogo(){
         // Contenido multimedia para Promos
-alert(CurrentModule);
         if(CurrentModule === 'Promos') {
             var MainLogo = document.getElementById('MainLogo');
 
             MainLogo.src = IndexLogo;
 
-            alert('------------------->>>>>>>> MAIN LOGO: ' + IndexLogo);
+            console.log('------------------->>>>>>>> MAIN LOGO: ' + IndexLogo);
         }
     }
 
