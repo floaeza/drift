@@ -66,6 +66,8 @@
                 VideoScreen.style.display = 'inline';
 
                 VideoScreen.src = MediaSource+Images3[Index3];
+
+                Debug('VideoScreen:: '+VideoScreen);
                 
                 VideoScreen.play();
                 
