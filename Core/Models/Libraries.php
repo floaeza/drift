@@ -70,6 +70,7 @@ $Libraries['EpgDaysPath']       = $Libraries['ControllersPath'].'Epg/'.$Client;
 $JsonLibraries['EpgDaysPath']   = $Libraries['ControllersPath'].'Epg/'.$Client;
 /* Imagenes */
     $Libraries['LogosPath']         = '../Media/Logos/'.$Client;
+    $Libraries['LogoPath']          = $JsonLibraries['MediaSource'].'Media/Menu/'.$Client;
     $Libraries['ChannelsPath']      = '../Media/Channels/'.$Client;
     $JsonLibraries['ChannelsPath']  = $JsonLibraries['MediaSource'].'Media/Channels/'.$Client;
     $JsonLibraries['MenuPath']      = $JsonLibraries['MediaSource'].'Media/Menu/'.$Client;

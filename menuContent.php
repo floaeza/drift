@@ -72,7 +72,7 @@ if($CurrentTime > $EffectiveTime || $Status === false){
     /* STYLES HEADER > Tema > Template */
     array_push($StylesHeader, $Libraries['MenuStyles'].$ModuleInfo['opcion_template'].'.css');
 
-    array_push($Variables, array('IndexLogo'=>$Libraries['LogosPath'].$ConfigData->getConfigByName('EpgLogo'),
+    array_push($Variables, array('IndexLogo'=>$Libraries['LogoPath'].$ConfigData->getConfigByName('EpgLogo'),
         'Template' =>$Libraries['MenuTemplates'].$ModuleInfo['opcion_template'].'.tpl'
     ));
 
