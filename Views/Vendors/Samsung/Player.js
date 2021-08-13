@@ -123,6 +123,7 @@ function PlayDigitalChannel(Source){
 
 function PlayVideo(Source){
     // Guarda la estadistica
+    Debug('PlayVideo: '+Source);
     StopVideo();
 Debug('Player samsung');
     // Reproduce el video
