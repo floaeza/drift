@@ -22,6 +22,8 @@
     var VideoScreen     = document.getElementById('video1');
         VideoScreen.style.display = 'none';
 
+    var LoopVideo = true;
+
 MoodsList[1].src = MediaSource + 'Fireplace.jpg';
 MoodsList[3].src = MediaSource + 'Rain.jpg';
 MoodsList[5].src = MediaSource + 'Forest.jpg';
@@ -35,22 +37,34 @@ MoodsList[7].src = MediaSource + 'Waterfall.jpg';
         MoodsListActive = false;
         
         MoodsContainer.style.visibility = 'hidden';
-        
-        VideoScreen.style.display = 'inline';
 
-        VideoScreen.src = MediaSource + MoodsVideos[IndexMood];
+        if(localStorage.getItem('Id') === null) {
 
-        VideoScreen.play();
+            VideoScreen.style.display = 'inline';
+
+            VideoScreen.src = MediaSource + MoodsVideos[IndexMood];
+
+            VideoScreen.play();
+        } else {
+
+            VideoScreen.style.display = 'none';
+
+            PlayVideo(MediaSource + MoodsVideos[IndexMood]);
+        }
     }
     
     function ShowMoodsPanel(){
         MoodsListActive = true;
         
         MoodsContainer.style.visibility = 'visible';
-        
-        VideoScreen.style.display = 'none';
-        
-        VideoScreen.pause();
+
+        if(localStorage.getItem('Id') === null) {
+            VideoScreen.style.display = 'none';
+
+            VideoScreen.pause();
+        } else {
+            StopVideo();
+        }
     }
 
 
@@ -79,7 +93,11 @@ MoodsList[7].src = MediaSource + 'Waterfall.jpg';
         VideoScreen.src = MediaSource + MoodsVideos[IndexMood];
 
         VideoScreen.play();
-    }; 
+    };
+
+    function LoopMedia(){
+        PlayVideo(MediaSource + MoodsVideos[IndexMood]);
+    }
 
 /*******************************************************************************
  * Control 

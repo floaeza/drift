@@ -80,8 +80,6 @@
                     ImgSection3.style.visibility = 'hidden';
 
                     PlayVideo(MediaSource + Images3[Index3]);
-
-                    alert(MediaSource + Images3[Index3]);
                 }
 
                 Debug('2- VideoScreen::::::::: ' + MediaSource + Images3[Index3]);
