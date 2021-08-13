@@ -126,7 +126,21 @@ function PlayVideo(Source){
     StopVideo();
 
     // Reproduce el video
+    // Reproduce el video
+    try {
 
+        Player.open(Source);
+
+        // Maximiza el video en caso de que no este en pantalla completa
+        MaximizeTV();
+
+        Player.prepareAsync(function() {
+            Player.play();
+        });
+
+    } catch (error) {
+        Debug('PlayVideo > Error name = '+ error.name + ', Error message = ' + error.message);
+    }
 
     // Maximiza el video en caso de que no este en pantalla completa
     MaximizeTV();

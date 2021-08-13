@@ -19,6 +19,11 @@ var listener = {
         if(CurrentModule === 'Tv'){
             SetDigitalChannel();
         }
+        if(typeof(LoopVideo) !== 'undefined'){
+            if(LoopVideo === true){
+                LoopMedia();
+            }
+        }
         if(Executing === false){
             UpdateQuickInfoDevice();
         }

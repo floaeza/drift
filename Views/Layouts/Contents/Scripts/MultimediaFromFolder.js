@@ -16,6 +16,8 @@
         Index3          = 0,
         MediaSource     = Libraries['MultimediaSource']+ CurrentModule.replace(/\s/g, '') + '/';
 
+    var LoopVideo = true;
+
 /*******************************************************************************
  * Contenido multimedia
  *******************************************************************************/
@@ -63,17 +65,23 @@
                 clearTimeout(SliderInterval3);
 
                 ImgSection3.src = '';
-                VideoScreen.style.display = 'inline';
 
-                VideoScreen.src = MediaSource+Images3[Index3];
+                if(localStorage.getItem('Id') === null) {
 
-                Debug('VideoScreen:: '+MediaSource+Images3[Index3]);
-                
-                VideoScreen.play();
-                
+                    VideoScreen.style.display = 'inline';
+
+                    VideoScreen.src = MediaSource + Images3[Index3];
+
+                    VideoScreen.play();
+                } else {
+                    PlayVideo(MediaSource + Images3[Index3]);
+                }
+
+                Debug('VideoScreen:: ' + MediaSource + Images3[Index3]);
+
                 Index3++;
-                
-                if(Index3 > Images3.length - 1){ 
+
+                if (Index3 > Images3.length - 1) {
                     Index3 = 0;
                 }
             } else {
@@ -105,4 +113,10 @@
         Slider3();
 
         SliderInterval3 = setInterval(Slider3,7000);
-    }; 
+    };
+
+    function LoopMedia(){
+        Slider3();
+
+        SliderInterval3 = setInterval(Slider3,7000);
+    }
