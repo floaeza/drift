@@ -203,8 +203,11 @@ function MaximizeTV(){
         } else  {
             Player.setDisplayRect(0, 0, WindowMaxWidth, WindowMaxHeight);
         }
+    } else {
+        Player.setDisplayRect(0, 0, WindowMaxWidth, WindowMaxHeight);
     }
 }
+
 
 /* *****************************************************************************
  * Funcion para minimizar la TV
