@@ -131,10 +131,7 @@ Debug('Player samsung');
     try {
 
         Player.open(Source);
-
-        // Maximiza el video en caso de que no este en pantalla completa
-        MaximizeTV();
-
+        Debug('playvideo open: '+Source);
         Player.prepareAsync(function() {
             Player.play();
         });
