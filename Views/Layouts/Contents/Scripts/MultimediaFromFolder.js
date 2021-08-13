@@ -74,6 +74,9 @@
 
                     VideoScreen.play();
                 } else {
+
+                    VideoScreen.style.display = 'none';
+                    
                     PlayVideo(MediaSource + Images3[Index3]);
                 }
 
