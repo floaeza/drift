@@ -77,7 +77,7 @@
                     PlayVideo(MediaSource + Images3[Index3]);
                 }
 
-                Debug('VideoScreen:: ' + MediaSource + Images3[Index3]);
+                Debug('1- VideoScreen::::::::: ' + MediaSource + Images3[Index3]);
 
                 Index3++;
 
