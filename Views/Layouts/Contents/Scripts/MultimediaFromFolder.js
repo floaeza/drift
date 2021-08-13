@@ -76,7 +76,9 @@
                 } else {
 
                     VideoScreen.style.display = 'none';
-                    
+
+                    ImgSection3.style.visibility = 'hidden';
+
                     PlayVideo(MediaSource + Images3[Index3]);
                 }
 
@@ -93,6 +95,8 @@
     
                 ImgSection3.src = MediaSource+Images3[Index3];
 
+                ImgSection3.style.visibility = 'visible';
+                
                 Index3++;
 
                 if(Index3 > Images3.length - 1){
