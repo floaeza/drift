@@ -240,7 +240,7 @@ function RebootDevice(){
  * ****************************************************************************/
 
 function StopVideo(){
-    Debug('STOP VIDEO >');
+    Debug('STOP VIDEO >>>');
 
     try {
         Debug('STOP VIDEO > close');
