@@ -59,6 +59,7 @@
         Debug('############################### ShowInfo');
         // Si tiene una fecha ya registrada guarda estadisticas en la BD
         if(StartDateChannel !== ''){
+            Debug('############################### ANTES DE SetChannelStatistics');
             SetChannelStatistics();
             Debug('############################### SetChannelStatistics');
         }

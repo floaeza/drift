@@ -9,6 +9,7 @@ class Packages extends Database {
     private $PackageList;
     private $PackageListById;
     private $PackagesId;
+    private $PackageListById2;
     
     public function __construct($MacAddress, $CurrentModule) {
         $this->ClassFile = 'Packages';
@@ -158,6 +159,39 @@ class Packages extends Database {
         $this->disconnect();
         return $this->PackagesId;
     }
+
+    function UpdateChannelName($infoChannel, $StationID){
+        $this->Function = 'UpdateChannelName';
+        $this->connect();
+        $this->update("estaciones", $infoChannel, "id_estacion = '$StationID'" );
+        $this->PackagesId = $this->getResult();
+        $this->disconnect();
+        return $this->PackagesId;
+    }
+
+    function getPackageListById2($PackageId) {
+        $this->Function = 'getPackageListById2';
+        $this->connect();
+        $this->select("paquete_canal","paquete_canal.id_paquete_canal, canales.id_canal, canales.posicion, canales.audio, canales.programa, paquete_canal.id_paquete, paquete_canal.id_modulo, paquete_canal.numero_canal, canales.src, canales.puerto, canales.id_calidad, estaciones.nombre_canal, estaciones.id_estacion, estaciones.numero_estacion, estaciones.nombre_estacion, estaciones.indicativo, paquete_canal.canal_activo",
+                                      "canales ON paquete_canal.id_canal = canales.id_canal",
+                                      "estaciones ON canales.id_estacion = estaciones.id_estacion",
+                                      "",
+                                      "","id_paquete = '$PackageId'","","","paquete_canal.numero_canal ASC");
+        $this->PackageListById2 = $this->getResult();
+
+        $this->disconnect();
+
+        return $this->PackageListById2;
+    }
+    function deletePackageID($PackageID){
+        $this->function = 'deletePackageID';
+        $this->connect();
+        $this->delete("cat_paquete", "id_paquete = '$PackageID'");
+        $this->PackagesId = $this->getResult();
+        $this->disconnect();
+        return $this->PackagesId;
+    }
+
 
 
 }

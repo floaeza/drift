@@ -94,7 +94,7 @@
                 }
             });
         }
-    } 
+    }
             
     function SetModuleStatistics(){ 
             SM_FormatStartDate     = getDate(SM_StartDateModule);
