@@ -11,9 +11,9 @@ import os
 
 today = datetime.today()
 today = today
-listDays = ["", ""]
+listDays = ["", "", "", "", ""]
 
-for n in range(2):
+for n in range(5):
     listDays[n] = today.strftime("%Y-%m-%d")
     today = today + timedelta(days=1)
 
