@@ -13,12 +13,16 @@ today = datetime.today()
 today = today
 listDays = ["", "", "", "", ""]
 
+
 for n in range(5):
     listDays[n] = today.strftime("%Y-%m-%d")
     today = today + timedelta(days=1)
 
 ####Numero de paquetes + 1#########
 paquetes = 3
+
+
+inici = 1
 
 def start(day, pos):
     dataProgram = {}
@@ -47,7 +51,7 @@ def start(day, pos):
 
 
 
-    for ids in range(1, paquetes):
+    for ids in range(inici, paquetes):
         contadorCanal = 0
         data = {}
         data["C_Length"]=0

@@ -9,7 +9,7 @@
         MenuSelected    = document.getElementById('MenuSelected'),
         MenuListNodes   = document.getElementById('MenuBar').childNodes;
         BackgroundsNodes = '';
-        ImagesUrl       = './Media/Menu/',
+        ImagesUrl       = ServerSource+'Media/Menu/',
         FormatDate      = '',
         FormatHour      = '',
         MenuList        = '',
@@ -20,7 +20,7 @@
         $.ajax({
             type: 'POST',
             async: false,
-            url: 'Core/Controllers/Menu.php',
+            url: ServerSource + 'Core/Controllers/Menu.php',
             data: { 
                 Option : 'GetModules',
                 ProjectId: Device['Services']['ProjectId']

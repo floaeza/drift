@@ -123,10 +123,22 @@ function PlayDigitalChannel(Source){
 
 function PlayVideo(Source){
     // Guarda la estadistica
+    Debug('PlayVideo: '+Source);
     StopVideo();
-
+Debug('Player samsung');
     // Reproduce el video
+    // Reproduce el video
+    try {
 
+        Player.open(Source);
+        Debug('playvideo open: '+Source);
+        Player.prepareAsync(function() {
+            Player.play();
+        });
+
+    } catch (error) {
+        Debug('PlayVideo > Error name = '+ error.name + ', Error message = ' + error.message);
+    }
 
     // Maximiza el video en caso de que no este en pantalla completa
     MaximizeTV();
@@ -191,8 +203,11 @@ function MaximizeTV(){
         } else  {
             Player.setDisplayRect(0, 0, WindowMaxWidth, WindowMaxHeight);
         }
+    } else {
+        Player.setDisplayRect(0, 0, WindowMaxWidth, WindowMaxHeight);
     }
 }
+
 
 /* *****************************************************************************
  * Funcion para minimizar la TV
@@ -225,7 +240,7 @@ function RebootDevice(){
  * ****************************************************************************/
 
 function StopVideo(){
-    Debug('STOP VIDEO >');
+    Debug('STOP VIDEO >>>');
 
     try {
         Debug('STOP VIDEO > close');

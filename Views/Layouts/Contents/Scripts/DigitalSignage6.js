@@ -14,14 +14,14 @@
         ImagesLeft          = '',
         ImagesArrayLeft     = [],
         IndexLeft           = 0,
-        MediaSourceLeft         = '../../Multimedia/PromoLeft/';
+        MediaSourceLeft         = Libraries['MultimediaSource']+'PromoLeft/';
 
     var ImageRight           = document.getElementById('ImageRight'),
         SliderIntervalRight  = '',
         ImagesRight          = '',
         ImagesArrayRight     = [],
         IndexRight           = 1,
-        MediaSourceRight     = '../../Multimedia/PromoRight/';
+        MediaSourceRight     = Libraries['MultimediaSource']+'PromoRight/';
 
 /*******************************************************************************
  * Contenido multimedia
@@ -31,7 +31,7 @@
        $.ajax({
             type: 'POST',
             async: false,
-            url: 'Core/Controllers/Template.php',
+            url: ServerSource+'Core/Controllers/Template.php',
             data: { 
                 Option : 'getMultimediaFolder',
                 ModuleName : 'PromoLeft'
@@ -53,7 +53,7 @@
         $.ajax({
             type: 'POST',
             async: false,
-            url: 'Core/Controllers/Template.php',
+            url: ServerSource+'Core/Controllers/Template.php',
             data: { 
                 Option : 'getMultimediaFolder',
                 ModuleName : 'PromoRight'

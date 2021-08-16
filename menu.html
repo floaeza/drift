@@ -61,6 +61,7 @@
           i = 0;
 
   var init = function() {
+
     if (window.tizen !== undefined) {
       b2bcontrol = window.b2bapis.b2bcontrol;
 
@@ -74,6 +75,9 @@
       }
 
       GetModule();
+    } else {
+      MACAddress = 'd0:03:df:20:c8:1e';
+      GetModule();
     }
   }
 
@@ -81,21 +85,21 @@
   function GetModule() {
     $.ajax({
       type: 'POST',
-      url: 'http://' + ServerIp + '/BBINCO/TV/Core/Controllers/Index.php',
+      url: 'http://' + ServerIp + '/BBINCO/TV/Core/Controllers/Module.php',
       async: false,
       data: {
-        Option: 'TVLOAD',
+        Option: 'GetMenuInfo',
         MacAddress: MACAddress,
       },
       success: function (response) {
-        var InfoDevice = $.parseJSON(response);
+        var MenuInfo = $.parseJSON(response);
 
-        ModuleId = InfoDevice['ModuleId'];
-        CurrentModule = InfoDevice['ModuleName'];
+          ModuleId = MenuInfo['id_modulo'];
+          CurrentModule = 'Menu';
 
-        InfoDevice = null;
+          MenuInfo = null;
 
-        GetContents();
+          GetContents();
       }
     });
   }
@@ -103,7 +107,7 @@
   function GetContents() {
     $.ajax({
       method: 'POST',
-      url: 'http://' + ServerIp + '/BBINCO/TV/tvContent.php',
+      url: 'http://' + ServerIp + '/BBINCO/TV/menuContent.php',
       async: false,
       data: {
         MacAddress: MACAddress,
@@ -177,5 +181,17 @@
   //var FooterInterval = setInterval(function(){ SetFooterScripts(); }, 500);
 
   setTimeout(function(){ SetFooterScripts(); }, 900);
+
+  setTimeout(function(){ SetMenuElements(); }, 1000);
+
+  function SetMenuElements(){
+    // Contenido multimedia para Menu
+
+    var MainLogo = document.getElementById('MainLogo');
+
+    MainLogo.src = IndexLogo;
+
+    console.log('------------------->>>>>>>> MAIN LOGO: '+MainLogo);
+  }
 </script>
 </html>

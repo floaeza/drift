@@ -78,7 +78,8 @@
                     'INDC' => $PreChannelRow['indicativo'],
                     'LOGO' => $PreChannelRow['logo'],
                     'NACH' => $PreChannelRow['nombre_canal'],
-                    'IDCH' => $PreChannelRow['id_canal']
+                    'IDCH' => $PreChannelRow['id_canal'],
+                    'IDSTTN' => $PreChannelRow['id_estacion']
                     ));
                 endforeach;
                 echo json_encode($ArrayEPGInfo);
@@ -230,6 +231,26 @@
                         'NAME' => $PreChannelRow['nombre_estacion'],
                         'INDC' => $PreChannelRow['indicativo'],
                         'LOGO' => $PreChannelRow['logo'],
+                        'IDCH' => $PreChannelRow['id_canal'],
+                        ));
+                    endforeach;
+                    echo json_encode($ArrayEPGInfo);
+                    break;
+                case 'GetChannelsInfoBypackage2':
+                    $PreChannalesArray  = $PackagesData->getPackageListById2($PackageID);
+                    foreach ($PreChannalesArray as $PreChannelRow):
+                        array_push($ArrayEPGInfo, array('PSCN' => $PreChannelRow['posicion'],
+                        'ADIO' => $PreChannelRow['audio'],
+                        'PRGM' => $PreChannelRow['programa'],
+                        'SRCE' => $PreChannelRow['src'],
+                        'QLTY' => $PreChannelRow['id_calidad'],
+                        'PORT' => $PreChannelRow['puerto'],
+                        'CHNL' => $PreChannelRow['numero_canal'],
+                        'STTN' => $PreChannelRow['id_estacion'],
+                        'NAME' => $PreChannelRow['nombre_estacion'],
+                        'INDC' => $PreChannelRow['indicativo'],
+                        'STAT' => $PreChannelRow['canal_activo'],
+                        'NACH' => $PreChannelRow['nombre_canal'],
                         'IDCH' => $PreChannelRow['id_canal'],
                         ));
                     endforeach;

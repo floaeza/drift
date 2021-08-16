@@ -32,6 +32,8 @@
         MM_MinSeconds         = 600000, // 30 minutos
         MM_DifferenceInSec    = '';
 
+        window.localStorage;
+
     function GoPage(Page, ModuleId, ChangeModule){
         if(CurrentModule === 'Tv' && StartDateChannel !== ''){
             SetChannelStatistics();
@@ -48,8 +50,19 @@
         Debug('SetModuleStatistics ---> ');
         
         Debug(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
-        
-        location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
+
+        if (window.tizen !== undefined) {
+
+            Debug('Window.tizen !== undefined');
+            var PageH = Page.replace('php','html');
+
+            localStorage.setItem('Module', ChangeModule);
+            localStorage.setItem('Id', ModuleId);
+
+            location.replace(PageH);
+        } else {
+            location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
+        }
     }
     
     function SetChannelStatistics(){ 
@@ -81,7 +94,7 @@
                 }
             });
         }
-    } 
+    }
             
     function SetModuleStatistics(){ 
             SM_FormatStartDate     = getDate(SM_StartDateModule);
@@ -197,9 +210,10 @@
  */
     function GetCurrentHour(){
 
-        var GDate = new Date(),
-            CurrentHour = GDate.getHours(), 
+        var GDate = new Date();
+        var CurrentHour = GDate.getHours() - Offset,
             CurrentMinute = '';
+
         if(GDate.getMinutes() > 30){
             CurrentMinute = '30';
         }else{

@@ -11,16 +11,16 @@ function Blue(){
 }
 
 function Green(){
-    player.play({
-        uri: 'http://10.0.3.205:8080//media/USB-E0D55EA574F1F4718944A9E1-1/378_Diseñando tu Amor_undefined.mp4',
-        solution: 'auto'
-    });
+    //player.play({
+    //    uri: 'http://10.0.3.205:8080//media/USB-E0D55EA574F1F4718944A9E1-1/378_Diseñando tu Amor_undefined.mp4',
+    //    solution: 'auto'
+    //});
 }
 
 function Yellow(){
-    if(typeof(ASTB) !== 'undefined') {
-        Browser.Action(16);
-    }
+    //if(typeof(ASTB) !== 'undefined') {
+    //    Browser.Action(16);
+    //}
 }
 
 function Close(){

@@ -1,8 +1,8 @@
 <div id='MoodsList'>
-    <img class='Mood' src='../../MULTIMEDIA_VPL/Moods/Fireplace.jpg'>
-    <img class='Mood' src='../../MULTIMEDIA_VPL/Moods/Rain.jpg'>
-    <img class='Mood' src='../../MULTIMEDIA_VPL/Moods/Forest.jpg'>
-    <img class='Mood' src='../../MULTIMEDIA_VPL/Moods/Waterfall.jpg'>
+    <img class='Mood' src=''>
+    <img class='Mood' src=''>
+    <img class='Mood' src=''>
+    <img class='Mood' src=''>
 
 
     <div class='Moods'>

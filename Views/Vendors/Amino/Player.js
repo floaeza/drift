@@ -59,8 +59,10 @@
         Debug('############################### ShowInfo');
         // Si tiene una fecha ya registrada guarda estadisticas en la BD
         if(StartDateChannel !== ''){
-            SetChannelStatistics();
+            Debug('############################### ANTES DE SetChannelStatistics');
+            //SetChannelStatistics();
             Debug('############################### SetChannelStatistics');
+            //
         }
         
         // Actualiza la fecha inicio de la reproduccion del canal */
@@ -77,6 +79,7 @@
         StopVideo();
 
         // Reproduce el video
+        Debug('src='+ Source);
         AVMedia.Play('src='+ Source);
 
         // Maximiza el video en caso de que no este en pantalla completa

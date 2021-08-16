@@ -121,7 +121,11 @@ Debug('########################### HandleEvent() ');
         // }
         else if(NUMBER_EVENT === STATUS_END_OF_STREAM){
             if(CurrentModule === 'Tv'){
-                SetDigitalChannel();
+            	if (PlayingChannel == true){
+            		TvChannelUp();
+            	}else{
+            		SetDigitalChannel();
+            	}
             } else if(CurrentModule === 'Movies'){
                 //EndOfMovie();
                 Debug('STATUS_END_OF_STREAM');

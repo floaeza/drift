@@ -54,7 +54,13 @@
         
         FormatDateAndHour = moment().subtract(Offset, 'hours').format('MMM, DD / h:mm A');
         CurrentStbDate = moment().subtract(Offset, 'hours').format('Y-MM-DD h:mm:ss');
+<<<<<<< HEAD
 		if(typeof(ASTB) !== 'undefined'){ Browser.CacheFlush(); }
+=======
+        if(typeof(ASTB) !== 'undefined'){ 
+            Debug(JSON.stringify(Browser.GetStats()));
+            Browser.CacheFlush(); }
+>>>>>>> d0e8e2213033d6b8f970192153bf1861136235d6
         //Debug('################################################ FormatDateAndHour '+FormatDateAndHour);
         //Debug('################################################ CurrentStbDate '+CurrentStbDate);
 
@@ -73,7 +79,7 @@
             Debug('------------------------------------------------ Device::else');
         }
 
-    Debug('############################################################### FormatHour1 === '+FormatHour);
+        Debug('############################################################### FormatHour1 === '+FormatHour);
 
 
         if(CurrentModule === 'Tv'){
@@ -139,5 +145,6 @@
     setTimeout(SetDate,1000);
     
     /* Agrega intervalo 50000 = 50 segundos*/
+    
     TimerDate = setInterval(SetDate, 50000);
 

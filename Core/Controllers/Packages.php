@@ -14,11 +14,20 @@
     $PackagesData = new Packages('system', $CurrentController);
     
     $Option = !empty($_POST['Option']) ? $_POST['Option'] : '';
-    $PackageId = !empty($_POST['PackageId']) ? $_POST['PackageId'] : '';
+    $PackageId = !empty($_POST['PackageId']) ? $_POST['PackageId'] : '12';
     $Package_name = !empty($_POST['Package_name']) ? $_POST['Package_name'] : '';
     $Package_description = !empty($_POST['Package_description']) ? $_POST['Package_description'] : '';
 
+    $ChannelId = !empty($_POST['ChannelId']) ? $_POST['ChannelId'] : '1';
+    $multicast = !empty($_POST['multicast']) ? $_POST['multicast'] : 'igmp://7.7.7.7';
+    $puerto = !empty($_POST['puerto']) ? $_POST['puerto'] : '3001';
+    $numero_canal = !empty($_POST['numero_canal']) ? $_POST['numero_canal'] : '777';
+    $nombre_canal = !empty($_POST['nombre_canal']) ? $_POST['nombre_canal'] : 'sylas';
+    $status_canal = !empty($_POST['status_canal']) ? $_POST['status_canal'] : '0';
+    $StationID = !empty($_POST['StationID']) ? $_POST['StationID'] : '477';
     $Channels = !empty($_POST['Channels']) ? $_POST['Channels'] : '';
+
+    //   $Option = 'UpdateChannel';
     
     switch ($Option){
         case 'GetChannels':
@@ -91,7 +100,45 @@
                     $PackageID = $PackageId; 
                     $PackagesData->deleteChannelInPackage($ChannelID, $PackageID);
             endforeach;
-
+            break;
+        case 'UpdatePackage':
+            $NewPackage = array(
+                'nombre_paquete' => $Package_name,
+                'descripcion_paquete' => $Package_description,    
+                ); 
+            $PackagesData->updatePackage($PackageId, $NewPackage);
+            break;
+        case 'UpdateGuide':
+            $NewPackage = array(
+                'valor_parametro' => $PackageId,   
+                ); 
+            $PackagesData->updateParameter($NewPackage);
+        //    $resultado = shell_exec('cd /var/www/html/BBINCO/TV/Core/Controllers && python3 DebugTr.py');   
+        //    $Result= "$resultado\n"; 
+            /* Añade redirección, por lo que podemos obtener stderr. */
+            $gestor = popen('cd /var/www/html/BBINCO/TV/Core/Controllers && python3 DebugTr.py', 'r');
+            $leer = fread($gestor, 2096);
+            $Result = $leer;
+            pclose($gestor);
+            break;
+        case 'UpdateChannel':
+            $infoChannel = array(
+                'src' => $multicast,
+                'puerto' => $puerto,    
+                ); 
+            $infoChannelNumber = array(
+                'numero_canal' => $numero_canal,
+                'canal_activo' => $status_canal,    
+                );
+            $infoChannelName = array(
+                'indicativo' => $nombre_canal,    
+                );  
+            $PackagesData->UpdateChannelName($infoChannelName, $StationID);
+            $PackagesData->UpdateChannelNumber($ChannelId, $infoChannelNumber, $PackageId);
+            $PackagesData->UpdateChannel($ChannelId, $infoChannel);
+            break;
+        case 'DeletePackageID':
+            $PackagesData->deletePackageID($PackageId);
             break;
     }
     

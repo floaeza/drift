@@ -14,7 +14,9 @@
         Images          = '',
         Images3         = [],
         Index3          = 0,
-        MediaSource     = '../../Multimedia/' + CurrentModule.replace(/\s/g, '') + '/';
+        MediaSource     = Libraries['MultimediaSource']+ CurrentModule.replace(/\s/g, '') + '/';
+
+    var LoopVideo = true;
 
 /*******************************************************************************
  * Contenido multimedia
@@ -24,7 +26,7 @@
        $.ajax({
             type: 'POST',
             async: false,
-            url: 'Core/Controllers/Template.php',
+            url: ServerSource + 'Core/Controllers/Template.php',
             data: { 
                 Option : 'getMultimediaFolder',
                 ModuleName : CurrentModule
@@ -63,15 +65,28 @@
                 clearTimeout(SliderInterval3);
 
                 ImgSection3.src = '';
-                VideoScreen.style.display = 'inline';
 
-                VideoScreen.src = MediaSource+Images3[Index3];
-                
-                VideoScreen.play();
-                
+                if(localStorage.getItem('Id') === null) {
+
+                    VideoScreen.style.display = 'inline';
+
+                    VideoScreen.src = MediaSource + Images3[Index3];
+
+                    VideoScreen.play();
+                } else {
+
+                    VideoScreen.style.display = 'none';
+
+                    ImgSection3.style.visibility = 'hidden';
+
+                    PlayVideo(MediaSource + Images3[Index3]);
+                }
+
+                Debug('2- VideoScreen::::::::: ' + MediaSource + Images3[Index3]);
+
                 Index3++;
-                
-                if(Index3 > Images3.length - 1){ 
+
+                if (Index3 > Images3.length - 1) {
                     Index3 = 0;
                 }
             } else {
@@ -79,6 +94,8 @@
                 VideoScreen.style.display = 'none';
     
                 ImgSection3.src = MediaSource+Images3[Index3];
+
+                ImgSection3.style.visibility = 'visible';
 
                 Index3++;
 
@@ -103,4 +120,10 @@
         Slider3();
 
         SliderInterval3 = setInterval(Slider3,7000);
-    }; 
+    };
+
+    function LoopMedia(){
+        Slider3();
+
+        SliderInterval3 = setInterval(Slider3,7000);
+    }

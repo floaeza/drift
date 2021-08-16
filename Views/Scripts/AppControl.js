@@ -33,6 +33,7 @@ function DBAppControl(){
             Comando  = $.parseJSON(response);
             //alert(Comando[0].MAC);
             //alert('Wenas Nochis');
+            setTimeout(DBAppControl, 1000);
         }
     });
     //alert(Comando[0]);
@@ -242,7 +243,7 @@ $.ajax({
 //lert(STBControll[0]['CON']);
 if(STBControll[0]['CON']=="1"){
     //alert();
-    setInterval(DBAppControl, 1000);
+    DBAppControl();
 }
 
      

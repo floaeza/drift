@@ -83,9 +83,10 @@ if($CurrentTime > $EffectiveTime || $Status === false){
                                         ));
 
     /* SCRIPT FOOTER*/
+    array_push($ScriptFooter, $Libraries['Settings']);
+
     array_push($ScriptFooter, $VendorFolder.$Libraries['Events']);
 
-    array_push($ScriptFooter, $Libraries['Settings']);
     array_push($ScriptFooter, $VendorFolder.$Libraries['Player']);
     array_push($ScriptFooter, $Libraries['Tv']);
 

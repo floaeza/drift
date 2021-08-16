@@ -17,10 +17,17 @@
         MoodsNodes      = [1,3,5,7],
         MoodsVideos     = ['Fireplace.mp4','Rain.mp4','Forest.mp4','Waterfall.mp4'],
         IndexMood       = -1,
-        MediaSource     = '../../MULTIMEDIA_VPL/Moods/';
+        MediaSource     = Libraries['ServerRoot']+'MULTIMEDIA_VPL/Moods/';
 
     var VideoScreen     = document.getElementById('video1');
         VideoScreen.style.display = 'none';
+
+    var LoopVideo = true;
+
+MoodsList[1].src = MediaSource + 'Fireplace.jpg';
+MoodsList[3].src = MediaSource + 'Rain.jpg';
+MoodsList[5].src = MediaSource + 'Forest.jpg';
+MoodsList[7].src = MediaSource + 'Waterfall.jpg';
 
 /*******************************************************************************
  * Contenido multimedia
@@ -30,22 +37,34 @@
         MoodsListActive = false;
         
         MoodsContainer.style.visibility = 'hidden';
-        
-        VideoScreen.style.display = 'inline';
 
-        VideoScreen.src = MediaSource + MoodsVideos[IndexMood];
+        if(localStorage.getItem('Id') === null) {
 
-        VideoScreen.play();
+            VideoScreen.style.display = 'inline';
+
+            VideoScreen.src = MediaSource + MoodsVideos[IndexMood];
+
+            VideoScreen.play();
+        } else {
+
+            VideoScreen.style.display = 'none';
+
+            PlayVideo(MediaSource + MoodsVideos[IndexMood]);
+        }
     }
     
     function ShowMoodsPanel(){
         MoodsListActive = true;
         
         MoodsContainer.style.visibility = 'visible';
-        
-        VideoScreen.style.display = 'none';
-        
-        VideoScreen.pause();
+
+        if(localStorage.getItem('Id') === null) {
+            VideoScreen.style.display = 'none';
+
+            VideoScreen.pause();
+        } else {
+            StopVideo();
+        }
     }
 
 
@@ -74,7 +93,11 @@
         VideoScreen.src = MediaSource + MoodsVideos[IndexMood];
 
         VideoScreen.play();
-    }; 
+    };
+
+    function LoopMedia(){
+        PlayVideo(MediaSource + MoodsVideos[IndexMood]);
+    }
 
 /*******************************************************************************
  * Control 

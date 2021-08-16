@@ -51,10 +51,15 @@
             
             $Result = $ModulesList;
         break;
+
         case 'GetAllMembers':
             $ModulesInfo = $LocationsData->getMembers();
             $Result = $ModulesInfo;
-            break;
+        break;
+
+        case 'GetMenuInfo':
+            $Result = $ModulesData->getMenuByProject('1');
+        break;
     }
     
     echo json_encode($Result);

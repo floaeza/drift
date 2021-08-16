@@ -5,15 +5,15 @@ function Red(){
 }
 
 function Blue(){
-    // var onSuccess = function() {
-    //     Debug("[rebootDevice] succeeded!");
-    // };
-    //
-    // var onError = function(error) {
-    //     Debug("[rebootDevice] failed! error code: " + error.code + " error name: " + error.name + "  message " + error.message);
-    // };
-    //
-    // b2bcontrol.rebootDevice(onSuccess, onError);
+    var onSuccess = function() {
+        Debug("[rebootDevice] succeeded!");
+    };
+
+    var onError = function(error) {
+        Debug("[rebootDevice] failed! error code: " + error.code + " error name: " + error.name + "  message " + error.message);
+    };
+
+    b2bcontrol.rebootDevice(onSuccess, onError);
 
 
 }

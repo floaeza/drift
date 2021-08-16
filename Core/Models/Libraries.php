@@ -23,11 +23,12 @@ $ServerIp = !empty($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : '';
         $ServerIp = !empty($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : '';
     }
 
+$JsonLibraries['ServerRoot']        = 'http://'.$ServerIp.'/';
 $JsonLibraries['ServerSource']      = 'http://'.$ServerIp.'/BBINCO/TV/';
+$JsonLibraries['MediaSource']       = 'http://'.$ServerIp.'/BBINCO/';
 $JsonLibraries['MultimediaSource']  = 'http://'.$ServerIp.'/Multimedia/';
 $JsonLibraries['MoviesSource']      = 'http://'.$ServerIp.'/vod/mvs/';
 $JsonLibraries['SeriesSource']      = 'http://'.$ServerIp.'/vod/srs/';
-
 
 $ServerSource = 'http://'.$ServerIp.'/BBINCO/TV/';
 
@@ -70,9 +71,10 @@ $Libraries['EpgDaysPath']       = $Libraries['ControllersPath'].'Epg/'.$Client;
 $JsonLibraries['EpgDaysPath']   = $Libraries['ControllersPath'].'Epg/'.$Client;
 /* Imagenes */
     $Libraries['LogosPath']         = '../Media/Logos/'.$Client;
+    $Libraries['LogoPath']          = $JsonLibraries['MediaSource'].'Media/Logos/'.$Client;
     $Libraries['ChannelsPath']      = '../Media/Channels/'.$Client;
-    $JsonLibraries['ChannelsPath']  = '../Media/Channels/'.$Client;
-    $JsonLibraries['MenuPath']      = '../Media/Menu/'.$Client;
+    $JsonLibraries['ChannelsPath']  = $JsonLibraries['MediaSource'].'Media/Channels/'.$Client;
+    $JsonLibraries['MenuPath']      = $JsonLibraries['MediaSource'].'Media/Menu/'.$Client;
     
 /* Temas */
      $Libraries['ThemesPath']      = $Libraries['StylesPath'].'Themes/';
