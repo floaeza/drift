@@ -27,7 +27,7 @@
     $StationID = !empty($_POST['StationID']) ? $_POST['StationID'] : '477';
     $Channels = !empty($_POST['Channels']) ? $_POST['Channels'] : '';
 
-    //   $Option = 'UpdateChannel';
+       $Option = 'UpdateGuide';
     
     switch ($Option){
         case 'GetChannels':
