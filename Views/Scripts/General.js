@@ -59,7 +59,7 @@
             localStorage.setItem('Module', ChangeModule);
             localStorage.setItem('Id', ModuleId);
 
-            location.replace(PageH);
+            //location.replace(PageH);
         } else {
             location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
         }
