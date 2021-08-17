@@ -138,7 +138,7 @@ class Packages extends Database {
     function updateParameter($infoPackage){
         $this->Function = 'updateParameter';
         $this->connect();
-        $this->update("parametros", $infoPackage, "id_parametro = '18'" );
+        $this->update("parametros", $infoPackage, "id_parametro = '19'" );
         $this->PackagesId = $this->getResult();
         $this->disconnect();
         return $this->PackagesId;
