@@ -14,8 +14,7 @@ class Trends extends Database{
     }
     
     /* Obtiene el tiempo total de vista de todos los canales */
-    function getChannelsTime($From, $Parameter, $OrderBy){
-        
+    function getChannelsTime($From, $Parameter, $OrderBy, $Limit){ 
         $FromTime = '';
         
         if($From == 'Beginning') {
@@ -33,7 +32,7 @@ class Trends extends Database{
             $this->select("estadisticas_canal","SUM(TIMESTAMPDIFF(SECOND, fecha_inicio, fecha_fin)) as segundos, SEC_TO_TIME(SUM(TIMESTAMPDIFF(SECOND, fecha_inicio, fecha_fin))) as horas, nombre_canal",
                           "",
                           "","","",
-                          "TIMESTAMPDIFF(SECOND, fecha_inicio, fecha_fin) < 25200 $FromTime","","nombre_canal","$OrderBy","");
+                          "TIMESTAMPDIFF(SECOND, fecha_inicio, fecha_fin) < 25200 $FromTime","","nombre_canal","$OrderBy",$Limit);
             
             $this->ChannelsTimeList = $this->getResult();
             $this->disconnect();
@@ -89,7 +88,7 @@ class Trends extends Database{
         }
     }
 
-    function getLocationTime($From, $Parameter){
+    function getLocationTime($From, $Parameter, $OrderBy, $Limit){
         $FromTime = '';
 
         if($From == 'Beginning') {
@@ -111,7 +110,7 @@ class Trends extends Database{
             $FromTime,
             "",
             "estadisticas_canal.id_locacion",
-            "estadisticas_canal.id_locacion ASC", "");
+            $OrderBy, $Limit);
             
             $this->LocationsTimeList = $this->getResult();
             $this->disconnect();

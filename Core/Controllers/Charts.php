@@ -13,7 +13,9 @@
             $From      = !empty($_POST['From']) ? $_POST['From'] : '';
             $Parameter = !empty($_POST['Parameter']) ? $_POST['Parameter'] : '';
             $OrderBy   = !empty($_POST['OrderBy']) ? $_POST['OrderBy'] : '';
-            $List = $TrendsDAO->getChannelsTime($From, $Parameter, $OrderBy);
+            $Limit   = !empty($_POST['Limit']) ? $_POST['Limit'] : '';
+            $List = $TrendsDAO->getChannelsTime($From, $Parameter, $OrderBy, $Limit);
+           
 
             $ArrayChannelList = array();
 
@@ -36,7 +38,7 @@
             $Parameter = !empty($_POST['Parameter']) ? $_POST['Parameter'] : '';
             $OrderBy   = !empty($_POST['OrderBy']) ? $_POST['OrderBy'] : 'nombre_canal ASC';
 
-            $List = $TrendsDAO->getChannelsAverageTime($From, $Parameter, $OrderBy);
+            $List = $TrendsDAO->getChannelsAverageTime($From, $Parameter, $OrderBy, $Limit);
 
             $ArrayChannelList = array();
 
@@ -72,7 +74,8 @@
             $From      = !empty($_POST['From']) ? $_POST['From'] : 'Beginning';
             $Parameter = !empty($_POST['Parameter']) ? $_POST['Parameter'] : '';
             $OrderBy   = !empty($_POST['OrderBy']) ? $_POST['OrderBy'] : 'nombre_canal ASC';
-            $List= $TrendsDAO->getLocationTime($From, $Parameter);
+            $Limit     = !empty($_POST['Limit']) ? $_POST['Limit'] : '';
+            $List= $TrendsDAO->getLocationTime($From, $Parameter, $OrderBy, $Limit);
             $ArrayChannelList = array();
             foreach ($List as $Trend):
                 $Seconds = intval($Trend['segundos']);
@@ -89,7 +92,8 @@
                 $From      = !empty($_POST['From']) ? $_POST['From'] : '';
                 $Parameter = !empty($_POST['Parameter']) ? $_POST['Parameter'] : '';
                 $OrderBy   = !empty($_POST['OrderBy']) ? $_POST['OrderBy'] : '';
-                $List = $TrendsDAO->getChannelsTime($From, $Parameter, $OrderBy);
+                $Limit   = !empty($_POST['Limit']) ? $_POST['Limit'] : '';
+                $List = $TrendsDAO->getChannelsTime($From, $Parameter, $OrderBy, $Limit);
     
                 $ArrayChannelList = array();
     
