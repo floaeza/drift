@@ -55,7 +55,9 @@
 
             Debug('Window.tizen !== undefined');
             var PageH = Page.replace('php','html');
-
+            
+            Debug('GoPageHTML ---> '+PageH);
+            
             localStorage.setItem('Module', ChangeModule);
             localStorage.setItem('Id', ModuleId);
 
