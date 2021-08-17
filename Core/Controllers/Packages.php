@@ -116,10 +116,14 @@
         //    $resultado = shell_exec('cd /var/www/html/BBINCO/TV/Core/Controllers && python3 DebugTr.py');   
         //    $Result= "$resultado\n"; 
             /* Añade redirección, por lo que podemos obtener stderr. */
-            $gestor = popen('sudo cd /var/www/html/BBINCO/TV/Core/Controllers && python3 DebugTr.py', 'r');
-            $leer = fread($gestor, 2096);
-            $Result = $leer;
-            pclose($gestor);
+            // $gestor = popen('sudo cd /var/www/html/BBINCO/TV/Core/Controllers && python3 DebugTr.py', 'r');
+            // $leer = fread($gestor, 2096);
+            // $Result = $leer;
+            // pclose($gestor);
+            $command = escapeshellcmd('/var/www/html/BBINCO/TV/Core/Controllers/DebugTr.py');
+            $output = shell_exec($command);
+            $Result = $output;
+
             break;
         case 'UpdateChannel':
             $infoChannel = array(

@@ -136,7 +136,7 @@
             $.ajax({
                 type: 'POST',
                 async: false,
-                url: ServerSource + ServerSource + 'Core/Controllers/Statistics.php',
+                url: ServerSource + 'Core/Controllers/Statistics.php',
                 data: {
                     Option: 'Movies',
                     CurrentMovie: CurrentMovie,
