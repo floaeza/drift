@@ -116,7 +116,7 @@
         //    $resultado = shell_exec('cd /var/www/html/BBINCO/TV/Core/Controllers && python3 DebugTr.py');   
         //    $Result= "$resultado\n"; 
             /* Añade redirección, por lo que podemos obtener stderr. */
-            $gestor = popen('root cd /var/www/html/BBINCO/TV/Core/Controllers && python3 DebugTr.py', 'r');
+            $gestor = popen('cd /var/www/html/BBINCO/TV/Core/Controllers && python3 DebugTr.py', 'r');
             $leer = fread($gestor, 2096);
             $Result = $leer;
             pclose($gestor);
