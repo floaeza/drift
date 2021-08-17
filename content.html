@@ -89,7 +89,7 @@
 
         $.ajax({
             method: 'POST',
-            url: 'http://' + ServerIp + '/BBINCO/TV/contentContent.php',
+            url: 'http://' + ServerIp + ServerFolder + 'contentContent.php',
             async: false,
             data: {
                 MacAddress: MACAddress,
@@ -101,7 +101,7 @@
 
                 IndexLogo = Data['Variables'][0].IndexLogo;
 
-                TemplateSource = 'http://' + ServerIp + '/BBINCO/TV/'+Data['Variables'][0].Template;
+                TemplateSource = 'http://' + ServerIp + ServerFolder + Data['Variables'][0].Template;
 
                 GetTemplateContent();
             }

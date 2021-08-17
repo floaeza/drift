@@ -85,7 +85,7 @@
   function GetModule() {
     $.ajax({
       type: 'POST',
-      url: 'http://' + ServerIp + '/BBINCO/TV/Core/Controllers/Module.php',
+      url: 'http://' + ServerIp + ServerFolder + 'Core/Controllers/Module.php',
       async: false,
       data: {
         Option: 'GetMenuInfo',
@@ -107,7 +107,7 @@
   function GetContents() {
     $.ajax({
       method: 'POST',
-      url: 'http://' + ServerIp + '/BBINCO/TV/menuContent.php',
+      url: 'http://' + ServerIp + ServerFolder +'menuContent.php',
       async: false,
       data: {
         MacAddress: MACAddress,
@@ -119,7 +119,7 @@
 
         IndexLogo = Data['Variables'][0].IndexLogo;
 
-        TemplateSource = 'http://' + ServerIp + '/BBINCO/TV/'+Data['Variables'][0].Template;
+        TemplateSource = 'http://' + ServerIp + ServerFolder + Data['Variables'][0].Template;
 
         GetTemplateContent();
       }

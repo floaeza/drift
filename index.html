@@ -252,7 +252,7 @@
 
 		$.ajax({
 			type: 'POST',
-			url: 'http://'+ServerIp+'/BBINCO/TV/Core/Controllers/Index.php',
+			url: 'http://'+ServerIp + ServerFolder + 'Core/Controllers/Index.php',
 			async: false,
 			data: {
 				Option      : SetOption,
@@ -298,7 +298,7 @@
 	function GetLocations(){
 		$.ajax({
 			type: 'POST',
-			url: 'http://'+ServerIp+'/BBINCO/TV/Core/Controllers/Index.php',
+			url: 'http://'+ServerIp + ServerFolder + 'Core/Controllers/Index.php',
 			async: false,
 			data: {
 				Option : 'LOCATIONS'
