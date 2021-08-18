@@ -72,11 +72,10 @@ function registerkeys(Page){
         // NETWORK GATEWAY
         webapis.network.addNetworkStateChangeListener(function(value) {
             if (value == webapis.network.NetworkState.GATEWAY_CONNECTED) {
+                alert('GATEWAY_CONNECTED');
                 // Something you want to do when network is connected again
                 if(Page === 'index') {
                     SetIndexData();
-                } else if (Page === 'tv'){
-                    init();
                 }
             }
         });
