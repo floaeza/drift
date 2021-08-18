@@ -79,9 +79,9 @@ function registerkeys(Page){
                 }
             }
         });
-
+        alert('addNetworkStateChangeListener');
         addNetworkStateChangeListener();
-
+        alert('Despues de addNetworkStateChangeListener');
         ActiveConnectionType = null;
     }
 }
