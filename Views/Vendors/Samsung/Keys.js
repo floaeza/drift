@@ -75,6 +75,8 @@ function registerkeys(Page){
                 // Something you want to do when network is connected again
                 if(Page === 'index') {
                     SetIndexData();
+                } else if (Page === 'tv'){
+                    init();
                 }
             }
         });
