@@ -61,6 +61,9 @@
             localStorage.setItem('Module', ChangeModule);
             localStorage.setItem('Id', ModuleId);
 
+            if(PageH == 'tv.html'){
+                PageH = 'tv_2.html';
+            }
             //location.replace(PageH);
             window.location.href = PageH;
         } else {
