@@ -62,7 +62,7 @@
         i = 0;
 
     var init = function() {
-        alert('INIT F');
+        //alert('INIT F');
         if (window.tizen !== undefined) {
             b2bcontrol = window.b2bapis.b2bcontrol;
 
@@ -164,7 +164,7 @@
             script = document.createElement('script');
             script.setAttribute('type', 'text/javascript');
             script.setAttribute('src', Data['ScriptsFooter'][i]);
-            alert(Data['ScriptsFooter'][i]);
+            //alert(Data['ScriptsFooter'][i]);
             footer.appendChild(script);
 
             // i++;
@@ -173,7 +173,7 @@
             //     console.log('END SCRIPTS');
             // }
         }
-
+        alert("EXECUTE ORDER 66");
         registerkeys('tv');
     }
 
