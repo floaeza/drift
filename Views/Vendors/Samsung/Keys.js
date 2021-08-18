@@ -80,7 +80,7 @@ function registerkeys(Page){
             }
         });
         alert('addNetworkStateChangeListener');
-        addNetworkStateChangeListener();
+        //addNetworkStateChangeListener();
         alert('Despues de addNetworkStateChangeListener');
         ActiveConnectionType = null;
     }
