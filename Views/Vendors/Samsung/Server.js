@@ -5,3 +5,5 @@
 var ServerIp = '10.0.3.10';
 var ServerFolder = '/BBINCO/TV';
 var ServerSource = 'http://'+ServerIp+ServerFolder+'/';
+
+alert(ServerIp);

@@ -62,7 +62,7 @@ function registerkeys(Page){
         // NETWORK ACTIVE
         var ActiveConnectionType = webapis.network.getActiveConnectionType();
 
-        console.log('ActiveConnectionType: '+ActiveConnectionType);
+        alert('ActiveConnectionType: '+ActiveConnectionType);
 
         if (ActiveConnectionType !== 0) {
             if(Page === 'index') {
