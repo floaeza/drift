@@ -11,12 +11,12 @@
     
     $CurrentController = 'ModulesController';
     
-    $Option = !empty($_POST['Option']) ? $_POST['Option'] : '';
+    $Option = !empty($_POST['Option']) ? $_POST['Option'] : 'getModuleTV';
     $MacAddress = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '';
     $ProjectId = !empty($_POST['ProjectId']) ? $_POST['ProjectId'] : '';
     
-    $ModuleName = !empty($_POST['ModuleName']) ? $_POST['ModuleName'] : '';
-    $ModuleUrl = !empty($_POST['ModuleUrl']) ? $_POST['ModuleUrl'] : '';
+    $ModuleName = !empty($_POST['ModuleName']) ? $_POST['ModuleName'] : 'Tv';
+    $ModuleUrl = !empty($_POST['ModuleUrl']) ? $_POST['ModuleUrl'] : 'tv.php';
     
     $ConfigData   = new Config($MacAddress, $CurrentController);
     $ModulesData = new Modules($MacAddress, $CurrentController);
