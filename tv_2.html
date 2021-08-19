@@ -104,6 +104,7 @@
     }
 
     function GetContents() {
+        var modl = '';
         $.ajax({
             method: 'POST',
             url: 'http://' + ServerIp + ServerFolder+'/Core/Controllers/Module.php',
@@ -114,7 +115,10 @@
             },
             success: function (response) {
                 idModulo = $.parseJSON(response);
-                //alert(idModulo[0].id_template + "  " + ModuleId);
+                modl = idModulo[0].id_modulo;
+                alert(idModulo[0].id_modulo);
+                alert(modl);
+                alert(modl.toString());
             }
         });
         $.ajax({
@@ -123,7 +127,7 @@
             async: false,
             data: {
                 MacAddress: MACAddress,
-                ModuleId: idModulo[0].id_modulo,
+                ModuleId: modl.toString(),
                 CurrentModule: CurrentModule
             },
             success: function (response) {
