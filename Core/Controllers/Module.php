@@ -56,7 +56,12 @@
         break;
         case 'getModuleTV':
             
-            $Result = $ModulesData->getModuleTV($ModuleName, $ModuleUrl);
+            $Response = $ModulesData->getModuleTV($ModuleUrl);
+
+            $Result = array('Option' => $Option,
+            'ModuleUrl' => $Response[$FirstElement]['url_modulo'],
+            'ModuleId' => $Response[$FirstElement]['id_modulo'],
+            'ModuleName' => $Response[$FirstElement]['nombre_modulo']);
             
         break;
         case 'GetAllMembers':

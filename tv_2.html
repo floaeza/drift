@@ -84,11 +84,11 @@
     function GetModule() {
         $.ajax({
             type: 'POST',
-            url: 'http://' + ServerIp + ServerFolder+'/Core/Controllers/Index.php',
+            url: 'http://' + ServerIp + ServerFolder+'/Core/Controllers/Module.php',
             async: false,
             data: {
-                Option: 'TVLOAD',
-                MacAddress: MACAddress,
+                Option: 'getModuleTV',
+                ModuleUrl: 'tv.php',
             },
             success: function (response) {
                 var InfoDevice = $.parseJSON(response);
@@ -104,30 +104,14 @@
     }
 
     function GetContents() {
-        var modl = '';
-        $.ajax({
-            method: 'POST',
-            url: 'http://' + ServerIp + ServerFolder+'/Core/Controllers/Module.php',
-            data: {
-                Option: 'getModuleTV',
-                ModuleName: 'Tv',
-                ModuleUrl: 'tv.php'
-            },
-            success: function (response) {
-                idModulo = $.parseJSON(response);
-                modl = idModulo[0].id_modulo;
-                alert(idModulo[0].id_modulo);
-                alert(modl);
-                alert(modl.toString());
-            }
-        });
+    
         $.ajax({
             method: 'POST',
             url: 'http://' + ServerIp + ServerFolder+'/tvContent.php',
             async: false,
             data: {
                 MacAddress: MACAddress,
-                ModuleId: modl.toString(),
+                ModuleId: ModuleId,
                 CurrentModule: CurrentModule
             },
             success: function (response) {
