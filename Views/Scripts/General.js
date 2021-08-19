@@ -61,11 +61,8 @@
             localStorage.setItem('Module', ChangeModule);
             localStorage.setItem('Id', ModuleId);
 
-            if(PageH == 'tv.html'){
-                PageH = 'tv_2.html';
-            }
             //location.replace(PageH);
-            setTimeout(function(){ window.location.href = PageH; }, 1000);
+            window.location.href = PageH;
         } else {
             location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
         }

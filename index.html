@@ -279,9 +279,6 @@
 					//alert(Page);
 					var DeviceInfo = 'loading - '+MACAddress + ' > '+Page;
 					DebugText.innerHTML = DeviceInfo;
-					if(Page == 'tv.html'){
-                		Page = 'tv_2.html';
-            		}
 					setTimeout(function(){ window.location.href = Page; }, 2000);
 				} else if(Data['Option'] === 'LICENSE'){
 					var DeviceInfo = ' Mac: '+MACAddress+' Ip: '+IPAddress;
