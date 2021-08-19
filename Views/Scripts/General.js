@@ -65,7 +65,7 @@
                 PageH = 'tv_2.html';
             }
             //location.replace(PageH);
-            setTimeout(function(){ window.location.href = PageH; }, 2000);
+            setTimeout(function(){ window.location.href = PageH; }, 1000);
         } else {
             location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
         }

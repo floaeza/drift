@@ -64,4 +64,18 @@ class Modules extends Database {
             $this->disconnect();
             return $this->Modules;
     }
+
+    function getModulesTV($IdModulo){
+        $this->Function = 'getModulesTV';
+            
+            $this->connect();
+            $this->select("modulos","*","",
+                                           "",
+                                           "","" ,
+                                           "nombre_modulo = '$IdModulo'");
+            $this->Modules = $this->getResult();
+            
+            $this->disconnect();
+            return $this->Modules;
+    }
 }
