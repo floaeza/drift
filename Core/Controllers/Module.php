@@ -15,6 +15,9 @@
     $MacAddress = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '';
     $ProjectId = !empty($_POST['ProjectId']) ? $_POST['ProjectId'] : '';
     
+    $ModuleName = !empty($_POST['ModuleName']) ? $_POST['ModuleName'] : '';
+    $ModuleUrl = !empty($_POST['ModuleUrl']) ? $_POST['ModuleUrl'] : '';
+    
     $ConfigData   = new Config($MacAddress, $CurrentController);
     $ModulesData = new Modules($MacAddress, $CurrentController);
     $LocationsData = new Locations($MacAddress, $CurrentController);
@@ -51,36 +54,10 @@
             
             $Result = $ModulesList;
         break;
-        case 'getModulesTV':
+        case 'getModuleTV':
             
-            $ModulesInfo = $ModulesData->getModulesTV($ProjectId);
+            $Result = $ModulesData->getModuleTV($ModuleName, $ModuleUrl);
             
-            $ModulesList = array();
-            
-            foreach ($ModulesInfo as $Row):
-                if($Row['nombre_modulo'] === 'Menu'){
-                    array_push($ModulesList,  array('Id' => $Row['id_modulo'],
-                                                    'Name' => $Row['descripcion_modulo'],
-                                                    'Url' => $Row['url_modulo'],
-                                                    'Image' => $Row['nombre_icono'],
-                                                    'Description' => ''));
-                }
-            endforeach;
-            
-            foreach ($ModulesInfo as $Row):
-                if($Row['nombre_modulo'] !== 'Menu'){
-                    array_push($ModulesList,  array('Id' => $Row['id_modulo'],
-                                                    'Name' => $Row['nombre_modulo'],
-                                                    'Url' => $Row['url_modulo'],
-                                                    'Image' => $Row['nombre_icono'],
-                                                    'Description' => $Row['descripcion_modulo']));
-                }
-               
-                
-                
-            endforeach;
-            
-            $Result = $ModulesList;
         break;
         case 'GetAllMembers':
             $ModulesInfo = $LocationsData->getMembers();

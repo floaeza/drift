@@ -46,6 +46,8 @@
 
     var MACAddress  = '';
 
+    var idModulo = '';
+
     var InfoDevice = [];
     var TemplateSource = '';
     var Data = '';
@@ -102,14 +104,26 @@
     }
 
     function GetContents() {
-        
+        $.ajax({
+            method: 'POST',
+            url: 'http://' + ServerIp + ServerFolder+'/Core/Controllers/Module.php',
+            async: false,
+            data: {
+                ModuleName: 'Tv',
+                ModuleUrl: 'tv.php'
+            },
+            success: function (response) {
+                idModulo = $.parseJSON(response);
+                alert(idModulo);
+            }
+        });
         $.ajax({
             method: 'POST',
             url: 'http://' + ServerIp + ServerFolder+'/tvContent.php',
             async: false,
             data: {
                 MacAddress: MACAddress,
-                ModuleId: Device['MenuId'],
+                ModuleId: 4,
                 CurrentModule: CurrentModule
             },
             success: function (response) {
