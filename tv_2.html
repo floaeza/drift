@@ -114,7 +114,7 @@
             },
             success: function (response) {
                 idModulo = $.parseJSON(response);
-                alert(idModulo);
+                alert(idModulo[0]);
             }
         });
         $.ajax({
@@ -123,7 +123,7 @@
             async: false,
             data: {
                 MacAddress: MACAddress,
-                ModuleId: 1,
+                ModuleId: idModulo[0],
                 CurrentModule: CurrentModule
             },
             success: function (response) {
