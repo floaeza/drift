@@ -65,7 +65,7 @@ class Modules extends Database {
             return $this->Modules;
     }
 
-    function c($ModuleUrl){
+    function getModuleTV($ModuleUrl){
         $this->Function = 'getModuleTV';
             
             $this->connect();
