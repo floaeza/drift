@@ -82,8 +82,7 @@ switch ($Option) {
         'mensajes' => $mensajes,
         'id_paquete' => $id_paquete,
         'id_modulo' => $id_modulo
-        ); 
-        
+        );        
         foreach ($DataLocations as $DataLocation):    
                 $LocationID = $DataLocation->id_locacion; 
                 $LocationsData->updateLocation($LocationID, $LocationInfo);
