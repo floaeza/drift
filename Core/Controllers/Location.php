@@ -71,8 +71,10 @@ switch ($Option) {
         $DeviceData->updateDevice($id_device, $DeviceInfo);
         echo json_encode($DeviceInfo);
         break;
-    case 'DeleteDevice':
+    case 'UpdateAlotOfLocation':
         $DeviceData->deleteDeviceInLocation($id_device);
+        break;
+    case '':
         break;
     
 }

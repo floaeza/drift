@@ -75,7 +75,7 @@ function registerkeys(Page){
                 // Something you want to do when network is connected again
                 if(Page === 'index') {
                     SetIndexData();
-                    alert('GATEWAY_CONNECTED');
+                    //alert('GATEWAY_CONNECTED');
                 }
             }
         });
