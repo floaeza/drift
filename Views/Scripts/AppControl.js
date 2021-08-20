@@ -22,7 +22,7 @@ function DBAppControl(){
     
     $.ajax({
         type: "POST",
-        url: '/BBINCO/TV/Core/Controllers/Firebase.php',
+        url: '/BBINCO_BETA/TV/Core/Controllers/Firebase.php',
         data: { 
             Option    : 'GetControllByMac',
             mac_address: MacAddressAppControl
@@ -210,7 +210,7 @@ function ChangeAppControl(){
 
             $.ajax({
                 type: "POST",
-                url: '/BBINCO/TV/Core/Controllers/Firebase.php',
+                url: '/BBINCO_BETA/TV/Core/Controllers/Firebase.php',
                 data: { 
                     Option    : 'UpdateControlByMac',
                     mac_address: MacAddressAppControl
@@ -227,7 +227,7 @@ InitialDataAppControl();
 // @ts-ignore
 $.ajax({
     type: "POST",
-    url: '/BBINCO/TV/Core/Controllers/Firebase.php',
+    url: '/BBINCO_BETA/TV/Core/Controllers/Firebase.php',
     data: { 
         Option    : 'GetDeviceByMac',
         mac_address: MacAddressAppControl
