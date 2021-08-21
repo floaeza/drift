@@ -36,7 +36,7 @@
 
     function GoPage(Page, ModuleId, ChangeModule){
         if(CurrentModule === 'Tv' && StartDateChannel !== ''){
-            SetChannelStatistics();
+            //SetChannelStatistics();
         }
 
         Debug('GoPage ---> '+Page);

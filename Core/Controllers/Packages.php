@@ -27,6 +27,8 @@
     $StationID = !empty($_POST['StationID']) ? $_POST['StationID'] : '477';
     $Channels = !empty($_POST['Channels']) ? $_POST['Channels'] : '';
 
+    $ChannelIdArray = !empty($_POST['ChannelIdArray']) ? $_POST['ChannelIdArray'] : '';
+
     //    $Option = 'UpdateGuide';
     
     switch ($Option){
@@ -138,12 +140,27 @@
                 'indicativo' => $nombre_canal,    
                 );  
             $PackagesData->UpdateChannelName($infoChannelName, $StationID);
-            $PackagesData->UpdateChannelNumber($ChannelId, $infoChannelNumber, $PackageId);
+           
             $PackagesData->UpdateChannel($ChannelId, $infoChannel);
+            break;
+        case 'UpdateAlotOfChannel':
+            $DataChannels  = json_decode($ChannelIdArray);
+            $infoChannel = array(
+                'puerto' => $puerto,    
+                ); 
+            $infoChannelNumber = array(
+                'canal_activo' => $status_canal,    
+                );
+            foreach ($DataChannels as $DataChannel):    
+                $ChannelID = $DataChannel->IDCH; 
+                $PackagesData->UpdateChannelNumber($ChannelID, $infoChannelNumber, $PackageId);
+                $PackagesData->UpdateChannel($ChannelID, $infoChannel);
+            endforeach;
             break;
         case 'DeletePackageID':
             $PackagesData->deletePackageID($PackageId);
             break;
+
     }
     
     echo json_encode($Result);
