@@ -19,8 +19,8 @@
         FormatEndDate       = '',
         StartDateModuleMM   = '',
         EndDateModuleMM     = '',
-        MinSeconds          = 30000, // 30 segundos
-        MaxSeconds          = 25200000, // 420 minutos | 7 horas
+        MinSeconds          = 90000, // 30 segundos
+        MaxSeconds          = 18000000, // 420 minutos | 7 horas
         DifferenceInSec     = '';
 
     var MM_StartDateMovie      = new Date(),
@@ -36,7 +36,7 @@
 
     function GoPage(Page, ModuleId, ChangeModule){
         if(CurrentModule === 'Tv' && StartDateChannel !== ''){
-            //SetChannelStatistics();
+            SetChannelStatistics();
         }
 
         Debug('GoPage ---> '+Page);
@@ -74,8 +74,8 @@
             FormatEndDate       = getDate(EndDateModule);
             StartDateModuleMM   = StartDateChannel.getTime();
             EndDateModuleMM     = EndDateModule.getTime();
-            DifferenceInSec     = StartDateModuleMM - EndDateModuleMM;
-
+            DifferenceInSec     = EndDateModuleMM - StartDateModuleMM;
+            //alert("Start: " + StartDateModuleMM + " End: " + EndDateModuleMM+ " Diferencia: "+DifferenceInSec);
         /* Valida si el tiempo de vista del modulo esta en un rango de tiempo coherente */
         if(Math.abs(DifferenceInSec) > MinSeconds && Math.abs(DifferenceInSec) < MaxSeconds){
             

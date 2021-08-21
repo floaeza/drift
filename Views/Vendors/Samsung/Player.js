@@ -125,7 +125,7 @@ function PlayVideo(Source){
     // Guarda la estadistica
     Debug('PlayVideo: '+Source);
     StopVideo();
-Debug('Player samsung');
+    Debug('Player samsung');
     // Reproduce el video
     // Reproduce el video
     try {
@@ -135,7 +135,7 @@ Debug('Player samsung');
         Player.prepareAsync(function() {
             Player.play();
         });
-
+        MaximizeTV()
     } catch (error) {
         Debug('PlayVideo > Error name = '+ error.name + ', Error message = ' + error.message);
     }
