@@ -8,7 +8,7 @@ function GetMoviesList(){
     Option : 'GetMoviesList'
     },
     success: function (response){
-    MoviesList = $.parseJSON(response);
+        MoviesList = $.parseJSON(response);
     }
     }); 
 }

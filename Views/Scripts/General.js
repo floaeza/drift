@@ -84,7 +84,6 @@
         
             $.ajax({
                 type: 'POST',
-                async: false,
                 url: ServerSource + 'Core/Controllers/Statistics.php',
                 data: {
                     Option: 'Channels',
@@ -112,7 +111,6 @@
 
             $.ajax({
                 type: 'POST',
-                async: false,
                 url: ServerSource + 'Core/Controllers/Statistics.php',
                 data: {
                     Option: 'Modules',
@@ -138,7 +136,6 @@
         if(Math.abs(MM_DifferenceInSec) > MM_MinSeconds){
             $.ajax({
                 type: 'POST',
-                async: false,
                 url: ServerSource + 'Core/Controllers/Statistics.php',
                 data: {
                     Option: 'Movies',
@@ -464,7 +461,6 @@ function ConvertToHourEpoch(time24){
     function SetLog(LogNumber){
         $.ajax({
             type: 'POST',
-            async: false,
             url: ServerSource + 'Core/Controllers/Log.php',
             data: { 
                 MacAddress : MacAddress,

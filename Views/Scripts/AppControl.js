@@ -214,10 +214,6 @@ function ChangeAppControl(){
                 data: { 
                     Option    : 'UpdateControlByMac',
                     mac_address: MacAddressAppControl
-                }, 
-                async: false,
-                success: function (response) {
-                    //alert(Comando[0].MAC);
                 }
             });
         }
