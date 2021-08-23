@@ -232,13 +232,10 @@ $.ajax({
     success: function (response) {
         // @ts-ignore
         STBControll  = $.parseJSON(response);
-        //alert(Comando[0].MAC);
-        //alert('Wenas Nochis');
     }
 });
 //lert(STBControll[0]['CON']);
 if(STBControll[0]['CON']=="1"){
-    //alert();
     DBAppControl();
 }
 

@@ -466,9 +466,6 @@ function ConvertToHourEpoch(time24){
                 MacAddress : MacAddress,
                 LogNumber : LogNumber,
                 CurrentModule: CurrentModule
-            },
-            success: function (response){
-                //Debug(response);
             }
         });
     }
