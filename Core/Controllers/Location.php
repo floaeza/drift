@@ -25,6 +25,7 @@ $id_device = !empty($_POST['id_device']) ? $_POST['id_device'] : '8';
 
 $LocationDevice  = !empty($_POST['LocationDevice']) ? $_POST['LocationDevice'] : 'DART';
 $LocationIDArray = !empty($_POST['LocationIDArray']) ? $_POST['LocationIDArray'] : '';
+$InfoArray  = !empty($_POST['InfoArray']) ? $_POST['InfoArray'] : '';
 
 $LocationsData = new Locations($MacAddress, $CurrentController);
 $DeviceData = new Devices('system', 'Power');
@@ -75,18 +76,23 @@ switch ($Option) {
         $DeviceData->deleteDeviceInLocation($id_device);
         break;
     case 'UpdateAlotOfLocation':
-        $DataLocations  = json_decode($LocationIDArray);
-        $LocationInfo   = array('codigo_miembro' => $codigo_miembro,
-        'epg' =>  $epg,
-        'menu' => $menu,
-        'mensajes' => $mensajes,
-        'id_paquete' => $id_paquete,
-        'id_modulo' => $id_modulo
-        );        
-        foreach ($DataLocations as $DataLocation):    
-                $LocationID = $DataLocation->id_locacion; 
-                $LocationsData->updateLocation($LocationID, $LocationInfo);
-        endforeach;
+        // $DataLocations  = json_decode($LocationIDArray);
+        // $LocationInfo   = array('codigo_miembro' => $codigo_miembro,
+        // 'epg' =>  $epg,
+        // 'menu' => $menu,
+        // 'mensajes' => $mensajes,
+        // 'id_paquete' => $id_paquete,
+        // 'id_modulo' => $id_modulo
+        // );        
+        // foreach ($DataLocations as $DataLocation):    
+        //         $LocationID = $DataLocation->id_locacion; 
+        //         $LocationsData->updateLocation($LocationID, $LocationInfo);
+        // endforeach;
+        $infoToChange = json_decode($InfoArray);
+        foreach($infoToChange as $key => $value){
+            echo 'Your key is: '.$key.' and the value of the key is:'.$value;
+        }
+        
         break;
     
 }

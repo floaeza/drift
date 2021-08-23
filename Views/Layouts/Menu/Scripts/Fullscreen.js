@@ -27,7 +27,7 @@
             },
             success: function (response){
                 MenuList = $.parseJSON(response);
-
+                alert(MenuList);
                 SetBackgrounds();
 
                 SetMenuInfo();
