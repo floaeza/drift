@@ -61,7 +61,7 @@
           i = 0;
 
   var init = function() {
-    Debug("INIT MENU");
+    console.log("INIT MENU");
     if (window.tizen !== undefined) {
       b2bcontrol = window.b2bapis.b2bcontrol;
 
@@ -83,7 +83,7 @@
 
 
   function GetModule() {
-    Debug("MODULE INIT");
+    console.log("MODULE INIT");
     $.ajax({
       type: 'POST',
       url: 'http://' + ServerIp + ServerFolder + '/Core/Controllers/Module.php',
@@ -99,14 +99,14 @@
           CurrentModule = 'Menu';
 
           MenuInfo = null;
-          Debug("Antes de Get Contents");
+          console.log("Antes de Get Contents");
           GetContents();
       }
     });
   }
 
   function GetContents() {
-    Debug("EN EL INICIO DE GETCONTENTS");
+    console.log("EN EL INICIO DE GETCONTENTS");
     $.ajax({
       method: 'POST',
       url: 'http://' + ServerIp + ServerFolder +'/menuContent.php',
@@ -122,14 +122,14 @@
         IndexLogo = Data['Variables'][0].IndexLogo;
 
         TemplateSource = 'http://' + ServerIp + ServerFolder +"/" + Data['Variables'][0].Template;
-        Debug("ANTES DE TEMPLATE CONTENT");
+        console.log("ANTES DE TEMPLATE CONTENT");
         GetTemplateContent();
       }
     });
   }
 
   function GetTemplateContent(){
-    Debug("EN TEMPLATE CONTENT");
+    console.log("EN TEMPLATE CONTENT");
     $.ajax({
       type: 'POST',
       url: TemplateSource,
@@ -138,12 +138,12 @@
         document.getElementById('GeneralBox').innerHTML = '<div id="DebugText"></div> '+response;
       }
     });
-    Debug("ANTES DE SET SCRIPTS");
+    console.log("ANTES DE SET SCRIPTS");
     SetScriptsStyles();
   }
 
   function SetScriptsStyles(){
-    Debug("EN SET SCRIPTS");
+    console.log("EN SET SCRIPTS");
     for(i = 0; i < Data['ScriptsHeader'].length; i++){
       script = document.createElement('script');
       script.setAttribute('type', 'text/javascript');
@@ -165,7 +165,7 @@
   }
 
   function SetFooterScripts(){
-    Debug("EN SET FOOTER SCRIPT");
+    console.log("EN SET FOOTER SCRIPT");
     for(i = 0; i < Data['ScriptsFooter'].length; i++){
       script = document.createElement('script');
       script.setAttribute('type', 'text/javascript');
@@ -179,7 +179,7 @@
       //     console.log('END SCRIPTS');
       // }
     }
-    Debug("FIN DE SET FOOTER SCRIPT");
+    console.log("FIN DE SET FOOTER SCRIPT");
     registerkeys('tv');
   }
 
@@ -191,13 +191,13 @@
 
   function SetMenuElements(){
     // Contenido multimedia para Menu
-    Debug("EN SET MENU ELEMENTS");
+    console.log("EN SET MENU ELEMENTS");
     var MainLogo = document.getElementById('MainLogo');
 
     MainLogo.src = IndexLogo;
 
     console.log('------------------->>>>>>>> MAIN LOGO: '+MainLogo);
-    Debug("EN EL FINAL DE SET MENU ELEMENTS");
+    console.log("EN EL FINAL DE SET MENU ELEMENTS");
   }
 </script>
 </html>
