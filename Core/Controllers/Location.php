@@ -23,13 +23,14 @@ $id_proyecto = !empty($_POST['id_proyecto']) ? $_POST['id_proyecto'] : '1';
 $id_modulo = !empty($_POST['id_modulo']) ? $_POST['id_modulo'] : '2';
 $id_device = !empty($_POST['id_device']) ? $_POST['id_device'] : '8';
 
-$LocationDevice  = !empty($_POST['LocationDevice']) ? $_POST['LocationDevice'] : 'DART';
+$LocationDevice  = !empty($_POST['LocationDevice']) ? $_POST['LocationDevice'] : '';
 $LocationIDArray = !empty($_POST['LocationIDArray']) ? $_POST['LocationIDArray'] : '';
-$InfoArray  = !empty($_POST['InfoArray']) ? $_POST['InfoArray'] : '';
+$InfoArray  = !empty($_POST['InfoArray']) ? $_POST['InfoArray'] : '{"Epg":"1","Messages":"1","Package":"10","Member":"SISTEMAS"}';
 
 $LocationsData = new Locations($MacAddress, $CurrentController);
 $DeviceData = new Devices('system', 'Power');
 
+// $Option = 'UpdateAlotOfLocation';
 switch ($Option) {
     case 'UpdateLocation':
         
@@ -76,22 +77,14 @@ switch ($Option) {
         $DeviceData->deleteDeviceInLocation($id_device);
         break;
     case 'UpdateAlotOfLocation':
-        // $DataLocations  = json_decode($LocationIDArray);
-        // $LocationInfo   = array('codigo_miembro' => $codigo_miembro,
-        // 'epg' =>  $epg,
-        // 'menu' => $menu,
-        // 'mensajes' => $mensajes,
-        // 'id_paquete' => $id_paquete,
-        // 'id_modulo' => $id_modulo
-        // );        
-        // foreach ($DataLocations as $DataLocation):    
-        //         $LocationID = $DataLocation->id_locacion; 
-        //         $LocationsData->updateLocation($LocationID, $LocationInfo);
-        // endforeach;
-        $infoToChange = json_decode($InfoArray);
-        foreach($infoToChange as $key => $value){
-            echo 'Your key is: '.$key.' and the value of the key is:'.$value;
-        }
+        $DataLocations  = json_decode($LocationIDArray);     
+        $infoToChange = json_decode($InfoArray, true);  
+        foreach ($DataLocations as $DataLocation):    
+                $LocationID = $DataLocation->id_locacion; 
+                $LocationsData->updateLocation($LocationID, $infoToChange);
+        endforeach;
+        
+        
         
         break;
     

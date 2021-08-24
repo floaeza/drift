@@ -17,17 +17,18 @@
 
 
     function SetMenuList(){
+        //alert(Device['Services']['ProjectId']);
         $.ajax({
             type: 'POST',
-            async: false,
             url: ServerSource + 'Core/Controllers/Menu.php',
             data: { 
                 Option : 'GetModules',
-                ProjectId: Device['Services']['ProjectId']
+                ProjectId: '1'
+                //ProjectId: Device['Services']['ProjectId']
             },
             success: function (response){
+                MenuList = null;
                 MenuList = $.parseJSON(response);
-                alert(MenuList);
                 SetBackgrounds();
 
                 SetMenuInfo();
@@ -96,6 +97,7 @@ function SetMenuInfo(){
 
             IndexM = null;
             Index = null;
+
     }
 
     function MenuSelect(Direction){
