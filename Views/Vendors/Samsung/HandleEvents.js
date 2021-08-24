@@ -3,6 +3,7 @@ var listener = {
     onbufferingstart: function() {
         Debug('Buffering start.');
         EventString = 'BUFFERING_START';
+        clearTimeout(Checker);
     },
     onbufferingcomplete: function() {
         Debug('............................ Buffering complete. > start: ' +Executing);

@@ -303,7 +303,7 @@
 
                     ImageDigital.src = '';
                     ImageDigital.style.display = 'none';
-
+                    Debug("Antes de reproducir el canal");
                     PlayDigitalChannel(DigitalSource+DigitalContent[IndexDigital]);
                 } else {
 
