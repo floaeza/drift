@@ -29,7 +29,7 @@
 
     $ChannelIdArray = !empty($_POST['ChannelIdArray']) ? $_POST['ChannelIdArray'] : '';
 
-    $Option = 'UpdateChannel';
+    // $Option = 'UpdateChannel';
     
     switch ($Option){
         case 'GetChannels':
@@ -140,7 +140,7 @@
                 'indicativo' => $nombre_canal,    
                 );  
             $PackagesData->UpdateChannelName($infoChannelName, $StationID);
-           
+            $PackagesData->UpdateChannelNumber($ChannelId, $infoChannelNumber, $PackageId);
             $PackagesData->UpdateChannel($ChannelId, $infoChannel);
             break;
         case 'UpdateAlotOfChannel':
