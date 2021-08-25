@@ -14,20 +14,22 @@
     $PackagesData = new Packages('system', $CurrentController);
     
     $Option = !empty($_POST['Option']) ? $_POST['Option'] : '';
-    $PackageId = !empty($_POST['PackageId']) ? $_POST['PackageId'] : '3';
+    $PackageId = !empty($_POST['PackageId']) ? $_POST['PackageId'] : '17';
     $Package_name = !empty($_POST['Package_name']) ? $_POST['Package_name'] : '';
     $Package_description = !empty($_POST['Package_description']) ? $_POST['Package_description'] : '';
 
-    $ChannelId = !empty($_POST['ChannelId']) ? $_POST['ChannelId'] : '1';
-    $multicast = !empty($_POST['multicast']) ? $_POST['multicast'] : 'igmp://7.7.7.7';
-    $puerto = !empty($_POST['puerto']) ? $_POST['puerto'] : '3001';
+    $ChannelId = !empty($_POST['ChannelId']) ? $_POST['ChannelId'] : '5';
+    $multicast = !empty($_POST['multicast']) ? $_POST['multicast'] : 'igmp://225.2.2.115';
+    $puerto = !empty($_POST['puerto']) ? $_POST['puerto'] : '2001';
     $numero_canal = !empty($_POST['numero_canal']) ? $_POST['numero_canal'] : '777';
-    $nombre_canal = !empty($_POST['nombre_canal']) ? $_POST['nombre_canal'] : 'sylas';
+    $nombre_canal = !empty($_POST['nombre_canal']) ? $_POST['nombre_canal'] : 'CBS11';
     $status_canal = !empty($_POST['status_canal']) ? $_POST['status_canal'] : '0';
-    $StationID = !empty($_POST['StationID']) ? $_POST['StationID'] : '477';
+    $StationID = !empty($_POST['StationID']) ? $_POST['StationID'] : '88';
     $Channels = !empty($_POST['Channels']) ? $_POST['Channels'] : '';
 
-    //    $Option = 'UpdateGuide';
+    $ChannelIdArray = !empty($_POST['ChannelIdArray']) ? $_POST['ChannelIdArray'] : '';
+
+    // $Option = 'UpdateChannel';
     
     switch ($Option){
         case 'GetChannels':
@@ -141,9 +143,24 @@
             $PackagesData->UpdateChannelNumber($ChannelId, $infoChannelNumber, $PackageId);
             $PackagesData->UpdateChannel($ChannelId, $infoChannel);
             break;
+        case 'UpdateAlotOfChannel':
+            $DataChannels  = json_decode($ChannelIdArray);
+            $infoChannel = array(
+                'puerto' => $puerto,    
+                ); 
+            $infoChannelNumber = array(
+                'canal_activo' => $status_canal,    
+                );
+            foreach ($DataChannels as $DataChannel):    
+                $ChannelID = $DataChannel->IDCH; 
+                $PackagesData->UpdateChannelNumber($ChannelID, $infoChannelNumber, $PackageId);
+                $PackagesData->UpdateChannel($ChannelID, $infoChannel);
+            endforeach;
+            break;
         case 'DeletePackageID':
             $PackagesData->deletePackageID($PackageId);
             break;
+
     }
     
     echo json_encode($Result);

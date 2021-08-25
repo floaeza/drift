@@ -18,6 +18,8 @@ var WindowMaxWidth  = 0,
     WindowMinWidth  = 0,
     WindowMinHeight = 0;
 
+var Checker = null;
+
     Player.setListener(listener);
 
     Debug('PLAYER WEBAPIS.AVPLAY >>s LISTENER');
@@ -50,12 +52,12 @@ Debug('PlayChannel('+Source+', '+Port+')');
         Debug('Player.open : '+Source+CheckPort);
 
         // Maximiza el video en caso de que no este en pantalla completa
-        MaximizeTV();
+        
 
         Player.prepareAsync(function() {
-            Player.play();
+            Player.play();  
         });
-
+        MaximizeTV();
         Debug('PlayChannel > PLAYER');
 
     } catch (error) {
@@ -91,23 +93,20 @@ function PlayDigitalChannel(Source){
 
     // Reproduce el video
     try {
-
         Player.open(Source);
-
         // Maximiza el video en caso de que no este en pantalla completa
-        MaximizeTV();
-
         Player.prepareAsync(function() {
-            Player.play();
+            Player.play();  
         });
-
+        Checker = setTimeout(Red, 2000);
+        MaximizeTV();
+        //Player.setDisplayMethod("PLAYER_DISPLAY_MODE_FULL_SCREEN");
     } catch (error) {
         Debug('PlayDigitalChannel > Error name = '+ error.name + ', Error message = ' + error.message);
     }
 
     // Activamos la bandera
     PlayingChannel = true;
-
     // Si tiene una fecha ya registrada guarda estadisticas en la BD
     if(StartDateChannel !== ''){
         SetChannelStatistics();
@@ -125,17 +124,18 @@ function PlayVideo(Source){
     // Guarda la estadistica
     Debug('PlayVideo: '+Source);
     StopVideo();
-Debug('Player samsung');
+    Debug('Player samsung');
     // Reproduce el video
     // Reproduce el video
     try {
 
         Player.open(Source);
         Debug('playvideo open: '+Source);
+        
         Player.prepareAsync(function() {
             Player.play();
         });
-
+        MaximizeTV();
     } catch (error) {
         Debug('PlayVideo > Error name = '+ error.name + ', Error message = ' + error.message);
     }

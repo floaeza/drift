@@ -227,7 +227,7 @@ var CheckInfo = 0;
                         }
                     } else {
                         if(CurrentModule === 'Tv'){
-                        TvPlay();
+                            TvPlay();
                         }
                     }
                 break;

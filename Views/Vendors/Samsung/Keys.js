@@ -62,7 +62,6 @@ function registerkeys(Page){
         // NETWORK ACTIVE
         var ActiveConnectionType = webapis.network.getActiveConnectionType();
 
-        console.log('ActiveConnectionType: '+ActiveConnectionType);
 
         if (ActiveConnectionType !== 0) {
             if(Page === 'index') {
@@ -76,12 +75,11 @@ function registerkeys(Page){
                 // Something you want to do when network is connected again
                 if(Page === 'index') {
                     SetIndexData();
+                    //alert('GATEWAY_CONNECTED');
                 }
             }
         });
-
-        addNetworkStateChangeListener();
-
+        //addNetworkStateChangeListener();
         ActiveConnectionType = null;
     }
 }

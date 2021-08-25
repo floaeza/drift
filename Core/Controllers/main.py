@@ -19,10 +19,10 @@ for n in range(5):
     today = today + timedelta(days=1)
 
 ####Numero de paquetes + 1#########
-paquetes = 3
+paquetes = 7
 
 
-inici = 1
+inici = 5
 
 def start(day, pos):
     dataProgram = {}

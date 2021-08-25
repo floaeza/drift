@@ -11,9 +11,12 @@
     
     $CurrentController = 'ModulesController';
     
-    $Option = !empty($_POST['Option']) ? $_POST['Option'] : '';
+    $Option = !empty($_POST['Option']) ? $_POST['Option'] : 'getModuleTV';
     $MacAddress = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '';
     $ProjectId = !empty($_POST['ProjectId']) ? $_POST['ProjectId'] : '';
+    
+    $ModuleName = !empty($_POST['ModuleName']) ? $_POST['ModuleName'] : '';
+    $ModuleUrl = !empty($_POST['ModuleUrl']) ? $_POST['ModuleUrl'] : 'tv.php';
     
     $ConfigData   = new Config($MacAddress, $CurrentController);
     $ModulesData = new Modules($MacAddress, $CurrentController);
@@ -51,7 +54,16 @@
             
             $Result = $ModulesList;
         break;
+        case 'getModuleTV':
+            
+            $Response = $ModulesData->getModuleTV($ModuleUrl);
 
+            $Result = array('Option' => $Option,
+            'ModuleUrl' => $Response[0]['url_modulo'],
+            'ModuleId' => $Response[0]['id_modulo'],
+            'ModuleName' => $Response[0]['nombre_modulo']);
+            
+            break;
         case 'GetAllMembers':
             $ModulesInfo = $LocationsData->getMembers();
             $Result = $ModulesInfo;

@@ -19,8 +19,8 @@
         FormatEndDate       = '',
         StartDateModuleMM   = '',
         EndDateModuleMM     = '',
-        MinSeconds          = 30000, // 30 segundos
-        MaxSeconds          = 25200000, // 420 minutos | 7 horas
+        MinSeconds          = 90000, // 30 segundos
+        MaxSeconds          = 18000000, // 420 minutos | 7 horas
         DifferenceInSec     = '';
 
     var MM_StartDateMovie      = new Date(),
@@ -61,7 +61,8 @@
             localStorage.setItem('Module', ChangeModule);
             localStorage.setItem('Id', ModuleId);
 
-            location.replace(PageH);
+            //location.replace(PageH);
+            window.location.href = PageH;
         } else {
             location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
         }
@@ -73,8 +74,8 @@
             FormatEndDate       = getDate(EndDateModule);
             StartDateModuleMM   = StartDateChannel.getTime();
             EndDateModuleMM     = EndDateModule.getTime();
-            DifferenceInSec     = StartDateModuleMM - EndDateModuleMM;
-
+            DifferenceInSec     = EndDateModuleMM - StartDateModuleMM;
+            //alert("Start: " + StartDateModuleMM + " End: " + EndDateModuleMM+ " Diferencia: "+DifferenceInSec);
         /* Valida si el tiempo de vista del modulo esta en un rango de tiempo coherente */
         if(Math.abs(DifferenceInSec) > MinSeconds && Math.abs(DifferenceInSec) < MaxSeconds){
             
@@ -83,7 +84,6 @@
         
             $.ajax({
                 type: 'POST',
-                async: false,
                 url: ServerSource + 'Core/Controllers/Statistics.php',
                 data: {
                     Option: 'Channels',
@@ -111,7 +111,6 @@
 
             $.ajax({
                 type: 'POST',
-                async: false,
                 url: ServerSource + 'Core/Controllers/Statistics.php',
                 data: {
                     Option: 'Modules',
@@ -137,7 +136,6 @@
         if(Math.abs(MM_DifferenceInSec) > MM_MinSeconds){
             $.ajax({
                 type: 'POST',
-                async: false,
                 url: ServerSource + 'Core/Controllers/Statistics.php',
                 data: {
                     Option: 'Movies',
@@ -463,15 +461,11 @@ function ConvertToHourEpoch(time24){
     function SetLog(LogNumber){
         $.ajax({
             type: 'POST',
-            async: false,
             url: ServerSource + 'Core/Controllers/Log.php',
             data: { 
                 MacAddress : MacAddress,
                 LogNumber : LogNumber,
                 CurrentModule: CurrentModule
-            },
-            success: function (response){
-                //Debug(response);
             }
         });
     }

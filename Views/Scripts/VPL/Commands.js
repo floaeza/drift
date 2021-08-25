@@ -75,6 +75,7 @@ function Back(){
 
 function Menu(){
     if(CurrentModule !== 'Menu' && Device['Services']['ActiveMenu'] === true){
+        //alert("Menu");
         GoPage('menu.php', Device['MenuId'], 'Menu');
     } else if(CurrentModule === 'Tv' && Device['Services']['ActiveMenu'] === false){
         TvRecorder();

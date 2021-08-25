@@ -46,6 +46,8 @@
 
     var MACAddress  = '';
 
+    var idModulo = '';
+
     var InfoDevice = [];
     var TemplateSource = '';
     var Data = '';
@@ -61,6 +63,7 @@
         i = 0;
 
     var init = function() {
+        //alert('INIT F');
         if (window.tizen !== undefined) {
             b2bcontrol = window.b2bapis.b2bcontrol;
 
@@ -81,11 +84,10 @@
     function GetModule() {
         $.ajax({
             type: 'POST',
-            url: 'http://' + ServerIp + ServerFolder+'/Core/Controllers/Index.php',
-            async: false,
+            url: 'http://' + ServerIp + ServerFolder+'/Core/Controllers/Module.php',
             data: {
-                Option: 'TVLOAD',
-                MacAddress: MACAddress,
+                Option: 'getModuleTV',
+                ModuleUrl: 'tv.php',
             },
             success: function (response) {
                 var InfoDevice = $.parseJSON(response);
@@ -101,7 +103,7 @@
     }
 
     function GetContents() {
-        
+    
         $.ajax({
             method: 'POST',
             url: 'http://' + ServerIp + ServerFolder+'/tvContent.php',
@@ -117,7 +119,7 @@
                 IndexLogo = Data['Variables'][0].IndexLogo;
 
                 TemplateSource = 'http://' + ServerIp + ServerFolder+'/'+Data['Variables'][0].Template;
-
+                //alert(TemplateSource);
                 GetTemplateContent();
             }
         });
@@ -162,7 +164,7 @@
             script = document.createElement('script');
             script.setAttribute('type', 'text/javascript');
             script.setAttribute('src', Data['ScriptsFooter'][i]);
-            console.log(Data['ScriptsFooter'][i]);
+            //alert(Data['ScriptsFooter'][i]);
             footer.appendChild(script);
 
             // i++;
@@ -171,7 +173,6 @@
             //     console.log('END SCRIPTS');
             // }
         }
-
         registerkeys('tv');
     }
 

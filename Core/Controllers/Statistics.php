@@ -60,4 +60,4 @@
     }
     
     
-   // echo json_encode($NewStatistics);
+//echo json_encode($NewStatistics);

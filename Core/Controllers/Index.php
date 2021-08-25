@@ -153,8 +153,17 @@
                 'ModuleName' => $LocationDevice[$FirstElement]['nombre_modulo']);
 
             echo json_encode($Response);
-        break;
-        
+            break;
+        case 'LOADMODULO':
+            $LocationDevice = $DevicesData->getDeviceInfo($MacAddress);
+
+            $Response = array('Option' => $Option,
+                'ModuleUrl' => $LocationDevice[$FirstElement]['url_modulo'],
+                'ModuleId' => $LocationDevice[$FirstElement]['id_modulo'],
+                'ModuleName' => $LocationDevice[$FirstElement]['nombre_modulo']);
+
+            echo json_encode($Response);
+            break;
         case 'LICENSE':
             $Response = array('Option' => $Option);
                 
