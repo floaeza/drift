@@ -24,8 +24,10 @@ var CheckInfo = 0;
 setTimeout(removeEventListenerKeydown, 600000);
 
 function removeEventListenerKeydown(){
+    Debug("+++++++removeEventListener+++++++");
     document.removeEventListener('keydown',KeyHandler,false);
     document.addEventListener('keydown',KeyHandler,false);
+    setTimeout(removeEventListenerKeydown, 600000);
 }
 
     function KeyHandler(e) {
