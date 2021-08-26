@@ -20,6 +20,14 @@ var PressedKey      = 0,
     
 var CheckInfo = 0;
     
+
+setTimeout(removeEventListenerKeydown, 600000);
+
+function removeEventListenerKeydown(){
+    document.removeEventListener('keydown',KeyHandler,false);
+    document.addEventListener('keydown',KeyHandler,false);
+}
+
     function KeyHandler(e) {
         PressedKey = e.which;
         e.preventDefault();

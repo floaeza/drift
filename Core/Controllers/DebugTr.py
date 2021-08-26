@@ -664,6 +664,8 @@ def deleteline(slinea):
 
 for pos in range(len(listDays)):
     start(listDays[pos], pos)
-    
+    info = {'Option': 'UpdateParameter', 'PackageId': -1}
+    req = requests.post('http://localhost/BBINCO/TV/Core/Controllers/Packages.php', data=info)
 
 # os.system ("python3 /var/www/html/BBINCO/TV/Core/Controllers/main.py")
+

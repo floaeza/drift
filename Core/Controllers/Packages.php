@@ -14,7 +14,7 @@
     $PackagesData = new Packages('system', $CurrentController);
     
     $Option = !empty($_POST['Option']) ? $_POST['Option'] : '';
-    $PackageId = !empty($_POST['PackageId']) ? $_POST['PackageId'] : '19';
+    $PackageId = !empty($_POST['PackageId']) ? $_POST['PackageId'] : '';
     $Package_name = !empty($_POST['Package_name']) ? $_POST['Package_name'] : '';
     $Package_description = !empty($_POST['Package_description']) ? $_POST['Package_description'] : '';
 
@@ -29,7 +29,7 @@
 
     $ChannelIdArray = !empty($_POST['ChannelIdArray']) ? $_POST['ChannelIdArray'] : '';
 
-      //$Option = 'UpdateGuide';
+      //$Option = 'UpdateParameter';
     
     switch ($Option){
         case 'GetChannels':
@@ -128,7 +128,12 @@
             // pclose(popen("cd /var/www/html/BBINCO/TV/Core/Controllers && python3 DebugTr.py'","r"));
             $your_command = 'cd /var/www/html/BBINCO/TV/Core/Controllers && python3 DebugTr.py';
             shell_exec( $your_command . "> /dev/null 2>/dev/null &" );
-
+            break;
+        case 'UpdateParameter':
+            $NewPackage = array(
+                'valor_parametro' => $PackageId,   
+                ); 
+            $PackagesData->updateParameter($NewPackage);
             break;
         case 'UpdateChannel':
             $infoChannel = array(
