@@ -6,6 +6,7 @@
  */
     // Variables globales
     var PlayingChannel      = false,
+        PlayDigita          = false,
         PlayingVod          = false,
         PauseLive           = false,
         PIDS                = [],
@@ -27,6 +28,7 @@
  * ****************************************************************************/
     //function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPid){
     function PlayChannel(Source, Port){
+        
         Debug('############################### PLAYCHANNEL AMINO');
         var CheckPort = '',
             CheckProgram = '';
@@ -43,7 +45,7 @@
             // Debug('########################### Channelinfo: '+CheckProgram);
         // Detiene el proceso de la reproduccion anterior
         StopVideo();
-
+        PlayDigita = false;
         // Reproduce el canal actual
         //AVMedia.Play('src='+ Source+''+CheckPort+CheckProgram);
         AVMedia.Play('src='+ Source+''+CheckPort);
@@ -81,7 +83,7 @@
         // Reproduce el video
         Debug('src='+ Source);
         AVMedia.Play('src='+ Source);
-
+        PlayDigita = true;
         // Maximiza el video en caso de que no este en pantalla completa
         MaximizeTV();
 
@@ -206,6 +208,7 @@
         AVMedia.Kill();
         PauseLive = false;
         PlayingRecording = false;
+        PlayDigita = false;
     }
     
     function PauseVideo(){

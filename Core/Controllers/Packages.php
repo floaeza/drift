@@ -7,14 +7,14 @@
     require_once './../Models/Database.php';
     require_once './../DataAccess/Config.php';
     require_once './../DataAccess/Packages.php';
-    
+    ini_set('max_execution_time', 3000900000);
     $CurrentController = 'PackagesController';
     
     $ConfigData   = new Config('system', $CurrentController);
     $PackagesData = new Packages('system', $CurrentController);
     
     $Option = !empty($_POST['Option']) ? $_POST['Option'] : '';
-    $PackageId = !empty($_POST['PackageId']) ? $_POST['PackageId'] : '17';
+    $PackageId = !empty($_POST['PackageId']) ? $_POST['PackageId'] : '19';
     $Package_name = !empty($_POST['Package_name']) ? $_POST['Package_name'] : '';
     $Package_description = !empty($_POST['Package_description']) ? $_POST['Package_description'] : '';
 
@@ -29,7 +29,7 @@
 
     $ChannelIdArray = !empty($_POST['ChannelIdArray']) ? $_POST['ChannelIdArray'] : '';
 
-    // $Option = 'UpdateChannel';
+      //$Option = 'UpdateGuide';
     
     switch ($Option){
         case 'GetChannels':
@@ -115,16 +115,19 @@
                 'valor_parametro' => $PackageId,   
                 ); 
             $PackagesData->updateParameter($NewPackage);
-        //    $resultado = shell_exec('cd /var/www/html/BBINCO/TV/Core/Controllers && python3 DebugTr.py');   
-        //    $Result= "$resultado\n"; 
+            //$resultado = shell_exec('cd /var/www/html/BBINCO/TV/Core/Controllers && python3 DebugTr.py');   
+            //$Result= "$resultado\n"; 
             /* Añade redirección, por lo que podemos obtener stderr. */
-            // $gestor = popen('sudo cd /var/www/html/BBINCO/TV/Core/Controllers && python3 DebugTr.py', 'r');
+            //$gestor = popen('cd /var/www/html/BBINCO/TV/Core/Controllers && python3 DebugTr.py', 'r');
             // $leer = fread($gestor, 2096);
             // $Result = $leer;
             // pclose($gestor);
-            $command = escapeshellcmd('/var/www/html/BBINCO/TV/Core/Controllers/DebugTr.py');
-            $output = shell_exec($command);
-            $Result = $output;
+            // $command = escapeshellcmd('/var/www/html/BBINCO/TV/Core/Controllers/DebugTr.py');
+            // $output = shell_exec($command);
+            // $Result = $output;
+            // pclose(popen("cd /var/www/html/BBINCO/TV/Core/Controllers && python3 DebugTr.py'","r"));
+            $your_command = 'cd /var/www/html/BBINCO/TV/Core/Controllers && python3 DebugTr.py';
+            shell_exec( $your_command . "> /dev/null 2>/dev/null &" );
 
             break;
         case 'UpdateChannel':

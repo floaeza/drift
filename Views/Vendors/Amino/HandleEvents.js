@@ -121,7 +121,7 @@ Debug('########################### HandleEvent() ');
         // }
         else if(NUMBER_EVENT === STATUS_END_OF_STREAM){
             if(CurrentModule === 'Tv'){
-            	if (PlayingChannel == true){
+            	if (PlayingChannel == true && PlayDigita == false){
             		TvChannelUp();
             	}else{
             		SetDigitalChannel();
