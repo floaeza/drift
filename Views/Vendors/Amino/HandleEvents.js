@@ -152,6 +152,8 @@ Debug('########################### HandleEvent() ');
         }
 
         NUMBER_EVENT = null;
+        AVMedia.onEvent=null;
+        AVMedia.onEvent='HandleEvent()';
     }
 
 

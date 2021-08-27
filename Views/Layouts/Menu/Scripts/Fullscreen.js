@@ -18,6 +18,7 @@
 
     function SetMenuList(){
         //alert(Device['Services']['ProjectId']);
+        //alert(ServerSource);
         $.ajax({
             type: 'POST',
             url: ServerSource + 'Core/Controllers/Menu.php',
@@ -29,24 +30,23 @@
             success: function (response){
                 MenuList = null;
                 MenuList = $.parseJSON(response);
+                
                 SetBackgrounds();
-
-                SetMenuInfo();
             }
         });
     }
 
     function SetBackgrounds(){
      
-
+        var img;
         var IndexM = 0;
         var MenuBackgrounds = document.getElementById('MenuBackgrounds');
 
         for(IndexM = 0; IndexM < MenuList.length; IndexM++) {
-            var img = document.createElement('img');
-                img.src = Libraries['MenuPath'] + MenuList[IndexM].Image;
-                img.className = 'BackgroundsMenu';
-                img.style.visibility = 'hidden';
+            img = document.createElement('img');
+            img.src = Libraries['MenuPath'] + MenuList[IndexM].Image;
+            img.className = 'BackgroundsMenu';
+            img.style.visibility = 'hidden';
 
             MenuBackgrounds.appendChild(img);
         }
@@ -56,6 +56,7 @@
         img = null;
         IndexM = null;
         MenuBackgrounds = null;
+        SetMenuInfo();
     }
 
     SetMenuList();
@@ -98,6 +99,7 @@ function SetMenuInfo(){
             IndexM = null;
             Index = null;
 
+        
     }
 
     function MenuSelect(Direction){
