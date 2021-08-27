@@ -19,21 +19,29 @@ function Blue(){
 }
 
 function Green(){
-    //player.speed = 4;
-    //Debug(player.speed);
-    StopVideo();
-    //stbPlayerManager.setRTSP({type: 0, useUDP: true, nonSmoothPause: true});
-    player.play({
-        uri: "rtsp://10.0.3.21:554/0000000207",
-        solution: 'auto'
-    });
-    Debug('q_p');
-    player.onTracksInfo = function () {
-        Debug('Information on audio and video tracks of the media content is received.');
-        Debug(JSON.stringify(player.metadataInfo));
-    };
-    
-    
+
+    import { exec } from 'child_process';
+    async function sh(cmd) {
+        return new Promise(function (resolve, reject) {
+          exec(cmd, (err, stdout, stderr) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve({ stdout, stderr });
+            }
+          });
+        });
+      }
+      
+      async function main() {
+        let { stdout } = await sh('ls');
+        //for (let line of stdout.split('\n')) {
+        //  console.log(`ls: ${line}`);
+        //}
+        alert(stdout);
+      }
+      
+      main();
 }
 
 function Yellow(){

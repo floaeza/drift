@@ -11,6 +11,8 @@
         TimerDate         = 0,
         Offset            = 0;
 
+    var cade = null;
+
 
     /* Valida la diferencia de horas en Samsung */
 
@@ -90,11 +92,16 @@
 
             Debug('############################################################### FormatHour2 === '+FormatHour);
 
-            if(FormatHour === '12:01 AM'){
+            cade = FormatHour.split(":");
 
+            if(cade[1] == '01 AM' || cade[1] == '01 PM' || cade[1] == '31 AM' || cade[1] == '31 PM'){
                 clearInterval(TimerDate);
-
                 TimerDate = setInterval(SetDate, 50000);
+                cade = null;
+            }
+
+
+            if(FormatHour === '12:01 AM'){
 
                 SetEpgFile();
                 Debug('------------------------------ SetEpgFile -> FormatHour: '+FormatHour);

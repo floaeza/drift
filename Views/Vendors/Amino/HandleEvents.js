@@ -454,7 +454,7 @@ if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
 
     GetProgramsSerie();
 
-    setInterval(HandlerPvr,60000);
+    HandlerPvr();
 }
 
 function HandlerPvr(){
@@ -466,6 +466,8 @@ function HandlerPvr(){
     GetSchedulesToDelete();
 
     Debug('-------> HandlerPvr');
+
+    setTimeout(HandlerPvr,60000);
 }
 
 
