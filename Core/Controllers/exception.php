@@ -32,7 +32,6 @@ switch ($Option) {
                 chmod($fichero, 0777);
                 echo 'Se aplicaron los cambios en el archivo de configuración';
             }
-
         }
         else {
             echo 'Archivo vacio';
