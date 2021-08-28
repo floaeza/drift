@@ -281,6 +281,7 @@ function UpdateQuickInfoDevice(){
             EventHdmi: EventHdmi,
             //EventNetman: EventNetman,
             LastChannel: OnScreen,
+            Channelpos: ChannelPosition,
             CurrentDateStb: CurrentStbDate
         },
         beforeSend: function (){

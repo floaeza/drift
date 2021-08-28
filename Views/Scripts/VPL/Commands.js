@@ -16,7 +16,7 @@ function Blue(){
 
 }
 function Green(){
-    
+    alert(JSON.stringify(Browser.GetWindowNames()));
 }
 
 function Yellow(){
@@ -60,7 +60,6 @@ function Menu(){
     if(CurrentModule !== 'Menu' && Device['Services']['ActiveMenu'] === true){
         //alert("Menu");
         GoPage('menu.php', Device['MenuId'], 'Menu');
-        Red();
     } else if(CurrentModule === 'Tv' && Device['Services']['ActiveMenu'] === false){
         TvRecorder();
     }

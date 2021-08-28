@@ -66,6 +66,7 @@
             
         } else {
             location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
+            UpdateQuickInfoDevice();
         }
     }
     
