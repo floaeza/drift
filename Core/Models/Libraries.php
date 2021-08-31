@@ -14,7 +14,7 @@ if($GetJson == true){
     $Client = $ConfigData->getConfigByName('Identifier').'/';
     $EpgLogo = $ConfigData->getConfigByName('EpgLogo');
 
-    $JsonLibraries['EpgLogo'] = '/BBINCO/TV/Media/Logos/'.$Client.$EpgLogo;
+    $JsonLibraries['EpgLogo'] = '/BBINCO_BETA/TV/Media/Logos/'.$Client.$EpgLogo;
 }
 
 $ServerIp = !empty($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : '';
@@ -24,13 +24,13 @@ $ServerIp = !empty($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : '';
     }
 
 $JsonLibraries['ServerRoot']        = 'http://'.$ServerIp.'/';
-$JsonLibraries['ServerSource']      = 'http://'.$ServerIp.'/BBINCO/TV/';
-$JsonLibraries['MediaSource']       = 'http://'.$ServerIp.'/BBINCO/';
+$JsonLibraries['ServerSource']      = 'http://'.$ServerIp.'/BBINCO_BETA/TV/';
+$JsonLibraries['MediaSource']       = 'http://'.$ServerIp.'/BBINCO_BETA/';
 $JsonLibraries['MultimediaSource']  = 'http://'.$ServerIp.'/Multimedia/';
 $JsonLibraries['MoviesSource']      = 'http://'.$ServerIp.'/vod/mvs/';
 $JsonLibraries['SeriesSource']      = 'http://'.$ServerIp.'/vod/srs/';
 
-$ServerSource = 'http://'.$ServerIp.'/BBINCO/TV/';
+$ServerSource = 'http://'.$ServerIp.'/BBINCO_BETA/TV/';
 
 
 /* Views */
@@ -135,7 +135,7 @@ $JsonLibraries['EpgDaysPath']   = $Libraries['ControllersPath'].'Epg/'.$Client;
 //    $Client = $ConfigData->getConfigByName('Identifier').'/';
 //    $EpgLogo = $ConfigData->getConfigByName('EpgLogo');
 //
-//    $JsonLibraries['EpgLogo'] = '/BBINCO/TV/Media/Logos/'.$Client.$EpgLogo;
+//    $JsonLibraries['EpgLogo'] = '/BBINCO_BETA/TV/Media/Logos/'.$Client.$EpgLogo;
 //}
 //
 //$ServerIp = !empty($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : '';
@@ -144,7 +144,7 @@ $JsonLibraries['EpgDaysPath']   = $Libraries['ControllersPath'].'Epg/'.$Client;
 //    $ServerIp = !empty($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : '';
 //}
 //
-//$JsonLibraries['ServerSource']      = 'http://'.$ServerIp.'/BBINCO/TV/';
+//$JsonLibraries['ServerSource']      = 'http://'.$ServerIp.'/BBINCO_BETA/TV/';
 //$JsonLibraries['MultimediaSource']  = 'http://'.$ServerIp.'/Multimedia/';
 //$JsonLibraries['MoviesSource']      = 'http://'.$ServerIp.'/vod/mvs/';
 //$JsonLibraries['SeriesSource']      = 'http://'.$ServerIp.'/vod/srs/';
