@@ -270,6 +270,8 @@ function UpdateQuickInfoDevice(){
     Debug('----------------------------# EventString:: '+EventString);
     Debug('----------------------------# EventHdmi:: '+EventHdmi);
     Debug('----------------------------# CurrentStbDate:: '+CurrentStbDate);
+    Debug('----------------------------# LastChannel:: '+OnScreen);
+    Debug('----------------------------# Channelpos:: '+ChannelPosition);
 
     $.ajax({
         type: 'POST',

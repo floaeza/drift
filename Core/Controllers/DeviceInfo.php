@@ -21,7 +21,24 @@ $Channelpos = !empty($_POST['Channelpos']) ? $_POST['Channelpos'] : '';
 $CurrentDate = !empty($_POST['CurrentDateStb']) ? $_POST['CurrentDateStb'] : '';
 $DeviceId    = !empty($_POST['DeviceId']) ? $_POST['DeviceId'] : '';
 
-$Reboot = '';
+//$Reboot = '';
+//
+//$DeviceUpdate =  array (
+//    'mensaje_evento'   => $EventString,
+//    'hdmi'             => $EventHdmi,
+//    'ultimo_canal'     => $LastChannel,
+//    'channel_pos'      => $Channelpos,
+//    'ultima_ejecucion' => $CurrentDate);
+//
+//$UpdateDevice = $DevicesData->updateGetDevice($DeviceId, $DeviceUpdate,$MacAddress);
+//
+//foreach ($UpdateDevice as $DeviceInfo):
+//    $Reboot = $DeviceInfo['reiniciar'];
+//endforeach;
+//
+//echo json_encode($Reboot);
+
+$Reboot = array();
 
 $DeviceUpdate =  array (
     'mensaje_evento'   => $EventString,
@@ -32,8 +49,10 @@ $DeviceUpdate =  array (
 
 $UpdateDevice = $DevicesData->updateGetDevice($DeviceId, $DeviceUpdate,$MacAddress);
 
+array_push($Reboot,$UpdateDevice);
+
 foreach ($UpdateDevice as $DeviceInfo):
-    $Reboot = $DeviceInfo['reiniciar'];
+    array_push($Reboot,$DeviceInfo['reiniciar']);
 endforeach;
 
 echo json_encode($Reboot);
