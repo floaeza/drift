@@ -63,86 +63,86 @@
 /*******************************************************************************
  *  LG
  ******************************************************************************/  
-    // function LgDeviceInitial(){ 
-    //     //hcap.channel.stopCurrentChannel({ /* vacio*/ });
+    function LgDeviceInitial(){ 
+        //hcap.channel.stopCurrentChannel({ /* vacio*/ });
         
-    //     /* Detenemos el canal actual */
-    //     hcap.channel.stopCurrentChannel({
-    //         'onSuccess' : function() {
-    //             console.log('onSuccess');
-    //         }, 
-    //         'onFailure' : function(f) {
-    //             console.log('onFailure : errorMessage = ' + f.errorMessage);
-    //         }
-    //     });
+        /* Detenemos el canal actual */
+        hcap.channel.stopCurrentChannel({
+            'onSuccess' : function() {
+                console.log('onSuccess');
+            }, 
+            'onFailure' : function(f) {
+                console.log('onFailure : errorMessage = ' + f.errorMessage);
+            }
+        });
         
-    //     /* Modelo */  
-    //     var GetModel = {
-    //         'key' : 'model_name',
-    //         'onSuccess' : function(response_model) {
-    //             Model = response_model.value;
-    //         }
-    //     };
-    //     hcap.property.getProperty(GetModel);
+        /* Modelo */  
+        var GetModel = {
+            'key' : 'model_name',
+            'onSuccess' : function(response_model) {
+                Model = response_model.value;
+            }
+        };
+        hcap.property.getProperty(GetModel);
 
-    //     /* Firmware */
-    //     var GetFirmware = {
-    //         'key' : 'platform_version',
-    //         'onSuccess' : function(response_version) {
-    //             Firmware = response_version.value;
-    //         }
-    //     };
+        /* Firmware */
+        var GetFirmware = {
+            'key' : 'platform_version',
+            'onSuccess' : function(response_version) {
+                Firmware = response_version.value;
+            }
+        };
         
-    //     hcap.property.getProperty(GetFirmware);
+        hcap.property.getProperty(GetFirmware);
 
-    //     /* Macaddress, Ip, Vendor, Hdd */
-    //     var GetNetwork = {
-    //         'index' : 1,
-    //         'onSuccess' : function(response_device) {
-    //             MacAddress  = response_device.mac;
-    //             Hdd         = 'N';
-    //             Vendor      = 'Lg';
-    //         }
-    //     };
+        /* Macaddress, Ip, Vendor, Hdd */
+        var GetNetwork = {
+            'index' : 1,
+            'onSuccess' : function(response_device) {
+                MacAddress  = response_device.mac;
+                Hdd         = 'N';
+                Vendor      = 'Lg';
+            }
+        };
 
-    //     hcap.network.getNetworkDevice(GetNetwork);
+        hcap.network.getNetworkDevice(GetNetwork);
         
-    //     hcap.network.getNetworkInformation({
-    //         'onSuccess' : function(s) {
-    //             IpAddress = s.ip_address;
-    //         }
-    //     });
+        hcap.network.getNetworkInformation({
+            'onSuccess' : function(s) {
+                IpAddress = s.ip_address;
+            }
+        });
         
-    //     var Year  = '', Month = '', Day   = '', Min   = '', Hour  = '', Sec   = '';
+        var Year  = '', Month = '', Day   = '', Min   = '', Hour  = '', Sec   = '';
         
-    //     $.ajax({
-    //         type: 'POST',
-    //         url: '[@Time]',
-    //         async : false,
-    //         success: function (response) {
-    //             var Today = $.parseJSON(response);
-    //                 Year  = Today.Year;
-    //                 Month = Today.Month;
-    //                 Day   = Today.Day;
-    //                 Min   = Today.Hours;
-    //                 Hour  = Today.Minutes;
-    //                 Sec   = Today.Seconds;
+        $.ajax({
+            type: 'POST',
+            url: '[@Time]',
+            async : false,
+            success: function (response) {
+                var Today = $.parseJSON(response);
+                    Year  = Today.Year;
+                    Month = Today.Month;
+                    Day   = Today.Day;
+                    Min   = Today.Hours;
+                    Hour  = Today.Minutes;
+                    Sec   = Today.Seconds;
                     
-    //             var ActualDate = {
-    //                 'year'   : parseInt(Year,10), 
-    //                 'month'  : parseInt(Month,10),
-    //                 'day'    : parseInt(Day,10),
-    //                 'hour'   : parseInt(Min,10),
-    //                 'minute' : parseInt(Hour,10),
-    //                 'second' : parseInt(Sec,10),
-    //                 'gmtOffsetInMinute' : -600,
-    //                 'isDaylightSaving'  : false
-    //             };
+                var ActualDate = {
+                    'year'   : parseInt(Year,10), 
+                    'month'  : parseInt(Month,10),
+                    'day'    : parseInt(Day,10),
+                    'hour'   : parseInt(Min,10),
+                    'minute' : parseInt(Hour,10),
+                    'second' : parseInt(Sec,10),
+                    'gmtOffsetInMinute' : -600,
+                    'isDaylightSaving'  : false
+                };
 
-    //             hcap.time.setLocalTime(ActualDate);
-    //         }
-    //     });
-    // }
+                hcap.time.setLocalTime(ActualDate);
+            }
+        });
+    }
 
 /*******************************************************************************
  *  Kamai
