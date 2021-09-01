@@ -11,18 +11,17 @@ import os
 
 today = datetime.today()
 today = today
-listDays = ["", "", "", "", ""]
+listDays = [""]
 
 
-for n in range(5):
+for n in range(1):
     listDays[n] = today.strftime("%Y-%m-%d")
     today = today + timedelta(days=1)
 
 ####Numero de paquetes + 1#########
-paquetes = 7
-
-
-inici = 5
+payload = {'Option': 'GetAllPackages'}
+Pack = requests.post('http://localhost/BBINCO/TV/Core/Controllers/Packages.php', data=payload)
+Packages = json.loads(Pack.content)
 
 def start(day, pos):
     dataProgram = {}
@@ -51,7 +50,7 @@ def start(day, pos):
 
 
 
-    for ids in range(inici, paquetes):
+    for Package in Packages:
         contadorCanal = 0
         data = {}
         data["C_Length"]=0
@@ -61,7 +60,7 @@ def start(day, pos):
         #######################################################################################################
 
 
-        payload = {'Option': 'GetModulesBypackage', 'PackageID': ids}
+        payload = {'Option': 'GetModulesBypackage', 'PackageID': int(Package["id_paquete"])}
         x = requests.post('http://localhost/BBINCO/TV/Core/Controllers/PY.php', data=payload)
         channels = json.loads(x.content)
         for channel in channels:
@@ -105,7 +104,7 @@ def start(day, pos):
         #######################################################################################################
         ############################################# PROGAMACION #############################################
         #######################################################################################################
-        payload = {'Option': 'GetChannelsInfoBypackage', 'PackageID': ids}
+        payload = {'Option': 'GetChannelsInfoBypackage', 'PackageID': int(Package["id_paquete"])}
         x = requests.post('http://localhost/BBINCO/TV/Core/Controllers/PY.php', data=payload)
         channels = json.loads(x.content)
         #print(channels)
@@ -114,9 +113,9 @@ def start(day, pos):
         for channel in channels:
             a = a + 1
             os.system ("clear") 
-            print("Generando: ", 'epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json       ',"{:.2f}".format((a*100)/len(channels)), " %")
+            print("Generando: ", 'epg_'+day.strftime("%Y%m%d") + '_' + str(Package["id_paquete"]) + '.json       ',"{:.2f}".format((a*100)/len(channels)), " %")
             print(channel['NAME'])
-            print("Archivos restantes: ", (paquetes-ids)*(len(listDays)-pos))
+            #print("Archivos restantes: ", (paquetes-ids)*(len(listDays)-pos))
             #print(channel)
             if 'GATO' in channel['STTN']:
                 dataProgramGato = {}
@@ -639,16 +638,16 @@ def start(day, pos):
                         contadorCanal = contadorCanal + 1
 
         data["C_Length"] = contadorCanal
-        with open('/var/www/html/BBINCO/TV/Core/Controllers/Epg/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'w', encoding='ascii') as file:
+        with open('/var/www/html/BBINCO/TV/Core/Controllers/Epg/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(Package["id_paquete"]) + '.json', 'w', encoding='ascii') as file:
             json.dump(data, file, indent=4)
 
-        with open('/var/www/html/BBINCO/TV/Core/Controllers/Epg/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'r') as file:
+        with open('/var/www/html/BBINCO/TV/Core/Controllers/Epg/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(Package["id_paquete"]) + '.json', 'r') as file:
             filedata = file.read()
 
         filedata = filedata.replace('[', '').replace(']', '')
-        with open('/var/www/html/BBINCO/TV/Core/Controllers/Epg/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json', 'w') as file:
+        with open('/var/www/html/BBINCO/TV/Core/Controllers/Epg/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(Package["id_paquete"]) + '.json', 'w') as file:
             file.write(filedata)
-            print('/var/www/html/BBINCO/TV/Core/Controllers/Epg/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(ids) + '.json ', 'CREADO')
+            print('/var/www/html/BBINCO/TV/Core/Controllers/Epg/'+IDF['IDF']+'/epg_'+day.strftime("%Y%m%d") + '_' + str(Package["id_paquete"]) + '.json ', 'CREADO')
 
         data.clear()
 
