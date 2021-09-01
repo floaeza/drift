@@ -22,10 +22,6 @@
         
         <link rel='stylesheet' href='[@LayoutStyle]' type='text/css'>
 
-        <script type='text/javascript' src='$B2BAPIS/b2bapis/b2bapis.js'></script>
-        <script type='text/javascript' src='$MANAGER_WIDGET/Common/af/2.0.0/loader.js'></script>
-        <script type="text/javascript" src="$WEBAPIS/webapis/webapis.js"></script>
-
         <script src='[@Jquery]'></script>
         <script src='[@Skycons]'></script>
         <script src='[@Hcap]'></script>

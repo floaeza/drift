@@ -57,10 +57,13 @@ function Back(){
 }
 
 function Menu(){
+    Debug('--------------------------MENU() CurrentModule:: ' +CurrentModule + ' DEVICE[SERVICES][ACTIVEMENU] '+ Device['Services']['ActiveMenu']);
     if(CurrentModule !== 'Menu' && Device['Services']['ActiveMenu'] === true){
         //alert("Menu");
+        Debug('----------- GOPAGE');
         GoPage('menu.php', Device['MenuId'], 'Menu');
     } else if(CurrentModule === 'Tv' && Device['Services']['ActiveMenu'] === false){
+        Debug('----------- TV RECORDER');
         TvRecorder();
     }
 }
