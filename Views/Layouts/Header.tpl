@@ -35,7 +35,7 @@
         <script src='[@Keys]'></script>
         <script src='[@Commands]'></script>
         <script src='[@RemoteControl]'></script>
-        <script src='[@AppControl]'></script>
+        <!--<script src='[@AppControl]'></script>-->
         <!-- <script src='./Views/Scripts/AppControl.js'></script> -->
 
     </head>

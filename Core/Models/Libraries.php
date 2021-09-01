@@ -98,7 +98,7 @@ $JsonLibraries['EpgDaysPath']   = $Libraries['ControllersPath'].'Epg/'.$Client;
     $Libraries['Tv']                = $Libraries['ScriptsPath'].'Tv.js';
     $Libraries['TimeScript']        = $Libraries['ScriptsPath'].'Time.js';
 
-    $Libraries['AppControl']     = $Libraries['ScriptsPath'].'AppControl.js';
+    //$Libraries['AppControl']     = $Libraries['ScriptsPath'].'AppControl.js';
     
     /* Javascripts por marca */
     $Libraries['Keys']              = '/Keys.js';

@@ -66,7 +66,7 @@ if($CurrentTime > $EffectiveTime || $Status === false){
     array_push($ScriptsHeader, $Libraries['Skycons']);
     array_push($ScriptsHeader, $Libraries['Commands']);
     array_push($ScriptsHeader, $Libraries['RemoteControl']);
-    array_push($ScriptsHeader, $Libraries['AppControl']);
+    //array_push($ScriptsHeader, $Libraries['AppControl']);
     array_push($ScriptsHeader, $VendorFolder.$Libraries['Keys']);
 
     /* STYLES HEADER > Tema > Template */
