@@ -31,8 +31,7 @@ function DBAppControl(){
         success: function (response) {
             // @ts-ignore
             Comando  = $.parseJSON(response);
-            //alert(Comando[0].MAC);
-            //alert('Wenas Nochis');
+            
             setTimeout(DBAppControl, 1000);
         }
     });
