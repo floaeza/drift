@@ -70,14 +70,14 @@
                 ImgSection3.src = '';
 
                 if(localStorage.getItem('Id') === null) {
-                    alert('NULL');
+                    //alert('NULL');
                     VideoScreen.style.display = 'inline';
 
                     VideoScreen.src = MediaSource + Images3[Index3];
 
                     VideoScreen.play();
                 } else {
-                    alert('DEF');
+                    //alert('DEF');
                     VideoScreen.style.display = 'none';
 
                     ImgSection3.style.visibility = 'hidden';
