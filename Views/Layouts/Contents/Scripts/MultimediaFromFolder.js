@@ -25,7 +25,7 @@
     function SetConstructor(){
        $.ajax({
             type: 'POST',
-            async: false,
+            //async: false,
             url: ServerSource + 'Core/Controllers/Template.php',
             data: { 
                 Option : 'getMultimediaFolder',
@@ -62,19 +62,22 @@
             var FileType = Images3[Index3].split('.')[1];
             
             if(FileType === 'mp4' || FileType === 'mov'){
-                clearTimeout(SliderInterval3);
+                if (SliderInterval3 != ''){
+                    clearInterval(SliderInterval3);
+                    SliderInterval3 = '';
+                }
 
                 ImgSection3.src = '';
 
                 if(localStorage.getItem('Id') === null) {
-
+                    alert('NULL');
                     VideoScreen.style.display = 'inline';
 
                     VideoScreen.src = MediaSource + Images3[Index3];
 
                     VideoScreen.play();
                 } else {
-
+                    alert('DEF');
                     VideoScreen.style.display = 'none';
 
                     ImgSection3.style.visibility = 'hidden';
