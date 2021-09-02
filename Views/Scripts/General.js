@@ -66,6 +66,7 @@
             
         } else {
             Debug('>>>>>>> LOCATION.REPLACE');
+            Executing = true;
             location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
         }
     }
