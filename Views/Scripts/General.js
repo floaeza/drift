@@ -36,6 +36,7 @@
 
     function GoPage(Page, ModuleId, ChangeModule){
         if(CurrentModule === 'Tv' && StartDateChannel !== ''){
+            TvClose();
             SetChannelStatistics();
         }
 
@@ -67,7 +68,8 @@
         } else {
             Debug('>>>>>>> LOCATION.REPLACE');
             Executing = true;
-            location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
+            //location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
+            window.location.href = Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule;
         }
     }
     
