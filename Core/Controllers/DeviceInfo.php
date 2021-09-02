@@ -37,22 +37,3 @@ foreach ($UpdateDevice as $DeviceInfo):
 endforeach;
 
 echo json_encode($Reboot);
-
-//$Reboot = array();
-//
-//$DeviceUpdate =  array (
-//    'mensaje_evento'   => $EventString,
-//    'hdmi'             => $EventHdmi,
-//    'ultimo_canal'     => $LastChannel,
-//    'channel_pos'      => $Channelpos,
-//    'ultima_ejecucion' => $CurrentDate);
-//
-//$UpdateDevice = $DevicesData->updateGetDevice($DeviceId, $DeviceUpdate,$MacAddress);
-//
-//array_push($Reboot,$UpdateDevice);
-//
-//foreach ($UpdateDevice as $DeviceInfo):
-//    array_push($Reboot,$DeviceInfo['reiniciar']);
-//endforeach;
-//
-//echo json_encode($Reboot);
