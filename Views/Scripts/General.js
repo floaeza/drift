@@ -66,8 +66,7 @@
             
         } else {
             //alert("Change");
-            window.location.href = Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule;
-            //UpdateQuickInfoDevice();
+            location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
         }
     }
     
