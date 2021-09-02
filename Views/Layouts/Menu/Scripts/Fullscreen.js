@@ -41,15 +41,15 @@
 
         var IndexM = 0;
         //var MenuBackgrounds = document.getElementById('MenuBackgrounds');
-        var img = $('<img />', { id: 'menuBackImg', class: 'BackgroundsMenu'}) .appendTo($('#MenuBackgrounds'));
+        var img = $('<img />', { id: 'menuBackImg', class: 'BackgroundsMenu'}).appendTo($('#MenuBackgrounds'));
         var MenuBackgrounds = document.getElementById('menuBackImg');
         for(IndexM = 0; IndexM < MenuList.length; IndexM++) {
         //    img = document.createElement('img');
         //    img.style.backgroundImage = Libraries['MenuPath'] + MenuList[IndexM].Image;
         //    img.className = 'BackgroundsMenu';
         //    img.style.visibility = 'hidden';
-        
-            MenuBackgrounds.style.backgroundImage = 'url('+Libraries['MenuPath'] + MenuList[IndexM].Image+')';
+            $("#menuBackImg").attr("src",Libraries['MenuPath'] + MenuList[IndexM].Image);
+        //MenuBackgrounds.style.backgroundImage = 'url('+Libraries['MenuPath'] + MenuList[IndexM].Image+')';
         //    MenuBackgrounds.appendChild(img);
         //    
         }
@@ -101,8 +101,9 @@ function SetMenuInfo(){
         }
 
         //BackgroundsNodes[MenuIndex].style.visibility = 'visible';
-        var MenuBackgrounds = document.getElementById('menuBackImg');
-        MenuBackgrounds.style.backgroundImage = 'url('+Libraries['MenuPath'] + MenuList[MenuIndex].Image+')';
+        //var MenuBackgrounds = document.getElementById('menuBackImg');
+        //MenuBackgrounds.style.backgroundImage = 'url('+Libraries['MenuPath'] + MenuList[MenuIndex].Image+')';
+        $("#menuBackImg").attr("src",Libraries['MenuPath'] + MenuList[MenuIndex].Image);
         Debug(BackgroundsNodes[MenuIndex]);
 
             IndexM = null;
