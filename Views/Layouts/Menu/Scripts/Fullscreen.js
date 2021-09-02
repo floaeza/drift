@@ -21,6 +21,7 @@
         //alert(ServerSource);
         $.ajax({
             type: 'POST',
+            async: false,
             url: ServerSource + 'Core/Controllers/Menu.php',
             data: { 
                 Option : 'GetModules',
@@ -30,32 +31,36 @@
             success: function (response){
                 MenuList = null;
                 MenuList = $.parseJSON(response);
-                
-                SetBackgrounds();
             }
         });
+
+        SetBackgrounds();
     }
 
     function SetBackgrounds(){
-     
-        var img;
+
         var IndexM = 0;
-        var MenuBackgrounds = document.getElementById('MenuBackgrounds');
-
+        //var MenuBackgrounds = document.getElementById('MenuBackgrounds');
+        var img = $('<img />', { id: 'menuBackImg', class: 'BackgroundsMenu'}) .appendTo($('#MenuBackgrounds'));
+        var MenuBackgrounds = document.getElementById('menuBackImg');
         for(IndexM = 0; IndexM < MenuList.length; IndexM++) {
-            img = document.createElement('img');
-            img.src = Libraries['MenuPath'] + MenuList[IndexM].Image;
-            img.className = 'BackgroundsMenu';
-            img.style.visibility = 'hidden';
-
-            MenuBackgrounds.appendChild(img);
+        //    img = document.createElement('img');
+        //    img.style.backgroundImage = Libraries['MenuPath'] + MenuList[IndexM].Image;
+        //    img.className = 'BackgroundsMenu';
+        //    img.style.visibility = 'hidden';
+        
+            MenuBackgrounds.style.backgroundImage = 'url('+Libraries['MenuPath'] + MenuList[IndexM].Image+')';
+        //    MenuBackgrounds.appendChild(img);
+        //    
         }
 
-        BackgroundsNodes = MenuBackgrounds.childNodes;
+        //BackgroundsNodes = MenuBackgrounds.childNodes;
+
+
 
         img = null;
         IndexM = null;
-        MenuBackgrounds = null;
+        //MenuBackgrounds = null;
         SetMenuInfo();
     }
 
@@ -86,14 +91,18 @@ function SetMenuInfo(){
                 IndexM = 0;
             }
 
-            BackgroundsNodes[IndexM].style.visibility = 'hidden';
+            //BackgroundsNodes[IndexM].style.visibility = 'hidden';
+
+
+
             MenuListNodes[Index].textContent = MenuList[IndexM].Name;
 
             IndexM++;
         }
 
-        BackgroundsNodes[MenuIndex].style.visibility = 'visible';
-
+        //BackgroundsNodes[MenuIndex].style.visibility = 'visible';
+        var MenuBackgrounds = document.getElementById('menuBackImg');
+        MenuBackgrounds.style.backgroundImage = 'url('+Libraries['MenuPath'] + MenuList[MenuIndex].Image+')';
         Debug(BackgroundsNodes[MenuIndex]);
 
             IndexM = null;
