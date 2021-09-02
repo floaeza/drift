@@ -65,7 +65,7 @@
             window.location.href = PageH;
             
         } else {
-            //alert("Change");
+            Debug('>>>>>>> LOCATION.REPLACE');
             location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
         }
     }
