@@ -31,10 +31,9 @@
             success: function (response){
                 MenuList = null;
                 MenuList = $.parseJSON(response);
+                SetBackgrounds();
             }
         });
-
-        SetBackgrounds();
     }
 
     function SetBackgrounds(){
