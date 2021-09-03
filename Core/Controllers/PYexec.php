@@ -13,7 +13,7 @@
     $PackagesData = new Packages('system', $CurrentController);
     
     $Option = !empty($_POST['Option']) ? $_POST['Option'] : 'UpdateGuide';
-    $PackageId = !empty($_POST['PackageId']) ? $_POST['PackageId'] : '6';
+    $PackageId = !empty($_POST['PackageId']) ? $_POST['PackageId'] : '5';
     $Package_name = !empty($_POST['Package_name']) ? $_POST['Package_name'] : '';
     $Package_description = !empty($_POST['Package_description']) ? $_POST['Package_description'] : '';
 

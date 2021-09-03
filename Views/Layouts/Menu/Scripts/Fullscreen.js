@@ -8,7 +8,7 @@
         MenuContainer   = document.getElementById('MenuContainer'),
         MenuSelected    = document.getElementById('MenuSelected'),
         MenuListNodes   = document.getElementById('MenuBar').childNodes;
-        BackgroundsNodes = '';
+        //BackgroundsNodes = '';
         ImagesUrl       = ServerSource+'Media/Menu/',
         FormatDate      = '',
         FormatHour      = '',
@@ -18,7 +18,7 @@
 
     function SetMenuList(){
         //alert(Device['Services']['ProjectId']);
-        //alert(ServerSource);
+        //alert();
         $.ajax({
             type: 'POST',
             async: false,
@@ -42,17 +42,17 @@
         var IndexM = 0;
         //var MenuBackgrounds = document.getElementById('MenuBackgrounds');
         var img = $('<img />', { id: 'menuBackImg', class: 'BackgroundsMenu'}).appendTo($('#MenuBackgrounds'));
-        var MenuBackgrounds = document.getElementById('menuBackImg');
-        for(IndexM = 0; IndexM < MenuList.length; IndexM++) {
+        //var MenuBackgrounds = document.getElementById('menuBackImg');
+        //for(IndexM = 0; IndexM < MenuList.length; IndexM++) {
         //    img = document.createElement('img');
         //    img.style.backgroundImage = Libraries['MenuPath'] + MenuList[IndexM].Image;
         //    img.className = 'BackgroundsMenu';
         //    img.style.visibility = 'hidden';
-            $("#menuBackImg").attr("src",Libraries['MenuPath'] + MenuList[IndexM].Image);
+            //$("#menuBackImg").attr("src-swap-"+IndexM,Libraries['MenuPath'] + MenuList[IndexM].Image);
         //MenuBackgrounds.style.backgroundImage = 'url('+Libraries['MenuPath'] + MenuList[IndexM].Image+')';
         //    MenuBackgrounds.appendChild(img);
         //    
-        }
+        //}
 
         //BackgroundsNodes = MenuBackgrounds.childNodes;
 
@@ -96,15 +96,15 @@ function SetMenuInfo(){
 
 
             MenuListNodes[Index].textContent = MenuList[IndexM].Name;
-
+            //$("#menuBackImg").attr("src",Libraries['MenuPath'] + MenuList[IndexM].Image);
             IndexM++;
         }
 
         //BackgroundsNodes[MenuIndex].style.visibility = 'visible';
         //var MenuBackgrounds = document.getElementById('menuBackImg');
         //MenuBackgrounds.style.backgroundImage = 'url('+Libraries['MenuPath'] + MenuList[MenuIndex].Image+')';
-        $("#menuBackImg").attr("src",Libraries['MenuPath'] + MenuList[MenuIndex].Image);
-        Debug(BackgroundsNodes[MenuIndex]);
+        $("#menuBackImg").attr("src", Libraries['MenuPath'] + MenuList[MenuIndex].Image);
+        //Debug(BackgroundsNodes[MenuIndex]);
 
             IndexM = null;
             Index = null;

@@ -562,6 +562,11 @@ def start(day, pos):
                         progrec.close()
                         dataProgram = {}
 
+                        if channel['STTN'] == '10244' or channel['STTN'] == '16619' or channel['STTN'] == '10242' or channel['STTN'] == '12508':
+                            off = '-9'
+                        else:
+                            off = OffSetZone['OZN']
+                        
                         for lineaSkedrec in lineasSkedrec:
                             listSkedrec = lineaSkedrec.split('|')
 
@@ -663,12 +668,9 @@ def deleteline(slinea):
 
 
 for pos in range(len(listDays)):
-    try:
-        start(listDays[pos], pos)
-        info = {'Option': 'UpdateParameter', 'PackageId': -1}
-        req = requests.post('http://localhost/BBINCO/TV/Core/Controllers/Packages.php', data=info)
-    except:
-        info = {'Option': 'UpdateParameter', 'PackageId': -2}
-        req = requests.post('http://localhost/BBINCO/TV/Core/Controllers/Packages.php', data=info)
+    start(listDays[pos], pos)
+    info = {'Option': 'UpdateParameter', 'PackageId': -1}
+    req = requests.post('http://localhost/BBINCO/TV/Core/Controllers/Packages.php', data=info)
+
 # os.system ("python3 /var/www/html/BBINCO/TV/Core/Controllers/main.py")
 

@@ -10,6 +10,7 @@
  *******************************************************************************/
     var ImgSection3     = document.getElementById('image1'),
         VideoScreen     = document.getElementById('video1'),
+        LoadingDiv    = document.getElementById('loadingg'),
         SliderInterval3 = '',
         Images          = '',
         Images3         = [],
@@ -21,7 +22,6 @@
 /*******************************************************************************
  * Contenido multimedia
  *******************************************************************************/
-
     function SetConstructor(){
        $.ajax({
             type: 'POST',
@@ -44,6 +44,8 @@
                 Index = null;
             }
         });    
+
+        Slider3();
     }
        
     SetConstructor();
@@ -57,6 +59,9 @@
  *******************************************************************************/
 
     function Slider3(){
+        //var padre = LoadingDiv.parentNode;
+		//padre.removeChild(imagen);
+        //padre = null;
         if(Images3.length > 0){
     
             var FileType = Images3[Index3].split('.')[1];
@@ -66,7 +71,7 @@
                     clearInterval(SliderInterval3);
                     SliderInterval3 = '';
                 }
-
+                LoadingDiv.style.display = 'none';
                 ImgSection3.src = '';
 
                 if(localStorage.getItem('Id') === null) {
@@ -78,11 +83,13 @@
                     VideoScreen.play();
                 } else {
                     //alert('DEF');
+                    LoadingDiv.style.display = 'none';
                     VideoScreen.style.display = 'none';
 
                     ImgSection3.style.visibility = 'hidden';
 
                     PlayVideo(MediaSource + Images3[Index3]);
+                    
                 }
 
                 Debug('2- VideoScreen::::::::: ' + MediaSource + Images3[Index3]);
@@ -93,7 +100,7 @@
                     Index3 = 0;
                 }
             } else {
-
+                LoadingDiv.style.display = 'none';
                 VideoScreen.style.display = 'none';
     
                 ImgSection3.src = MediaSource+Images3[Index3];
@@ -108,8 +115,6 @@
             }
         }
     }
-
-    Slider3();
 
     SliderInterval3 = setInterval(Slider3,7000);
 /*******************************************************************************

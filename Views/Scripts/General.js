@@ -39,7 +39,7 @@
 
             Debug('TVCLOSE & SETCHANNELSTATISTICS');
             TvClose();
-            SetChannelStatistics();
+            //SetChannelStatistics();
         }
 
         Debug('GoPage ---> '+Page);
