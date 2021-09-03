@@ -21,7 +21,7 @@
         //alert();
         $.ajax({
             type: 'POST',
-            async: false,
+            //async: false,
             url: ServerSource + 'Core/Controllers/Menu.php',
             data: { 
                 Option : 'GetModules',
