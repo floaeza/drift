@@ -28,7 +28,7 @@
  * ****************************************************************************/
     //function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPid){
     function PlayChannel(Source, Port){
-        
+        //UpdateQuickInfoDevice();
         Debug('############################### PLAYCHANNEL AMINO');
         var CheckPort = '',
             CheckProgram = '';
@@ -66,12 +66,23 @@
             Debug('############################### SetChannelStatistics');
             //
         }
-        
+        updateDataChannel();
         // Actualiza la fecha inicio de la reproduccion del canal */
         StartDateChannel = new Date();
         Debug('############################### StartDateChannel: '+StartDateChannel);
     }
-    
+    function updateDataChannel(){
+        $.ajax({
+            type: 'POST',
+            url: './././Core/Controllers/DevicesStatus.php',
+            data: { 
+                Option : 'updateDataChannels',
+                MacAddress : MacAddress,
+                LastChannel: ChannelsJson[ChannelPosition].CHNL + ' - ' +ChannelsJson[ChannelPosition].NAME,
+                ChannelPos: parseInt(ChannelPosition)
+            }
+        });
+    }
 /* *****************************************************************************
  * Reproduce canales digitales
  * ****************************************************************************/
@@ -97,6 +108,7 @@
            
         // Actualiza la fecha inicio de la reproduccion del canal */
         StartDateChannel = new Date();
+        updateDataChannel();
     }
     
 /* *****************************************************************************

@@ -1,15 +1,14 @@
-import getpass
-import telnetlib
-import os
-    
-HOST = "10.0.3.144"
-user = "root"
-password = "root2root"
+import xtelnet
+t=xtelnet.session()
+ip='10.0.3.62'#just an example
+t.connect(ip, username='root',password='root2root',p=23,timeout=5)
+output1=t.execute('ps')
+out = output1.split('\n')
+for ou in out:
+    if '/mnt/nv/opera --bootfile /tmp/opera_boot' in ou:
+       print(ou)
+       o = ou.split(" ")
+       print(o[1])
+       t.execute('kill '+o[1])
 
-tn=telnetlib.Telnet(HOST)
-tn.write(b'root\n')
-tn.write(b'root2root\n')
-tn.write(b"ls\n")
-tn.write(b"exit\n")
-
-print(tn.read_all().decode('ascii'))
+t.close()

@@ -35,6 +35,8 @@
         window.localStorage;
 
     function GoPage(Page, ModuleId, ChangeModule){
+        //Debug(ModuleId + "  " + OnScreen + "  " + ChannelPosition);
+        updateDataModule(ModuleId);
         if(CurrentModule === 'Tv' && StartDateChannel !== ''){
 
             Debug('TVCLOSE & SETCHANNELSTATISTICS');
@@ -130,7 +132,17 @@
             });
         }
     }
-
+    function updateDataModule(Module){
+        $.ajax({
+            type: 'POST',
+            url: './././Core/Controllers/DevicesStatus.php',
+            data: { 
+                Option : 'updateDataModules',
+                MacAddress : MacAddress,
+                LastModule: parseInt(Module)
+            }
+        });
+    }
     function SetMoviesStatistics(){
         MM_FormatStartDate    = getDate(MM_StartDateMovie);
         MM_EndDateMovie       = new Date();

@@ -19,7 +19,7 @@ putenv('PATH=/bin:/usr/local/bin');
     function pingAddress($ip) {
         $pingresult = exec("ping -c 3 $ip", $outcome, $status);
         if (0 == $status) {
-            $status = "Power on";
+            $status = "POWER_ON";
         } else {
             $status = "POWER_OFF";
         }

@@ -10,20 +10,20 @@ require_once './../DataAccess/Devices.php';
 
     $CurrentController = 'DeviceDashboard';
 
-    $Option         = !empty($_POST['Option']) ? $_POST['Option'] : 'UpdateRebootDevice';
-    $MacAddress     = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '00:02:02:69:93:83';
+    $Option         = !empty($_POST['Option']) ? $_POST['Option'] : 'updateDataChannels';
+    $MacAddress     = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '00:02:02:6c:64:1e';
 
 
 $DevicesData   = new Devices('System', $CurrentController);
 
 $Response = '';
-$Option = 'GetRemoteControl';
+//$Option = 'GetRemoteControl';
 switch ($Option){
     case 'GetDevicesByStatus':
         $Status = array();
 
         // DEVICES ON
-            $OffDevices = $DevicesData->getDevicesByStatus('POWER_OFF');
+            $OffDevices = $DevicesData->getDevicesByStatus('POWER_ON');
             $DevicesCount = $DevicesData->getOperatingDevices();
 
         // DEVICES OFF
@@ -96,6 +96,33 @@ switch ($Option){
         break;
         case 'GetRemoteControl':
             $Response = $DevicesData->getRemoteControl($MacAddress);
+            break;
+        case 'GetKillProcess':
+            $Response = $DevicesData->getKillProcess($MacAddress);
+            break;
+
+        case 'updateDataModules':
+
+            $LastModule = !empty($_POST['LastModule']) ? $_POST['LastModule'] : 2;
+            
+            $DevicesUpdateData = array('ultimo_modulo'=>$LastModule);
+
+            $Response = $DevicesData->updateDeviceModule($MacAddress, $DevicesUpdateData);
+            break;
+        case 'updateDataChannels':
+
+            $LastChannel = !empty($_POST['LastChannel']) ? $_POST['LastChannel'] : '';
+            $ChannelPos = !empty($_POST['ChannelPos']) ? $_POST['ChannelPos'] : 1;
+            
+            $DevicesUpdateData = array('ultimo_canal'=>$LastChannel,
+                                        'channel_pos' => $ChannelPos);
+
+            $Response = $DevicesData->updateDeviceModule($MacAddress, $DevicesUpdateData);
+            break;
+        case 'AllDevices':
+            $DeviceListResult = $DevicesData->GetDeviceLocationList();
+            $Response = $DeviceListResult; 
+
             break;
 }
 

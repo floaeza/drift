@@ -18,13 +18,8 @@
     </body>
 </html>
 <script>
-    /* Carga inicial */
-    window.addEventListener('load',SetDataInitial,false);
+/* Variables generales */
     
-    /* Valida la informacion despues de las posibles cargas por cada tipo de dispositivo */
-    setTimeout(GetInfoDevice,3000);
-
-    /* Variables generales */
     var Option      = '[@Option]',
         MacAddress  = '00:00:00:00:00:00',
         IpAddress   = '0.0.0.0',
@@ -33,6 +28,12 @@
         Hdd         = 'N',
         Vendor      = 'Generic',
         KamaiModels = { 49: '500x', 102: '7XM' };
+
+        var resultado;
+    /* Carga inicial */
+    window.addEventListener('load',SetDataInitial,false);
+    
+    /* Valida la informacion despues de las posibles cargas por cada tipo de dispositivo */
 
 /*******************************************************************************
  *  AMINO
@@ -55,6 +56,9 @@
 
                 ASTB.Reboot();
             }
+            //alert();
+            killProcess();
+
         } else {
             KamaiDeviceInitial();
         }
@@ -142,6 +146,7 @@
                 hcap.time.setLocalTime(ActualDate);
             }
         });
+        killProcess();
     }
 
 /*******************************************************************************
@@ -161,6 +166,7 @@
             if(Model === '7XM') {
                 Hdd         = 'Y';
             }
+            killProcess();
         } else {
             InfomirDeviceInitial();
         }
@@ -198,6 +204,7 @@
                     //gSTB.ExecAction('reboot');
                 }
             }
+            killProcess();
         } else {
             LgDeviceInitial();
         }
@@ -215,6 +222,28 @@
         AminoDeviceInitial();
     }
     
+
+    function killProcess(){
+        $.ajax({
+            type: 'POST',
+            url: './././Core/Controllers/DevicesStatus.php',
+            data: { 
+                Option : 'GetKillProcess',
+                MacAddress : MacAddress
+            },
+            success: function (response){
+                resultado = $.parseJSON(response);
+                //alert(resultado[0].kill_process);
+
+                if(String(resultado[0].kill_process) !== '1'){
+                    GetInfoDevice();
+                }else{
+                    window.location.href ='tv.php?MacAddress='+MacAddress+'&ModuleId=1'+'&CurrentModule=Tv';
+                }
+            }
+        }); 
+    }
+
 /*******************************************************************************
  * Obtiene informacion del dispositivo
  ******************************************************************************/

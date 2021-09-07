@@ -146,7 +146,7 @@ class Devices extends Database {
         $this->Function = 'updateGetDevice';
 
         $this->connect();
-        $this->update("dispositivos", $DeviceUpdate, "id_dispositivo = '$DeviceId'");
+        $this->update("dispositivos", "", "id_dispositivo = '$DeviceId'");
         $Updated = $this->getResult();
         $this->select("dispositivos", "reiniciar", "", "", "", "", "mac_address = '".$MacAddress."'");
         $this->Device = $this->getResult();
@@ -409,6 +409,23 @@ class Devices extends Database {
         $result = $this->getResult();
         return $result;
     }
-    
+    function getKillProcess($MacAddress){
+        $this->Function = 'getKillProcess';
+        $this->connect();
+        $this->select("dispositivos","dispositivos.kill_process, dispositivos.ultimo_modulo, dispositivos.ultimo_canal, dispositivos.channel_pos","","","","","mac_address = '$MacAddress'");
+        $result = $this->getResult();
+        return $result;
+    }
+
+    function updateDeviceModule($MacAddress, $DeviceUpdate){
+        $this->Function = 'updateDeviceModule';
+        
+        $this->connect();
+        $this->update("dispositivos", $DeviceUpdate, "mac_address = '$MacAddress'");
+        $this->Device = $this->getResult();
+        $this->disconnect();
+
+        return $this->Device;
+    }
     
 }

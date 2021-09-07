@@ -25,6 +25,7 @@
     var ChannelsJson         = '',
         BackUpChannelsJson   = '',
         ChannelPosition      = 0,
+        Booting              = true,
         LastChannelPosition  = 0,
         SourceEpgFile        = '',
         ChannelsLength       = 0,
@@ -194,7 +195,10 @@
 
     function SetChannel(NewDirection){
         Debug('SetChannel = '+NewDirection);
-        
+        if(Booting){
+            Booting = false;
+            killProcessTv();
+        }
         if(ActiveEpgContainer === false){
             
             /* Valida si se esta subiendo o bajando de canal para restar|sumar una posicion */
@@ -260,7 +264,22 @@
         }
         Debug('------- SetChannel ->: '+Source + ' ChannelPosition: '+ChannelPosition);
     }
-    
+    function killProcessTv(){
+        $.ajax({
+            type: 'POST',
+            url: './././Core/Controllers/DevicesStatus.php',
+            data: { 
+                Option : 'GetKillProcess',
+                MacAddress : MacAddress
+            },
+            success: function (response){
+                resultado = $.parseJSON(response);
+                //alert(resultado[0].kill_process);
+                ChannelPosition = resultado[0].channel_pos;
+                alert(ChannelPosition);
+            }
+        }); 
+    }
     function GetDigitalChannel(){
         ActiveDigitalChannel = true;
 

@@ -5,15 +5,19 @@ function Red(){
 }
 
 function Blue(){
-    var onSuccess = function() {
-        Debug("[rebootDevice] succeeded!");
-    };
-    var onError = function(error) {
-        Debug("[rebootDevice] failed! error code: " + error.code + " error name: " + error.name + "  message " + error.message);
-    };
-    b2bcontrol.rebootDevice(onSuccess, onError);
+    if (window.tizen !== undefined){
+        var onSuccess = function() {
+            Debug("[rebootDevice] succeeded!");
+        };
+        var onError = function(error) {
+            Debug("[rebootDevice] failed! error code: " + error.code + " error name: " + error.name + "  message " + error.message);
+        };
+        b2bcontrol.rebootDevice(onSuccess, onError);
+    }else if(typeof(ASTB) !== 'undefined'){
+        ASTB.Reboot();
+    }
 
-
+    
 }
 function Green(){
     alert(JSON.stringify(Browser.GetWindowNames()));
