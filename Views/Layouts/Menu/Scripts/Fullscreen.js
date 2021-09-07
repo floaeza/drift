@@ -15,13 +15,12 @@
         MenuList        = '',
         MenuIndex       = 0;
 
-
     function SetMenuList(){
         //alert(Device['Services']['ProjectId']);
         //alert();
         $.ajax({
             type: 'POST',
-            //async: false,
+            async: false,
             url: ServerSource + 'Core/Controllers/Menu.php',
             data: { 
                 Option : 'GetModules',

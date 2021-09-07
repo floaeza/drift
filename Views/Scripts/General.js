@@ -35,23 +35,24 @@
         window.localStorage;
 
     function GoPage(Page, ModuleId, ChangeModule){
+        //alert('Pagina: '+ Page+'Module Id: '+ ModuleId+'CangeModule: '+ChangeModule);
         //Debug(ModuleId + "  " + OnScreen + "  " + ChannelPosition);
         updateDataModule(ModuleId);
         if(CurrentModule === 'Tv' && StartDateChannel !== ''){
 
             Debug('TVCLOSE & SETCHANNELSTATISTICS');
-            TvClose();
+            //TvClose();
             //SetChannelStatistics();
         }
 
         Debug('GoPage ---> '+Page);
 
         StopVideo();
-
+        
         Debug('StopVideo ---> ');
 
-        SetModuleStatistics();
-
+        //SetModuleStatistics();
+        //alert();
         Debug('SetModuleStatistics ---> ');
         
         Debug(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
@@ -71,9 +72,10 @@
             
         } else {
             Debug('>>>>>>> LOCATION.REPLACE');
-            Executing = true;
-            //location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
-            window.location.href = Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule;
+            //Executing = true;
+            location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
+            location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
+            //window.location.href = Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule;
         }
     }
     
@@ -113,7 +115,7 @@
             SM_FormatEndDate       = getDate(SM_EndDateModule);
             SM_StartDateModuleMM   = SM_StartDateModule.getTime();
             SM_EndDateModuleMM     = SM_EndDateModule.getTime();
-            SM_DifferenceInSec     = SM_StartDateModuleMM - SM_EndDateModuleMM;
+            SM_DifferenceInSec     = SM_EndDateModuleMM - SM_StartDateModuleMM;
 
         /* Valida si el tiempo de vista del modulo esta en un rango de tiempo coherente */
         if(Math.abs(SM_DifferenceInSec) > SM_MinSeconds){
@@ -149,7 +151,7 @@
         MM_FormatEndDate      = getDate(MM_EndDateMovie);
         MM_StartDateMovieMM   = MM_StartDateMovie.getTime();
         MM_EndDateMovieMM     = MM_EndDateMovie.getTime();
-        MM_DifferenceInSec    = MM_StartDateMovieMM - MM_EndDateMovieMM;
+        MM_DifferenceInSec    = MM_EndDateMovieMM - MM_StartDateMovieMM; 
 
         /* Valida si el tiempo de vista del modulo esta en un rango de tiempo coherente */
         if(Math.abs(MM_DifferenceInSec) > MM_MinSeconds){

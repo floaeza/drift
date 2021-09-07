@@ -25,7 +25,6 @@
     var ChannelsJson         = '',
         BackUpChannelsJson   = '',
         ChannelPosition      = 0,
-        Booting              = true,
         LastChannelPosition  = 0,
         SourceEpgFile        = '',
         ChannelsLength       = 0,
@@ -33,6 +32,8 @@
         EpgDataActive        = false,
         CurrentDateFormat    = '',
         CurrentDate          = '';
+
+        var Booting     = true;
 
     /* Canal */
     var Source               = '',
@@ -94,7 +95,7 @@
     var ContentFrame            = document.getElementById('ContentFrame'),
         ActiveFrame             = false;
 
-
+    killProcessTv();
     // if(MacAddress === '00:00:00:00:00:00'){
     //     Debug('Imagen para test');
     //     document.getElementsByClassName('GeneralBox')[0].style.backgroundImage = "url('./Media/General/tv.jpg')";
@@ -195,10 +196,7 @@
 
     function SetChannel(NewDirection){
         Debug('SetChannel = '+NewDirection);
-        if(Booting){
-            Booting = false;
-            killProcessTv();
-        }
+        
         if(ActiveEpgContainer === false){
             
             /* Valida si se esta subiendo o bajando de canal para restar|sumar una posicion */
@@ -275,11 +273,28 @@
             success: function (response){
                 resultado = $.parseJSON(response);
                 //alert(resultado[0].kill_process);
-                ChannelPosition = resultado[0].channel_pos;
-                alert(ChannelPosition);
+                if(resultado[0].kill_process == '1'){
+                    ChannelPosition = resultado[0].channel_pos;
+                    setKillProcess();
+                }
+                //alert(ChannelPosition);
             }
         }); 
     }
+
+    function setKillProcess(){
+        $.ajax({
+            type: 'POST',
+            url: './././Core/Controllers/DevicesStatus.php',
+            data: { 
+                Option : 'SetKillProcess',
+                MacAddress : MacAddress,
+                Kill: 0
+            }
+        }); 
+    }
+
+
     function GetDigitalChannel(){
         ActiveDigitalChannel = true;
 

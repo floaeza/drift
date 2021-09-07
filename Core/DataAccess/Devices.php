@@ -416,7 +416,6 @@ class Devices extends Database {
         $result = $this->getResult();
         return $result;
     }
-
     function updateDeviceModule($MacAddress, $DeviceUpdate){
         $this->Function = 'updateDeviceModule';
         
@@ -426,6 +425,16 @@ class Devices extends Database {
         $this->disconnect();
 
         return $this->Device;
+    }
+    function GetDeviceAminos(){
+        $this->Function = 'GetDeviceAminos';
+
+        $this->connect();
+        $this->select("dispositivos","dispositivos.ip","","","","","marca = 'Amino' AND modelo = 'A50'");
+        $this->DeviceList = $this->getResult();
+        $this->disconnect();
+
+        return $this->DeviceList;
     }
     
 }

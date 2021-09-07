@@ -10,8 +10,9 @@ require_once './../DataAccess/Devices.php';
 
     $CurrentController = 'DeviceDashboard';
 
-    $Option         = !empty($_POST['Option']) ? $_POST['Option'] : 'updateDataChannels';
+    $Option         = !empty($_POST['Option']) ? $_POST['Option'] : 'GetAminos';
     $MacAddress     = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '00:02:02:6c:64:1e';
+    $DeviceArray    = !empty($_POST['DeviceArray']) ? $_POST['DeviceArray'] : '';
 
 
 $DevicesData   = new Devices('System', $CurrentController);
@@ -88,11 +89,12 @@ switch ($Option){
         break;
 
         case 'UpdateRebootDevice':
-            $DeviceId = !empty($_POST['DeviceId']) ? $_POST['DeviceId'] : '2';
-
+            $DataDevices  = json_decode($DeviceArray);
             $DevicesUpdateData = array('reiniciar'=>1);
-
-            $Response = $DevicesData->updateDevice($DeviceId, $DevicesUpdateData);
+            foreach ($DataDevices as $DataDevice):    
+                $DeviceID = $DataDevice->id_dispositivo; 
+                $DevicesData->updateDevice($DeviceID, $DevicesUpdateData);
+            endforeach;
         break;
         case 'GetRemoteControl':
             $Response = $DevicesData->getRemoteControl($MacAddress);
@@ -100,7 +102,13 @@ switch ($Option){
         case 'GetKillProcess':
             $Response = $DevicesData->getKillProcess($MacAddress);
             break;
+        case 'SetKillProcess':
+            $Kill = !empty($_POST['Kill']) ? $_POST['Kill'] : 0;
+            
+            $DevicesUpdateData = array('kill_process'=>$Kill);
 
+            $Response = $DevicesData->updateDeviceModule($MacAddress, $DevicesUpdateData);
+            break;
         case 'updateDataModules':
 
             $LastModule = !empty($_POST['LastModule']) ? $_POST['LastModule'] : 2;
@@ -121,6 +129,11 @@ switch ($Option){
             break;
         case 'AllDevices':
             $DeviceListResult = $DevicesData->GetDeviceLocationList();
+            $Response = $DeviceListResult; 
+            break;
+
+        case 'GetAminos':
+            $DeviceListResult = $DevicesData->GetDeviceAminos();
             $Response = $DeviceListResult; 
 
             break;
