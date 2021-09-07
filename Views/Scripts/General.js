@@ -73,6 +73,10 @@
         } else {
             Debug('>>>>>>> LOCATION.REPLACE');
             //Executing = true;
+
+            //SE MANDA LLAMAR DOS VECES A PROPOSITO, NO CAMBIAR
+            //SE MANDA LLAMAR DOS VECES A PROPOSITO, NO CAMBIAR
+            //SE MANDA LLAMAR DOS VECES A PROPOSITO, NO CAMBIAR
             location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
             location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
             //window.location.href = Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule;

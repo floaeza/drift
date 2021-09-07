@@ -42,6 +42,11 @@
 
     function Menu(){
         if(CurrentModule !== 'Menu' && Device['Services']['ActiveMenu'] === true){
+            Debug('----------- GOPAGE');
+            //SE MANDA LLAMAR DOS VECES A PROPOSITO, NO CAMBIAR
+            //SE MANDA LLAMAR DOS VECES A PROPOSITO, NO CAMBIAR
+            //SE MANDA LLAMAR DOS VECES A PROPOSITO, NO CAMBIAR
+            GoPage('menu.php', Device['MenuId'], 'Menu');
             GoPage('menu.php', Device['MenuId'], 'Menu');
         }
     }
