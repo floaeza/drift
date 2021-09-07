@@ -11,21 +11,25 @@ Devices = requests.post('http://localhost/BBINCO/TV/Core/Controllers/DevicesStat
 IDF = json.loads(Devices.content)
 print(IDF)
 for ips in IDF:
-    #try:
-    ip=ips['ip']
-    t.connect(ip, username='root',password='root2root',p=23,timeout=5)
-    if int(hora) < 12:
-        output1=t.execute('ps')
-        out = output1.split('\n')
-        for ou in out:
-            if '/mnt/nv/opera --bootfile /tmp/opera_boot' in ou:
-                print(ou)
-                o = ou.split(" ")
-                print(o[1])
-                t.execute('kill '+o[1])
-        t.close()
-    #except:
-        #print('Error')
+    try:
+        ip=ips['ip']
+        t.connect(ip, username='root',password='root2root',p=23,timeout=5)
+        if int(hora) < 12:
+            output1=t.execute('ps')
+            out = output1.split('\n')
+            for ou in out:
+                if '/mnt/nv/opera --bootfile /tmp/opera_boot' in ou:
+                    print(ou)
+                    o = ou.split(" ")
+                    print(o[1])
+                    t.execute('kill '+o[1])
+            t.close()
+        else:
+            output1=t.execute('reboot')
+            t.close()
+            print("REBOOT")
+    except:
+        print('Error')
 
 
 #t.connect('10.0.3.62', username='root',password='root2root',p=23,timeout=5)

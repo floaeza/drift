@@ -68,6 +68,10 @@ function Menu(){
         //SE MANDA LLAMAR DOS VECES A PROPOSITO, NO CAMBIAR
         //SE MANDA LLAMAR DOS VECES A PROPOSITO, NO CAMBIAR
         //SE MANDA LLAMAR DOS VECES A PROPOSITO, NO CAMBIAR
+        //if(CurrentModule == 'Tv'){
+           //document.getElementById('loadingTV').style.display = "block"; 
+        //}
+        
         GoPage('menu.php', Device['MenuId'], 'Menu');
         GoPage('menu.php', Device['MenuId'], 'Menu');
     } else if(CurrentModule === 'Tv' && Device['Services']['ActiveMenu'] === false){

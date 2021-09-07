@@ -96,6 +96,11 @@
         ActiveFrame             = false;
 
     killProcessTv();
+    var div = document.getElementById('loadingTV');
+    var parent = div.parentElement;
+    parent.removeChild(div);
+    div = null;
+    parent = null;
     // if(MacAddress === '00:00:00:00:00:00'){
     //     Debug('Imagen para test');
     //     document.getElementsByClassName('GeneralBox')[0].style.backgroundImage = "url('./Media/General/tv.jpg')";
@@ -105,9 +110,9 @@
  *******************************************************************************/
 
     /* Asigna archivo para consultar por primera vez */
-    setTimeout(SetEpgFile,300);
+    setTimeout(SetEpgFile,200);
     /* Carga inicial para reproducir canal por primera vez */
-    setTimeout(SetChannel,1500, '');
+    setTimeout(SetChannel,1000, '');
     
     function SetEpgFile(){
         /* Consulta la fecha actual cada vez que actualiza la guia */

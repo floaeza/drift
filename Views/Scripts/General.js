@@ -38,24 +38,23 @@
         //alert('Pagina: '+ Page+'Module Id: '+ ModuleId+'CangeModule: '+ChangeModule);
         //Debug(ModuleId + "  " + OnScreen + "  " + ChannelPosition);
         updateDataModule(ModuleId);
+
+        //Debug('GoPage ---> '+Page);
+
+        StopVideo();
         if(CurrentModule === 'Tv' && StartDateChannel !== ''){
 
             Debug('TVCLOSE & SETCHANNELSTATISTICS');
-            //TvClose();
+            TvClose();
             //SetChannelStatistics();
         }
-
-        Debug('GoPage ---> '+Page);
-
-        StopVideo();
-        
-        Debug('StopVideo ---> ');
+        //Debug('StopVideo ---> ');
 
         //SetModuleStatistics();
         //alert();
-        Debug('SetModuleStatistics ---> ');
+        //Debug('SetModuleStatistics ---> ');
         
-        Debug(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
+        //Debug(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
 
         if (window.tizen !== undefined) {
 
@@ -71,7 +70,7 @@
             window.location.href = PageH;
             
         } else {
-            Debug('>>>>>>> LOCATION.REPLACE');
+            //Debug('>>>>>>> LOCATION.REPLACE');
             //Executing = true;
 
             //SE MANDA LLAMAR DOS VECES A PROPOSITO, NO CAMBIAR

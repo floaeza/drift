@@ -4,6 +4,13 @@
 
 <iframe id='ContentFrame' src=''></iframe>
 
+
+<div id="loadingTV" class="lds-grid">
+    <div></div><div></div><div></div>
+    <div></div><div></div><div></div>
+    <div></div><div></div><div></div>
+</div>
+
 <!-- Cuadro con informacion del canal -->
 
 <div id='InfoContainer' class='BackgroundInfo'>

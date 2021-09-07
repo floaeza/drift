@@ -1,6 +1,6 @@
 
 var Comando = [];
-var MacAddressAppControl;
+var MacAddressAppControl = '00:00:00:00:00:00';
 
 function InitialDataAppControl(){    
     // @ts-ignore

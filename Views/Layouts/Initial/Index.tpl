@@ -233,18 +233,22 @@
             },
             success: function (response){
                 resultado = $.parseJSON(response);
-                //alert(resultado[0].kill_process);
-
-                if(String(resultado[0].kill_process) !== '1'){
+                //alert(resultado[0]);
+                if(resultado[0] == undefined){
                     GetInfoDevice();
                 }else{
-                    if(resultado[0].ultimo_modulo !== '2'){
-                        window.location.href ='menu.php?MacAddress='+MacAddress+'&ModuleId=2'+'&CurrentModule=Menu';
-                        
+                    if(String(resultado[0].kill_process) !== '1'){
+                        GetInfoDevice();
                     }else{
-                        window.location.href ='tv.php?MacAddress='+MacAddress+'&ModuleId=1'+'&CurrentModule=Tv';
+                        if(resultado[0].ultimo_modulo !== '2'){
+                            window.location.href ='menu.php?MacAddress='+MacAddress+'&ModuleId=2'+'&CurrentModule=Menu';
+                            
+                        }else{
+                            window.location.href ='tv.php?MacAddress='+MacAddress+'&ModuleId=1'+'&CurrentModule=Tv';
+                        }
                     }
                 }
+                
             }
         }); 
     }
