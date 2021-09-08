@@ -35,7 +35,7 @@
                 CheckPort = ':' + Port;
             }
 
-Debug('########################### Channelinfo: '+ProgramIdChannnel);
+Debug('**************** Channelinfo: '+ProgramIdChannnel);
 
             if(ProgramIdChannnel){
             //  CheckProgram = ';Progid='+ProgramIdChannnel+';audiopid='+AudioPid;
