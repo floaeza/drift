@@ -95,7 +95,7 @@
     var ContentFrame            = document.getElementById('ContentFrame'),
         ActiveFrame             = false;
 
-    killProcessTv();
+    //killProcessTv();
     var div = document.getElementById('loadingTV');
     var parent = div.parentElement;
     parent.removeChild(div);
