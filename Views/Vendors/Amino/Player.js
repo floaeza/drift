@@ -27,6 +27,7 @@
  * ****************************************************************************/
     
     function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPid){
+        alert('**************');
         
         var CheckPort = '',
             CheckProgram = '';
