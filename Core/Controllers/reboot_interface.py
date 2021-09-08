@@ -1,3 +1,4 @@
+from telnetlib import DO
 import xtelnet
 import requests
 import json
@@ -9,7 +10,7 @@ hora = datetime.now().strftime('%H')
 payload = {'Option': 'GetAminos'}
 Devices = requests.post('http://localhost/BBINCO/TV/Core/Controllers/DevicesStatus.php', data=payload)
 IDF = json.loads(Devices.content)
-print(IDF)
+#print(IDF)
 for ips in IDF:
     try:
         ip=ips['ip']
@@ -19,9 +20,9 @@ for ips in IDF:
             out = output1.split('\n')
             for ou in out:
                 if '/mnt/nv/opera --bootfile /tmp/opera_boot' in ou:
-                    print(ou)
+#                    print(ou)
                     o = ou.split(" ")
-                    print(o[1])
+#                    print(o[1])
                     t.execute('kill '+o[1])
             t.close()
         else:
@@ -29,7 +30,7 @@ for ips in IDF:
             t.close()
             print("REBOOT")
     except:
-        print('Error')
+        continue
 
 
 #t.connect('10.0.3.62', username='root',password='root2root',p=23,timeout=5)

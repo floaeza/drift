@@ -12,7 +12,8 @@ var PressedKey      = 0,
     TimeCheck       = 2000, //milisegundos
     Sequence        = 0,
     ClearingClicks  = false,
-    CheckingClicks  = false;
+    CheckingClicks  = false,
+    timeMenu        = 0;
 
     document.addEventListener('keydown',KeyHandler,false);
     
@@ -203,7 +204,13 @@ function removeEventListenerKeydown(){
         /********** MENU **********/
                 
                 case REMOTE_MENU:
-                    Menu();
+                    if(timeMenu == 0){
+                        timeMenu = 1;
+                        setTimeout(function(){
+                            timeMenu = 0;
+                        },2000)
+                        Menu();
+                    }
                 break;
                 
         /********** GRABADOR | PAUSELIVE TV **********/
