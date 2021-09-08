@@ -78,6 +78,7 @@ Debug('**************** Channelinfo: '+ProgramIdChannnel);
     
     function PlayDigitalChannel(Source){
         // Detiene el proceso de la reproduccion anterior
+        alert('**************');
         StopVideo();
 
         // Reproduce el video
