@@ -8,7 +8,7 @@ t=xtelnet.session()
 hora = datetime.now().strftime('%H')
 #print(int(hora))
 payload = {'Option': 'GetAminos'}
-Devices = requests.post('http://localhost/BBINCO_BETA/TV/Core/Controllers/DevicesStatus.php', data=payload)
+Devices = requests.post('http://localhost/BBINCO/TV/Core/Controllers/DevicesStatus.php', data=payload)
 IDF = json.loads(Devices.content)
 #print(IDF)
 for ips in IDF:
