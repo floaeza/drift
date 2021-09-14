@@ -24,7 +24,7 @@
 
         $.ajax({
             type: 'POST',
-            url: 'http://'+ServerIp+'/BBINCO/TV/Core/Models/Time.php',
+            url: 'http://'+ServerIp+'/BBINCO_BETA/TV/Core/Models/Time.php',
             async : false,
             success: function (response) {
                 var Today = $.parseJSON(response),
