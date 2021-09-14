@@ -96,11 +96,11 @@
         ActiveFrame             = false;
 
     killProcessTv();
-    var div = document.getElementById('loadingTV');
-    var parent = div.parentElement;
-    parent.removeChild(div);
-    div = null;
-    parent = null;
+    // var div = document.getElementById('loadingTV');
+    // var parent = div.parentElement;
+    // parent.removeChild(div);
+    // div = null;
+    // parent = null;
     // if(MacAddress === '00:00:00:00:00:00'){
     //     Debug('Imagen para test');
     //     document.getElementsByClassName('GeneralBox')[0].style.backgroundImage = "url('./Media/General/tv.jpg')";
