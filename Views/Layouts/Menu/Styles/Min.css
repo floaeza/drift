@@ -132,12 +132,11 @@ div#MenuDescription {
 
 div#MenuBar {
     width: 80%;
-    /*background: rgba(255, 255, 255);*/
+    /*background: rgba(255, 255, 255, 0);*/
     position: fixed;
     bottom: 11%;
     height: 7%;
     right: 10%;
-    /*border-radius: 24px;*/
 
 }
 
@@ -151,7 +150,7 @@ div.MenuList {
 }
 
 div.MenuFocus {
-    /*background: rgba(255,255,2550,0.3);*/
+    /*background: rgba(255,255,2550,0);*/
     border-top: 3px solid #fff;
     font-size: 50px;
     height: 100%;
