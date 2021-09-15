@@ -11,7 +11,7 @@ and open the template in the editor.
 /***************************** [CONTENEDORES] *****************************/
 
 #MainLogo {
-    max-height: 20%;
+    max-height: 15%;
     left: 5%;
     position: fixed;
     top: 5%;
@@ -156,5 +156,5 @@ div.MenuFocus {
     height: 100%;
     /*text-shadow: 2px 2px 2px rgba(0,0,0);*/
     width: 45%;
-    padding-top: 0%;
+    padding-top: 1%;
 }
