@@ -12,7 +12,7 @@
     $ConfigData   = new Config('system', $CurrentController);
     $PackagesData = new Packages('system', $CurrentController);
     
-    $Option = !empty($_POST['Option']) ? $_POST['Option'] : 'UpdateGuide';
+    $Option = !empty($_POST['Option']) ? $_POST['Option'] : 'GetAllPackages';
     $PackageId = !empty($_POST['PackageId']) ? $_POST['PackageId'] : '6';
     $Package_name = !empty($_POST['Package_name']) ? $_POST['Package_name'] : '';
     $Package_description = !empty($_POST['Package_description']) ? $_POST['Package_description'] : '';

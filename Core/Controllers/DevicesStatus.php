@@ -120,7 +120,7 @@ switch ($Option){
         case 'updateDataChannels':
 
             $LastChannel = !empty($_POST['LastChannel']) ? $_POST['LastChannel'] : '';
-            $ChannelPos = !empty($_POST['ChannelPos']) ? $_POST['ChannelPos'] : 1;
+            $ChannelPos = !empty($_POST['ChannelPos']) ? $_POST['ChannelPos'] : 0;
             
             $DevicesUpdateData = array('ultimo_canal'=>$LastChannel,
                                         'channel_pos' => $ChannelPos);
