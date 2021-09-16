@@ -28,30 +28,31 @@
     
     function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPid){
         
-        
+        //alert('src='+ Source+''+CheckPort+CheckProgram);
         var CheckPort = '',
             CheckProgram = '';
         
-            if(Port){
-                CheckPort = ':' + Port;
-            }
+        if(Port){
+            CheckPort = ':' + Port;
+        }
 
-Debug('**************** Channelinfo: '+ProgramIdChannnel);
+        Debug('**************** Channelinfo: '+ProgramIdChannnel);
 
-            if(ProgramIdChannnel){
+        if(ProgramIdChannnel){
             //  CheckProgram = ';Progid='+ProgramIdChannnel+';audiopid='+AudioPid;
 	     //	CheckProgram = ';Progid='+ProgramIdChannnel;
-	      if(AudioPid!=null){
-                    CheckProgram = ';Progid='+ProgramIdChannnel+';audiopid='+AudioPid;
-                }else{
+	        if(AudioPid!=null){
+                CheckProgram = ';Progid='+ProgramIdChannnel+';audiopid='+AudioPid;
+            }else{
                     CheckProgram = ';Progid='+ProgramIdChannnel;
-                }
             }
-	  Debug('########################### Channelinfo: '+CheckProgram);
+        }
+	    Debug('########################### Channelinfo: '+CheckProgram);
         // Detiene el proceso de la reproduccion anterior
         StopVideo();
 
         // Reproduce el canal actual
+        
         AVMedia.Play('src='+ Source+''+CheckPort+CheckProgram);
         
         // Maximiza el video en caso de que no este en pantalla completa
@@ -62,7 +63,7 @@ Debug('**************** Channelinfo: '+ProgramIdChannnel);
         
         // Si la guia esta cerrada muestra cuadro con informacion del canal en reproduccion
         ShowInfo();
-
+        updateDataChannel();
         // Si tiene una fecha ya registrada guarda estadisticas en la BD
         if(StartDateChannel !== ''){
             SetChannelStatistics();
@@ -89,7 +90,7 @@ Debug('**************** Channelinfo: '+ProgramIdChannnel);
 
         // Activamos la bandera
         PlayingChannel = true;
-        
+        updateDataChannel();
         // Si tiene una fecha ya registrada guarda estadisticas en la BD
         if(StartDateChannel !== ''){
             SetChannelStatistics();
@@ -249,4 +250,18 @@ Debug('**************** Channelinfo: '+ProgramIdChannnel);
         var PIDS = AVMedia.GetAudioPIDs();
         var AudioPid = PIDS[positionLanguage+1].AudioPID;
         var Status = AVMedia.SetAudioPID(AudioPid);
+    }
+
+
+    function updateDataChannel(){
+        $.ajax({
+            type: 'POST',
+            url: './././Core/Controllers/DevicesStatus.php',
+            data: { 
+                Option : 'updateDataChannels',
+                MacAddress : MacAddress,
+                LastChannel: ChannelsJson[ChannelPosition].CHNL + ' - ' +ChannelsJson[ChannelPosition].NAME,
+                ChannelPos: ChannelPosition
+            }
+        });
     }

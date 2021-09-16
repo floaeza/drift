@@ -35,7 +35,7 @@
         window.localStorage;
 
     function GoPage(Page, ModuleId, ChangeModule){
-        //alert('Pagina: '+ Page+'Module Id: '+ ModuleId+'CangeModule: '+ChangeModule);
+        alert('Pagina: '+ Page+'Module Id: '+ ModuleId+'CangeModule: '+ChangeModule);
         //Debug(ModuleId + "  " + OnScreen + "  " + ChannelPosition);
         updateDataModule(ModuleId);
 
