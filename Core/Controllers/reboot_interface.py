@@ -16,11 +16,11 @@ for ips in IDF:
         ip=ips['ip']
         #ip = '10.30.12.134'
         mac = ips['mac_address']
-        payload = {'Option': 'SetKillProcess', 'MacAddress':'00:02:02:69:93:31', 'Kill':1}
+        payload = {'Option': 'SetKillProcess', 'MacAddress':mac, 'Kill':1}
         Devices = requests.post('http://localhost/BBINCO/TV/Core/Controllers/DevicesStatus.php', data=payload)
 
         t.connect(ip, username='root',password='root2root',p=23,timeout=5)
-        if int(hora) < 12:
+        if int(hora) > 4:
             output1=t.execute('ps')
             out = output1.split('\n')
             for ou in out:
