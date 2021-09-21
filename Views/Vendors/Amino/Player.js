@@ -28,7 +28,7 @@
     
     function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPid){
         
-        //alert('src='+ Source+''+CheckPort+CheckProgram);
+        //alert('src='+ Source+''+Port);
         var CheckPort = '',
             CheckProgram = '';
         

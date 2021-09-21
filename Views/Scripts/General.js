@@ -51,7 +51,7 @@
         //Debug('StopVideo ---> ');
 
         //SetModuleStatistics();
-        //alert();
+        
         //Debug('SetModuleStatistics ---> ');
         
         //Debug(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
