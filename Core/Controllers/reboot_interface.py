@@ -21,7 +21,7 @@ for ips in IDF:
         Devices = requests.post('http://172.22.22.10/BBINCO/TV/Core/Controllers/DevicesStatus.php', data=payload)
 
         t.connect(ip, username='root',password='root2root',p=23,timeout=5)
-        if int(hora) > 4:
+        if int(hora)  > 16:
             output1=t.execute('ps')
             out = output1.split('\n')
             for ou in out:
