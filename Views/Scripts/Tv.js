@@ -96,6 +96,7 @@
         ActiveFrame             = false;
 
     killProcessTv();
+
     // var div = document.getElementById('loadingTV');
     // var parent = div.parentElement;
     // parent.removeChild(div);
@@ -110,11 +111,13 @@
  *******************************************************************************/
 
     /* Asigna archivo para consultar por primera vez */
-    setTimeout(SetEpgFile,300);
+    setTimeout(SetEpgFile,200);
     /* Carga inicial para reproducir canal por primera vez */
-    setTimeout(SetChannel,1500, '');
+    //setTimeout(SetChannel,1800, '');
     
 function SetEpgFile(){
+    
+
     /* Consulta la fecha actual cada vez que actualiza la guia */
     CurrentDateFormat = new Date();
     CurrentDate = CurrentDateFormat.yyyymmdd();
@@ -128,34 +131,68 @@ function SetEpgFile(){
                 SourceEpgFile = Libraries['EpgDaysPath'] + 'epg_' + CurrentDate + '_' + Device['Services']['PackageId'] + '.json';
             // }
         Debug('------- SetEpgFile ->>> SourceEpgFile: ' + SourceEpgFile);
-        GetJsonEpg();
+        GetJsonEpg(SourceEpgFile, 0);
     } else {
         EpgDataActive = false;
 
         Debug('------- EpgDataActive: FALSE');
         GetJsonChannels();
     }
+
+
+    SetChannel('');
 }
     
-function GetJsonEpg(){
+function GetJsonEpg(Sour, rest){
     $.ajax({
         async: false,
-        url: ServerSource + SourceEpgFile,
+        url: ServerSource + Sour,
         success: function (response){
-            
+            SourceEpgFile = Sour;
             ChannelsJson = [];
             ChannelsJson = response;
             EpgDataActive = true;
-
+            Debug(Sour);
             ChannelsLength = ChannelsJson.C_Length - 1;
             ChannelMax     = parseInt(ChannelsJson[ChannelsLength].CHNL, 10);
             
             Debug('------- GetJsonEpg -> ChannelsLength: '+ChannelsLength);
         },
         error: function (response){
-            // El archivo no se encuentra o viene vacio, consulta a la base de datos
-            EpgDataActive = false;
-            GetJsonChannels();
+            //SendMail();
+            if(rest!==-1){
+                if(rest<2){
+                    rest++;
+                    var d = new Date();
+                    d.setDate(d.getDate() - rest);
+                    Sour = Libraries['EpgDaysPath'] + 'epg_' + d.yyyymmdd() + '_' + Device['Services']['PackageId'] + '.json';
+                    
+                    Debug("NO SE ENCONTRO EL ARCHIVO, BUSCANDO: " + SourceEpgFile);
+                    GetJsonEpg(Sour, rest);
+                }else{
+                    Sour = Libraries['EpgDaysPath'] + 'Default/epg_default_' + Device['Services']['PackageId'] + '.json';
+                    
+                    Debug("NO SE ENCONTRO EL ARCHIVO, BUSCANDO: " + SourceEpgFile);
+                    GetJsonEpg(Sour, -1);
+                
+                }
+            }else{
+                // El archivo no se encuentra o viene vacio, consulta a la base de datos
+                EpgDataActive = false;
+                GetJsonChannels();
+            }
+        }
+    });
+}
+
+
+function SendMail(){
+    $.ajax({
+        async: false,
+        url: ServerSource + 'Core/Controllers/ErrorGuideMail.php',
+        Client: Device['Client'],
+        success: function (response){
+            Debug('Correo Enviado');
         }
     });
 }
@@ -236,8 +273,9 @@ function SetChannel(NewDirection){
         /* Actualiza el canal */
             Source = ChannelsJson[ChannelPosition].SRCE;
             Port   = ChannelsJson[ChannelPosition].PORT;
-            // ProgramIdChannnel = ChannelsJson[ChannelPosition].PRGR;
-            // ProgramIdPosition = ChannelsJson[ChannelPosition].PSCN;
+            //alert(Source + Port);
+            //ProgramIdChannnel = ChannelsJson[ChannelPosition].PRGR;
+            //ProgramIdPosition = ChannelsJson[ChannelPosition].PSCN;
 
         /* Regresamos a su valor inicial la variable DIRECTION*/
             Direction = 'UP';
@@ -252,8 +290,8 @@ function SetChannel(NewDirection){
                 }
                 Debug('PlayChannel');
                 //alert('Source: '+ Source +' Port: ' +Port);
-                //PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
-                PlayChannel(Source, Port);   /* TvFunctions por marca */
+                PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
+                //PlayChannel(Source, Port);   /* TvFunctions por marca */
             } else {
                 Debug('GetDigitalChannel');
                 //if(typeof(gSTB) !== 'undefined'){
@@ -268,6 +306,7 @@ function SetChannel(NewDirection){
     Debug('------- SetChannel ->: '+Source + ' ChannelPosition: '+ChannelPosition);
 }
 function killProcessTv(){
+    //alert("Sour");
     $.ajax({
         type: 'POST',
         url: './././Core/Controllers/DevicesStatus.php',
@@ -302,29 +341,82 @@ function setKillProcess(){
 
 function GetDigitalChannel(){
     ActiveDigitalChannel = true;
-
+    var newPATH = 'http://172.22.22.11/BBINCO/TV/';
     var GetModule = ChannelsJson[ChannelPosition].INDC;
 
         DigitalSource = Libraries['MultimediaSource'] + GetModule + '/';
         DigitalImgSource = '../../Multimedia/' + GetModule + '/';
 
         Debug('GetModule: '+GetModule);
+    var Identifier;
+        $.ajax({
+            type: 'POST',
+            async: false,
+            url: ServerSource + 'Core/Controllers/PY.php',
+            data: { 
+                Option : 'GetIdentifier',
+            },
+            success: function (response){
+                Identifier = $.parseJSON(response);
+            }
+        }); 
+    Debug("IDENTIFICADOR EN TV.JS == " + Identifier[0].IDF);
+    if(Identifier[0].IDF == 'VPL'){
+        $.ajax({
+            type: 'POST',
+            async: false,
+            url: newPATH + 'Core/Controllers/Template.php',
+            data: { 
+                Option : 'getDigitalChannel',
+                ModuleName : GetModule
+            },
+            success: function (response){
+                DigitalContent = $.parseJSON(response);
+                Debug('SetDigitalChannel');
+                SetDigitalChannel();
+            }
+        });   
+    } else {
+        $.ajax({
+            type: 'POST',
+            async: false,
+            url: ServerSource + 'Core/Controllers/Template.php',
+            data: { 
+                Option : 'getDigitalChannel',
+                ModuleName : GetModule
+            },
+            success: function (response){
+                DigitalContent = $.parseJSON(response);
+                Debug('SetDigitalChannel');
+                SetDigitalChannel();
+            }
+        });    
+        
+    }
 
-    $.ajax({
-        type: 'POST',
-        async: false,
-        url: ServerSource + 'Core/Controllers/Template.php',
-        data: { 
-            Option : 'getDigitalChannel',
-            ModuleName : GetModule
-        },
-        success: function (response){
-            DigitalContent = $.parseJSON(response);
-            Debug('SetDigitalChannel');
-            SetDigitalChannel();
-        }
-    });    
-    
+    // ActiveDigitalChannel = true;
+
+    // var GetModule = ChannelsJson[ChannelPosition].INDC;
+
+    //     DigitalSource = Libraries['MultimediaSource'] + GetModule + '/';
+    //     DigitalImgSource = '../../Multimedia/' + GetModule + '/';
+
+    //     Debug('GetModule: '+GetModule);
+
+    // $.ajax({
+    //     type: 'POST',
+    //     async: false,
+    //     url: ServerSource + 'Core/Controllers/Template.php',
+    //     data: {
+    //         Option : 'getDigitalChannel',
+    //         ModuleName : GetModule
+    //     },
+    //     success: function (response){
+    //         DigitalContent = $.parseJSON(response);
+    //         Debug('SetDigitalChannel');
+    //         SetDigitalChannel();
+    //     }
+    // });
     // Si la guia esta cerrada muestra cuadro con informacion del canal en reproduccion
     ShowInfo();
 }
