@@ -20,7 +20,7 @@ for n in range(7):
 
 ####Numero de paquetes + 1#########
 payload = {'Option': 'GetAllPackages'}
-Pack = requests.post('http://localhost/BBINCO/TV/Core/Controllers/Packages.php', data=payload)
+Pack = requests.post('http://172.22.22.10/BBINCO/TV/Core/Controllers/Packages.php', data=payload)
 Packages = json.loads(Pack.content)
 
 def start(day, pos):
