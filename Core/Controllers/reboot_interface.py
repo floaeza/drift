@@ -3,12 +3,13 @@ import xtelnet
 import requests
 import json
 from datetime import datetime
+import socket
 
 t=xtelnet.session()
 hora = datetime.now().strftime('%H')
 print(int(hora))
 payload = {'Option': 'GetAminos'}
-Devices = requests.post('http://localhost/BBINCO/TV/Core/Controllers/DevicesStatus.php', data=payload)
+Devices = requests.post('http://172.22.22.10/BBINCO_BETA/TV/Core/Controllers/DevicesStatus.php', data=payload)
 IDF = json.loads(Devices.content)
 print(IDF)
 for ips in IDF:
@@ -17,7 +18,7 @@ for ips in IDF:
         #ip = '10.30.12.134'
         mac = ips['mac_address']
         payload = {'Option': 'SetKillProcess', 'MacAddress':mac, 'Kill':1}
-        Devices = requests.post('http://localhost/BBINCO/TV/Core/Controllers/DevicesStatus.php', data=payload)
+        Devices = requests.post('http://172.22.22.10/BBINCO_BETA/TV/Core/Controllers/DevicesStatus.php', data=payload)
 
         t.connect(ip, username='root',password='root2root',p=23,timeout=5)
         if int(hora) > 4:
