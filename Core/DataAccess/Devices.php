@@ -430,7 +430,7 @@ class Devices extends Database {
         $this->Function = 'GetDeviceAminos';
 
         $this->connect();
-        $this->select("dispositivos","dispositivos.ip","","","","","marca = 'Amino' AND modelo = 'A50'");
+        $this->select("dispositivos","dispositivos.ip, dispositivos.mac_address","","","","","marca = 'Amino' AND modelo = 'A50'");
         $this->DeviceList = $this->getResult();
         $this->disconnect();
 

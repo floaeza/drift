@@ -26,30 +26,58 @@
 /* *****************************************************************************
  * Reproductor de canal
  * ****************************************************************************/
+<<<<<<< HEAD
     //function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPid){
     function PlayChannel(Source, Port){
         //UpdateQuickInfoDevice();
         Debug('############################### PLAYCHANNEL AMINO');
+=======
+    
+    function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPid){
+        
+        //alert('src='+ Source+''+Port);
+>>>>>>> 8d6b6ce9451040528bcf8dd65287f5ab71e5d681
         var CheckPort = '',
             CheckProgram = '';
         
-            if(Port){
-                CheckPort = ':' + Port;
-            }
+        if(Port){
+            CheckPort = ':' + Port;
+        }
 
+<<<<<<< HEAD
             // if(ProgramIdChannnel){
             //    // CheckProgram = ';Progid='+ProgramIdChannnel+';audiopid='+AudioPid;
             //     CheckProgram = ';Progid='+ProgramIdChannnel;
             // }
             //
             // Debug('########################### Channelinfo: '+CheckProgram);
+=======
+        Debug('**************** Channelinfo: '+ProgramIdChannnel);
+
+        if(ProgramIdChannnel){
+            //  CheckProgram = ';Progid='+ProgramIdChannnel+';audiopid='+AudioPid;
+	     //	CheckProgram = ';Progid='+ProgramIdChannnel;
+	        if(AudioPid!=null){
+                CheckProgram = ';Progid='+ProgramIdChannnel+';audiopid='+AudioPid;
+            }else{
+                    CheckProgram = ';Progid='+ProgramIdChannnel;
+            }
+        }
+	    Debug('########################### Channelinfo: '+CheckProgram);
+>>>>>>> 8d6b6ce9451040528bcf8dd65287f5ab71e5d681
         // Detiene el proceso de la reproduccion anterior
         StopVideo();
         PlayDigita = false;
         // Reproduce el canal actual
+<<<<<<< HEAD
         //AVMedia.Play('src='+ Source+''+CheckPort+CheckProgram);
         AVMedia.Play('src='+ Source+''+CheckPort);
         Debug('src='+ Source+''+CheckPort);
+=======
+        
+        AVMedia.Play('src='+ Source+''+CheckPort+CheckProgram);
+        
+>>>>>>> 8d6b6ce9451040528bcf8dd65287f5ab71e5d681
         // Maximiza el video en caso de que no este en pantalla completa
         MaximizeTV();
         Debug('############################### MaximizeTV');
@@ -58,7 +86,11 @@
         
         // Si la guia esta cerrada muestra cuadro con informacion del canal en reproduccion
         ShowInfo();
+<<<<<<< HEAD
         Debug('############################### ShowInfo');
+=======
+        updateDataChannel();
+>>>>>>> 8d6b6ce9451040528bcf8dd65287f5ab71e5d681
         // Si tiene una fecha ya registrada guarda estadisticas en la BD
         if(StartDateChannel !== ''){
             Debug('############################### ANTES DE SetChannelStatistics');
@@ -100,7 +132,7 @@
 
         // Activamos la bandera
         PlayingChannel = true;
-        
+        updateDataChannel();
         // Si tiene una fecha ya registrada guarda estadisticas en la BD
         if(StartDateChannel !== ''){
             SetChannelStatistics();
@@ -284,4 +316,18 @@
         var PIDS = AVMedia.GetAudioPIDs();
         var AudioPid = PIDS[positionLanguage+1].AudioPID;
         var Status = AVMedia.SetAudioPID(AudioPid);
+    }
+
+
+    function updateDataChannel(){
+        $.ajax({
+            type: 'POST',
+            url: './././Core/Controllers/DevicesStatus.php',
+            data: { 
+                Option : 'updateDataChannels',
+                MacAddress : MacAddress,
+                LastChannel: ChannelsJson[ChannelPosition].CHNL + ' - ' +ChannelsJson[ChannelPosition].NAME,
+                ChannelPos: ChannelPosition
+            }
+        });
     }
