@@ -6,6 +6,7 @@
  */
     // Variables globales
     var PlayingChannel      = false,
+        PlayDigita          = false,
         PlayingVod          = false,
         PauseLive           = false,
         PIDS                = [],
@@ -25,10 +26,10 @@
 /* *****************************************************************************
  * Reproductor de canal
  * ****************************************************************************/
-    
-    function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPid){
-        
-        
+    //function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPid){
+    function PlayChannel(Source, Port){
+        //UpdateQuickInfoDevice();
+        Debug('############################### PLAYCHANNEL AMINO');
         var CheckPort = '',
             CheckProgram = '';
         
@@ -36,54 +37,64 @@
                 CheckPort = ':' + Port;
             }
 
-Debug('**************** Channelinfo: '+ProgramIdChannnel);
-
-            if(ProgramIdChannnel){
-            //  CheckProgram = ';Progid='+ProgramIdChannnel+';audiopid='+AudioPid;
-	     //	CheckProgram = ';Progid='+ProgramIdChannnel;
-	      if(AudioPid!=null){
-                    CheckProgram = ';Progid='+ProgramIdChannnel+';audiopid='+AudioPid;
-                }else{
-                    CheckProgram = ';Progid='+ProgramIdChannnel;
-                }
-            }
-	  Debug('########################### Channelinfo: '+CheckProgram);
+            // if(ProgramIdChannnel){
+            //    // CheckProgram = ';Progid='+ProgramIdChannnel+';audiopid='+AudioPid;
+            //     CheckProgram = ';Progid='+ProgramIdChannnel;
+            // }
+            //
+            // Debug('########################### Channelinfo: '+CheckProgram);
         // Detiene el proceso de la reproduccion anterior
         StopVideo();
-
+        PlayDigita = false;
         // Reproduce el canal actual
-        AVMedia.Play('src='+ Source+''+CheckPort+CheckProgram);
-        
+        //AVMedia.Play('src='+ Source+''+CheckPort+CheckProgram);
+        AVMedia.Play('src='+ Source+''+CheckPort);
+        Debug('src='+ Source+''+CheckPort);
         // Maximiza el video en caso de que no este en pantalla completa
         MaximizeTV();
-        
+        Debug('############################### MaximizeTV');
         // Activamos la bandera
         PlayingChannel   = true;
         
         // Si la guia esta cerrada muestra cuadro con informacion del canal en reproduccion
         ShowInfo();
-
+        Debug('############################### ShowInfo');
         // Si tiene una fecha ya registrada guarda estadisticas en la BD
         if(StartDateChannel !== ''){
+            Debug('############################### ANTES DE SetChannelStatistics');
             SetChannelStatistics();
+            Debug('############################### SetChannelStatistics');
+            //
         }
-        
+        updateDataChannel();
         // Actualiza la fecha inicio de la reproduccion del canal */
         StartDateChannel = new Date();
+        Debug('############################### StartDateChannel: '+StartDateChannel);
     }
-    
+    function updateDataChannel(){
+        $.ajax({
+            type: 'POST',
+            url: './././Core/Controllers/DevicesStatus.php',
+            data: { 
+                Option : 'updateDataChannels',
+                MacAddress : MacAddress,
+                LastChannel: ChannelsJson[ChannelPosition].CHNL + ' - ' +ChannelsJson[ChannelPosition].NAME,
+                ChannelPos: parseInt(ChannelPosition)
+            }
+        });
+    }
 /* *****************************************************************************
  * Reproduce canales digitales
  * ****************************************************************************/
     
     function PlayDigitalChannel(Source){
         // Detiene el proceso de la reproduccion anterior
-        
         StopVideo();
 
         // Reproduce el video
+        Debug('src='+ Source);
         AVMedia.Play('src='+ Source);
-
+        PlayDigita = true;
         // Maximiza el video en caso de que no este en pantalla completa
         MaximizeTV();
 
@@ -97,6 +108,7 @@ Debug('**************** Channelinfo: '+ProgramIdChannnel);
            
         // Actualiza la fecha inicio de la reproduccion del canal */
         StartDateChannel = new Date();
+        updateDataChannel();
     }
     
 /* *****************************************************************************
@@ -109,10 +121,21 @@ Debug('**************** Channelinfo: '+ProgramIdChannnel);
 
         // Reproduce el video
         AVMedia.Play('src='+ Source);
-        //setTimeout(getPIDSInfo, 15000);
+
         // Maximiza el video en caso de que no este en pantalla completa
-           MaximizeTV();
-       
+        MaximizeTV();
+    }
+
+    function PlayMovie(Source){
+        // Guarda la estadistica
+        StopVideo();
+
+        // Reproduce el video
+        AVMedia.Play('src='+ Source);
+
+        setTimeout(getPIDSInfo, 15000);
+        // Maximiza el video en caso de que no este en pantalla completa
+        MaximizeTV();
     }
     function getPIDSInfo(){
         var PIDObject = AVMedia.GetAudioPIDs();
@@ -152,8 +175,8 @@ Debug('**************** Channelinfo: '+ProgramIdChannnel);
     }
     
     function GetWindowMinSize(){
-        WindowMinWidth   = ((window.screen.width)*33)/100;
-        WindowMinHeight  = ((window.screen.height)*33)/100;
+        WindowMinWidth   = ((window.screen.width)*TvPercentageSize)/100;
+        WindowMinHeight  = ((window.screen.height)*TvPercentageSize)/100;
     }
 
 /* *****************************************************************************
@@ -161,7 +184,15 @@ Debug('**************** Channelinfo: '+ProgramIdChannnel);
  * ****************************************************************************/
     
     function MaximizeTV(){
-        windowTV.SetRectangle('0', '0', WindowMaxWidth, WindowMaxHeight);
+        if(CurrentModule === 'Tv'){
+            if(ActiveEpgContainer === true){
+                // do nothing
+            } else if(RecordingPanel === true){
+                // do nothing
+            } else  {
+                windowTV.SetRectangle('0', '0', WindowMaxWidth, WindowMaxHeight);
+            }
+        }
     }
 
 /* *****************************************************************************
@@ -169,7 +200,7 @@ Debug('**************** Channelinfo: '+ProgramIdChannnel);
  * ****************************************************************************/
     
     function MinimizeTV(){
-        windowTV.SetRectangle('15', '60', WindowMinWidth, WindowMinHeight);
+        windowTV.SetRectangle(TvPositionLeft, TvPositionTop, WindowMinWidth, WindowMinHeight);
     }
     
 /* *****************************************************************************
@@ -189,6 +220,7 @@ Debug('**************** Channelinfo: '+ProgramIdChannnel);
         AVMedia.Kill();
         PauseLive = false;
         PlayingRecording = false;
+        PlayDigita = false;
     }
     
     function PauseVideo(){
@@ -212,6 +244,7 @@ Debug('**************** Channelinfo: '+ProgramIdChannnel);
 
         AVMedia.SetPos(PositionAsset);
 
+        
         PositionAsset = AVMedia.GetPos();
 
         //AVMedia.Continue();
@@ -237,9 +270,11 @@ Debug('**************** Channelinfo: '+ProgramIdChannnel);
             if(typeof PltInfo === 'object') {
                 DurationAsset = PltInfo.duration;
                 PositionAsset = PltInfo.position;
-                
+
                 if(DurationAsset !== 0){
                     PercentagePosition = Math.round((PositionAsset * 100) / DurationAsset);
+
+                    //DurationAsset = DurationAsset * 2;
                 }
             }
         }
