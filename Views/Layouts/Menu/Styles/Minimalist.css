@@ -189,24 +189,6 @@ div#TemperatureGroup {
   width: 59%;
 }
 
-div#MenuSelected {
-  font-family: gotham;
-  font-size: 120px;
-  width: 100%;
-  text-align: center;
-  top:40%;
-  position: fixed;
-}
-
-div#MenuDescription {
-  font-size: 50px;
-  width: 100%;
-  text-align: center;
-  top: 55%;
-  position: fixed;
-  font-family: darker;
-}
-
 #MenuChevronLeft,
 #MenuChevronRight {
   color: #fff;

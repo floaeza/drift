@@ -6,7 +6,7 @@
     var MenuDate        = document.getElementById('MenuDate'),
         MenuHour        = document.getElementById('MenuHour'),
         MenuContainer   = document.getElementById('MenuContainer'),
-        MenuSelected    = document.getElementById('MenuSelected'),
+        //MenuSelected    = document.getElementById('MenuSelected'),
         MenuListNodes   = document.getElementById('MenuBar').childNodes;
         //BackgroundsNodes = '';
         ImagesUrl       = ServerSource+'Media/Menu/',

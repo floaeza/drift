@@ -6,7 +6,7 @@
 var MenuDate    = document.getElementById('MenuDate'),
 MenuHour        = document.getElementById('MenuHour'),
 MenuContainer   = document.getElementById('MenuContainer'),
-MenuSelected    = document.getElementById('MenuSelected'),
+//MenuSelected    = document.getElementById('MenuSelected'),
 MenuListNodes   = document.getElementById('MenuBar').childNodes;
 //BackgroundsNodes = '';
 ImagesUrl       = ServerSource+'Media/Menu/',
@@ -20,7 +20,7 @@ function SetMenuList(){
 $.ajax({
     type: 'POST',
     cache: false,
-    //async: false,
+    async: false,
     url: ServerSource + 'Core/Controllers/Menu.php',
     data: { 
         Option : 'GetModules',
@@ -35,9 +35,10 @@ $.ajax({
     }
 });
 }
+GetWeather();
 SetMenuList();
 
-GetWeather();
+
 
 
 function SetMenuInfo(){
