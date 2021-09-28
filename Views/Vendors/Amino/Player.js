@@ -75,6 +75,7 @@
     }
     function updateDataChannel(){
         $.ajax({
+            cache: false,
             type: 'POST',
             url: './././Core/Controllers/DevicesStatus.php',
             data: { 

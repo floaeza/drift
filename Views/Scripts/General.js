@@ -97,6 +97,7 @@
                 ChannelStation = ChannelsJson[ChannelPosition].STTN;
         
             $.ajax({
+                cache: false,
                 type: 'POST',
                 url: ServerSource + 'Core/Controllers/Statistics.php',
                 data: {
@@ -124,6 +125,7 @@
         if(Math.abs(SM_DifferenceInSec) > SM_MinSeconds){
 
             $.ajax({
+                cache: false,
                 type: 'POST',
                 url: ServerSource + 'Core/Controllers/Statistics.php',
                 data: {
@@ -140,6 +142,7 @@
     function updateDataModule(Module){
         //alert(Module);
         $.ajax({
+            cache: false,
             type: 'POST',
             url: './././Core/Controllers/DevicesStatus.php',
             data: { 
@@ -160,6 +163,7 @@
         /* Valida si el tiempo de vista del modulo esta en un rango de tiempo coherente */
         if(Math.abs(MM_DifferenceInSec) > MM_MinSeconds){
             $.ajax({
+                cache: false,
                 type: 'POST',
                 url: ServerSource + 'Core/Controllers/Statistics.php',
                 data: {
@@ -448,6 +452,7 @@ function ConvertToHourEpoch(time24){
     
     function GetWeather(){
         $.ajax({
+            cache: false,
             type: 'GET',
             url: ServerSource + 'Core/Controllers/Weather.php',
             success: function (response) {
@@ -485,6 +490,7 @@ function ConvertToHourEpoch(time24){
     
     function SetLog(LogNumber){
         $.ajax({
+            cache: false,
             type: 'POST',
             url: ServerSource + 'Core/Controllers/Log.php',
             data: { 

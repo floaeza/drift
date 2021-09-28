@@ -146,6 +146,7 @@ function SetEpgFile(){
     
 function GetJsonEpg(Sour, rest){
     $.ajax({
+        cache: false,
         async: false,
         url: ServerSource + Sour,
         success: function (response){
@@ -189,6 +190,7 @@ function GetJsonEpg(Sour, rest){
 
 function SendMail(){
     $.ajax({
+        cache: false,
         async: false,
         url: ServerSource + 'Core/Controllers/ErrorGuideMail.php',
         Client: Device['Client'],
@@ -214,6 +216,7 @@ function GetJsonChannels(){
     $.ajax({
         type: 'POST',
         async: false,
+        cache: false,
         url: ServerSource + 'Core/Controllers/Packages.php',
         data: { 
             Option : 'GetChannels',
@@ -320,6 +323,7 @@ function killProcessTv(){
     //alert("Sour");
     $.ajax({
         async: false,
+        cache: false,
         type: 'POST',
         url: './././Core/Controllers/DevicesStatus.php',
         data: { 
@@ -341,6 +345,7 @@ function killProcessTv(){
 function setKillProcess(){
     $.ajax({
         async: false,
+        cache: false,
         type: 'POST',
         url: './././Core/Controllers/DevicesStatus.php',
         data: { 

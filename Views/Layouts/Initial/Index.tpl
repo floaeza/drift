@@ -35,6 +35,8 @@
     
     /* Valida la informacion despues de las posibles cargas por cada tipo de dispositivo */
 
+
+
 /*******************************************************************************
  *  AMINO
  ******************************************************************************/
@@ -122,7 +124,8 @@
         $.ajax({
             type: 'POST',
             url: '[@Time]',
-            async : false,
+            cache: false,
+            //async : false,
             success: function (response) {
                 var Today = $.parseJSON(response);
                     Year  = Today.Year;

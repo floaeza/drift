@@ -1,8 +1,5 @@
 html{
   background: #152a3b;
-}
-
-body {
   width: 100vw;
   height: 100vh;
   min-width: 100%;
@@ -13,6 +10,7 @@ body {
   margin: 0;
   overflow: hidden;
 }
+
 img#ico2 {
   position: absolute;
   top: 50%;

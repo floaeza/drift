@@ -1934,7 +1934,8 @@ function GetProgramsSerie(){
 function GetRecordings(){
     $.ajax({
         type: 'POST',
-        async: false,
+        cache: false,
+        //async: false,
         url: 'Core/Controllers/Recorder.php',
         data: {
             Option     : 'RecordingsList',
@@ -1950,6 +1951,7 @@ function GetRecordings(){
 function GetSchedules(){
     $.ajax({
         type: 'POST',
+        cache: false,
         async: false,
         url: 'Core/Controllers/Recorder.php',
         data: {
@@ -1965,7 +1967,8 @@ function GetSchedules(){
 function GetSeries(){
     $.ajax({
         type: 'POST',
-        async: false,
+        cache: false,
+        //async: false,
         url: 'Core/Controllers/Recorder.php',
         data: {
             Option     : 'SeriesList',
@@ -1995,7 +1998,8 @@ function GetPvrInfo(){
     Debug("MAAAAACC     " + MacAddress);
     $.ajax({
         type: 'POST',
-        async: false,
+        cache: false,
+        //async: false,
         url: 'Core/Controllers/Recorder.php',
         data: {
             Option     : 'GetPvrInfoInfomir',
@@ -2016,7 +2020,8 @@ GetPvrInfo();
 function CheckManualRecording(){
     $.ajax({
         type: 'POST',
-        async: false,
+        cache: false,
+        //async: false,
         url: 'Core/Controllers/Recorder.php',
         data: {
             Option     : 'RecordingsToRecord',
@@ -2155,7 +2160,8 @@ function CheckRecordings() {
     if(FullDisk === false){
         $.ajax({
             type: 'POST',
-            async: false,
+            //async: false,
+            cache: false,
             url: 'Core/Controllers/Recorder.php',
             data: {
                 Option: 'RecordingsToRecord',

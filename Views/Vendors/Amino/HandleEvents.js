@@ -166,6 +166,7 @@ Debug('########################### HandleEvent() ');
 
 function UpdateDiskInfo(){
     $.ajax({
+        cache: false,
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
         data: {
@@ -189,6 +190,7 @@ function UpdateDiskInfo(){
 function GetProgramsToSchedule(){
     Debug('-------->> GetProgramsToSchedule');
     $.ajax({
+        cache: false,
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
         data: {
@@ -244,6 +246,7 @@ function GetSchedulesToDelete(){
 
     Debug('-------->> GetSchedulesToDelete');
     $.ajax({
+        cache: false,
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
         data: {
@@ -297,6 +300,7 @@ function GetSchedulesToDelete(){
 
 function DeleteProgram(ProgramId){
     $.ajax({
+        cache: false,
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
         data: {
@@ -316,6 +320,7 @@ function DeleteProgram(ProgramId){
 function UpdateProgramAsset(ProgramId, OperationId, AssetId, ActiveRecording){
 
     $.ajax({
+        cache: false,
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
         data: {
@@ -335,6 +340,7 @@ function UpdateProgramAsset(ProgramId, OperationId, AssetId, ActiveRecording){
 function UpdateProgramStreamId(ProgramId, OperationId, StreamId){
     Debug('--------->> UpdateProgramStreamid= '+ ProgramId + ', ' + OperationId + ', '+StreamId);
     $.ajax({
+        cache: false,
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
         data: {
@@ -353,6 +359,7 @@ function UpdateProgramStreamId(ProgramId, OperationId, StreamId){
 function UpdateProgramDelete(ProgramId, OperationId, AssetId){
 
     $.ajax({
+        cache: false,
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
         data: {

@@ -78,6 +78,7 @@ function GetNextJsonEpg(Direction){
 
     $.ajax({
         async: false,
+        cache: false,
         url: NewSourceEpgFile,
         success: function (response){
             NextChannelsJson = [];

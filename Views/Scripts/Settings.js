@@ -13,9 +13,10 @@ if (window.tizen !== undefined) {
     console.log('------------------------- NOW:::: '+now);
 
     $.ajax({
+        cache: false,
         type: 'POST',
         url: 'http://'+ServerIp+'/BBINCO/TV/Core/Models/Time.php',
-        async : false,
+        //async : false,
         success: function (response) {
             var Today = $.parseJSON(response),
                 ServerHour   = Today.Hours;
@@ -155,6 +156,7 @@ if (window.tizen !== undefined) {
 
     // Device
     $.ajax({
+        cache: false,
         type: 'POST',
         async: false,
         url: ServerSource + 'Core/Controllers/Device.php',
@@ -184,6 +186,7 @@ if (window.tizen !== undefined) {
     $.ajax({
         type: 'POST',
         async: false,
+        cache: false,
         url: ServerSource + 'Core/Models/Libraries.php',
         data: {
             GetJson : true
@@ -201,6 +204,7 @@ if (window.tizen !== undefined) {
         Debug('----------------> EventHdmi '+EventHdmi);
         Debug('----------------> Date '+CurrentStbDate);
         $.ajax({
+            cache: false,
             type: 'POST',
             url: ServerSource + 'Core/Controllers/Device.php',
             data: {
@@ -274,6 +278,7 @@ function UpdateQuickInfoDevice(){
     Debug('----------------------------# Channelpos:: '+ChannelPosition);
 
     $.ajax({
+        cache: false,
         type: 'POST',
         url: ServerSource + 'Core/Controllers/DeviceInfo.php',
         data: {

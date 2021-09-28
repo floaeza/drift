@@ -3,7 +3,7 @@
  * @Fecha: Enero 2020
  * @Tipo: Controla el menu
  */
-var MenuDate        = document.getElementById('MenuDate'),
+var MenuDate    = document.getElementById('MenuDate'),
 MenuHour        = document.getElementById('MenuHour'),
 MenuContainer   = document.getElementById('MenuContainer'),
 MenuSelected    = document.getElementById('MenuSelected'),
@@ -16,11 +16,11 @@ MenuList        = '',
 MenuIndex       = 0;
 
 function SetMenuList(){
-//alert(Device['Services']['ProjectId']);
-//alert();
+
 $.ajax({
     type: 'POST',
-    async: false,
+    cache: false,
+    //async: false,
     url: ServerSource + 'Core/Controllers/Menu.php',
     data: { 
         Option : 'GetModules',
@@ -30,77 +30,51 @@ $.ajax({
     success: function (response){
         MenuList = null;
         MenuList = $.parseJSON(response);
-        //alert(MenuList);
-        SetIcons();
+        
+        SetMenuInfo();
     }
 });
 }
-
-function SetIcons(){
-
-    SetMenuInfo();
-}
-
 SetMenuList();
+
 GetWeather();
 
 
 function SetMenuInfo(){
-    var IndexM = MenuIndex - 1,
-        Index;
+    var IndexM = MenuIndex -1,
+        Index = 1;
 
-    for(Index = 0; Index < 6; Index++){
-        Index++;
-
-        if(MenuIndex === 0){
-            if(IndexM < 0){
+    for(Index = 1; Index < 6; Index+=2){
+        //Index++;
+        if(MenuIndex == 0 && IndexM < 0){
+            IndexM = MenuList.length - 1;
+        }else
+            if(MenuIndex == 1 && IndexM < 0){
                 IndexM = MenuList.length - 1;
             }
-        }
-
-        if(MenuIndex === 1){
-            if(IndexM < 0){
-                IndexM = MenuList.length - 1;
-            }
-        }
-
         if(IndexM >= MenuList.length){
             IndexM = 0;
         }
 
-        //BackgroundsNodes[IndexM].style.visibility = 'hidden';
-
-
-
         MenuListNodes[Index].textContent = MenuList[IndexM].Name;
-        //$("#menuBackImg").attr("src",Libraries['MenuPath'] + MenuList[IndexM].Image);
+
         IndexM++;
     }
-
-    //BackgroundsNodes[MenuIndex].style.visibility = 'visible';
-    //var MenuBackgrounds = document.getElementById('menuBackImg');
-    //MenuBackgrounds.style.backgroundImage = 'url('+Libraries['MenuPath'] + MenuList[MenuIndex].Image+')';
-    //$("#menuBackImg").attr("src", Libraries['MenuPath'] + MenuList[MenuIndex].Image);
-    //Debug(BackgroundsNodes[MenuIndex]);
-
         IndexM = null;
         Index = null;
-
-
 }
 
-function MenuSelect(Direction){
+// function MenuSelect(Direction){
 
-    (Direction === 'RIGHT') ? MenuIndex++: MenuIndex--;
+//     (Direction === 'RIGHT') ? MenuIndex++: MenuIndex--;
 
-    if(MenuIndex > MenuList.length - 1){
-        MenuIndex = 0;
-    } else if(MenuIndex < 0){
-        MenuIndex = MenuList.length - 1;
-    }
-
-    SetMenuInfo();
-}
+//     if(MenuIndex > MenuList.length - 1){
+//         MenuIndex = 0;
+//     } else if(MenuIndex < 0){
+//         MenuIndex = MenuList.length - 1;
+//     }
+//     SetMenuInfo();
+// }
 
 /*******************************************************************************
 * MOVIMIENTOS FLECHAS EPG
@@ -110,17 +84,32 @@ function MenuOk(){
 
     if(MenuList[MenuIndex].Url !== 'menu.php'){
         //Page, ModuleId, ChangeModule
-
         GoPage(MenuList[MenuIndex].Url, MenuList[MenuIndex].Id, MenuList[MenuIndex].Name);
     }
 }
 
 function MenuRight(){
-    MenuSelect('RIGHT');
+    //MenuSelect('RIGHT');
+    MenuIndex++;
+
+    if(MenuIndex > MenuList.length - 1){
+        MenuIndex = 0;
+    } else if(MenuIndex < 0){
+        MenuIndex = MenuList.length - 1;
+    }
+    SetMenuInfo();
 }
 
 function MenuLeft(){
-    MenuSelect('LEFT');
+    //MenuSelect('LEFT');
+    MenuIndex--;
+
+    if(MenuIndex > MenuList.length - 1){
+        MenuIndex = 0;
+    } else if(MenuIndex < 0){
+        MenuIndex = MenuList.length - 1;
+    }
+    SetMenuInfo();
 }
 
 function MenuDown(){

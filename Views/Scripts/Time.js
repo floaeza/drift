@@ -23,6 +23,7 @@
         Debug('------------------------- NOW:::: '+now);
 
         $.ajax({
+            cache: false,
             type: 'POST',
             url: 'http://'+ServerIp+'/BBINCO/TV/Core/Models/Time.php',
             async : false,
