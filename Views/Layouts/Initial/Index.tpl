@@ -240,11 +240,11 @@
                     if(String(resultado[0].kill_process) !== '1'){
                         GetInfoDevice();
                     }else{
-                        if(resultado[0].ultimo_modulo !== '6'){
+                        if(resultado[0].ultimo_modulo !== '1'){
                             window.location.href ='menu.php?MacAddress='+MacAddress+'&ModuleId=2'+'&CurrentModule=Menu';
                             
                         }else{
-                            window.location.href ='tv.php?MacAddress='+MacAddress+'&ModuleId=6'+'&CurrentModule=Tv';
+                            window.location.href ='tv.php?MacAddress='+MacAddress+'&ModuleId=1'+'&CurrentModule=Tv';
                         }
                     }
                 }

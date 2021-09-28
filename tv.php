@@ -113,7 +113,7 @@
             $Footer->set('TvScript', $Libraries['Tv']);
             $Footer->set('Time', $Libraries['TimeScript']);
             $Footer->set('Settings', $Libraries['Settings']);
-
+            
             // Libreria para maniputal el template asignado
             $Footer->set('LayoutScript', $Libraries['TvScripts'].$ModuleInfo['opcion_template'].'.js' );
             $Footer->set('LayoutRecorderScript', $Libraries['TvScripts'].$ModuleInfo['opcion_template'].$Libraries['Recorder'].'.js' );

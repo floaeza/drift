@@ -436,5 +436,24 @@ class Devices extends Database {
 
         return $this->DeviceList;
     }
+
+    function GetDeviceByReboot(){
+        $this->Function = 'GetDeviceByReboot';
+        $this->connect();
+        $this->select("dispositivos","dispositivos.ip, dispositivos.mac_address, dispositivos.id_dispositivo","","","","","reiniciar = '1' AND modelo = 'A50'");
+        $this->DeviceList = $this->getResult();
+        $this->disconnect();
+        return $this->DeviceList;
+    }
+    function updateDeviceToReboot($DeviceId, $DeviceInfo){
+        $this->Function = 'updateDeviceModule';
+        
+        $this->connect();
+        $this->update("dispositivos", $DeviceInfo, "id_dispositivo = '$DeviceId'");
+        $this->Device = $this->getResult();
+        $this->disconnect();
+
+        return $this->Device;
+    }
     
 }

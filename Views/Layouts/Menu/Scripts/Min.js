@@ -37,24 +37,7 @@
 
     function SetBackgrounds(){
 
-        var IndexM = 0;
-        //var MenuBackgrounds = document.getElementById('MenuBackgrounds');
         var img = $('<img />', { id: 'menuBackImg', class: 'BackgroundsMenu'}).appendTo($('#MenuBackgrounds'));
-        //var MenuBackgrounds = document.getElementById('menuBackImg');
-        //for(IndexM = 0; IndexM < MenuList.length; IndexM++) {
-        //    img = document.createElement('img');
-        //    img.style.backgroundImage = Libraries['MenuPath'] + MenuList[IndexM].Image;
-        //    img.className = 'BackgroundsMenu';
-        //    img.style.visibility = 'hidden';
-            //$("#menuBackImg").attr("src-swap-"+IndexM,Libraries['MenuPath'] + MenuList[IndexM].Image);
-        //MenuBackgrounds.style.backgroundImage = 'url('+Libraries['MenuPath'] + MenuList[IndexM].Image+')';
-        //    MenuBackgrounds.appendChild(img);
-        //    
-        //}
-
-        //BackgroundsNodes = MenuBackgrounds.childNodes;
-
-
 
         img = null;
         IndexM = null;

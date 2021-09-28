@@ -34,25 +34,27 @@ Debug('#################################################################');
 
     function PlayChannel(Source, Port){
         Debug('PlayChannel---->> Source + CheckPort'+Source + ':'+ Port);
-
+        
         var CheckPort = '';
         
             if(Port){
                 CheckPort = ':' + Port;
             }
-            
+        
         if(PauseStatus = true){
             TvPlay();
             PauseStatus = false;
             ResumeVideo()
         }
+        
         // Reproduce el canal actual 
         Source = Source.replace('igmp','udp');
         Debug(Source + ' ' + CheckPort);
 
         StopVideo();
-
+        //alert(Source+":"+Port);
         Video.open(Source + CheckPort, null, {pltbuf:1000});
+        //Video.open(Source + CheckPort);
 
         //ret = video.open(url, null, {pltbuf: 3600});
         //, null, {sync:0,seek_to_start:1}
@@ -60,10 +62,9 @@ Debug('#################################################################');
         Debug('---->> Source + CheckPort');
 
         Video.play(1);
-
         // Maximiza el video en caso de que no este en pantalla completa
         MaximizeTV();
-        
+
         // Activamos la bandera
         PlayingChannel = true;
 

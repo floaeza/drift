@@ -10,9 +10,10 @@ require_once './../DataAccess/Devices.php';
 
     $CurrentController = 'DeviceDashboard';
 
-    $Option         = !empty($_POST['Option']) ? $_POST['Option'] : 'GetAminos';
+    $Option         = !empty($_POST['Option']) ? $_POST['Option'] : 'GetAminosToReboot';
     $MacAddress     = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '00:02:02:6c:64:1e';
     $DeviceArray    = !empty($_POST['DeviceArray']) ? $_POST['DeviceArray'] : '';
+    
 
 
 $DevicesData   = new Devices('System', $CurrentController);
@@ -118,13 +119,9 @@ switch ($Option){
             $Response = $DevicesData->updateDeviceModule($MacAddress, $DevicesUpdateData);
             break;
         case 'updateDataChannels':
-
             $LastChannel = !empty($_POST['LastChannel']) ? $_POST['LastChannel'] : '';
             $ChannelPos = !empty($_POST['ChannelPos']) ? $_POST['ChannelPos'] : 0;
-            
-            $DevicesUpdateData = array('ultimo_canal'=>$LastChannel,
-                                        'channel_pos' => $ChannelPos);
-
+            $DevicesUpdateData = array('ultimo_canal'=>$LastChannel,'channel_pos' => $ChannelPos);
             $Response = $DevicesData->updateDeviceModule($MacAddress, $DevicesUpdateData);
             break;
         case 'AllDevices':
@@ -135,7 +132,20 @@ switch ($Option){
         case 'GetAminos':
             $DeviceListResult = $DevicesData->GetDeviceAminos();
             $Response = $DeviceListResult; 
-
+            break;
+        case 'GetAminosToReboot':
+            $DeviceListResult = $DevicesData->GetDeviceByReboot();
+            $Response = $DeviceListResult; 
+            break;
+        case 'RebootDevices':
+            $DataDevices  = json_decode($DeviceArray);
+            $infoDevice = array(
+                'reiniciar' => '1',    
+                ); 
+            foreach ($DataDevices as $DataDevice):    
+                $DeviceID = $DataDevice->id_dispositivo; 
+                $DevicesData->UpdateChannel($ChannelID, $infoChannel);
+            endforeach;
             break;
 }
 

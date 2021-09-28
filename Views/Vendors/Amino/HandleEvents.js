@@ -36,28 +36,30 @@
     
     var NUMBER_EVENT                = 0;
 
+    var TIMERS;
+
 Debug('########################### HandleEvent() ');
 
         AVMedia.onEvent='HandleEvent()';
 
         //NetMan.onEvent = 'processNetManEvent()';
 
-        function processNetManEvent() {
-            EventNetman = NetMan.Event;
+        //function processNetManEvent() {
+        //    EventNetman = NetMan.Event;
 
-            Debug('########################### NetMan.Event: '+EventNetman);
+        //    Debug('########################### NetMan.Event: '+EventNetman);
 
-            if(Executing === false){
-                UpdateQuickInfoDevice();
-            }
-        } 
+        //    if(Executing === false){
+        //        UpdateQuickInfoDevice();
+        //    }
+        //} 
 /*******************************************************************************
  * Manejador de eventos
  *******************************************************************************/
 
     function HandleEvent() {
         
-        //Debug('*************AVMedia.Event: '+AVMedia.Event);
+        Debug('*************AVMedia.Event: '+AVMedia.Event);
         NUMBER_EVENT = AVMedia.Event;
         if(System.HdmiConnected === true){
             EventHdmi = 1;

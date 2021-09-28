@@ -60,7 +60,8 @@
         SecondsToCloseInfo   = 10,                                   /* Segundos para ocultar cuadro de informacion */
         TimeoutInfo          = SecondsToCloseInfo * 1000,
         InfoContainer        = document.getElementById('InfoContainer'),
-        InfoContainerNodes   = document.getElementById('InfoContainer').childNodes;
+        InfoContainerNodes   = document.getElementById('InfoContainer').childNodes,
+        load                 = true;
 
     /* Canal */
     var ChannelContainer     = document.getElementById('ChannelNumber'),
@@ -94,7 +95,7 @@
 
     var ContentFrame            = document.getElementById('ContentFrame'),
         ActiveFrame             = false;
-
+    
     killProcessTv();
 
     // var div = document.getElementById('loadingTV');
@@ -290,7 +291,17 @@ function SetChannel(NewDirection){
                 }
                 Debug('PlayChannel');
                 //alert('Source: '+ Source +' Port: ' +Port);
-                PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
+                //PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
+                if(load){
+                    load = false;
+                    window.onload=function() {
+                        PlayChannel(Source, Port);   /* TvFunctions por marca */
+                    }
+                }else{
+                    PlayChannel(Source, Port);   /* TvFunctions por marca */
+                }
+                
+                
                 //PlayChannel(Source, Port);   /* TvFunctions por marca */
             } else {
                 Debug('GetDigitalChannel');
@@ -308,6 +319,7 @@ function SetChannel(NewDirection){
 function killProcessTv(){
     //alert("Sour");
     $.ajax({
+        async: false,
         type: 'POST',
         url: './././Core/Controllers/DevicesStatus.php',
         data: { 
@@ -328,6 +340,7 @@ function killProcessTv(){
 
 function setKillProcess(){
     $.ajax({
+        async: false,
         type: 'POST',
         url: './././Core/Controllers/DevicesStatus.php',
         data: { 
@@ -340,83 +353,83 @@ function setKillProcess(){
 
 
 function GetDigitalChannel(){
-    ActiveDigitalChannel = true;
-    var newPATH = 'http://172.22.22.11/BBINCO/TV/';
-    var GetModule = ChannelsJson[ChannelPosition].INDC;
-
-        DigitalSource = Libraries['MultimediaSource'] + GetModule + '/';
-        DigitalImgSource = '../../Multimedia/' + GetModule + '/';
-
-        Debug('GetModule: '+GetModule);
-    var Identifier;
-        $.ajax({
-            type: 'POST',
-            async: false,
-            url: ServerSource + 'Core/Controllers/PY.php',
-            data: { 
-                Option : 'GetIdentifier',
-            },
-            success: function (response){
-                Identifier = $.parseJSON(response);
-            }
-        }); 
-    Debug("IDENTIFICADOR EN TV.JS == " + Identifier[0].IDF);
-    if(Identifier[0].IDF == 'VPL'){
-        $.ajax({
-            type: 'POST',
-            async: false,
-            url: newPATH + 'Core/Controllers/Template.php',
-            data: { 
-                Option : 'getDigitalChannel',
-                ModuleName : GetModule
-            },
-            success: function (response){
-                DigitalContent = $.parseJSON(response);
-                Debug('SetDigitalChannel');
-                SetDigitalChannel();
-            }
-        });   
-    } else {
-        $.ajax({
-            type: 'POST',
-            async: false,
-            url: ServerSource + 'Core/Controllers/Template.php',
-            data: { 
-                Option : 'getDigitalChannel',
-                ModuleName : GetModule
-            },
-            success: function (response){
-                DigitalContent = $.parseJSON(response);
-                Debug('SetDigitalChannel');
-                SetDigitalChannel();
-            }
-        });    
-        
-    }
-
     // ActiveDigitalChannel = true;
-
+    // var newPATH = 'http://172.22.22.11/BBINCO/TV/';
     // var GetModule = ChannelsJson[ChannelPosition].INDC;
 
     //     DigitalSource = Libraries['MultimediaSource'] + GetModule + '/';
     //     DigitalImgSource = '../../Multimedia/' + GetModule + '/';
 
     //     Debug('GetModule: '+GetModule);
+    // var Identifier;
+    //     $.ajax({
+    //         type: 'POST',
+    //         async: false,
+    //         url: ServerSource + 'Core/Controllers/PY.php',
+    //         data: { 
+    //             Option : 'GetIdentifier',
+    //         },
+    //         success: function (response){
+    //             Identifier = $.parseJSON(response);
+    //         }
+    //     }); 
+    // Debug("IDENTIFICADOR EN TV.JS == " + Identifier[0].IDF);
+    // if(Identifier[0].IDF == 'VPL'){
+    //     $.ajax({
+    //         type: 'POST',
+    //         async: false,
+    //         url: newPATH + 'Core/Controllers/Template.php',
+    //         data: { 
+    //             Option : 'getDigitalChannel',
+    //             ModuleName : GetModule
+    //         },
+    //         success: function (response){
+    //             DigitalContent = $.parseJSON(response);
+    //             Debug('SetDigitalChannel');
+    //             SetDigitalChannel();
+    //         }
+    //     });   
+    // } else {
+    //     $.ajax({
+    //         type: 'POST',
+    //         async: false,
+    //         url: ServerSource + 'Core/Controllers/Template.php',
+    //         data: { 
+    //             Option : 'getDigitalChannel',
+    //             ModuleName : GetModule
+    //         },
+    //         success: function (response){
+    //             DigitalContent = $.parseJSON(response);
+    //             Debug('SetDigitalChannel');
+    //             SetDigitalChannel();
+    //         }
+    //     });    
+        
+    // }
 
-    // $.ajax({
-    //     type: 'POST',
-    //     async: false,
-    //     url: ServerSource + 'Core/Controllers/Template.php',
-    //     data: {
-    //         Option : 'getDigitalChannel',
-    //         ModuleName : GetModule
-    //     },
-    //     success: function (response){
-    //         DigitalContent = $.parseJSON(response);
-    //         Debug('SetDigitalChannel');
-    //         SetDigitalChannel();
-    //     }
-    // });
+    ActiveDigitalChannel = true;
+
+    var GetModule = ChannelsJson[ChannelPosition].INDC;
+
+        DigitalSource = Libraries['MultimediaSource'] + GetModule + '/';
+        DigitalImgSource = '../../Multimedia/' + GetModule + '/';
+
+        Debug('GetModule: '+GetModule);
+
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: ServerSource + 'Core/Controllers/Template.php',
+        data: {
+            Option : 'getDigitalChannel',
+            ModuleName : GetModule
+        },
+        success: function (response){
+            DigitalContent = $.parseJSON(response);
+            Debug('SetDigitalChannel');
+            SetDigitalChannel();
+        }
+    });
     // Si la guia esta cerrada muestra cuadro con informacion del canal en reproduccion
     ShowInfo();
 }
@@ -435,7 +448,17 @@ function SetDigitalChannel(){
                 ImageDigital.src = '';
                 ImageDigital.style.display = 'none';
                 Debug("Antes de reproducir el canal");
-                PlayDigitalChannel(DigitalSource+DigitalContent[IndexDigital]);
+                if(load){
+                    load = false;
+                    window.onload=function() {
+                        //PlayChannel(Source, Port);   /* TvFunctions por marca */
+                        PlayDigitalChannel(DigitalSource+DigitalContent[IndexDigital]);
+                    }
+                }else{
+                    PlayDigitalChannel(DigitalSource+DigitalContent[IndexDigital]);
+                }
+                
+                
             } else {
 
                 ImageDigital.src = DigitalSource+DigitalContent[IndexDigital];
@@ -544,7 +567,15 @@ function CloseFrame(){
                     
                     Debug('PlayChannel:: '+Source);
                     //PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
-                    PlayChannel(Source, Port);   /* TvFunctions por marca */
+                    if(load){
+                        load = false
+                        window.onload=function() {
+                            PlayChannel(Source, Port);   /* TvFunctions por marca */
+                        }
+                    }else{
+                        PlayChannel(Source, Port);   /* TvFunctions por marca */
+                    }
+                    
                 } else {
                     SetDigitalChannel();
                 }
@@ -852,7 +883,14 @@ function ShowInfo(){
                 CloseDigitalChannel();
             }
             //PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
-            PlayChannel(Source, Port);   /* TvFunctions por marca */
+            if(load){
+                load = false
+                window.onload=function() {
+                    PlayChannel(Source, Port);   /* TvFunctions por marca */
+                }
+            }else{
+                PlayChannel(Source, Port);   /* TvFunctions por marca */
+            }
         } else {
             Debug('GetDigitalChannel EPG');
             //if(typeof(gSTB) !== 'undefined'){

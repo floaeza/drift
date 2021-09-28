@@ -56,7 +56,10 @@
         
         FormatDateAndHour = moment().subtract(Offset, 'hours').format('MMM, DD / h:mm A');
         CurrentStbDate = moment().subtract(Offset, 'hours').format('Y-MM-DD h:mm:ss');
-		if(typeof(ASTB) !== 'undefined'){ Browser.CacheFlush(); }
+		if(typeof(ASTB) !== 'undefined'){ 
+            Browser.CacheFlush();
+            ASTB.DeleteAllHistory();
+        }
 
         //Debug('################################################ FormatDateAndHour '+FormatDateAndHour);
         //Debug('################################################ CurrentStbDate '+CurrentStbDate);
@@ -131,9 +134,9 @@
 
             if(Executing === false){
                 if(CurrentModule !== 'Tv') {
-                    UpdateInfoDevice();
+                    //UpdateInfoDevice();
                 } else {
-                    UpdateQuickInfoDevice();
+                    //UpdateQuickInfoDevice();
                 }
             }
         }

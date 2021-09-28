@@ -100,27 +100,29 @@
 //
         // Imprime en HTML todo el contenido del template seleccionado
         echo $ContentContent->output();   
-
-        /** PIE DE PAGINA **/
+        
+        
         $Footer = new Templates($Libraries['LayoutsPhpPath'].'Footer.tpl');
+        /** PIE DE PAGINA **/
 
-            // Librerias javascript generales
-            $Footer->set('TvScript', $Libraries['Void']);
-            $Footer->set('Time', $Libraries['TimeScript']);
-            $Footer->set('Settings', $Libraries['Settings']);
+        // Librerias javascript generales
+        $Footer->set('TvScript', $Libraries['Void']);
+        $Footer->set('Time', $Libraries['TimeScript']);
+        $Footer->set('Settings', $Libraries['Settings']);
 
-            // Libreria para maniputal el template asignado
-            $Footer->set('LayoutScript', $Libraries['ContentScripts'].$ModuleInfo['opcion_template'].'.js' );
-            $Footer->set('LayoutRecorderScript', $Libraries['Void']);
-            
-            // Librerias javascript por marca
-            $Footer->set('Player', $VendorFolder.$Libraries['Player']);
-            
-            if($ModuleInfo['modulo_canal'] === '1'){
-                $Footer->set('EventsScript', $Libraries['Void']);
-            } else {
-                $Footer->set('EventsScript', $VendorFolder.$Libraries['Events']);
-            }
+        // Libreria para maniputal el template asignado
+        $Footer->set('LayoutScript', $Libraries['ContentScripts'].$ModuleInfo['opcion_template'].'.js' );
+        $Footer->set('LayoutRecorderScript', $Libraries['Void']);
+        
+        // Librerias javascript por marca
+        $Footer->set('Player', $VendorFolder.$Libraries['Player']);
+        
+        if($ModuleInfo['modulo_canal'] === '1'){
+            $Footer->set('EventsScript', $Libraries['Void']);
+        } else {
+            $Footer->set('EventsScript', $VendorFolder.$Libraries['Events']);
+        }
+    
         // Imprime en HTML todo lo asignado en el pie de pagina
         echo $Footer->output();
     }
