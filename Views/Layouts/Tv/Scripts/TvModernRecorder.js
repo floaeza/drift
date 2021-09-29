@@ -19,7 +19,8 @@ var PlayingRecording            = false,
     RecordOptions               = false,
     DeleteOptions               = false,
     RecorderMessageActive       = false,
-    FullDisk                    = false;
+    FullDisk                    = false,
+    xhr;
 
 /* Variables a utilizar con grabador activo */
 if(Device['Type'] !== 'NONE'){
@@ -199,7 +200,7 @@ function CloseRecordingOptions(){
 }
 
 function SelectRecordingsOption(){
-    Debug('--- TvOk - SelectRecordingsOption');
+    //Debug('--- TvOk - SelectRecordingsOption');
     switch (OptionsNodesArray[OptionsFocus]) {
         case 1:
             CloseRecordingOptions();
@@ -223,10 +224,10 @@ function SelectRecordingsOption(){
             break;
 
         case 5:
-            Debug('--- TvOk - 5');
+            //Debug('--- TvOk - 5');
             if(ChannelsJson[FocusChannelPosition].PROGRAMS[FocusProgramPosition].DRTN !== '24'){
                 AddSerie();
-                Debug('--- TvOk - AddSerie');
+                //Debug('--- TvOk - AddSerie');
             } else {
                 ShowRecorderMessage('Not available on this channel');
             }
@@ -417,7 +418,7 @@ function SetPvrInfo(){
             AvailableSize = (USB[0].freeSize / 1024) / 1024;
         }
     } else {
-        //Debug("Current Module TV");
+        ////Debug("Current Module TV");
         //alert(gSTB.GetDeviceModel());
         // @ts-ignore
         AvailableSize  = (parseInt(DiskInfo[DiskInfoIndex].espacio_disponible,10) / 1024);
@@ -487,20 +488,20 @@ function SetPvrInfoHours(){
         TotalSize = parseInt(DiskInfo[DiskInfoIndex].espacio_total,10);
     }
 
-    Debug('AvailableSize: '+AvailableSize);
-    Debug('TotalSize: '+TotalSize);
+    //Debug('AvailableSize: '+AvailableSize);
+    //Debug('TotalSize: '+TotalSize);
 
     var SizePerSeconds = (typeof(gSTB) !== 'undefined')? 345: parseInt(DiskInfo[DiskInfoIndex].tamano_grabaciones);
 
-    //Debug('SizePerSeconds: '+SizePerSeconds);
+    ////Debug('SizePerSeconds: '+SizePerSeconds);
 
     var TimeRemaining = Math.round(AvailableSize / SizePerSeconds);
-    //Debug('TimeRemaining: '+TimeRemaining);
+    ////Debug('TimeRemaining: '+TimeRemaining);
     var Percentage = (AvailableSize / TotalSize) * 100,
         PercentageSize = parseFloat((100 - Percentage).toFixed(2));
-    //Debug('PercentageSize: '+PercentageSize);
+    ////Debug('PercentageSize: '+PercentageSize);
 
-    //Debug(SecondsToTime(Math.round(TimeRemaining)));
+    ////Debug(SecondsToTime(Math.round(TimeRemaining)));
     PvrDiskInfoNodes[1].textContent = secondsToString(Math.round(TimeRemaining)); + ' available';
     PvrDiskInfoNodes[5].textContent = PercentageSize + '%';
     PvrDiskInfoNodes[5].style.width = PercentageSize + '%';
@@ -509,7 +510,7 @@ function SetPvrInfoHours(){
 //#da7848 naranja
 //#d97676 rojo
 
-    Debug('PercentageSize>  '+typeof PercentageSize);
+    //Debug('PercentageSize>  '+typeof PercentageSize);
 
     if(PercentageSize > 90){
         PvrDiskInfoNodes[5].style.backgroundColor = '#da7848';
@@ -585,7 +586,7 @@ function SetRecordings(Direction){
                             ActiveRec = '';
                         }
                     }
-                    Debug('** '+RecordingsList[IndexRecorded][1].duration);
+                    //Debug('** '+RecordingsList[IndexRecorded][1].duration);
                     PvrListNodes[Row].innerHTML = '\u00A0'+ Icon + ' '+ RecordingsList[IndexRecorded][IndexProgram] + ActiveRec + '<p class="RowDur">'+TimeConvert( RecordingsList[IndexRecorded][1].duration)+'</p>';
                 }
 
@@ -736,7 +737,7 @@ function SelectRecordOption(){
 
                 PlayVideo(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].url);
 
-                Debug('URL>>>>>> '+RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].url);
+                //Debug('URL>>>>>> '+RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].url);
 
                 PlayingRecording = true;
 
@@ -767,7 +768,7 @@ function SelectRecordOption(){
  *******************************************************************************/
 
 function UpdateRtspConnections(OprRtsp){
-    $.ajax({
+    xhr = $.ajax({
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
         data: {
@@ -777,10 +778,11 @@ function UpdateRtspConnections(OprRtsp){
             OptionRtsp : OprRtsp
         },
         success: function (response){
-            //Debug('---------->> UpdateRtspConnections');
-            //Debug($.parseJSON(response));
+            ////Debug('---------->> UpdateRtspConnections');
+            ////Debug($.parseJSON(response));
         }
     });
+    xhr = null;
 }
 
 /*******************************************************************************
@@ -856,7 +858,7 @@ function ShowPvrInfo(){
         InfoContainer.style.visibility = 'visible';
         
         ShowBarStatus();
-        Debug('SHOWWWWWWWWWWW');
+        //Debug('SHOWWWWWWWWWWW');
         ActivePvrInfoContainer = true;
         var EpisodeInfo = '';
 
@@ -1182,7 +1184,7 @@ function SelectRecordPlayOption(){
 
             PlayVideo(RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].url);
 
-            Debug('URL>>>>>>>>>> '+RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].url);
+            //Debug('URL>>>>>>>>>> '+RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].url);
 
             ShowPvrInfo();
 
@@ -1251,7 +1253,7 @@ function ClearSpeed(){
 }
 
 function SetSpeed(Option){
-    Debug('SetSpeed -->> ' + Option);
+    //Debug('SetSpeed -->> ' + Option);
     if(Option === 'forward'){
         BackwardIndex = -1;
 
@@ -1291,9 +1293,9 @@ function SetSpeed(Option){
         Speed = 1;
         SpeedText = '';
 
-        Debug('SetSpeed -->>> ' + Speed);
+        //Debug('SetSpeed -->>> ' + Speed);
         ResumeVideo();
-        Debug('ResumeVideo -->>> ');
+        //Debug('ResumeVideo -->>> ');
     }
 
     OptionText = Option;
@@ -1315,7 +1317,7 @@ function ShowBarStatus(){
         clearTimeout(BarTimer);
     }
 
-    Debug('ShowBarStatus......');
+    //Debug('ShowBarStatus......');
     UpdateBarStatus();
 
     clearTimeout(BarUpdate);
@@ -1329,7 +1331,7 @@ function UpdateBarStatus(){
 
     if(PlayingRecording === true){
         AssetDrt = RecordingsList[IndexRecordedFocus][IndexRecordedProgFocus].duration;
-        Debug('UpdateBarStatus---->');
+        //Debug('UpdateBarStatus---->');
     }
 
     AssetStatus(AssetDrt);
@@ -1861,10 +1863,10 @@ SetMacAddressPvr();
 
 function AddSerie(){
     if(FullDisk === false) {
-        Debug('---- AddSerie');
+        //Debug('---- AddSerie');
         SetMacAddressPvr();
 
-        $.ajax({
+        xhr = $.ajax({
             type: 'POST',
             url: 'Core/Controllers/Recorder.php',
             data: {
@@ -1883,6 +1885,7 @@ function AddSerie(){
                 GetProgramsSerie();
             }
         });
+        xhr = null;
     } else {
         ShowRecorderMessage('Your disk is almost full, delete some recordings');
     }
@@ -1893,14 +1896,14 @@ function AddSerie(){
  *******************************************************************************/
 
 function GetProgramsSerie(){
-    Debug('::::::::::::::::::::::::: GetProgramsSerie::: ');
+    //Debug('::::::::::::::::::::::::: GetProgramsSerie::: ');
     GetSeries();
 
     var IndexS = 0,
         IndexP = 0,
         Position = 0;
 
-    Debug('SeriesList.length::: ' + SeriesList.length);
+    //Debug('SeriesList.length::: ' + SeriesList.length);
 
     if(EpgDataActive === true && SeriesList.length > 0){
 
@@ -1909,13 +1912,13 @@ function GetProgramsSerie(){
         for(IndexS = 0; IndexS < SeriesList.length; IndexS++){
 
             Position = SeriesList[IndexS].posicion;
-            Debug('Pos::: '+Position);
+            //Debug('Pos::: '+Position);
 
 
             if(ChannelsJsonToday.length === 0){
                 for(IndexP = 0; IndexP < ChannelsJson[Position].P_Length; IndexP++){
                     if(SeriesList[IndexS].titulo === ChannelsJson[Position].PROGRAMS[IndexP].TTLE){
-                        Debug('*-*-*-*-*- Encontro coincidencia: '+ChannelsJson[Position].PROGRAMS[IndexP].TTLE + ' ' +ChannelsJson[Position].PROGRAMS[IndexP].DBKY);
+                        //Debug('*-*-*-*-*- Encontro coincidencia: '+ChannelsJson[Position].PROGRAMS[IndexP].TTLE + ' ' +ChannelsJson[Position].PROGRAMS[IndexP].DBKY);
 
                         REC_CHNL_POS = Position;
                         REC_PROG_POS = IndexP;
@@ -1932,7 +1935,7 @@ function GetProgramsSerie(){
  * Agrega programa
  *******************************************************************************/
 function GetRecordings(){
-    $.ajax({
+    xhr = $.ajax({
         type: 'POST',
         cache: false,
         //async: false,
@@ -1946,10 +1949,11 @@ function GetRecordings(){
             RecordingsList = $.parseJSON(response);
         }
     });
+    xhr = null;
 }
 
 function GetSchedules(){
-    $.ajax({
+    xhr = $.ajax({
         type: 'POST',
         cache: false,
         async: false,
@@ -1962,10 +1966,11 @@ function GetSchedules(){
             SchedulesList = $.parseJSON(response);
         }
     });
+    xhr = null;
 }
 
 function GetSeries(){
-    $.ajax({
+    xhr = $.ajax({
         type: 'POST',
         cache: false,
         //async: false,
@@ -1978,10 +1983,11 @@ function GetSeries(){
             SeriesList = $.parseJSON(response);
         }
     });
+    xhr = null;
 }
 
 function GetRecordingsToRecord(){
-    $.ajax({
+    xhr = $.ajax({
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
         data: {
@@ -1992,11 +1998,12 @@ function GetRecordingsToRecord(){
             RecordingsToCheck = $.parseJSON(response);
         }
     });
+    xhr = null;
 }
 
 function GetPvrInfo(){
-    Debug("MAAAAACC     " + MacAddress);
-    $.ajax({
+    //Debug("MAAAAACC     " + MacAddress);
+    xhr = $.ajax({
         type: 'POST',
         cache: false,
         //async: false,
@@ -2015,10 +2022,11 @@ function GetPvrInfo(){
             }
         }
     });
+    xhr = null;
 }
 GetPvrInfo();
 function CheckManualRecording(){
-    $.ajax({
+    xhr = $.ajax({
         type: 'POST',
         cache: false,
         //async: false,
@@ -2092,8 +2100,8 @@ function CheckManualRecording(){
                         ProgramUtcStartDate_DB = parseInt(RecordingsToCheck[IndexR].utc_start,10);
                         ProgramUtcEndDate_DB   = parseInt(RecordingsToCheck[IndexR].utc_final,10);
 
-                        //Debug('------ ProgramUtcStartDate: '+ProgramUtcStartDate + ' ProgramUtcEndDate: '+ProgramUtcEndDate);
-                        //Debug('****** ProgramUtcStartDate: '+ProgramUtcStartDate_DB + ' ProgramUtcEndDate: '+ProgramUtcEndDate_DB);
+                        ////Debug('------ ProgramUtcStartDate: '+ProgramUtcStartDate + ' ProgramUtcEndDate: '+ProgramUtcEndDate);
+                        ////Debug('****** ProgramUtcStartDate: '+ProgramUtcStartDate_DB + ' ProgramUtcEndDate: '+ProgramUtcEndDate_DB);
 
                         /* Si la HoraIniProgAgregar es mayor a la HoraFinProgBd */
                         if(ProgramUtcStartDate > ProgramUtcEndDate_DB){
@@ -2106,21 +2114,21 @@ function CheckManualRecording(){
                         /* Else esta en el mismo rango de la hora inicio y final */
                         if(ProgramUtcStartDate >= ProgramUtcStartDate_DB && ProgramUtcEndDate <= ProgramUtcEndDate_DB){
                             Coincidences++;
-                            //Debug('// 1 Else esta en el mismo rango de la hora inicio y final::: Coincidences: '+Coincidences);
+                            ////Debug('// 1 Else esta en el mismo rango de la hora inicio y final::: Coincidences: '+Coincidences);
                         }
                         /* Else esta en el mismo rango de la hora inicio */
                         else if(ProgramUtcStartDate > ProgramUtcStartDate_DB && ProgramUtcEndDate < (ProgramUtcStartDate_DB + SecondsRange)){
                             Coincidences++;
-                            //Debug('// 2 Else esta en el mismo rango de la hora inicio::: Coincidences: '+Coincidences);
+                            ////Debug('// 2 Else esta en el mismo rango de la hora inicio::: Coincidences: '+Coincidences);
                         }
                         /* Else esta en el mismo rango de la hora inicio y final */
                         else if(ProgramUtcEndDate < ProgramUtcEndDate_DB && ProgramUtcStartDate > (ProgramUtcEndDate_DB + SecondsRange)){
                             Coincidences++;
-                            //Debug('// 3 Else esta en el mismo rango de la hora inicio y final::: Coincidences: '+Coincidences);
+                            ////Debug('// 3 Else esta en el mismo rango de la hora inicio y final::: Coincidences: '+Coincidences);
                         }
                     }
-                    //Debug('Coincidences: '+Coincidences);
-                    //Debug('-------------------------------------------------------------------');
+                    ////Debug('Coincidences: '+Coincidences);
+                    ////Debug('-------------------------------------------------------------------');
                 }
 
 
@@ -2154,11 +2162,12 @@ function CheckManualRecording(){
             }
         }
     });
+    xhr = null;
 }
 
 function CheckRecordings() {
     if(FullDisk === false){
-        $.ajax({
+        xhr = $.ajax({
             type: 'POST',
             //async: false,
             cache: false,
@@ -2170,9 +2179,9 @@ function CheckRecordings() {
             success: function (response) {
                 RecordingsToCheck = $.parseJSON(response);
 
-                Debug('--------------------------------------->>0');
-                Debug(REC_CHNL_POS);
-                Debug(REC_PROG_POS);
+                //Debug('--------------------------------------->>0');
+                //Debug(REC_CHNL_POS);
+                //Debug(REC_PROG_POS);
 
                 // Convierte a UTC el tiempo inicio de la grabacion que se quiere agregar
                 var ProgramYear = ChannelsJson[REC_CHNL_POS].DTNU.slice(0, 4),
@@ -2185,38 +2194,38 @@ function CheckRecordings() {
                     ProgramEndHour = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].FNLH.slice(0, 2),
                     ProgramEndMinute = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].FNLH.slice(3, 5);
 
-                Debug('--------------------------------------->>1');
-                Debug(ProgramStartHour + ' ' + ProgramStartMinute);
-                Debug(ProgramEndHour + ' ' + ProgramEndMinute);
+                //Debug('--------------------------------------->>1');
+                //Debug(ProgramStartHour + ' ' + ProgramStartMinute);
+                //Debug(ProgramEndHour + ' ' + ProgramEndMinute);
 
                 ProgramUtcStartDate = Date.UTC(ProgramYear, (ProgramMonth - 1), ProgramDay, ProgramStartHour, ProgramStartMinute);
 
-                Debug('--------------------------------------->>2');
-                Debug(ProgramUtcStartDate);
-                Debug(ProgramUtcEndDate);
+                //Debug('--------------------------------------->>2');
+                //Debug(ProgramUtcStartDate);
+                //Debug(ProgramUtcEndDate);
 
                 ProgramUtcStartDate = ProgramUtcStartDate / 1000;
 
                 if (parseInt(REC_PROG_POS) === LastProgramsPositions[RowSelected]) {
-                    Debug('--------------------------------------->>2.1 ');
+                    //Debug('--------------------------------------->>2.1 ');
                     var ProgramSeconds = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].MNTS * 60;
-                    Debug(ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].MNTS);
-                    Debug(ProgramSeconds);
+                    //Debug(ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].MNTS);
+                    //Debug(ProgramSeconds);
                     ProgramUtcEndDate = ProgramUtcStartDate + ProgramSeconds;
                 } else {
-                    Debug('--------------------------------------->>2.2 ');
+                    //Debug('--------------------------------------->>2.2 ');
                     ProgramUtcEndDate = Date.UTC(ProgramYear, (ProgramMonth - 1), ProgramDay, ProgramEndHour, ProgramEndMinute);
                     ProgramUtcEndDate = ProgramUtcEndDate / 1000;
                 }
 
-                Debug('--------------------------------------->>3');
-                Debug(ProgramUtcStartDate);
-                Debug(ProgramUtcEndDate);
+                //Debug('--------------------------------------->>3');
+                //Debug(ProgramUtcStartDate);
+                //Debug(ProgramUtcEndDate);
 
-                Debug('--------------------------------------->>3.1');
-                Debug(parseInt(REC_CHNL_POS));
-                Debug(OnloadProgramsPositions[RowSelected]);
-                Debug(EpgDayNumber);
+                //Debug('--------------------------------------->>3.1');
+                //Debug(parseInt(REC_CHNL_POS));
+                //Debug(OnloadProgramsPositions[RowSelected]);
+                //Debug(EpgDayNumber);
 
                 if (parseInt(REC_PROG_POS) === OnloadProgramsPositions[RowSelected] && EpgDayNumber === 0) {
 
@@ -2230,9 +2239,9 @@ function CheckRecordings() {
 
                     ProgramUtcStartDate = ProgramUtcStartDate + 100;
 
-                    Debug('--------------------------------------->>3.2');
-                    Debug(NewStartHour);
-                    Debug(ProgramUtcStartDate);
+                    //Debug('--------------------------------------->>3.2');
+                    //Debug(NewStartHour);
+                    //Debug(ProgramUtcStartDate);
 
 
                 } else {
@@ -2241,26 +2250,26 @@ function CheckRecordings() {
 
                 NewEndHour = ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].FNLH;
 
-                Debug('--------------------------------------->>4');
-                Debug(NewStartHour);
-                Debug(NewEndHour);
+                //Debug('--------------------------------------->>4');
+                //Debug(NewStartHour);
+                //Debug(NewEndHour);
 
                 var CurrentUtcDate = Date.UTC(moment().format('Y'), (moment().format('MM') - 1), moment().format('DD'), moment().format('HH'), moment().format('mm'));
                 CurrentUtcDate = CurrentUtcDate / 1000;
 
-                Debug('--------------------------------------->>5');
-                Debug(CurrentUtcDate);
-                Debug(ProgramUtcStartDate);
+                //Debug('--------------------------------------->>5');
+                //Debug(CurrentUtcDate);
+                //Debug(ProgramUtcStartDate);
 
 
                 var TimeDiff = ProgramUtcStartDate - CurrentUtcDate;
-                Debug(TimeDiff);
+                //Debug(TimeDiff);
 
                 var TimeDiffEnd = ProgramUtcEndDate - ProgramUtcStartDate;
-                Debug(TimeDiffEnd);
+                //Debug(TimeDiffEnd);
 
                 if (TimeDiff < 0 || TimeDiffEnd < 0) {
-                    Debug('--------------------------------------->>5.1 FIN');
+                    //Debug('--------------------------------------->>5.1 FIN');
                     ShowRecorderMessage('The program has already been broadcast ');
                 } else {
 
@@ -2274,9 +2283,9 @@ function CheckRecordings() {
                     ProgramUtcStartDate = ProgramUtcStartDate + SecondsOffset;
                     ProgramUtcEndDate = ProgramUtcEndDate + SecondsOffset;
 
-                    Debug('--------------------------------------->>6');
-                    Debug(ProgramUtcStartDate);
-                    Debug(ProgramUtcEndDate);
+                    //Debug('--------------------------------------->>6');
+                    //Debug(ProgramUtcStartDate);
+                    //Debug(ProgramUtcEndDate);
 
                     if (RecordingsToCheck.length > 0) {
                         var IndexR = 0,
@@ -2298,8 +2307,8 @@ function CheckRecordings() {
                                 ProgramUtcStartDate_DB = parseInt(RecordingsToCheck[IndexR].utc_start, 10);
                                 ProgramUtcEndDate_DB = parseInt(RecordingsToCheck[IndexR].utc_final, 10);
 
-                                //Debug('------ ProgramUtcStartDate: '+ProgramUtcStartDate + ' ProgramUtcEndDate: '+ProgramUtcEndDate);
-                                //Debug('****** ProgramUtcStartDate: '+ProgramUtcStartDate_DB + ' ProgramUtcEndDate: '+ProgramUtcEndDate_DB);
+                                ////Debug('------ ProgramUtcStartDate: '+ProgramUtcStartDate + ' ProgramUtcEndDate: '+ProgramUtcEndDate);
+                                ////Debug('****** ProgramUtcStartDate: '+ProgramUtcStartDate_DB + ' ProgramUtcEndDate: '+ProgramUtcEndDate_DB);
 
                                 /* Si la HoraIniProgAgregar es mayor a la HoraFinProgBd */
                                 if (ProgramUtcStartDate > ProgramUtcEndDate_DB) {
@@ -2312,21 +2321,21 @@ function CheckRecordings() {
                                 /* Else esta en el mismo rango de la hora inicio y final */
                                 if (ProgramUtcStartDate >= ProgramUtcStartDate_DB && ProgramUtcEndDate <= ProgramUtcEndDate_DB) {
                                     Coincidences++;
-                                    //Debug('// 1 Else esta en el mismo rango de la hora inicio y final::: Coincidences: '+Coincidences);
+                                    ////Debug('// 1 Else esta en el mismo rango de la hora inicio y final::: Coincidences: '+Coincidences);
                                 }
                                 /* Else esta en el mismo rango de la hora inicio */
                                 else if (ProgramUtcStartDate > ProgramUtcStartDate_DB && ProgramUtcEndDate < (ProgramUtcStartDate_DB + SecondsRange)) {
                                     Coincidences++;
-                                    //Debug('// 2 Else esta en el mismo rango de la hora inicio::: Coincidences: '+Coincidences);
+                                    ////Debug('// 2 Else esta en el mismo rango de la hora inicio::: Coincidences: '+Coincidences);
                                 }
                                 /* Else esta en el mismo rango de la hora inicio y final */
                                 else if (ProgramUtcEndDate < ProgramUtcEndDate_DB && ProgramUtcStartDate > (ProgramUtcEndDate_DB + SecondsRange)) {
                                     Coincidences++;
-                                    //Debug('// 3 Else esta en el mismo rango de la hora inicio y final::: Coincidences: '+Coincidences);
+                                    ////Debug('// 3 Else esta en el mismo rango de la hora inicio y final::: Coincidences: '+Coincidences);
                                 }
                             }
-                            //Debug('Coincidences: '+Coincidences);
-                            //Debug('-------------------------------------------------------------------');
+                            ////Debug('Coincidences: '+Coincidences);
+                            ////Debug('-------------------------------------------------------------------');
                         }
 
 
@@ -2367,6 +2376,7 @@ function CheckRecordings() {
                 }
             }
         });
+        xhr = null;
     } else {
         ShowRecorderMessage('Your disk is almost full, delete some recordings');
     }
@@ -2376,7 +2386,7 @@ function CheckRecordings() {
 function AddRecord(){
     SetMacAddressPvr();
 
-    $.ajax({
+    xhr = $.ajax({
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
         data: {
@@ -2403,9 +2413,10 @@ function AddRecord(){
                 CloseManualRecord();
             }
 
-            Debug('AddRecord '+MacAddressPvr+' - '+ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].TTLE);
+            //Debug('AddRecord '+MacAddressPvr+' - '+ChannelsJson[REC_CHNL_POS].PROGRAMS[REC_PROG_POS].TTLE);
         }
     });
+    xhr = null;
 }
 
 /*******************************************************************************
@@ -2423,7 +2434,7 @@ function SetDeleteProgram(){
         ProgramId = SchedulesList[IndexScheduleFocus][IndexScheduleProgFocus].id;
     }
 
-    $.ajax({
+    xhr = $.ajax({
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
         data: {
@@ -2471,6 +2482,7 @@ function SetDeleteProgram(){
             }
         }
     });
+    xhr = null;
 }
 
 /*******************************************************************************
@@ -2480,8 +2492,8 @@ function SetDeleteProgram(){
 function DeleteSerie(){
     LastPvrRowFocus = PvrRowFocus ;
 
-    Debug('IndexSerieFocus: '+IndexSerieFocus);
-    $.ajax({
+    //Debug('IndexSerieFocus: '+IndexSerieFocus);
+    xhr = $.ajax({
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
         data: {
@@ -2508,13 +2520,14 @@ function DeleteSerie(){
             }
         }
     });
+    xhr = null
 }
 
 function GetWeatherPvr(){
 
     PvrDate.textContent = FormatDateAndHour;
 
-    $.ajax({
+    xhr = $.ajax({
         type: 'GET',
         url: 'Core/Controllers/Weather.php',
         success: function (response) {
@@ -2522,6 +2535,7 @@ function GetWeatherPvr(){
             SetIconPvr();
         }
     });
+    xhr = null;
 }
 
 function SetIconPvr(){

@@ -36,9 +36,10 @@
     
     var NUMBER_EVENT                = 0;
 
-    var TIMERS;
+    var TIMERS,
+        xhr;
 
-Debug('########################### HandleEvent() ');
+//Debug('########################### HandleEvent() ');
 
         AVMedia.onEvent='HandleEvent()';
 
@@ -47,7 +48,7 @@ Debug('########################### HandleEvent() ');
         //function processNetManEvent() {
         //    EventNetman = NetMan.Event;
 
-        //    Debug('########################### NetMan.Event: '+EventNetman);
+        //    //Debug('########################### NetMan.Event: '+EventNetman);
 
         //    if(Executing === false){
         //        UpdateQuickInfoDevice();
@@ -59,7 +60,7 @@ Debug('########################### HandleEvent() ');
 
     function HandleEvent() {
         
-        Debug('*************AVMedia.Event: '+AVMedia.Event);
+        //Debug('*************AVMedia.Event: '+AVMedia.Event);
         NUMBER_EVENT = AVMedia.Event;
         if(System.HdmiConnected === true){
             EventHdmi = 1;
@@ -102,24 +103,24 @@ Debug('########################### HandleEvent() ');
             //
             EventString = 'STATUS_PLAYING';
 
-            Debug('----> HANDLE EVENTS VIDEO_STARTED');
+            //Debug('----> HANDLE EVENTS VIDEO_STARTED');
             if(Executing === false){
                 UpdateQuickInfoDevice();
             }
         }
         // else if(NUMBER_EVENT === IGMP_STATUS_PLAYING || NUMBER_EVENT === STATUS_PLAYING){
         //     //
-        //     Debug('----> HANDLE EVENTS STATUS_PLAYING');
+        //     //Debug('----> HANDLE EVENTS STATUS_PLAYING');
         //     EventString = 'STATUS_PLAYING';
         //
         //
         //
-        //     Debug('----> HANDLE EVENTS Executing: '+Executing);
+        //     //Debug('----> HANDLE EVENTS Executing: '+Executing);
         //     if(Executing === false){
         //         UpdateQuickInfoDevice();
         //     }
         //
-        //     Debug('----> HANDLE EVENTS STATUS_PLAYING <');
+        //     //Debug('----> HANDLE EVENTS STATUS_PLAYING <');
         // }
         else if(NUMBER_EVENT === STATUS_END_OF_STREAM){
             if(CurrentModule === 'Tv'){
@@ -130,10 +131,10 @@ Debug('########################### HandleEvent() ');
             	}
             } else if(CurrentModule === 'Movies'){
                 //EndOfMovie();
-                Debug('STATUS_END_OF_STREAM');
+                //Debug('STATUS_END_OF_STREAM');
                 PlayVideo(Libraries['MoviesSource'] + MoviesList[MovieBox.id].FLDR + MoviesList[MovieBox.id].FILE);
                 AVMedia.SetPos(PositionAsset);
-                Debug('Se detuvo y se reprodujo de nuevo');
+                //Debug('Se detuvo y se reprodujo de nuevo');
             }
 
             EventString = 'STATUS_END_OF_STREAM';
@@ -165,7 +166,7 @@ Debug('########################### HandleEvent() ');
  *******************************************************************************/
 
 function UpdateDiskInfo(){
-    $.ajax({
+    xhr = $.ajax({
         cache: false,
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
@@ -176,11 +177,9 @@ function UpdateDiskInfo(){
             TotalSize : SizeTotal,
             AvailableSize : SizeAvailable,
             SizeRecords : SizePerSecond
-        },
-        success: function (response){
-            //Debug(response);
         }
     });
+    xhr = null;
 }
 
 /*******************************************************************************
@@ -188,8 +187,8 @@ function UpdateDiskInfo(){
  *******************************************************************************/
 
 function GetProgramsToSchedule(){
-    Debug('-------->> GetProgramsToSchedule');
-    $.ajax({
+    //Debug('-------->> GetProgramsToSchedule');
+    xhr = $.ajax({
         cache: false,
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
@@ -216,26 +215,27 @@ function GetProgramsToSchedule(){
                 Start = ProgramsToSchedule[Indexps]['utc_inicio'];
                 End = ProgramsToSchedule[Indexps]['utc_final'];
 
-                Debug('>> '+Source +', '+ Title +', '+ Start +', '+ End);
+                //Debug('>> '+Source +', '+ Title +', '+ Start +', '+ End);
 
-                Debug('ProgramsToSchedule.length: '+ProgramsToSchedule.length);
+                //Debug('ProgramsToSchedule.length: '+ProgramsToSchedule.length);
 
                 NewSchedule = PVR.AddSchedule(Source, ProgramId, Start, End);
 
                 if (typeof(NewSchedule) === 'undefined'){
                     //CurrentTime = Date.UTC(moment().format('Y'), moment().format('MM'), moment().format('DD'), moment().format('HH'), moment().format('mm'));
-                    Debug('> Fail new schedule');
+                    //Debug('> Fail new schedule');
                     DeleteProgram(ProgramId);
                 } else {
                     NewSchedule.WriteMeta('This is Metadata for scheduled asset '+ Title);
-                    Debug('New schedule added, streamid = '+NewSchedule.streamId);
-                    Debug('> '+ProgramId + ', '+OperationsList.recording+', '+NewSchedule.streamId);
+                    //Debug('New schedule added, streamid = '+NewSchedule.streamId);
+                    //Debug('> '+ProgramId + ', '+OperationsList.recording+', '+NewSchedule.streamId);
                     UpdateProgramStreamId(ProgramId, OperationsList.recording, NewSchedule.streamId);
                 }
             }
         }
     });
-    Debug('--------<< GetProgramsToSchedule');
+    xhr = null;
+    //Debug('--------<< GetProgramsToSchedule');
 }
 
 /*******************************************************************************
@@ -244,8 +244,8 @@ function GetProgramsToSchedule(){
 
 function GetSchedulesToDelete(){
 
-    Debug('-------->> GetSchedulesToDelete');
-    $.ajax({
+    //Debug('-------->> GetSchedulesToDelete');
+    xhr = $.ajax({
         cache: false,
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
@@ -290,8 +290,8 @@ function GetSchedulesToDelete(){
             }
         }
     });
-
-    Debug('--------<< GetSchedulesToDelete');
+    xhr = null;
+    //Debug('--------<< GetSchedulesToDelete');
 }
 
 /*******************************************************************************
@@ -299,18 +299,16 @@ function GetSchedulesToDelete(){
  *******************************************************************************/
 
 function DeleteProgram(ProgramId){
-    $.ajax({
+    xhr = $.ajax({
         cache: false,
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
         data: {
             Option     : 'DeleteProgram',
             ProgramId : ProgramId
-        },
-        success: function (response){
-            //Debug(response);
         }
     });
+    xhr = null;
 }
 
 /*******************************************************************************
@@ -319,7 +317,7 @@ function DeleteProgram(ProgramId){
 
 function UpdateProgramAsset(ProgramId, OperationId, AssetId, ActiveRecording){
 
-    $.ajax({
+    xhr = $.ajax({
         cache: false,
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
@@ -329,17 +327,14 @@ function UpdateProgramAsset(ProgramId, OperationId, AssetId, ActiveRecording){
             OperationId : OperationId,
             AssetId : AssetId,
             ActiveRecording : ActiveRecording
-        },
-        success: function (response){
-            Debug('----------UpdateProgramAsset----------');
-            Debug(response);
         }
     });
+    xhr = null;
 }
 
 function UpdateProgramStreamId(ProgramId, OperationId, StreamId){
-    Debug('--------->> UpdateProgramStreamid= '+ ProgramId + ', ' + OperationId + ', '+StreamId);
-    $.ajax({
+    //Debug('--------->> UpdateProgramStreamid= '+ ProgramId + ', ' + OperationId + ', '+StreamId);
+    xhr = $.ajax({
         cache: false,
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
@@ -348,17 +343,14 @@ function UpdateProgramStreamId(ProgramId, OperationId, StreamId){
             ProgramId : ProgramId,
             OperationId : OperationId,
             StreamId : StreamId
-        },
-        success: function (response){
-            Debug('----------UpdateProgramStreamid----------');
-            Debug(response);
         }
     });
+    xhr = null;
 }
 
 function UpdateProgramDelete(ProgramId, OperationId, AssetId){
 
-    $.ajax({
+    xhr = $.ajax({
         cache: false,
         type: 'POST',
         url: 'Core/Controllers/Recorder.php',
@@ -367,12 +359,9 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
             ProgramId : ProgramId,
             OperationId : OperationId,
             AssetId : AssetId
-        },
-        success: function (response){
-            Debug('----------UpdateProgramDelete----------');
-            Debug(response);
         }
     });
+    xhr = null;
 }
 
 /*******************************************************************************
@@ -384,7 +373,7 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
         var Durations   = 0,
             Sizes   = 0;
     
-        Debug('-------->> UpdateAssetsId');
+        //Debug('-------->> UpdateAssetsId');
         
         AssetsIdList = PVR.GetAssetIdList();
         
@@ -393,7 +382,7 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
         var YesterdayUtcDate = Date.UTC(moment().format('Y'), (moment().format('MM') -2), moment().format('DD'), moment().format('HH'), moment().format('mm'));
                     YesterdayUtcDate = YesterdayUtcDate / 1000;
                     
-        //Debug('>>>>>>>>>>> YesterdayUtcDate '+YesterdayUtcDate);
+        ////Debug('>>>>>>>>>>> YesterdayUtcDate '+YesterdayUtcDate);
 
         if (AssetsCount > 0){
             
@@ -401,32 +390,32 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
                 AssetInfo = [],
                 ActRec    = false,
                 Option = '';
-            //Debug('****************************************************>>>');
+            ////Debug('****************************************************>>>');
             for(Indexal = 1;  Indexal <= AssetsIdList.count; Indexal++){
                 
-                //Debug('::::::::= '+AssetsIdList.count);
+                ////Debug('::::::::= '+AssetsIdList.count);
                 
                 AssetInfo = PVR.GetAssetById(AssetsIdList[Indexal]);
                 
                 if(AssetInfo.startTime < YesterdayUtcDate){
-                    Debug('<<<<<<<<<< startTime <<<<'+AssetInfo.startTime);
+                    //Debug('<<<<<<<<<< startTime <<<<'+AssetInfo.startTime);
                 } else {
-                    Debug('>>>>>>>>>>> startTime >>>>'+AssetInfo.startTime);
+                    //Debug('>>>>>>>>>>> startTime >>>>'+AssetInfo.startTime);
 
-                    Debug(JSON.stringify(AssetInfo));
+                    //Debug(JSON.stringify(AssetInfo));
 
                     ActRec = (AssetInfo.activeRecording === 0) ? false : true;
 
                     Option = (AssetInfo.activeRecording === 0) ? OperationsList.recorded : OperationsList.recording;
 
-                    //Debug(AssetInfo.title +', '+ OperationsList.recorded +', '+  Option +', '+ AssetsIdList[Indexal] +', '+  ActRec);
+                    ////Debug(AssetInfo.title +', '+ OperationsList.recorded +', '+  Option +', '+ AssetsIdList[Indexal] +', '+  ActRec);
 
                     UpdateProgramAsset(AssetInfo.title, Option, AssetsIdList[Indexal], ActRec);
                 }
 
 
-                // Debug('--> AssetInfo.duration: '+parseInt(AssetInfo.duration));
-                // Debug('--> AssetInfo.totalSize: '+parseInt(AssetInfo.totalSize));
+                // //Debug('--> AssetInfo.duration: '+parseInt(AssetInfo.duration));
+                // //Debug('--> AssetInfo.totalSize: '+parseInt(AssetInfo.totalSize));
 
                 Durations = Durations + parseInt(AssetInfo.duration); // seconds
                 Sizes = Sizes + parseInt(AssetInfo.totalSize); // kb
@@ -435,21 +424,21 @@ function UpdateProgramDelete(ProgramId, OperationId, AssetId){
             var StorageInfo = [];
                 StorageInfo = PVR.GetStorageInfo();
 
-            // Debug('****************************************************<<<');
-            // Debug('-----> Sizes: '+Sizes);
-            // Debug('-----> Durations: '+Durations);
-            // Debug('-----> AssetsIdList.count: '+AssetsIdList.count);
+            // //Debug('****************************************************<<<');
+            // //Debug('-----> Sizes: '+Sizes);
+            // //Debug('-----> Durations: '+Durations);
+            // //Debug('-----> AssetsIdList.count: '+AssetsIdList.count);
             SizeAvailable = StorageInfo.totalSize - Sizes;
             SizeTotal = StorageInfo.totalSize;
             SizePerSecond = Math.round((Sizes / Durations));
 
-             Debug('----> SizePerSecond: '+SizePerSecond);
+             //Debug('----> SizePerSecond: '+SizePerSecond);
         }
 
         StorageInfo = null;
         Durations = null;
         Sizes = null;
-    Debug('--------<< UpdateAssetsId');
+    //Debug('--------<< UpdateAssetsId');
     }
 
 
@@ -476,7 +465,7 @@ function HandlerPvr(){
 
     GetSchedulesToDelete();
 
-    Debug('-------> HandlerPvr');
+    //Debug('-------> HandlerPvr');
 
     setTimeout(HandlerPvr,60000);
 }

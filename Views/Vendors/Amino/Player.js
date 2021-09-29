@@ -15,7 +15,8 @@
     var WindowMaxWidth  = 0,
         WindowMaxHeight = 0,
         WindowMinWidth  = 0,
-        WindowMinHeight = 0;
+        WindowMinHeight = 0
+        xhr;
 
         //alert('TV');
 
@@ -31,7 +32,7 @@
     //function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPid){
     function PlayChannel(Source, Port){
         //UpdateQuickInfoDevice();
-        Debug('############################### PLAYCHANNEL AMINO');
+        //Debug('############################### PLAYCHANNEL AMINO');
         var CheckPort = '',
             CheckProgram = '';
         
@@ -44,37 +45,37 @@
             //     CheckProgram = ';Progid='+ProgramIdChannnel;
             // }
             //
-            // Debug('########################### Channelinfo: '+CheckProgram);
+            // //Debug('########################### Channelinfo: '+CheckProgram);
         // Detiene el proceso de la reproduccion anterior
         StopVideo();
         PlayDigita = false;
         // Reproduce el canal actual
         //AVMedia.Play('src='+ Source+''+CheckPort+CheckProgram);
         AVMedia.Play('src='+ Source+''+CheckPort);
-        Debug('src='+ Source+''+CheckPort);
+        //Debug('src='+ Source+''+CheckPort);
         // Maximiza el video en caso de que no este en pantalla completa
         MaximizeTV();
-        Debug('############################### MaximizeTV');
+        //Debug('############################### MaximizeTV');
         // Activamos la bandera
         PlayingChannel   = true;
         
         // Si la guia esta cerrada muestra cuadro con informacion del canal en reproduccion
         ShowInfo();
-        Debug('############################### ShowInfo');
+        //Debug('############################### ShowInfo');
         // Si tiene una fecha ya registrada guarda estadisticas en la BD
         if(StartDateChannel !== ''){
-            Debug('############################### ANTES DE SetChannelStatistics');
+            //Debug('############################### ANTES DE SetChannelStatistics');
             SetChannelStatistics();
-            Debug('############################### SetChannelStatistics');
+            //Debug('############################### SetChannelStatistics');
             //
         }
         //updateDataChannel();
         // Actualiza la fecha inicio de la reproduccion del canal */
         StartDateChannel = new Date();
-        Debug('############################### StartDateChannel: '+StartDateChannel);
+        //Debug('############################### StartDateChannel: '+StartDateChannel);
     }
     function updateDataChannel(){
-        $.ajax({
+        xhr = $.ajax({
             cache: false,
             type: 'POST',
             url: './././Core/Controllers/DevicesStatus.php',
@@ -85,6 +86,7 @@
                 ChannelPos: parseInt(ChannelPosition)
             }
         });
+        xhr = null;
     }
 /* *****************************************************************************
  * Reproduce canales digitales
@@ -95,7 +97,7 @@
         StopVideo();
 
         // Reproduce el video
-        Debug('src='+ Source);
+        //Debug('src='+ Source);
         AVMedia.Play('src='+ Source);
         PlayDigita = true;
         // Maximiza el video en caso de que no este en pantalla completa

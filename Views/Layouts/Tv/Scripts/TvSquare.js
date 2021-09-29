@@ -251,12 +251,12 @@ function BuildProgramsRow(SetCurrentHourPosition, CurrentChannelPosition){
             HourPosition += 2;
             EpgHoursNodes[HourPosition].textContent = Hours[BuildHoursPositions][1];
             EpgHoursNodes[HourPosition].title = BuildHoursPositions;
-            ++BuildHoursPositions;
+            BuildHoursPositions++;
             LastHourPosition = BuildHoursPositions;
 
         } else {
             HourPosition += 2;
-            ++ExtraHourPosition;
+            ExtraHourPosition++;
             EpgHoursNodes[HourPosition].textContent = Hours[ExtraHourPosition][1];
             EpgHoursNodes[HourPosition].title = 46;
 

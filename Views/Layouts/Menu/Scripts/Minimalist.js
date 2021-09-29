@@ -13,11 +13,12 @@ ImagesUrl       = ServerSource+'Media/Menu/',
 FormatDate      = '',
 FormatHour      = '',
 MenuList        = '',
-MenuIndex       = 0;
+MenuIndex       = 0,
+xhr;
 
 function SetMenuList(){
 
-$.ajax({
+xhr = $.ajax({
     type: 'POST',
     cache: false,
     async: false,
@@ -31,13 +32,15 @@ $.ajax({
         MenuList = null;
         MenuList = $.parseJSON(response);
         
-        SetMenuInfo();
+        
     }
 });
+xhr = null;
+SetMenuInfo();
 }
 GetWeather();
 SetMenuList();
-
+//SetMenuInfo()
 
 
 

@@ -9,7 +9,8 @@
     var TimeRunning       = 0,
         MaxMinutesRunning = 15,
         TimerDate         = 0,
-        Offset            = 0;
+        Offset            = 0,
+        xhr;
 
     var cade = null;
 
@@ -20,9 +21,9 @@
         var now = new tizen.TZDate(),
             TvHour = now.getHours();
 
-        Debug('------------------------- NOW:::: '+now);
+        //Debug('------------------------- NOW:::: '+now);
 
-        $.ajax({
+        xhr = $.ajax({
             cache: false,
             type: 'POST',
             url: 'http://'+ServerIp+'/BBINCO/TV/Core/Models/Time.php',
@@ -31,18 +32,18 @@
                 var Today = $.parseJSON(response),
                     ServerHour   = Today.Hours;
 
-                Debug('****************************************** > '+TvHour);
-                Debug('****************************************** > '+ServerHour);
+                ////Debug('****************************************** > '+TvHour);
+                //Debug('****************************************** > '+ServerHour);
 
                 Offset = parseInt(TvHour) - parseInt(ServerHour);
 
-                Debug(':::::::::::::::::::::::::::::OFFSET:: '+Offset);
+                //Debug(':::::::::::::::::::::::::::::OFFSET:: '+Offset);
 
                 Today = null;
                 ServerHour = null;
             }
         });
-
+        xhr = null;
         now = null;
         TvHour = null;
     }
@@ -62,30 +63,30 @@
             ASTB.DeleteAllHistory();
         }
 
-        //Debug('################################################ FormatDateAndHour '+FormatDateAndHour);
-        //Debug('################################################ CurrentStbDate '+CurrentStbDate);
+        ////Debug('################################################ FormatDateAndHour '+FormatDateAndHour);
+        ////Debug('################################################ CurrentStbDate '+CurrentStbDate);
 
         if(!Device){
-            Debug('------------------------------------------------ Device::if');
-            //Debug('################################################ !Device ');
+            //Debug('------------------------------------------------ Device::if');
+            ////Debug('################################################ !Device ');
             if (Device.Client === 'CHL') {
-                Debug("+++++++++++++++++++++++++++++++++++++++");
+                //Debug("+++++++++++++++++++++++++++++++++++++++");
                 FormatHour = moment().subtract(Offset, 'hours').format('h:mm A');
             } else {
                 FormatHour = moment().subtract(Offset, 'hours').format('MMMM Do h:mm a');
-                //Debug('------------------------------------------------ 2');
+                ////Debug('------------------------------------------------ 2');
             }
         } else {
             FormatHour = moment().subtract(Offset, 'hours').format('h:mm A');
-            Debug('------------------------------------------------ Device::else');
+            //Debug('------------------------------------------------ Device::else');
         }
 
-        Debug('############################################################### FormatHour1 === '+FormatHour);
+        //Debug('############################################################### FormatHour1 === '+FormatHour);
 
 
         if(CurrentModule === 'Tv'){
 
-            Debug('############################################################### CurrentModule === '+CurrentModule);
+            //Debug('############################################################### CurrentModule === '+CurrentModule);
             if(typeof (ActiveInfoContainer) !== 'undefined' && ActiveInfoContainer === true){
                 InfoContainerNodes[7].textContent  = FormatHour;
             } else if(typeof (ActiveEpgContainer) !== 'undefined' && ActiveEpgContainer === true){
@@ -94,7 +95,7 @@
                 PvrDate.textContent = FormatHour;
             }
 
-            Debug('############################################################### FormatHour2 === '+FormatHour);
+            //Debug('############################################################### FormatHour2 === '+FormatHour);
 
             cade = FormatHour.split(":");
 
@@ -108,7 +109,7 @@
             if(FormatHour === '12:01 AM'){
 
                 SetEpgFile();
-                Debug('------------------------------ SetEpgFile -> FormatHour: '+FormatHour);
+                //Debug('------------------------------ SetEpgFile -> FormatHour: '+FormatHour);
 
                 if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
                     if(EpgDataActive === true){
@@ -128,7 +129,7 @@
         
         /* */
 
-        Debug('TimeRunning: '+TimeRunning);
+        //Debug('TimeRunning: '+TimeRunning);
         if(TimeRunning > MaxMinutesRunning){
             
             TimeRunning = 0;
@@ -141,7 +142,7 @@
                 }
             }
         }
-        Debug('-------------------------------- FormatDateAndHour: '+FormatDateAndHour);
+        //Debug('-------------------------------- FormatDateAndHour: '+FormatDateAndHour);
     }
 
 /*******************************************************************************

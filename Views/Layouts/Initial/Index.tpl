@@ -27,7 +27,8 @@
         Model       = 'Test',
         Hdd         = 'N',
         Vendor      = 'Generic',
-        KamaiModels = { 49: '500x', 102: '7XM' };
+        KamaiModels = { 49: '500x', 102: '7XM' },
+        xhr;;
 
         var resultado;
     /* Carga inicial */
@@ -121,7 +122,7 @@
         
         var Year  = '', Month = '', Day   = '', Min   = '', Hour  = '', Sec   = '';
         
-        $.ajax({
+        xhr = $.ajax({
             type: 'POST',
             url: '[@Time]',
             cache: false,
@@ -149,6 +150,8 @@
                 hcap.time.setLocalTime(ActualDate);
             }
         });
+
+        xhr = null;
         killProcess();
     }
 
@@ -227,7 +230,7 @@
     
 
     function killProcess(){
-        $.ajax({
+        xhr = $.ajax({
             type: 'POST',
             url: './././Core/Controllers/DevicesStatus.php',
             data: { 
@@ -253,14 +256,15 @@
                 }
                 
             }
-        }); 
+        });
+        xhr = null;
     }
 
 /*******************************************************************************
  * Obtiene informacion del dispositivo
  ******************************************************************************/
     function GetInfoDevice(){
-        $.ajax({
+        xhr = $.ajax({
             type: 'POST',
             url: '[@Index]',
             data: { 
@@ -288,5 +292,6 @@
                 }
             }
         });
+        xhr = null;
     }
 </script>

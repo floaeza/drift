@@ -17,7 +17,8 @@ var PlayingRecording            = false,
     ActivePvrInfoContainer      = false,
     RecordingPanel              = false,
     RecordOptions               = false,
-    DeleteOptions               = false;
+    DeleteOptions               = false,
+    RecorderMessageActive       = false;
 
 /* Variables a utilizar con grabador activo */
 if(Device['Type'] !== 'NONE'){

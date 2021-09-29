@@ -22,10 +22,10 @@ var PressedKey      = 0,
 var CheckInfo = 0;
     
 
-setTimeout(removeEventListenerKeydown, 600000);
+setTimeout(removeEventListenerKeydown, 60000);
 
 function removeEventListenerKeydown(){
-    Debug("+++++++removeEventListener+++++++");
+    //Debug("+++++++removeEventListener+++++++");
     document.removeEventListener('keydown',KeyHandler,false);
     document.addEventListener('keydown',KeyHandler,false);
     setTimeout(removeEventListenerKeydown, 600000);
@@ -42,7 +42,7 @@ function removeEventListenerKeydown(){
             }
         }
         
-        Debug('>> PressedKey: '+PressedKey);
+        //Debug('>> PressedKey: '+PressedKey);
         if(Clicks <= MaxClicks) {
             //alert(REMOTE_RED);
             switch (PressedKey) {
@@ -150,10 +150,10 @@ function removeEventListenerKeydown(){
         /********** OPERACIONES **********/
         
                 case REMOTE_OK:
-                    Debug('REMOTE_OK');
+                    //Debug('REMOTE_OK');
                     CheckInfo++;
                     if(CurrentModule === 'Tv'){
-                        Debug('REMOTE_OK > CurrentModule '+CurrentModule);
+                        //Debug('REMOTE_OK > CurrentModule '+CurrentModule);
                         TvOk();
                         
                         if(CheckInfo === 2){
@@ -161,7 +161,7 @@ function removeEventListenerKeydown(){
                             TvInfo();
                         }
                     } else if(CurrentModule === 'Menu'){
-                        Debug('REMOTE_OK > MenuOk '+CurrentModule);
+                        //Debug('REMOTE_OK > MenuOk '+CurrentModule);
                         MenuOk();
                     } else if(CurrentModule === 'Movies'){
                         VodOk();
@@ -188,7 +188,7 @@ function removeEventListenerKeydown(){
                 
                 case PREVIOUS_PROGRAM:
                     if(CurrentModule === 'Tv'){
-                        Debug('PREVIOUS_PROGRAM');
+                        //Debug('PREVIOUS_PROGRAM');
                         ReturnLastChannel();
                     }
                 break;

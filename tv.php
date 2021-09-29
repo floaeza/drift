@@ -117,7 +117,7 @@
             // Libreria para maniputal el template asignado
             $Footer->set('LayoutScript', $Libraries['TvScripts'].$ModuleInfo['opcion_template'].'.js' );
             $Footer->set('LayoutRecorderScript', $Libraries['TvScripts'].$ModuleInfo['opcion_template'].$Libraries['Recorder'].'.js' );
-            
+
             // Librerias javascript por marca
             $Footer->set('Player', $VendorFolder.$Libraries['Player']);
             $Footer->set('EventsScript', $VendorFolder.$Libraries['Events']);

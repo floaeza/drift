@@ -4,7 +4,8 @@
  * @CreadoPor: Tania Maldonado
  * @Fecha: Noviembre 2019
  *******************************************************************************/
-var Offset = 0;
+var Offset = 0,
+    xhr;
 
 if (window.tizen !== undefined) {
     var now = new tizen.TZDate(),
@@ -12,7 +13,7 @@ if (window.tizen !== undefined) {
 
     console.log('------------------------- NOW:::: '+now);
 
-    $.ajax({
+    xhr = $.ajax({
         cache: false,
         type: 'POST',
         url: 'http://'+ServerIp+'/BBINCO/TV/Core/Models/Time.php',
@@ -32,6 +33,7 @@ if (window.tizen !== undefined) {
             ServerHour = null;
         }
     });
+    xhr = null;
 
     now = null;
     TvHour = null;
@@ -149,13 +151,13 @@ if (window.tizen !== undefined) {
 
         CurrentStbDate = moment().subtract('hours', Offset).format('Y-MM-DD h:mm:ss');
 
-        Debug('CurrentStbDate = '+CurrentStbDate);
+        //Debug('CurrentStbDate = '+CurrentStbDate);
     }
 
-    Debug(ServerSource + 'Core/Controllers/Device.php');
+    //Debug(ServerSource + 'Core/Controllers/Device.php');
 
     // Device
-    $.ajax({
+    xhr = $.ajax({
         cache: false,
         type: 'POST',
         async: false,
@@ -166,14 +168,14 @@ if (window.tizen !== undefined) {
             CurrentDateStb : CurrentStbDate
         },
         beforeSend: function (){
-            Debug('FIRST UPDATE > MacAddress: ' + MacAddress +' CurrentStbDate: '+CurrentStbDate);
+            //Debug('FIRST UPDATE > MacAddress: ' + MacAddress +' CurrentStbDate: '+CurrentStbDate);
         },
         success: function (response){
-            Debug(CurrentStbDate);
+            //Debug(CurrentStbDate);
 
             Device = $.parseJSON(response);
 
-            Debug('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> DEVICE:'+JSON.stringify(Device));
+            //Debug('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> DEVICE:'+JSON.stringify(Device));
 
               if(Device['Debug'] === '1'){
                   DivDebug.style.display = 'inline';
@@ -181,9 +183,9 @@ if (window.tizen !== undefined) {
               }
         }
     });
-
+    xhr = null;
     //Libraries
-    $.ajax({
+    xhr = $.ajax({
         type: 'POST',
         async: false,
         cache: false,
@@ -195,15 +197,16 @@ if (window.tizen !== undefined) {
             Libraries = $.parseJSON(response);
         }
     });
+    xhr = null;
     
     function UpdateInfoDevice(){
-        Debug('----------------> UpdateInfoDevice');
+        //Debug('----------------> UpdateInfoDevice');
 
-        Debug('----------------> MacAddress '+MacAddress);
-        Debug('----------------> EventString '+EventString);
-        Debug('----------------> EventHdmi '+EventHdmi);
-        Debug('----------------> Date '+CurrentStbDate);
-        $.ajax({
+        //Debug('----------------> MacAddress '+MacAddress);
+        //Debug('----------------> EventString '+EventString);
+        //Debug('----------------> EventHdmi '+EventHdmi);
+        //Debug('----------------> Date '+CurrentStbDate);
+        xhr = $.ajax({
             cache: false,
             type: 'POST',
             url: ServerSource + 'Core/Controllers/Device.php',
@@ -221,12 +224,12 @@ if (window.tizen !== undefined) {
             success: function (response) {
                 Device = $.parseJSON(response);
 
-                Debug('----------------> Device'+Device);
+                //Debug('----------------> Device'+Device);
 
                 if (Device['Services']['Reboot'] === true) {
                     RebootDevice();
                 } else {
-                    Debug('----------------> CurrentModule '+CurrentModule);
+                    //Debug('----------------> CurrentModule '+CurrentModule);
                     // Busca actualizacion si lleva mas de un dia funcionando el amino
                     if (CurrentModule === 'Tv') {
                         if (Device['EpgModificationTime'] !== '03' && LastUpdatedTime !== Device['EpgModificationTime']) {
@@ -255,11 +258,13 @@ if (window.tizen !== undefined) {
             }
         });
 
-        Debug('----------------< UpdateInfoDevice');
+        xhr = null;
+
+        //Debug('----------------< UpdateInfoDevice');
     }
 
 function UpdateQuickInfoDevice(){
-    Debug('_______________________________________________________________________________________ UpdateQuickInfoDevice 1');
+    //Debug('_______________________________________________________________________________________ UpdateQuickInfoDevice 1');
     var OnScreen = '';
     if (CurrentModule === 'Tv') {
         OnScreen = ChannelsJson[ChannelPosition].CHNL + ' - ' +ChannelsJson[ChannelPosition].NAME;
@@ -267,17 +272,17 @@ function UpdateQuickInfoDevice(){
         OnScreen =  CurrentModule;
     }
 
-    Debug('----------------------------# CurrentModule:: '+CurrentModule);
-    Debug('----------------------------# OnScreen:: '+OnScreen);
+    //Debug('----------------------------# CurrentModule:: '+CurrentModule);
+    //Debug('----------------------------# OnScreen:: '+OnScreen);
 
-    Debug('----------------------------# Device.DeviceId:: '+Device.DeviceId);
-    Debug('----------------------------# EventString:: '+EventString);
-    Debug('----------------------------# EventHdmi:: '+EventHdmi);
-    Debug('----------------------------# CurrentStbDate:: '+CurrentStbDate);
-    Debug('----------------------------# LastChannel:: '+OnScreen);
-    Debug('----------------------------# Channelpos:: '+ChannelPosition);
+    //Debug('----------------------------# Device.DeviceId:: '+Device.DeviceId);
+    //Debug('----------------------------# EventString:: '+EventString);
+    //Debug('----------------------------# EventHdmi:: '+EventHdmi);
+    //Debug('----------------------------# CurrentStbDate:: '+CurrentStbDate);
+    //Debug('----------------------------# LastChannel:: '+OnScreen);
+    //Debug('----------------------------# Channelpos:: '+ChannelPosition);
 
-    $.ajax({
+    xhr = $.ajax({
         cache: false,
         type: 'POST',
         url: ServerSource + 'Core/Controllers/DeviceInfo.php',
@@ -293,12 +298,12 @@ function UpdateQuickInfoDevice(){
         },
         beforeSend: function (){
             Executing = true;
-            Debug('BD > Executing:: '+Executing);
+            //Debug('BD > Executing:: '+Executing);
         },
         success: function (response) {
             var RebootResponse = $.parseJSON(response);
 
-            Debug('RebootResponse:: '+RebootResponse);
+            //Debug('RebootResponse:: '+RebootResponse);
 
             if(RebootResponse === '1'){
                 RebootDevice();
@@ -308,9 +313,9 @@ function UpdateQuickInfoDevice(){
         },
         complete: function (data){
             Executing = false;
-            Debug('CT > Executing:: '+Executing);
+            //Debug('CT > Executing:: '+Executing);
         }
     });
-
-    Debug('_______________________________________________________________________________________ UpdateQuickInfoDevice 2');
+    xhr = null;
+    //Debug('_______________________________________________________________________________________ UpdateQuickInfoDevice 2');
 }

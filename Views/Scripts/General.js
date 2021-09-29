@@ -30,38 +30,40 @@
         MM_StartDateMovieMM   = '',
         MM_EndDateMovieMM     = '',
         MM_MinSeconds         = 600000, // 30 minutos
-        MM_DifferenceInSec    = '';
+        MM_DifferenceInSec    = '',
+        xhr;
+    var ObjectWeather =[];
 
         window.localStorage;
 
     function GoPage(Page, ModuleId, ChangeModule){
         //alert('Pagina: '+ Page+'Module Id: '+ ModuleId+'CangeModule: '+ChangeModule);
-        //Debug(ModuleId + "  " + OnScreen + "  " + ChannelPosition);
+        ////Debug(ModuleId + "  " + OnScreen + "  " + ChannelPosition);
         updateDataModule(ModuleId);
 
-        //Debug('GoPage ---> '+Page);
+        ////Debug('GoPage ---> '+Page);
 
         StopVideo();
-        if(CurrentModule === 'Tv' && StartDateChannel !== ''){
-
-            Debug('TVCLOSE & SETCHANNELSTATISTICS');
+        //if(CurrentModule === 'Tv' && StartDateChannel !== ''){
+        if(CurrentModule === 'Tv'){
+            //Debug('TVCLOSE & SETCHANNELSTATISTICS');
             TvClose();
             //SetChannelStatistics();
         }
-        //Debug('StopVideo ---> ');
+        ////Debug('StopVideo ---> ');
 
         //SetModuleStatistics();
         
-        //Debug('SetModuleStatistics ---> ');
+        ////Debug('SetModuleStatistics ---> ');
         
-        //Debug(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
+        ////Debug(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
 
         if (window.tizen !== undefined) {
 
-            Debug('Window.tizen !== undefined');
+            //Debug('Window.tizen !== undefined');
             var PageH = Page.replace('php','html');
             
-            Debug('GoPageHTML ---> '+PageH);
+            //Debug('GoPageHTML ---> '+PageH);
             
             localStorage.setItem('Module', ChangeModule);
             localStorage.setItem('Id', ModuleId);
@@ -70,15 +72,11 @@
             window.location.href = PageH;
             
         } else {
-            //Debug('>>>>>>> LOCATION.REPLACE');
+            ////Debug('>>>>>>> LOCATION.REPLACE');
             //Executing = true;
-
-            //SE MANDA LLAMAR DOS VECES A PROPOSITO, NO CAMBIAR
-            //SE MANDA LLAMAR DOS VECES A PROPOSITO, NO CAMBIAR
-            //SE MANDA LLAMAR DOS VECES A PROPOSITO, NO CAMBIAR
             //location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
-            location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
-            //window.location.href = Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule;
+            //location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
+            window.location.href = Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule;
         }
     }
     
@@ -96,7 +94,7 @@
             var ChannelName    = ChannelsJson[ChannelPosition].NAME,
                 ChannelStation = ChannelsJson[ChannelPosition].STTN;
         
-            $.ajax({
+            xhr = $.ajax({
                 cache: false,
                 type: 'POST',
                 url: ServerSource + 'Core/Controllers/Statistics.php',
@@ -110,6 +108,7 @@
                     EndTime: FormatEndDate
                 }
             });
+            xhr = null;
         }
     }
             
@@ -124,7 +123,7 @@
         /* Valida si el tiempo de vista del modulo esta en un rango de tiempo coherente */
         if(Math.abs(SM_DifferenceInSec) > SM_MinSeconds){
 
-            $.ajax({
+            xhr = $.ajax({
                 cache: false,
                 type: 'POST',
                 url: ServerSource + 'Core/Controllers/Statistics.php',
@@ -137,11 +136,12 @@
                     EndTime: SM_FormatEndDate
                 }
             });
+            xhr = null;
         }
     }
     function updateDataModule(Module){
         //alert(Module);
-        $.ajax({
+        xhr = $.ajax({
             cache: false,
             type: 'POST',
             url: './././Core/Controllers/DevicesStatus.php',
@@ -151,6 +151,7 @@
                 LastModule: parseInt(Module)
             }
         });
+        xhr = null;
     }
     function SetMoviesStatistics(){
         MM_FormatStartDate    = getDate(MM_StartDateMovie);
@@ -162,7 +163,7 @@
 
         /* Valida si el tiempo de vista del modulo esta en un rango de tiempo coherente */
         if(Math.abs(MM_DifferenceInSec) > MM_MinSeconds){
-            $.ajax({
+            xhr = $.ajax({
                 cache: false,
                 type: 'POST',
                 url: ServerSource + 'Core/Controllers/Statistics.php',
@@ -175,6 +176,7 @@
                     EndTime: MM_FormatEndDate
                 }
             });
+            xhr = null;
         }
     }
 
@@ -313,7 +315,7 @@
         }
 
         
-        //Debug('CompareHours -----------> Hora1: '+Hour1.substr(0,2)+' Minuto1: '+Hour1.substr(3,2)+' Hora2: '+Hour2.substr(0,2)+' Minuto2: '+Hour2.substr(3,2));
+        ////Debug('CompareHours -----------> Hora1: '+Hour1.substr(0,2)+' Minuto1: '+Hour1.substr(3,2)+' Hora2: '+Hour2.substr(0,2)+' Minuto2: '+Hour2.substr(3,2));
         if(Hours1 > Hours2){
             //console.log('CompareHours -----------> if(Hours1 > Hours2) '+Hours1+ ' > ' +Hours2);
             Result = '>';
@@ -448,10 +450,9 @@ function ConvertToHourEpoch(time24){
     return pad(HourNumber,2)+''+Minutes;
 }
 
-    var ObjectWeather   = [];
     
     function GetWeather(){
-        $.ajax({
+        xhr = $.ajax({
             cache: false,
             type: 'GET',
             url: ServerSource + 'Core/Controllers/Weather.php',
@@ -460,6 +461,8 @@ function ConvertToHourEpoch(time24){
                 SetIcon();
             }
         });
+        xhr = null;
+        
     }
     
     function SetIcon(){
@@ -489,7 +492,7 @@ function ConvertToHourEpoch(time24){
     var ErrorLoadGuide = 1;
     
     function SetLog(LogNumber){
-        $.ajax({
+        xhr = $.ajax({
             cache: false,
             type: 'POST',
             url: ServerSource + 'Core/Controllers/Log.php',
@@ -499,4 +502,5 @@ function ConvertToHourEpoch(time24){
                 CurrentModule: CurrentModule
             }
         });
+        xhr = null;
     }

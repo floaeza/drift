@@ -31,7 +31,8 @@
         Hours                = [],
         EpgDataActive        = false,
         CurrentDateFormat    = '',
-        CurrentDate          = '';
+        CurrentDate          = '',
+        xhr;
 
         var Booting     = true;
 
@@ -104,7 +105,7 @@
     // div = null;
     // parent = null;
     // if(MacAddress === '00:00:00:00:00:00'){
-    //     Debug('Imagen para test');
+    //     ////Debug('Imagen para test');
     //     document.getElementsByClassName('GeneralBox')[0].style.backgroundImage = "url('./Media/General/tv.jpg')";
     // }
 /*******************************************************************************
@@ -131,12 +132,12 @@ function SetEpgFile(){
             // } else {
                 SourceEpgFile = Libraries['EpgDaysPath'] + 'epg_' + CurrentDate + '_' + Device['Services']['PackageId'] + '.json';
             // }
-        Debug('------- SetEpgFile ->>> SourceEpgFile: ' + SourceEpgFile);
+        //////Debug('------- SetEpgFile ->>> SourceEpgFile: ' + SourceEpgFile);
         GetJsonEpg(SourceEpgFile, 0);
     } else {
         EpgDataActive = false;
 
-        Debug('------- EpgDataActive: FALSE');
+        //////Debug('------- EpgDataActive: FALSE');
         GetJsonChannels();
     }
 
@@ -145,7 +146,7 @@ function SetEpgFile(){
 }
     
 function GetJsonEpg(Sour, rest){
-    $.ajax({
+    xhr = $.ajax({
         cache: false,
         async: false,
         url: ServerSource + Sour,
@@ -154,11 +155,11 @@ function GetJsonEpg(Sour, rest){
             ChannelsJson = [];
             ChannelsJson = response;
             EpgDataActive = true;
-            Debug(Sour);
+            ////Debug(Sour);
             ChannelsLength = ChannelsJson.C_Length - 1;
             ChannelMax     = parseInt(ChannelsJson[ChannelsLength].CHNL, 10);
             
-            Debug('------- GetJsonEpg -> ChannelsLength: '+ChannelsLength);
+            ////Debug('------- GetJsonEpg -> ChannelsLength: '+ChannelsLength);
         },
         error: function (response){
             //SendMail();
@@ -169,12 +170,12 @@ function GetJsonEpg(Sour, rest){
                     d.setDate(d.getDate() - rest);
                     Sour = Libraries['EpgDaysPath'] + 'epg_' + d.yyyymmdd() + '_' + Device['Services']['PackageId'] + '.json';
                     
-                    Debug("NO SE ENCONTRO EL ARCHIVO, BUSCANDO: " + SourceEpgFile);
+                    ////Debug("NO SE ENCONTRO EL ARCHIVO, BUSCANDO: " + SourceEpgFile);
                     GetJsonEpg(Sour, rest);
                 }else{
                     Sour = Libraries['EpgDaysPath'] + 'Default/epg_default_' + Device['Services']['PackageId'] + '.json';
                     
-                    Debug("NO SE ENCONTRO EL ARCHIVO, BUSCANDO: " + SourceEpgFile);
+                    ////Debug("NO SE ENCONTRO EL ARCHIVO, BUSCANDO: " + SourceEpgFile);
                     GetJsonEpg(Sour, -1);
                 
                 }
@@ -185,19 +186,18 @@ function GetJsonEpg(Sour, rest){
             }
         }
     });
+    xhr = null;
 }
 
 
 function SendMail(){
-    $.ajax({
+    xhr = $.ajax({
         cache: false,
         async: false,
         url: ServerSource + 'Core/Controllers/ErrorGuideMail.php',
-        Client: Device['Client'],
-        success: function (response){
-            Debug('Correo Enviado');
-        }
+        Client: Device['Client']
     });
+    xhr = null;
 }
 
 function CheckUpdatedJson(){
@@ -213,7 +213,7 @@ function CheckUpdatedJson(){
 }
 
 function GetJsonChannels(){ 
-    $.ajax({
+    xhr = $.ajax({
         type: 'POST',
         async: false,
         cache: false,
@@ -227,13 +227,14 @@ function GetJsonChannels(){
             ChannelsLength = ChannelsJson.length - 1;
             ChannelMax     = parseInt(ChannelsJson[ChannelsLength].CHNL, 10);
             
-            Debug('------- GetJsonChannels -> ChannelsLength: '+ChannelsLength);
+            ////Debug('------- GetJsonChannels -> ChannelsLength: '+ChannelsLength);
             
             if(Device['Services']['ActiveEpg'] === true){
                 SetLog(ErrorLoadGuide);
             }
         }
     });
+    xhr = null;
 }
     
 /*******************************************************************************
@@ -241,26 +242,26 @@ function GetJsonChannels(){
  *******************************************************************************/
 
 function SetChannel(NewDirection){
-    Debug('SetChannel = '+NewDirection);
+    ////Debug('SetChannel = '+NewDirection);
     
     if(ActiveEpgContainer === false){
         
         /* Valida si se esta subiendo o bajando de canal para restar|sumar una posicion */
         if(NewDirection !== ''){
             
-            Debug('############### A LastChannelPosition '+LastChannelPosition + ' ChannelPosition: '+ChannelPosition);
+            ////Debug('############### A LastChannelPosition '+LastChannelPosition + ' ChannelPosition: '+ChannelPosition);
             /* Obtiene los datos del canal a reproducir */
             LastChannelPosition = ChannelPosition;
-            Debug('############### B LastChannelPosition '+LastChannelPosition+ ' ChannelPosition: '+ChannelPosition);
+            ////Debug('############### B LastChannelPosition '+LastChannelPosition+ ' ChannelPosition: '+ChannelPosition);
             
             
             Direction = NewDirection;
 
-            Debug('SetChannel = Direction '+Direction);
+            ////Debug('SetChannel = Direction '+Direction);
             /* Suma o resta segun sea el caso */
             (Direction === 'UP') ? ChannelPosition++: ChannelPosition--;
 
-            Debug('1- ChannelPosition =  '+ChannelPosition);
+            ////Debug('1- ChannelPosition =  '+ChannelPosition);
 
             /* Validamos si llego al princio/fin del arreglo*/
             if(ChannelPosition < 0){
@@ -271,7 +272,7 @@ function SetChannel(NewDirection){
                 ChannelPosition = 0;
             }
 
-            Debug('2- ChannelPosition =  '+ChannelPosition);
+            ////Debug('2- ChannelPosition =  '+ChannelPosition);
         }
 
         /* Actualiza el canal */
@@ -283,16 +284,16 @@ function SetChannel(NewDirection){
 
         /* Regresamos a su valor inicial la variable DIRECTION*/
             Direction = 'UP';
-            Debug('********************************************');
-            Debug('STTN::: '+ChannelsJson[ChannelPosition].STTN);
+            ////Debug('********************************************');
+            ////Debug('STTN::: '+ChannelsJson[ChannelPosition].STTN);
 
-            Debug('SRCE::: '+Source + ' : '+Port);
+            ////Debug('SRCE::: '+Source + ' : '+Port);
 
             if(ChannelsJson[ChannelPosition].STTN !== 'CONTENT'){
                 if(ActiveDigitalChannel === true){
                     CloseDigitalChannel();
                 }
-                Debug('PlayChannel');
+                ////Debug('PlayChannel');
                 //alert('Source: '+ Source +' Port: ' +Port);
                 //PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
                 if(load){
@@ -307,7 +308,7 @@ function SetChannel(NewDirection){
                 
                 //PlayChannel(Source, Port);   /* TvFunctions por marca */
             } else {
-                Debug('GetDigitalChannel');
+                ////Debug('GetDigitalChannel');
                 //if(typeof(gSTB) !== 'undefined'){
                     GetDigitalChannel();
                 // } else {
@@ -317,11 +318,11 @@ function SetChannel(NewDirection){
             }
         
     }
-    Debug('------- SetChannel ->: '+Source + ' ChannelPosition: '+ChannelPosition);
+    ////Debug('------- SetChannel ->: '+Source + ' ChannelPosition: '+ChannelPosition);
 }
 function killProcessTv(){
     //alert("Sour");
-    $.ajax({
+    xhr = $.ajax({
         async: false,
         cache: false,
         type: 'POST',
@@ -340,10 +341,11 @@ function killProcessTv(){
             //alert(ChannelPosition);
         }
     }); 
+    xhr = null;
 }
 
 function setKillProcess(){
-    $.ajax({
+    xhr = $.ajax({
         async: false,
         cache: false,
         type: 'POST',
@@ -354,6 +356,7 @@ function setKillProcess(){
             Kill: 0
         }
     }); 
+    xhr = null;
 }
 
 
@@ -365,7 +368,7 @@ function GetDigitalChannel(){
     //     DigitalSource = Libraries['MultimediaSource'] + GetModule + '/';
     //     DigitalImgSource = '../../Multimedia/' + GetModule + '/';
 
-    //     Debug('GetModule: '+GetModule);
+    //     ////Debug('GetModule: '+GetModule);
     // var Identifier;
     //     $.ajax({
     //         type: 'POST',
@@ -378,7 +381,7 @@ function GetDigitalChannel(){
     //             Identifier = $.parseJSON(response);
     //         }
     //     }); 
-    // Debug("IDENTIFICADOR EN TV.JS == " + Identifier[0].IDF);
+    // ////Debug("IDENTIFICADOR EN TV.JS == " + Identifier[0].IDF);
     // if(Identifier[0].IDF == 'VPL'){
     //     $.ajax({
     //         type: 'POST',
@@ -390,7 +393,7 @@ function GetDigitalChannel(){
     //         },
     //         success: function (response){
     //             DigitalContent = $.parseJSON(response);
-    //             Debug('SetDigitalChannel');
+    //             ////Debug('SetDigitalChannel');
     //             SetDigitalChannel();
     //         }
     //     });   
@@ -405,7 +408,7 @@ function GetDigitalChannel(){
     //         },
     //         success: function (response){
     //             DigitalContent = $.parseJSON(response);
-    //             Debug('SetDigitalChannel');
+    //             ////Debug('SetDigitalChannel');
     //             SetDigitalChannel();
     //         }
     //     });    
@@ -419,9 +422,9 @@ function GetDigitalChannel(){
         DigitalSource = Libraries['MultimediaSource'] + GetModule + '/';
         DigitalImgSource = '../../Multimedia/' + GetModule + '/';
 
-        Debug('GetModule: '+GetModule);
+        ////Debug('GetModule: '+GetModule);
 
-    $.ajax({
+    xhr = $.ajax({
         type: 'POST',
         async: false,
         url: ServerSource + 'Core/Controllers/Template.php',
@@ -431,10 +434,12 @@ function GetDigitalChannel(){
         },
         success: function (response){
             DigitalContent = $.parseJSON(response);
-            Debug('SetDigitalChannel');
-            SetDigitalChannel();
+            ////Debug('SetDigitalChannel');
+            
         }
     });
+    xhr = null;
+    SetDigitalChannel();
     // Si la guia esta cerrada muestra cuadro con informacion del canal en reproduccion
     ShowInfo();
 }
@@ -442,7 +447,7 @@ function GetDigitalChannel(){
 var DigitalChannel = document.getElementById('DigitalChannel');
     
 function SetDigitalChannel(){
-    Debug('--> SetDigitalChannel');
+    ////Debug('--> SetDigitalChannel');
     if(ActiveDigitalChannel === true){
         if(DigitalContent.length > 0){
             var FileType = DigitalContent[IndexDigital].split('.')[1];
@@ -452,7 +457,7 @@ function SetDigitalChannel(){
 
                 ImageDigital.src = '';
                 ImageDigital.style.display = 'none';
-                Debug("Antes de reproducir el canal");
+                ////Debug("Antes de reproducir el canal");
                 if(load){
                     load = false;
                     window.onload=function() {
@@ -472,7 +477,7 @@ function SetDigitalChannel(){
                 IntervalDigital = setInterval(SetDigitalChannel,9000);
             }
 
-            Debug(DigitalSource+DigitalContent[IndexDigital]);
+            ////Debug(DigitalSource+DigitalContent[IndexDigital]);
 
             IndexDigital++;
 
@@ -523,7 +528,7 @@ function SetFrame(){
     
     ContentFrame.style.display = 'inline';
     ContentFrame.src = Libraries['ServerSource'] + Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule;
-    Debug(Libraries['ServerSource'] + Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
+    ////Debug(Libraries['ServerSource'] + Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
 }
 
 function CloseFrame(){
@@ -538,28 +543,28 @@ function CloseFrame(){
    
     function ReturnLastChannel(){
         
-        Debug('................ReturnLastChannel(): '+LastChannelPosition+ ' ChannelPosition: '+ChannelPosition);
+        ////Debug('................ReturnLastChannel(): '+LastChannelPosition+ ' ChannelPosition: '+ChannelPosition);
         if(ActiveEpgContainer === false){
-            Debug('ActiveEpgContainer === false');
+            ////Debug('ActiveEpgContainer === false');
             if(LastChannelPosition !== ChannelPosition){
-                Debug('IF LCP !== CP:: '+LastChannelPosition +' !== '+ ChannelPosition);
+                ////Debug('IF LCP !== CP:: '+LastChannelPosition +' !== '+ ChannelPosition);
             /* Actualiza el canal */
                 Source = ChannelsJson[LastChannelPosition].SRCE;
                 Port   = ChannelsJson[LastChannelPosition].PORT;
                 // ProgramIdChannnel = ChannelsJson[ChannelPosition].PRGR;
                 // ProgramIdPosition = ChannelsJson[ChannelPosition].PSCN;
 
-                Debug('Source:: CRRN '+ChannelsJson[ChannelPosition].SRCE + ' '+ChannelsJson[ChannelPosition].STTN );
-                Debug('Source:: LAST '+ChannelsJson[LastChannelPosition].SRCE + ' '+ChannelsJson[LastChannelPosition].STTN );
+                ////Debug('Source:: CRRN '+ChannelsJson[ChannelPosition].SRCE + ' '+ChannelsJson[ChannelPosition].STTN );
+                ////Debug('Source:: LAST '+ChannelsJson[LastChannelPosition].SRCE + ' '+ChannelsJson[LastChannelPosition].STTN );
                 
             var CurrentChannelPosition = ChannelPosition;
             /* Actualiza a la posicion que se cambio */
                 ChannelPosition = LastChannelPosition;
-                Debug('ChannelPosition:: 1 LCP '+LastChannelPosition);
+                ////Debug('ChannelPosition:: 1 LCP '+LastChannelPosition);
                 LastChannelPosition = CurrentChannelPosition;
                 
-                Debug('ChannelPosition:: 2 LCP '+LastChannelPosition);
-                Debug('ChannelPosition:: NEW '+ChannelPosition);
+                ////Debug('ChannelPosition:: 2 LCP '+LastChannelPosition);
+                ////Debug('ChannelPosition:: NEW '+ChannelPosition);
 		
                 if(ChannelsJson[ChannelPosition].STTN !== 'CONTENT'){
                     if(ActiveDigitalChannel === true){
@@ -570,7 +575,7 @@ function CloseFrame(){
                         CloseFrame();
                     }
                     
-                    Debug('PlayChannel:: '+Source);
+                    ////Debug('PlayChannel:: '+Source);
                     //PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
                     if(load){
                         load = false
@@ -585,7 +590,7 @@ function CloseFrame(){
                     SetDigitalChannel();
                 }
             } else {
-                Debug('ELSE LCP === CP:: '+LastChannelPosition +' !== '+ ChannelPosition);
+                ////Debug('ELSE LCP === CP:: '+LastChannelPosition +' !== '+ ChannelPosition);
             }
         }
     }
@@ -596,7 +601,7 @@ function CloseFrame(){
 
     function NumericChange(Key){
 
-        Debug('Key: '+Key);
+        ////Debug('Key: '+Key);
         if(ActiveEpgContainer === false){
             /* Limpiamos el timer */
             clearTimeout(NumericChangeTimer);
@@ -610,9 +615,9 @@ function CloseFrame(){
                 ChannelToChange = ChannelToChange + Key;
             }
 
-            Debug('ChannelToChange: '+ChannelToChange);
+            ////Debug('ChannelToChange: '+ChannelToChange);
 
-            Debug('ChannelMax: '+ChannelMax);
+            ////Debug('ChannelMax: '+ChannelMax);
 
             if(ChannelToChange > ChannelMax){
                 /* Si excede el numero de canales maximo limpia el timer y regrese a su valor inicial el numero a cambiar */
@@ -630,10 +635,10 @@ function CloseFrame(){
                 NumericChangeTimer = setTimeout(function () {
                     /*Obtiene el numero de canal actual*/
                     var CurrentChannel   = parseInt(ChannelsJson[ChannelPosition].CHNL, 10);
-                    Debug('CurrentChannel: '+CurrentChannel);
+                    ////Debug('CurrentChannel: '+CurrentChannel);
                     /* Busca la posicion del canal o recibido */
                     var PositionToChange = FindChannelPosition(ChannelToChange);
-                    Debug('PositionToChange: '+PositionToChange);
+                    ////Debug('PositionToChange: '+PositionToChange);
                     if(ChannelToChange !== CurrentChannel){
                         /* Asignamos el ultimo canal reproducido */
                         LastChannelPosition = ChannelPosition;
@@ -844,11 +849,11 @@ function ShowInfo(){
         if(EpgDataActive === true && ChannelsJson[CurrentChannelPosition].P_Length > 0){
             for(IndexProgram = 0; IndexProgram < ChannelsJson[CurrentChannelPosition].P_Length; IndexProgram++){
                 /*Obtiene las horas inicio y fin de cada programa*/
-                //Debug(IndexProgram);
+                //////Debug(IndexProgram);
                 StartHour = ChannelsJson[CurrentChannelPosition].PROGRAMS[IndexProgram].STRH;
                 EndHour   = ChannelsJson[CurrentChannelPosition].PROGRAMS[IndexProgram].FNLH;
 
-                //Debug('StartHour: '+StartHour + ' CurrentHour: '+CurrentHour + ' CompareHours: ' + CompareHours(StartHour, CurrentHour));
+                //////Debug('StartHour: '+StartHour + ' CurrentHour: '+CurrentHour + ' CompareHours: ' + CompareHours(StartHour, CurrentHour));
                 if(CompareHours(StartHour, CurrentHour) === '='){
                     /* Asigna la posicion correcta */
                     ProgramPosition = IndexProgram;
@@ -897,7 +902,7 @@ function ShowInfo(){
                 PlayChannel(Source, Port);   /* TvFunctions por marca */
             }
         } else {
-            Debug('GetDigitalChannel EPG');
+            ////Debug('GetDigitalChannel EPG');
             //if(typeof(gSTB) !== 'undefined'){
             SetDigitalChannel();
         }  
@@ -946,9 +951,10 @@ function ShowInfo(){
     
     function TvClose(){
         if(RecorderMessageActive === false) {
+            
             if (ActiveEpgContainer === true) {
                 if (RecordingOptionsActive === false && RecordManualOptionsActive === false) {
-                    HideInfo();
+                    //HideInfo();
                     CloseEpg();
                 } else if (RecordingOptionsActive === true) {
                     CloseRecordingOptions();
@@ -1146,7 +1152,7 @@ function ShowInfo(){
             }
         } else if(ActiveEpgContainer === false && Device['Type'] !== 'NONE'){
             if(ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].STTN !== 'CONTENT'){
-                Debug('-----------TvRecord');
+                ////Debug('-----------TvRecord');
                 if(ChannelsJson[ChannelPosition].PROGRAMS[ProgramPosition].DRTN !== '24'){
 
                     REC_CHNL_POS = ChannelPosition;
@@ -1175,7 +1181,7 @@ function ShowInfo(){
                     }
 
                     if (ActiveInfoContainer === true) {
-                        Debug('ActiveInfoContainer' + ActiveInfoContainer);
+                        ////Debug('ActiveInfoContainer' + ActiveInfoContainer);
                         HideInfo();
                     }
 
