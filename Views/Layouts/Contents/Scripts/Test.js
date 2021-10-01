@@ -20,4 +20,4 @@ function init (){
     var f = AVMedia.Play('src=http://10.0.3.10/vod/mvs/M00001/1917.mp4');
 
 }
-setTimeout(init, 300);
+//setTimeout(init, 300);

@@ -103,19 +103,19 @@
         echo $MenuContent->output();   
 
         /** PIE DE PAGINA **/
-        $Footer = new Templates($Libraries['LayoutsPhpPath'].'Footer.tpl');
+        $Footer = new Templates($Libraries['LayoutsPhpPath'].'FooterMenu.tpl');
 
             // Librerias javascript generales
-            $Footer->set('TvScript', $Libraries['Void']);
+            //$Footer->set('TvScript', $Libraries['Void']);
             $Footer->set('Time', $Libraries['TimeScript']);
             $Footer->set('Settings', $Libraries['Settings']);
 
             // Libreria para maniputal el template asignado
             $Footer->set('LayoutScript', $Libraries['MenuScripts'].$ModuleInfo['opcion_template'].'.js' );
-            $Footer->set('LayoutRecorderScript', $Libraries['Void']);
+            //$Footer->set('LayoutRecorderScript', $Libraries['Void']);
             
             // Librerias javascript por marca
-            $Footer->set('Player', $VendorFolder.$Libraries['Player']);
+            //$Footer->set('Player', $VendorFolder.$Libraries['Player']);
             $Footer->set('EventsScript', $VendorFolder.$Libraries['Events']);
 
         // Imprime en HTML todo lo asignado en el pie de pagina

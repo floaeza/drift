@@ -3,11 +3,8 @@
  * @Fecha: Enero 2020
  * @Tipo: Controla el menu
  */
-var MenuDate    = document.getElementById('MenuDate'),
-MenuHour        = document.getElementById('MenuHour'),
-MenuContainer   = document.getElementById('MenuContainer'),
+var MenuListNodes   = document.getElementById('MenuBar').childNodes;
 //MenuSelected    = document.getElementById('MenuSelected'),
-MenuListNodes   = document.getElementById('MenuBar').childNodes;
 //BackgroundsNodes = '';
 ImagesUrl       = ServerSource+'Media/Menu/',
 FormatDate      = '',
@@ -18,35 +15,33 @@ xhr;
 
 function SetMenuList(){
 
-xhr = $.ajax({
-    type: 'POST',
-    cache: false,
-    async: false,
-    url: ServerSource + 'Core/Controllers/Menu.php',
-    data: { 
-        Option : 'GetModules',
-        ProjectId: '1'
-        //ProjectId: Device['Services']['ProjectId']
-    },
-    success: function (response){
-        MenuList = null;
-        MenuList = $.parseJSON(response);
-        
-        
-    }
-});
-xhr = null;
-SetMenuInfo();
+    xhr = $.ajax({
+        type: 'POST',
+        cache: false,
+        async: false,
+        url: ServerSource + 'Core/Controllers/Menu.php',
+        data: { 
+            Option : 'GetModules',
+            ProjectId: '1'
+            //ProjectId: Device['Services']['ProjectId']
+        },
+        success: function (response){
+            MenuList = null;
+            MenuList = $.parseJSON(response);
+            
+            
+        }
+    });
+    xhr = null;
+    SetMenuInfo();
 }
 GetWeather();
 SetMenuList();
 //SetMenuInfo()
 
-
-
 function SetMenuInfo(){
     var IndexM = MenuIndex -1,
-        Index = 1;
+        Index;
 
     for(Index = 1; Index < 6; Index+=2){
         //Index++;

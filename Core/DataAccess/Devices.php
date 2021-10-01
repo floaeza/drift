@@ -440,7 +440,7 @@ class Devices extends Database {
     function GetDeviceByReboot(){
         $this->Function = 'GetDeviceByReboot';
         $this->connect();
-        $this->select("dispositivos","dispositivos.ip, dispositivos.mac_address, dispositivos.id_dispositivo","","","","","reiniciar = '1' AND modelo = 'A50'");
+        $this->select("dispositivos","dispositivos.modelo, dispositivos.ip, dispositivos.mac_address, dispositivos.id_dispositivo","","","","","reiniciar = '1'");
         $this->DeviceList = $this->getResult();
         $this->disconnect();
         return $this->DeviceList;

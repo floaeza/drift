@@ -247,10 +247,13 @@
                         GetInfoDevice();
                     }else{
                         if(resultado[0].ultimo_modulo !== '1'){
-                            window.location.href ='menu.php?MacAddress='+MacAddress+'&ModuleId=2'+'&CurrentModule=Menu';
+                            
+                                window.location.href ='menu.php?MacAddress='+MacAddress+'&ModuleId=2'+'&CurrentModule=Menu';
                             
                         }else{
-                            window.location.href ='tv.php?MacAddress='+MacAddress+'&ModuleId=1'+'&CurrentModule=Tv';
+                            
+                                window.location.href ='tv.php?MacAddress='+MacAddress+'&ModuleId=1'+'&CurrentModule=Tv';
+                            
                         }
                     }
                 }
@@ -283,12 +286,15 @@
                 if(Data['Option'] === 'RELOAD'){
                     var DeviceInfo = ' Mac: '+MacAddress+' Ip: '+IpAddress+' <br> Firmware: '+Firmware+' Model: '+Model+' Vendor : '+Vendor;
                     document.getElementById('DebugText').innerHTML = DeviceInfo;
+                
+                        window.location.href = Data['ModuleUrl']+'?MacAddress='+MacAddress+'&ModuleId='+Data['ModuleId']+'&CurrentModule='+Data['ModuleName'];
                     
-                    window.location.href = Data['ModuleUrl']+'?MacAddress='+MacAddress+'&ModuleId='+Data['ModuleId']+'&CurrentModule='+Data['ModuleName'];
                 } else if(Data['Option'] === 'LICENSE'){
                     //
                 } else {
-                    window.location.href = 'index.php?Option='+Data['Option'];
+                    
+                        window.location.href = 'index.php?Option='+Data['Option'];
+                    
                 }
             }
         });

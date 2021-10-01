@@ -149,7 +149,7 @@
  * Activa timer para que se ejecute cada minuto (60000 milisegundos = 60 segundos)
  *******************************************************************************/
     /* Lo ejecuta la primera vez que carga */
-    setTimeout(SetDate,1000);
+    setTimeout(SetDate,500);
     
     /* Agrega intervalo 50000 = 50 segundos*/
     

@@ -12,14 +12,14 @@ require_once './../DataAccess/Devices.php';
 
     $Option         = !empty($_POST['Option']) ? $_POST['Option'] : 'GetAminosToReboot';
     $MacAddress     = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '00:02:02:6c:64:1e';
-    $DeviceArray    = !empty($_POST['DeviceArray']) ? $_POST['DeviceArray'] : '';
+    $DeviceArray    = !empty($_POST['DeviceArray']) ? $_POST['DeviceArray'] : '{"id_dispositivo":"7","mac_address":"00:00:00:00:00:01","ip":"0.0.0.1","marca":"Amino","modelo":"A50","version_software":"5.7.1-Ax5x-opera12","fecha_activacion":"2021-08-18","ubicacion_dispositivo":"asdsfbdgnfhj","id_tema":"1","control_remoto":"0","ultima_ejecucion":"2021-08-23 03:17:42","mensaje_evento":"POWER_OFF","ultimo_modulo":null,"ultimo_canal":null,"channel_pos":null,"hdmi":"0","netman":"","grabador":"0","asignado":"0","activo":"1","reiniciar":"0","kill_process":"1","debug":"0","id_dispositivo_locacion":"7","id_locacion":"3"},{"id_dispositivo":"8","mac_address":"00:00:00:00:00:02","ip":"0.0.0.2","marca":"Amino","modelo":"A50","version_software":"5.7.1-Ax5x-opera12","fecha_activacion":"2021-08-18","ubicacion_dispositivo":"test","id_tema":"1","control_remoto":"0","ultima_ejecucion":"2021-08-23 03:17:42","mensaje_evento":"POWER_OFF","ultimo_modulo":null,"ultimo_canal":null,"channel_pos":null,"hdmi":"0","netman":"","grabador":"0","asignado":"0","activo":"1","reiniciar":"0","kill_process":"1","debug":"0","id_dispositivo_locacion":"8","id_locacion":"3"}  ';
     
 
 
 $DevicesData   = new Devices('System', $CurrentController);
 
 $Response = '';
-//$Option = 'GetRemoteControl';
+//$Option = 'RebootDevices';
 switch ($Option){
     case 'GetDevicesByStatus':
         $Status = array();
@@ -139,13 +139,16 @@ switch ($Option){
             break;
         case 'RebootDevices':
             $DataDevices  = json_decode($DeviceArray);
-            $infoDevice = array(
-                'reiniciar' => '1',    
-                ); 
+            $DevicesUpdateData = array('reiniciar'=>1);
             foreach ($DataDevices as $DataDevice):    
                 $DeviceID = $DataDevice->id_dispositivo; 
-                $DevicesData->UpdateChannel($ChannelID, $infoChannel);
+                $DevicesData->updateDevice($DeviceID, $DevicesUpdateData);
             endforeach;
+            sleep(20);
+            $command = escapeshellcmd('/var/www/html/BBINCO/TV/Core/Controllers/RebootTelnet.py');
+            $output = shell_exec($command);
+            $Result = $output;
+            $Response = $output;
             break;
 }
 

@@ -20,7 +20,7 @@ function Blue(){
     
 }
 function Green(){
-    
+    //alert(JSON.stringify(Browser.GetStats()));
 }
 
 function Yellow(){

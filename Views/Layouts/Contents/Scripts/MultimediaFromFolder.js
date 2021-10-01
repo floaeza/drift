@@ -25,7 +25,7 @@
     function SetConstructor(){
        $.ajax({
             type: 'POST',
-            //async: false,
+            async: false,
             url: ServerSource + 'Core/Controllers/Template.php',
             data: { 
                 Option : 'getMultimediaFolder',
@@ -44,7 +44,7 @@
                 Index = null;
             }
         });    
-
+        SliderInterval3 = setInterval(Slider3,7000);
         Slider3();
     }
        
@@ -100,6 +100,7 @@
                     Index3 = 0;
                 }
             } else {
+                //alert("ELSE ");
                 LoadingDiv.style.display = 'none';
                 VideoScreen.style.display = 'none';
     
@@ -115,8 +116,6 @@
             }
         }
     }
-
-    SliderInterval3 = setInterval(Slider3,7000);
 /*******************************************************************************
  * Manejador de eventos
  *******************************************************************************/
