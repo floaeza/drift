@@ -33,7 +33,7 @@
                                                     'Url' => $Row['url_modulo'],
                                                     'Image' => $Row['nombre_icono'],
                                                     'Description' => ''));
-                } 
+                }
             endforeach;
             
             foreach ($ModulesInfo as $Row):

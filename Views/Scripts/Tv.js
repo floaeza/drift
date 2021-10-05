@@ -96,7 +96,8 @@
 
     var ContentFrame            = document.getElementById('ContentFrame'),
         ActiveFrame             = false;
-    
+
+
     killProcessTv();
 
     // var div = document.getElementById('loadingTV');
@@ -298,9 +299,15 @@ function SetChannel(NewDirection){
                 //PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
                 if(load){
                     load = false;
-                    window.onload=function() {
+                    
+                    //window.onload=function() {
+                    //    alert();    
+                    //    PlayChannel(Source, Port);   /* TvFunctions por marca */
+                    //}
+                    $(document).ready(function(){
+                        //your code
                         PlayChannel(Source, Port);   /* TvFunctions por marca */
-                    }
+                    });
                 }else{
                     PlayChannel(Source, Port);   /* TvFunctions por marca */
                 }
@@ -460,10 +467,11 @@ function SetDigitalChannel(){
                 ////Debug("Antes de reproducir el canal");
                 if(load){
                     load = false;
-                    window.onload=function() {
-                        //PlayChannel(Source, Port);   /* TvFunctions por marca */
+                    $(document).ready(function(){
+                        //your code
                         PlayDigitalChannel(DigitalSource+DigitalContent[IndexDigital]);
-                    }
+                    });
+                        //PlayChannel(Source, Port);   /* TvFunctions por marca */
                 }else{
                     PlayDigitalChannel(DigitalSource+DigitalContent[IndexDigital]);
                 }
@@ -579,9 +587,10 @@ function CloseFrame(){
                     //PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
                     if(load){
                         load = false
-                        window.onload=function() {
+                        $(document).ready(function(){
+                            //your code
                             PlayChannel(Source, Port);   /* TvFunctions por marca */
-                        }
+                        });
                     }else{
                         PlayChannel(Source, Port);   /* TvFunctions por marca */
                     }
@@ -895,9 +904,10 @@ function ShowInfo(){
             //PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
             if(load){
                 load = false
-                window.onload=function() {
+                $(document).ready(function(){
+                    //your code
                     PlayChannel(Source, Port);   /* TvFunctions por marca */
-                }
+                });
             }else{
                 PlayChannel(Source, Port);   /* TvFunctions por marca */
             }

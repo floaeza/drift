@@ -25,6 +25,7 @@
 
 
     var windowTV        = VideoDisplay.GetVideoWindow();
+    VideoDisplay.DefaultUnloadVideo(1);
         
 /* *****************************************************************************
  * Reproductor de canal

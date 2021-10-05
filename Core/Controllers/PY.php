@@ -256,6 +256,11 @@
                     endforeach;
                     echo json_encode($ArrayEPGInfo);
                     break;
+                case 'GetLastReboot':
+                    $GuideDays = $ConfigData->getConfigByName('LastReboot');
+                    array_push($ArrayEPGInfo, array('LastReboot' => $GuideDays));
+                    echo json_encode($ArrayEPGInfo);
+                    break;
         }
 
          

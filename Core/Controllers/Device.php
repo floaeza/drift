@@ -161,7 +161,7 @@
                             'mensaje_evento'   => $EventString,
                             'netman'           => $EventNetman,
                             'hdmi'             => $EventHdmi,
-                            'reiniciar'        => '0'
+                            // 'reiniciar'        => '0'
     );
 
     $UpdateDevice = $DevicesData->updateDevice($DeviceId, $DeviceUpdate);

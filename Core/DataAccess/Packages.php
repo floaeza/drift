@@ -192,6 +192,14 @@ class Packages extends Database {
         return $this->PackagesId;
     }
 
+    function updateParameterReboot($infoPackage){
+        $this->Function = 'updateParameter';
+        $this->connect();
+        $this->update("parametros", $infoPackage, "nombre_parametro = 'LastReboot'" );
+        $this->PackagesId = $this->getResult();
+        $this->disconnect();
+        return $this->PackagesId;
+    }
 
 
 }

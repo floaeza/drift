@@ -7,16 +7,18 @@
 require_once './../Models/Database.php';
 require_once './../DataAccess/Config.php';
 require_once './../DataAccess/Devices.php';
+require_once './../DataAccess/Packages.php';
 
     $CurrentController = 'DeviceDashboard';
 
-    $Option         = !empty($_POST['Option']) ? $_POST['Option'] : 'GetAminosToReboot';
-    $MacAddress     = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '00:02:02:6c:64:1e';
-    $DeviceArray    = !empty($_POST['DeviceArray']) ? $_POST['DeviceArray'] : '{"id_dispositivo":"7","mac_address":"00:00:00:00:00:01","ip":"0.0.0.1","marca":"Amino","modelo":"A50","version_software":"5.7.1-Ax5x-opera12","fecha_activacion":"2021-08-18","ubicacion_dispositivo":"asdsfbdgnfhj","id_tema":"1","control_remoto":"0","ultima_ejecucion":"2021-08-23 03:17:42","mensaje_evento":"POWER_OFF","ultimo_modulo":null,"ultimo_canal":null,"channel_pos":null,"hdmi":"0","netman":"","grabador":"0","asignado":"0","activo":"1","reiniciar":"0","kill_process":"1","debug":"0","id_dispositivo_locacion":"7","id_locacion":"3"},{"id_dispositivo":"8","mac_address":"00:00:00:00:00:02","ip":"0.0.0.2","marca":"Amino","modelo":"A50","version_software":"5.7.1-Ax5x-opera12","fecha_activacion":"2021-08-18","ubicacion_dispositivo":"test","id_tema":"1","control_remoto":"0","ultima_ejecucion":"2021-08-23 03:17:42","mensaje_evento":"POWER_OFF","ultimo_modulo":null,"ultimo_canal":null,"channel_pos":null,"hdmi":"0","netman":"","grabador":"0","asignado":"0","activo":"1","reiniciar":"0","kill_process":"1","debug":"0","id_dispositivo_locacion":"8","id_locacion":"3"}  ';
-    
+    $Option            = !empty($_POST['Option']) ? $_POST['Option'] : 'RebootDevices';
+    $MacAddress        = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '00:02:02:6c:64:1e';
+    $DeviceArray       = !empty($_POST['DeviceArray']) ? $_POST['DeviceArray'] : '';
+    $RebootStatus      = !empty($_POST['RebootStatus']) ? $_POST['RebootStatus'] : '0';
 
 
 $DevicesData   = new Devices('System', $CurrentController);
+$PackagesData = new Packages('system', $CurrentController);
 
 $Response = '';
 //$Option = 'RebootDevices';
@@ -144,12 +146,31 @@ switch ($Option){
                 $DeviceID = $DataDevice->id_dispositivo; 
                 $DevicesData->updateDevice($DeviceID, $DevicesUpdateData);
             endforeach;
-            sleep(20);
-            $command = escapeshellcmd('/var/www/html/BBINCO/TV/Core/Controllers/RebootTelnet.py');
+            $NewPackage = array(
+                'valor_parametro' => $RebootStatus,   
+                ); 
+            $PackagesData->updateParameterReboot($NewPackage);
+             //$resultado = shell_exec('cd /var/www/html/BBINCO/TV/Core/Controllers && python3 DebugTr.py');  
+            // $command = escapeshellcmd('/var/www/html/BBINCO/TV/Core/Controllers/RebootTelnet.py');
+            // $output = shell_exec($command);
+            // $Result = $output;
+            // $Response = $Result;
+
+            // $gestor = popen('cd /var/www/html/BBINCO/TV/Core/Controllers && python3 RebootTelnet.py', 'r');
+            // $leer = fread($gestor, 2096);
+            // $Response = $leer;
+            // pclose($gestor);
+            $command = escapeshellcmd('sudo /usr/bin/python3 RebootTelnet.py');
             $output = shell_exec($command);
-            $Result = $output;
             $Response = $output;
             break;
+        case 'UpdateParameter':
+            $NewPackage = array(
+                'valor_parametro' => $RebootStatus,   
+                ); 
+            $PackagesData->updateParameterReboot($NewPackage);
+            break;
+        
 }
 
 //

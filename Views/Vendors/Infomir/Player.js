@@ -20,7 +20,8 @@ var player = stbPlayerManager.list[0];
 
 player.videoWindowMode = 0;
 player.aspectConversion = 5;
-if(gSTB.GetDeviceModel() !== 'MAG520'){
+
+if(gSTB.GetDeviceModel() !== 'MAG520' && gSTB.GetDeviceModel() !=='MAG524'){
     var player2 = stbPlayerManager.list[1];
     player2.videoWindowMode = 0;
     player2.aspectConversion = 5;    
@@ -47,10 +48,13 @@ GetWindowMinSize();
 /* Set the preset window over others.
  * 0 	graphic window
  * 1 	video window   */
+
+
 gSTB.SetTopWin(0);
+
 var storageInfo = JSON.parse(gSTB.GetStorageInfo('{}'));
 var USB = storageInfo.result || [];
-if((gSTB.GetDeviceModel() == 'MAG424') && (USB.length !== 0)){
+if((gSTB.GetDeviceModel() == 'MAG424' || gSTB.GetDeviceModel() =='MAG524') && (USB.length !== 0)){
     // set folder for saving TimeShift buffer data
     timeShift.SetTimeShiftFolder(USB[0].mountPath+"/records");
     timeShift.SetMaxDuration(7500);
@@ -68,7 +72,7 @@ var Ext = gSTB.StandBy(false);
 function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition){
     var CheckPort = '';
     
-    if((gSTB.GetDeviceModel() == 'MAG424') && (USB.length !== 0)){
+    if((gSTB.GetDeviceModel() == 'MAG424' || gSTB.GetDeviceModel() =='MAG524') && (USB.length !== 0)){
         timeShift.ExitTimeShift();
         //Establece de forma manual la posicion en la que se encuentra el reproductor de video
         if(idPosition !== null){
@@ -120,7 +124,7 @@ function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition){
     StopVideo();
     Debug("Source "+ Source +" Port "+CheckPort);
     //gSTB.Play(Source + CheckPort);
-    if((gSTB.GetDeviceModel() == 'MAG424') && (USB.length !== 0)){
+    if((gSTB.GetDeviceModel() == 'MAG424' || gSTB.GetDeviceModel() =='MAG524') && (USB.length !== 0)){
         player.play({
             uri: Source + CheckPort,
             solution: 'extTimeShift',
@@ -442,7 +446,7 @@ function MaximizeTV(){
     //gSTB.SetViewport(3840, 2160, 0, 0);
     //Debug("Maximizar");
     player.fullscreen = true;
-    if(gSTB.GetDeviceModel() !== 'MAG520'){
+    if(gSTB.GetDeviceModel() !== 'MAG520' && gSTB.GetDeviceModel() !=='MAG524'){
         player2.fullscreen = true;
     }
     //Debug(JSON.stringify(player.viewport));
@@ -479,7 +483,7 @@ function RebootDevice(){
 
 function StopVideo(){
     player.stop();
-    if(gSTB.GetDeviceModel() !== 'MAG520'){
+    if(gSTB.GetDeviceModel() !== 'MAG520' && gSTB.GetDeviceModel() !=='MAG524'){
         if(player2.state !== 0){
             player2.stop();
         }
@@ -488,7 +492,7 @@ function StopVideo(){
 }
 
 function PauseVideo(){
-    if((gSTB.GetDeviceModel() == 'MAG424') && (USB.length !== 0)){
+    if((gSTB.GetDeviceModel() == 'MAG424' || gSTB.GetDeviceModel() =='MAG524') && (USB.length !== 0)){
         timeShift.EnterTimeShift();
         TimeShiftStart = Position;
     }

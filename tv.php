@@ -124,4 +124,12 @@
 
         // Imprime en HTML todo lo asignado en el pie de pagina
         echo $Footer->output();
+
+        $ConfigData = null;
+        $DeviceData = null;
+        $ModulesData = null;
+        $ContentData = null;
+        $Header = null;
+        $TvContent = null;
+        $Footer = null;
     }

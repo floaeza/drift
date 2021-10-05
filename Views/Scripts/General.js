@@ -75,13 +75,14 @@
         } else {
             ////Debug('>>>>>>> LOCATION.REPLACE');
             //Executing = true;
-            //location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
             location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
-            // if(typeof(ASTB) !== 'undefined'){
-            //     Browser.Go('http://172.16.0.15/BBINCO/TV/' + Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule)
-            // }else{
-            //     window.location.href = Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule;
-            // }
+
+            //location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
+            //  if(typeof(ASTB) !== 'undefined'){
+            //      Browser.Go('http://172.16.0.15/BBINCO/TV/' + Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule)
+            //  }else{
+            //      window.location.href = Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule;
+            //  }
             
         }
     }
@@ -95,7 +96,7 @@
             DifferenceInSec     = EndDateModuleMM - StartDateModuleMM;
             //alert("Start: " + StartDateModuleMM + " End: " + EndDateModuleMM+ " Diferencia: "+DifferenceInSec);
         /* Valida si el tiempo de vista del modulo esta en un rango de tiempo coherente */
-        if(Math.abs(DifferenceInSec) > MinSeconds && Math.abs(DifferenceInSec) < MaxSeconds){
+        if(DifferenceInSec > MinSeconds && DifferenceInSec < MaxSeconds){
             
             var ChannelName    = ChannelsJson[ChannelPosition].NAME,
                 ChannelStation = ChannelsJson[ChannelPosition].STTN;
@@ -373,7 +374,7 @@
         return ActualHour;
     }
     
-                            function TimeConvert(n) {
+    function TimeConvert(n) {
         var num = n,
             hours = (num / 60),
             rhours = Math.floor(hours),
@@ -414,9 +415,6 @@ function secondsToString(seconds) {
     var minute = Math.floor((seconds / 60) % 60);
     minute = (minute < 10)? '0' + minute : minute;
     return hour + ' h ' + minute + ' min';
-
-    hour = null;
-    minute = null;
 }
 
 

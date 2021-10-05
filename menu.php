@@ -98,7 +98,7 @@
         $MenuContent = new Templates($Libraries['MenuTemplates'].$ModuleInfo['opcion_template'].'.tpl');
 
         $MenuContent->set('MainLogo', $Libraries['LogosPath'].$ConfigData->getConfigByName('EpgLogo'));
-
+        
         // Imprime en HTML todo el contenido del template seleccionado
         echo $MenuContent->output();   
 
@@ -119,5 +119,15 @@
             $Footer->set('EventsScript', $VendorFolder.$Libraries['Events']);
 
         // Imprime en HTML todo lo asignado en el pie de pagina
+
         echo $Footer->output();
+        
+
+        $ConfigData = null;
+        $DeviceData = null;
+        $ModulesData = null;
+        $ContentData = null;
+        $Header = null;
+        $MenuContent = null;
+        $Footer = null;
     }

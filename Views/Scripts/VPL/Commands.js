@@ -21,6 +21,7 @@ function Blue(){
 }
 function Green(){
     //alert(JSON.stringify(Browser.GetStats()));
+    
 }
 
 function Yellow(){
@@ -71,6 +72,8 @@ function Menu(){
         
         //GoPage('menu.php', Device['MenuId'], 'Menu');
         GoPage('menu.php', Device['MenuId'], 'Menu');
+        
+        
     } else if(CurrentModule === 'Tv' && Device['Services']['ActiveMenu'] === false){
         Debug('----------- TV RECORDER');
         TvRecorder();
