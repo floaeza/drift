@@ -26,15 +26,15 @@
             
             $ModulesList = array();
             
-            foreach ($ModulesInfo as $Row):
-                if($Row['nombre_modulo'] === 'Menu'){
-                    array_push($ModulesList,  array('Id' => $Row['id_modulo'],
-                                                    'Name' => $Row['descripcion_modulo'],
-                                                    'Url' => $Row['url_modulo'],
-                                                    'Image' => $Row['nombre_icono'],
-                                                    'Description' => ''));
-                }
-            endforeach;
+            // foreach ($ModulesInfo as $Row):
+            //     if($Row['nombre_modulo'] === 'Menu'){
+            //         array_push($ModulesList,  array('Id' => $Row['id_modulo'],
+            //                                         'Name' => $Row['descripcion_modulo'],
+            //                                         'Url' => $Row['url_modulo'],
+            //                                         'Image' => $Row['nombre_icono'],
+            //                                         'Description' => ''));
+            //     }
+            // endforeach;
             
             foreach ($ModulesInfo as $Row):
                 if($Row['nombre_modulo'] !== 'Menu'){

@@ -24,15 +24,15 @@ function Green(){
     // var sBrowser, sUsrAg = navigator.userAgent;
 
     // if(sUsrAg.indexOf("Chrome") > -1) {
-    //     sBrowser = "Google Chrome";
+    //     sBrowser = "Google Chrome \n\n --- " + navigator.appName + "\n\n --- "+ navigator.appVersion + " \n\n---" +navigator.userAgent;
     // } else if (sUsrAg.indexOf("Safari") > -1) {
-    //     sBrowser = "Apple Safari";
+    //     sBrowser = "Apple Safari  \n\n --- " + navigator.appName + "\n\n --- "+ navigator.appVersion + " \n\n---" +navigator.userAgent;
     // } else if (sUsrAg.indexOf("Opera") > -1) {
-    //     sBrowser = "Opera";
+    //     sBrowser = "Opera \n\n --- " + navigator.appName + "\n\n --- "+ navigator.appVersion + " \n\n---" +navigator.userAgent;
     // } else if (sUsrAg.indexOf("Firefox") > -1) {
-    //     sBrowser = "Mozilla Firefox";
+    //     sBrowser = "Mozilla Firefox \n\n --- " + navigator.appName + "\n\n --- "+ navigator.appVersion + " \n\n---" +navigator.userAgent;
     // } else if (sUsrAg.indexOf("MSIE") > -1) {
-    //     sBrowser = "Microsoft Internet Explorer";
+    //     sBrowser = "Microsoft Internet Explorer \n\n --- " + navigator.appName + "\n\n --- "+ navigator.appVersion + " \n\n---" +navigator.userAgent;
     // }
 
     // alert("Usted está utilizando: " + sBrowser);
