@@ -14,20 +14,19 @@ payload = {'Option': 'GetAminosToReboot'}
 Devices = requests.post('http://172.22.22.10/BBINCO/TV/Core/Controllers/DevicesStatus.php', data=payload)
 IDF = json.loads(Devices.content)
 print(IDF)
+
 for ips in IDF:
     ip=ips['ip']
-    if ips['marca'] == 'Amino':
-        try:
+    try:
+        if ips['marca'] == 'Amino':
+            
             print(ip)
             t.connect(ip, username='root',password='root2root',p=23,timeout=8)
             output1=t.execute('reboot')
             t.close()
             print("REBOOT AMINO")
-        except:
-            continue
-    elif ips['modelo'] == 'MAG420':
-        try:
-           
+
+        elif ips['modelo'] == 'MAG420':   
             ip = ip.strip()
             print(ip)
             client = paramiko.SSHClient()
@@ -44,10 +43,8 @@ for ips in IDF:
             stderr.close()
             client.close()
             print("REBOOT INFOMIR 420")
-        except:
-            continue
-    elif ips['modelo'] == '500x':
-        try:   
+        
+        elif ips['modelo'] == '500x':
             ip = ip.strip()
             print(ip)
             k = paramiko.RSAKey.from_private_key_file('/var/www/html/keyname.pem')
@@ -64,9 +61,11 @@ for ips in IDF:
             stdin.close()
             stdout.close()
             stderr.close()
-            client.close()            
-        except:
-            continue
+            client.close()
+        info = {'Option': 'updateDeviceReboot', 'MacAddress': ips['mac_address'],'Reboot': 0}
+        req = requests.post('http://172.22.22.10/BBINCO/TV/Core/Controllers/DevicesStatus.php', data=info)            
+    except:
+        continue
 info = {'Option': 'UpdateParameter', 'RebootStatus': 1}
 req = requests.post('http://172.22.22.10/BBINCO/TV/Core/Controllers/DevicesStatus.php', data=info)
 

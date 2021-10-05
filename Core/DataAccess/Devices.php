@@ -455,5 +455,14 @@ class Devices extends Database {
 
         return $this->Device;
     }
-    
+    function updateDeviceReboot($MacAddress, $DeviceUpdate){
+        $this->Function = 'updateDeviceModule';
+        
+        $this->connect();
+        $this->update("dispositivos", $DeviceUpdate, "mac_address = '$MacAddress'");
+        $this->Device = $this->getResult();
+        $this->disconnect();
+
+        return $this->Device;
+    }
 }

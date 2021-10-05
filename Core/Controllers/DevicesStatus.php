@@ -170,6 +170,14 @@ switch ($Option){
                 ); 
             $PackagesData->updateParameterReboot($NewPackage);
             break;
+        case 'updateDeviceReboot':
+
+            $Reboot = !empty($_POST['Reboot']) ? $_POST['Reboot'] : 0;
+            
+            $DevicesUpdateData = array('reiniciar'=>$Reboot);
+
+            $Response = $DevicesData->updateDeviceReboot($MacAddress, $DevicesUpdateData);
+            break;
         
 }
 
