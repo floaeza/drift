@@ -1,5 +1,4 @@
 html{
-  background: #152a3b;
   width: 100vw;
   height: 100vh;
   min-width: 100%;
@@ -10,7 +9,10 @@ html{
   margin: 0;
   overflow: hidden;
 }
-
+img#back {
+  height: 100%;
+  width: 100%;
+}
 img#ico2 {
   position: absolute;
   top: 50%;
