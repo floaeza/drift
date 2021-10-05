@@ -125,7 +125,7 @@ div#MenuBar {
 div.MenuList {
   float: left;
   width: 27.5%;
-  font-size: 30px;
+  font-size: 50px;
   text-align: center;
   font-family: gotham;
   padding-top: 1.2%;
@@ -134,7 +134,7 @@ div.MenuList {
 div.MenuFocus {
   /*background: rgba(255,255,2550,0);*/
   border-top: 3px solid #fff;
-  font-size: 40px;
+  font-size: 60px;
   height: 100%;
   width: 45%;
   padding-top: 1%;
