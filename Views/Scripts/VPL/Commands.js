@@ -20,25 +20,23 @@ function Blue(){
     
 }
 function Green(){
-    var win =  Browser.GetWindowNames();
-
-    alert(win[1]);
+    
     //alert(JSON.stringify(Browser.GetStats()));
-    // var sBrowser, sUsrAg = navigator.userAgent;
+    var sBrowser, sUsrAg = navigator.userAgent;
 
-    // if(sUsrAg.indexOf("Chrome") > -1) {
-    //     sBrowser = "Google Chrome \n\n --- " + navigator.appName + "\n\n --- "+ navigator.appVersion + " \n\n---" +navigator.userAgent;
-    // } else if (sUsrAg.indexOf("Safari") > -1) {
-    //     sBrowser = "Apple Safari  \n\n --- " + navigator.appName + "\n\n --- "+ navigator.appVersion + " \n\n---" +navigator.userAgent;
-    // } else if (sUsrAg.indexOf("Opera") > -1) {
-    //     sBrowser = "Opera \n\n --- " + navigator.appName + "\n\n --- "+ navigator.appVersion + " \n\n---" +navigator.userAgent;
-    // } else if (sUsrAg.indexOf("Firefox") > -1) {
-    //     sBrowser = "Mozilla Firefox \n\n --- " + navigator.appName + "\n\n --- "+ navigator.appVersion + " \n\n---" +navigator.userAgent;
-    // } else if (sUsrAg.indexOf("MSIE") > -1) {
-    //     sBrowser = "Microsoft Internet Explorer \n\n --- " + navigator.appName + "\n\n --- "+ navigator.appVersion + " \n\n---" +navigator.userAgent;
-    // }
+    if(sUsrAg.indexOf("Chrome") > -1) {
+        sBrowser = "Google Chrome \n\n --- " + navigator.appName + "\n\n --- "+ navigator.appVersion + " \n\n---" +navigator.userAgent;
+    } else if (sUsrAg.indexOf("Safari") > -1) {
+        sBrowser = "Apple Safari  \n\n --- " + navigator.appName + "\n\n --- "+ navigator.appVersion + " \n\n---" +navigator.userAgent;
+    } else if (sUsrAg.indexOf("Opera") > -1) {
+        sBrowser = "Opera \n\n --- " + navigator.appName + "\n\n --- "+ navigator.appVersion + " \n\n---" +navigator.userAgent;
+    } else if (sUsrAg.indexOf("Firefox") > -1) {
+        sBrowser = "Mozilla Firefox \n\n --- " + navigator.appName + "\n\n --- "+ navigator.appVersion + " \n\n---" +navigator.userAgent;
+    } else if (sUsrAg.indexOf("MSIE") > -1) {
+        sBrowser = "Microsoft Internet Explorer \n\n --- " + navigator.appName + "\n\n --- "+ navigator.appVersion + " \n\n---" +navigator.userAgent;
+    }
 
-    // alert("Usted está utilizando: " + sBrowser);
+    alert("Usted está utilizando: " + sBrowser);
     
 }
 
