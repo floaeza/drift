@@ -2,7 +2,6 @@
 
 <body>
     <img id='back' src="Media/background.jpg">
-    <h1 id="ico2">WELCOME</h1>
 
     <div id='MenuWeather'>
         <canvas id='WeatherIcon' width='50' height='50'></canvas>

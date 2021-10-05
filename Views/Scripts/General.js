@@ -75,13 +75,13 @@
         } else {
             ////Debug('>>>>>>> LOCATION.REPLACE');
             //Executing = true;
-            location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
+            //location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
 
             //location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
             //  if(typeof(ASTB) !== 'undefined'){
             //      Browser.Go('http://172.16.0.15/BBINCO/TV/' + Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule)
             //  }else{
-            //      window.location.href = Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule;
+            window.location.href = Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule;
             //  }
             
         }

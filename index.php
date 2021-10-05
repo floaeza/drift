@@ -11,6 +11,7 @@
     require_once 'Core/DataAccess/Config.php';
     $ConfigData  = new Config('system',$CurrentModule);
     $Client = $ConfigData->getConfigByName('Identifier').'/';
+    $Servero = $ConfigData->getConfigByName('ServerIp');
 
     require_once 'Core/Models/Libraries.php';
 
