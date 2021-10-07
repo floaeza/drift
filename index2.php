@@ -1,20 +1,9 @@
 <?php
 
-    echo "<script type='text/javascript'>
-    
-    if(typeof(ASTB) !== 'undefined'){
-        var big_mac = ASTB.GetMacAddress();
-    }else{
-        var big_mac = '00:00:00:00:00'
-    }    
-    
-    //var big_mac = 'ASTB.GetMacAddress()';
-    
-    </script>
-    <style> 
-    body{
-        margin:0; padding:0; display:block; width:100%; border:none;
-    }
+    echo "<style> 
+        body{
+            margin:0; padding:0; display:block; width:100%; border:none;
+        }
     </style>
     ";
     
