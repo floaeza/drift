@@ -465,4 +465,12 @@ class Devices extends Database {
 
         return $this->Device;
     }
+    function GetDeviceByNoReboot(){
+        $this->Function = 'GetDeviceByNoReboot';
+        $this->connect();
+        $this->select("dispositivos","dispositivos.modelo, dispositivos.marca, dispositivos.ip, dispositivos.mac_address, dispositivos.id_dispositivo","","","","","reiniciar = '477'");
+        $this->DeviceList = $this->getResult();
+        $this->disconnect();
+        return $this->DeviceList;
+    }
 }

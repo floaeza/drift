@@ -21,7 +21,7 @@ function Blue(){
     
 }
 function Green(){
-    
+    alert(window.location);
     // //alert(JSON.stringify(Browser.GetStats()));
     // var sBrowser, sUsrAg = navigator.userAgent;
 

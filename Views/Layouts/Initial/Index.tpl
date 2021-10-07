@@ -7,6 +7,7 @@
         <script src="[@Jquery]"></script>
         <script src="[@Hcap]"></script>
     </head>
+    
     <body>
         <div class="GeneralBox BackgroundSolid">
             <div class="ContainerIndex" style="background-image: url('[@IndexLogo]') ">

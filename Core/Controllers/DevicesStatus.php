@@ -178,7 +178,10 @@ switch ($Option){
 
             $Response = $DevicesData->updateDeviceReboot($MacAddress, $DevicesUpdateData);
             break;
-        
+        case 'GetAminosNoReboot':
+            $DeviceListResult = $DevicesData->GetDeviceByNoReboot();
+            $Response = $DeviceListResult; 
+            break;
 }
 
 //
