@@ -1,8 +1,8 @@
 // @ts-nocheck
 
 function Red(){
-    var relo = window.location.href;
-    window.location.href = relo;
+    var relo = location.href;
+    location.href = relo;
 }
 
 function Blue(){
