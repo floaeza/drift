@@ -43,11 +43,11 @@
 
         ////Debug('GoPage ---> '+Page);
         if(CurrentModule !== 'Menu'){
-            StopVideo();
         }
         //if(CurrentModule === 'Tv' && StartDateChannel !== ''){
         if(CurrentModule === 'Tv'){
             //Debug('TVCLOSE & SETCHANNELSTATISTICS');
+            StopVideo();
             TvClose();
             //SetChannelStatistics();
         }
@@ -59,34 +59,39 @@
         
         ////Debug(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
 
-        if (window.tizen !== undefined) {
+        if(typeof(ASTB) !== 'undefined' || MacAddress == '00:00:00:00:00:00'){
+            parent.document.getElementById('Menu').src=Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule;
 
-            //Debug('Window.tizen !== undefined');
-            var PageH = Page.replace('php','html');
-            
-            //Debug('GoPageHTML ---> '+PageH);
-            
-            localStorage.setItem('Module', ChangeModule);
-            localStorage.setItem('Id', ModuleId);
+        }else{
+            if (window.tizen !== undefined) {
 
-            //location.replace(PageH);
-            window.location.href = PageH;
-            
-        } else {
-            ////Debug('>>>>>>> LOCATION.REPLACE');
-            //Executing = true;
-            //location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
-
-            //location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
-            //  if(typeof(ASTB) !== 'undefined'){
-            //      Browser.Go('http://172.16.0.15/BBINCO/TV/' + Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule)
-            //  }else{
-            if(typeof(ASTB) !== 'undefined'){
-                location.href= Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule;
-            }else{
-                window.location.href = Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule;
+                //Debug('Window.tizen !== undefined');
+                var PageH = Page.replace('php','html');
+                
+                //Debug('GoPageHTML ---> '+PageH);
+                
+                localStorage.setItem('Module', ChangeModule);
+                localStorage.setItem('Id', ModuleId);
+    
+                //location.replace(PageH);
+                window.location.href = PageH;
+                
+            } else {
+                ////Debug('>>>>>>> LOCATION.REPLACE');
+                //Executing = true;
+                //location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
+    
+                //location.replace(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
+                //  if(typeof(ASTB) !== 'undefined'){
+                //      Browser.Go('http://172.16.0.15/BBINCO/TV/' + Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule)
+                //  }else{
+                if(typeof(ASTB) !== 'undefined'){
+                    location.href= Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule;
+                }else{
+                    window.location.href = Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule;
+                }
+                
             }
-            
         }
     }
     

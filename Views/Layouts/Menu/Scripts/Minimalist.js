@@ -13,6 +13,7 @@ ImagesUrl       = ServerSource+'Media/Menu/',
 FormatDate      = '',
 FormatHour      = '',
 MenuList        = '',
+
 MenuIndex       = 0,
 IndexM = null,
 xhr = null;
@@ -37,7 +38,19 @@ function SetMenuList(){
         }
     });
     xhr = null;
+    //if(typeof(ASTB) !== 'undefined'){
+        //setFrames();  
+   //}
+   
     SetMenuInfo();
+}
+
+function setFrames(){
+    //alert(parent.document.getElementsByTagName('<iframe>')[0]);
+    for(var i = 0; i < MenuList.length; i++){
+        parent.document.getElementById(MenuList[i].Name).src='tv.php'+'?MacAddress='+ASTB.GetMacAddress()+'&ModuleId='+1+'&CurrentModule=Tv';
+    }
+    
 }
 GetWeather();
 SetMenuList();
