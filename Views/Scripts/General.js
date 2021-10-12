@@ -59,10 +59,10 @@
         
         ////Debug(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
 
-        if(typeof(ASTB) !== 'undefined' || MacAddress == '00:00:00:00:00:00'){
-            parent.document.getElementById('Menu').src=Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule;
+        //if(typeof(ASTB) !== 'undefined' || MacAddress == '00:00:00:00:00:00'){
+        //    parent.document.getElementById('Menu').src=Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule;
 
-        }else{
+        //}else{
             if (window.tizen !== undefined) {
 
                 //Debug('Window.tizen !== undefined');
@@ -93,7 +93,7 @@
                 
             }
         }
-    }
+    //}
     
     function SetChannelStatistics(){ 
             FormatStartDate     = getDate(StartDateChannel);

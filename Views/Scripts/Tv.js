@@ -280,8 +280,8 @@ function SetChannel(NewDirection){
             Source = ChannelsJson[ChannelPosition].SRCE;
             Port   = ChannelsJson[ChannelPosition].PORT;
             //alert(Source + Port);
-            //ProgramIdChannnel = ChannelsJson[ChannelPosition].PRGR;
-            //ProgramIdPosition = ChannelsJson[ChannelPosition].PSCN;
+            ProgramIdChannnel = ChannelsJson[ChannelPosition].PRGM;
+            ProgramIdPosition = ChannelsJson[ChannelPosition].PSCN;
 
         /* Regresamos a su valor inicial la variable DIRECTION*/
             Direction = 'UP';
@@ -306,10 +306,10 @@ function SetChannel(NewDirection){
                     //}
                     $(document).ready(function(){
                         //your code
-                        PlayChannel(Source, Port);   /* TvFunctions por marca */
+                        PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
                     });
                 }else{
-                    PlayChannel(Source, Port);   /* TvFunctions por marca */
+                    PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
                 }
                 
                 
@@ -559,8 +559,8 @@ function CloseFrame(){
             /* Actualiza el canal */
                 Source = ChannelsJson[LastChannelPosition].SRCE;
                 Port   = ChannelsJson[LastChannelPosition].PORT;
-                // ProgramIdChannnel = ChannelsJson[ChannelPosition].PRGR;
-                // ProgramIdPosition = ChannelsJson[ChannelPosition].PSCN;
+                 ProgramIdChannnel = ChannelsJson[ChannelPosition].PRGM;
+                 ProgramIdPosition = ChannelsJson[ChannelPosition].PSCN;
 
                 ////Debug('Source:: CRRN '+ChannelsJson[ChannelPosition].SRCE + ' '+ChannelsJson[ChannelPosition].STTN );
                 ////Debug('Source:: LAST '+ChannelsJson[LastChannelPosition].SRCE + ' '+ChannelsJson[LastChannelPosition].STTN );
@@ -589,10 +589,10 @@ function CloseFrame(){
                         load = false
                         $(document).ready(function(){
                             //your code
-                            PlayChannel(Source, Port);   /* TvFunctions por marca */
+                            PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);  /* TvFunctions por marca */
                         });
                     }else{
-                        PlayChannel(Source, Port);   /* TvFunctions por marca */
+                        PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
                     }
                     
                 } else {
@@ -894,8 +894,8 @@ function ShowInfo(){
 
         var Source = ChannelsJson[ChannelPosition].SRCE,
             Port   = ChannelsJson[ChannelPosition].PORT;
-            // ProgramIdChannnel = ChannelsJson[ChannelPosition].PRGR,
-            // ProgramIdPosition = ChannelsJson[ChannelPosition].PSCN;
+             ProgramIdChannnel = ChannelsJson[ChannelPosition].PRGM,
+             ProgramIdPosition = ChannelsJson[ChannelPosition].PSCN;
 
         if(ChannelsJson[ChannelPosition].STTN !== 'CONTENT'){
             if(ActiveDigitalChannel === true){
@@ -906,10 +906,10 @@ function ShowInfo(){
                 load = false
                 $(document).ready(function(){
                     //your code
-                    PlayChannel(Source, Port);   /* TvFunctions por marca */
+                    PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
                 });
             }else{
-                PlayChannel(Source, Port);   /* TvFunctions por marca */
+                PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
             }
         } else {
             ////Debug('GetDigitalChannel EPG');
