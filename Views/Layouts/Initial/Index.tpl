@@ -291,23 +291,25 @@
                 
                 var Data = $.parseJSON(response);
 
+                console.log(Data);
+
                 if(Data['Option'] === 'RELOAD'){
                     var DeviceInfo = ' Mac: '+MacAddress+' Ip: '+IpAddress+' <br> Firmware: '+Firmware+' Model: '+Model+' Vendor : '+Vendor;
                     document.getElementById('DebugText').innerHTML = DeviceInfo;
                     
                     if(typeof(ASTB) !== 'undefined'){
-                        location.href= Data['ModuleUrl']+'?MacAddress='+MacAddress+'&ModuleId='+Data['ModuleId']+'&CurrentModule='+Data['ModuleName'];
+                        //location.href= Data['ModuleUrl']+'?MacAddress='+MacAddress+'&ModuleId='+Data['ModuleId']+'&CurrentModule='+Data['ModuleName'];
                     }else{
-                        window.location.href = Data['ModuleUrl']+'?MacAddress='+MacAddress+'&ModuleId='+Data['ModuleId']+'&CurrentModule='+Data['ModuleName'];
+                        //window.location.href = Data['ModuleUrl']+'?MacAddress='+MacAddress+'&ModuleId='+Data['ModuleId']+'&CurrentModule='+Data['ModuleName'];
                     }
                     
                 } else if(Data['Option'] === 'LICENSE'){
                     //
                 } else {
                     if(typeof(ASTB) !== 'undefined'){
-                        location.href='index.php?Option='+Data['Option'];
+                        //location.href='index.php?Option='+Data['Option'];
                     }else{
-                        window.location.href = 'index.php?Option='+Data['Option'];
+                        //window.location.href = 'index.php?Option='+Data['Option'];
                     }
                 }
             }
