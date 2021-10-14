@@ -5,7 +5,7 @@
  */
     var MenuDate        = document.getElementById('MenuDate'),
         MenuHour        = document.getElementById('MenuHour'),
-        MenuBackground  = document.getElementById('MenuDate'),
+        MenuBackground  = document.getElementById('MenuBackgrounds'),
         ImagesUrl       = ServerSource+'Media/Menu/',
         FormatDate      = '',
         FormatHour      = '',
