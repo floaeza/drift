@@ -29,9 +29,10 @@
         Hdd         = 'N',
         Vendor      = 'Generic',
         KamaiModels = { 49: '500x', 102: '7XM' },
-        xhr;;
+        xhr;
 
         var resultado;
+
     /* Carga inicial */
     window.addEventListener('load',SetDataInitial,false);
     
