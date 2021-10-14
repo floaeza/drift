@@ -31,7 +31,8 @@
     SetMenuList();
 
     function SetBackgrounds(){
-        MenuBackground.style.backgroundImage = 'url('+Libraries['MenuPath'] + MenuList[MenuIndex].Image+')';
+        MenuBackground.innerHTML = '<img src="'+Libraries['MenuPath'] + MenuList[MenuIndex].Image+'">';
+        //MenuBackground.style.backgroundImage = 'url('+Libraries['MenuPath'] + MenuList[MenuIndex].Image+')';
     }
 
 
