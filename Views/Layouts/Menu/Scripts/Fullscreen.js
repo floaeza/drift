@@ -5,7 +5,7 @@
  */
     var MenuDate        = document.getElementById('MenuDate'),
         MenuHour        = document.getElementById('MenuHour'),
-        MenuListNodes   = document.getElementById('MenuBar').childNodes;
+        MenuBackground  = document.getElementById('MenuDate'),
         ImagesUrl       = ServerSource+'Media/Menu/',
         FormatDate      = '',
         FormatHour      = '',
@@ -28,34 +28,13 @@
         });
     }
 
+    SetMenuList();
+
     function SetBackgrounds(){
-
-        var IndexM = 0;
-        //var MenuBackgrounds = document.getElementById('MenuBackgrounds');
-        var img = $('<img />', { id: 'menuBackImg', class: 'BackgroundsMenu'}).appendTo($('#MenuBackgrounds'));
-        //var MenuBackgrounds = document.getElementById('menuBackImg');
-        //for(IndexM = 0; IndexM < MenuList.length; IndexM++) {
-        //    img = document.createElement('img');
-        //    img.style.backgroundImage = Libraries['MenuPath'] + MenuList[IndexM].Image;
-        //    img.className = 'BackgroundsMenu';
-        //    img.style.visibility = 'hidden';
-            //$("#menuBackImg").attr("src-swap-"+IndexM,Libraries['MenuPath'] + MenuList[IndexM].Image);
-        //MenuBackgrounds.style.backgroundImage = 'url('+Libraries['MenuPath'] + MenuList[IndexM].Image+')';
-        //    MenuBackgrounds.appendChild(img);
-        //    
-        //}
-
-        //BackgroundsNodes = MenuBackgrounds.childNodes;
-
-
-
-        img = null;
-        IndexM = null;
-        //MenuBackgrounds = null;
-        SetMenuInfo();
+        MenuBackground.style.backgroundImage = 'url('+Libraries['MenuPath'] + MenuList[MenuIndex].Image+')';
     }
 
-    SetMenuList();
+
     GetWeather();
 
 
@@ -82,25 +61,14 @@ function SetMenuInfo(){
                 IndexM = 0;
             }
 
-            //BackgroundsNodes[IndexM].style.visibility = 'hidden';
-
-
-
             MenuListNodes[Index].textContent = MenuList[IndexM].Name;
-            //$("#menuBackImg").attr("src",Libraries['MenuPath'] + MenuList[IndexM].Image);
             IndexM++;
         }
 
-        //BackgroundsNodes[MenuIndex].style.visibility = 'visible';
-        //var MenuBackgrounds = document.getElementById('menuBackImg');
-        //MenuBackgrounds.style.backgroundImage = 'url('+Libraries['MenuPath'] + MenuList[MenuIndex].Image+')';
-        $("#menuBackImg").attr("src", Libraries['MenuPath'] + MenuList[MenuIndex].Image);
-        //Debug(BackgroundsNodes[MenuIndex]);
+
 
             IndexM = null;
             Index = null;
-
-        
     }
 
     function MenuSelect(Direction){
