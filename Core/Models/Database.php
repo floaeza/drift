@@ -519,6 +519,3 @@ public function selectFromOtherSelect($tabla, $rows = '*', $select1, $select2, $
 
 
 }
-
-
-$this->connect();
