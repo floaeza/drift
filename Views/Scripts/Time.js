@@ -119,7 +119,7 @@
             }
 
         } else if(CurrentModule === 'Menu' || CurrentModule === 'Movies'){
-            FormatDate = moment().subtract(Offset, 'hours').format('MMM DD ');
+            FormatDate = moment().subtract(Offset, 'hours').format('MMMM DD YYYY');
             FormatHour = moment().subtract(Offset, 'hours').format('h:mm a');
         
             MenuDate.textContent = FormatDate;
