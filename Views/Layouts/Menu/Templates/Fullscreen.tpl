@@ -2,7 +2,7 @@
 
 <div id='MenuContainer'>
 
-    <div id='MenuBackgrounds'></div>
+    <img id='MenuBackgrounds' src=''>
 
     <img id='MainLogo' src='[@MainLogo]'>
 
