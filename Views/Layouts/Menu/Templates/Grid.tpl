@@ -19,19 +19,16 @@
     <div id='MenuDate'></div>
     <div id='MenuHour'></div>
 
-    <div id='MenuSelected'></div>
-    <div id='MenuDescription'></div>
-
-    <b id='MenuChevronLeft'><i class='fa fa-chevron-left'></i></b>
-    <br>
-    <b id='MenuChevronRight'><i class='fa fa-chevron-right'></i></b>
-
-    <div id='MenuBar'>
-        <div class='MenuList' style='display: none;'></div>
-        <div class='MenuList'></div>
-        <div class='MenuList MenuFocus'></div>
-        <div class='MenuList'></div>
-        <div class='MenuList' style='display: none;'></div>
+    <div class="grid-container">
+        <div class="grid-item">1</div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>
+        <div class="grid-item">7</div>
+        <div class="grid-item">8</div>
+        <div class="grid-item">9</div>
     </div>
 
 </div>
