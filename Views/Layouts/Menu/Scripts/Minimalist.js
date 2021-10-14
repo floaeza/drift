@@ -5,7 +5,7 @@
  */
 
 
-
+window.history.forward(1);
 var MenuListNodes   = document.getElementsByClassName('MenuList');
 //MenuSelected    = document.getElementById('MenuSelected'),
 //BackgroundsNodes = '';
@@ -38,9 +38,9 @@ function SetMenuList(){
         }
     });
     xhr = null;
-    //if(typeof(ASTB) !== 'undefined'){
-        //setFrames();  
-   //}
+    // if(typeof(ASTB) !== 'undefined'){
+    //     setFrames();  
+    // }
    
     SetMenuInfo();
 }
@@ -48,7 +48,11 @@ function SetMenuList(){
 function setFrames(){
     //alert(parent.document.getElementsByTagName('<iframe>')[0]);
     for(var i = 0; i < MenuList.length; i++){
-        parent.document.getElementById(MenuList[i].Name).src='tv.php'+'?MacAddress='+ASTB.GetMacAddress()+'&ModuleId='+1+'&CurrentModule=Tv';
+        //parent.document.getElementById(MenuList[i].Name).src='tv.php'+'?MacAddress='+'00:00:00:00:00:00'+'&ModuleId='+1+'&CurrentModule=Tv';
+        if(typeof(ASTB) !== 'undefined')
+            parent.document.getElementById(MenuList[i].Name).src=MenuList[i].Url+'?MacAddress='+ASTB.GetMacAddress()+'&ModuleId='+MenuList[i].Id+'&CurrentModule='+MenuList[i].Name;
+        else
+            parent.document.getElementById(MenuList[i].Name).src=MenuList[i].Url+'?MacAddress='+'00:00:00:00:00:00'+'&ModuleId='+MenuList[i].Id+'&CurrentModule='+MenuList[i].Name;
     }
     
 }

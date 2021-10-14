@@ -189,7 +189,7 @@
             MacAddress  = gSTB.GetDeviceMacAddress();
             Firmware    = gSTB.GetDeviceImageDesc();
             Model       = gSTB.GetDeviceModel();
-            Hdd         = (gSTB.GetDeviceModel() == 'MAG424') && (USB.length !== 0)?'Y':'N';
+            Hdd         = (gSTB.GetDeviceModel() == 'MAG424' || gSTB.GetDeviceModel() == 'MAG524') && (USB.length !== 0)?'Y':'N';
             Vendor      = gSTB.GetDeviceVendor();
             IpAddress   = gSTB.RDir('IPAddress');
             

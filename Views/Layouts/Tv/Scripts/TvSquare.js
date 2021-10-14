@@ -97,10 +97,9 @@ function GetNextJsonEpg(Direction){
  *******************************************************************************/
 
 function OpenEpg(){
+    
     if(ActiveEpgContainer === false && EpgDataActive === true){
         Debug('------- OpenEpg 1 -> EpgDataActive: '+EpgDataActive);
-
-
 
         /* Activa bandera, muestra contenedor y asigna la informacion de la cabecera */
         EpgContainer.style.visibility = 'visible';

@@ -10,7 +10,7 @@
  * Kamai 500x: Safari 538.1
  * Lg UV770H: Chrome 53 
  *******************************************************************************/
-
+  window.history.forward(1);
     /* Funcion para dar formato a la fecha */
     Date.prototype.yyyymmdd = function () {
         var mm = this.getMonth() + 1;
@@ -1227,6 +1227,7 @@ function TvGuide(){
             if (Device['Type'] !== 'NONE') {
                 GetRecordingsToRecord();
             }
+            
             OpenEpg();
         } else {
             OpenRecordPlayOptions();

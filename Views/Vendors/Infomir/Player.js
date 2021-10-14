@@ -98,6 +98,7 @@ function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition){
                 RewFor = null;
             }
         }else{
+            Debug("############################################");
             seconds = 0;
             Position = 0;
             idSeconds = null;
@@ -509,7 +510,7 @@ function updateSeconds(){
     if(seconds-TimeShiftStart<7500){
         seconds += 1;
     }
-    //Debug("#################################3       "+seconds);
+    Debug("#################################3       "+seconds);
 }
 function updatePosition(){
     if(player.state != 3){

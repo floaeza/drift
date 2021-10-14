@@ -59,10 +59,18 @@
         
         ////Debug(Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule);
 
-        //if(typeof(ASTB) !== 'undefined' || MacAddress == '00:00:00:00:00:00'){
-        //    parent.document.getElementById('Menu').src=Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule;
+        // if(typeof(ASTB) !== 'undefined' || MacAddress == '00:00:00:00:00:00'){
+        //     //parent.document.getElementById('Menu').src=Page+'?MacAddress='+MacAddress+'&ModuleId='+ModuleId+'&CurrentModule='+ChangeModule;
 
-        //}else{
+        //     for(var i = 0; parent.document.getElementsByTagName('iframe').length; i++){
+        //         parent.document.getElementsByTagName('iframe')[i].style.width='0%';
+        //         parent.document.getElementsByTagName('iframe')[i].style.height='0%';
+        //     }
+        //     parent.document.getElementById(ChangeModule).style.width='100%';
+        //     parent.document.getElementById(ChangeModule).style.height='100%';
+        //     parent.document.getElementById(ChangeModule).focus();
+
+        // }else{
             if (window.tizen !== undefined) {
 
                 //Debug('Window.tizen !== undefined');

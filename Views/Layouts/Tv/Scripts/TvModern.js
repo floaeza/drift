@@ -106,6 +106,7 @@ function GetNextJsonEpg(Direction){
  *******************************************************************************/
 
 function OpenEpg(){
+    
     if(ActiveEpgContainer === false && EpgDataActive === true){
         // Actualiza el estatus del disco duro
         if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'WHP_HDDN' || Device['Type'] === 'PVR_ONLY') {

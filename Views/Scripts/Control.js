@@ -22,14 +22,14 @@ var PressedKey      = 0,
 var CheckInfo = 0;
     
 
-setTimeout(removeEventListenerKeydown, 60000);
+// setTimeout(removeEventListenerKeydown, 60000);
 
-function removeEventListenerKeydown(){
-    //Debug("+++++++removeEventListener+++++++");
-    document.removeEventListener('keydown',KeyHandler,false);
-    document.addEventListener('keydown',KeyHandler,false);
-    setTimeout(removeEventListenerKeydown, 600000);
-}
+// function removeEventListenerKeydown(){
+//     //Debug("+++++++removeEventListener+++++++");
+//     document.removeEventListener('keydown',KeyHandler,false);
+//     document.addEventListener('keydown',KeyHandler,false);
+//     setTimeout(removeEventListenerKeydown, 600000);
+// }
 
     function KeyHandler(e) {
         PressedKey = e.which;
@@ -197,6 +197,7 @@ function removeEventListenerKeydown(){
                 
                 case REMOTE_GUIDE:
                     if(CurrentModule === 'Tv'){
+                        
                         TvGuide();
                     }
                 break;

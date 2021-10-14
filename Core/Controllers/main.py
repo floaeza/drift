@@ -7,12 +7,34 @@ from bs4 import BeautifulSoup
 import urllib.request
 import json
 import requests
-import os
+import os 
+from os import listdir
+from os.path import isfile, isdir
 
 today = datetime.today()
 today = today
 listDays = ["", "", "", "", "", "", ""]
 
+payload = {'Option': 'GetIdentifier'}
+Identifier = requests.post('http://localhost/BBINCO/TV/Core/Controllers/PY.php', data=payload)
+IDF = json.loads(Identifier.content)
+IDF = IDF[0]
+
+def ls1(path):    
+    return [obj for obj in listdir(path) if isfile(path + obj)]
+
+files = ls1('/var/www/html/BBINCO/TV/Core/Controllers/Epg/' + IDF['IDF']+'/')
+
+DaysToDelete = datetime.strptime(today.strftime('%Y%m%d'),'%Y%m%d')
+DaysToDelete = DaysToDelete - timedelta(days=2)
+for n in range(10):
+    DaysToDelete = DaysToDelete - timedelta(days=1)
+    for archivo in files:
+        if ('epg_'+DaysToDelete.strftime('%Y%m%d')+'_') in archivo:
+            os.remove('/var/www/html/BBINCO/TV/Core/Controllers/Epg/'+IDF['IDF']+'/'+archivo)
+            print(archivo)
+        else:
+            break
 
 for n in range(7):
     listDays[n] = today.strftime("%Y-%m-%d")
@@ -32,11 +54,6 @@ def start(day, pos):
     Version = requests.post('http://localhost/BBINCO/TV/Core/Controllers/PY.php', data=payload)
     Ver = json.loads(Version.content)
     Ver = Ver[0]
-
-    payload = {'Option': 'GetIdentifier'}
-    Identifier = requests.post('http://localhost/BBINCO/TV/Core/Controllers/PY.php', data=payload)
-    IDF = json.loads(Identifier.content)
-    IDF = IDF[0]
     
     payload = {'Option': 'GetOffsetZone'}
     Zone = requests.post('http://localhost/BBINCO/TV/Core/Controllers/PY.php', data=payload)
@@ -680,3 +697,5 @@ def deleteline(slinea, day):
     f.close()
 for pos in range(len(listDays)):
     start(listDays[pos], pos)
+
+
