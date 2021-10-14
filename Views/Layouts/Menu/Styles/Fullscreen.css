@@ -37,9 +37,9 @@ div#MenuBackgrounds {
 }
 
 div#MenuDate {
-    width: 30%;
+    width: 50%;
     height: 9%;
-    font-size: 50px;
+    font-size: 38px;
     text-align: left;
     top: 5%;
     position: fixed;
@@ -51,7 +51,7 @@ div#MenuHour {
     width: 20%;
     height: 5%;
     font-size: 60px;
-    top: 15%;
+    top: 12%;
     position: fixed;
     left: 5%;
     text-align: left;
