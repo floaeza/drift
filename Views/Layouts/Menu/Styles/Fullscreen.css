@@ -69,13 +69,11 @@ div#MenuDate {
 }
 
 div#MenuWeather {
-    width: 25%;
-    font-size: 40px;
-    text-align: center;
-    top: 15%;
+    width: 15%;
+    font-size: 30px;
+    top: 6%;
     position: fixed;
-    right: 2%;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+    right: 1%;
 }
 
 
