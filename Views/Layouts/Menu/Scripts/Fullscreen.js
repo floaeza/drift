@@ -5,10 +5,7 @@
  */
     var MenuDate        = document.getElementById('MenuDate'),
         MenuHour        = document.getElementById('MenuHour'),
-        MenuContainer   = document.getElementById('MenuContainer'),
-        //MenuSelected    = document.getElementById('MenuSelected'),
         MenuListNodes   = document.getElementById('MenuBar').childNodes;
-        //BackgroundsNodes = '';
         ImagesUrl       = ServerSource+'Media/Menu/',
         FormatDate      = '',
         FormatHour      = '',
@@ -16,8 +13,6 @@
         MenuIndex       = 0;
 
     function SetMenuList(){
-        //alert(Device['Services']['ProjectId']);
-        //alert();
         $.ajax({
             type: 'POST',
             async: false,
@@ -25,10 +20,8 @@
             data: { 
                 Option : 'GetModules',
                 ProjectId: '1'
-                //ProjectId: Device['Services']['ProjectId']
             },
             success: function (response){
-                MenuList = null;
                 MenuList = $.parseJSON(response);
                 SetBackgrounds();
             }
