@@ -1,8 +1,12 @@
 // @ts-nocheck
 
 function Red(){
-    var relo = location.href;
-    location.href = relo;
+    if(typeof(ASTB) !== 'undefined'){
+        Browser.Action('6');
+    } else {
+        var relo = location.href;
+        location.href = relo;
+    }
 }
 
 function Blue(){

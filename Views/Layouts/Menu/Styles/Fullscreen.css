@@ -91,13 +91,3 @@ div#TemperatureGroup {
     float: left;
     width: 59%;
 }
-
-div#MenuSelected {
-    font-family: 'Lexend Deca', sans-serif;
-    font-size: 120px;
-    width: 100%;
-    text-align: center;
-    top:40%;
-    position: fixed;
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
-}
