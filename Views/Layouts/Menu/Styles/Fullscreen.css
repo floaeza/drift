@@ -29,7 +29,7 @@ div#MenuContainer {
     font-size: 36px;
 }
 
-.BackgroundsMenu {
+div#BackgroundsMenu {
     position: fixed;
     width: 100%;
     height: 100%;
