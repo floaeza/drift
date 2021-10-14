@@ -13,13 +13,12 @@ class Locations extends Database {
         $this->Device = $MacAddress;
         $this->Module = $CurrentModule;
         $this->Function = '';
-        $this->connect();
     }
     
     function getLocationById($LocationId) {
         $this->Function = 'getLocationById';
         
-        //$this->connect();
+        $this->connect();
         $this->select("locaciones","*","",
                                          "miembros ON locaciones.codigo_miembro = miembros.codigo_miembro",
                                          "",""
@@ -29,26 +28,26 @@ class Locations extends Database {
 
         return $this->LocationById;
     }
-    
+
     function getLocationIdByName($LocationCode) {
         $this->Function = 'getLocationIdByName';
-        
-        //$this->connect();
+
+        $this->connect();
         $this->select("locaciones","*","","","","","codigo_locacion = '$LocationCode'");
         $this->LocationById = $this->getResult();
         $this->disconnect();
 
         return $this->LocationById;
     }
-    
+
     function setLocationById($LocationById) {
         $this->LocationById = $LocationById;
     }
-    
+
     function getLocationServices($LocationId) {
         $this->Function = 'getLocationServices';
 
-        //$this->connect();
+        $this->connect();
         $this->select("locaciones","*","",
                                          "miembros ON locaciones.codigo_miembro = miembro.codigo_miembro",
                                          "",""
@@ -61,7 +60,7 @@ class Locations extends Database {
 
     function getLocations(){
         $this->Function = 'getLocations';
-        //$this->connect();
+        $this->connect();
         $this->select("locaciones");
         $this->Locations = $this->getResult();
         $this->disconnect();
@@ -69,7 +68,7 @@ class Locations extends Database {
     }
     function getMembers(){
         $this->Function = 'getMembers';
-        //$this->connect();
+        $this->connect();
         $this->select("miembros");
         $this->Locations = $this->getResult();
         $this->disconnect();
@@ -77,7 +76,7 @@ class Locations extends Database {
     }
     function updateLocation($LocationId, $infoLocation){
         $this->Function = 'updateLocation';
-        //$this->connect();
+        $this->connect();
         $this->update("locaciones", $infoLocation, "id_locacion = '$LocationId'" );
         $this->Locations = $this->getResult();
         $this->disconnect();
@@ -86,7 +85,7 @@ class Locations extends Database {
 
     function InsertLocation($NewLocation){
         $this->function = 'InsertLocation';
-        //$this->connect();
+        $this->connect();
         $this->insert("locaciones", $NewLocation);
         $this->Locations = $this->getResult();
         $this->disconnect();
@@ -95,7 +94,7 @@ class Locations extends Database {
 
     function UpdateDevice_Location($dispositivoId, $infoLocation){
         $this->Function = 'UpdateDevice_Location';
-        //$this->connect();
+        $this->connect();
         $this->update("dispositivo_locacion", $infoLocation, "id_dispositivo = '$dispositivoId'" );
         $this->Locations = $this->getResult();
         $this->disconnect();
