@@ -2,7 +2,7 @@
 
 function Red(){
     if(typeof(ASTB) !== 'undefined'){
-        Browser.Action('6');
+        Browser.Action(6);
     } else {
         var relo = location.href;
         location.href = relo;
