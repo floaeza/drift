@@ -13,7 +13,6 @@ class Locations extends Database {
         $this->Device = $MacAddress;
         $this->Module = $CurrentModule;
         $this->Function = '';
-        $this->connect();
     }
     
     function getLocationById($LocationId) {
