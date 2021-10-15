@@ -19,7 +19,7 @@ function Blue(){
     }
 }
 function Green(){
-    GoPage('TV.php', 1, 'Tv');
+    GoPage('tv.php', 1, 'Tv');
     //alert(gSTB.GetDeviceVendor());
     //alert(window.location);
     // //alert(JSON.stringify(Browser.GetStats()));
