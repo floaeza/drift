@@ -10,7 +10,22 @@ var TimeRunning       = 0,
     TimerDate         = 0,
     Offset            = 0;
 
+var MonthArr = ['Jan','Feb','Mar',
+    'April','May','June',
+    'July','Aug','Sep',
+    'Oct','Nov','Dec'];
 
+var DayArr = ['Sun','Mon','Tues','Wed','Thurs','Fri','Sat'];
+
+var NewDate = new Date(),
+    date = '',
+    month = '',
+    year = '',
+    day = '',
+    hour = '',
+    min = '',
+    sec = '',
+    ampm = '';
 
 function SetDate() {
     TimeRunning++;
