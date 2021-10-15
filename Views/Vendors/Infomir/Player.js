@@ -422,8 +422,8 @@ function GetWindowFullSize(){
 //        Debug(WindowMaxWidth);
 //        Debug(WindowMaxHeight);
 
-    WindowMaxWidth   = 3840;
-    WindowMaxHeight  = 2160;
+    WindowMaxWidth   = window.screen.width;
+    WindowMaxHeight  = window.screen.height;
 
     Debug(WindowMaxWidth);
     Debug(WindowMaxHeight);
@@ -431,8 +431,8 @@ function GetWindowFullSize(){
 
 function GetWindowMinSize(){
 
-    WindowMinWidth   = (WindowMaxWidth*TvPercentageSize)/100;
-    WindowMinHeight  = (WindowMaxHeight*TvPercentageSize)/100;
+    WindowMinWidth   = (WindowMaxWidth*50)/100;
+    WindowMinHeight  = (WindowMaxHeight*50)/100;
 }
 
 /* *****************************************************************************
@@ -459,13 +459,13 @@ function MinimizeTV(){
     //gSTB.SetViewport(WindowMinWidth, WindowMinHeight, 15, 60);
     //player.setViewport({x: 15, y: 60, width: WindowMinWidth, height: WindowMinHeight});
 
-//        if(window.screen.width === 1280){
-//            gSTB.SetViewport(WindowMinWidth, WindowMinHeight, 40, 80);
-//        } else {
-//            gSTB.SetViewport(WindowMinWidth, WindowMinHeight, 15, 60);
-//        }
+       if(window.screen.width === 1280){
+           gSTB.SetViewport(WindowMinWidth, WindowMinHeight, 40, 80);
+       } else {
+           gSTB.SetViewport(WindowMinWidth, WindowMinHeight, 15, 60);
+       }
 
-    player.setViewport({x: TvPositionLeft, y: TvPositionTop, width: WindowMinWidth, height: WindowMinHeight});
+    player.setViewport({x: ((20 * WindowMaxWidth) / 100), y: ((25 * WindowMinHeight) / 100), width: WindowMinWidth, height: WindowMinHeight});
 }
 
 /* *****************************************************************************
