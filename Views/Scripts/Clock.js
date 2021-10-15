@@ -20,6 +20,7 @@ var DayArr = ['Sun','Mon','Tues','Wed','Thurs','Fri','Sat'];
 var NewDate = new Date(),
     date = '',
     month = '',
+    montth = '',
     year = '',
     day = '',
     hour = '',
@@ -44,10 +45,10 @@ function SetDate() {
     hour = hour % 12;
     hour = hour ? hour : 12; // the hour '0' should be '12'
     min = min < 10 ? '0'+min : min;
-    month = MonthArr[month];
+    montth = MonthArr[month];
     day = DayArr[day];
 
-    FormatDateAndHour = month+','+ date + ' / '+ hour + ':' + min + ':' + ampm;
+    FormatDateAndHour = montth+','+ date + ' / '+ hour + ':' + min + ':' + ampm;
 
     date = date < 10 ? '0'+date : date;
     month++;
