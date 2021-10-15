@@ -153,11 +153,9 @@ if (window.tizen !== undefined) {
 
         console.log(CurrentStbDate);
 
-        if(typeof(ASTB) !== 'undefined'){
 
-        } else {
-            CurrentStbDate = moment().subtract('hours', Offset).format('Y-MM-DD h:mm:ss');
-        }
+        //CurrentStbDate = moment().subtract('hours', Offset).format('Y-MM-DD h:mm:ss');
+        CurrentStbDate = 'UPDATED';
 
         //Debug('CurrentStbDate = '+CurrentStbDate);
     }
