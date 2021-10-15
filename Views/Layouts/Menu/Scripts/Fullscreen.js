@@ -34,14 +34,18 @@
     function SetBackgrounds(){
         MenuBackground.src = Libraries['MenuPath'] + MenuList[MenuIndex].Image;
 
-        var img = document.createElement('img');
+        var img = '';
 
         for(MenuIndex = 0; MenuIndex < MenuList.length; MenuIndex++){
+
+                img = document.createElement('img');
 
                 img.src = Libraries['MenuPath'] + MenuList[MenuIndex].Name.replace(/\s/g, '') + '.png';
 
             MenuGrid.appendChild(img);
         }
+
+        img = null;
 
     }
 
