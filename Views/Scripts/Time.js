@@ -14,9 +14,7 @@
 
     var cade = null;
 
-
     /* Valida la diferencia de horas en Samsung */
-
     if (window.tizen !== undefined) {
         var now = new tizen.TZDate(),
             TvHour = now.getHours();
@@ -63,30 +61,18 @@
             ASTB.DeleteAllHistory();
         }
 
-        ////Debug('################################################ FormatDateAndHour '+FormatDateAndHour);
-        ////Debug('################################################ CurrentStbDate '+CurrentStbDate);
-
         if(!Device){
-            //Debug('------------------------------------------------ Device::if');
-            ////Debug('################################################ !Device ');
             if (Device.Client === 'CHL') {
-                //Debug("+++++++++++++++++++++++++++++++++++++++");
                 FormatHour = moment().subtract(Offset, 'hours').format('h:mm A');
             } else {
                 FormatHour = moment().subtract(Offset, 'hours').format('MMMM Do h:mm a');
-                ////Debug('------------------------------------------------ 2');
             }
         } else {
             FormatHour = moment().subtract(Offset, 'hours').format('h:mm A');
-            //Debug('------------------------------------------------ Device::else');
         }
-
-        //Debug('############################################################### FormatHour1 === '+FormatHour);
-
 
         if(CurrentModule === 'Tv'){
 
-            //Debug('############################################################### CurrentModule === '+CurrentModule);
             if(typeof (ActiveInfoContainer) !== 'undefined' && ActiveInfoContainer === true){
                 InfoContainerNodes[7].textContent  = FormatHour;
             } else if(typeof (ActiveEpgContainer) !== 'undefined' && ActiveEpgContainer === true){
@@ -94,8 +80,6 @@
             } else if(typeof (RecordingPanel) !== 'undefined' && RecordingPanel === true){
                 PvrDate.textContent = FormatHour;
             }
-
-            //Debug('############################################################### FormatHour2 === '+FormatHour);
 
             cade = FormatHour.split(":");
 
@@ -136,9 +120,9 @@
 
             if(Executing === false){
                 if(CurrentModule !== 'Tv') {
-                    //UpdateInfoDevice();
+                    UpdateInfoDevice();
                 } else {
-                    //UpdateQuickInfoDevice();
+                    UpdateQuickInfoDevice();
                 }
             }
         }

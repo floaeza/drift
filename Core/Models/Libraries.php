@@ -98,6 +98,7 @@ $JsonLibraries['EpgDaysPath']   = $Libraries['ControllersPath'].'Epg/'.$Client;
     $Libraries['Settings']          = $Libraries['ScriptsPath'].'Settings.js';
     $Libraries['Tv']                = $Libraries['ScriptsPath'].'Tv.js';
     $Libraries['TimeScript']        = $Libraries['ScriptsPath'].'Time.js';
+    $Libraries['ClockScript']       = $Libraries['ScriptsPath'].'Clock.js';
 
     //$Libraries['AppControl']     = $Libraries['ScriptsPath'].'AppControl.js';
     
@@ -112,7 +113,7 @@ $JsonLibraries['EpgDaysPath']   = $Libraries['ControllersPath'].'Epg/'.$Client;
     
     /* Models */
     $Libraries['Time']              = $Libraries['ModelsPath'].'Time.php';
-    
+
     /* Controladores*/
     $Libraries['Index']             = $Libraries['ControllersPath'].'Index.php';
 
