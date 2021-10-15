@@ -34,7 +34,8 @@ var CheckInfo = 0;
     function KeyHandler(e) {
         PressedKey = e.which;
         e.preventDefault();
-
+        //alert(PressedKey);
+        
         if(typeof(gSTB) !== 'undefined' && PressedKey === 9){
             ShiftKey = e.shiftKey;
             if(ShiftKey === true){
@@ -45,8 +46,10 @@ var CheckInfo = 0;
         //Debug('>> PressedKey: '+PressedKey);
         if(Clicks <= MaxClicks) {
             //alert(REMOTE_RED);
+            //alert(PressedKey);
             switch (PressedKey) {
                 case REMOTE_RED:
+                    
                     Red();
                 break;
 
@@ -275,22 +278,25 @@ var CheckInfo = 0;
                     }
                 break;
                 
-                case REMOTE_FAST_BACKWARD:
-                    if(CurrentModule === 'Tv'){
-                        // AGREGAR OPCION PARA ADELANTAR CAPITULOS
-                        // CUANDO SE ESTE REPRODUCIENDO UNA SERIE DEL PVR
-                    }
-                break;
+                // case REMOTE_FAST_BACKWARD:
+                //     if(CurrentModule === 'Tv'){
+                //         // AGREGAR OPCION PARA ADELANTAR CAPITULOS
+                //         // CUANDO SE ESTE REPRODUCIENDO UNA SERIE DEL PVR
+                        
+                //     }
+                // break;
             
-                case REMOTE_FAST_FORWARD:
-                    // AGREGAR OPCION PARA ADELANTAR CAPITULOS
-                    // CUANDO SE ESTE REPRODUCIENDO UNA SERIE DEL PVR
+                // case REMOTE_FAST_FORWARD:
+                //     // AGREGAR OPCION PARA ADELANTAR CAPITULOS
+                //     // CUANDO SE ESTE REPRODUCIENDO UNA SERIE DEL PVR
                     
-                break;
+                    
+                // break;
                 
                 
         /********** NUMEROS **********/        
                 
+            
                 case 48: // 0
                 case 49: // 1
                 case 50: // 2
@@ -304,7 +310,7 @@ var CheckInfo = 0;
                     if(CurrentModule === 'Tv'){
                         NumericChange(PressedKey - 48);
                     }
-                break;
+                    break;
                 
                 case 96: // 0
                 case 97: // 1

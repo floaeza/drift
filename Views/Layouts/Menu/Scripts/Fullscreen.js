@@ -6,6 +6,7 @@
     var MenuDate        = document.getElementById('MenuDate'),
         MenuHour        = document.getElementById('MenuHour'),
         MenuBackground  = document.getElementById('MenuBackgrounds'),
+        MenuGrid        = document.getElementById('MenuGrid'),
         ImagesUrl       = ServerSource+'Media/Menu/',
         FormatDate      = '',
         FormatHour      = '',
@@ -32,6 +33,15 @@
 
     function SetBackgrounds(){
         MenuBackground.src = Libraries['MenuPath'] + MenuList[MenuIndex].Image;
+
+        var img = document.createElement('img');
+
+        for(MenuIndex = 0; MenuIndex < MenuList.length; IndexM++){
+
+                img.src = Libraries['MenuPath'] + MenuList[MenuIndex].Name.replace(/\s/g, '') + '.png';
+
+            MenuGrid.appendChild(img);
+        }
 
     }
 
