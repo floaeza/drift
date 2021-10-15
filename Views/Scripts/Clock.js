@@ -27,6 +27,7 @@ var NewDate = new Date(),
     sec = '',
     ampm = '';
 
+
 function SetDate() {
     TimeRunning++;
     
