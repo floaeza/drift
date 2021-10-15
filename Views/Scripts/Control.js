@@ -35,7 +35,6 @@ var CheckInfo = 0;
         PressedKey = e.which;
         e.preventDefault();
         
-        alert(PressedKey);
         
         if(typeof(gSTB) !== 'undefined' && PressedKey === 9){
             ShiftKey = e.shiftKey;
@@ -303,7 +302,7 @@ var CheckInfo = 0;
                 case 55: // 7
                 case 56: // 8
                 case 57: // 9
-                alert();
+                    alert();
                     if(CurrentModule === 'Tv'){
                         NumericChange(PressedKey - 48);
                     }
