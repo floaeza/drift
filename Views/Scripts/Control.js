@@ -293,14 +293,65 @@ var CheckInfo = 0;
         /********** NUMEROS **********/        
                 
                 case 48: // 0
+                    alert();
+                    if(CurrentModule === 'Tv'){
+                        NumericChange(PressedKey - 48);
+                    }
+                    break;
                 case 49: // 1
+<<<<<<< HEAD
                 case 50: // 2             
                 case 51: // 3
                 case 52: // 4
+=======
+                    alert();
+                    if(CurrentModule === 'Tv'){
+                        NumericChange(PressedKey - 48);
+                    }
+                    break;
+                case 50: // 2
+                    alert();
+                    if(CurrentModule === 'Tv'){
+                        NumericChange(PressedKey - 48);
+                    }
+                    break;                
+                case 51: // 3
+                    alert();
+                    if(CurrentModule === 'Tv'){
+                        NumericChange(PressedKey - 48);
+                    }
+                    break;
+                case 52: // 4 
+                    alert();
+                    if(CurrentModule === 'Tv'){
+                        NumericChange(PressedKey - 48);
+                    }
+                    break;
+>>>>>>> dea539034cfdd02d87fc8b84014d57d007a17ca3
                 case 53: // 5
+                    alert();
+                    if(CurrentModule === 'Tv'){
+                        NumericChange(PressedKey - 48);
+                    }
+                    break;
                 case 54: // 6
+                    alert();
+                    if(CurrentModule === 'Tv'){
+                        NumericChange(PressedKey - 48);
+                    }
+                    break;
                 case 55: // 7
+                    alert();
+                    if(CurrentModule === 'Tv'){
+                        NumericChange(PressedKey - 48);
+                    }
+                    break;
                 case 56: // 8
+                    alert();
+                    if(CurrentModule === 'Tv'){
+                        NumericChange(PressedKey - 48);
+                    }
+                    break;
                 case 57: // 9
                     alert();
                     if(CurrentModule === 'Tv'){
