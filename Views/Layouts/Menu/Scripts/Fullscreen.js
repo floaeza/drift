@@ -36,7 +36,7 @@
 
         var img = document.createElement('img');
 
-        for(MenuIndex = 0; MenuIndex < MenuList.length; IndexM++){
+        for(MenuIndex = 0; MenuIndex < MenuList.length; MenuIndex++){
 
                 img.src = Libraries['MenuPath'] + MenuList[MenuIndex].Name.replace(/\s/g, '') + '.png';
 
