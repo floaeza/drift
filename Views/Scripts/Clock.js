@@ -56,7 +56,7 @@ function SetDate() {
 
     CurrentStbDate = year+'-'+month+'-'+date+' '+hour + ':' + min + ':' + sec;
 
-    
+
     if(!Device){
         //Debug('------------------------------------------------ Device::if');
         ////Debug('################################################ !Device ');
@@ -99,7 +99,7 @@ function SetDate() {
 
     } else if(CurrentModule === 'Menu' || CurrentModule === 'Movies'){
 
-        MenuDate.textContent = month+' '+ date + ', '+ year;
+        MenuDate.textContent = montth +' '+ date + ', '+ year;
         MenuHour.textContent = FormatHour;
     }
 
