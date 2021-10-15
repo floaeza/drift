@@ -65,7 +65,11 @@
             // Asigna carpetas y archivos a utilizar
             $Header->set('GeneralStyles', $Libraries['GeneralStyle']);
             $Header->set('Jquery', $Libraries['Jquery']);
-            $Header->set('Moment', $Libraries['Moment']);
+            if($Vendor === 'Amino'){
+                $Header->set('Moment', $Libraries['Void']);
+            } else {
+                $Header->set('Moment', $Libraries['Moment']);
+            }
             $Header->set('FontAwesome', $Libraries['FontAwesome']);
 
             // Libreria LG
@@ -107,7 +111,13 @@
 
             // Librerias javascript generales
             //$Footer->set('TvScript', $Libraries['Void']);
-            $Footer->set('Time', $Libraries['TimeScript']);
+
+            if($Vendor === 'Amino' || $Vendor === 'Generic'){
+                $Footer->set('Time', $Libraries['ClockScript']);
+            } else {
+                $Footer->set('Time', $Libraries['TimeScript']);
+            }
+
             $Footer->set('Settings', $Libraries['Settings']);
 
             // Libreria para maniputal el template asignado
