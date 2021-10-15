@@ -137,10 +137,10 @@
         case 'UpdateChannel':
             $infoChannel = array(
                 'src' => $multicast,
-                'puerto' => $puerto,    
+                'puerto' => $puerto,  
+                'numero_canal' => $numero_canal,  
                 ); 
             $infoChannelNumber = array(
-                'numero_canal' => $numero_canal,
                 'canal_activo' => $status_canal,    
                 );
             $infoChannelName = array(
