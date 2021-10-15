@@ -151,7 +151,13 @@ if (window.tizen !== undefined) {
     function SetData() {
         AminoDevice();
 
-        CurrentStbDate = moment().subtract('hours', Offset).format('Y-MM-DD h:mm:ss');
+        console.log(CurrentStbDate);
+
+        if(typeof(ASTB) !== 'undefined'){
+
+        } else {
+            CurrentStbDate = moment().subtract('hours', Offset).format('Y-MM-DD h:mm:ss');
+        }
 
         //Debug('CurrentStbDate = '+CurrentStbDate);
     }
