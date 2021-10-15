@@ -168,8 +168,6 @@ function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition){
 
     // Actualiza la fecha inicio de la reproduccion del canal */
     StartDateChannel = new Date();
-    
-    
 }
 
 /* *****************************************************************************
