@@ -87,6 +87,8 @@ if (window.tizen !== undefined) {
         if(typeof(ASTB) !== 'undefined'){
             MacAddress = ASTB.GetMacAddress();
             Debug      = ASTB.DebugString;
+
+            Debug('~~~~~~~~~~~~~~~~~~~~~~~~~~~~ A M I N O   D E V I C E !!!!')
         } else {
             KamaiDevice();
         }
