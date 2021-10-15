@@ -56,6 +56,7 @@ function SetDate() {
 
     CurrentStbDate = year+'-'+month+'-'+date+' '+hour + ':' + min + ':' + sec;
 
+    
     if(!Device){
         //Debug('------------------------------------------------ Device::if');
         ////Debug('################################################ !Device ');
