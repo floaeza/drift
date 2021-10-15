@@ -117,7 +117,7 @@
             } else {
                 $Footer->set('Time', $Libraries['TimeScript']);
             }
-            
+
             $Footer->set('Settings', $Libraries['Settings']);
 
             // Libreria para maniputal el template asignado

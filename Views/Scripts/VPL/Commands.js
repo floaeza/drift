@@ -19,7 +19,7 @@ function Blue(){
     }
 }
 function Green(){
-    alert(gSTB.GetDeviceVendor());
+    //alert(gSTB.GetDeviceVendor());
     //alert(window.location);
     // //alert(JSON.stringify(Browser.GetStats()));
     // var sBrowser, sUsrAg = navigator.userAgent;
