@@ -65,7 +65,7 @@
             // Asigna carpetas y archivos a utilizar
             $Header->set('GeneralStyles', $Libraries['GeneralStyle']);
             $Header->set('Jquery', $Libraries['Jquery']);
-            if($Vendor === 'Amino'){
+            if($Vendor === 'Amino' || $Vendor === 'Generic'){
                 $Header->set('Moment', $Libraries['Void']);
             } else {
                 $Header->set('Moment', $Libraries['Moment']);
