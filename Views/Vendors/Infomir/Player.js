@@ -421,9 +421,10 @@ function GetWindowFullSize(){
 //
 //        Debug(WindowMaxWidth);
 //        Debug(WindowMaxHeight);
+    var display = stbDisplayManager.list[0];
 
-    WindowMaxWidth   = window.screen.width;
-    WindowMaxHeight  = window.screen.height;
+    WindowMaxWidth   = display.width;
+    WindowMaxHeight  = display.height;
 
     Debug(WindowMaxWidth);
     Debug(WindowMaxHeight);
@@ -431,8 +432,8 @@ function GetWindowFullSize(){
 
 function GetWindowMinSize(){
 
-    WindowMinWidth   = (WindowMaxWidth*50)/100;
-    WindowMinHeight  = (WindowMaxHeight*50)/100;
+    WindowMinWidth   = (WindowMaxWidth*35)/100;
+    WindowMinHeight  = (WindowMaxHeight*35)/100;
 }
 
 /* *****************************************************************************
@@ -459,13 +460,13 @@ function MinimizeTV(){
     //gSTB.SetViewport(WindowMinWidth, WindowMinHeight, 15, 60);
     //player.setViewport({x: 15, y: 60, width: WindowMinWidth, height: WindowMinHeight});
 
-       if(window.screen.width === 1280){
-           gSTB.SetViewport(WindowMinWidth, WindowMinHeight, 40, 80);
-       } else {
-           gSTB.SetViewport(WindowMinWidth, WindowMinHeight, 15, 60);
-       }
+    //    if(window.screen.width === 1280){
+    //        gSTB.SetViewport(WindowMinWidth, WindowMinHeight, 40, 80);
+    //    } else {
+    //        gSTB.SetViewport(WindowMinWidth, WindowMinHeight, 15, 60);
+    //    }
 
-    player.setViewport({x: ((20 * WindowMaxWidth) / 100), y: ((25 * WindowMinHeight) / 100), width: WindowMinWidth, height: WindowMinHeight});
+    player.setViewport({x: ((12 * WindowMaxWidth) / 100), y: ((26 * WindowMinHeight) / 100), width: WindowMinWidth, height: WindowMinHeight});
 }
 
 /* *****************************************************************************
