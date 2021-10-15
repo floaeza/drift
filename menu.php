@@ -112,7 +112,7 @@
             // Librerias javascript generales
             //$Footer->set('TvScript', $Libraries['Void']);
 
-            if($Vendor === 'Amino'){
+            if($Vendor === 'Amino' || $Vendor === 'Generic'){
                 $Footer->set('Time', $Libraries['ClockScript']);
             } else {
                 $Footer->set('Time', $Libraries['TimeScript']);
