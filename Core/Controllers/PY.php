@@ -233,6 +233,7 @@
                         'INDC' => $PreChannelRow['indicativo'],
                         'LOGO' => $PreChannelRow['logo'],
                         'IDCH' => $PreChannelRow['id_canal'],
+                        'CHNL' => $PreChannelRow['numero_canal'],
                         ));
                     endforeach;
                     echo json_encode($ArrayEPGInfo);
