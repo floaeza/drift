@@ -42,12 +42,14 @@ var CheckInfo = 0;
                 PressedKey = 7;
             }
         }
-        //alert(PressedKey);
+        
         //Debug('>> PressedKey: '+PressedKey);
         if(Clicks <= MaxClicks) {
             //alert(REMOTE_RED);
+            alert(PressedKey);
             switch (PressedKey) {
                 case REMOTE_RED:
+                    
                     Red();
                 break;
 
