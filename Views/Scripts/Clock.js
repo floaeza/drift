@@ -104,6 +104,7 @@ function SetDate() {
     //Debug('-------------------------------- FormatDateAndHour: '+FormatDateAndHour);
 }
 
+
 /*******************************************************************************
  * Activa timer para que se ejecute cada minuto (60000 milisegundos = 60 segundos)
  *******************************************************************************/
