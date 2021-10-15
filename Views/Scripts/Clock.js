@@ -24,6 +24,7 @@ var NewDate = new Date(),
     year = '',
     day = '',
     hour = '',
+    hourt = '',
     min = '',
     sec = '',
     ampm = '';
@@ -37,12 +38,12 @@ function SetDate() {
     month = NewDate.getMonth();
     year  = NewDate.getFullYear();
     day   = NewDate.getDay();
-    hour  = NewDate.getHours();
+    hourt  = NewDate.getHours();
     min   = NewDate.getMinutes();
     sec   = NewDate.getSeconds();
 
-    ampm = hour >= 12 ? ' PM' : ' AM';
-    hour = hour % 12;
+    ampm = hourt >= 12 ? ' PM' : ' AM';
+    hour = hourt % 12;
     hour = hour ? hour : 12; // the hour '0' should be '12'
     min = min < 10 ? '0'+min : min;
     montth = MonthArr[month];
@@ -54,7 +55,9 @@ function SetDate() {
     month++;
     month = month < 10 ? '0'+month : month;
 
-    CurrentStbDate = year+'-'+month+'-'+date+' '+hour + ':' + min + ':' + sec;
+    hour = hour < 10 ? '0'+hour : hour;
+
+    CurrentStbDate = year+'-'+month+'-'+date+' '+hourt + ':' + min + ':' + sec;
 
 
     if(!Device){
