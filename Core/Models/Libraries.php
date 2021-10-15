@@ -6,14 +6,15 @@ $GetJson    = !empty($_POST['GetJson']) ? $_POST['GetJson'] : false;
 $Libraries  = array();
 $JsonLibraries = array();
 
-if($GetJson == true){
 
+
+
+if($GetJson == true){
     require_once 'Database.php';
     require_once '../DataAccess/Config.php';
     $ConfigData  = new Config('system','Libraries');
     $Client = $ConfigData->getConfigByName('Identifier').'/';
     $EpgLogo = $ConfigData->getConfigByName('EpgLogo');
-
     $JsonLibraries['EpgLogo'] = '/BBINCO/TV/Media/Logos/'.$Client.$EpgLogo;
 }
 
