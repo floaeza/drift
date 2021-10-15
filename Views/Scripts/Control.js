@@ -294,9 +294,9 @@ var CheckInfo = 0;
                 
                 case 48: // 0
                 case 49: // 1
-                case 50: // 2
+                case 50: // 2             
                 case 51: // 3
-                case 52: // 4 
+                case 52: // 4
                 case 53: // 5
                 case 54: // 6
                 case 55: // 7
@@ -306,7 +306,7 @@ var CheckInfo = 0;
                     if(CurrentModule === 'Tv'){
                         NumericChange(PressedKey - 48);
                     }
-                break;
+                    break;
                 
                 case 96: // 0
                 case 97: // 1
