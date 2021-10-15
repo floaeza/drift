@@ -34,7 +34,7 @@ var CheckInfo = 0;
     function KeyHandler(e) {
         PressedKey = e.which;
         e.preventDefault();
-        
+        alert(PressedKey);
         
         if(typeof(gSTB) !== 'undefined' && PressedKey === 9){
             ShiftKey = e.shiftKey;
@@ -42,7 +42,7 @@ var CheckInfo = 0;
                 PressedKey = 7;
             }
         }
-        
+        alert(PressedKey);
         //Debug('>> PressedKey: '+PressedKey);
         if(Clicks <= MaxClicks) {
             //alert(REMOTE_RED);
