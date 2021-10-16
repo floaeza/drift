@@ -1897,7 +1897,7 @@ function AddSerie(){
 
 function GetProgramsSerie(){
     GetSeries();
-    Debug('::::::::::::::::::::::::: GetProgramsSerie::: ');
+    
     var IndexS = 0,
         IndexP = 0,
         Position = 0;
@@ -1921,7 +1921,7 @@ function GetProgramsSerie(){
 
                         REC_CHNL_POS = Position;
                         REC_PROG_POS = IndexP;
-
+                        Debug('::::::::::::::::::::::::: GetProgramsSerie::: ');
                         CheckRecordings();
                     }
                 }
