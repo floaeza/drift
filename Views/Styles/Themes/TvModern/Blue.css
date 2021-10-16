@@ -59,10 +59,12 @@ div#EpgDescription {
 /********** BACKGROUNDS ***********/
 
 div.BackgroundInfo {
-    /*background-image: url('Blue/info.png');*/
-    background-image: linear-gradient(135deg, #45606b 0, #497789 25%, #27657b 50%, #00536e 75%, #004462 100%);
+    background-image: url('Blue/info.png');
+    /*background-image: linear-gradient(135deg, #45606b 0, #497789 25%, #27657b 50%, #00536e 75%, #004462 100%);*/
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    border-radius: 10px;
+    opacity: 0.98;
 }
 
 div#PvrContainer,
