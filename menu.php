@@ -50,7 +50,7 @@
         // Obtiene el template y el vendor para modificar el modulo a su conveniencia
        
         $ModuleInfo = $ModulesData->getModuleTemplate($ModuleId);
-
+        $ModuleTV = $ModulesData->getModuleTemplate(1);
         // Carga las librerias javascript de acuerdo al vendor
         $Vendor = $DeviceData->getVendor($MacAddress);
         $VendorFolder = $Libraries['VendorsPath'].$Vendor;
@@ -107,7 +107,7 @@
         echo $MenuContent->output();   
 
         /** PIE DE PAGINA **/
-        $Footer = new Templates($Libraries['LayoutsPhpPath'].'FooterMenu.tpl');
+        $Footer = new Templates($Libraries['LayoutsPhpPath'].'Footer.tpl');
 
             // Librerias javascript generales
             //$Footer->set('TvScript', $Libraries['Void']);
@@ -119,10 +119,11 @@
             }
 
             $Footer->set('Settings', $Libraries['Settings']);
-
+            
             // Libreria para maniputal el template asignado
             $Footer->set('LayoutScript', $Libraries['MenuScripts'].$ModuleInfo['opcion_template'].'.js' );
-            //$Footer->set('LayoutRecorderScript', $Libraries['Void']);
+            $Footer->set('LayoutRecorderScript', $Libraries['TvScripts'].$ModuleTV['opcion_template'].$Libraries['Recorder'].'.js' );
+
             
             // Librerias javascript por marca
             //$Footer->set('Player', $VendorFolder.$Libraries['Player']);

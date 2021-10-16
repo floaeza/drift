@@ -129,6 +129,7 @@ window.stbEvent = {
  *******************************************************************************/
 
 function UpdateDiskInfoInformir(){
+    Debug("-------> UPDATE DISK INFOMIR");
     storageInfo = JSON.parse(gSTB.GetStorageInfo('{}'));
     USB = storageInfo.result || [];
     $.ajax({
@@ -383,11 +384,11 @@ function UpdateProgramDeleteInformir(ProgramId, OperationId, AssetId){
  if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
     
     HandlerPvrInformir();
-    
+    Debug("------>DESPUES");
     UpdateDiskInfoInformir();
-
+    Debug("------>DESPUES UPDATE");
     GetProgramsSerie();
-
+    Debug("------>DESPUES GET PROGRAM");
     setInterval(HandlerPvrInformir,60000);
 }
 

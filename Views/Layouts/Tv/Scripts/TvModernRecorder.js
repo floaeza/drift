@@ -1896,9 +1896,8 @@ function AddSerie(){
  *******************************************************************************/
 
 function GetProgramsSerie(){
-    //Debug('::::::::::::::::::::::::: GetProgramsSerie::: ');
     GetSeries();
-
+    Debug('::::::::::::::::::::::::: GetProgramsSerie::: ');
     var IndexS = 0,
         IndexP = 0,
         Position = 0;
@@ -1929,6 +1928,7 @@ function GetProgramsSerie(){
             }
         }
     }
+    Debug("-------> GetProgramsSerie");
 }
 
 /*******************************************************************************
