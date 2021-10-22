@@ -1,13 +1,19 @@
+// @ts-nocheck
 
 function Red(){
     //alert(PressedKey);
-    location.reload(true);
+    //location.reload(true);
 }
 
 function Blue(){
     // var Up = 0;
     // Up = ASTB.Upgrade('http://10.0.3.10/bbinco_28_x4x_611.mcfs');
     // alert(Up);
+    if(typeof(ASTB) !== 'undefined'){
+        ASTB.Reboot();
+    } else if(ypeof(ENTONE) !== 'undefined'){
+        ENTONE.stb.reboot();
+    }
 }
 
 function Green(){
