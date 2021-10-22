@@ -11,7 +11,7 @@ require_once './../DataAccess/Packages.php';
 
     $CurrentController = 'DeviceDashboard';
 
-    $Option            = !empty($_POST['Option']) ? $_POST['Option'] : 'RebootDevices';
+    $Option            = !empty($_POST['Option']) ? $_POST['Option'] : 'DeviceList';
     $MacAddress        = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '00:02:02:6c:64:1e';
     $DeviceArray       = !empty($_POST['DeviceArray']) ? $_POST['DeviceArray'] : '';
     $RebootStatus      = !empty($_POST['RebootStatus']) ? $_POST['RebootStatus'] : '0';
@@ -61,6 +61,7 @@ switch ($Option){
                     array_push($DeviceList, $Row['id_dispositivo']);
                     array_push($DeviceList, $Row['codigo_locacion']);
                     array_push($DeviceList, $Row['mac_address']);
+                    array_push($DeviceList, $Row['ubicacion_dispositivo']);
                     array_push($DeviceList, $Row['modelo']);
                     array_push($DeviceList, $Row['ultimo_canal']);
 
@@ -85,10 +86,12 @@ switch ($Option){
                     array_push($DeviceInfoList, $Row['version_software']);
                     array_push($DeviceInfoList, $Row['fecha_activacion']);
                     array_push($DeviceInfoList, $Row['marca']);
+                    
                 }
             endforeach;
 
-            $Response = array('DeviceList'=>array_chunk($DeviceList, 9), 'DeviceInfoList'=>array_chunk($DeviceInfoList, 3));
+            $Response = array('DeviceList'=>array_chunk($DeviceList, 10), 'DeviceInfoList'=>array_chunk($DeviceInfoList, 3));
+           
         break;
 
         case 'UpdateRebootDevice':

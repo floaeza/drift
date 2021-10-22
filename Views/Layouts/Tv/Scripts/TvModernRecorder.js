@@ -2349,7 +2349,7 @@ function CheckRecordings() {
                                     ShowRecorderMessage('Reached the limit of recordings at the same time');
                                 }
                             } else {
-                                if(Date.now()/1000 < ProgramUtcEndDate+ 400){
+                                if(Date.now()/1000 < ProgramUtcEndDate- 400){
                                     if(Date.now()/1000 < ProgramUtcStartDate+100){
                                        AddRecord(); 
                                     }else{
@@ -2362,8 +2362,8 @@ function CheckRecordings() {
                             }
                         }
                     } else {
-                        if(Date.now()/1000 < ProgramUtcEndDate+400){
-                            if(Date.now()/1000 < ProgramUtcStartDate+100){
+                        if(Date.now()/1000 < ProgramUtcEndDate-400){
+                            if(Date.now()/1000 < ProgramUtcStartDate-100){
                                AddRecord(); 
                             }else{
                                 ProgramUtcStartDate = (Date.now()/1000) +100;

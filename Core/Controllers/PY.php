@@ -97,8 +97,7 @@
                     'STTN' => 'CONTENT',
                     'NAME' => $PreChannelRow['nombre_modulo'],
                     'INDC' => $PreChannelRow['descripcion_modulo'],
-                    'LOGO' => $PreChannelRow['nombre_icono']
-                                      
+                    'LOGO' => $PreChannelRow['nombre_icono']                         
                     ));
                 endforeach;
                 echo json_encode($ArrayEPGInfo);

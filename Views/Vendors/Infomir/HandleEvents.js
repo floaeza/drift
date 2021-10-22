@@ -389,7 +389,7 @@ function UpdateProgramDeleteInformir(ProgramId, OperationId, AssetId){
     Debug("------>DESPUES UPDATE");
     GetProgramsSerie();
     Debug("------>DESPUES GET PROGRAM");
-    setInterval(HandlerPvrInformir,60000);
+    setInterval(HandlerPvrInformir,30000);
 }
 
 function HandlerPvrInformir(){
