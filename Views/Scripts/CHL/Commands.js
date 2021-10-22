@@ -3,6 +3,7 @@
 function Red(){
     //alert(PressedKey);
     //location.reload(true);
+    alert('test');
 }
 
 function Blue(){
