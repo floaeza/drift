@@ -12,7 +12,6 @@
         Offset            = 0,
         xhr;
 
-    var cade = null;
 
     /* Valida la diferencia de horas en Samsung */
     if (window.tizen !== undefined) {
@@ -77,13 +76,6 @@
                 PvrDate.textContent = FormatHour;
             }
 
-            cade = FormatHour.split(":");
-
-            if(cade[1] == '01 am' || cade[1] == '01 pm' || cade[1] == '31 am' || cade[1] == '31 pm'){
-                clearInterval(TimerDate);
-                TimerDate = setInterval(SetDate, 50000);
-                cade = null;
-            }
 
 
             if(FormatHour === '12:01 AM'){
@@ -130,6 +122,7 @@
             }
         }
         //Debug('-------------------------------- FormatDateAndHour: '+FormatDateAndHour);
+        setTimeout(SetDate, 50000);
     }
 
 /*******************************************************************************
@@ -140,5 +133,5 @@
     
     /* Agrega intervalo 50000 = 50 segundos*/
     
-    TimerDate = setInterval(SetDate, 50000);
+    setTimeout(SetDate, 50000);
 
