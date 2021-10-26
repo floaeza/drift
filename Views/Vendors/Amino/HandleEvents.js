@@ -467,7 +467,7 @@ function HandlerPvr(){
 
     //Debug('-------> HandlerPvr');
 
-    setTimeout(HandlerPvr,60000);
+    setTimeout(HandlerPvr,50000);
 }
 
 
