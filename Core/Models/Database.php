@@ -177,7 +177,6 @@ class Database {
                     else{
                         array_push($this->result,'database error');
                         $this->setLog('select');
-                        
                         return false;
                     }
       	}
@@ -513,7 +512,7 @@ public function selectFromOtherSelect($tabla, $rows = '*', $select1, $select2, $
     }
     
     public function setLog($operation){
-        //$Row = PHP_EOL . date("l jS \of F Y h:i:s A"). ' = ' . $this->Device . ' ~ '.$this->ClassFile. ' - '.$this->Function.' & '.$operation.' * '.$this->Module.' # '.$this->conexion->error.' |';
-        //file_put_contents($this->DirectoryLog, $Row, FILE_APPEND);
+        // $Row = PHP_EOL . date("l jS \of F Y h:i:s A"). ' = ' . $this->Device . ' ~ '.$this->ClassFile. ' - '.$this->Function.' & '.$operation.' * '.$this->Module.' # '.$this->conexion->error.' |';
+        // file_put_contents($this->DirectoryLog, $Row, FILE_APPEND);
     }
 }

@@ -294,7 +294,7 @@ function OpenPvr(){
 
         GetWeatherPvr();
 
-        PvrTimer = setTimeout(ClosePvr,TimeoutPvr);
+        setTimeout(ClosePvr,TimeoutPvr);
 
         MinimizeTV();
     }
@@ -538,12 +538,14 @@ function SetRecordings(Direction){
         IndexProgram = 0;
 
     var IndexRecorded = 0;
-
+    
     if(ListTypeFocus === 'all'){
-
+        Debug('IF ALL');
         if(IndexRecordedFocus === -1){
             IndexRecorded = -1;
+            Debug('IndexRecordedFocus  ==  -1   ' + RecordingsList.length );
         } else {
+            Debug('IndexRecordedFocus  !!==  -1');
             IndexRecorded = IndexRecordedFocus;
 
             if (Direction === 'up'){
@@ -563,12 +565,14 @@ function SetRecordings(Direction){
             if(Row === 1){
                 FirstIndexRecorded = IndexRecorded;
             }
-
+        
             if(IndexRecorded < RecordingsList.length){
+                Debug('IndexRecorded < RecordingsList.length');
                 if(RecordingsList[IndexRecorded].length > 2){
                     Icon = '<i class="fa fa-folder-open"></i>';
                     Title = 'serie';
                     PvrListNodes[Row].innerHTML = '\u00A0'+ Icon + ' '+ RecordingsList[IndexRecorded][IndexProgram];
+                    
                 } else {
                     Icon = '<i class="fa fa-file"></i>';
                     Title = 'rec';
@@ -1762,7 +1766,7 @@ function PvrLeft(){
     }
 
     clearTimeout(PvrTimer);
-    PvrTimer = setTimeout(ClosePvr,TimeoutPvr);
+    setTimeout(ClosePvr,TimeoutPvr);
 }
 
 function PvrOk(){
@@ -1938,7 +1942,7 @@ function GetRecordings(){
     xhr = $.ajax({
         type: 'POST',
         cache: false,
-        //async: false,
+        async: false,
         url: 'Core/Controllers/Recorder.php',
         data: {
             Option     : 'RecordingsList',
