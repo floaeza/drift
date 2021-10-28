@@ -13,7 +13,7 @@ require_once './../DataAccess/DiskInfo.php';
 
 $CurrentController = 'RecorderController';
 
-$Option         = !empty($_POST['Option']) ? $_POST['Option'] : 'SetRtsp';
+$Option         = !empty($_POST['Option']) ? $_POST['Option'] : 'GetPvrInfoInfomir';
 $MacAddress     = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '00:00:00:00:00:00'; // 00:00:00:00:00:00
 $OperationId     = !empty($_POST['OperationId']) ? $_POST['OperationId'] : '';
 $LocationId     = !empty($_POST['LocationId']) ? $_POST['LocationId'] : '234';
