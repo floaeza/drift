@@ -262,6 +262,7 @@ switch ($Option){
         break;
     case 'GetPvrInfoInfomir':
         $Response = $DiskData->getPvrInfoInfomir($LocationId, $MacAddress);
+        $Response = $LocationId;
         break;
 
     case 'SetPvrInfo':
