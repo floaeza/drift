@@ -22,7 +22,7 @@ class Packages extends Database {
         $this->Function = 'getPackageList';
         
         $this->connect();
-        $this->select("paquete_canal","paquete_canal.id_paquete_canal, canales.id_canal, canales.posicion, canales.audio, canales.programa, paquete_canal.id_paquete, paquete_canal.id_modulo, canales.numero_canal, canales.src, canales.puerto, canales.id_calidad, estaciones.nombre_canal, estaciones.id_estacion, estaciones.numero_estacion, estaciones.nombre_estacion, estaciones.indicativo, estaciones.logo","canales ON paquete_canal.id_canal = canales.id_canal",
+        $this->select("paquete_canal","paquete_canal.id_paquete_canal, canales.id_canal, canales.posicion, canales.audio, canales.programa, paquete_canal.id_paquete, paquete_canal.id_modulo, paquete_canal.numero_canal, canales.src, canales.puerto, canales.id_calidad, estaciones.nombre_canal, estaciones.id_estacion, estaciones.numero_estacion, estaciones.nombre_estacion, estaciones.indicativo, estaciones.logo","canales ON paquete_canal.id_canal = canales.id_canal",
                                           "estaciones ON canales.id_estacion = estaciones.id_estacion");
         $this->PackageList = $this->getResult();
         $this->disconnect();
@@ -37,7 +37,7 @@ class Packages extends Database {
     function getPackageListById($PackageId) {
         $this->Function = 'getPackageListById';
         $this->connect();
-        $this->select("paquete_canal","paquete_canal.id_paquete_canal, canales.id_canal, canales.posicion, canales.audio, canales.programa, paquete_canal.id_paquete, paquete_canal.id_modulo, canales.numero_canal, canales.src, canales.puerto, canales.id_calidad, estaciones.nombre_canal, estaciones.id_estacion, estaciones.numero_estacion, estaciones.nombre_estacion, estaciones.indicativo, estaciones.logo",
+        $this->select("paquete_canal","paquete_canal.id_paquete_canal, canales.id_canal, canales.posicion, canales.audio, canales.programa, paquete_canal.id_paquete, paquete_canal.id_modulo, paquete_canal.numero_canal, canales.src, canales.puerto, canales.id_calidad, estaciones.nombre_canal, estaciones.id_estacion, estaciones.numero_estacion, estaciones.nombre_estacion, estaciones.indicativo, estaciones.logo",
                                       "canales ON paquete_canal.id_canal = canales.id_canal",
                                       "estaciones ON canales.id_estacion = estaciones.id_estacion",
                                       "",
@@ -172,7 +172,7 @@ class Packages extends Database {
     function getPackageListById2($PackageId) {
         $this->Function = 'getPackageListById2';
         $this->connect();
-        $this->select("paquete_canal","paquete_canal.id_paquete_canal, canales.id_canal, canales.posicion, canales.audio, canales.programa, paquete_canal.id_paquete, paquete_canal.id_modulo, canales.numero_canal, canales.src, canales.puerto, canales.id_calidad, estaciones.nombre_canal, estaciones.id_estacion, estaciones.numero_estacion, estaciones.nombre_estacion, estaciones.indicativo, paquete_canal.canal_activo",
+        $this->select("paquete_canal","paquete_canal.id_paquete_canal, canales.id_canal, canales.posicion, canales.audio, canales.programa, paquete_canal.id_paquete, paquete_canal.id_modulo, paquete_canal.numero_canal, canales.src, canales.puerto, canales.id_calidad, estaciones.nombre_canal, estaciones.id_estacion, estaciones.numero_estacion, estaciones.nombre_estacion, estaciones.indicativo, paquete_canal.canal_activo",
                                       "canales ON paquete_canal.id_canal = canales.id_canal",
                                       "estaciones ON canales.id_estacion = estaciones.id_estacion",
                                       "",
