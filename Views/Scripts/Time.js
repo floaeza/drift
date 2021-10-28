@@ -12,7 +12,6 @@
         Offset            = 0,
         xhr;
 
-    var cade = null;
 
     /* Valida la diferencia de horas en Samsung */
     if (window.tizen !== undefined) {
@@ -56,10 +55,6 @@
         
         FormatDateAndHour = moment().subtract(Offset, 'hours').format('MMM, DD / h:mm A');
         CurrentStbDate = moment().subtract(Offset, 'hours').format('Y-MM-DD h:mm:ss');
-		if(typeof(ASTB) !== 'undefined'){ 
-            Browser.CacheFlush();
-            ASTB.DeleteAllHistory();
-        }
 
         if(!Device){
             if (Device.Client === 'CHL') {
@@ -81,13 +76,6 @@
                 PvrDate.textContent = FormatHour;
             }
 
-            cade = FormatHour.split(":");
-
-            if(cade[1] == '01 AM' || cade[1] == '01 PM' || cade[1] == '31 AM' || cade[1] == '31 PM'){
-                clearInterval(TimerDate);
-                TimerDate = setInterval(SetDate, 50000);
-                cade = null;
-            }
 
 
             if(FormatHour === '12:01 AM'){
@@ -101,11 +89,18 @@
                     }
                 }
             }
+            if(FormatHour === '4:02 am'  && typeof(ASTB) !== 'undefined'){
+                ASTB.Reboot();
+            }
 
         } else if(CurrentModule === 'Menu' || CurrentModule === 'Movies'){
             FormatDate = moment().subtract(Offset, 'hours').format('MMMM DD YYYY');
             FormatHour = moment().subtract(Offset, 'hours').format('h:mm a');
-        
+            
+            if(FormatHour === '4:02 am'  && typeof(ASTB) !== 'undefined'){
+                ASTB.Reboot();
+            }
+
             MenuDate.textContent = FormatDate;
             MenuHour.textContent = FormatHour;
         }
@@ -127,6 +122,7 @@
             }
         }
         //Debug('-------------------------------- FormatDateAndHour: '+FormatDateAndHour);
+        setTimeout(SetDate, 50000);
     }
 
 /*******************************************************************************
@@ -137,5 +133,5 @@
     
     /* Agrega intervalo 50000 = 50 segundos*/
     
-    TimerDate = setInterval(SetDate, 50000);
+    setTimeout(SetDate, 50000);
 

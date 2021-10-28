@@ -173,14 +173,11 @@ if (window.tizen !== undefined) {
             EventString : 'BOOT_SUCCESSFUL',
             CurrentDateStb : CurrentStbDate
         },
-        beforeSend: function (){
-            //Debug('FIRST UPDATE > MacAddress: ' + MacAddress +' CurrentStbDate: '+CurrentStbDate);
-        },
         success: function (response){
             //Debug(CurrentStbDate);
-
+            
             Device = $.parseJSON(response);
-
+            //alert(Device['Type']);
             //Debug('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> DEVICE:'+JSON.stringify(Device));
 
               if(Device['Debug'] === '1'){
