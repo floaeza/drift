@@ -106,6 +106,7 @@ function GetNextJsonEpg(Direction){
  *******************************************************************************/
 
 function OpenEpg(){
+    debugger
     
     if(ActiveEpgContainer === false && EpgDataActive === true){
         // Actualiza el estatus del disco duro
