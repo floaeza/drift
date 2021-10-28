@@ -38,8 +38,8 @@
             }
 
             if(ProgramIdChannnel){
-                // CheckProgram = ';Progid='+ProgramIdChannnel+';audiopid='+AudioPid;
-                CheckProgram = ';Progid='+ProgramIdChannnel;
+                 CheckProgram = ';Progid='+ProgramIdChannnel+';audiopid='+AudioPid;
+                //CheckProgram = ';Progid='+ProgramIdChannnel;
             }
 
         // Detiene el proceso de la reproduccion anterior

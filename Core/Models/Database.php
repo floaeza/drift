@@ -102,7 +102,6 @@ class Database {
                  
                     $this->result =  $query;
                     $this->numResults = $query->num_rows;
-                                      
                     return true; //La consulta fue exitosa
             }
                 else{
@@ -172,6 +171,7 @@ class Database {
                                 }
                             }
                         }
+                        array_push($this->result);
                     return true; //La consulta fue exitosa
 		}
                     else{
