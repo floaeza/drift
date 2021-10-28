@@ -2276,7 +2276,6 @@ function GetRecordingsToRecord(){
 
 function GetPvrInfo(){
     // @ts-ignore
-    debugger
     $.ajax({
         type: 'POST',
         async: false,
