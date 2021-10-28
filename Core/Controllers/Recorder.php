@@ -14,9 +14,9 @@ require_once './../DataAccess/DiskInfo.php';
 $CurrentController = 'RecorderController';
 
 $Option         = !empty($_POST['Option']) ? $_POST['Option'] : 'SetRtsp';
-$MacAddress     = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '00:02:02:4f:9b:af'; // 00:00:00:00:00:00
+$MacAddress     = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '00:00:00:00:00:00'; // 00:00:00:00:00:00
 $OperationId     = !empty($_POST['OperationId']) ? $_POST['OperationId'] : '';
-$LocationId     = !empty($_POST['LocationId']) ? $_POST['LocationId'] : '190';
+$LocationId     = !empty($_POST['LocationId']) ? $_POST['LocationId'] : '234';
 $MacAddressPvr  = !empty($_POST['MacAddressPvr']) ? $_POST['MacAddressPvr'] : '';
 
 $SeriesData = new Series($MacAddress, $CurrentController);

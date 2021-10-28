@@ -139,15 +139,16 @@
  * Obtiene los tamanos maximos y minimos de la pantalla
  * ****************************************************************************/
 
-    function GetWindowFullSize(){
-        WindowMaxWidth   = window.screen.width;
-        WindowMaxHeight  = window.screen.height;
-    }
-    
-    function GetWindowMinSize(){
-        WindowMinWidth   = ((window.screen.width)*33)/100;
-        WindowMinHeight  = ((window.screen.height)*33)/100;
-    }
+function GetWindowFullSize(){
+    WindowMaxWidth   = window.screen.width;
+    WindowMaxHeight  = window.screen.height;
+}
+
+function GetWindowMinSize(){
+    WindowMinWidth   = ((window.screen.width)*33)/100;
+    WindowMinHeight  = ((window.screen.height)*33)/100;
+}
+
 
 /* *****************************************************************************
  * Funcion para poner TV en pantalla completa
@@ -162,7 +163,7 @@
  * ****************************************************************************/
     
     function MinimizeTV(){
-        windowTV.SetRectangle('15', '60', WindowMinWidth, WindowMinHeight);
+        windowTV.SetRectangle((13.5*WindowMaxWidth)/100, (5*WindowMaxWidth)/100, WindowMinWidth, WindowMinHeight);
     }
     
 /* *****************************************************************************
