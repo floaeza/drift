@@ -394,6 +394,7 @@ function SetOptionPanel(){
 
 function SetPvrInfo(){
     //Device['MacAddressPvr'].length
+    debugger
     var AvailableSize  = 0,
         TotalSize = 0;
 
