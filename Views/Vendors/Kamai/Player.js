@@ -8,6 +8,7 @@
     // Variables globales
     var PlayingChannel  = false,
         PlayingVod      = false,
+        PlayDigita      = false,
         PauseLive       = false,
         PauseStatus     = false;
 
@@ -60,7 +61,7 @@ Debug('#################################################################');
         //, null, {sync:0,seek_to_start:1}
 
         Debug('---->> Source + CheckPort');
-
+        PlayDigita = false;
         Video.play(1);
         // Maximiza el video en caso de que no este en pantalla completa
         MaximizeTV();
@@ -94,7 +95,7 @@ Debug('#################################################################');
         Video.open(Source);
 
         Video.play(1);
-
+        PlayDigita = false;
         // Maximiza el video en caso de que no este en pantalla completa
         MaximizeTV();
 
@@ -211,6 +212,7 @@ Debug('#################################################################');
                 PlayingRecording = false;
             }
         }
+        PlayDigita = false;
         Debug('StopVideo 2 ');
     }
     

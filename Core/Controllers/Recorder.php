@@ -16,7 +16,7 @@ $CurrentController = 'RecorderController';
 $Option         = !empty($_POST['Option']) ? $_POST['Option'] : 'GetPvrInfoInfomir';
 $MacAddress     = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '00:00:00:00:00:00'; // 00:00:00:00:00:00
 $OperationId     = !empty($_POST['OperationId']) ? $_POST['OperationId'] : '';
-$LocationId     = !empty($_POST['LocationId']) ? $_POST['LocationId'] : '234';
+$LocationId     = !empty($_POST['LocationId']) ? $_POST['LocationId'] : '1';
 $MacAddressPvr  = !empty($_POST['MacAddressPvr']) ? $_POST['MacAddressPvr'] : '';
 
 $SeriesData = new Series($MacAddress, $CurrentController);
@@ -262,7 +262,6 @@ switch ($Option){
         break;
     case 'GetPvrInfoInfomir':
         $Response = $DiskData->getPvrInfoInfomir($LocationId, $MacAddress);
-        $Response = $LocationId;
         break;
 
     case 'SetPvrInfo':

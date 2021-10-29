@@ -7,6 +7,7 @@
     // Variables globales
     var PlayingChannel      = false,
         PlayingVod          = false,
+        PlayDigita          = false,
         PauseLive           = false,
         PIDS                = [],
         numberOfLanguages   = 0;
@@ -47,7 +48,7 @@
 
         // Reproduce el canal actual
         AVMedia.Play('src='+ Source+''+CheckPort+CheckProgram);
-        
+        PlayDigita = false;
         // Maximiza el video en caso de que no este en pantalla completa
         MaximizeTV();
         
@@ -76,7 +77,7 @@
 
         // Reproduce el video
         AVMedia.Play('src='+ Source);
-
+        PlayDigita = true;
         // Maximiza el video en caso de que no este en pantalla completa
         MaximizeTV();
 
@@ -183,6 +184,7 @@ function GetWindowMinSize(){
         AVMedia.Kill();
         PauseLive = false;
         PlayingRecording = false;
+        PlayDigita = false;
     }
     
     function PauseVideo(){

@@ -10,6 +10,7 @@
 // Variables globales
 var PlayingChannel      = false,
     PlayingVod          = false,
+    PlayDigita          = false,
     PauseLive           = false,
     numberOfLanguages   = 0;
 
@@ -44,7 +45,7 @@ Debug('PlayChannel('+Source+', '+Port+')');
     StopVideo();
     Source = Source.replace('igmp','udp');
     Debug('PlayChannel=::::::: '+Source+CheckPort);
-
+    PlayDigita = false;
     // Reproduce el canal actual
     try {
 
@@ -65,7 +66,7 @@ Debug('PlayChannel('+Source+', '+Port+')');
     }
 
 
-
+    PlayDigita = false;
 
     // Activamos la bandera
     PlayingChannel   = true;
@@ -104,7 +105,7 @@ function PlayDigitalChannel(Source){
     } catch (error) {
         Debug('PlayDigitalChannel > Error name = '+ error.name + ', Error message = ' + error.message);
     }
-
+    PlayDigita = false;
     // Activamos la bandera
     PlayingChannel = true;
     // Si tiene una fecha ya registrada guarda estadisticas en la BD
@@ -250,6 +251,7 @@ function StopVideo(){
     }
 
     PauseLive = false;
+    PlayDigita = false;
     PlayingRecording = false;
     Debug('STOP VIDEO <');
 }
