@@ -2008,8 +2008,8 @@ function GetRecordingsToRecord(){
 }
 
 function GetPvrInfo(){
-    //Debug("MAAAAACC     " + MacAddress);
-    debugger
+    
+    //Debug("MAAAAACC     " + MacAddress)
     xhr = $.ajax({
         type: 'POST',
         cache: false,
