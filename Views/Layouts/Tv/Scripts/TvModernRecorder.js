@@ -1948,7 +1948,8 @@ function GetRecordings(){
         data: {
             Option     : 'RecordingsList',
             LocationId : Device['LocationId'],
-            MacAddress : MacAddress
+            MacAddress : MacAddress,
+            Vendor: (typeof(gSTB) !== 'undefined') ? 'Infomir': ''
         },
         success: function (response){
             RecordingsList = $.parseJSON(response);
