@@ -221,6 +221,7 @@ var CheckInfo = 0;
         
                 case REMOTE_PVR:
                     if(CurrentModule === 'Tv'){
+                        Debug("REMOTE_PVR");
                         TvRecorder();
                     }
                 break;

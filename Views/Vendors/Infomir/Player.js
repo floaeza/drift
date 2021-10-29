@@ -18,9 +18,8 @@ var WindowMaxWidth  = 0,
 var player = stbPlayerManager.list[0];
 //gSTB.SetTopWin(0);
 
-player.videoWindowMode = 0;
-player.aspectConversion = 5;
-
+player.videoWindowMode = 1;
+player.aspectConversion = 0;
 if(gSTB.GetDeviceModel() !== 'MAG520' && gSTB.GetDeviceModel() !=='MAG524'){
     var player2 = stbPlayerManager.list[1];
     player2.videoWindowMode = 0;
@@ -430,10 +429,14 @@ function GetWindowFullSize(){
     Debug(WindowMaxHeight);
 }
 
-function GetWindowMinSize(){
+function GetWindowFullSize(){
+    WindowMaxWidth   = window.screen.width;
+    WindowMaxHeight  = window.screen.height;
+}
 
-    WindowMinWidth   = (WindowMaxWidth*35)/100;
-    WindowMinHeight  = (WindowMaxHeight*35)/100;
+function GetWindowMinSize(){
+    WindowMinWidth   = ((window.screen.width)*50)/100;
+    WindowMinHeight  = ((window.screen.height)*50)/100;
 }
 
 /* *****************************************************************************
@@ -445,10 +448,14 @@ function MaximizeTV(){
     //player.setViewport({x: 0, y: 0, width: WindowMaxWidth, height: WindowMaxHeight});
     //gSTB.SetViewport(3840, 2160, 0, 0);
     //Debug("Maximizar");
-    player.fullscreen = true;
-    if(gSTB.GetDeviceModel() !== 'MAG520' && gSTB.GetDeviceModel() !=='MAG524'){
-        player2.fullscreen = true;
-    }
+    
+    
+     player.fullscreen = true;
+    // if(gSTB.GetDeviceModel() !== 'MAG520' && gSTB.GetDeviceModel() !=='MAG524'){
+    //     player2.fullscreen = true;
+    // }
+    
+    
     //Debug(JSON.stringify(player.viewport));
 }
 
@@ -466,7 +473,7 @@ function MinimizeTV(){
     //        gSTB.SetViewport(WindowMinWidth, WindowMinHeight, 15, 60);
     //    }
 
-    player.setViewport({x: ((12 * WindowMaxWidth) / 100), y: ((26 * WindowMinHeight) / 100), width: WindowMinWidth, height: WindowMinHeight});
+    player.setViewport({x: (20*WindowMaxWidth)/100, y: (8*WindowMaxWidth)/100, width: WindowMinWidth, height: WindowMinHeight});
 }
 
 /* *****************************************************************************

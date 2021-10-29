@@ -41,6 +41,7 @@
         Port                 = '',
         ProgramIdChannnel    = 0,
         ProgramIdPosition    = 0,
+        AudioPid             = 0,
         Direction            = 'UP';
 
     /* Horas y fechas */
@@ -282,6 +283,7 @@ function SetChannel(NewDirection){
             //alert(Source + Port);
             ProgramIdChannnel = ChannelsJson[ChannelPosition].PRGM;
             ProgramIdPosition = ChannelsJson[ChannelPosition].PSCN;
+            AudioPid          = ChannelsJson[ChannelPosition].ADIO;
 
         /* Regresamos a su valor inicial la variable DIRECTION*/
             Direction = 'UP';
@@ -306,10 +308,10 @@ function SetChannel(NewDirection){
                     //}
                     $(document).ready(function(){
                         //your code
-                        PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
+                        PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPid);   /* TvFunctions por marca */
                     });
                 }else{
-                    PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
+                    PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPid);   /* TvFunctions por marca */
                 }
                 
                 
@@ -561,6 +563,7 @@ function CloseFrame(){
                 Port   = ChannelsJson[LastChannelPosition].PORT;
                  ProgramIdChannnel = ChannelsJson[ChannelPosition].PRGM;
                  ProgramIdPosition = ChannelsJson[ChannelPosition].PSCN;
+                 AudioPid          = ChannelsJson[ChannelPosition].ADIO;
 
                 ////Debug('Source:: CRRN '+ChannelsJson[ChannelPosition].SRCE + ' '+ChannelsJson[ChannelPosition].STTN );
                 ////Debug('Source:: LAST '+ChannelsJson[LastChannelPosition].SRCE + ' '+ChannelsJson[LastChannelPosition].STTN );
@@ -589,10 +592,10 @@ function CloseFrame(){
                         load = false
                         $(document).ready(function(){
                             //your code
-                            PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);  /* TvFunctions por marca */
+                            PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPid);  /* TvFunctions por marca */
                         });
                     }else{
-                        PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
+                        PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPid);   /* TvFunctions por marca */
                     }
                     
                 } else {
@@ -896,6 +899,7 @@ function ShowInfo(){
             Port   = ChannelsJson[ChannelPosition].PORT;
              ProgramIdChannnel = ChannelsJson[ChannelPosition].PRGM,
              ProgramIdPosition = ChannelsJson[ChannelPosition].PSCN;
+             AudioPid          = ChannelsJson[ChannelPosition].ADIO;
 
         if(ChannelsJson[ChannelPosition].STTN !== 'CONTENT'){
             if(ActiveDigitalChannel === true){
@@ -906,10 +910,10 @@ function ShowInfo(){
                 load = false
                 $(document).ready(function(){
                     //your code
-                    PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
+                    PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPid);   /* TvFunctions por marca */
                 });
             }else{
-                PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition);   /* TvFunctions por marca */
+                PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPid);   /* TvFunctions por marca */
             }
         } else {
             ////Debug('GetDigitalChannel EPG');
@@ -1175,8 +1179,10 @@ function ShowInfo(){
     }
     
     function TvRecorder(){
+        Debug(RecorderMessageActive   + "          "+ PlayingRecording);
         if(RecorderMessageActive === false) {
             if (PlayingRecording === false) {
+                Debug(Device['Type']);
                 if (Device['Type'] !== 'NONE') {
                     if (RecordingOptionsActive === true) {
                         CloseRecordingOptions();
@@ -1194,7 +1200,7 @@ function ShowInfo(){
                         ////Debug('ActiveInfoContainer' + ActiveInfoContainer);
                         HideInfo();
                     }
-
+                    Debug('(((((((((((((((TvRecorder(((((((((((((((');
                     OpenPvr();
                 }
             } else {

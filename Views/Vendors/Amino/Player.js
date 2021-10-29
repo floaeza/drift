@@ -29,8 +29,6 @@
     
     function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPid){
         
-        Debug('Playchannel-------->>>***'+ProgramIdChannnel);
-        
         var CheckPort = '',
             CheckProgram = '';
         
@@ -38,11 +36,18 @@
                 CheckPort = ':' + Port;
             }
 
-            if(ProgramIdChannnel){
-                 CheckProgram = ';Progid='+ProgramIdChannnel+';audiopid='+AudioPid;
-                //CheckProgram = ';Progid='+ProgramIdChannnel;
-            }
+Debug('########################### Channelinfo: '+ProgramIdChannnel);
 
+            if(ProgramIdChannnel){
+            //  CheckProgram = ';Progid='+ProgramIdChannnel+';audiopid='+AudioPid;
+	     //	CheckProgram = ';Progid='+ProgramIdChannnel;
+	      if(AudioPid!=null){
+                    CheckProgram = ';Progid='+ProgramIdChannnel+';audiopid='+AudioPid;
+                }else{
+                    CheckProgram = ';Progid='+ProgramIdChannnel;
+                }
+            }
+	  Debug('########################### Channelinfo: '+CheckProgram);
         // Detiene el proceso de la reproduccion anterior
         StopVideo();
 
@@ -140,16 +145,15 @@
  * Obtiene los tamanos maximos y minimos de la pantalla
  * ****************************************************************************/
 
-function GetWindowFullSize(){
-    WindowMaxWidth   = window.screen.width;
-    WindowMaxHeight  = window.screen.height;
-}
-
-function GetWindowMinSize(){
-    WindowMinWidth   = ((window.screen.width)*33)/100;
-    WindowMinHeight  = ((window.screen.height)*33)/100;
-}
-
+    function GetWindowFullSize(){
+        WindowMaxWidth   = window.screen.width;
+        WindowMaxHeight  = window.screen.height;
+    }
+    
+    function GetWindowMinSize(){
+        WindowMinWidth   = ((window.screen.width)*33)/100;
+        WindowMinHeight  = ((window.screen.height)*33)/100;
+    }
 
 /* *****************************************************************************
  * Funcion para poner TV en pantalla completa
@@ -164,7 +168,7 @@ function GetWindowMinSize(){
  * ****************************************************************************/
     
     function MinimizeTV(){
-        windowTV.SetRectangle((13.5*WindowMaxWidth)/100, (5*WindowMaxWidth)/100, WindowMinWidth, WindowMinHeight);
+        windowTV.SetRectangle((10*WindowMaxWidth)/100, (13*WindowMaxWidth)/100, WindowMinWidth, WindowMinHeight);
     }
     
 /* *****************************************************************************

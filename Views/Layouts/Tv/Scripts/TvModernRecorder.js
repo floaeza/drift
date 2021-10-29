@@ -272,7 +272,7 @@ function HideRecorderMessage(){
 
 function OpenPvr(){
     if(RecordingPanel === false){
-
+        Debug("#############OPENPVR##########");
         IndexRecordedFocus  = -1;
         IndexRecordedProgFocus = 0;
 
@@ -1948,7 +1948,8 @@ function GetRecordings(){
         data: {
             Option     : 'RecordingsList',
             LocationId : Device['LocationId'],
-            MacAddress : MacAddress
+            MacAddress : MacAddress,
+            Vendor: (typeof(gSTB) !== 'undefined') ? 'Infomir': ''
         },
         success: function (response){
             RecordingsList = $.parseJSON(response);
@@ -2007,8 +2008,8 @@ function GetRecordingsToRecord(){
 }
 
 function GetPvrInfo(){
-    //Debug("MAAAAACC     " + MacAddress);
-    debugger
+    
+    //Debug("MAAAAACC     " + MacAddress)
     xhr = $.ajax({
         type: 'POST',
         cache: false,
