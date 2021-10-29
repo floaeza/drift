@@ -272,7 +272,7 @@ function HideRecorderMessage(){
 
 function OpenPvr(){
     if(RecordingPanel === false){
-
+        Debug("#############OPENPVR##########");
         IndexRecordedFocus  = -1;
         IndexRecordedProgFocus = 0;
 

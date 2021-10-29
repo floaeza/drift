@@ -1179,8 +1179,10 @@ function ShowInfo(){
     }
     
     function TvRecorder(){
+        Debug(RecorderMessageActive   + "          "+ PlayingRecording);
         if(RecorderMessageActive === false) {
             if (PlayingRecording === false) {
+                Debug(Device['Type']);
                 if (Device['Type'] !== 'NONE') {
                     if (RecordingOptionsActive === true) {
                         CloseRecordingOptions();
@@ -1198,7 +1200,7 @@ function ShowInfo(){
                         ////Debug('ActiveInfoContainer' + ActiveInfoContainer);
                         HideInfo();
                     }
-
+                    Debug('(((((((((((((((TvRecorder(((((((((((((((');
                     OpenPvr();
                 }
             } else {
