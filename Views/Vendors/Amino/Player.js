@@ -52,6 +52,7 @@ Debug('########################### Channelinfo: '+ProgramIdChannnel);
 
         // Reproduce el canal actual
         AVMedia.Play('src='+ Source+''+CheckPort+CheckProgram);
+        Debug('$$$$$$$$$$$$$$$$$$$$$$$$$$$'+'src='+ Source+''+CheckPort+CheckProgram)
         
         // Maximiza el video en caso de que no este en pantalla completa
         MaximizeTV();
