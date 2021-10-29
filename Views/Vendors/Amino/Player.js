@@ -168,7 +168,7 @@ Debug('########################### Channelinfo: '+ProgramIdChannnel);
  * ****************************************************************************/
     
     function MinimizeTV(){
-        windowTV.SetRectangle((25*WindowMaxWidth)/100, (8*WindowMaxWidth)/100, WindowMinWidth, WindowMinHeight);
+        windowTV.SetRectangle((25*WindowMaxWidth)/100, (13*WindowMaxWidth)/100, WindowMinWidth, WindowMinHeight);
     }
     
 /* *****************************************************************************
