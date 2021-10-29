@@ -18,6 +18,7 @@ $MacAddress     = !empty($_POST['MacAddress']) ? $_POST['MacAddress'] : '00:00:0
 $OperationId     = !empty($_POST['OperationId']) ? $_POST['OperationId'] : '';
 $LocationId     = !empty($_POST['LocationId']) ? $_POST['LocationId'] : '234';
 $MacAddressPvr  = !empty($_POST['MacAddressPvr']) ? $_POST['MacAddressPvr'] : '';
+$Vendor         =!empty($_POST['Vendor']) ? $_POST['Vendor'] : '';
 
 $SeriesData = new Series($MacAddress, $CurrentController);
 $ProgramsData = new Programs($MacAddress, $CurrentController);
@@ -111,8 +112,11 @@ switch ($Option){
         break;
 
     case 'RecordingsList':
-        $ProgramsRecorded = $ProgramsData->getProgramsRecorded($LocationId);
-
+        if($Vendor == 'Infomir'){
+            $ProgramsRecorded = $ProgramsData->getProgramsRecordedInfomir($LocationId);
+        }else{
+            $ProgramsRecorded = $ProgramsData->getProgramsRecorded($LocationId);
+        }
         $NewArray =  array();
 
         $List = array();
