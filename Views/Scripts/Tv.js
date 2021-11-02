@@ -98,9 +98,9 @@
     var ContentFrame            = document.getElementById('ContentFrame'),
         ActiveFrame             = false;
 
-
-    killProcessTv();
-
+    if(window.tizen === undefined){
+        killProcessTv();
+    }
     // var div = document.getElementById('loadingTV');
     // var parent = div.parentElement;
     // parent.removeChild(div);
@@ -245,7 +245,6 @@ function GetJsonChannels(){
 
 function SetChannel(NewDirection){
     ////Debug('SetChannel = '+NewDirection);
-    
     if(ActiveEpgContainer === false){
         
         /* Valida si se esta subiendo o bajando de canal para restar|sumar una posicion */
@@ -308,9 +307,15 @@ function SetChannel(NewDirection){
                     //}
                     $(document).ready(function(){
                         //your code
+                        if(window.tizen !== undefined){
+                            PlayChannel(Source, Port);
+                        }else
                         PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPid);   /* TvFunctions por marca */
                     });
                 }else{
+                    if(window.tizen !== undefined){
+                        PlayChannel(Source, Port);
+                    }else
                     PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPid);   /* TvFunctions por marca */
                 }
                 
@@ -592,9 +597,15 @@ function CloseFrame(){
                         load = false
                         $(document).ready(function(){
                             //your code
+                            if(window.tizen !== undefined)  
+                            PlayChannel(Source, Port);
+                            else
                             PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPid);  /* TvFunctions por marca */
                         });
                     }else{
+                        if(window.tizen !== undefined){
+                            PlayChannel(Source, Port);
+                        }else
                         PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPid);   /* TvFunctions por marca */
                     }
                     
@@ -910,9 +921,15 @@ function ShowInfo(){
                 load = false
                 $(document).ready(function(){
                     //your code
+                    if(window.tizen !== undefined){
+                        PlayChannel(Source, Port);
+                    }else
                     PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPid);   /* TvFunctions por marca */
                 });
             }else{
+                if(window.tizen !== undefined){
+                    PlayChannel(Source, Port);
+                }else
                 PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition, AudioPid);   /* TvFunctions por marca */
             }
         } else {

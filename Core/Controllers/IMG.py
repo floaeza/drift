@@ -1,12 +1,21 @@
-import xtelnet
+import sys
+import telnetlib
+print('IP:  ')
+ip = input()
 
-t=xtelnet.session()
+tn = telnetlib.Telnet(ip)
 
-ip = '10.20.10.226'
+output = tn.read_until(b"Login : ", 2)
+outputstr = str(output)
+line = outputstr.split("\\r\\n")
+swVersion = line[4].split(": ")
+print("IMG CON LA VERSION: " + swVersion[1])
+tn.write(b"manager\n")
 
-print(ip)
-t.connect(ip, username='root',password='root2root',p=22,timeout=8)
-output1=t.execute('ping 10.0.1.12')
+tn.read_until(b"Password:  : ", 2)
+tn.write(b"friend\n")
 
-t.close()
-print(output1)
+tn.read_until(b"--> ", 2)
+output = tn.write(b"?\n")
+print(output)
+tn.close
