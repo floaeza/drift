@@ -1,8 +1,15 @@
 // @ts-nocheck
 var MenuDate        = document.getElementById('MenuDate'),
     MenuHour        = document.getElementById('MenuHour');
-    alert('ready');
 
-$(document).ready(function() {
-    alert('ready');
-});
+
+createMenu();
+
+function createMenu(){
+    SetMenuInfo();
+}
+
+
+function SetMenuInfo(){
+    MenuHour.innerHTML = 'Hola Mundo';
+}
