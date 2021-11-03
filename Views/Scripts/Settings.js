@@ -151,7 +151,7 @@ if (window.tizen !== undefined) {
     function SetData() {
         AminoDevice();
 
-        console.log(CurrentStbDate);
+        // console.log(CurrentStbDate);
 
 
         //CurrentStbDate = moment().subtract('hours', Offset).format('Y-MM-DD h:mm:ss');
