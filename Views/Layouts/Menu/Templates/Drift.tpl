@@ -1,3 +1,4 @@
+<div id="MenuBackgroundsRGB"></div>
 <img id='MenuBackgrounds'>
 <div id="MenuContainer">
     <div id='MenuWeather'>
