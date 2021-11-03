@@ -21,3 +21,6 @@
         <div class="MenuNodes">Mezcal Bar</div>
     </div>
 </div>
+<div id='MenuDate'></div>
+<div id='MenuHour'></div>
+<div id='MenuGrid'></div>
