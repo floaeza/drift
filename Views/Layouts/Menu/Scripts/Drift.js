@@ -1,6 +1,8 @@
 // @ts-nocheck
 var MenuDate        = document.getElementById('MenuDate'),
-    MenuHour        = document.getElementById('MenuHour');
+    MenuHour        = document.getElementById('MenuHour'),
+    Title           = document.getElementById('Title')
+
 
 
 createMenu();
@@ -11,5 +13,5 @@ function createMenu(){
 
 
 function SetMenuInfo(){
-    MenuHour.innerHTML = 'Hola Mundo';
+    Title.innerHTML = 'Hola Mundo';
 }
