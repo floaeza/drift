@@ -13,7 +13,7 @@
         <div id='MenuHour'>4:30 PM</div>
     </div>
     <div id="MenuTitle">
-        <div id="Title">DRIFT</div>
+        <h3 id="Title">DRIFT</h3>
     </div>
     <div class="MenuList">
         <div class="MenuNodes">Menu</div>
