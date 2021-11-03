@@ -32,9 +32,9 @@ for ips in lines:
         mac_address = line[6].split(": ")
 
         #Inicia Sesion por primera vez
-        print("IMG CON IP: " + ip + " Y MAC: " + mac_address[1] + " TIENE LA VERSION: " + swVersion[1])
+        #print("IMG CON IP: " + ip + " Y MAC: " + mac_address[1] + " TIENE LA VERSION: " + swVersion[1])
         tn.write(b'manager\r')
-        print(tn.read_until(b'Password: ', 2))
+        tn.read_until(b'Password: ', 2)
         tn.write(b'friend\r')
         
         #Bandera que indica si fue posible reconectarse despues de deshabilitar el Snoop
@@ -42,8 +42,6 @@ for ips in lines:
         
         #If que determina los coandos segun la version del dispositivo
         if '2-' in swVersion[1]:
-            print('2-')
-            
             #Verifica que el snooping esté deshabilitado
             tn.read_until(b'--> ', 2)
             tn.write(b'igmp snooping show\r')
@@ -55,23 +53,18 @@ for ips in lines:
                 show = str(tn.read_until(b'--> ', 2))
                 show = show.split("\\r\\n")
                 show = show[10].split("                 ")
-                print(show)
                 if 'ON' != show[1]:
-                    print('Loop')
                     tn.read_until(b'--> ', 2)
                     tn.write(b'switch enable loopdetection\r')
 
                 #Se crea el archivo de configuracion
                 tn.read_until(b'--> ', 2)
                 tn.write(b'system config create b001.cfg\r')
-                print('Archivo Creado')
                 #Se estabece el archivo de configuracion
                 tn.read_until(b'--> ', 2)
                 tn.write(b'system config set b001.cfg\r')
-                print('Archivo Guardado')
                 tn.close()
                 reconnect = True
-                print(reconnect)
             else:
                 tn.read_until(b'--> ', 2)
                 tn.write(b'igmp snooping disable Video\r')
@@ -86,7 +79,7 @@ for ips in lines:
                         
                         output = tn.read_until(b"Login: ",2)
                         tn.write(b'manager\r')
-                        print(tn.read_until(b'Password: ', 2))
+                        tn.read_until(b'Password: ', 2)
                         tn.write(b'friend\r')
                         
                         tn.read_until(b'--> ', 2)
@@ -94,28 +87,22 @@ for ips in lines:
                         show = str(tn.read_until(b'--> ', 2))
                         show = show.split("\\r\\n")
                         show = show[10].split("                 ")
-                        print(show)
                         if 'ON' != show[1]:
-                            print('Loop')
                             tn.read_until(b'--> ', 2)
                             tn.write(b'switch enable loopdetection\r')
 
                         #Se crea el archivo de configuracion
                         tn.read_until(b'--> ', 2)
                         tn.write(b'system config create b001.cfg\r')
-                        print('Archivo Creado')
                         #Se estabece el archivo de configuracion
                         tn.read_until(b'--> ', 2)
                         tn.write(b'system config set b001.cfg\r')
-                        print('Archivo Guardado')
                         
                         tn.close()
                         reconnect = True
-                        print(reconnect)
                     except:
                         time.sleep(3)
         elif '3-' in swVersion[1]:
-            print('3-')
             tn.read_until(b'--> ', 2)
             tn.write(b'bridge show\r')
             
@@ -138,7 +125,7 @@ for ips in lines:
                         
                         output = tn.read_until(b"Login: ",2)
                         tn.write(b'manager\r')
-                        print(tn.read_until(b'Password: ', 2))
+                        tn.read_until(b'Password: ', 2)
                         tn.write(b'friend\r')
                         
                         tn.read_until(b'--> ', 2)
@@ -146,14 +133,11 @@ for ips in lines:
                         #Se crea el archivo de configuracion
                         tn.read_until(b'--> ', 2)
                         tn.write(b'system config create b001.cfg\r')
-                        print('Archivo Creado')
                         #Se estabece el archivo de configuracion
                         tn.read_until(b'--> ', 2)
                         tn.write(b'system config set b001.cfg\r')
-                        print('Archivo Guardado')
                         tn.close()
                         reconnect = True
-                        print(reconnect)
                     except:
                         time.sleep(3)
             else:
@@ -162,28 +146,35 @@ for ips in lines:
                 #Se crea el archivo de configuracion
                 tn.read_until(b'--> ', 2)
                 tn.write(b'system config create b001.cfg\r')
-                print('Archivo Creado')
                 #Se estabece el archivo de configuracion
                 tn.read_until(b'--> ', 2)
                 tn.write(b'system config set b001.cfg\r')
-                print('Archivo Guardado')
                 tn.close()
                 reconnect = True
-                print(reconnect)
+
+        swVersion = swVersion[1].split(' (')
         if reconnect == True:
-            logSucces = logSucces + "IP: " + ip + "             MAC ADDRESS: " + mac_address[1] + "    SW VERSION: " + swVersion[1] + '    TERMINÓ CORRECTAMENTE\n'
+            print("IP: " + ip + "         MAC ADDRESS: " + mac_address[1] + "    SW VERSION: " + swVersion[0] + '    TERMINÓ CORRECTAMENTE')
+            logSucces = logSucces + "IP: " + ip + "         MAC ADDRESS: " + mac_address[1] + "    SW VERSION: " + swVersion[0] + '    TERMINÓ CORRECTAMENTE\n'
         else:
-            logNoReconnect = logNoReconnect + "IP: " + ip + "             MAC ADDRESS: " + mac_address[1] + "    SW VERSION: " + swVersion[1] + '  NO SE PUDO RECONECTAR\n'
+            print("IP: " + ip + "         MAC ADDRESS: " + mac_address[1] + "    SW VERSION: " + swVersion[0] + '  NO SE PUDO RECONECTAR')
+            logNoReconnect = logNoReconnect + "IP: " + ip + "         MAC ADDRESS: " + mac_address[1] + "    SW VERSION: " + swVersion[0] + '  NO SE PUDO RECONECTAR\n'
     except:
+        print('IMG ' + ip + " NO ACCESIBLE DESDE EL SERVIDOR")
         logFail = logFail + 'IMG ' + ip + " NO ACCESIBLE DESDE EL SERVIDOR\n"
 
-
+print('')
+print('')
+print('')
 file = open("logSucces.txt", "w")
 file.write(logSucces)
 file.close()
+print("logSucces.txt   GENERADO")
 file = open("logNoReconnect.txt", "w")
 file.write(logNoReconnect)
 file.close()
+print("logNoReconnect.txt   GENERADO")
 file = open("logFail.txt", "w")
 file.write(logFail)
 file.close()
+print("logFail.txt   GENERADO")
