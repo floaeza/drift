@@ -38,7 +38,7 @@ var RowSelected             = 1,
     ProgramSelected         = 0;
 
 var FocusChannelPosition    = 0;
-FocusProgramPosition    = 0;
+    FocusProgramPosition    = 0;
 
 var ColorFocus              = '',
     OutlineColor            = '',

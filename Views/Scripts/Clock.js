@@ -1,3 +1,4 @@
+// @ts-nocheck
 /******************************************************************************
  * @Objetivo: Actualiza la hora en los STB marca amino
  * @CreadoPor: Tania Maldonado
