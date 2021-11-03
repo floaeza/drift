@@ -24,19 +24,20 @@ div#MenuContainer {
     z-index: 2;
 }
 .MenuNodes {
-    width: 37%;
+    width: 100%;
     font-size: 35px;
     padding: 1%;
     float: unset;
     text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
 }
 .MenuNodes.focus{
-    border-bottom: 30% solid rgb(0, 0, 0);
+    border-bottom: 10px solid rgb(0, 0, 0);
 }
 .MenuList{
     margin-top: 25%;
     text-align: justify;
     margin-left: 7%;
+    position: absolute;
 }
 
 div#MenuWeather,

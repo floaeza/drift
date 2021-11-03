@@ -12,6 +12,13 @@
         FormatHour      = '',
         MenuList        = '',
         MenuIndex       = 0;
+        MenuBackground  = document.getElementById('MenuBackgrounds'),
+        MenuGrid        = document.getElementById('MenuGrid'),
+        ImagesUrl       = ServerSource+'Media/Menu/',
+        FormatDate      = '',
+        FormatHour      = '',
+        MenuList        = '',
+        MenuIndex       = 0;
 
     function SetMenuList(){
         $.ajax({
