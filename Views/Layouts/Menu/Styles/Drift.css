@@ -31,7 +31,7 @@ div#MenuContainer {
     text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
 }
 .MenuNodes.focus{
-    border-bottom: 2px solid rgb(0, 0, 0);
+    border-bottom: 30% solid rgb(0, 0, 0);
 }
 .MenuList{
     margin-top: 25%;
