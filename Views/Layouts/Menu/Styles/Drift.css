@@ -30,6 +30,9 @@ div#MenuContainer {
     float: unset;
     text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
 }
+.MenuNodes.focus{
+    text-decoration: underline;
+}
 .MenuList{
     margin-top: 25%;
     text-align: justify;
