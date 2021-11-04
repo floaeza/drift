@@ -60,7 +60,7 @@ function MenuSelect(Direction){
             if (text == 'LIVE TV') {
                 GoPage('tv.php', '1', 'Tv');
             }else if(text == 'Mezcal Bar'){
-
+                GoPage('content.php', '11', 'Mezcal');
             }
             break;
     }
