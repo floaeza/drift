@@ -1,3 +1,4 @@
+// @ts-nocheck
 /* @Creado por: Tania Maldonado
  * @Fecha: Julio 2020
  * @Tipo: Funciones para controlar el layout de contenido por carpeta 
