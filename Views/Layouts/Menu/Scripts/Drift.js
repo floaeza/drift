@@ -13,6 +13,7 @@ function initial(){
 }
 
 function MenuSelect(Direction){
+    debugger
     switch (Direction) {
         case 'RIGHT':
             var position = getFocusPosition(MenuListChildren);
