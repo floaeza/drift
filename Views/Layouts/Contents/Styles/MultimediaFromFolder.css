@@ -8,6 +8,16 @@ and open the template in the editor.
     Author     : tania
 */
 
+@font-face {
+    font-family: 'Bohemian-typewriter';
+    src:url('../../Menu/Styles/Custom-Fonts/Bohemian-typewriter/Bohemian-typewriter.ttf.woff') format('woff'),
+        url('../../Menu/Styles/Custom-Fonts/Bohemian-typewriter/Bohemian-typewriter.ttf.svg#Bohemian-typewriter') format('svg'),
+        url('../../Menu/Styles/Custom-Fonts/Bohemian-typewriter/Bohemian-typewriter.ttf.eot'),
+        url('../../Menu/Styles/Custom-Fonts/Bohemian-typewriter/Bohemian-typewriter.ttf.eot?#iefix') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 #image1 {
     height: 100%;
     width: 100%;
@@ -109,14 +119,4 @@ div#MenuTitle {
     top: 10%;
     font-family: Dominator-Medium;
     display: none;
-}
-
-@font-face {
-    font-family: 'Bohemian-typewriter';
-    src:url('/Views/Layouts/Menu/Styles/Custom-Fonts/Bohemian-typewriter/Bohemian-typewriter.ttf.woff') format('woff'),
-        url('/Views/Layouts/Menu/Styles/Custom-Fonts/Bohemian-typewriter/Bohemian-typewriter.ttf.svg#Bohemian-typewriter') format('svg'),
-        url('/Views/Layouts/Menu/Styles/Custom-Fonts/Bohemian-typewriter/Bohemian-typewriter.ttf.eot'),
-        url('/Views/Layouts/Menu/Styles/Custom-Fonts/Bohemian-typewriter/Bohemian-typewriter.ttf.eot?#iefix') format('embedded-opentype'); 
-    font-weight: normal;
-    font-style: normal;
 }
