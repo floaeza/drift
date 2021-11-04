@@ -15,7 +15,14 @@ function initial(){
 function MenuSelect(Direction){
     switch (Direction) {
         case 'RIGHT':
-            console.log(MenuListChildren);
+            var position = getFocusPosition(MenuListChildren);
+            if (position+1 > MenuListChildren.length) {
+                MenuListChildren[position].className = 'MenuNodes';
+                MenuListChildren[0].className = 'MenuNodes focus';
+            } else {
+                MenuListChildren[position].className = 'MenuNodes';
+                MenuListChildren[position+1].className = 'MenuNodes focus';
+            }
             break;    
         case 'LEFT':
             alert('LEFT');
@@ -55,3 +62,12 @@ function getArrayinX(lenght) {
     }
     return arreglo;
   }
+function getFocusPosition(List){
+    var position = -1;
+    for (var x = 0; x < List.length; x++) {
+        if (List[x].className == 'MenuNodes focus') {
+            position = x;
+        }
+    }
+    return position;
+}
