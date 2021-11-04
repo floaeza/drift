@@ -13,11 +13,10 @@ function initial(){
 }
 
 function MenuSelect(Direction){
-    debugger
     switch (Direction) {
         case 'RIGHT':
             var position = getFocusPosition(MenuListChildren);
-            if (position+1 > MenuListChildren.length) {
+            if (position+1 > MenuListChildren.length-1) {
                 MenuListChildren[position].className = 'MenuNodes';
                 MenuListChildren[0].className = 'MenuNodes focus';
             } else {
