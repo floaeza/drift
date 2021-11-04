@@ -108,4 +108,5 @@ div#MenuTitle {
     margin-right: 5%;
     top: 10%;
     font-family: Dominator-Medium;
+    display: none;
 }
