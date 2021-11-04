@@ -50,9 +50,9 @@ div#MenuDateHeader, .MenuNodes{
 }
 
 div#MenuWeather {
-    width: 30%;
+    width: 25%;
     font-size: 85%;
-    top: 15%;
+    top: 18%;
     position: fixed;
     right: 0%;
     text-shadow: 4px 4px 10px rgba(233, 232, 232, 0.5);
@@ -63,7 +63,7 @@ div#MenuWeather {
 div#MenuDateHeader {
     width: 14%;
     font-size: 85%;
-    top: 15%;
+    top: 18%;
     position: fixed;
     right: 0%;
     text-shadow: 4px 4px 10px rgba(233, 232, 232, 0.5);
