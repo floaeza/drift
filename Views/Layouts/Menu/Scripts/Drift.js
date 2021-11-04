@@ -54,6 +54,15 @@ function MenuSelect(Direction){
                 MenuListChildren[position+1].className = 'MenuNodes focus';
             }
             break;
+        case 'ENTER':
+            var position = getFocusPosition(MenuListChildren),
+                text     = MenuListChildren[position].innerHTML;
+            if (text == 'LIVE TV') {
+                GoPage('tv.php', '1', 'Tv');
+            }else if(text == 'Mezcal Bar'){
+
+            }
+            break;
     }
 
 }
@@ -73,6 +82,10 @@ function MenuDown(){
 function MenuUp(){
     MenuSelect('UP');
 }
+function MenuOk(){
+    MenuSelect('ENTER');
+}
+
 
 //Utilidades
 function getArrayinX(lenght) {
