@@ -37,14 +37,11 @@
             } 
             closedir($filehandle); // Fin lectura archivos
             natcasesort($list);
-
             $Result = array();
             foreach ($list as $fileName) {
                 array_push($Result, $fileName);
 
             }   
-    
-
         break;
 
         case 'getDigitalChannel':
