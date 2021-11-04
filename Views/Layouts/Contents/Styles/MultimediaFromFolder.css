@@ -50,7 +50,7 @@ and open the template in the editor.
 div#MenuWeather {
     width: 30%;
     font-size: 85%;
-    top: 30%;
+    top: 15%;
     position: fixed;
     right: 55%;
     text-shadow: 4px 4px 10px rgba(15, 15, 15, 0.623);
@@ -61,7 +61,7 @@ div#MenuWeather {
 div#MenuDateHeader {
     width: 14%;
     font-size: 85%;
-    top: 30%;
+    top: 15%;
     position: fixed;
     right: 60%;
     text-shadow: 4px 4px 10px rgba(20, 19, 19, 0.637);
