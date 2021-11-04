@@ -43,7 +43,7 @@ div#MenuContainer {
 div#MenuWeather,
 div#MenuHour,
 div#MenuDateHeader, .MenuNodes{
-    font-family: Street-Bold-Compressed;
+    font-family: Bohemian-typewriter;
 }
 #WeatherIcon {
     float: left;
@@ -172,6 +172,15 @@ div#BackgroundContainer {
         url('Custom-Fonts/Street-Bold-Compressed/Street-Bold-Compressed.ttf.svg#Street-Bold-Compressed') format('svg'),
         url('Custom-Fonts/Street-Bold-Compressed/Street-Bold-Compressed.ttf.eot'),
         url('Custom-Fonts/Street-Bold-Compressed/Street-Bold-Compressed.ttf.eot?#iefix') format('embedded-opentype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Bohemian-typewriter';
+    src:url('Custom-Fonts/Bohemian-typewriter/Bohemian-typewriter.ttf.woff') format('woff'),
+        url('Custom-Fonts/Bohemian-typewriter/Bohemian-typewriter.ttf.svg#Bohemian-typewriter') format('svg'),
+        url('Custom-Fonts/Bohemian-typewriter/Bohemian-typewriter.ttf.eot'),
+        url('Custom-Fonts/Bohemian-typewriter/Bohemian-typewriter.ttf.eot?#iefix') format('embedded-opentype'); 
     font-weight: normal;
     font-style: normal;
 }
