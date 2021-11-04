@@ -42,7 +42,7 @@ div#MenuWeather {
     font-size: 85%;
     top: 30%;
     position: fixed;
-    right: 0%;
+    right: 50%;
     text-shadow: 4px 4px 10px rgba(233, 232, 232, 0.5);
     padding: 1%;
     margin-right: 10%;
@@ -53,7 +53,7 @@ div#MenuDateHeader {
     font-size: 85%;
     top: 30%;
     position: fixed;
-    right: 0%;
+    right: 50%;
     text-shadow: 4px 4px 10px rgba(233, 232, 232, 0.5);
     padding: 1%;
     margin-top: 0%;
