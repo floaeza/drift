@@ -15,7 +15,7 @@ function initial(){
 function MenuSelect(Direction){
     switch (Direction) {
         case 'RIGHT':
-            console.log(getArrayinX(MenuListChildren.length));
+            console.log(MenuListChildren);
             break;    
         case 'LEFT':
             alert('LEFT');
