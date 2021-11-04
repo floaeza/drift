@@ -1,6 +1,8 @@
 // @ts-nocheck
-var MenuDate        = document.getElementById('MenuDate'),
-    MenuHour        = document.getElementById('MenuHour');
+var MenuDate            = document.getElementById('MenuDate'),
+    MenuHour            = document.getElementById('MenuHour'),
+    MenuList            = document.getElementById('MenuList'),
+    MenuListChildren    = MenuList.children;
 
 $(document).ready(function() {
     initial();
@@ -13,7 +15,7 @@ function initial(){
 function MenuSelect(Direction){
     switch (Direction) {
         case 'RIGHT':
-            console.log(getArrayinX(6));
+            console.log(getArrayinX(MenuListChildren.length));
             break;    
         case 'LEFT':
             alert('LEFT');
