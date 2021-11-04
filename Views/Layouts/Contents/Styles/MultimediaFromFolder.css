@@ -97,3 +97,15 @@ div#MenuContainer {
     font-size: 36px;
     z-index: 2;
 }
+
+div#MenuTitle {
+    width: 25%;
+    font-size: 150%;
+    position: fixed;
+    right: 0%;
+    text-shadow: 4px 4px 10px rgba(233, 232, 232, 0.5);
+    padding: 1%;
+    margin-right: 5%;
+    top: 10%;
+    font-family: Dominator-Medium;
+}
