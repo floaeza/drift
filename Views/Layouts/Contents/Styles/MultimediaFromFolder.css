@@ -74,7 +74,7 @@ div#MenuHour {
 div#MenuWeather,
 div#MenuHour,
 div#MenuDateHeader, .MenuNodes{
-    font-family: Street-Bold-Compressed;
+    font-family: Bohemian-typewriter;
 }
 
 
@@ -109,4 +109,14 @@ div#MenuTitle {
     top: 10%;
     font-family: Dominator-Medium;
     display: none;
+}
+
+@font-face {
+    font-family: 'Bohemian-typewriter';
+    src:url('/Views/Layouts/Menu/Styles/Custom-Fonts/Bohemian-typewriter/Bohemian-typewriter.ttf.woff') format('woff'),
+        url('/Views/Layouts/Menu/Styles/Custom-Fonts/Bohemian-typewriter/Bohemian-typewriter.ttf.svg#Bohemian-typewriter') format('svg'),
+        url('/Views/Layouts/Menu/Styles/Custom-Fonts/Bohemian-typewriter/Bohemian-typewriter.ttf.eot'),
+        url('/Views/Layouts/Menu/Styles/Custom-Fonts/Bohemian-typewriter/Bohemian-typewriter.ttf.eot?#iefix') format('embedded-opentype'); 
+    font-weight: normal;
+    font-style: normal;
 }
