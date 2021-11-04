@@ -2,7 +2,6 @@
 <img id='MenuBackgrounds'>
 <div id="MenuContainer">
     <div id='MenuWeather'>
-        <canvas id='WeatherIcon' width='50' height='50'></canvas>
         <div id='WeatherSummary'></div>
         <div id='TemperatureGroup'>
             <span id='WeatherFarenheit'>74</span><span>&deg; F/</span>
