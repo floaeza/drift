@@ -28,7 +28,7 @@ div#MenuContainer {
     font-size: 35px;
     padding: 1%;
     float: unset;
-    text-shadow:  2px 5px rgb(255 255 255);
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.795);
 }
 .MenuNodes.focus{
     border-bottom: 7px solid rgb(0, 0, 0);
