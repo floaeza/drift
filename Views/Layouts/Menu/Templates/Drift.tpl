@@ -15,8 +15,8 @@
         <h3 id="Title">DRIFT</h3>
     </div>
     <div id= "MenuList" class="MenuList">
-        <div class="MenuNodes focus">Menu</div>
-        <div class="MenuNodes">LIVE TV</div>
+        <div class="MenuNodes">Menu</div>
+        <div class="MenuNodes focus">LIVE TV</div>
         <div class="MenuNodes">Channel Guide</div>
         <div class="MenuNodes">Mezcal Bar</div>
     </div>

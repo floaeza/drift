@@ -18,7 +18,7 @@ function MenuSelect(Direction){
             var position = getFocusPosition(MenuListChildren);
             if (position+1 > MenuListChildren.length-1) {
                 MenuListChildren[position].className = 'MenuNodes';
-                MenuListChildren[0].className = 'MenuNodes focus';
+                MenuListChildren[1].className = 'MenuNodes focus';
             } else {
                 MenuListChildren[position].className = 'MenuNodes';
                 MenuListChildren[position+1].className = 'MenuNodes focus';
@@ -26,7 +26,7 @@ function MenuSelect(Direction){
             break;    
         case 'LEFT':
             var position = getFocusPosition(MenuListChildren);
-            if (position-1 < 0) {
+            if (position-1 <= 0) {
                 MenuListChildren[position].className = 'MenuNodes';
                 MenuListChildren[MenuListChildren.length-1].className = 'MenuNodes focus';
             } else {
