@@ -1128,3 +1128,22 @@ function PageUp(){
 
     SetChannelLogo();
 }
+function showInfoDevice(){
+    var div = document.createElement('div');
+    div.id = 'infoDevice';
+    if(typeof(ASTB) !== 'undefined'){
+        div.innerHTML = '<p><b>MAC ADDRESS:</b><br>'+ASTB.GetMacAddress()+'<br><br><b>IP ADDRESS:</b><br>'+ASTB.GetConfig('DHCPC.IPADDR')+'</p>';
+    }else if(typeof(ENTONE) !== 'undefined'){
+        div.innerHTML = '<p><b>MAC ADDRESS:</b><br>'+ENTONE.stb.getMacAddress()+'<br><br><b>IP ADDRESS:</b><br>'+ENTONE.stb.getIPAddress()+'</p>';
+    }else if(typeof(gSTB) !== 'undefined'){
+        div.innerHTML = '<p><b>MAC ADDRESS:</b><br>'+gSTB.GetDeviceMacAddress()+'<br><br><b>IP ADDRESS:</b><br>'+gSTB.RDir('IPAddress')+'</p>';
+    }
+    var generalB = document.getElementsByClassName('GeneralBox');
+    generalB[0].appendChild(div);
+}
+function removeInfoDevice(){
+    var div = document.getElementById('infoDevice');
+    var generalB = document.getElementsByClassName('GeneralBox');
+    div.remove();
+    showInfoDevi = false;
+}

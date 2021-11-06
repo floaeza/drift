@@ -41,7 +41,7 @@ Debug('########################### Channelinfo: '+ProgramIdChannnel);
             if(ProgramIdChannnel){
             //  CheckProgram = ';Progid='+ProgramIdChannnel+';audiopid='+AudioPid;
 	     //	CheckProgram = ';Progid='+ProgramIdChannnel;
-                if(AudioPid!=null && AudioPid != "0"){
+                if(AudioPid!=null){
                     CheckProgram = ';Progid='+ProgramIdChannnel+';audiopid='+AudioPid;
                 }else{
                     CheckProgram = ';Progid='+ProgramIdChannnel;

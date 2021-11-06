@@ -454,6 +454,7 @@ function GetDigitalChannel(){
     });
     xhr = null;
     SetDigitalChannel();
+    
     // Si la guia esta cerrada muestra cuadro con informacion del canal en reproduccion
     ShowInfo();
 }

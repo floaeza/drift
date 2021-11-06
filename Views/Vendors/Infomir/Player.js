@@ -197,12 +197,10 @@ function PlayDigitalChannel(Source){
 
     // Activamos la bandera
     PlayingChannel = true;
-
     // Si tiene una fecha ya registrada guarda estadisticas en la BD
     if(StartDateChannel !== ''){
         SetChannelStatistics();
     }
-
     // Actualiza la fecha inicio de la reproduccion del canal */
     StartDateChannel = new Date();
 }
