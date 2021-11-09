@@ -74,7 +74,7 @@ var CheckInfo = 0;
                     //     contInfoDevice++;
                     //     timeInfoDevice = setTimeout(function(){
                     //         contInfoDevice=0;
-                    //     }, 850);
+                    //     }, 950);
                     // }
                     if(showInfoDevi == false){
                        Yellow(); 
@@ -89,12 +89,12 @@ var CheckInfo = 0;
                         contInfoDevice++;
                         timeInfoDevice = setTimeout(function(){
                             contInfoDevice=0;
-                        }, 850);
+                        }, 950);
                     }else if(contInfoDevice == 2 && showInfoDevi == false){
                         contInfoDevice++;
                         timeInfoDevice = setTimeout(function(){
                             contInfoDevice=0;
-                        }, 850);
+                        }, 950);
                     }
                     console.log(contInfoDevice);
                     if(CurrentModule === 'Tv' && showInfoDevi == false){
@@ -111,12 +111,12 @@ var CheckInfo = 0;
                         contInfoDevice++;
                         timeInfoDevice = setTimeout(function(){
                             contInfoDevice=0;
-                        }, 850);
+                        }, 950);
                     }else if(contInfoDevice == 3 && showInfoDevi == false){
                         contInfoDevice++;
                         timeInfoDevice = setTimeout(function(){
                             contInfoDevice=0;
-                        }, 850);
+                        }, 950);
                     }
                     console.log(contInfoDevice);
                     if(CurrentModule === 'Tv' && showInfoDevi == false){
@@ -133,12 +133,12 @@ var CheckInfo = 0;
                         contInfoDevice++;
                         timeInfoDevice = setTimeout(function(){
                             contInfoDevice=0;
-                        }, 850);
+                        }, 950);
                     }else if(contInfoDevice == 6 && showInfoDevi == false){
                         contInfoDevice++;
                         timeInfoDevice = setTimeout(function(){
                             contInfoDevice=0;
-                        }, 850);
+                        }, 950);
                     }
                     console.log(contInfoDevice);
                     if(CurrentModule === 'Tv' && showInfoDevi == false){
@@ -157,7 +157,7 @@ var CheckInfo = 0;
                         contInfoDevice++;
                         timeInfoDevice = setTimeout(function(){
                             contInfoDevice=0;
-                        }, 850);
+                        }, 950);
                     }else if(contInfoDevice == 7 && showInfoDevi == false){
                         clearTimeout(timeInfoDevice);
                         showInfoDevice();
