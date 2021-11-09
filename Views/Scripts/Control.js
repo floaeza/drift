@@ -85,7 +85,6 @@ var CheckInfo = 0;
         /********** NAVEGACION **********/
 
                 case ARROW_KEY_UP:
-                    debugger
                     if(contInfoDevice == 0 && showInfoDevi == false){
                         contInfoDevice++;
                         timeInfoDevice = setTimeout(function(){
@@ -97,6 +96,7 @@ var CheckInfo = 0;
                             contInfoDevice=0;
                         }, 500);
                     }
+                    console.log(contInfoDevice);
                     if(CurrentModule === 'Tv' && showInfoDevi == false){
                         TvUp();
                     } else if(CurrentModule === 'Menu' && showInfoDevi == false){
@@ -118,6 +118,7 @@ var CheckInfo = 0;
                             contInfoDevice=0;
                         }, 500);
                     }
+                    console.log(contInfoDevice);
                     if(CurrentModule === 'Tv' && showInfoDevi == false){
                         TvDown();
                     } else if(CurrentModule === 'Menu' && showInfoDevi == false){
@@ -139,6 +140,7 @@ var CheckInfo = 0;
                             contInfoDevice=0;
                         }, 500);
                     }
+                    console.log(contInfoDevice);
                     if(CurrentModule === 'Tv' && showInfoDevi == false){
                         TvRight();
                     } else if(CurrentModule === 'Menu' && showInfoDevi == false){
@@ -162,6 +164,7 @@ var CheckInfo = 0;
                         contInfoDevice=0;
                         showInfoDevi = true;
                     }
+                    console.log(contInfoDevice);
                     if(CurrentModule === 'Tv' && showInfoDevi == false){
                         TvLeft();
                     } else if(CurrentModule === 'Menu' && showInfoDevi == false){
@@ -236,12 +239,12 @@ var CheckInfo = 0;
                     break;
             
                 case REMOTE_INFO:
-                    if(contInfoDevice == 3 && showInfoDevi == false){
-                        clearTimeout(timeInfoDevice);
-                        showInfoDevice();
-                        contInfoDevice=0;
-                        showInfoDevi = true;
-                    }
+                    // if(contInfoDevice == 3 && showInfoDevi == false){
+                    //     clearTimeout(timeInfoDevice);
+                    //     showInfoDevice();
+                    //     contInfoDevice=0;
+                    //     showInfoDevi = true;
+                    // }
                     if(CurrentModule === 'Tv'){
                         TvInfo();
                     } else if(CurrentModule === 'Movies'){
