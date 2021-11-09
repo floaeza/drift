@@ -61,6 +61,8 @@ function MenuSelect(Direction){
                 GoPage('tv.php', '1', 'Tv');
             }else if(text == 'Mezcal Bar'){
                 GoPage('content.php', '11', 'Mezcal');
+            }else if (text == 'Movies') {
+                GoPage('content.php', '3', 'Movies');
             }
             break;
     }
