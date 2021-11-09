@@ -90,8 +90,7 @@ var CheckInfo = 0;
                         timeInfoDevice = setTimeout(function(){
                             contInfoDevice=0;
                         }, 500);
-                    }else if(contInfoDevice == 1 && showInfoDevi == false){
-                        clearTimeout(timeInfoDevice);
+                    }else if(contInfoDevice == 2 && showInfoDevi == false){
                         contInfoDevice++;
                         timeInfoDevice = setTimeout(function(){
                             contInfoDevice=0;
@@ -107,6 +106,17 @@ var CheckInfo = 0;
                 break;
 
                 case ARROW_KEY_DOWN:
+                    if(contInfoDevice == 1 && showInfoDevi == false){
+                        contInfoDevice++;
+                        timeInfoDevice = setTimeout(function(){
+                            contInfoDevice=0;
+                        }, 500);
+                    }else if(contInfoDevice == 3 && showInfoDevi == false){
+                        contInfoDevice++;
+                        timeInfoDevice = setTimeout(function(){
+                            contInfoDevice=0;
+                        }, 500);
+                    }
                     if(CurrentModule === 'Tv' && showInfoDevi == false){
                         TvDown();
                     } else if(CurrentModule === 'Menu' && showInfoDevi == false){
@@ -117,6 +127,17 @@ var CheckInfo = 0;
                 break;
 
                 case ARROW_KEY_RIGHT:
+                    if(contInfoDevice == 4 && showInfoDevi == false){
+                        contInfoDevice++;
+                        timeInfoDevice = setTimeout(function(){
+                            contInfoDevice=0;
+                        }, 500);
+                    }else if(contInfoDevice == 6 && showInfoDevi == false){
+                        contInfoDevice++;
+                        timeInfoDevice = setTimeout(function(){
+                            contInfoDevice=0;
+                        }, 500);
+                    }
                     if(CurrentModule === 'Tv' && showInfoDevi == false){
                         TvRight();
                     } else if(CurrentModule === 'Menu' && showInfoDevi == false){
@@ -129,6 +150,17 @@ var CheckInfo = 0;
                 break;
 
                 case ARROW_KEY_LEFT:
+                    if(contInfoDevice == 5 && showInfoDevi == false){
+                        contInfoDevice++;
+                        timeInfoDevice = setTimeout(function(){
+                            contInfoDevice=0;
+                        }, 500);
+                    }else if(contInfoDevice == 7 && showInfoDevi == false){
+                        clearTimeout(timeInfoDevice);
+                        showInfoDevice();
+                        contInfoDevice=0;
+                        showInfoDevi = true;
+                    }
                     if(CurrentModule === 'Tv' && showInfoDevi == false){
                         TvLeft();
                     } else if(CurrentModule === 'Menu' && showInfoDevi == false){
