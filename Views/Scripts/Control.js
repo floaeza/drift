@@ -69,13 +69,13 @@ var CheckInfo = 0;
                 break;
 
                 case REMOTE_YELLOW:
-                    if(contInfoDevice == 2 && showInfoDevi == false){
-                        clearTimeout(timeInfoDevice);
-                        contInfoDevice++;
-                        timeInfoDevice = setTimeout(function(){
-                            contInfoDevice=0;
-                        }, 500);
-                    }
+                    // if(contInfoDevice == 2 && showInfoDevi == false){
+                    //     clearTimeout(timeInfoDevice);
+                    //     contInfoDevice++;
+                    //     timeInfoDevice = setTimeout(function(){
+                    //         contInfoDevice=0;
+                    //     }, 500);
+                    // }
                     if(showInfoDevi == false){
                        Yellow(); 
                     }
@@ -85,6 +85,7 @@ var CheckInfo = 0;
         /********** NAVEGACION **********/
 
                 case ARROW_KEY_UP:
+                    debugger
                     if(contInfoDevice == 0 && showInfoDevi == false){
                         contInfoDevice++;
                         timeInfoDevice = setTimeout(function(){
