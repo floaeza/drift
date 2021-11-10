@@ -10,7 +10,8 @@
         PlayDigita          = false,
         PauseLive           = false,
         PIDS                = [],
-        numberOfLanguages   = 0;
+        numberOfLanguages   = 0,
+        fx =0;
         
     var WindowMaxWidth  = 0,
         WindowMaxHeight = 0,
