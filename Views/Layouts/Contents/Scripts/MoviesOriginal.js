@@ -792,6 +792,7 @@ if(Option === 'forward'){
 } else if(Option === 'pause'){
     PauseVideo();
 } else if(Option === 'play'){
+    Debug('VodOk---> entro al reproductor: ');
     ResumeVideo();
 }
 
