@@ -94,7 +94,7 @@ function GetNextJsonEpg(Direction){
                 ChannelsJsonToday = ChannelsJson;
             }
 
-            //Debug('------- GetNextJsonEpg -> ChannelsLength: '+ChannelsLength);
+            // Debug('------- GetNextJsonEpg -> ChannelsLength: '+ChannelsLength);
         },
         error: function (response){
             // El archivo no se encuentra o viene vacio, consulta a la base de datos
