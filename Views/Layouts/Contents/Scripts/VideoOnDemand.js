@@ -390,7 +390,7 @@ if(MoviePanelFocus === 'Play'){
 
     Debug('ExecOptionMoviePanel ShowPlayingPanel()');
     ShowPlayingPanel();
-    
+  
     SetFocusPlaying('right');
     
     BackgroundPanel.style.visibility = 'hidden';
