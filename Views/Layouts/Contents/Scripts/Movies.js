@@ -1117,7 +1117,7 @@ if(CurrentFocus === 'Menu'){
 } else if(CurrentFocus === 'Movies'){
     LoadMoviePanel();
 } else if(CurrentFocus === 'MoviePanel'){
-      //ExecOptionMoviePanel();
+      ExecOptionMoviePanel();
     SelectPlayOption();
 } else if(CurrentFocus === 'Playing'){
     SelectPlayingOption();
