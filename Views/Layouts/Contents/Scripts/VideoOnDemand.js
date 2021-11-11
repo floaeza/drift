@@ -382,7 +382,12 @@ if(MoviePanelFocus === 'Play'){
 } else {
     CurrentFocus = 'Playing';
     Debug('CurrentFocus= Playing');
+    Debug(libraies['MoviesSource']);
+    Debug( MoviesList[MovieBox.id].FLDR );
+    Debug(  MoviesList[MovieBox.id].FILE );
+    
     PlayVideo(Libraries['MoviesSource'] + MoviesList[MovieBox.id].FLDR + MoviesList[MovieBox.id].FILE);
+
     Debug('PlayVideo()');
     PlayingVod = true;
     
