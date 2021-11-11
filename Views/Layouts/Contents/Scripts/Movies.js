@@ -823,18 +823,23 @@ function SelectPlayingOption(){
             //Reproducir de nuevo
             // StopVideo();
             // PlayingMovie();
-            SetSpeed('backward');  
+            SetSpeed('backward');
+            Debug('VodOk---> SelectPlayingOption SetSpeed backward');  
             break;
         case 2:
             //Play
+            Debug('VodOk---> SelectPlayingOption SetSpeed play');
             SetSpeed('play');
             break;
         case 3:
             //Pausa
+            Debug('VodOk---> SelectPlayingOption SetSpeed pause');
             SetSpeed('pause');
             break;
         case 4:
+            Debug('VodOk---> SelectPlayingOption SetSpeed forward');
             SetSpeed('forward');
+            
             break;
 
     }

@@ -699,17 +699,21 @@ function SelectPlayingOption(){
             // StopVideo();
             // PlayingMovie();
             SetSpeed('backward');  
+            Debug('VodOk---> SelectPlayingOption SetSpeed backward');  
             break;
         case 2:
             //Play
             SetSpeed('play');
+            Debug('VodOk---> SelectPlayingOption SetSpeed play');  
             break;
         case 3:
             //Pausa
             SetSpeed('pause');
+            Debug('VodOk---> SelectPlayingOption SetSpeed pause');  
             break;
         case 4:
             SetSpeed('forward');
+            Debug('VodOk---> SelectPlayingOption SetSpeed forward');  
             break;
 
     }
