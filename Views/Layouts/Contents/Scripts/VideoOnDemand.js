@@ -686,8 +686,7 @@ if(CurrentFocus === 'Menu'){
     ExecOptionMoviePanel();
 } else if(CurrentFocus === 'Playing'){
     Debug('VodOk---> Playing');
-    ShowPlayingPanel();
-    /* SelectPlayingOption(); */
+    SelectPlayingOption();
 } else if(CurrentFocus === 'StopPlaying'){
     StopCloseMovie();
 }
