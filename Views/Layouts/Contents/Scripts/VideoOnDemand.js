@@ -385,7 +385,7 @@ if(MoviePanelFocus === 'Play'){
     PlayingVod = true;
     
     ClearMoviePanel();
-    
+
     Debug('ExecOptionMoviePanel ShowPlayingPanel()');
     ShowPlayingPanel();
     
@@ -686,7 +686,8 @@ if(CurrentFocus === 'Menu'){
     ExecOptionMoviePanel();
 } else if(CurrentFocus === 'Playing'){
     Debug('VodOk---> Playing');
-    SelectPlayingOption();
+    ShowPlayingPanel();
+    /* SelectPlayingOption(); */
 } else if(CurrentFocus === 'StopPlaying'){
     StopCloseMovie();
 }
@@ -698,3 +699,4 @@ if(CurrentFocus === 'Playing' || CurrentFocus === 'StopPlaying'){
     Debug('VodInfo---> ShowPlayingPanel');
 }
 }
+
