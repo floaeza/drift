@@ -475,6 +475,7 @@ for(IndexC = 0; IndexC < PlayingNodesArray.length; IndexC++){
 
 function SelectPlayingOption(){
 Debug('VodOk---> SelectPlayingOption');
+Debug('VodOk---> SelectPlayingOption2');
 if(PlayinPanelActive === true){
     
     Debug('VodOk---> PlayinPanelActive === true');
