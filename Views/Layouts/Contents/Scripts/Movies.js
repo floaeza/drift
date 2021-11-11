@@ -715,14 +715,18 @@ function ShowPlayingPanel(){
 
 // @ts-ignore
 PlayingTitle.textContent = MoviesList[CurrentMovieID].TTLE;
-   
+Debug('VodOk---> PlayingTitle.textContent');   
+
 UpdateBarStatus();
+Debug('VodOk---> UpdateBarStatus()');
 
 // @ts-ignore
 clearTimeout(BarUpdate);
 
+
 // @ts-ignore
 BarUpdate = setInterval(UpdateBarStatus,1000);
+Debug('VodOk---> setInterval(UpdateBarStatus,1000)');
 
 //SetFocusPlaying('right');
 }
