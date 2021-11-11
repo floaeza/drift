@@ -476,8 +476,8 @@ for(IndexC = 0; IndexC < PlayingNodesArray.length; IndexC++){
 function SelectPlayingOption(){
 Debug('VodOk---> SelectPlayingOption');
 if(PlayinPanelActive === true){
-
-   
+    
+    Debug('VodOk---> PlayinPanelActive === true');
     switch (PlayingNodesArray[PlayingFocus]) {
         case 1:
             // Backward
