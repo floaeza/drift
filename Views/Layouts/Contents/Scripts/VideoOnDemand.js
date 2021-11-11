@@ -400,7 +400,7 @@ if(MoviePanelFocus === 'Play'){
 
 function ShowPlayingPanel(){
 PlayingPanel.style.visibility = 'visible';
-
+Debug('VodOk---> ShowPlayingPanel');
 PlayinPanelActive = true;
 Debug('VodOk---> change PlayinPanelActive = true');
 if(OptionText !== 'pause'){
@@ -413,7 +413,7 @@ if(OptionText !== 'pause'){
 }
 
 PlayingTitle.textContent = MoviesList[MovieBox.id].TTLE;
-   
+Debug('VodOk---> UpdateBarStatus()');   
 UpdateBarStatus();
 
 clearTimeout(BarUpdate);
@@ -694,5 +694,6 @@ if(CurrentFocus === 'Menu'){
 function VodInfo(){
 if(CurrentFocus === 'Playing' || CurrentFocus === 'StopPlaying'){
     ShowPlayingPanel();
+    Debug('VodInfo---> ShowPlayingPanel');
 }
 }
