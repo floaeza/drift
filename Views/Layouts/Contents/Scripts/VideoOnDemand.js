@@ -402,7 +402,7 @@ function ShowPlayingPanel(){
 PlayingPanel.style.visibility = 'visible';
 
 PlayinPanelActive = true;
-
+Debug('VodOk---> change PlayinPanelActive = true');
 if(OptionText !== 'pause'){
     clearTimeout(PlayingPanelTimer);
     
