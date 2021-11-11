@@ -381,7 +381,7 @@ if(MoviePanelFocus === 'Play'){
     CurrentFocus = 'Playing';
     
     PlayVideo(Libraries['MoviesSource'] + MoviesList[MovieBox.id].FLDR + MoviesList[MovieBox.id].FILE);
-    
+    Debug('PlayVideo');
     PlayingVod = true;
     
     ClearMoviePanel();
