@@ -691,9 +691,15 @@ if(CurrentFocus === 'Menu'){
 }
 }
 
-function VodInfo(){
+/* function VodInfo(){
 if(CurrentFocus === 'Playing' || CurrentFocus === 'StopPlaying'){
     ShowPlayingPanel();
     Debug('VodInfo---> ShowPlayingPanel');
 }
-}
+} */
+function VodInfo(){
+    if(CurrentFocus === 'Playing' ){
+        ShowPlayingPanel();
+        Debug('VodInfo---> ShowPlayingPanel');
+    }
+    }
