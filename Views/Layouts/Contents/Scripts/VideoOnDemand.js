@@ -379,13 +379,26 @@ if(MoviePanelFocus === 'Play'){
     BackgroundPanel.style.backgroundImage = "url('"+FolderSource + "bg/2542.jpg')";
 } else {
     CurrentFocus = 'Playing';
+   
+    Debug(Libraries['MoviesSource']);
+    Debug(MoviesList[MovieBox.id].FLDR );
+    Debug(MoviesList[MovieBox.id].FILE);
     
+<<<<<<< HEAD
     //ideo(Libraries['MoviesSource'] + MoviesList[MovieBox.id].FLDR + MoviesList[MovieBox.id].FILE);
+=======
+   
+    PlayVideo(Libraries['MoviesSource'] + MoviesList[MovieBox.id].FLDR + MoviesList[MovieBox.id].FILE);
+>>>>>>> c9475f37e40833a923cb5b42c4d83c93e66291cc
     
+   
+
+
     PlayingVod = true;
     
     ClearMoviePanel();
-    
+
+    Debug('ExecOptionMoviePanel ShowPlayingPanel()');
     ShowPlayingPanel();
     
     SetFocusPlaying('right');
@@ -400,9 +413,9 @@ if(MoviePanelFocus === 'Play'){
 
 function ShowPlayingPanel(){
 PlayingPanel.style.visibility = 'visible';
-
+Debug('VodOk---> ShowPlayingPanel');
 PlayinPanelActive = true;
-
+Debug('VodOk---> change PlayinPanelActive = true');
 if(OptionText !== 'pause'){
     clearTimeout(PlayingPanelTimer);
     
@@ -413,7 +426,7 @@ if(OptionText !== 'pause'){
 }
 
 PlayingTitle.textContent = MoviesList[MovieBox.id].TTLE;
-   
+Debug('VodOk---> UpdateBarStatus()');   
 UpdateBarStatus();
 
 clearTimeout(BarUpdate);
@@ -475,9 +488,10 @@ for(IndexC = 0; IndexC < PlayingNodesArray.length; IndexC++){
 
 function SelectPlayingOption(){
 Debug('VodOk---> SelectPlayingOption');
-if(PlayinPanelActive === true){
 
-   
+if(PlayinPanelActive === true){
+    
+    Debug('VodOk---> PlayinPanelActive === true');
     switch (PlayingNodesArray[PlayingFocus]) {
         case 1:
             // Backward
@@ -693,5 +707,7 @@ if(CurrentFocus === 'Menu'){
 function VodInfo(){
 if(CurrentFocus === 'Playing' || CurrentFocus === 'StopPlaying'){
     ShowPlayingPanel();
+    Debug('VodInfo---> ShowPlayingPanel');
 }
 }
+

@@ -17,7 +17,11 @@
     <div id= "MenuList" class="MenuList">
         <div class="MenuNodes">Menu</div>
         <div class="MenuNodes focus">LIVE TV</div>
+<<<<<<< HEAD
         <div class="MenuNodes">Guide</div>
+=======
+        <div class="MenuNodes">Movies</div>
+>>>>>>> c9475f37e40833a923cb5b42c4d83c93e66291cc
         <div class="MenuNodes">Mezcal Bar</div>
     </div>
 </div>

@@ -6,6 +6,7 @@
  */
 
 // Variables globales
+
 var PlayingChannel  = false,
     PlayingVod      = true,
     PauseLive       = false;
@@ -255,6 +256,7 @@ function PlayVideo(Source){
             uri: src,
             solution: 'auto'
         });
+        
     }
 
     player.onPlayEnd = function () {
@@ -271,6 +273,7 @@ function PlayVideo(Source){
     MaximizeTV();
 
 }
+
 
 
 function GetRaws(Source){
@@ -531,9 +534,9 @@ function ResumeVideo(){
 }
 
 function SpeedVideo(Speed){
-    //player.speed = parseInt(Speed);
-    //Debug(player.speed);
-    //Debug("############3    ID RewFor:"+RewFor + "   E############");
+    player.speed = parseInt(Speed);
+    Debug(player.speed);
+    Debug("############3    ID RewFor:"+RewFor + "   E############");
     if(RewFor === null){
         NewSpeed = Speed;
         RewFor = setInterval(updateRewFor,1000);

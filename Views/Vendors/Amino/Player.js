@@ -10,7 +10,8 @@
         PlayDigita          = false,
         PauseLive           = false,
         PIDS                = [],
-        numberOfLanguages   = 0;
+        numberOfLanguages   = 0,
+        fx =0;
         
     var WindowMaxWidth  = 0,
         WindowMaxHeight = 0,
@@ -108,6 +109,7 @@ Debug('########################### Channelinfo: '+ProgramIdChannnel);
 
         // Reproduce el video
         AVMedia.Play('src='+ Source);
+        Debug("Se esta reproduciendo exitosamente amino "+Source)
         //setTimeout(getPIDSInfo, 15000);
         // Maximiza el video en caso de que no este en pantalla completa
            MaximizeTV();
@@ -168,7 +170,8 @@ Debug('########################### Channelinfo: '+ProgramIdChannnel);
  * ****************************************************************************/
     
     function MinimizeTV(){
-        windowTV.SetRectangle((10*WindowMaxWidth)/100, (13*WindowMaxWidth)/100, WindowMinWidth, WindowMinHeight);
+        //windowTV.SetRectangle((10*WindowMaxWidth)/100, (13*WindowMaxWidth)/100, WindowMinWidth, WindowMinHeight);
+        windowTV.SetRectangle(TvPositionLeft, TvPositionTop, WindowMinWidth, WindowMinHeight);
     }
     
 /* *****************************************************************************

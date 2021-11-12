@@ -394,10 +394,8 @@ function SetOptionPanel(){
 
 function SetPvrInfo(){
     //Device['MacAddressPvr'].length
-    debugger
     var AvailableSize  = 0,
         TotalSize = 0;
-
     if(Device['Type'] === 'WHP_HDDY' || Device['Type'] === 'PVR_ONLY'){
         var StorageInfo = [];
         if(typeof(ASTB) !== 'undefined') {

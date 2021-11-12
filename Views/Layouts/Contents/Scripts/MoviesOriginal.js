@@ -699,17 +699,21 @@ function SelectPlayingOption(){
             // StopVideo();
             // PlayingMovie();
             SetSpeed('backward');  
+            Debug('VodOk---> SelectPlayingOption SetSpeed backward');  
             break;
         case 2:
             //Play
             SetSpeed('play');
+            Debug('VodOk---> SelectPlayingOption SetSpeed play');  
             break;
         case 3:
             //Pausa
             SetSpeed('pause');
+            Debug('VodOk---> SelectPlayingOption SetSpeed pause');  
             break;
         case 4:
             SetSpeed('forward');
+            Debug('VodOk---> SelectPlayingOption SetSpeed forward');  
             break;
 
     }
@@ -792,6 +796,7 @@ if(Option === 'forward'){
 } else if(Option === 'pause'){
     PauseVideo();
 } else if(Option === 'play'){
+    Debug('VodOk---> entro al reproductor: ');
     ResumeVideo();
 }
 
@@ -963,7 +968,7 @@ if(CurrentFocus === 'Menu'){
 } else if(CurrentFocus === 'Movies'){
     LoadMoviePanel();
 } else if(CurrentFocus === 'MoviePanel'){
-      //ExecOptionMoviePanel();
+      ExecOptionMoviePanel();
     SelectPlayOption();
 } else if(CurrentFocus === 'Playing'){
     SelectPlayingOption();
