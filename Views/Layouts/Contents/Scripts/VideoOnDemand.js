@@ -309,12 +309,10 @@ MovieBox.style.border = '3px solid #fff'; //.classList.add('OptionFocus');
 
 function LoadMoviePanel(){
 CurrentFocus = 'MoviePanel';
-Debug('LoadMoviePanel()');
 
 ListPanel.style.visibility = 'hidden';
 MoviePanel.style.visibility = 'visible';
 
-Debug('MoviePanelNodes ');
 //MoviePanelNodes[1].src = FolderSource + MoviesList[MovieBox.id].FLDR + 'HD'+MoviesList[MovieBox.id].PSTR;
 MoviePanelNodes[1].src = FolderSource + MoviesList[MovieBox.id].FLDR + MoviesList[MovieBox.id].PSTR;
 MoviePanelNodes[3].textContent  = MoviesList[MovieBox.id].TTLE;
@@ -326,13 +324,13 @@ MoviePanelNodes[15].textContent = MoviesList[MovieBox.id].RTNG;
 MoviePanelNodes[17].textContent = MoviesList[MovieBox.id].DSCR;
 MoviePanelNodes[19].textContent = MoviesList[MovieBox.id].DRTR;
 MoviePanelNodes[21].textContent = 'Casting: '+MoviesList[MovieBox.id].CAST;
-Debug('BackgroundPanel');
+
 BackgroundPanel.style.backgroundImage = "url('"+ FolderSource + MoviesList[MovieBox.id].FLDR + 'preview.png' + "')";
 
 MoviePanelFocus = 'Play';
 SetFocusOnMoviePanel();
 
-Debug('SetFocusOnMoviePanel();');
+
 PlayingFocus = -1;
 
 PlayingVod = false;
@@ -381,21 +379,16 @@ if(MoviePanelFocus === 'Play'){
     BackgroundPanel.style.backgroundImage = "url('"+FolderSource + "bg/2542.jpg')";
 } else {
     CurrentFocus = 'Playing';
-    Debug('CurrentFocus= Playing');
-    Debug(libraies['MoviesSource']);
-    Debug( MoviesList[MovieBox.id].FLDR );
-    Debug(  MoviesList[MovieBox.id].FILE );
     
     PlayVideo(Libraries['MoviesSource'] + MoviesList[MovieBox.id].FLDR + MoviesList[MovieBox.id].FILE);
-
-    Debug('PlayVideo()');
+    
     PlayingVod = true;
     
     ClearMoviePanel();
 
     Debug('ExecOptionMoviePanel ShowPlayingPanel()');
     ShowPlayingPanel();
-  
+    
     SetFocusPlaying('right');
     
     BackgroundPanel.style.visibility = 'hidden';
@@ -692,7 +685,7 @@ if(CurrentFocus === 'Menu'){
 } else if(CurrentFocus === 'MoviePanel'){
     ExecOptionMoviePanel();
 } else if(CurrentFocus === 'Playing'){
-    Debug('VodOk---> Playing1');
+    Debug('VodOk---> Playing');
     SelectPlayingOption();
 } else if(CurrentFocus === 'StopPlaying'){
     StopCloseMovie();
