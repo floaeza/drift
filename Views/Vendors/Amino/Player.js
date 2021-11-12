@@ -109,6 +109,7 @@ Debug('########################### Channelinfo: '+ProgramIdChannnel);
 
         // Reproduce el video
         AVMedia.Play('src='+ Source);
+        Debug("Se esta reproduciendo exitosamente amino "+Source)
         //setTimeout(getPIDSInfo, 15000);
         // Maximiza el video en caso de que no este en pantalla completa
            MaximizeTV();
