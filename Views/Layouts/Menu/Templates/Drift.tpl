@@ -17,7 +17,7 @@
     <div id= "MenuList" class="MenuList">
         <div class="MenuNodes">Menu</div>
         <div class="MenuNodes focus">LIVE TV</div>
-        <div class="MenuNodes">Channel Guide</div>
+        <div class="MenuNodes">Guide</div>
         <div class="MenuNodes">Mezcal Bar</div>
     </div>
 </div>

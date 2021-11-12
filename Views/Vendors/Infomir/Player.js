@@ -67,7 +67,6 @@ var Ext = gSTB.StandBy(false);
 /* *****************************************************************************
  * Reproductor de canal
  * ****************************************************************************/
-
 function PlayChannel(Source, Port, ProgramIdChannnel, ProgramIdPosition){
     var CheckPort = '';
     
@@ -251,7 +250,6 @@ function PlayVideo(Source){
         }
     } else {
         //Reproduce el video
-
         Debug(src);
         player.play({
             uri: src,

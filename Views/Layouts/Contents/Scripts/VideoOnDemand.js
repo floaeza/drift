@@ -380,7 +380,7 @@ if(MoviePanelFocus === 'Play'){
 } else {
     CurrentFocus = 'Playing';
     
-    PlayVideo(Libraries['MoviesSource'] + MoviesList[MovieBox.id].FLDR + MoviesList[MovieBox.id].FILE);
+    //ideo(Libraries['MoviesSource'] + MoviesList[MovieBox.id].FLDR + MoviesList[MovieBox.id].FILE);
     
     PlayingVod = true;
     
