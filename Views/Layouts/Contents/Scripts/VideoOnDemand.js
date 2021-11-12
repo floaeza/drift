@@ -6,7 +6,7 @@
 /*******************************************************************************
  * Variables generales
  *******************************************************************************/
-
+ var player = stbPlayerManager.list[0];
 
 var FilterContainer         = document.getElementById('Filter'),
     ListFilters             = document.getElementById('ListFilters'),
@@ -383,6 +383,13 @@ if(MoviePanelFocus === 'Play'){
     Debug(MoviesList[MovieBox.id].FLDR );
     Debug(MoviesList[MovieBox.id].FILE);
     
+
+    Debug(src);
+        player.play({
+            uri: src,
+            solution: 'auto'
+        });
+        
     PlayVideo(Libraries['MoviesSource'] + MoviesList[MovieBox.id].FLDR + MoviesList[MovieBox.id].FILE);
     
    
