@@ -383,12 +383,7 @@ if(MoviePanelFocus === 'Play'){
     Debug(MoviesList[MovieBox.id].FLDR );
     Debug(MoviesList[MovieBox.id].FILE);
     
-    play({
-        uri: src,
-        solution: 'auto'
-    });
-    
-    
+    Debug("this source..."+src)
     PlayVideo(Libraries['MoviesSource'] + MoviesList[MovieBox.id].FLDR + MoviesList[MovieBox.id].FILE);
     
    
