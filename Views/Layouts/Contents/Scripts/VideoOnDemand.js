@@ -379,12 +379,15 @@ if(MoviePanelFocus === 'Play'){
     BackgroundPanel.style.backgroundImage = "url('"+FolderSource + "bg/2542.jpg')";
 } else {
     CurrentFocus = 'Playing';
+    Debug(Libraries['MoviesSource']);
+    Debug(MoviesList[MovieBox.id].FLDR );
+    Debug(Libraries['MoviesSource']);
     
     PlayVideo(Libraries['MoviesSource'] + MoviesList[MovieBox.id].FLDR + MoviesList[MovieBox.id].FILE);
     
     Debug(Libraries['MoviesSource']);
     Debug(MoviesList[MovieBox.id].FLDR );
-    Debug( MoviesList[MovieBox.id].FILE);
+    Debug(Libraries['MoviesSource']);
 
 
     PlayingVod = true;
