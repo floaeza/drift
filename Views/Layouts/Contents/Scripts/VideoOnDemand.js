@@ -1,3 +1,4 @@
+// @ts-nocheck
 /* @Creado por: Tania Maldonado
  * @Fecha: Julio 2020
  * @Tipo: Funciones para controlar el layout de peliculas
@@ -384,12 +385,8 @@ if(MoviePanelFocus === 'Play'){
     Debug(MoviesList[MovieBox.id].FLDR );
     Debug(MoviesList[MovieBox.id].FILE);
     
-<<<<<<< HEAD
-    //ideo(Libraries['MoviesSource'] + MoviesList[MovieBox.id].FLDR + MoviesList[MovieBox.id].FILE);
-=======
    
     PlayVideo(Libraries['MoviesSource'] + MoviesList[MovieBox.id].FLDR + MoviesList[MovieBox.id].FILE);
->>>>>>> c9475f37e40833a923cb5b42c4d83c93e66291cc
     
    
 
