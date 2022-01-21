@@ -7,7 +7,7 @@
         </div>
     </div>
     <div id="MenuDateHeader">
-        <div id='MenuHour'>4:30 PM</div>
+        <div id='MenuHour'></div>
     </div>
     <div id="MenuTitle">
         <h3 id="Title">DRIFT</h3>

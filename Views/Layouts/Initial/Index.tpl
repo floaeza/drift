@@ -27,6 +27,7 @@
     /* Variables generales */
     var Option      = '[@Option]',
         MacAddress  = '00:00:00:00:00:00',
+        
         IpAddress   = '0.0.0.0',
         Firmware    = 'Developer',
         Model       = 'Test',

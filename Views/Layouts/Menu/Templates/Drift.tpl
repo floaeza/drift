@@ -9,7 +9,7 @@
         </div>
     </div>
     <div id="MenuDateHeader">
-        <div id='MenuHour'>4:30 PM</div>
+        <div id='MenuHour'></div>
     </div>
     <div id="MenuTitle">
         <h3 id="Title">DRIFT</h3>
@@ -17,7 +17,7 @@
     <div id= "MenuList" class="MenuList">
         <div class="MenuNodes">Menu</div>
         <div class="MenuNodes focus">LIVE TV</div>
-        <div class="MenuNodes">Movies</div>
+        <!-- <div class="MenuNodes">Movies</div> -->
         <div class="MenuNodes">Mezcal Bar</div>
     </div>
 </div>

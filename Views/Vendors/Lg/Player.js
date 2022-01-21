@@ -16,32 +16,63 @@
 
         GetWindowFullSize();
         GetWindowMinSize();
-    
-
+    var streamM3U8 = '';
+    // var media = hcap.Media.createMedia({
+    //     "url" : "https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master_3360.m3u8", 
+    //     "mimeType" : "video/mp4",  
+    // });
+    var media = null;
 /* *****************************************************************************
  * Reproducir canal
  * ****************************************************************************/
 
     function PlayChannel(Source, Port){
-        // Detiene el canal actual
+        Debug(Source);
+        if (media != null) {
+            Debug('Primer canal');
             StopChannel();
-            
+        }
+        media = hcap.Media.createMedia({
+            "url" : Source, 
+            "mimeType" : "video/mp4",  
+        });
+        // Detiene el canal actual
+        // media = hcap.Media.createMedia({
+        //     "url" : Source, 
+        //     "mimeType" : "video/mp4",  
+        // });
         // Elimina la etiqueta igmp o rf, ya que el parametro solo acepta numeros en el string
-        var Src = Source.replace('igmp://', '');
+        // var Src = Source.replace('igmp://', '');
+        // hcap.channel.requestChangeCurrentChannel({
+        //     'channelType':hcap.channel.ChannelType.IP, 
+        //     'ip':  Src,
+        //     'port': parseInt(Port, 10),
+        //     'ipBroadcastType': hcap.channel.IpBroadcastType.UDP,
+        //     'onSuccess' : function() {
+        //         Debug('onSuccess');
+        //     }, 
+        //     'onFailure' : function(f) {
+        //         Debug('onFailure : errorMessage = ' + f.errorMessage);
+        //     }
+        // });
 
-        hcap.channel.requestChangeCurrentChannel({
-            'channelType':hcap.channel.ChannelType.IP, 
-            'ip':  Src,
-            'port': parseInt(Port, 10),
-            'ipBroadcastType': hcap.channel.IpBroadcastType.UDP,
-            'onSuccess' : function() {
-                //Debug('onSuccess');
-            }, 
-            'onFailure' : function(f) {
-                //Debug('onFailure : errorMessage = ' + f.errorMessage);
+        hcap.Media.startUp({
+            "onSuccess" : function() {
+                Debug('Exito');
+                media.play({
+                    //"repeatCount" : 2,
+                    "onSuccess" : function() {
+                        Debug('REPRODUCIENDO CANAL');
+                    }, 
+                    "onFailure" : function(f) {
+                        Debug('FALLO');
+                    }
+                });
+            },
+            "onFailure" : function(f) {
+                Debug('FALLO');
             }
         });
-        
         // Maximiza el video en caso de que no este en pantalla completa
         MaximizeTV();
         
@@ -58,6 +89,7 @@
            
         // Actualiza la fecha inicio de la reproduccion del canal */
             StartDateChannel = new Date();
+        
     }
     
 /* *****************************************************************************
@@ -114,7 +146,7 @@
     
     function MinimizeTV(){
         hcap.video.setVideoSize({
-            'x': 15, 
+            'x': 155, 
             'y': 60,
             'width': WindowMinWidth,
             'height': WindowMinHeight,
@@ -150,6 +182,26 @@
         });
 
         PlayingRecording = false;
+    }
+
+    function StopChannel(){     
+        Debug('Tratando de detener');
+        media.stop({
+            "onSuccess" : function() {
+                Debug("onSuccess");
+            },
+            "onFailure" : function(f) {
+                Debug("onFailure : errorMessage = " + f.errorMessage);
+            }
+        });
+        media.destroy({
+           "onSuccess" : function() {
+               Debug("Destroy");
+           }, 
+           "onFailure" : function(f) {
+               Debug("onFailure : errorMessage = " + f.errorMessage);
+           }
+        });
     }
     
     function PauseVideo(){
