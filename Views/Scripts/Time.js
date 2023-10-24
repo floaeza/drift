@@ -23,7 +23,7 @@
         xhr = $.ajax({
             cache: false,
             type: 'POST',
-            url: 'http://'+ServerIp+'/BBINCO/TV/Core/Models/Time.php',
+            url: 'http://'+ServerIp+'/BBINCO/TV_DRIFT/Core/Models/Time.php',
             async : false,
             success: function (response) {
                 var Today = $.parseJSON(response),
@@ -32,7 +32,7 @@
                 ////Debug('****************************************** > '+TvHour);
                 //Debug('****************************************** > '+ServerHour);
 
-                Offset = parseInt(TvHour) - parseInt(ServerHour);
+                Offset = 9;
 
                 //Debug(':::::::::::::::::::::::::::::OFFSET:: '+Offset);
 
@@ -94,15 +94,27 @@
             }
 
         } else if(CurrentModule === 'Menu' || CurrentModule === 'Movies'){
-            FormatDate = moment().subtract(Offset, 'hours').format('MMMM DD YYYY');
-            FormatHour = moment().subtract(Offset, 'hours').format('h:mm a');
+            // FormatDate = moment().subtract(Offset, 'hours').format('MMMM DD YYYY');
+            // FormatHour = moment().subtract(Offset, 'hours').format('h:mm a');
             
-            if(FormatHour === '4:02 am'  && typeof(ASTB) !== 'undefined'){
-                ASTB.Reboot();
-            }
+            // if(FormatHour === '4:02 am'  && typeof(ASTB) !== 'undefined'){
+            //     ASTB.Reboot();
+            // }
+            var daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-            MenuDate.textContent = FormatDate;
-            MenuHour.textContent = FormatHour;
+            var currentDate = new Date();
+                currentDate.setHours(currentDate.getHours() - 1);
+
+            var dayOfWeek = daysOfWeek[currentDate.getDay()];
+            var month = months[currentDate.getMonth()];
+            var dayOfMonth = currentDate.getDate();
+            var formattedDate = `${dayOfWeek}, ${month} ${dayOfMonth}`;
+            var hour = currentDate.getHours();
+            var minutes = currentDate.getMinutes().toString().padStart(2, '0');
+
+            MenuDate.textContent = formattedDate+ ' / 81°F /';
+            MenuHour.textContent = hour + ':' + minutes;
         }
 
         

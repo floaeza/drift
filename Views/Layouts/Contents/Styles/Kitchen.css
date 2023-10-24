@@ -1,0 +1,43 @@
+@font-face {
+    font-family: 'MittelschriftAustriaW01D';
+    src: url('../../Menu/Styles/Custom-Fonts/MittelschriftAustriaW01D/MittelschriftAustriaW01D.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.kitchen-container {
+    background-color: #222222;
+    color: #E1DDD6;
+    overflow: hidden;
+}
+.full-height-row {
+    height: 100vh; 
+}
+
+.info-container p {
+    font-family: MittelschriftAustriaW01D;
+    font-size: 30px;
+    text-shadow: 3px 2px 4px rgba(0, 0, 0, 0.7);
+    word-spacing: 7px;
+    line-height: 1.3;
+}
+
+.info-container span {
+    padding-top: 15px;
+    font-family: MittelschriftAustriaW01D;
+    font-weight: bold;
+    font-size: 37px;
+    text-shadow: 3px 2px 4px rgba(0, 0, 0, 0.7);
+    letter-spacing: 4px;
+}
+.img-box {
+    width: 100%;
+    height: 100%;
+}
+.img-box img {
+    width: 100%;
+    height: 100%;
+}
+
+

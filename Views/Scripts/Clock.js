@@ -16,7 +16,7 @@ var MonthArr = ['Jan','Feb','Mar',
     'July','Aug','Sep',
     'Oct','Nov','Dec'];
 
-var DayArr = ['Sun','Mon','Tues','Wed','Thurs','Fri','Sat'];
+var DayArr = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
 var NewDate = new Date(),
     date = '',
@@ -103,7 +103,8 @@ function SetDate() {
 
     } else if(CurrentModule === 'Menu' || CurrentModule === 'Movies'){
 
-        MenuDate.textContent = montth +' '+ date + ', '+ year;
+        // MenuDate.textContent = montth +' '+ date + ', '+ year;
+        MenuDate.textContent = day +', '+ montth + ' ' + date + ' / 81°F /';
         MenuHour.textContent = FormatHour;
     }
 

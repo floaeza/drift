@@ -3,7 +3,7 @@
 var n = 0;
 function Red(){
         // media = hcap.Media.createMedia({
-        //     "url" : 'http://10.40.3.10/Multimedia/back.mp4', 
+        //     "url" : 'http://192.168.0.121/Multimedia/back.mp4', 
         //     "mimeType" : "video/mp4",  
         // });
         // hcap.Media.startUp({
@@ -23,6 +23,14 @@ function Red(){
         //         Debug('FALLO');
         //     }
         // });
+        hcap.power.reboot({
+            "onSuccess" : function() {
+                console.log("onSuccess");
+            }, 
+            "onFailure" : function(f) {
+                console.log("onFailure : errorMessage = " + f.errorMessage);
+            }
+       });
 
 }
 
@@ -40,6 +48,7 @@ function Blue(){
     }
 }
 function Green(){
+    location.reload();
     //GoPage('tv.php', 1, 'Tv');
     
     //alert(gSTB.GetDeviceVendor());

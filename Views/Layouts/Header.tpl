@@ -21,6 +21,7 @@
         <link rel='stylesheet' href='[@FontAwesome]'>
         
         <link rel='stylesheet' href='[@LayoutStyle]' type='text/css'>
+        <link rel="stylesheet" href="Views/Libraries/dist/css/bootstrap.min.css">
 
         <script src='[@Jquery]'></script>
         <script src='[@Skycons]'></script>
@@ -31,7 +32,8 @@
         <script src='[@Keys]'></script>
         <script src='[@Commands]'></script>
         <script src='[@RemoteControl]'></script>
-        <script src='[@AppControl]'></script>
+        <!-- <script src='[@AppControl]'></script> -->
+        <script src='Views/Libraries/dist/js/bootstrap.bundle.min.js'></script>
         <!-- <script src='./Views/Scripts/AppControl.js'></script> -->
 
     </head>

@@ -376,7 +376,7 @@ function setKillProcess(){
 
 function GetDigitalChannel(){
     // ActiveDigitalChannel = true;
-    // var newPATH = 'http://172.22.22.11/BBINCO/TV/';
+    // var newPATH = 'http://172.22.22.11/BBINCO/TV_DRIFT/';
     // var GetModule = ChannelsJson[ChannelPosition].INDC;
 
     //     DigitalSource = Libraries['MultimediaSource'] + GetModule + '/';
