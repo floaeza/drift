@@ -100,7 +100,7 @@
             }
         };
         // media = hcap.Media.createMedia({
-        //     "url" : 'http://192.168.0.121/Multimedia/back.mp4', 
+        //     "url" : 'http://10.40.3.10/Multimedia/back.mp4', 
         //     "mimeType" : "video/mp4",  
         // });
         // hcap.Media.startUp({
