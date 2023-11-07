@@ -1,65 +1,40 @@
-<div class="container-fluid vh-100 menu-container">
-    <div class="row layout_padding">
-        <div class="col-md-6">
-            <div class="header-title">
-                <h2>D</h2>
-                <h2>R</h2>
-                <h2>I</h2>
-                <h2>F</h2>
-                <h2>T</h2>
-            </div>
-            <div class="menu-description">
-                <p>
-                    Thank you for choosing <br>
-                    Drift San Jose del Cabo. <br>
-                    Welcome to Baja’s best <br>
-                    kept secret.
-                </p>
-                <p>
-
-                </p>
-            </div>
+<div class="container-fluid px-0 container-menu">
+    <div class="date-info">
+        <span id='MenuDate' class="date"></span>
+        <span class="date">/</span>
+        <span class="date">81°F</span>
+        <span class="date">/</span>
+        <span id='MenuHour'></span>
+    </div>
+    <div class="menu-content">
+        <div class="img-title">
+            <img src="Media/driftIcon.png" alt="">
         </div>
-        <div class="col-md-6">
-            <div class="container">
-                <div class="row">
-                    <div class="menu-info">
-                        <div class="col">
-                            <h4 id='MenuDate'></h4>
-                        </div>
-                        <div class="col">
-                            <h4 id='MenuHour'></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="img-box">
-                            <img src="Media/driftMenu.PNG" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="menu-info">
+            <p class="py-0 my-10">
+                Thank you for <br>
+                choosing Drift San <br>
+                Jose del Cabo. <br> 
+                <br>
+                Welcome to Baja’s <br>
+                best kept secret.
+            </p>
+        </div>
+        <div class="menu-display">
+            <img src="Media/driftMenu.png" alt="">
         </div>
     </div>
-    <div id="MenuList" class="row menu-modules">
-        <div class="col focus">
-            <h2>LIVE TV</h2>
-        </div>
-        <div class="col">
-            <h2>KITCHEN + MEZCAL BAR</h2>
-        </div>
-        <div class="col">
-            <h2>POOL</h2>
-        </div>
-        <div class="col">
-            <h2>YOGA</h2>
-        </div>
-        <div class="col">
-            <h2>SURF</h2>
-        </div>
-        <div class="col">
-            <h2>CONTACT</h2>
-        </div>
+    <div id='MenuList' class="menu-items">
+        <span class="focus">LIVE TV</span>
+        <span>/</span>
+        <span>KITCHEN + MEZCAL BAR</span>
+        <span>/</span>
+        <span>POOL</span>
+        <span>/</span>
+        <span>SURF</span>
+        <span>/</span>
+        <span>YOGA</span>
+        <span>/</span>
+        <span>CONTACT</span>
     </div>
 </div>

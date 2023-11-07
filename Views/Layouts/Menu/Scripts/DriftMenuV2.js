@@ -14,47 +14,47 @@ function MenuSelect(Direction){
     switch (Direction) {
         case 'RIGHT':
             var position = getFocusPosition(MenuListChildren);
-            if (position+1 > MenuListChildren.length-1) {
-                MenuListChildren[position].className = 'col';
-                MenuListChildren[0].className = 'col focus';
+            if (position+2 > MenuListChildren.length-1) {
+                MenuListChildren[position].className = '';
+                MenuListChildren[0].className = 'focus';
             } else {
-                MenuListChildren[position].className = 'col';
-                MenuListChildren[position+1].className = 'col focus';
+                MenuListChildren[position].className = '';
+                MenuListChildren[position+2].className = 'focus';
             }
             break;    
         case 'LEFT':
             var position = getFocusPosition(MenuListChildren);
-            if (position-1 < 0) {
-                MenuListChildren[position].className = 'col';
-                MenuListChildren[MenuListChildren.length-1].className = 'col focus';
+            if (position-2 < 0) {
+                MenuListChildren[position].className = '';
+                MenuListChildren[MenuListChildren.length-1].className = 'focus';
             } else {
-                MenuListChildren[position].className = 'col';
-                MenuListChildren[position-1].className = 'col focus';
+                MenuListChildren[position].className = '';
+                MenuListChildren[position-2].className = 'focus';
             }
             break;
         case 'UP':
             var position = getFocusPosition(MenuListChildren);
-            if (position-1 < 0) {
-                MenuListChildren[position].className = 'col';
-                MenuListChildren[MenuListChildren.length-1].className = 'col focus';
+            if (position-2 < 0) {
+                MenuListChildren[position].className = '';
+                MenuListChildren[MenuListChildren.length-1].className = 'focus';
             } else {
-                MenuListChildren[position].className = 'col';
-                MenuListChildren[position-1].className = 'col focus';
+                MenuListChildren[position].className = '';
+                MenuListChildren[position-2].className = 'focus';
             }
             break;
         case 'DOWN':
             var position = getFocusPosition(MenuListChildren);
-            if (position+1 > MenuListChildren.length-1) {
-                MenuListChildren[position].className = 'col';
-                MenuListChildren[0].className = 'col focus';
+            if (position+2 > MenuListChildren.length-1) {
+                MenuListChildren[position].className = '';
+                MenuListChildren[0].className = 'focus';
             } else {
-                MenuListChildren[position].className = 'col';
-                MenuListChildren[position+1].className = 'col focus';
+                MenuListChildren[position].className = '';
+                MenuListChildren[position+2].className = 'focus';
             }
             break;
         case 'ENTER':
             var position = getFocusPosition(MenuListChildren),
-                text     = MenuListChildren[position].children[0].innerHTML;
+                text     = MenuListChildren[position].innerHTML;
             if (text == 'LIVE TV') {
                 GoPage('tv.php', '1', 'Tv');
             }else if(text == 'KITCHEN + MEZCAL BAR'){

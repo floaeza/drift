@@ -1,44 +1,47 @@
 @font-face {
-    font-family: 'MittelschriftAustriaW01D';
-    src: url('../../Menu/Styles/Custom-Fonts/MittelschriftAustriaW01D/MittelschriftAustriaW01D.ttf');
+    font-family: 'Unica77LL';
+    src: url('../../Menu/Styles/Custom-Fonts/Unica77LL/Unica77MonoLLTT-Regular.ttf');
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'Unica77LLBold';
+    src: url('../../Menu/Styles/Custom-Fonts/Unica77LL/Unica77MonoLLTT-Bold.ttf');
+    font-weight: bolder;
+    font-style: normal;
+}
 
-
-.pool-container {
+.kitchen-container {
     background-color: #222222;
     color: #E1DDD6;
-    overflow: hidden;
-}
-.full-height-row {
-    height: 100vh; 
+    font-family: Unica77LL;
 }
 
-
-.info-container p {
-    font-family: MittelschriftAustriaW01D;
-    font-size: 30px;
-    text-shadow: 3px 2px 4px rgba(0, 0, 0, 0.7);
-    word-spacing: 7px;
-    line-height: 1.3;
+.kitchen-info {
+    position: absolute;
+    top: 268px;
+    left: 70px;
+    width: 316px;
+    height: 105px;
 }
 
-.info-container span {
-    padding-top: 15px;
-    font-family: MittelschriftAustriaW01D;
+.kitchen-info p {
+    font-size: 18px;
+}
+.kitchen-info span{
+    font-family: Unica77LLBold;
     font-weight: bold;
-    font-size: 37px;
-    text-shadow: 3px 2px 4px rgba(0, 0, 0, 0.7);
-    letter-spacing: 4px;
-}
-.img-box {
-    width: 100%;
-    height: 100%;
-}
-.img-box img {
-    width: 100%;
-    height: 100%;
 }
 
+.img-kitchen-box {
+    position: relative;
+    top: 0;
+    left: 456px;
+    width: 750px;
+    height: 750px;
+}
+.img-kitchen-box img {
+    width: 100%;
+    height: 100%;
+}
 

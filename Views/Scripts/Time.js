@@ -102,19 +102,26 @@
             // }
             var daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
             var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
+            
             var currentDate = new Date();
-                currentDate.setHours(currentDate.getHours() - 1);
-
+            currentDate.setHours(currentDate.getHours() - 1);
+            
             var dayOfWeek = daysOfWeek[currentDate.getDay()];
             var month = months[currentDate.getMonth()];
             var dayOfMonth = currentDate.getDate();
             var formattedDate = `${dayOfWeek}, ${month} ${dayOfMonth}`;
+            
             var hour = currentDate.getHours();
             var minutes = currentDate.getMinutes().toString().padStart(2, '0');
+            var ampm = hour >= 12 ? 'PM' : 'AM';
+            
+            // Convierte la hora en un formato de 12 horas
+            if (hour > 12) {
+                hour = hour - 12;
+            }
 
-            MenuDate.textContent = formattedDate+ ' / 81°F /';
-            MenuHour.textContent = hour + ':' + minutes;
+            MenuDate.textContent = formattedDate;
+            MenuHour.textContent = hour + ':' + minutes + ' ' + ampm;
         }
 
         
