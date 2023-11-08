@@ -2,7 +2,7 @@
     <div class="date-info">
         <span id='MenuDate' class="date"></span>
         <span class="date">/</span>
-        <span class="date">81°F</span>
+        <span class="date">86°F</span>
         <span class="date">/</span>
         <span id='MenuHour'></span>
     </div>

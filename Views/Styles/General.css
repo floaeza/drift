@@ -113,7 +113,7 @@ TITULO SIN NUMEROS Y SIMBOLOS
 */
 
 body, html {
-    background-color: transparent;
+    background-color: transparent !important;
     /* background-image:url(tv:);
     background:url(tv:); */
     -webkit-background-composite: clear;
@@ -128,7 +128,7 @@ body, html {
     scrollbar-arrow-color: RGBA(255, 255, 255, 0.9);
     scrollbar-track-color: RGBA(255, 255, 255, 0.9);
     scrollbar-darkshadow-color: RGBA(255, 255, 255, 0.9);
-    z-index: 1000000000000000000000000000000;   
+    /* z-index: -1000000000000000000000000000000;    */
 }
 
 /* Div contenedor usado en la mayoria de templates*/
@@ -138,6 +138,7 @@ div.GeneralBox {
     position: fixed;
     overflow: hidden;
     background-size: 100% 100% !important;
+    /* z-index: -3000; */
 }
 
 div#DebugText {

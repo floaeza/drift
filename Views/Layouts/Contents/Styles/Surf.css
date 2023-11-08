@@ -19,14 +19,14 @@
 
 .surf-info {
     position: absolute;
-    top: 211px;
-    left: 70px;
+    top: 221px;
+    left: 95px;
     width: 316px;
     height: 126px;
 }
 
 .surf-info p {
-    font-size: 18px;
+    font-size: 19px;
 }
 .surf-info span{
     font-family: Unica77LLBold;
@@ -36,8 +36,8 @@
 .img-surf-box {
     position: relative;
     top: 0;
-    left: 456px;
-    width: 750px;
+    left: 500px;
+    width: 775px;
     height: 750px;
 }
 .img-surf-box img {

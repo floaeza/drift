@@ -106,8 +106,8 @@ function SetDate() {
         var daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         
-        var currentDate = new Date();
-        currentDate.setHours(currentDate.getHours() - 1);
+        var currentDate = new Date(new Date().toLocaleString('en', {timeZone: 'America/Phoenix'}));
+            // currentDate.setHours(currentDate.getHours());
         
         var dayOfWeek = daysOfWeek[currentDate.getDay()];
         var month = months[currentDate.getMonth()];
@@ -125,7 +125,7 @@ function SetDate() {
         
 
         MenuDate.textContent = formattedDate;
-        MenuHour.textContent = hour + ':' + minutes;
+        MenuHour.textContent = hour + ':' + minutes + ' ' + ampm;
     }
 
 

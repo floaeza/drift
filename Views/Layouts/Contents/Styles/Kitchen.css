@@ -21,13 +21,13 @@
 .kitchen-info {
     position: absolute;
     top: 221px;
-    left: 70px;
+    left: 95px;
     width: 316px;
     height: 126px;
 }
 
 .kitchen-info p {
-    font-size: 18px;
+    font-size: 19px;
 }
 .kitchen-info span{
     font-family: Unica77LLBold;
@@ -37,8 +37,8 @@
 .img-kitchen-box {
     position: relative;
     top: 0;
-    left: 456px;
-    width: 750px;
+    left: 500px;
+    width: 775px;
     height: 750px;
 }
 .img-kitchen-box img {

@@ -20,14 +20,14 @@
 
 .contact-info {
     position: absolute;
-    top: 211px;
-    left: 70px;
+    top: 221px;
+    left: 95px;
     width: 316px;
     height: 126px;
 }
 
 .contact-info p {
-    font-size: 18px;
+    font-size: 19px;
 }
 .contact-info span{
     font-family: Unica77LLBold;
@@ -37,8 +37,8 @@
 .img-contact-box {
     position: relative;
     top: 0;
-    left: 456px;
-    width: 750px;
+    left: 500px;
+    width: 775px;
     height: 750px;
 }
 .img-contact-box img {

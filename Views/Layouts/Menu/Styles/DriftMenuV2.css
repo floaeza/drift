@@ -22,12 +22,12 @@
 .date-info {
     position: relative;
     top: 50px;
-    left: 580px;
+    left: 700px;
 }
 
 .date-info span {
     font-family: Unica77LLBold;
-    font-size: 16px;
+    font-size: 19px;
     font-weight: bold;
     text-align: left;
 }
@@ -44,8 +44,8 @@
 }
 
 .img-title {
-    width: 139px;
-    height: 72px;
+    width: 200px;
+    height: 100px;
 }
 
 .img-title img {
@@ -54,8 +54,8 @@
 }
 
 .menu-info {
-    width: 236px;
-    height: 126px;
+    width: 250px;
+    height: 140px;
     margin-top: 75px;
 }
 
@@ -67,9 +67,9 @@
 .menu-display {
     position: fixed;
     top: 110px;
-    left: 376px;
-    width: 650px;
-    height: 420px;
+    left: 400px;
+    width: 800px;
+    height: 505px;
 }
 
 .menu-display img{
@@ -79,12 +79,12 @@
 
 .menu-items{
     position: absolute;
-    top: 571px;
+    top: 655px;
     left: 203px;
 }
 
 .menu-items span{
-    font-size: 16px;
+    font-size: 19px;
     font-family: Unica77LLBold;
     font-weight: bold;
     margin-right: 20px;

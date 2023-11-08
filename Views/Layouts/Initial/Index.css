@@ -1,6 +1,6 @@
 body, html {
-    background-image:url(tv:);
-    background:url(tv:);
+    /* background-image:url(tv:);
+    background:url(tv:); */
     -webkit-background-composite: clear;
     background-color: transparent;
     margin: 0;
